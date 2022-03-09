@@ -1,9 +1,7 @@
 {
     "name": "pzh-ui",
     "version": "0.0.1",
-    "publishConfig": {
-        "access": "public"
-    },
+    "private": true,
     "devDependencies": {
         "@babel/eslint-parser": "^7.17.0",
         "@typescript-eslint/eslint-plugin": "^5.14.0",

@@ -23,7 +23,6 @@
         "build": "tsc && vite build"
     },
     "dependencies": {
-        "@pzh-ui/config": "^0.0.8",
         "@rollup/plugin-typescript": "^8.3.1",
         "classnames": "^2.3.1",
         "react": "^17.0.2",
@@ -45,5 +44,5 @@
         "babel-loader": "^8.2.3",
         "vite": "^2.8.6"
     },
-    "gitHead": "fa5865075726bb98bffb02724119f85bb5c9e43c"
+    "gitHead": "722aca6593a5f62177f2e0ba5ec79f0f157bf21f"
 }

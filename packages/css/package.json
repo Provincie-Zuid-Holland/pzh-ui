@@ -17,5 +17,5 @@
     "devDependencies": {
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
     },
-    "gitHead": "fa5865075726bb98bffb02724119f85bb5c9e43c"
+    "gitHead": "722aca6593a5f62177f2e0ba5ec79f0f157bf21f"
 }

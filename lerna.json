@@ -8,8 +8,5 @@
             "registry": "https://registry.npmjs.org/"
         }
     },
-    "publishConfig": {
-        "access": "public"
-    },
     "version": "independent"
 }

@@ -1,7 +1,7 @@
 {
     "name": "@pzh-ui/css",
     "version": "0.0.3",
-    "description": "> TODO: description",
+    "description": "Contains default styling for projects whitin Provincie Zuid-Holland.",
     "license": "ISC",
     "scripts": {
         "prepare": "npm run-script build-tailwind",

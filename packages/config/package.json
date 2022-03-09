@@ -1,6 +1,6 @@
 {
     "name": "@pzh-ui/config",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "Contains configuration files for projects whitin Provincie Zuid-Holland.",
     "license": "ISC",
     "sideEffects": false,

@@ -21,9 +21,9 @@ module.exports = {
         'plugin:import/typescript',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'eslint-config-prettier/@typescript-eslint',
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
+        'prettier',
     ],
     rules: {
         '@typescript-eslint/no-var-requires': 'off',

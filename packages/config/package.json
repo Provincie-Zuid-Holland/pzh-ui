@@ -21,5 +21,6 @@
     },
     "devDependencies": {
         "vite": "^2.8.6"
-    }
+    },
+    "gitHead": "4a9393f48caa015a0c702c44eef25f9691b8e81f"
 }

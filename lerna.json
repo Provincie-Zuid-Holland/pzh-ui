@@ -1,21 +1,15 @@
 {
     "npmClient": "yarn",
-    "packages": [
-        "packages/*"
-    ],
+    "packages": ["packages/*"],
     "command": {
-        "version": {
-            "exact": true
-        },
         "publish": {
-            "access": "public",
             "npmClient": "npm",
-            "allowBranch": [
-                "master",
-                "canary"
-            ],
+            "allowBranch": ["master", "canary"],
             "registry": "https://registry.npmjs.org/"
         }
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "version": "independent"
 }

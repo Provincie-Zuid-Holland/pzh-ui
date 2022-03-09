@@ -1,0 +1,20 @@
+{
+    "name": "@pzh-ui/css",
+    "version": "0.0.0",
+    "description": "> TODO: description",
+    "license": "ISC",
+    "scripts": {
+        "prepare": "npm run-script build-tailwind",
+        "build-tailwind": "npx tailwindcss-cli@latest build -i src/tailwind.src.css -c tailwind.config.js -o src/tailwind.css",
+        "build": "npm run-script build-tailwind"
+    },
+    "dependencies": {
+        "@rollup/plugin-typescript": "^8.3.1",
+        "@tailwindcss/custom-forms": "^0.2.1",
+        "@tailwindcss/forms": "^0.5.0",
+        "@tailwindcss/line-clamp": "^0.3.1"
+    },
+    "devDependencies": {
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
+    }
+}

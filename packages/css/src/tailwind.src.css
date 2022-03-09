@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Karbon Regular';
+    src: url('../assets/Karbon-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Karbon Medium';
+    src: url('../assets/Karbon-Medium.woff2') format('woff2');
+    font-weight: bold;
+    font-display: swap;
+}
+
+html {
+    height: 100%;
+    overflow: auto;
+    font-size: 20px;
+    line-height: 1.5em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Karbon Regular', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-bold {
+    font-family: 'Karbon Medium', sans-serif;
+    font-weight: 700;
+}
+
+.bold {
+    font-weight: 700;
+}

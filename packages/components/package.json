@@ -1,0 +1,48 @@
+{
+    "name": "@pzh-ui/components",
+    "version": "0.0.0",
+    "description": "Contains default components to use in Provincie Zuid-Holland projects.",
+    "license": "ISC",
+    "sideEffects": false,
+    "files": [
+        "dist"
+    ],
+    "types": "./dist/index.d.ts",
+    "main": "./dist/components.umd.js",
+    "module": "./dist/components.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/components.es.js",
+            "require": "./dist/components.umd.js"
+        }
+    },
+    "scripts": {
+        "prepare": "tsc && vite build",
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook",
+        "build": "tsc && vite build"
+    },
+    "dependencies": {
+        "@pzh-ui/config": "^0.0.0",
+        "@rollup/plugin-typescript": "^8.3.1",
+        "classnames": "^2.3.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-use": "^17.3.2",
+        "typescript": "^4.6.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.17.5",
+        "@pzh-ui/css": "^0.0.0",
+        "@storybook/addon-actions": "^6.4.19",
+        "@storybook/addon-essentials": "^6.4.19",
+        "@storybook/addon-interactions": "^6.4.19",
+        "@storybook/addon-links": "^6.4.19",
+        "@storybook/react": "^6.4.19",
+        "@storybook/testing-library": "^0.0.9",
+        "@types/react": "^17.0.39",
+        "@types/react-dom": "^17.0.13",
+        "babel-loader": "^8.2.3",
+        "vite": "^2.8.6"
+    }
+}

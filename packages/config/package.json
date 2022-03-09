@@ -1,0 +1,25 @@
+{
+    "name": "@pzh-ui/config",
+    "version": "0.0.0",
+    "description": "Contains configuration files for projects whitin Provincie Zuid-Holland.",
+    "license": "ISC",
+    "sideEffects": false,
+    "dependencies": {
+        "@babel/eslint-parser": "^7.17.0",
+        "@rollup/plugin-typescript": "^8.3.1",
+        "@typescript-eslint/eslint-plugin": "^5.14.0",
+        "@typescript-eslint/parser": "^5.14.0",
+        "eslint": "^8.10.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-import-resolver-typescript": "^2.5.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-react": "^7.29.3",
+        "eslint-plugin-react-hooks": "^4.3.0",
+        "prettier": "^2.5.1"
+    },
+    "devDependencies": {
+        "vite": "^2.8.6"
+    }
+}

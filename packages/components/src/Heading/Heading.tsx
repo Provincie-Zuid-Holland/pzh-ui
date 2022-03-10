@@ -5,7 +5,7 @@ export interface HeadingProps {
     className?: string
     id?: string
     color?: string
-    level?: string
+    level?: '1' | '2' | '3' | '4' | '5' | '6'
     customStyles?: any
 }
 
@@ -20,67 +20,20 @@ export const Heading: FC<HeadingProps> = ({
     const isMobile = useMedia('(max-width: 640px)')
     const styles = getHeadingStyles(level, isMobile)
 
-    if (level === '1') {
-        return (
-            <h1
-                style={customStyles ? customStyles : styles}
-                id={id}
-                className={`break-words ${color} ${className}`}>
-                {children}
-            </h1>
-        )
-    } else if (level === '2') {
-        return (
-            <h2
-                style={customStyles ? customStyles : styles}
-                id={id}
-                className={`break-words ${color} ${className}`}>
-                {children}
-            </h2>
-        )
-    } else if (level === '3') {
-        return (
-            <h3
-                style={customStyles ? customStyles : styles}
-                id={id}
-                className={`break-words ${color} ${className}`}>
-                {children}
-            </h3>
-        )
-    } else if (level === '4') {
-        return (
-            <h4
-                style={customStyles ? customStyles : styles}
-                id={id}
-                className={`break-words ${color} ${className}`}>
-                {children}
-            </h4>
-        )
-    } else if (level === '5') {
-        return (
-            <h5
-                style={customStyles ? customStyles : styles}
-                id={id}
-                className={`break-words ${color} ${className}`}>
-                {children}
-            </h5>
-        )
-    } else if (level === '6') {
-        return (
-            <h6
-                style={customStyles ? customStyles : styles}
-                id={id}
-                className={`break-words ${color} ${className}`}>
-                {children}
-            </h6>
-        )
-    } else {
-        throw new Error(`${level} is not a valid heading level`)
-    }
+    const Component = `h${level}` as keyof JSX.IntrinsicElements
+
+    return (
+        <Component
+            style={customStyles || styles}
+            id={id}
+            className={`break-words ${color} ${className}`}>
+            {children}
+        </Component>
+    )
 }
 
 export const getHeadingStyles = (
-    level?: string,
+    level?: '1' | '2' | '3' | '4' | '5' | '6',
     isMobile?: boolean
 ): CSSProperties => {
     if (level === '1') {

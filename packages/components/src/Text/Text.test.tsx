@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react'
 
-import { Text } from './Text'
+import { Text, TextProps } from './Text'
 
 describe('Text', () => {
     const defaultProps = {
-        type: 'quote',
+        type: 'quote' as TextProps['type'],
         color: 'text-pzh-blue-dark',
         className: '',
     }
 
-    const setup = (customProps?: any) => {
+    const setup = (customProps?: Partial<TextProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(<Text {...props} />)
     }

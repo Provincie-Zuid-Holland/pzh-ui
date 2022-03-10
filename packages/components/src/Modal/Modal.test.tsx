@@ -1,18 +1,19 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Modal } from './Modal'
+import { Modal, ModalProps } from './Modal'
 
 describe('Modal', () => {
     const closeMock = jest.fn()
     const defaultProps = {
         open: true,
-        close: closeMock,
+        onClose: closeMock,
         ariaLabel: 'test',
     }
 
-    const setup = (customProps?: any) => {
+    const setup = (customProps?: Partial<ModalProps>) => {
         const props = { ...defaultProps, ...customProps }
+
         render(
             <Modal {...props}>
                 <span>Test Modal Text</span>

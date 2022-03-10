@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 
-import { Tag } from './Tag'
+import { Tag, TagProps } from './Tag'
 
 describe('Tag', () => {
     const clickTag = jest.fn()
@@ -9,7 +9,7 @@ describe('Tag', () => {
         className: '',
     }
 
-    const setup = (customProps?: any) => {
+    const setup = (customProps?: Partial<TagProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(<Tag {...props} />)
     }

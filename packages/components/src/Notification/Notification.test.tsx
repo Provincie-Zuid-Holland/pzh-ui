@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Notification } from './Notification'
+import { Notification, NotificationProps } from './Notification'
 
 describe('Notification', () => {
     const defaultProps = {
         text: 'Dit is een toelichting.',
     }
 
-    const setup = (customProps?: { [key: string]: any }) => {
+    const setup = (customProps?: Partial<NotificationProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(<Notification {...props} />)
     }

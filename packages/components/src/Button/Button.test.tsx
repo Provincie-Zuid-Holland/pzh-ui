@@ -1,14 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Button } from './Button'
+import { Button, ButtonProps } from './Button'
 
 describe('Button', () => {
     const defaultProps = {
         label: 'Button text',
     }
 
-    const setup = (customProps?: Record<string, unknown>) => {
+    const setup = (customProps?: Partial<ButtonProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(<Button {...props} />)
     }

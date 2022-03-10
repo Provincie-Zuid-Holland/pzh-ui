@@ -16,5 +16,6 @@ export const Default: ComponentStory<typeof Modal> = Template.bind({})
 Default.args = {
     children: <p>Modal</p>,
     open: true,
-    close: () => {},
+    onClose: () => {},
+    closeButton: true,
 }

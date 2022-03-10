@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom'
 
-import { Breadcrumbs } from './Breadcrumbs'
+import { Breadcrumbs, BreadcrumbsProps } from './Breadcrumbs'
 
 describe('Breadcrumbs', () => {
     const defaultProps = {
@@ -16,7 +16,7 @@ describe('Breadcrumbs', () => {
         ],
     }
 
-    const setup = (customProps?: { [key: string]: any }) => {
+    const setup = (customProps?: Partial<BreadcrumbsProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(
             <MemoryRouter>

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Banner } from './Banner'
+import { Banner, BannerProps } from './Banner'
 
 describe('Banner', () => {
     const defaultProps = {
@@ -10,7 +10,7 @@ describe('Banner', () => {
         cookieName: 'cookie',
     }
 
-    const setup = (customProps?: { [key: string]: any }) => {
+    const setup = (customProps?: Partial<BannerProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(<Banner {...props} />)
     }

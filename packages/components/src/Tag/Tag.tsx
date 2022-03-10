@@ -23,8 +23,10 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
             )}
             {...(onClick && {
                 onClick,
+                type: 'button',
             })}
-            style={{ paddingTop: 2 }}>
+            style={{ paddingTop: 2 }}
+            data-testid="tag">
             <span>{text}</span>
             {!!onClick && (
                 <FontAwesomeIcon icon={faTimes} className="ml-3 text-xs" />

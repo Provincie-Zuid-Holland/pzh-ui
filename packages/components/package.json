@@ -20,9 +20,12 @@
         }
     },
     "scripts": {
+        "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
+        "test": "jest",
         "prerelease": "tsc && vite build",
-        "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook",
+        "storybook": "npm run prebuild:storybook && start-storybook -p 6006",
+        "prebuild:storybook": "npm run test:generate-output",
+        "build:storybook": "build-storybook",
         "build": "tsc && vite build"
     },
     "dependencies": {
@@ -47,13 +50,26 @@
         "@storybook/addon-actions": "^6.4.19",
         "@storybook/addon-essentials": "^6.4.19",
         "@storybook/addon-interactions": "^6.4.19",
+        "@storybook/addon-jest": "^6.4.19",
         "@storybook/addon-links": "^6.4.19",
         "@storybook/react": "^6.4.19",
         "@storybook/testing-library": "^0.0.9",
+        "@testing-library/dom": "^8.11.3",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^12.1.2",
+        "@types/jest": "^27.4.1",
         "@types/react": "^17.0.39",
         "@types/react-dom": "^17.0.13",
         "babel-loader": "^8.2.3",
+        "babel-plugin-import": "^1.13.3",
+        "jest": "^27.5.1",
         "vite": "^2.8.6"
+    },
+    "jest": {
+        "testEnvironment": "jsdom",
+        "setupFilesAfterEnv": [
+            "./jest.setup.js"
+        ]
     },
     "gitHead": "119374f6b8dec473c0a29dfe3bb9887b7ea421ab"
 }

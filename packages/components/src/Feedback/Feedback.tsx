@@ -47,7 +47,7 @@ const getBrowserName = () => {
 /**
  * Create a mailto link with subject and body
  */
-const getMailToLink = (email: string, website: string) => {
+export const getMailToLink = (email: string, website: string) => {
     const date = formatDate(new Date(), 'd MMMM yyyy, HH:mm') + ' uur'
 
     const browser = getBrowserName()

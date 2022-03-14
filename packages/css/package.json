@@ -8,7 +8,8 @@
     },
     "scripts": {
         "prerelease": "npm run-script build-tailwind",
-        "build-tailwind": "npx tailwindcss-cli@latest build -i src/tailwind.src.css -c tailwind.config.js -o src/tailwind.css",
+        "build-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css",
+        "watch-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css --watch",
         "build": "npm run-script build-tailwind"
     },
     "dependencies": {
@@ -17,8 +18,8 @@
         "@tailwindcss/forms": "^0.5.0",
         "@tailwindcss/line-clamp": "^0.3.1"
     },
+    "gitHead": "119374f6b8dec473c0a29dfe3bb9887b7ea421ab",
     "devDependencies": {
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
-    },
-    "gitHead": "119374f6b8dec473c0a29dfe3bb9887b7ea421ab"
+        "tailwindcss": "^3.0.23"
+    }
 }

@@ -46,3 +46,11 @@ h6,
 .bold {
     font-weight: 700;
 }
+
+.pzh-button {
+    @apply inline-block transition duration-200 ease-in rounded focus:outline-none focus:ring font-bold leading-none disabled:bg-pzh-gray disabled:text-pzh-blue-dark disabled:text-opacity-35 disabled:cursor-not-allowed;
+}
+
+.pzh-form-input {
+    @apply block w-full placeholder-pzh-blue-dark placeholder-opacity-55 text-pzh-blue-dark border border-pzh-blue-dark border-opacity-35 rounded appearance-none leading-none focus:outline-none hover:border-gray-500 focus:border-gray-500 disabled:bg-pzh-gray disabled:text-opacity-55;
+}

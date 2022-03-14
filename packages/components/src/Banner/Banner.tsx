@@ -64,7 +64,7 @@ export const Banner = ({
             )}>
             <div className="max-w-screen-xl px-3 py-2 mx-auto sm:px-6 lg:px-8">
                 <div className="pr-16 sm:text-center">
-                    <p className="text-sm bold leading-4 rounded">{text}</p>
+                    <p className="text-sm bold rounded">{text}</p>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-start pt-1 pr-1 sm:pt-1 sm:pr-2 sm:items-start">
                     <button

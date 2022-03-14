@@ -1,9 +1,8 @@
 module.exports = {
     corePlugins: {
         fontWeight: false,
-        lineHeight: false,
     },
-    purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
     variants: {
         pointerEvents: ['responsive', 'hover'],
         display: ['responsive', 'hover', 'group-hover'],
@@ -212,6 +211,7 @@ module.exports = {
         extend: {
             opacity: {
                 35: '0.35',
+                55: '0.55',
             },
         },
     },

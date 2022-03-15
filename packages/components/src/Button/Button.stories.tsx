@@ -1,3 +1,4 @@
+import { faUser } from '@fortawesome/pro-solid-svg-icons'
 import { ComponentStory } from '@storybook/react'
 
 import { Button, ButtonProps } from './Button'
@@ -44,4 +45,10 @@ export const Disabled: ComponentStory<typeof Button> = Template.bind({})
 Disabled.args = {
     label: 'Button',
     disabled: true,
+}
+
+export const WithIcon: ComponentStory<typeof Button> = Template.bind({})
+WithIcon.args = {
+    label: 'Button',
+    icon: faUser,
 }

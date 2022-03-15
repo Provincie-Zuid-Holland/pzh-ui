@@ -1,5 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 /**
  * Primary UI component for user interaction
@@ -10,6 +12,7 @@ export interface ButtonProps
     label: string
     variant?: 'primary' | 'secondary' | 'cta'
     size?: 'large' | 'small'
+    icon?: IconProp
     classes?: string
 }
 
@@ -19,6 +22,7 @@ export const Button = ({
     type = 'button',
     size = 'large',
     disabled,
+    icon,
     classes,
     ...props
 }: ButtonProps) => (
@@ -27,8 +31,9 @@ export const Button = ({
         className={classNames(
             'pzh-button',
             {
-                'px-4 pt-[16px] pb-[12px]': size === 'large',
-                'text-xs px-[12px] pb-[9px] pt-[12px]': size === 'small',
+                'px-4 pt-[15px] pb-[12px] h-[48px]': size === 'large',
+                'text-xs px-[12px] pb-[9px] pt-[12px] h-[36px]':
+                    size === 'small',
                 'bg-pzh-blue hover:bg-pzh-blue-dark text-white':
                     variant === 'primary' && !disabled,
                 'text-pzh-blue border border-pzh-blue-dark border-opacity-35 hover:border-opacity-100':
@@ -41,6 +46,21 @@ export const Button = ({
         )}
         disabled={disabled}
         {...props}>
-        {label}
+        {icon ? (
+            <div className="flex">
+                <FontAwesomeIcon
+                    className={classNames({
+                        '-mt-[2px]': variant !== 'secondary',
+                        '-mt-0.5': variant === 'secondary',
+                        'mr-2': size === 'large',
+                        'mr-[8px]': size === 'small',
+                    })}
+                    icon={icon}
+                />
+                <span>{label}</span>
+            </div>
+        ) : (
+            label
+        )}
     </button>
 )

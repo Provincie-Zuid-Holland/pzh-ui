@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { cloneElement, useState } from 'react'
 
-import { Input } from './Input'
+import { FieldTextArea } from './FieldTextArea'
 
 const ParentWrapper = ({
     children,
@@ -27,15 +27,16 @@ const ParentWrapper = ({
     )
 }
 
-describe('FormFieldTextInput', () => {
+describe('FieldTextArea', () => {
     const setup = (initEmpty?: boolean, disabled?: boolean) => {
+        const testid = 'pzh-form-textarea'
+
         render(
             <ParentWrapper initEmpty={initEmpty}>
-                <Input disabled={disabled} />
+                <FieldTextArea name={testid} disabled={disabled} />
             </ParentWrapper>
         )
 
-        const testid = 'pzh-form-input'
         const input = screen.getByTestId(testid) as HTMLInputElement
 
         return { input }

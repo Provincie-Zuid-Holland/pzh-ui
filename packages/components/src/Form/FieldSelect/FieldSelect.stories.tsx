@@ -1,19 +1,20 @@
 import { ComponentStory } from '@storybook/react'
 
-import { Select, SelectProps } from './Select'
+import { FieldSelect, FieldSelectProps } from './FieldSelect'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: 'Components/Form/Select',
-    component: Select,
+    title: 'Components/Form/FieldSelect',
+    component: FieldSelect,
 }
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args: SelectProps) => <Select {...args} />
+const Template = (args: FieldSelectProps) => <FieldSelect {...args} />
 
-export const Default: ComponentStory<typeof Select> = Template.bind({})
+export const Default: ComponentStory<typeof FieldSelect> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+    name: 'select',
     placeholder: 'Placeholder',
     options: [
         {
@@ -31,9 +32,12 @@ Default.args = {
     ],
 }
 
-export const DisabledEmpty: ComponentStory<typeof Select> = Template.bind({})
+export const DisabledEmpty: ComponentStory<typeof FieldSelect> = Template.bind(
+    {}
+)
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 DisabledEmpty.args = {
+    name: 'select',
     placeholder: 'Placeholder',
     disabled: true,
     options: [
@@ -52,9 +56,12 @@ DisabledEmpty.args = {
     ],
 }
 
-export const DisabledFilled: ComponentStory<typeof Select> = Template.bind({})
+export const DisabledFilled: ComponentStory<typeof FieldSelect> = Template.bind(
+    {}
+)
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 DisabledFilled.args = {
+    name: 'select',
     placeholder: 'Placeholder',
     disabled: true,
     options: [
@@ -75,4 +82,27 @@ DisabledFilled.args = {
         label: 'Option 2',
         value: 'option-2',
     },
+}
+
+export const WithLabel: ComponentStory<typeof FieldSelect> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+WithLabel.args = {
+    name: 'select',
+    placeholder: 'Placeholder',
+    options: [
+        {
+            label: 'Option 1',
+            value: 'option-1',
+        },
+        {
+            label: 'Option 2',
+            value: 'option-2',
+        },
+        {
+            label: 'Option 3',
+            value: 'option-3',
+        },
+    ],
+    label: 'Form label',
+    description: 'Korte omschrijving voor onder het label',
 }

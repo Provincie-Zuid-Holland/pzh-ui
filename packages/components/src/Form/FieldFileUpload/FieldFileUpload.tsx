@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
 import { useUpdateEffect } from 'react-use'
-import { extension } from 'mime-types'
+import { getExtension } from 'mime'
 import classNames from 'classnames'
 import { faCloudUpload } from '@fortawesome/pro-solid-svg-icons'
 import { faTrashAlt } from '@fortawesome/pro-regular-svg-icons'
@@ -32,9 +32,9 @@ export const FieldFileUpload = ({
     classes,
     accept = [
         'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         'application/pdf',
         'application/vnd.ms-excel',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     ],
     maxSize = 20971520, // = 20 MB
     ...props
@@ -62,7 +62,7 @@ export const FieldFileUpload = ({
     const acceptedTypes = useMemo(
         () =>
             (Array.isArray(accept) &&
-                accept.map(type => `.${extension(type)}`)) ||
+                accept.map(type => `.${getExtension(type)}`)) ||
             accept,
         [accept]
     )

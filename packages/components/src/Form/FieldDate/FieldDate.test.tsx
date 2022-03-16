@@ -5,8 +5,8 @@ import { FieldDate, FieldDateProps } from './FieldDate'
 
 describe('FieldDate', () => {
     const defaultProps = {
-        name: 'select',
-        placeholder: 'Select field',
+        name: 'date',
+        placeholderText: 'Date field',
     }
 
     const setup = (customProps?: Partial<FieldDateProps>) => {
@@ -19,7 +19,7 @@ describe('FieldDate', () => {
     it('Component renders', () => {
         setup()
 
-        const element = screen.getByText('Select field')
+        const element = screen.getByPlaceholderText('Date field')
         expect(element).toBeTruthy()
     })
 })

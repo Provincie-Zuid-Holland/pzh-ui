@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react'
+import { forwardRef } from 'react'
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import nl from 'date-fns/locale/nl'
 import { faCalendarAlt } from '@fortawesome/pro-light-svg-icons'
@@ -25,32 +25,26 @@ export const FieldDate = ({
     required,
     description,
     ...props
-}: FieldDateProps) => {
-    const [startDate, setStartDate] = useState<Date | null>(null)
-
-    return (
-        <>
-            {label && (
-                <FieldLabel
-                    name={name}
-                    label={label}
-                    description={description}
-                    required={required}
-                />
-            )}
-            <DatePicker
-                locale={nl}
+}: FieldDateProps) => (
+    <>
+        {label && (
+            <FieldLabel
                 name={name}
+                label={label}
+                description={description}
                 required={required}
-                className="pzh-form-input"
-                customInput={<DateInput name={name} />}
-                {...props}
-                selected={startDate}
-                onChange={(date: Date) => setStartDate(date)}
             />
-        </>
-    )
-}
+        )}
+        <DatePicker
+            locale={nl}
+            name={name}
+            required={required}
+            className="pzh-form-input"
+            customInput={<DateInput name={name} />}
+            {...props}
+        />
+    </>
+)
 
 const DateInput = forwardRef<HTMLInputElement, FieldInputProps>(
     (props, ref) => (

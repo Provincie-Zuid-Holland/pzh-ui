@@ -39,6 +39,7 @@ module.exports = {
             '6xl': '4rem',
         },
         colors: {
+            black: '#000000',
             white: '#FFF',
             'pzh-form': '#F4F4F7',
             gray: {

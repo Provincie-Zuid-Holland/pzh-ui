@@ -1,4 +1,5 @@
 import { ComponentStory } from '@storybook/react'
+import { useState } from 'react'
 
 import { FieldDate, FieldDateProps } from './FieldDate'
 
@@ -9,7 +10,17 @@ export default {
 }
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args: FieldDateProps) => <FieldDate {...args} />
+const Template = (args: FieldDateProps) => {
+    const [startDate, setStartDate] = useState<Date | null>(null)
+
+    return (
+        <FieldDate
+            {...args}
+            selected={startDate}
+            onChange={(date: Date) => setStartDate(date)}
+        />
+    )
+}
 
 export const Default: ComponentStory<typeof FieldDate> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

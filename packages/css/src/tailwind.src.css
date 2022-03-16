@@ -163,6 +163,10 @@ h6,
     @apply bg-pzh-blue-dark bg-opacity-10 text-pzh-blue-dark;
 }
 
+.react-datepicker__day--keyboard-selected:hover {
+    @apply bg-pzh-blue-dark bg-opacity-10;
+}
+
 .react-datepicker__day--selected,
 .react-datepicker__day--selected:hover {
     @apply bg-pzh-green bold;

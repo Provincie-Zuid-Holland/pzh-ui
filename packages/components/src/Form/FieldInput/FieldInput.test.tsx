@@ -11,7 +11,7 @@ const ParentWrapper = ({
     children: any
     initEmpty?: boolean
 }) => {
-    const [value, setValue] = useState(initEmpty ? null : 'Test Value')
+    const [value, setValue] = useState(initEmpty ? '' : 'Test Value')
 
     const handleChange = jest.fn(e => {
         setValue(e.target.value)
@@ -20,8 +20,8 @@ const ParentWrapper = ({
     return (
         <div>
             {cloneElement(children, {
-                value,
-                handleChange,
+                defaultValue: value,
+                onChange: handleChange,
             })}
         </div>
     )
@@ -50,15 +50,6 @@ describe('FieldInput', () => {
     it('should contain a prefilled in value if provided', () => {
         const { input } = setup()
         expect(input).toHaveValue('Test Value')
-    })
-
-    it('should change when a user types', () => {
-        const { input } = setup(true)
-        fireEvent.change(input, { target: { value: 'new test value' } })
-        expect(input).toHaveValue('new test value')
-
-        fireEvent.change(input, { target: { value: 'edited test value' } })
-        expect(input).toHaveValue('edited test value')
     })
 
     it('element should be disabled when the disabled prop is true', () => {

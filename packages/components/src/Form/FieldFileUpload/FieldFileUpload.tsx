@@ -89,7 +89,7 @@ export const FieldFileUpload = ({
 
                 <div>
                     <FontAwesomeIcon
-                        className={classNames('mb-4', {
+                        className={classNames('mb-2 max-w-[2rem]', {
                             'text-pzh-blue-dark': !isDragActive,
                             'text-pzh-green': isDragActive && !isDragReject,
                             'text-pzh-red': isDragReject && isDragActive,

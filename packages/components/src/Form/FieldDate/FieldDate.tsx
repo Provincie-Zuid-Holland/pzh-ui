@@ -24,6 +24,7 @@ export const FieldDate = ({
     label,
     required,
     description,
+    dateFormat = 'dd-MM-yyyy',
     ...props
 }: FieldDateProps) => (
     <>
@@ -41,6 +42,7 @@ export const FieldDate = ({
             required={required}
             className="pzh-form-input"
             customInput={<DateInput name={name} />}
+            dateFormat={dateFormat}
             {...props}
         />
     </>

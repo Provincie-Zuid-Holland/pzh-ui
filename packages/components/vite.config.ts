@@ -5,6 +5,9 @@ import { getClientConfiguration } from '../config/vite'
 
 export default getClientConfiguration({
     plugins: [visualizer()],
+    esbuild: {
+        minify: true,
+    },
     build: {
         rollupOptions: {
             plugins: [
@@ -12,7 +15,12 @@ export default getClientConfiguration({
                     exclude: ['**/*.test.tsx', '**/*.stories.tsx'],
                 }),
             ],
-            external: ['quill'],
+            external: [
+                'quill',
+                'react-dom',
+                'react-router',
+                'react-router-dom',
+            ],
         },
     },
 })

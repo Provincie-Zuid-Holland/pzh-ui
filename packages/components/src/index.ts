@@ -1,13 +1,13 @@
 // Components
-export * from './Button'
-export * from './Breadcrumbs'
-export * from './Heading'
-export * from './Banner'
-export * from './Feedback'
-export * from './Modal'
-export * from './Text'
-export * from './Tag'
-export * from './Notification'
+export { Button } from './Button'
+export { Breadcrumbs } from './Breadcrumbs'
+export { Heading } from './Heading'
+export { Banner } from './Banner'
+export { Feedback } from './Feedback'
+export { Modal } from './Modal'
+export { Text } from './Text'
+export { Tag } from './Tag'
+export { Notification } from './Notification'
 export * from './Form'
 
 // Utils

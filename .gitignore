@@ -9,6 +9,7 @@ dist
 storybook-static
 build-storybook.log
 .env
+stats.html
 
 # CSS
 tailwind.css

@@ -21,16 +21,15 @@ export const Default: ComponentStory<typeof FieldCheckboxGroup> = Template.bind(
 )
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+    name: 'option',
     options: [
         {
-            name: 'option',
             label: 'Option 1',
-            id: 'option-1',
+            value: 'option-1',
         },
         {
-            name: 'option',
             label: 'Option 2',
-            id: 'option-2',
+            value: 'option-2',
         },
     ],
 }

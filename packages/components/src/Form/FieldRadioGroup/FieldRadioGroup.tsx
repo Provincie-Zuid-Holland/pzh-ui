@@ -4,21 +4,36 @@ import { FieldRadio, FieldRadioProps } from '../FieldRadio'
  * Form radio group element
  */
 
-export interface FieldRadioGroupProps {
-    options: FieldRadioProps[]
+interface Option {
+    value: string
+    label: string
+}
+
+export interface FieldRadioGroupProps extends FieldRadioProps {
+    options: Option[]
+    name: string
+    value?: string
     classes?: string
 }
 
-export const FieldRadioGroup = ({ options, classes }: FieldRadioGroupProps) => (
+export const FieldRadioGroup = ({
+    options,
+    value,
+    name,
+    classes,
+    ...props
+}: FieldRadioGroupProps) => (
     <div className={classes}>
-        {options.map(({ label, id, name }, index) => (
+        {options.map((option, index) => (
             <FieldRadio
-                key={id}
-                label={label}
+                key={`${option.value}-${index}`}
                 name={name}
-                id={id}
+                value={option.value}
                 classes={index + 1 !== options.length ? 'mb-2' : undefined}
-            />
+                {...props}
+                checked={value === option.value}>
+                {option.label}
+            </FieldRadio>
         ))}
     </div>
 )

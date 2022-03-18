@@ -6,12 +6,12 @@ import { FieldRadio, FieldRadioProps } from './FieldRadio'
 describe('FieldRadio', () => {
     const defaultProps = {
         label: 'Option',
-        id: 'option',
+        value: 'option',
     }
 
     const setup = (customProps?: Partial<FieldRadioProps>) => {
         const props = { ...defaultProps, ...customProps }
-        render(<FieldRadio {...props} />)
+        render(<FieldRadio {...props}>{props.label}</FieldRadio>)
     }
 
     it('Component renders', () => {

@@ -11,7 +11,7 @@ describe('FieldCheckbox', () => {
 
     const setup = (customProps?: Partial<FieldCheckboxProps>) => {
         const props = { ...defaultProps, ...customProps }
-        render(<FieldCheckbox {...props} />)
+        render(<FieldCheckbox {...props}>{props.label}</FieldCheckbox>)
     }
 
     it('Component renders', () => {

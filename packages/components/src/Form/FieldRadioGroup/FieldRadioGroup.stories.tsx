@@ -16,14 +16,12 @@ export const Default: ComponentStory<typeof FieldRadioGroup> = Template.bind({})
 Default.args = {
     options: [
         {
-            name: 'option',
             label: 'Option 1',
-            id: 'option-1',
+            value: 'option-1',
         },
         {
-            name: 'option',
             label: 'Option 2',
-            id: 'option-2',
+            value: 'option-2',
         },
     ],
 }

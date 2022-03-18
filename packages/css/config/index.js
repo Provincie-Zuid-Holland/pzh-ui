@@ -208,6 +208,11 @@ module.exports = {
                 light: '#beb1a7',
                 dark: '#584b41',
             },
+            'pzh-badge': {
+                green: '#50A658',
+                red: '#CB3B36',
+                orange: '#F9B53C',
+            },
         },
         extend: {
             opacity: {

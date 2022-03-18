@@ -1,4 +1,5 @@
 // Components
+export { Badge } from './Badge'
 export { Button } from './Button'
 export { Breadcrumbs } from './Breadcrumbs'
 export { Heading, getHeadingStyles } from './Heading'

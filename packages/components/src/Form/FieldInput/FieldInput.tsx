@@ -18,6 +18,7 @@ export const FieldInput = ({
     name,
     disabled,
     required,
+    type = 'text',
     label,
     description,
     classes,
@@ -39,7 +40,7 @@ export const FieldInput = ({
             required={required}
             disabled={disabled}
             className={classNames('pzh-form-input', classes)}
-            type="text"
+            type={type}
             {...props}
         />
     </>

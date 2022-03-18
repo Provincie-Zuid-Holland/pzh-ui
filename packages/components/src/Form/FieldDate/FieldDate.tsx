@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, useState } from 'react'
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import nl from 'date-fns/locale/nl'
 import { faCalendarAlt } from '@fortawesome/pro-light-svg-icons'
@@ -7,17 +7,19 @@ import classNames from 'classnames'
 
 import { FieldLabel } from '../FieldLabel'
 import { FieldInputProps } from '../FieldInput'
+import { useUpdateEffect } from 'react-use'
 
 /**
  * Form date element
  */
 
-export interface FieldDateProps extends ReactDatePickerProps {
+export interface FieldDateProps extends Omit<ReactDatePickerProps, 'onChange'> {
     name: string
     label?: string
     required?: boolean
     description?: string
     onClose?: () => void
+    onChange: (date: Date) => void
 }
 
 export const FieldDate = ({
@@ -27,29 +29,38 @@ export const FieldDate = ({
     description,
     dateFormat = 'dd-MM-yyyy',
     onClose,
+    onChange,
     ...props
-}: FieldDateProps) => (
-    <>
-        {label && (
-            <FieldLabel
+}: FieldDateProps) => {
+    const [date, setDate] = useState<Date | undefined>(undefined)
+
+    useUpdateEffect(() => date && onChange(date), [date])
+
+    return (
+        <>
+            {label && (
+                <FieldLabel
+                    name={name}
+                    label={label}
+                    description={description}
+                    required={required}
+                />
+            )}
+            <DatePicker
+                locale={nl}
                 name={name}
-                label={label}
-                description={description}
                 required={required}
+                className="pzh-form-input"
+                customInput={<DateInput name={name} />}
+                dateFormat={dateFormat}
+                onCalendarClose={onClose}
+                selected={date}
+                {...props}
+                onChange={(date: Date) => setDate(date)}
             />
-        )}
-        <DatePicker
-            locale={nl}
-            name={name}
-            required={required}
-            className="pzh-form-input"
-            customInput={<DateInput name={name} />}
-            dateFormat={dateFormat}
-            onCalendarClose={onClose}
-            {...props}
-        />
-    </>
-)
+        </>
+    )
+}
 
 const DateInput = forwardRef<HTMLInputElement, FieldInputProps>(
     (props, ref) => (

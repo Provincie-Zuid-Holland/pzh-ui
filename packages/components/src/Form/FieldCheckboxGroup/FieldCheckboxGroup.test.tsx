@@ -9,7 +9,7 @@ import {
 describe('FieldCheckboxGroup', () => {
     const defaultProps = {
         name: 'option',
-        value: ['option-1'],
+        value: [],
         options: [
             {
                 label: 'Option 1',

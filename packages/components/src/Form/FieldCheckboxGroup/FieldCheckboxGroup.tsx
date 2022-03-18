@@ -20,6 +20,7 @@ export const FieldCheckboxGroup = ({
     name,
     options,
     value,
+    onChange,
     classes,
     ...props
 }: FieldCheckboxGroupProps) => (
@@ -32,6 +33,7 @@ export const FieldCheckboxGroup = ({
                     key={`${option.value}-${index}`}
                     name={name}
                     value={option.value}
+                    onChange={onChange}
                     classes={index + 1 !== options.length ? 'mb-2' : undefined}
                     {...props}
                     checked={checked}>

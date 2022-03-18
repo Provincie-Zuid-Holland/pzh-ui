@@ -11,7 +11,6 @@ export interface FieldCheckboxProps
 }
 
 export const FieldCheckbox = ({
-    name,
     disabled,
     classes,
     children,
@@ -21,7 +20,6 @@ export const FieldCheckbox = ({
         <input
             data-testid="pzh-form-checkbox"
             disabled={disabled}
-            name={name}
             className="absolute -left-[9999px] pzh-form-checkbox"
             type="checkbox"
             {...props}

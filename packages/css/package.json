@@ -7,7 +7,7 @@
         "access": "public"
     },
     "scripts": {
-        "prerelease": "npm run-script build-tailwind",
+        "prepare": "npm run-script build-tailwind",
         "build-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css",
         "watch-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css --watch",
         "build": "npm run-script build-tailwind"

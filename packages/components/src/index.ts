@@ -1,7 +1,7 @@
 // Components
 export { Button } from './Button'
 export { Breadcrumbs } from './Breadcrumbs'
-export { Heading } from './Heading'
+export { Heading, getHeadingStyles } from './Heading'
 export { Banner } from './Banner'
 export { Feedback } from './Feedback'
 export { Modal } from './Modal'

@@ -17,6 +17,7 @@ export interface FieldDateProps extends ReactDatePickerProps {
     label?: string
     required?: boolean
     description?: string
+    onClose?: () => void
 }
 
 export const FieldDate = ({
@@ -25,6 +26,7 @@ export const FieldDate = ({
     required,
     description,
     dateFormat = 'dd-MM-yyyy',
+    onClose,
     ...props
 }: FieldDateProps) => (
     <>
@@ -43,6 +45,7 @@ export const FieldDate = ({
             className="pzh-form-input"
             customInput={<DateInput name={name} />}
             dateFormat={dateFormat}
+            onCalendarClose={onClose}
             {...props}
         />
     </>

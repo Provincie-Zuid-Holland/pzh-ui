@@ -11,6 +11,7 @@ interface Option {
 
 export interface FieldCheckboxGroupProps extends FieldCheckboxProps {
     options: Option[]
+    name: string
     classes?: string
     value: string[]
 }

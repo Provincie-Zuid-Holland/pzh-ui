@@ -49,6 +49,10 @@ h6,
     font-weight: 700;
 }
 
+.svg-inline--fa {
+    font-size: 14px;
+}
+
 /*
  * Form elements
  */

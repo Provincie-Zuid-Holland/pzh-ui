@@ -5,6 +5,9 @@ const isExternal = id => !id.startsWith('.') && !path.isAbsolute(id)
 
 module.exports = {
     plugins: [injectCss()],
+    esbuild: {
+        minify: true,
+    },
     build: {
         target: 'esnext',
         lib: {

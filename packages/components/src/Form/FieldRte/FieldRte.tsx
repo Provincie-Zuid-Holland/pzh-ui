@@ -1,10 +1,9 @@
 import 'react-quill/dist/quill.snow.css'
-import { quill } from './styles.module.css'
+import './styles.css'
 
 import ReactQuill, { ReactQuillProps } from 'react-quill'
 
 import { FieldLabel } from '../FieldLabel'
-import classNames from 'classnames'
 
 const DEFAULT_MODULES = {
     toolbar: [
@@ -46,7 +45,7 @@ export const FieldRte = ({
             theme="snow"
             formats={formats}
             modules={modules}
-            className={classNames(classes, quill)}
+            className={classes}
             {...props}
         />
     </>

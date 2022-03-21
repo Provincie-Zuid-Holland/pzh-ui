@@ -1,5 +1,9 @@
 @import '~react-datepicker/dist/react-datepicker.css';
 
+.svg-inline--fa {
+    font-size: 14px;
+}
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -47,10 +51,6 @@ h6,
 
 .bold {
     font-weight: 700;
-}
-
-.svg-inline--fa {
-    font-size: 14px;
 }
 
 /*

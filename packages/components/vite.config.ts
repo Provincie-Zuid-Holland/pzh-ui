@@ -17,4 +17,14 @@ export default getClientConfiguration({
             ],
         },
     },
+    resolve: {
+        alias: [
+            {
+                find: /^~.+/,
+                replacement: val => {
+                    return val.replace(/^~/, '')
+                },
+            },
+        ],
+    },
 })

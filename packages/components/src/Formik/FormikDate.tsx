@@ -3,10 +3,9 @@ import { FastField, Field, FieldProps } from 'formik'
 import { FormikError } from './FormikError'
 import { FieldDate, FieldDateProps } from '../Form/FieldDate'
 
-type FormikDateProps = Omit<FieldDateProps, 'onChange' | 'value'> & {
+type FormikDateProps = Omit<FieldDateProps, 'value'> & {
     name: string
     optimized?: boolean
-    onChange: any
 }
 
 export const FormikDate = ({

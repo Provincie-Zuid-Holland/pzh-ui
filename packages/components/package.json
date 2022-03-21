@@ -73,6 +73,7 @@
         "babel-loader": "^8.2.3",
         "babel-plugin-import": "^1.13.3",
         "chromatic": "^6.5.2",
+        "css-loader": "^6.7.1",
         "jest": "^27.5.1",
         "rollup-plugin-analyzer": "^4.0.0",
         "rollup-plugin-visualizer": "^5.6.0",

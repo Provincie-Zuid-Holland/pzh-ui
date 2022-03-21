@@ -11,6 +11,7 @@ export * from './Tag'
 export * from './Notification'
 export * from './Form'
 export * from './Formik'
+export * from './DNABar'
 
 // Utils
 export * from './utils'

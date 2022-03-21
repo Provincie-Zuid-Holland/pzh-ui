@@ -1,0 +1,21 @@
+<svg width="96" height="288" viewBox="0 0 96 288" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2844_1223)">
+<path d="M-1.61914 12.3834L10.7757 0" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M-1.61914 37.1617L35.5539 0" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M-1.61914 61.9399L60.3322 0" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M-1.61914 86.7181L85.1104 0" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M-1.61914 111.508L109.889 0" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M126.502 32.9309L47.9368 111.507L35.542 99.1127L126.525 8.12988" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M126.525 57.6865L85.0986 99.1128L97.4478 111.508L126.753 82.2139" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M-1.61914 161.053L10.7757 148.669V132.146L23.1591 119.763L35.5539 132.146V148.669L47.9373 161.053L60.3322 148.669V132.146L72.7156 119.763L85.1104 132.146V148.669L97.4938 161.053L109.889 148.669V132.135L126.582 115.441" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M-1.61914 210.609L10.7757 198.226V181.703L23.1591 169.32L35.5539 181.703V198.226L47.9373 210.609L60.3322 198.226V181.703L72.7156 169.32L85.1104 181.703V198.226L97.4938 210.609L109.889 198.226V181.692L126.582 164.998" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M-1.61914 260.166L10.7757 247.782V231.26L23.1591 218.876L35.5539 231.26V247.782L47.9373 260.166L60.3322 247.782V231.26L72.7156 218.876L85.1104 231.26V247.782L97.4938 260.166L109.889 247.782V231.248L126.582 214.555" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M35.5536 321.934V280.816L23.1588 268.433L10.7754 280.816V321.934" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+<path d="M85.1103 321.934V280.816L72.7155 268.433L60.332 280.816V321.934" stroke="#281F6B" stroke-width="0.8" stroke-linecap="square"/>
+</g>
+<defs>
+<clipPath id="clip0_2844_1223">
+<rect width="96" height="288" fill="white"/>
+</clipPath>
+</defs>
+</svg>

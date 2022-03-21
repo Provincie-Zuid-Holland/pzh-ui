@@ -26,7 +26,7 @@
         "storybook": "npm run prebuild:storybook && start-storybook -p 6006",
         "prebuild:storybook": "npm run test:generate-output",
         "build:storybook": "build-storybook",
-        "build": "tsc && vite build",
+        "build": "vite build",
         "chromatic": "npx chromatic --project-token=9c6f933cf59e --auto-accept-changes"
     },
     "dependencies": {
@@ -52,6 +52,7 @@
     "devDependencies": {
         "@babel/core": "^7.17.5",
         "@pzh-ui/css": "^0.0.28",
+        "@rollup/plugin-babel": "^5.3.1",
         "@rollup/plugin-typescript": "^8.3.1",
         "@storybook/addon-actions": "^6.4.19",
         "@storybook/addon-essentials": "^6.4.19",

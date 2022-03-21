@@ -2075,11 +2075,6 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hash-generator@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/hash-generator/-/hash-generator-0.1.0.tgz#80e9daffce1a8ffa32e57c44590d233669d53898"
-  integrity sha1-gOna/84aj/oy5XxEWQ0jNmnVOJg=
-
 ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"

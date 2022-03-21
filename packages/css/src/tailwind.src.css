@@ -49,10 +49,6 @@ h6,
     font-weight: 700;
 }
 
-.svg-inline--fa:not(.text-xs):not(.text-sm):not(.text-base):not(.text-lg):not(.text-2xl):not(.text-3xl):not(.text-4xl):not(.text-5xl):not(.text-6xl) {
-    font-size: 14px;
-}
-
 .pzh-transition-colors {
     @apply transition-colors duration-200 ease-in;
 }

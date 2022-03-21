@@ -7,11 +7,8 @@ import { getClientConfiguration } from '../config/vite'
 export default getClientConfiguration({
     plugins: [visualizer()],
     build: {
-        lib: {
-            name: 'Components',
-            fileName: format => `components.${format}.js`,
-        },
         rollupOptions: {
+            preserveModules: true,
             plugins: [
                 babel({ babelHelpers: 'bundled' }),
                 typescriptPlugin({

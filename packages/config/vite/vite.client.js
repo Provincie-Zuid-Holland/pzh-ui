@@ -8,9 +8,11 @@ module.exports = {
     },
     build: {
         target: 'esnext',
+        sourcemap: true,
         lib: {
             entry: path.resolve(path.resolve(path.dirname('')), 'src/index.ts'),
             formats: ['es', 'cjs'],
+            fileName: ext => `index.${ext}.js`,
         },
         rollupOptions: {
             external: isExternal,

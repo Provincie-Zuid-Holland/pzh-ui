@@ -11,12 +11,12 @@
         "dist"
     ],
     "types": "./dist/index.d.ts",
-    "main": "./dist/components.cjs.js",
-    "module": "./dist/components.es.js",
+    "main": "./dist/index.cjs.js",
+    "module": "./dist/index.es.js",
     "exports": {
         ".": {
-            "import": "./dist/components.es.js",
-            "require": "./dist/components.cjs.js"
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.cjs.js"
         },
         "./dist/style.css": "./dist/style.css"
     },

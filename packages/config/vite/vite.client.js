@@ -9,6 +9,7 @@ module.exports = {
     },
     plugins: [injectCss()],
     build: {
+        sourcemap: true,
         target: 'esnext',
         minify: 'terser',
         lib: {

@@ -88,5 +88,5 @@
             "\\.(css|less)$": "<rootDir>/jest.styleMock.js"
         }
     },
-    "gitHead": "119374f6b8dec473c0a29dfe3bb9887b7ea421ab"
+    "gitHead": "be5c3ceb340c7830aca11298f22beaf5897c565a"
 }

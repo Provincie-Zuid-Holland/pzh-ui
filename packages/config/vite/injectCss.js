@@ -1,80 +1,75 @@
 /**
  * Inject the CSS compiled with JS.
  */
-export default function cssInjectedByJsPlugin(
-    { topExecutionPriority } = { topExecutionPriority: true }
-) {
-    //Globally so we can add it to legacy and non-legacy bundle.
-    let cssToInject = ''
 
+import fs from 'fs'
+import { resolve } from 'path'
+
+const fileRegex = /\.(css)$/
+
+const injectCode = code =>
+    `function styleInject(css,ref){if(ref===void 0){ref={}}var insertAt=ref.insertAt;if(!css||typeof document==="undefined"){return}var head=document.head||document.getElementsByTagName("head")[0];var style=document.createElement("style");style.type="text/css";if(insertAt==="top"){if(head.firstChild){head.insertBefore(style,head.firstChild)}else{head.appendChild(style)}}else{head.appendChild(style)}if(style.styleSheet){style.styleSheet.cssText=css}else{style.appendChild(document.createTextNode(css))}};styleInject(\`${code.replace(
+        /\/\*[\s\S]*?\*\/|\/\/.*/g,
+        ''
+    )}\`)`
+const template = `console.warn("__INJECT__")`
+
+let viteConfig
+const css = []
+
+export default function libInjectCss() {
     return {
+        name: 'lib-inject-css',
+
         apply: 'build',
-        enforce: 'post',
-        name: 'css-in-js-plugin',
-        generateBundle(opts, bundle) {
-            let styleCode = ''
 
-            for (const key in bundle) {
-                if (bundle[key]) {
-                    const chunk = bundle[key]
-
-                    if (
-                        chunk.type === 'asset' &&
-                        chunk.fileName.includes('.css')
-                    ) {
-                        styleCode += chunk.source
-                        delete bundle[key]
-                    }
-                }
-            }
-
-            if (styleCode.length > 0) {
-                cssToInject = styleCode
-                    .trim()
-                    .replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '')
-            }
-
-            for (const key in bundle) {
-                if (bundle[key]) {
-                    const chunk = bundle[key]
-
-                    if (
-                        chunk.type === 'chunk' &&
-                        chunk.fileName.includes('.js') &&
-                        !chunk.fileName.includes('polyfill')
-                    ) {
-                        let topCode = ''
-                        let bottomCode = ''
-                        if (topExecutionPriority) {
-                            bottomCode = chunk.code
-                        } else {
-                            topCode = chunk.code
-                        }
-
-                        chunk.code = `${topCode}(function(){ try {var elementStyle = document.createElement('style'); elementStyle.innerText = \`${cssToInject}\`; document.head.appendChild(elementStyle);} catch(e) {console.error(e, 'vite-plugin-css-injected-by-js: error when trying to add the style.');} })();${bottomCode}`
-
-                        break
-                    }
-                }
-            }
+        configResolved(resolvedConfig) {
+            viteConfig = resolvedConfig
         },
-        transformIndexHtml: {
-            enforce: 'post',
-            transform(html, ctx) {
-                if (!ctx || !ctx.bundle) return html
 
-                for (const [, value] of Object.entries(ctx.bundle)) {
-                    if (value.fileName.endsWith('.css')) {
-                        // Remove CSS link from HTML generated.
-                        const reCSS = new RegExp(
-                            `<link rel="stylesheet"[^>]*?href="/${value.fileName}"[^>]*?>`
-                        )
-                        html = html.replace(reCSS, '')
-                    }
+        transform(code, id) {
+            if (fileRegex.test(id)) {
+                css.push(code)
+                return {
+                    code: '',
                 }
+            }
+            if (
+                // @ts-ignore
+                id.includes(viteConfig.build.lib.entry)
+            ) {
+                return {
+                    code: `${code}
+                        ${template}`,
+                }
+            }
+            return null
+        },
 
-                return html
-            },
+        async writeBundle(_, bundle) {
+            for (const file of Object.entries(bundle)) {
+                const { root } = viteConfig
+                const outDir = viteConfig.build.outDir || 'dist'
+                const fileName = file[0]
+                const filePath = resolve(root, outDir, fileName)
+
+                try {
+                    let data = fs.readFileSync(filePath, {
+                        encoding: 'utf8',
+                    })
+
+                    if (data.includes(template)) {
+                        data = data.replace(
+                            template,
+                            injectCode(css.join('\n'))
+                        )
+                    }
+
+                    fs.writeFileSync(filePath, data)
+                } catch (e) {
+                    console.error(e)
+                }
+            }
         },
     }
 }

@@ -10,6 +10,7 @@ export * from './Text'
 export * from './Tag'
 export * from './Notification'
 export * from './Form'
+export * from './Formik'
 
 // Utils
 export * from './utils'

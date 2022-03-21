@@ -38,6 +38,7 @@
         "@headlessui/react": "^1.5.0",
         "classnames": "^2.3.1",
         "date-fns": "^2.28.0",
+        "formik": "^2.2.9",
         "mime": "^3.0.0",
         "react": "^17.0.2",
         "react-datepicker": "^4.7.0",

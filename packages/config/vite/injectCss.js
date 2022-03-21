@@ -29,7 +29,9 @@ export default function cssInjectedByJsPlugin(
             }
 
             if (styleCode.length > 0) {
-                cssToInject = styleCode.trim()
+                cssToInject = styleCode
+                    .trim()
+                    .replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '')
             }
 
             for (const key in bundle) {

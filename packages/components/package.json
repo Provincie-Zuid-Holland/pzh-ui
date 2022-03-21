@@ -11,13 +11,14 @@
         "dist"
     ],
     "types": "./dist/index.d.ts",
-    "main": "./dist/components.umd.js",
+    "main": "./dist/components.cjs.js",
     "module": "./dist/components.es.js",
     "exports": {
         ".": {
             "import": "./dist/components.es.js",
-            "require": "./dist/components.umd.js"
-        }
+            "require": "./dist/components.cjs.js"
+        },
+        "./dist/style.css": "./dist/style.css"
     },
     "scripts": {
         "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
@@ -70,16 +71,16 @@
         "@types/react-datepicker": "^4.3.4",
         "@types/react-dom": "^17.0.13",
         "@types/react-router-dom": "^5.3.3",
+        "@vitejs/plugin-react": "^1.2.0",
         "babel-loader": "^8.2.3",
         "babel-plugin-import": "^1.13.3",
         "chromatic": "^6.5.2",
         "css-loader": "^6.7.1",
+        "hash-generator": "^0.1.0",
         "jest": "^27.5.1",
-        "rollup-plugin-analyzer": "^4.0.0",
         "rollup-plugin-visualizer": "^5.6.0",
         "typescript": "^4.6.2",
-        "vite": "^2.8.6",
-        "vite-dts": "^1.0.4"
+        "vite": "^2.8.6"
     },
     "jest": {
         "testEnvironment": "jsdom",

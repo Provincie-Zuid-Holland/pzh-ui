@@ -1,6 +1,7 @@
 import './styles.css'
 
 import ReactQuill, { ReactQuillProps } from 'react-quill'
+
 import { FieldLabel } from '../FieldLabel'
 
 const DEFAULT_MODULES = {

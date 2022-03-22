@@ -13,6 +13,7 @@ export default getClientConfiguration({
     ],
     build: {
         rollupOptions: {
+            preserveModules: true,
             plugins: [
                 typescriptPlugin({
                     exclude: ['**/*.test.tsx', '**/*.stories.tsx'],

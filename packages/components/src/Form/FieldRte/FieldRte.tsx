@@ -51,7 +51,7 @@ export const FieldRte = ({
                     required={required}
                 />
             )}
-            <div onDrop={e => e.preventDefault()}>
+            <div onDrop={e => !formats.includes('image') && e.preventDefault()}>
                 <ReactQuill
                     theme="snow"
                     formats={formats}

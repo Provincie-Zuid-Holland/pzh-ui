@@ -8,6 +8,9 @@ export default getClientConfiguration({
     plugins: [
         react({
             jsxRuntime: 'classic',
+            babel: {
+                configFile: true,
+            },
         }),
         visualizer(),
     ],

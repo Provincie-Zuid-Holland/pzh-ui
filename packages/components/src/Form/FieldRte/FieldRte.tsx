@@ -4,6 +4,7 @@ import './styles.css'
 import ReactQuill, { ReactQuillProps } from 'react-quill'
 
 import { FieldLabel } from '../FieldLabel'
+import { quillDecodeIndent } from '../../utils/quillFixIndent'
 
 const DEFAULT_MODULES = {
     toolbar: [
@@ -30,23 +31,41 @@ export const FieldRte = ({
     required,
     formats = DEFAULT_FORMATS,
     modules = DEFAULT_MODULES,
+    onChange,
     ...props
-}: FieldRteProps) => (
-    <>
-        {label && (
-            <FieldLabel
-                name={name}
-                label={label}
-                description={description}
-                required={required}
+}: FieldRteProps) => {
+    const handleChange: ReactQuillProps['onChange'] = (
+        value,
+        delta,
+        source,
+        editor
+    ) => {
+        const justHtml = editor.getHTML()
+        const fixedHtml = quillDecodeIndent(justHtml)
+
+        onChange?.(fixedHtml, delta, source, editor)
+
+        return { value, delta, source, editor }
+    }
+
+    return (
+        <>
+            {label && (
+                <FieldLabel
+                    name={name}
+                    label={label}
+                    description={description}
+                    required={required}
+                />
+            )}
+            <ReactQuill
+                theme="snow"
+                formats={formats}
+                modules={modules}
+                className={classes}
+                onChange={handleChange}
+                {...props}
             />
-        )}
-        <ReactQuill
-            theme="snow"
-            formats={formats}
-            modules={modules}
-            className={classes}
-            {...props}
-        />
-    </>
-)
+        </>
+    )
+}

@@ -56,6 +56,7 @@ export interface FieldRteProps extends ReactQuillProps {
     description?: string
     required?: boolean
     classes?: string
+    disabled?: boolean
 }
 
 export const FieldRte = ({
@@ -67,6 +68,7 @@ export const FieldRte = ({
     formats = DEFAULT_FORMATS,
     modules = DEFAULT_MODULES,
     onChange,
+    disabled,
     ...props
 }: FieldRteProps) => {
     const handleChange: ReactQuillProps['onChange'] = (
@@ -100,6 +102,7 @@ export const FieldRte = ({
                     modules={modules}
                     className={classes}
                     onChange={handleChange}
+                    readOnly={disabled}
                     {...props}
                 />
             </div>

@@ -63,3 +63,13 @@
     margin-top: 10px;
     margin-bottom: 5px;
 }
+
+/* disabled:border-pzh-blue-dark disabled:border-opacity-10 disabled:bg-pzh-gray disabled:text-opacity-55 */
+
+.quill .ql-disabled {
+    background: #ebebeb;
+}
+
+.quill .ql-disabled .ql-editor {
+    opacity: 0.55;
+}

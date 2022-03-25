@@ -13,9 +13,7 @@ export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
             {items.map((item, index) => {
                 return index === items.length - 1 ? (
                     <li key={item.name} className="inline-block">
-                        <Link aria-current="page" to={item.path}>
-                            {item.name}
-                        </Link>
+                        <span aria-current="page">{item.name}</span>
                     </li>
                 ) : (
                     <li key={item.name} className="inline-block mr-2 font-bold">

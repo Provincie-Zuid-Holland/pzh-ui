@@ -9,6 +9,7 @@ type FormikSelectProps = FieldSelectProps & {
 
 export function FormikSelect({
     name,
+    options,
     optimized = true,
     ...props
 }: FormikSelectProps) {
@@ -21,6 +22,10 @@ export function FormikSelect({
                     <FieldSelect
                         {...props}
                         {...field}
+                        options={options}
+                        value={options?.find(
+                            (option: any) => option.value === field.value
+                        )}
                         onBlur={() => form.setFieldTouched(name, true)}
                         onChange={(item: any) => {
                             form.setFieldValue(name, item.value)

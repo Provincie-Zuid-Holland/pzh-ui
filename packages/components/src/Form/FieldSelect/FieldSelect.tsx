@@ -1,4 +1,4 @@
-import ReactSelect, { components, GroupBase, Props } from 'react-select'
+import ReactSelect, { components, Props } from 'react-select'
 import { faAngleDown } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
@@ -8,7 +8,7 @@ import { FieldLabel } from '../FieldLabel'
  * Form select element
  */
 
-export interface FieldSelectProps {
+export interface FieldSelectProps extends Props {
     name: string
     label?: string
     description?: string
@@ -17,11 +17,7 @@ export interface FieldSelectProps {
     classes?: string
 }
 
-export function FieldSelect<
-    Option,
-    IsMulti extends boolean = false,
-    Group extends GroupBase<Option> = GroupBase<Option>
->({
+export function FieldSelect({
     name,
     disabled,
     label,
@@ -29,7 +25,7 @@ export function FieldSelect<
     description,
     classes,
     ...props
-}: Props<Option, IsMulti, Group> & FieldSelectProps) {
+}: FieldSelectProps) {
     return (
         <>
             {label && (

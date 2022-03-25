@@ -12,6 +12,7 @@ export * from './Notification'
 export * from './Form'
 export * from './Formik'
 export * from './DNABar'
+export * from './Divider'
 
 // Utils
 export * from './utils'

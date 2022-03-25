@@ -29,6 +29,6 @@ export const Notification = ({
             icon={variant === 'alert' ? faExclamationTriangle : faInfoCircle}
             style={{ marginTop: 3 }}
         />
-        <span className="ml-2 md:ml-4">{text}</span>
+        <p className="ml-2 md:ml-4 leading-[30px]">{text}</p>
     </div>
 )

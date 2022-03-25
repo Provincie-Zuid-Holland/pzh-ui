@@ -22,8 +22,8 @@ export function FormikSelect({
                         {...props}
                         {...field}
                         onBlur={() => form.setFieldTouched(name, true)}
-                        onChange={item => {
-                            form.setFieldValue(name, item)
+                        onChange={(item: any) => {
+                            form.setFieldValue(name, item.value)
                         }}
                     />
                 )}

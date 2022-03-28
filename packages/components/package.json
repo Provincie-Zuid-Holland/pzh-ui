@@ -87,7 +87,8 @@
             "./jest.setup.js"
         ],
         "moduleNameMapper": {
-            "\\.(css|less)$": "<rootDir>/jest.styleMock.js"
+            "\\.(css|less)$": "<rootDir>/jest.styleMock.js",
+            "^.+\\.svg$": "<rootDir>/jest.svgMock.js"
         }
     },
     "gitHead": "be5c3ceb340c7830aca11298f22beaf5897c565a"

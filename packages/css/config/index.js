@@ -213,6 +213,9 @@ module.exports = {
                 red: '#CB3B36',
                 orange: '#F9B53C',
             },
+            'pzh-white': {
+                DEFAULT: '#FFFFFF',
+            },
         },
         extend: {
             opacity: {

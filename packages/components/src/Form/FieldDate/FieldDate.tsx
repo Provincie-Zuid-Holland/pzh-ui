@@ -1,5 +1,6 @@
 import { forwardRef, useState } from 'react'
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
+import { useUpdateEffect } from 'react-use'
 import nl from 'date-fns/locale/nl'
 import { faCalendarAlt } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,7 +8,6 @@ import classNames from 'classnames'
 
 import { FieldLabel } from '../FieldLabel'
 import { FieldInputProps } from '../FieldInput'
-import { useUpdateEffect } from 'react-use'
 
 /**
  * Form date element
@@ -18,6 +18,7 @@ export interface FieldDateProps extends Omit<ReactDatePickerProps, 'onChange'> {
     label?: string
     required?: boolean
     description?: string
+    placeholder?: string
     onClose?: () => void
     onChange: (date: Date) => void
 }
@@ -28,6 +29,8 @@ export const FieldDate = ({
     required,
     description,
     dateFormat = 'dd-MM-yyyy',
+    placeholder,
+    placeholderText,
     onClose,
     onChange,
     ...props
@@ -55,6 +58,7 @@ export const FieldDate = ({
                 dateFormat={dateFormat}
                 onCalendarClose={onClose}
                 selected={date}
+                placeholderText={placeholder || placeholderText}
                 {...props}
                 onChange={(date: Date) => setDate(date)}
             />

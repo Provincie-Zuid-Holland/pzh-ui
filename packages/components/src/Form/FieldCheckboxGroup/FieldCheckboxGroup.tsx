@@ -12,7 +12,6 @@ interface Option {
 export interface FieldCheckboxGroupProps extends FieldCheckboxProps {
     options: Option[]
     name: string
-    classes?: string
     value: string[]
     hasError?: boolean
 }
@@ -22,10 +21,10 @@ export const FieldCheckboxGroup = ({
     options,
     value,
     onChange,
-    classes,
+    className,
     ...props
 }: FieldCheckboxGroupProps) => (
-    <div className={classes}>
+    <div className={className}>
         {options.map((option, index) => {
             const checked = Boolean(value && value.includes(option.value))
 
@@ -35,7 +34,9 @@ export const FieldCheckboxGroup = ({
                     name={name}
                     value={option.value}
                     onChange={onChange}
-                    classes={index + 1 !== options.length ? 'mb-2' : undefined}
+                    className={
+                        index + 1 !== options.length ? 'mb-2' : undefined
+                    }
                     {...props}
                     checked={checked}>
                     {option.label}

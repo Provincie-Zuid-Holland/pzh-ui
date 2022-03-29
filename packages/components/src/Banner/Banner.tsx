@@ -12,7 +12,7 @@ export interface BannerProps {
     color?: 'blue' | 'green' | 'yellow' | 'red'
     onAddCallback?: () => void
     onRemoveCallback?: () => void
-    classes?: string
+    className?: string
 }
 
 export const Banner = ({
@@ -22,7 +22,7 @@ export const Banner = ({
     color,
     onAddCallback,
     onRemoveCallback,
-    classes,
+    className,
 }: BannerProps) => {
     const [showBanner, setShowBanner] = useState(isActive)
 
@@ -60,7 +60,7 @@ export const Banner = ({
                     'bg-pzh-yellow': color === 'yellow',
                     'bg-pzh-green text-white': color === 'green',
                 },
-                classes
+                className
             )}>
             <div className="max-w-screen-xl px-3 py-2 mx-auto sm:px-6 lg:px-8">
                 <div className="pr-16 sm:text-center">

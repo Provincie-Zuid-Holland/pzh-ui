@@ -20,7 +20,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     label?: string
     description?: string
     required?: boolean
-    classes?: string
+    className?: string
 }
 
 export const FieldFileUpload = ({
@@ -29,7 +29,7 @@ export const FieldFileUpload = ({
     required,
     label,
     description,
-    classes,
+    className,
     accept = [
         'application/msword',
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -82,7 +82,7 @@ export const FieldFileUpload = ({
             <div
                 className={classNames(
                     'py-6 text-pzh-blue-dark text-center border border-dashed border-pzh-blue-dark border-opacity-35 rounded-[4px]',
-                    classes
+                    className
                 )}
                 {...getRootProps()}>
                 <input name={name} {...getInputProps()} />

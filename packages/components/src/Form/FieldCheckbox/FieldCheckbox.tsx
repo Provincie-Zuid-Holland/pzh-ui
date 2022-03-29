@@ -7,18 +7,17 @@ import classNames from 'classnames'
 
 export interface FieldCheckboxProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
-    classes?: string
     hasError?: boolean
 }
 
 export const FieldCheckbox = ({
     disabled,
-    classes,
+    className,
     hasError,
     children,
     ...props
 }: FieldCheckboxProps) => (
-    <label className={classNames('flex items-center', classes)}>
+    <label className={classNames('flex items-center', className)}>
         <input
             data-testid="pzh-form-checkbox"
             disabled={disabled}

@@ -21,8 +21,8 @@
         "./dist/style.css": "./dist/style.css"
     },
     "scripts": {
-        "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
-        "test": "jest",
+        "test:generate-output": "NODE_ENV=testing jest --json --outputFile=.jest-test-results.json || true",
+        "test": "NODE_ENV=testing jest",
         "prepare": "tsc && vite build",
         "storybook": "npm run prebuild:storybook && start-storybook -p 6006",
         "prebuild:storybook": "npm run test:generate-output",

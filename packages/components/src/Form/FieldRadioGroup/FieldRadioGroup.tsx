@@ -13,7 +13,6 @@ export interface FieldRadioGroupProps extends FieldRadioProps {
     options: Option[]
     name: string
     value?: string
-    classes?: string
     hasError?: boolean
 }
 
@@ -21,16 +20,16 @@ export const FieldRadioGroup = ({
     options,
     value,
     name,
-    classes,
+    className,
     ...props
 }: FieldRadioGroupProps) => (
-    <div className={classes}>
+    <div className={className}>
         {options.map((option, index) => (
             <FieldRadio
                 key={`${option.value}-${index}`}
                 name={name}
                 value={option.value}
-                classes={index + 1 !== options.length ? 'mb-2' : undefined}
+                className={index + 1 !== options.length ? 'mb-2' : undefined}
                 {...props}
                 checked={value === option.value}>
                 {option.label}

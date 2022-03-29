@@ -35,6 +35,7 @@ export const FieldDate = ({
     onClose,
     onChange,
     hasError,
+    className,
     ...props
 }: FieldDateProps) => {
     const [date, setDate] = useState<Date | undefined>(undefined)
@@ -55,9 +56,13 @@ export const FieldDate = ({
                 locale={nl}
                 name={name}
                 required={required}
-                className={classNames('pzh-form-input', {
-                    'pzh-form-error': hasError,
-                })}
+                className={classNames(
+                    'pzh-form-input',
+                    {
+                        'pzh-form-error': hasError,
+                    },
+                    className
+                )}
                 customInput={<DateInput name={name} />}
                 dateFormat={dateFormat}
                 onCalendarClose={onClose}

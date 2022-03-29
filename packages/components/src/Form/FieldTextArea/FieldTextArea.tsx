@@ -11,7 +11,6 @@ export interface FieldTextAreaProps
     name: string
     label?: string
     description?: string
-    classes?: string
     hasError?: boolean
 }
 
@@ -22,7 +21,7 @@ export const FieldTextArea = ({
     label,
     description,
     rows = 4,
-    classes,
+    className,
     hasError,
     ...props
 }: FieldTextAreaProps) => (
@@ -46,7 +45,7 @@ export const FieldTextArea = ({
                 {
                     'pzh-form-error': hasError,
                 },
-                classes
+                className
             )}
             {...props}
         />

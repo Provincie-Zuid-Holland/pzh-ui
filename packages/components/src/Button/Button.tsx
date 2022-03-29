@@ -13,7 +13,6 @@ export interface ButtonProps
     variant?: 'primary' | 'secondary' | 'cta'
     size?: 'large' | 'small'
     icon?: IconProp
-    classes?: string
 }
 
 export const Button = ({
@@ -23,7 +22,7 @@ export const Button = ({
     size = 'large',
     disabled,
     icon,
-    classes,
+    className,
     ...props
 }: ButtonProps) => (
     <button
@@ -42,7 +41,7 @@ export const Button = ({
                     variant === 'cta' && !disabled,
                 'cursor-pointer': !disabled,
             },
-            classes
+            className
         )}
         disabled={disabled}
         {...props}>

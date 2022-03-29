@@ -8,18 +8,17 @@ import classNames from 'classnames'
 export interface FieldRadioProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
     value?: string
-    classes?: string
     hasError?: boolean
 }
 
 export const FieldRadio = ({
     disabled,
-    classes,
     hasError,
+    className,
     children,
     ...props
 }: FieldRadioProps) => (
-    <label className={classNames('flex items-center', classes)}>
+    <label className={classNames('flex items-center', className)}>
         <input
             data-testid="pzh-form-radio"
             disabled={disabled}

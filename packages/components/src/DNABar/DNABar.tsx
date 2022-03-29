@@ -18,10 +18,10 @@ export const useDnaBarWidth = () => {
 
 export interface DNABarProps {
     blocks?: 2 | 5 | 6
-    classes?: string
+    className?: string
 }
 
-export function DNABar({ blocks = 5, classes }: DNABarProps) {
+export function DNABar({ blocks = 5, className }: DNABarProps) {
     const windowSize = useWindowSize()
 
     return (
@@ -29,7 +29,7 @@ export function DNABar({ blocks = 5, classes }: DNABarProps) {
             className={classNames(
                 'absolute pointer-events-none right-0 top-0 z-10',
                 { hidden: windowSize.width <= 640 },
-                classes
+                className
             )}>
             {blocks !== 2 && (
                 <img

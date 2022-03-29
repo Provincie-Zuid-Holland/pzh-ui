@@ -14,7 +14,6 @@ export interface FieldSelectProps extends Props {
     description?: string
     required?: boolean
     disabled?: boolean
-    classes?: string
     hasError?: boolean
 }
 
@@ -24,7 +23,7 @@ export function FieldSelect({
     label,
     required,
     description,
-    classes,
+    className,
     hasError,
     ...props
 }: FieldSelectProps) {
@@ -40,7 +39,7 @@ export function FieldSelect({
             )}
             <ReactSelect
                 isDisabled={disabled}
-                className={classes}
+                className={className}
                 name={name}
                 components={{
                     Control: props => (

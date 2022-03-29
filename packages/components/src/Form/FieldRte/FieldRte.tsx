@@ -11,7 +11,6 @@ export interface FieldRteProps extends ReactQuillProps {
     label?: string
     description?: string
     required?: boolean
-    classes?: string
     disabled?: boolean
 }
 
@@ -19,7 +18,7 @@ export const FieldRte = ({
     name,
     label,
     description,
-    classes,
+    className,
     required,
     formats = DEFAULT_FORMATS,
     modules = DEFAULT_MODULES,
@@ -56,7 +55,7 @@ export const FieldRte = ({
                     theme="snow"
                     formats={formats}
                     modules={{ ...modules, ...keyBoardBindings }}
-                    className={classes}
+                    className={className}
                     onChange={handleChange}
                     readOnly={disabled}
                     {...props}

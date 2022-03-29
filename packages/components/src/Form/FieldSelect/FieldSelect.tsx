@@ -1,5 +1,5 @@
 import ReactSelect, { components, Props } from 'react-select'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown } from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
 import { FieldLabel } from '../FieldLabel'

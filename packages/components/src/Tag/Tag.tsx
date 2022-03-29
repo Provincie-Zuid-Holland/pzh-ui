@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { faTimes } from '@fortawesome/pro-regular-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface TagProps {

@@ -1,4 +1,4 @@
-import { faAngleRight } from '@fortawesome/pro-solid-svg-icons'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 

@@ -3,9 +3,9 @@ import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
 import { useUpdateEffect } from 'react-use'
 import { getExtension } from 'mime'
 import classNames from 'classnames'
-import { faCloudUpload } from '@fortawesome/pro-solid-svg-icons'
-import { faTrashAlt } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 
 import { FieldLabel } from '../FieldLabel'
 import formatBytes from '../../utils/formatBytes'
@@ -95,7 +95,7 @@ export const FieldFileUpload = ({
                             'text-pzh-red': isDragReject && isDragActive,
                         })}
                         size="2x"
-                        icon={faCloudUpload}
+                        icon={faCloudArrowUp}
                     />
 
                     <p>

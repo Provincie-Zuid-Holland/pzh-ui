@@ -41,10 +41,6 @@ export function FieldSelect({
                 isDisabled={disabled}
                 className={className}
                 name={name}
-                menuPortalTarget={
-                    document.getElementById(`${name}-menu`) as HTMLElement
-                }
-                menuPlacement="auto"
                 components={{
                     Control: props => (
                         <components.Control
@@ -145,7 +141,6 @@ export function FieldSelect({
                 }}
                 {...props}
             />
-            <div id={`${name}-menu`} />
         </>
     )
 }

@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import {
-    faInfoCircle,
-    faExclamationTriangle,
-} from '@fortawesome/pro-light-svg-icons'
+    faCircleInfo,
+    faTriangleExclamation,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface NotificationProps {
@@ -26,7 +26,7 @@ export const Notification = ({
             className
         )}>
         <FontAwesomeIcon
-            icon={variant === 'alert' ? faExclamationTriangle : faInfoCircle}
+            icon={variant === 'alert' ? faTriangleExclamation : faCircleInfo}
             style={{ marginTop: 3 }}
         />
         <p className="ml-2 md:ml-4 leading-[30px]">{text}</p>

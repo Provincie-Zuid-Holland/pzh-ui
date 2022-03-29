@@ -1,4 +1,4 @@
-import { faTimes } from '@fortawesome/pro-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Dialog, Transition } from '@headlessui/react'
 import { FC, Fragment } from 'react'

@@ -20,13 +20,14 @@ export const FormikRadioGroup = ({
     return (
         <>
             <Component name={name}>
-                {({ field, form }: FieldProps<any>) => (
+                {({ field, form, meta }: FieldProps<any>) => (
                     <FieldRadioGroup
                         {...props}
                         {...field}
                         onChange={(e: React.FormEvent<HTMLInputElement>) =>
                             form.setFieldValue(name, e.currentTarget.value)
                         }
+                        hasError={Boolean(meta.touched && meta.error)}
                     />
                 )}
             </Component>

@@ -19,12 +19,13 @@ export const FormikInput = ({
     return (
         <>
             <Component name={name}>
-                {({ field }: FieldProps<any>) => (
+                {({ field, meta }: FieldProps<any>) => (
                     <FieldInput
                         type={type}
                         {...props}
                         {...field}
                         value={field.value ?? ''}
+                        hasError={Boolean(meta.touched && meta.error)}
                     />
                 )}
             </Component>

@@ -23,7 +23,7 @@ export const FormikCheckboxGroup = ({
     return (
         <>
             <Component name={name}>
-                {({ field, form }: FieldProps<any>) => (
+                {({ field, form, meta }: FieldProps<any>) => (
                     <FieldCheckboxGroup
                         {...props}
                         {...field}
@@ -42,6 +42,7 @@ export const FormikCheckboxGroup = ({
                             }
                             form.setFieldValue(name, newValue)
                         }}
+                        hasError={Boolean(meta.touched && meta.error)}
                     />
                 )}
             </Component>

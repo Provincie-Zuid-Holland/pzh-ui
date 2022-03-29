@@ -24,4 +24,5 @@ Default.args = {
             value: 'option-2',
         },
     ],
+    value: 'option-1',
 }

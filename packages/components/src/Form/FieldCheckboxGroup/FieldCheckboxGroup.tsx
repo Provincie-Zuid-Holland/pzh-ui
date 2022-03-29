@@ -14,6 +14,7 @@ export interface FieldCheckboxGroupProps extends FieldCheckboxProps {
     name: string
     classes?: string
     value: string[]
+    hasError?: boolean
 }
 
 export const FieldCheckboxGroup = ({

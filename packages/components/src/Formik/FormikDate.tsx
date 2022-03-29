@@ -18,7 +18,7 @@ export const FormikDate = ({
     return (
         <>
             <Component name={name}>
-                {({ field, form }: FieldProps<any>) => (
+                {({ field, form, meta }: FieldProps<any>) => (
                     <FieldDate
                         {...props}
                         {...field}
@@ -26,6 +26,7 @@ export const FormikDate = ({
                         onChange={(date: Date) => {
                             form.setFieldValue(name, date)
                         }}
+                        hasError={Boolean(meta.touched && meta.error)}
                     />
                 )}
             </Component>

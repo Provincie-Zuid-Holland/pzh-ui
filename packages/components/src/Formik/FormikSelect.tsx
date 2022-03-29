@@ -18,7 +18,7 @@ export function FormikSelect({
     return (
         <>
             <Component name={name}>
-                {({ field, form }: FieldProps<any>) => (
+                {({ field, form, meta }: FieldProps<any>) => (
                     <FieldSelect
                         {...props}
                         {...field}
@@ -30,6 +30,7 @@ export function FormikSelect({
                         onChange={(item: any) => {
                             form.setFieldValue(name, item.value)
                         }}
+                        hasError={Boolean(meta.touched && meta.error)}
                     />
                 )}
             </Component>

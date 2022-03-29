@@ -65,6 +65,13 @@ h6,
     @apply block w-full pt-[15px] pb-[11px] placeholder-pzh-blue-dark placeholder-opacity-55 text-pzh-blue-dark border border-pzh-blue-dark border-opacity-35 rounded appearance-none leading-none focus:outline-none hover:border-gray-500 focus:border-pzh-blue-light disabled:border-pzh-blue-dark disabled:border-opacity-10 disabled:bg-pzh-gray disabled:text-opacity-55;
 }
 
+.pzh-form-error,
+.pzh-form-checkbox.pzh-form-error + span:before,
+.pzh-form-radio:checked.pzh-form-error + span:before,
+.pzh-form-radio:not(:checked).pzh-form-error + span:before {
+    @apply border-pzh-red;
+}
+
 .pzh-form-radio:checked + span:before,
 .pzh-form-radio:not(:checked) + span:before {
     @apply absolute left-0 top-0 w-[24px] h-[24px] border-pzh-blue-dark border border-opacity-35 bg-pzh-form rounded-full;

@@ -14,6 +14,7 @@ export interface FieldRadioGroupProps extends FieldRadioProps {
     name: string
     value?: string
     classes?: string
+    hasError?: boolean
 }
 
 export const FieldRadioGroup = ({

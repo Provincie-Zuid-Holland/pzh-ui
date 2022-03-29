@@ -8,11 +8,13 @@ import classNames from 'classnames'
 export interface FieldCheckboxProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
     classes?: string
+    hasError?: boolean
 }
 
 export const FieldCheckbox = ({
     disabled,
     classes,
+    hasError,
     children,
     ...props
 }: FieldCheckboxProps) => (
@@ -20,7 +22,9 @@ export const FieldCheckbox = ({
         <input
             data-testid="pzh-form-checkbox"
             disabled={disabled}
-            className="absolute -left-[9999px] pzh-form-checkbox"
+            className={classNames('absolute -left-[9999px] pzh-form-checkbox', {
+                'pzh-form-error': hasError,
+            })}
             type="checkbox"
             {...props}
         />

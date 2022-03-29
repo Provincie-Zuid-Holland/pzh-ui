@@ -12,6 +12,7 @@ export interface FieldInputProps
     label?: string
     description?: string
     classes?: string
+    hasError?: boolean
 }
 
 export const FieldInput = ({
@@ -22,6 +23,7 @@ export const FieldInput = ({
     label,
     description,
     classes,
+    hasError,
     ...props
 }: FieldInputProps) => (
     <>
@@ -39,7 +41,13 @@ export const FieldInput = ({
             name={name}
             required={required}
             disabled={disabled}
-            className={classNames('pzh-form-input', classes)}
+            className={classNames(
+                'pzh-form-input',
+                {
+                    'pzh-form-error': hasError,
+                },
+                classes
+            )}
             type={type}
             {...props}
         />

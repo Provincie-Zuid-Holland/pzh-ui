@@ -15,6 +15,7 @@ export interface FieldSelectProps extends Props {
     required?: boolean
     disabled?: boolean
     classes?: string
+    hasError?: boolean
 }
 
 export function FieldSelect({
@@ -24,6 +25,7 @@ export function FieldSelect({
     required,
     description,
     classes,
+    hasError,
     ...props
 }: FieldSelectProps) {
     return (
@@ -49,6 +51,8 @@ export function FieldSelect({
                                 {
                                     'bg-pzh-gray border-opacity-10':
                                         props.isDisabled,
+                                    'border-pzh-red border-opacity-100':
+                                        hasError,
                                 }
                             )}
                         />

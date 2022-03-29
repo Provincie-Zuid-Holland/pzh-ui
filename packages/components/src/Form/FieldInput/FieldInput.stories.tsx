@@ -44,3 +44,11 @@ WithLabel.args = {
     description: 'Korte omschrijving voor onder het label',
     required: true,
 }
+
+export const WithError: ComponentStory<typeof FieldInput> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+WithError.args = {
+    placeholder: 'Tekstvlak',
+    hasError: true,
+    value: 'Waarde',
+}

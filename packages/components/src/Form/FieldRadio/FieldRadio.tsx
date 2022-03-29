@@ -9,11 +9,13 @@ export interface FieldRadioProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
     value?: string
     classes?: string
+    hasError?: boolean
 }
 
 export const FieldRadio = ({
     disabled,
     classes,
+    hasError,
     children,
     ...props
 }: FieldRadioProps) => (
@@ -21,7 +23,9 @@ export const FieldRadio = ({
         <input
             data-testid="pzh-form-radio"
             disabled={disabled}
-            className="absolute -left-[9999px] pzh-form-radio"
+            className={classNames('absolute -left-[9999px] pzh-form-radio', {
+                'pzh-form-error': hasError,
+            })}
             type="radio"
             {...props}
         />

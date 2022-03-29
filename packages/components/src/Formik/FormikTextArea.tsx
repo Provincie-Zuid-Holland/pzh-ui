@@ -18,11 +18,12 @@ export const FormikTextArea = ({
     return (
         <>
             <Component name={name}>
-                {({ field }: FieldProps<any>) => (
+                {({ field, meta }: FieldProps<any>) => (
                     <FieldTextArea
                         {...props}
                         {...field}
                         value={field.value ?? ''}
+                        hasError={Boolean(meta.touched && meta.error)}
                     />
                 )}
             </Component>

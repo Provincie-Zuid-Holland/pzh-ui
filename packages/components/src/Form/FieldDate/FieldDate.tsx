@@ -21,6 +21,7 @@ export interface FieldDateProps extends Omit<ReactDatePickerProps, 'onChange'> {
     placeholder?: string
     onClose?: () => void
     onChange: (date: Date) => void
+    hasError?: boolean
 }
 
 export const FieldDate = ({
@@ -33,6 +34,7 @@ export const FieldDate = ({
     placeholderText,
     onClose,
     onChange,
+    hasError,
     ...props
 }: FieldDateProps) => {
     const [date, setDate] = useState<Date | undefined>(undefined)
@@ -53,7 +55,9 @@ export const FieldDate = ({
                 locale={nl}
                 name={name}
                 required={required}
-                className="pzh-form-input"
+                className={classNames('pzh-form-input', {
+                    'pzh-form-error': hasError,
+                })}
                 customInput={<DateInput name={name} />}
                 dateFormat={dateFormat}
                 onCalendarClose={onClose}

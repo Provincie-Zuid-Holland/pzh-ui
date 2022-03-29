@@ -1,5 +1,5 @@
 import ReactSelect, { components, Props } from 'react-select'
-import { faAngleDown } from '@fortawesome/pro-regular-svg-icons'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
 import { FieldLabel } from '../FieldLabel'
@@ -41,6 +41,10 @@ export function FieldSelect({
                 isDisabled={disabled}
                 className={className}
                 name={name}
+                menuPortalTarget={
+                    document.getElementById(`${name}-menu`) as HTMLElement
+                }
+                menuPlacement="auto"
                 components={{
                     Control: props => (
                         <components.Control
@@ -81,6 +85,12 @@ export function FieldSelect({
                             className="text-pzh-blue-dark"
                         />
                     ),
+                    Input: props => (
+                        <components.Input
+                            {...props}
+                            className="shadow-none focus:shadow-none"
+                        />
+                    ),
                 }}
                 styles={{
                     control: ({
@@ -91,7 +101,6 @@ export function FieldSelect({
                         ...css
                     }) => ({
                         ...css,
-                        zIndex: 2,
                         '&:hover': {},
                     }),
                     input: css => ({
@@ -123,8 +132,7 @@ export function FieldSelect({
                     menu: css => ({
                         ...css,
                         marginTop: 0,
-                        boxShadow: 'none',
-                        filter: 'drop-shadow(0px 24px 80px rgba(0, 0, 0, 0.07)) drop-shadow(0px 7.2353px 24.1177px rgba(0, 0, 0, 0.0456112)) drop-shadow(0px 3.00517px 10.0172px rgba(0, 0, 0, 0.035)) drop-shadow(0px 1.08691px 3.62304px rgba(0, 0, 0, 0.0243888))',
+                        boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.10)',
                     }),
                     indicatorsContainer: (css, state) => ({
                         ...css,
@@ -137,6 +145,7 @@ export function FieldSelect({
                 }}
                 {...props}
             />
+            <div id={`${name}-menu`} />
         </>
     )
 }

@@ -1,5 +1,4 @@
 import 'react-quill/dist/quill.snow.css'
-import './styles.css'
 
 import ReactQuill, { ReactQuillProps } from 'react-quill'
 

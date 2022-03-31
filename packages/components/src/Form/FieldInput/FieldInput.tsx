@@ -42,7 +42,7 @@ export const FieldInput = ({
             {icon && (
                 <FontAwesomeIcon
                     icon={icon}
-                    className="absolute right-3 h-[48px]"
+                    className="absolute right-3 h-[48px] text-pzh-blue"
                 />
             )}
             <input

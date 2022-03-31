@@ -1,4 +1,4 @@
-import { faSearch } from '@fortawesome/pro-light-svg-icons'
+import { faSearch } from '@fortawesome/pro-regular-svg-icons'
 import { ComponentStory } from '@storybook/react'
 
 import { FieldInput, FieldInputProps } from './FieldInput'

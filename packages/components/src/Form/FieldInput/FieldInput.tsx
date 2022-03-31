@@ -1,6 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import { FieldLabel } from '../FieldLabel'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 /**
  * Form input element
@@ -12,6 +14,7 @@ export interface FieldInputProps
     label?: string
     description?: string
     hasError?: boolean
+    icon?: IconProp
 }
 
 export const FieldInput = ({
@@ -23,6 +26,7 @@ export const FieldInput = ({
     description,
     className,
     hasError,
+    icon,
     ...props
 }: FieldInputProps) => (
     <>
@@ -34,21 +38,30 @@ export const FieldInput = ({
                 required={required}
             />
         )}
-        <input
-            data-testid="pzh-form-input"
-            id={name}
-            name={name}
-            required={required}
-            disabled={disabled}
-            className={classNames(
-                'pzh-form-input',
-                {
-                    'pzh-form-error': hasError,
-                },
-                className
+        <div className="relative">
+            {icon && (
+                <FontAwesomeIcon
+                    icon={icon}
+                    className="absolute right-3 h-[48px]"
+                />
             )}
-            type={type}
-            {...props}
-        />
+            <input
+                data-testid="pzh-form-input"
+                id={name}
+                name={name}
+                required={required}
+                disabled={disabled}
+                className={classNames(
+                    'pzh-form-input',
+                    {
+                        'pzh-form-error': hasError,
+                        'pr-8': !!icon,
+                    },
+                    className
+                )}
+                type={type}
+                {...props}
+            />
+        </div>
     </>
 )

@@ -1,3 +1,4 @@
+import { faSearch } from '@fortawesome/pro-light-svg-icons'
 import { ComponentStory } from '@storybook/react'
 
 import { FieldInput, FieldInputProps } from './FieldInput'
@@ -51,4 +52,11 @@ WithError.args = {
     placeholder: 'Tekstvlak',
     hasError: true,
     value: 'Waarde',
+}
+
+export const WithIcon: ComponentStory<typeof FieldInput> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+WithIcon.args = {
+    placeholder: 'Zoek naar indicator',
+    icon: faSearch,
 }

@@ -1,0 +1,37 @@
+import { Meta, Title, IconGallery, IconItem } from '@storybook/addon-docs/'
+
+import * as Icons from '../../../icons/src'
+
+<Meta title="Brand Identity/Icons" />
+
+# Icons
+
+These are all of the icons which you can use within the projects of Provincie Zuid-Holland.
+
+<br />
+
+<IconGallery
+    style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3,minmax(0,1fr))',
+    }}>
+    {Object.values(Icons).map((IconComponent, index) => {
+        return (
+            <IconItem key={index} name={IconComponent.displayName}>
+                <IconComponent />
+            </IconItem>
+        )
+    })}
+</IconGallery>
+
+<br />
+
+## Usage
+
+```jsx
+import { Check } from '@pzh-ui/icons'
+
+function Page() {
+    return <Check />
+}
+```

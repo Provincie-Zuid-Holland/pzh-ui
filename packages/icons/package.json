@@ -1,0 +1,47 @@
+{
+    "name": "@pzh-ui/icons",
+    "version": "0.0.0",
+    "description": "Contains icons to use in Provincie Zuid-Holland projects.",
+    "homepage": "https://github.com/Provincie-Zuid-Holland/pzh-ui#readme",
+    "license": "ISC",
+    "sideEffects": false,
+    "files": [
+        "dist"
+    ],
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.cjs.js",
+    "module": "./dist/index.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.cjs.js"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Provincie-Zuid-Holland/pzh-ui.git"
+    },
+    "scripts": {
+        "prepare": "tsc && vite build",
+        "build": "vite build",
+        "svgr": "npx @svgr/cli@5 ./src --template ./svgrtemplate.js --ext tsx --out-dir ./src/components --ref"
+    },
+    "bugs": {
+        "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"
+    },
+    "dependencies": {
+        "react": "^18.0.0"
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.16.11",
+        "@babel/preset-react": "^7.16.7",
+        "@babel/preset-typescript": "^7.16.7",
+        "@rollup/plugin-typescript": "^8.3.1",
+        "@types/react": "^17.0.43",
+        "@vitejs/plugin-react": "^1.2.0",
+        "babel-plugin-import": "^1.13.3",
+        "rollup-plugin-visualizer": "^5.6.0",
+        "typescript": "^4.6.2",
+        "vite": "^2.8.6"
+    }
+}

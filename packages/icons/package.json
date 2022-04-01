@@ -4,6 +4,9 @@
     "description": "Contains icons to use in Provincie Zuid-Holland projects.",
     "homepage": "https://github.com/Provincie-Zuid-Holland/pzh-ui#readme",
     "license": "ISC",
+    "publishConfig": {
+        "access": "public"
+    },
     "sideEffects": false,
     "files": [
         "dist"
@@ -43,5 +46,6 @@
         "rollup-plugin-visualizer": "^5.6.0",
         "typescript": "^4.6.2",
         "vite": "^2.8.6"
-    }
+    },
+    "gitHead": "56967bc900f7949a31b7c27d814adeaa9eb8bf0e"
 }

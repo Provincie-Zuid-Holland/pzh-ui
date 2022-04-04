@@ -23,7 +23,7 @@ export const FormikRte = ({
                         {...props}
                         {...field}
                         value={field.value ?? ''}
-                        onChange={value => {
+                        onBlur={value => {
                             form.setFieldValue(name, value)
                         }}
                     />

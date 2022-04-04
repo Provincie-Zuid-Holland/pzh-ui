@@ -11,6 +11,7 @@ export interface FieldRteProps extends ReactQuillProps {
     description?: string
     required?: boolean
     disabled?: boolean
+    onBlur?: (value: any) => void
 }
 
 export const FieldRte = ({
@@ -22,21 +23,21 @@ export const FieldRte = ({
     formats = DEFAULT_FORMATS,
     modules = DEFAULT_MODULES,
     onChange,
+    onBlur,
     disabled,
     ...props
 }: FieldRteProps) => {
-    const handleChange: ReactQuillProps['onChange'] = (
-        value,
-        delta,
+    const handleBlur: ReactQuillProps['onBlur'] = (
+        previousSelection,
         source,
         editor
     ) => {
         const justHtml = editor.getHTML()
         const fixedHtml = quillDecodeIndent(justHtml)
 
-        onChange?.(fixedHtml, delta, source, editor)
+        onBlur?.(fixedHtml)
 
-        return { value, delta, source, editor }
+        return { previousSelection, source, editor }
     }
 
     return (
@@ -55,7 +56,7 @@ export const FieldRte = ({
                     formats={formats}
                     modules={{ ...modules, ...keyBoardBindings }}
                     className={className}
-                    onChange={handleChange}
+                    onBlur={handleBlur}
                     readOnly={disabled}
                     {...props}
                 />

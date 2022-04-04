@@ -20,7 +20,7 @@ export interface FieldDateProps extends Omit<ReactDatePickerProps, 'onChange'> {
     description?: string
     placeholder?: string
     onClose?: () => void
-    onChange: (date?: Date | null) => void
+    onChange: (date: Date | null) => void
     hasError?: boolean
 }
 
@@ -38,7 +38,7 @@ export const FieldDate = ({
     className,
     ...props
 }: FieldDateProps) => {
-    const [date, setDate] = useState<Date | undefined>(undefined)
+    const [date, setDate] = useState<Date | null>(null)
 
     useUpdateEffect(() => onChange(date), [date])
 
@@ -69,7 +69,7 @@ export const FieldDate = ({
                 selected={date}
                 placeholderText={placeholder || placeholderText}
                 {...props}
-                onChange={(date: Date) => setDate(date)}
+                onChange={(date: Date | null) => setDate(date)}
             />
         </>
     )

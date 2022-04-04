@@ -17,7 +17,7 @@ const Template = (args: FieldDateProps) => {
         <FieldDate
             {...args}
             selected={startDate}
-            onChange={(date: Date) => setStartDate(date)}
+            onChange={(date: Date | null) => setStartDate(date)}
         />
     )
 }

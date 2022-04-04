@@ -4,7 +4,7 @@ This package contains default styling for projects whitin Provincie Zuid-Holland
 
 We use the [Tailwind framework](https://tailwindcss.com/) to style the components. In order to apply the correct styles, install [@pzh-ui/css](https://www.npmjs.com/package/@pzh-ui/css) in your project.
 
-`npm install @pzh-ui/css`
+`yarn add @pzh-ui/css`
 
 After installing the dependency, you can start using the styles as follows:
 

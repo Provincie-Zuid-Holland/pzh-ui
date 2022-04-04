@@ -6,7 +6,7 @@ Add the NPM package for the icons.
 
 In order to add the entire component library, install [@pzh-ui/icons](https://www.npmjs.com/package/@pzh-ui/icons) using your favorite package manager.
 
-For example, `npm install @pzh-ui/icons`.
+For example, `yarn add @pzh-ui/icons`.
 
 After installing the dependency, you can start using the icons as follows:
 
@@ -17,3 +17,7 @@ function Page() {
     return <Check />
 }
 ```
+
+## Adding new icons
+
+Add your new SVG icon to the `src/` folder. After that run `yarn svgr` and your new icon will be generated in `src/components/`.

@@ -36,6 +36,7 @@ export const FieldTextArea = ({
         )}
         <textarea
             data-testid="pzh-form-textarea"
+            id={name}
             name={name}
             disabled={disabled}
             required={required}

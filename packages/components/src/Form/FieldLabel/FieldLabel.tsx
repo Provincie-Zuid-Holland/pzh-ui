@@ -16,7 +16,7 @@ export const FieldLabel = ({
     description,
 }: FieldLabelProps) => (
     <div className="mb-2">
-        <label htmlFor={name} className="text-pzh-blue-dark bold">
+        <label htmlFor={name} className="text-pzh-blue-dark font-bold">
             {label}
             {required && <span className="text-pzh-red ml-1">*</span>}
         </label>

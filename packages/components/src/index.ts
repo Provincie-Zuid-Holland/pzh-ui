@@ -13,6 +13,7 @@ export * from './Form'
 export * from './Formik'
 export * from './DNABar'
 export * from './Divider'
+export * from './BackLink'
 
 // Utils
 export * from './utils'

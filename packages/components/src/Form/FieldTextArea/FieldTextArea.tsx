@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { FieldLabel } from '../FieldLabel'
 
@@ -24,31 +24,49 @@ export const FieldTextArea = ({
     className,
     hasError,
     ...props
-}: FieldTextAreaProps) => (
-    <>
-        {label && (
-            <FieldLabel
-                name={name}
-                label={label}
-                description={description}
-                required={required}
-            />
-        )}
-        <textarea
-            data-testid="pzh-form-textarea"
-            id={name}
-            name={name}
-            disabled={disabled}
-            required={required}
-            rows={rows}
-            className={classNames(
-                'pzh-form-input min-h-[48px]',
-                {
-                    'pzh-form-error': hasError,
-                },
-                className
+}: FieldTextAreaProps) => {
+    const textAreaRef = useRef<HTMLTextAreaElement>(null)
+
+    // Resize size of textarea based on contents
+    const resizeTextarea = () => {
+        if (!textAreaRef.current) return
+
+        textAreaRef.current.style.height = 'auto'
+        textAreaRef.current.style.height =
+            textAreaRef.current.scrollHeight + 'px'
+    }
+
+    // Update size of textarea on initial load
+    useEffect(() => resizeTextarea(), [])
+
+    return (
+        <>
+            {label && (
+                <FieldLabel
+                    name={name}
+                    label={label}
+                    description={description}
+                    required={required}
+                />
             )}
-            {...props}
-        />
-    </>
-)
+            <textarea
+                ref={textAreaRef}
+                data-testid="pzh-form-textarea"
+                id={name}
+                name={name}
+                disabled={disabled}
+                required={required}
+                onInput={resizeTextarea}
+                rows={rows}
+                className={classNames(
+                    'pzh-form-input overflow-hidden resize-none min-h-[48px]',
+                    {
+                        'pzh-form-error': hasError,
+                    },
+                    className
+                )}
+                {...props}
+            />
+        </>
+    )
+}

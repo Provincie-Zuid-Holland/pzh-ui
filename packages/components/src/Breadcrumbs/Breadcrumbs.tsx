@@ -2,6 +2,8 @@ import { faAngleRight } from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 
+import { BackLink } from '../BackLink'
+
 export interface BreadcrumbsProps {
     className?: string
     items: { name: string; path: string }[]
@@ -9,7 +11,7 @@ export interface BreadcrumbsProps {
 
 export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
     <nav aria-label="Breadcrumb" className={`text-pzh-blue ${className}`}>
-        <ol className="flex">
+        <ol className="hidden md:flex">
             {items.map((item, index) => {
                 return index === items.length - 1 ? (
                     <li key={item.name} className="inline-block">
@@ -27,5 +29,10 @@ export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
                 )
             })}
         </ol>
+        <BackLink
+            to={items[items.length - 2].path}
+            label={items[items.length - 2].name}
+            className="block md:hidden"
+        />
     </nav>
 )

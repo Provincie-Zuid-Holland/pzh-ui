@@ -31,7 +31,7 @@ describe('Breadcrumbs', () => {
         const firstEl = screen.getByText('Home')
         expect(firstEl).toBeTruthy()
 
-        const secondEl = screen.getByText('Another page')
+        const secondEl = screen.getAllByText('Another page')[0]
         expect(secondEl).toBeTruthy()
 
         const thirdEl = screen.getByText('Digitale toegankelijkheid')

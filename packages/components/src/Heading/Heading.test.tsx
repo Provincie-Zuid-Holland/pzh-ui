@@ -4,7 +4,7 @@ import { Heading } from './Heading'
 
 describe('Heading', () => {
     const setup = () => {
-        render(<Heading />)
+        render(<Heading>Heading</Heading>)
     }
 
     it('Component renders', () => {

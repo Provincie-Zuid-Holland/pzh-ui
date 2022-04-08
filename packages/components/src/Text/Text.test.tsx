@@ -7,6 +7,7 @@ describe('Text', () => {
         type: 'quote' as TextProps['type'],
         color: 'text-pzh-blue-dark',
         className: '',
+        children: 'Text',
     }
 
     const setup = (customProps?: Partial<TextProps>) => {

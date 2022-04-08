@@ -5,6 +5,7 @@ import { Card, CardProps } from './Card'
 describe('Card', () => {
     const defaultProps = {
         className: '',
+        children: 'Content',
     }
 
     const setup = (customProps?: Partial<CardProps>) => {

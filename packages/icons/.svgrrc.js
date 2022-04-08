@@ -3,7 +3,9 @@ module.exports = {
         multipass: true,
         plugins: [
             {
-                addAttributesToSVGElement: false,
+                addAttributesToSVGElement: {
+                    attributes: [{ fill: 'currentColor' }],
+                },
                 addClassesToSVGElement: false,
                 cleanupAttrs: true,
                 cleanupEnableBackground: true,

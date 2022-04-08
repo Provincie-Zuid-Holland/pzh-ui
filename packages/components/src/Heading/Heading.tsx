@@ -1,4 +1,4 @@
-import { CSSProperties, FC } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 import { useMedia } from 'react-use'
 
 export interface HeadingProps {
@@ -7,16 +7,17 @@ export interface HeadingProps {
     color?: string
     level?: '1' | '2' | '3' | '4' | '5' | '6'
     customStyles?: any
+    children: ReactNode
 }
 
-export const Heading: FC<HeadingProps> = ({
+export const Heading = ({
     className = '',
     id,
     color = 'text-pzh-blue',
     level = '1',
     children,
     customStyles,
-}) => {
+}: HeadingProps) => {
     const isMobile = useMedia('(max-width: 640px)')
     const styles = getHeadingStyles(level, isMobile)
 

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ReactNode } from 'react'
 import { useWindowSize } from 'react-use'
 
 export interface TextProps {
@@ -11,14 +11,15 @@ export interface TextProps {
         | 'body-small'
     color?: string
     className?: string
+    children: ReactNode
 }
 
-export const Text: FC<TextProps> = ({
+export const Text = ({
     type,
     children,
     color = 'text-pzh-blue-dark',
     className = '',
-}) => {
+}: TextProps) => {
     const windowSize = useWindowSize()
     const styles = getStylesForElement(windowSize, type)
 

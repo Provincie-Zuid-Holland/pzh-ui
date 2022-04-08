@@ -1,7 +1,7 @@
 import { faTimes } from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Dialog, Transition } from '@headlessui/react'
-import { FC, Fragment } from 'react'
+import { Fragment, ReactNode } from 'react'
 import { useWindowSize } from 'react-use'
 
 export interface ModalProps {
@@ -11,9 +11,10 @@ export interface ModalProps {
     containerPadding?: string
     ariaLabel: string
     closeButton?: boolean
+    children: ReactNode
 }
 
-export const Modal: FC<ModalProps> = ({
+export const Modal = ({
     children,
     open,
     onClose,
@@ -21,7 +22,7 @@ export const Modal: FC<ModalProps> = ({
     containerPadding = 'sm:p-8 p-6',
     ariaLabel,
     closeButton,
-}) => {
+}: ModalProps) => {
     const { width: screenWidth } = useWindowSize()
 
     return (

@@ -1,11 +1,12 @@
 import classNames from 'classnames'
-import { FC } from 'react'
+import { ReactNode } from 'react'
 
 export interface CardProps {
     className?: string
+    children: ReactNode
 }
 
-export const Card: FC<CardProps> = ({ className = '', children }) => (
+export const Card = ({ className = '', children }: CardProps) => (
     <div
         className={classNames('p-6 bg-white rounded shadow-md', className)}
         data-testid="card">

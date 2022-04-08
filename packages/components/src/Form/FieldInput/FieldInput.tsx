@@ -1,20 +1,17 @@
-import React from 'react'
+import { InputHTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { FieldLabel } from '../FieldLabel'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 /**
  * Form input element
  */
 
-export interface FieldInputProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface FieldInputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string
     label?: string
     description?: string
     hasError?: boolean
-    icon?: IconProp
+    icon?: any
 }
 
 export const FieldInput = ({
@@ -26,7 +23,7 @@ export const FieldInput = ({
     description,
     className,
     hasError,
-    icon,
+    icon: Icon,
     ...props
 }: FieldInputProps) => (
     <>
@@ -39,9 +36,9 @@ export const FieldInput = ({
             />
         )}
         <div className="relative">
-            {icon && (
-                <FontAwesomeIcon
-                    icon={icon}
+            {Icon && (
+                <Icon
+                    size={20}
                     className="absolute right-3 h-[48px] text-pzh-blue"
                 />
             )}
@@ -55,7 +52,7 @@ export const FieldInput = ({
                     'pzh-form-input',
                     {
                         'pzh-form-error': hasError,
-                        'pr-8': !!icon,
+                        'pr-8': !!Icon,
                     },
                     className
                 )}

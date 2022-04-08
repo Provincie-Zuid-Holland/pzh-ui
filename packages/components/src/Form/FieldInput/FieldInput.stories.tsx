@@ -1,4 +1,4 @@
-import { faSearch } from '@fortawesome/pro-regular-svg-icons'
+import { MagnifyingGlass } from '../../../../icons'
 import { ComponentStory } from '@storybook/react'
 
 import { FieldInput, FieldInputProps } from './FieldInput'
@@ -58,5 +58,5 @@ export const WithIcon: ComponentStory<typeof FieldInput> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 WithIcon.args = {
     placeholder: 'Zoek naar indicator',
-    icon: faSearch,
+    icon: MagnifyingGlass,
 }

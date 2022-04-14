@@ -6,6 +6,7 @@ export interface HeadingProps {
     id?: string
     color?: string
     level?: '1' | '2' | '3' | '4' | '5' | '6'
+    as?: '1' | '2' | '3' | '4' | '5' | '6'
     customStyles?: any
     children: ReactNode
 }
@@ -15,13 +16,14 @@ export const Heading = ({
     id,
     color = 'text-pzh-blue',
     level = '1',
+    as,
     children,
     customStyles,
 }: HeadingProps) => {
     const isMobile = useMedia('(max-width: 640px)')
     const styles = getHeadingStyles(level, isMobile)
 
-    const Component = `h${level}` as keyof JSX.IntrinsicElements
+    const Component = `h${as || level}` as keyof JSX.IntrinsicElements
 
     return (
         <Component

@@ -37,6 +37,7 @@ Default.args = {
             currentSituation: (
                 <div className="bg-pzh-red w-4 h-4 rounded-full" />
             ),
+            onClick: () => console.log('clicked'),
         },
         {
             theme: 'Economie',

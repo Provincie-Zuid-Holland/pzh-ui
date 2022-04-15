@@ -14,6 +14,7 @@ export * from './Formik'
 export * from './DNABar'
 export * from './Divider'
 export * from './BackLink'
+export * from './Table'
 
 // Utils
 export * from './utils'

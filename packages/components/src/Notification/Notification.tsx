@@ -1,6 +1,5 @@
 import classNames from 'classnames'
-import { TriangleExclamation } from '@pzh-ui/icons'
-import CircleInfoIcon from '@pzh-ui/icons/dist/components/CircleInfo'
+import { CircleInfo, TriangleExclamation } from '@pzh-ui/icons'
 
 export interface NotificationProps {
     text: string
@@ -25,7 +24,7 @@ export const Notification = ({
         {variant === 'alert' ? (
             <TriangleExclamation size={20} className="mt-[3px]" />
         ) : (
-            <CircleInfoIcon size={20} className="mt-[3px]" />
+            <CircleInfo size={20} className="mt-[3px]" />
         )}
         <p className="ml-2 md:ml-4 leading-[30px]">{text}</p>
     </div>

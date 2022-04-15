@@ -7,12 +7,11 @@ export interface TableProps
     className?: string
 }
 
-export const Table = ({ columns, data, className = '' }: TableProps) => {
+export const Table = ({ className = '', ...rest }: TableProps) => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
         useTable(
             {
-                columns,
-                data,
+                ...rest,
             },
             useSortBy
         )
@@ -42,12 +41,18 @@ export const Table = ({ columns, data, className = '' }: TableProps) => {
                                         (column.isSortedDesc ? (
                                             <ArrowDownZA
                                                 size={18}
-                                                className="ml-2"
+                                                className={classNames('ml-2', {
+                                                    'text-pzh-blue-light':
+                                                        column.isSorted,
+                                                })}
                                             />
                                         ) : (
                                             <ArrowDownAZ
                                                 size={18}
-                                                className="ml-2"
+                                                className={classNames('ml-2', {
+                                                    'text-pzh-blue-light':
+                                                        column.isSorted,
+                                                })}
                                             />
                                         ))}
                                 </span>

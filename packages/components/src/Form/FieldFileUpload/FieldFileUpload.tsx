@@ -3,12 +3,10 @@ import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
 import { useUpdateEffect } from 'react-use'
 import { getExtension } from 'mime'
 import classNames from 'classnames'
-import { faCloudUpload } from '@fortawesome/pro-solid-svg-icons'
-import { faTrashAlt } from '@fortawesome/pro-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { FieldLabel } from '../FieldLabel'
 import formatBytes from '../../utils/formatBytes'
+import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 
 /**
  * Form file upload element
@@ -88,14 +86,13 @@ export const FieldFileUpload = ({
                 <input name={name} {...getInputProps()} />
 
                 <div>
-                    <FontAwesomeIcon
-                        className={classNames('mb-2 max-w-[2rem]', {
+                    <CloudArrowUp
+                        size={60}
+                        className={classNames('mb-2 mx-auto max-w-[2rem]', {
                             'text-pzh-blue-dark': !isDragActive,
                             'text-pzh-green': isDragActive && !isDragReject,
                             'text-pzh-red': isDragReject && isDragActive,
                         })}
-                        size="2x"
-                        icon={faCloudUpload}
                     />
 
                     <p>
@@ -147,9 +144,9 @@ export const FieldFileUpload = ({
                                 <button
                                     type="button"
                                     onClick={removeFile(file)}>
-                                    <FontAwesomeIcon
-                                        className="ml-4 text-pzh-red"
-                                        icon={faTrashAlt}
+                                    <TrashCan
+                                        size={16}
+                                        className="ml-4 -mt-[2px] text-pzh-red"
                                     />
                                 </button>
                             </div>

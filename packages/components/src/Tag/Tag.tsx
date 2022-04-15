@@ -1,6 +1,5 @@
 import classNames from 'classnames'
-import { faTimes } from '@fortawesome/pro-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Xmark } from '@pzh-ui/icons'
 
 export interface TagProps {
     text: string
@@ -14,7 +13,7 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
     return (
         <Component
             className={classNames(
-                'inline-block border border-pzh-blue-dark rounded-lg px-3',
+                'inline-flex items-center border border-pzh-blue-dark rounded-lg px-3',
                 {
                     'transition duration-150 hover:bg-pzh-blue-dark hover:text-white focus:bg-pzh-blue focus:text-white':
                         !!onClick,
@@ -28,9 +27,7 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
             style={{ paddingTop: 2 }}
             data-testid="tag">
             <span>{text}</span>
-            {!!onClick && (
-                <FontAwesomeIcon icon={faTimes} className="ml-3 text-xs" />
-            )}
+            {!!onClick && <Xmark className="ml-2 -mt-[2px]" />}
         </Component>
     )
 }

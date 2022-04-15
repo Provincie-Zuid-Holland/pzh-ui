@@ -2,12 +2,11 @@ import { forwardRef, useState } from 'react'
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import { useUpdateEffect } from 'react-use'
 import nl from 'date-fns/locale/nl'
-import { faCalendarAlt } from '@fortawesome/pro-light-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
 
 import { FieldLabel } from '../FieldLabel'
 import { FieldInputProps } from '../FieldInput'
+import { CalendarAlt } from '@pzh-ui/icons'
 
 /**
  * Form date element
@@ -79,11 +78,11 @@ const DateInput = forwardRef<HTMLInputElement, FieldInputProps>(
     (props, ref) => (
         <div className="relative flex">
             <input type="text" {...props} ref={ref} />
-            <FontAwesomeIcon
+            <CalendarAlt
+                size={20}
                 className={classNames('absolute right-[14px] top-[14px]', {
                     'opacity-50': props.disabled,
                 })}
-                icon={faCalendarAlt}
             />
         </div>
     )

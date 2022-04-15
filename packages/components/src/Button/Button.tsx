@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 /**
  * Primary UI component for user interaction
@@ -12,7 +10,7 @@ export interface ButtonProps
     label: string
     variant?: 'primary' | 'secondary' | 'cta'
     size?: 'large' | 'small'
-    icon?: IconProp
+    icon?: any
     children?: ReactNode
 }
 
@@ -22,7 +20,7 @@ export const Button = ({
     type = 'button',
     size = 'large',
     disabled,
-    icon,
+    icon: Icon,
     className,
     children,
     ...props
@@ -47,16 +45,15 @@ export const Button = ({
         )}
         disabled={disabled}
         {...props}>
-        {icon ? (
-            <div className="flex">
-                <FontAwesomeIcon
+        {Icon ? (
+            <div className="flex items-center">
+                <Icon
                     className={classNames({
                         '-mt-[2px]': variant !== 'secondary',
                         '-mt-0.5': variant === 'secondary',
                         'mr-2': size === 'large',
                         'mr-[8px]': size === 'small',
                     })}
-                    icon={icon}
                 />
                 <span>{children || label}</span>
             </div>

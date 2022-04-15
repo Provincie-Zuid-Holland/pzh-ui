@@ -1,6 +1,5 @@
-import { faTimes } from '@fortawesome/pro-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Dialog, Transition } from '@headlessui/react'
+import { Xmark } from '@pzh-ui/icons'
 import { Fragment, ReactNode } from 'react'
 import { useWindowSize } from 'react-use'
 
@@ -75,10 +74,7 @@ export const Modal = ({
                                             type="button"
                                             className="p-2 pb-0 text-pzh-blue-dark rounded-md pointer-events-auto hover:text-pzh-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                             onClick={onClose}>
-                                            <FontAwesomeIcon
-                                                icon={faTimes}
-                                                className="w-4 h-4"
-                                            />
+                                            <Xmark className="w-4 h-4" />
                                             <span className="sr-only">
                                                 Close
                                             </span>

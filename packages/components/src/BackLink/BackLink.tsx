@@ -1,5 +1,4 @@
-import { faAngleLeft } from '@fortawesome/pro-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { AngleLeft } from '@pzh-ui/icons'
 import classNames from 'classnames'
 import { Link, LinkProps } from 'react-router-dom'
 
@@ -16,7 +15,7 @@ export const BackLink = ({ to, label = 'Terug', className }: BackLinkProps) => (
             className
         )}
         data-testid="back-link">
-        <FontAwesomeIcon icon={faAngleLeft} className="mr-2 -mt-[2px]" />
+        <AngleLeft className="mr-2 -mt-[2px]" />
         {label}
     </Link>
 )

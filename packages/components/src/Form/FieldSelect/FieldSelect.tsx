@@ -1,8 +1,7 @@
 import ReactSelect, { components, Props } from 'react-select'
-import { faAngleDown } from '@fortawesome/pro-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
 import { FieldLabel } from '../FieldLabel'
+import { AngleDown } from '@pzh-ui/icons'
 
 /**
  * Form select element
@@ -57,10 +56,7 @@ export function FieldSelect({
                         />
                     ),
                     DropdownIndicator: () => (
-                        <FontAwesomeIcon
-                            className="text-pzh-blue-dark"
-                            icon={faAngleDown}
-                        />
+                        <AngleDown className="text-pzh-blue-dark" />
                     ),
                     IndicatorSeparator: () => null,
                     Placeholder: props => (

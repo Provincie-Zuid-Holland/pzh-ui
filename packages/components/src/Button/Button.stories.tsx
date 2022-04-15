@@ -1,4 +1,4 @@
-import { faUser } from '@fortawesome/pro-solid-svg-icons'
+import { Eye } from '@pzh-ui/icons'
 import { ComponentStory } from '@storybook/react'
 
 import { Button, ButtonProps } from './Button'
@@ -50,5 +50,5 @@ Disabled.args = {
 export const WithIcon: ComponentStory<typeof Button> = Template.bind({})
 WithIcon.args = {
     label: 'Button',
-    icon: faUser,
+    icon: Eye,
 }

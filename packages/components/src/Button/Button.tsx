@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
@@ -13,6 +13,7 @@ export interface ButtonProps
     variant?: 'primary' | 'secondary' | 'cta'
     size?: 'large' | 'small'
     icon?: IconProp
+    children?: ReactNode
 }
 
 export const Button = ({
@@ -23,6 +24,7 @@ export const Button = ({
     disabled,
     icon,
     className,
+    children,
     ...props
 }: ButtonProps) => (
     <button
@@ -56,10 +58,10 @@ export const Button = ({
                     })}
                     icon={icon}
                 />
-                <span>{label}</span>
+                <span>{children || label}</span>
             </div>
         ) : (
-            label
+            children || label
         )}
     </button>
 )

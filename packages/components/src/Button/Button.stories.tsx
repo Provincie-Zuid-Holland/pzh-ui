@@ -26,7 +26,7 @@ export const Primary: ComponentStory<typeof Button> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
     variant: 'primary',
-    label: 'Button',
+    children: 'Button',
 }
 
 export const Secondary: ComponentStory<typeof Button> = Template.bind({})

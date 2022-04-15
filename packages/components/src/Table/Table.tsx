@@ -1,3 +1,4 @@
+import { ArrowDownAZ, ArrowDownZA } from '@pzh-ui/icons'
 import classNames from 'classnames'
 import { useTable, useSortBy, TableOptions } from 'react-table'
 
@@ -18,6 +19,7 @@ export const Table = ({ columns, data, className = '' }: TableProps) => {
     return (
         <table
             className={classNames('w-full text-pzh-blue-dark', className)}
+            data-testid="table"
             {...getTableProps()}>
             <thead>
                 {headerGroups.map(headerGroup => (
@@ -32,14 +34,21 @@ export const Table = ({ columns, data, className = '' }: TableProps) => {
                                     column.getSortByToggleProps()
                                 )}
                                 className="py-2 text-left font-bold">
-                                {column.render('Header')}
-                                {/* Add a sort direction indicator */}
-                                <span>
-                                    {column.isSorted
-                                        ? column.isSortedDesc
-                                            ? ' 🔽'
-                                            : ' 🔼'
-                                        : ''}
+                                <span className="flex items-center">
+                                    {column.render('Header')}
+                                    {/* Add a sort direction indicator */}
+                                    {column.canSort &&
+                                        (column.isSortedDesc ? (
+                                            <ArrowDownZA
+                                                size={18}
+                                                className="ml-2"
+                                            />
+                                        ) : (
+                                            <ArrowDownAZ
+                                                size={18}
+                                                className="ml-2"
+                                            />
+                                        ))}
                                 </span>
                             </th>
                         ))}
@@ -53,7 +62,7 @@ export const Table = ({ columns, data, className = '' }: TableProps) => {
                     return (
                         <tr
                             {...row.getRowProps()}
-                            className="border-b border-pzh-blue-dark border-opacity-35">
+                            className="border-b border-pzh-blue-dark border-opacity-35 cursor-pointer hover:bg-pzh-gray-light">
                             {row.cells.map(cell => {
                                 return (
                                     <td

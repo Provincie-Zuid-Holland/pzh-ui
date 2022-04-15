@@ -197,6 +197,7 @@ module.exports = {
             },
             'pzh-gray': {
                 DEFAULT: '#EBEBEB',
+                light: '#F5F5F5',
             },
             'pzh-cool-gray': {
                 DEFAULT: '#838383',

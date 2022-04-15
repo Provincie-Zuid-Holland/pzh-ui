@@ -24,19 +24,33 @@ Default.args = {
             accessor: 'title',
             disableSortBy: true,
         },
+        {
+            Header: 'HS',
+            accessor: 'currentSituation',
+            disableSortBy: true,
+        },
     ],
     data: [
         {
             theme: 'Economie',
             title: 'Innovatie Zuid-Holland',
+            currentSituation: (
+                <div className="bg-pzh-red w-4 h-4 rounded-full" />
+            ),
         },
         {
             theme: 'Economie',
             title: 'Grondstoffen gebruik',
+            currentSituation: (
+                <div className="bg-pzh-red w-4 h-4 rounded-full" />
+            ),
         },
         {
             theme: 'Klimaat en water',
             title: 'Waterveiligheid',
+            currentSituation: (
+                <div className="bg-pzh-yellow w-4 h-4 rounded-full" />
+            ),
         },
     ],
 }

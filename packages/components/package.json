@@ -37,6 +37,7 @@
         "@fortawesome/pro-solid-svg-icons": "5.15.4",
         "@fortawesome/react-fontawesome": "0.1.17",
         "@headlessui/react": "^1.5.0",
+        "@pzh-ui/icons": "^0.0.6",
         "classnames": "^2.3.1",
         "date-fns": "^2.28.0",
         "formik": "^2.2.9",
@@ -48,6 +49,7 @@
         "react-quill": "^2.0.0-beta.4",
         "react-router-dom": "^6.3.0",
         "react-select": "^5.2.2",
+        "react-table": "^7.7.0",
         "react-use": "^17.3.2"
     },
     "devDependencies": {
@@ -71,6 +73,7 @@
         "@types/react-datepicker": "^4.3.4",
         "@types/react-dom": "^17.0.13",
         "@types/react-router-dom": "^5.3.3",
+        "@types/react-table": "^7.7.10",
         "@vitejs/plugin-react": "^1.2.0",
         "babel-loader": "^8.2.3",
         "babel-plugin-import": "^1.13.3",

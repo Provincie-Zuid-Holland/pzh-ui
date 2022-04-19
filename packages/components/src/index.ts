@@ -15,6 +15,7 @@ export * from './DNABar'
 export * from './Divider'
 export * from './BackLink'
 export * from './Table'
+export * from './Tooltip'
 
 // Utils
 export * from './utils'

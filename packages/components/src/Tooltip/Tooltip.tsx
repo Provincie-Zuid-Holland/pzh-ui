@@ -96,6 +96,7 @@ export const Tooltip = ({
                             damping: 20,
                             stiffness: 300,
                         }}
+                        data-testid="tooltip"
                         {...getFloatingProps({
                             ref: floating,
                             className:

@@ -77,7 +77,7 @@ const ModalInner = ({
     return (
         <div
             className={classNames(
-                'flex items-center justify-center overflow-hidden text-center rounded-lg sm:block px-4 pt-4 pb-4 sm:p-2',
+                'flex items-center justify-center overflow-hidden text-center sm:block px-4 pt-4 pb-4 sm:p-2',
                 {
                     'min-h-screen': position === 'fixed',
                     'h-full': position === 'absolute',
@@ -119,7 +119,7 @@ const ModalInner = ({
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
                 <div
-                    className={`inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl sm:my-8 sm:align-middle sm:w-full ${maxWidth}`}>
+                    className={`inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-[4px] shadow-xl sm:my-8 sm:align-middle sm:w-full ${maxWidth}`}>
                     <div
                         className={`overflow-y-auto ${containerPadding}`}
                         style={{

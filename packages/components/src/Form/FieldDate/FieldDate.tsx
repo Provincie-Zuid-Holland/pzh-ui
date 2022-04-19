@@ -44,7 +44,7 @@ export const FieldDate = ({
 
     useUpdateEffect(() => onChange(date), [date])
     useUpdateEffect(() => {
-        value && setDate(new Date(value))
+        !date && value && setDate(new Date(value))
     }, [value])
 
     return (

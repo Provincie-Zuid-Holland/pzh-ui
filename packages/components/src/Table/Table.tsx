@@ -33,7 +33,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                 {...column.getHeaderProps(
                                     column.getSortByToggleProps()
                                 )}
-                                className="py-2 px-2 text-left font-bold">
+                                className="py-2 px-2 text-left font-bold group">
                                 <span className="flex items-center">
                                     {column.render('Header')}
                                     {/* Add a sort direction indicator */}
@@ -41,18 +41,28 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                         (column.isSortedDesc ? (
                                             <ArrowDownZA
                                                 size={18}
-                                                className={classNames('ml-2', {
-                                                    'text-pzh-blue-light':
-                                                        column.isSorted,
-                                                })}
+                                                className={classNames(
+                                                    'ml-2 group-hover:opacity-100',
+                                                    {
+                                                        'opacity-100':
+                                                            column.isSorted,
+                                                        'opacity-0':
+                                                            !column.isSorted,
+                                                    }
+                                                )}
                                             />
                                         ) : (
                                             <ArrowDownAZ
                                                 size={18}
-                                                className={classNames('ml-2', {
-                                                    'text-pzh-blue-light':
-                                                        column.isSorted,
-                                                })}
+                                                className={classNames(
+                                                    'ml-2 group-hover:opacity-100',
+                                                    {
+                                                        'opacity-100':
+                                                            column.isSorted,
+                                                        'opacity-0':
+                                                            !column.isSorted,
+                                                    }
+                                                )}
                                             />
                                         ))}
                                 </span>

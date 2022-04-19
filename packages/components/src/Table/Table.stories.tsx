@@ -22,7 +22,6 @@ Default.args = {
         {
             Header: 'Titel',
             accessor: 'title',
-            disableSortBy: true,
         },
         {
             Header: 'HS',

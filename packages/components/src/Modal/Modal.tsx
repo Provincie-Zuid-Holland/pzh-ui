@@ -29,7 +29,7 @@ export const Modal = ({
         return (
             <Transition show={open} as={Fragment}>
                 <div
-                    className="h-full inset-0 z-50 overflow-hidden"
+                    className="absolute h-full inset-0 z-1 overflow-hidden"
                     aria-label={ariaLabel}>
                     <ModalInner
                         containerPadding={containerPadding}

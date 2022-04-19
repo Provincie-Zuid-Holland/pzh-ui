@@ -1,5 +1,6 @@
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
+
 import { FieldLabel } from '../FieldLabel'
 
 /**
@@ -9,7 +10,7 @@ import { FieldLabel } from '../FieldLabel'
 export interface FieldInputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string
     label?: string
-    description?: string
+    description?: string | ReactNode
     hasError?: boolean
     icon?: any
 }

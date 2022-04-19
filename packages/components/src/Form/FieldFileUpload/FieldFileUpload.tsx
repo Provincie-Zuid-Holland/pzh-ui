@@ -1,12 +1,12 @@
-import { useCallback, useMemo, useState } from 'react'
+import { ReactNode, useCallback, useMemo, useState } from 'react'
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
 import { useUpdateEffect } from 'react-use'
 import { getExtension } from 'mime'
 import classNames from 'classnames'
+import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
 import formatBytes from '../../utils/formatBytes'
-import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 
 /**
  * Form file upload element
@@ -16,7 +16,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     name: string
     onChange: (files: FileWithPath[]) => void
     label?: string
-    description?: string
+    description?: string | ReactNode
     required?: boolean
     className?: string
 }

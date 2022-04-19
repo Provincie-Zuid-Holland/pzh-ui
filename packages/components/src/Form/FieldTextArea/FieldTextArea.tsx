@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React, { ReactNode, useEffect, useRef } from 'react'
 import classNames from 'classnames'
+
 import { FieldLabel } from '../FieldLabel'
 
 /**
@@ -10,7 +11,7 @@ export interface FieldTextAreaProps
     extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     name: string
     label?: string
-    description?: string
+    description?: string | ReactNode
     hasError?: boolean
 }
 

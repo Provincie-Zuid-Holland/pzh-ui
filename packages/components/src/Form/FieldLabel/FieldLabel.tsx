@@ -2,11 +2,13 @@
  * Form label element
  */
 
+import { ReactNode } from 'react'
+
 export interface FieldLabelProps {
     name: string
     label: string
     required?: boolean
-    description?: string
+    description?: string | ReactNode
 }
 
 export const FieldLabel = ({

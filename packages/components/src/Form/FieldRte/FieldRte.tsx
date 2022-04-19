@@ -1,5 +1,6 @@
 import 'react-quill/dist/quill.snow.css'
 
+import { ReactNode } from 'react'
 import ReactQuill, { ReactQuillProps } from 'react-quill'
 
 import { FieldLabel } from '../FieldLabel'
@@ -8,7 +9,7 @@ import { quillDecodeIndent } from '../../utils/quillFixIndent'
 export interface FieldRteProps extends ReactQuillProps {
     name: string
     label?: string
-    description?: string
+    description?: string | ReactNode
     required?: boolean
     disabled?: boolean
     onBlur?: (value: any) => void

@@ -1,7 +1,9 @@
+import { ReactNode } from 'react'
 import ReactSelect, { components, Props } from 'react-select'
 import classNames from 'classnames'
-import { FieldLabel } from '../FieldLabel'
 import { AngleDown } from '@pzh-ui/icons'
+
+import { FieldLabel } from '../FieldLabel'
 
 /**
  * Form select element
@@ -10,7 +12,7 @@ import { AngleDown } from '@pzh-ui/icons'
 export interface FieldSelectProps extends Props {
     name: string
     label?: string
-    description?: string
+    description?: string | ReactNode
     required?: boolean
     disabled?: boolean
     hasError?: boolean

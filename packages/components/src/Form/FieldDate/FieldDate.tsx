@@ -1,12 +1,12 @@
-import { forwardRef, useState } from 'react'
+import { forwardRef, ReactNode, useState } from 'react'
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import { useUpdateEffect } from 'react-use'
 import nl from 'date-fns/locale/nl'
 import classNames from 'classnames'
+import { CalendarAlt } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
 import { FieldInputProps } from '../FieldInput'
-import { CalendarAlt } from '@pzh-ui/icons'
 
 /**
  * Form date element
@@ -16,7 +16,7 @@ export interface FieldDateProps extends Omit<ReactDatePickerProps, 'onChange'> {
     name: string
     label?: string
     required?: boolean
-    description?: string
+    description?: string | ReactNode
     placeholder?: string
     onClose?: () => void
     onChange: (date: Date | null) => void
@@ -35,9 +35,12 @@ export const FieldDate = ({
     onChange,
     hasError,
     className,
+    value,
     ...props
 }: FieldDateProps) => {
-    const [date, setDate] = useState<Date | null>(null)
+    const [date, setDate] = useState<Date | null>(
+        value ? new Date(value) : null
+    )
 
     useUpdateEffect(() => onChange(date), [date])
 

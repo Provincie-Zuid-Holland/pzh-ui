@@ -7,7 +7,7 @@ import classNames from 'classnames'
 
 export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    label: string
+    label?: string
     variant?: 'primary' | 'secondary' | 'cta'
     size?: 'large' | 'small'
     icon?: any

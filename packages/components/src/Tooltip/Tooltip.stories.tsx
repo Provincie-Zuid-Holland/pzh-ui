@@ -14,6 +14,6 @@ const Template = (args: TooltipProps) => <Tooltip {...args} />
 export const Default: ComponentStory<typeof Tooltip> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-    children: <p className="inline-block">hover me</p>,
+    children: <p className="inline-block font-bold">hover me</p>,
     label: 'Tooltip',
 }

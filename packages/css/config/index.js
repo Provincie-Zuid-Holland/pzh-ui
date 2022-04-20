@@ -1,7 +1,4 @@
 module.exports = {
-    corePlugins: {
-        fontWeight: false,
-    },
     content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
     variants: {
         pointerEvents: ['responsive', 'hover'],

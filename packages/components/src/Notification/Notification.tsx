@@ -21,11 +21,13 @@ export const Notification = ({
             },
             className
         )}>
-        {variant === 'alert' ? (
-            <TriangleExclamation size={20} className="mt-[3px]" />
-        ) : (
-            <CircleInfo size={20} className="mt-[3px]" />
-        )}
+        <div>
+            {variant === 'alert' ? (
+                <TriangleExclamation size={20} className="mt-[3px]" />
+            ) : (
+                <CircleInfo size={20} className="mt-[3px]" />
+            )}
+        </div>
         <p className="ml-2 md:ml-4 leading-[30px]">{text}</p>
     </div>
 )

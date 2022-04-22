@@ -72,7 +72,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                 ))}
             </thead>
             <tbody {...getTableBodyProps()}>
-                {rows.map(row => {
+                {rows.map((row, index) => {
                     prepareRow(row)
 
                     return (
@@ -83,7 +83,14 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                     row.original.onClick) ||
                                 undefined
                             }
-                            className="border-b border-pzh-blue-dark border-opacity-35 cursor-pointer hover:bg-pzh-gray-light">
+                            onKeyDown={e =>
+                                (e.key === 'Enter' &&
+                                    'onClick' in row.original &&
+                                    row.original.onClick?.()) ||
+                                undefined
+                            }
+                            className="border-b border-pzh-blue-dark border-opacity-35 cursor-pointer hover:bg-pzh-gray-light focus:bg-pzh-gray-light"
+                            tabIndex={index + 1}>
                             {row.cells.map(cell => {
                                 return (
                                     <td

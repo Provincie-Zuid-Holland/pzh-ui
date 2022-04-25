@@ -13,6 +13,7 @@ export interface FieldRteProps extends ReactQuillProps {
     required?: boolean
     disabled?: boolean
     onBlur?: (value: any) => void
+    testId?: string
 }
 
 export const FieldRte = ({
@@ -26,6 +27,7 @@ export const FieldRte = ({
     onChange,
     onBlur,
     disabled,
+    testId,
     ...props
 }: FieldRteProps) => {
     const handleBlur: ReactQuillProps['onBlur'] = (
@@ -59,6 +61,7 @@ export const FieldRte = ({
                     className={className}
                     onBlur={handleBlur}
                     readOnly={disabled}
+                    data-testid={testId}
                     {...props}
                 />
             </div>

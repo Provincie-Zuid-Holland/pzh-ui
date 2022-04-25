@@ -16,6 +16,7 @@ export interface FieldSelectProps extends Props {
     required?: boolean
     disabled?: boolean
     hasError?: boolean
+    testId?: string
 }
 
 export function FieldSelect({
@@ -26,6 +27,7 @@ export function FieldSelect({
     description,
     className,
     hasError,
+    testId,
     ...props
 }: FieldSelectProps) {
     return (
@@ -137,6 +139,7 @@ export function FieldSelect({
                         }),
                     }),
                 }}
+                data-testid={testId}
                 {...props}
             />
         </>

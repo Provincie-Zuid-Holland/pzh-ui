@@ -53,7 +53,9 @@ export const FieldRte = ({
                     required={required}
                 />
             )}
-            <div onDrop={e => !formats.includes('image') && e.preventDefault()}>
+            <div
+                data-testid={testId}
+                onDrop={e => !formats.includes('image') && e.preventDefault()}>
                 <ReactQuill
                     theme="snow"
                     formats={formats}
@@ -61,7 +63,6 @@ export const FieldRte = ({
                     className={className}
                     onBlur={handleBlur}
                     readOnly={disabled}
-                    data-testid={testId}
                     {...props}
                 />
             </div>

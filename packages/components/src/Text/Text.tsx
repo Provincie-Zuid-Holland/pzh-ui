@@ -42,13 +42,17 @@ export const Text = ({
         return (
             <p
                 style={styles}
-                className={`inline-block text-base leading-normal ${color} ${className}`}>
+                className={`text-base leading-normal ${color} ${
+                    className || 'inline-block'
+                }`}>
                 {children}
             </p>
         )
     } else if (type === 'introduction-paragraph') {
         return (
-            <p style={styles} className={`inline-block ${color} ${className}`}>
+            <p
+                style={styles}
+                className={`${color} ${className || 'inline-block'}`}>
                 {children}
             </p>
         )
@@ -58,7 +62,9 @@ export const Text = ({
         type === 'body-small'
     ) {
         return (
-            <p style={styles} className={`inline-block ${color} ${className}`}>
+            <p
+                style={styles}
+                className={`${color} ${className || 'inline-block'}`}>
                 {children}
             </p>
         )

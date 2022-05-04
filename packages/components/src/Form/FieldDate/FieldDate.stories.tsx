@@ -25,14 +25,14 @@ const Template = (args: FieldDateProps) => {
 export const Default: ComponentStory<typeof FieldDate> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-    name: 'select',
+    name: 'date',
     placeholderText: 'Datum',
 }
 
 export const Disabled: ComponentStory<typeof FieldDate> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Disabled.args = {
-    name: 'select',
+    name: 'date',
     placeholderText: 'Datum',
     disabled: true,
 }
@@ -40,7 +40,7 @@ Disabled.args = {
 export const WithLabel: ComponentStory<typeof FieldDate> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 WithLabel.args = {
-    name: 'select',
+    name: 'date',
     placeholderText: 'Datum',
     label: 'Datum',
     required: true,

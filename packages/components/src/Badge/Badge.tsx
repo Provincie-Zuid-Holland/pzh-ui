@@ -13,7 +13,7 @@ export const Badge = ({
 }: BadgeProps) => (
     <div
         className={classNames(
-            'inline-block border rounded px-1.5 text-[16px] h-[28px] bold uppercase',
+            'inline-block border rounded px-1.5 text-[16px] h-[28px] font-bold uppercase',
             {
                 'border-pzh-green text-pzh-green': variant === 'green',
                 'border-pzh-yellow-dark text-pzh-yellow-dark':

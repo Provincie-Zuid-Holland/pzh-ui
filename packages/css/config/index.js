@@ -193,12 +193,12 @@ module.exports = {
                 dark: '#32265a',
             },
             'pzh-gray': {
-                "darkest": "#8A889D",
-                "darker": "#A2A0B1",
-                "dark": "#ADACBA",
-                "semi-dark": "#E8E7EB",
-                DEFAULT: '#EBEBEB',
-                light: '#F5F5F5',
+                "600": "#8A889D",
+                "500": "#A2A0B1",
+                "400": "#ADACBA",
+                "300": "#E8E7EB",
+                "200": '#EBEBEB',
+                "100": '#F5F5F5',
             },
             'pzh-cool-gray': {
                 DEFAULT: '#838383',

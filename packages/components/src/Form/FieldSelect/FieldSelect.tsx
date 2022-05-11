@@ -52,7 +52,7 @@ export function FieldSelect({
                                 className={classNames(
                                     'border-pzh-blue-dark border-opacity-35 bg-white hover:border-pzh-blue-dark hover:border-opacity-35',
                                     {
-                                        'bg-pzh-gray border-opacity-10':
+                                        'bg-pzh-gray-200 border-opacity-10':
                                             props.isDisabled,
                                         'border-pzh-red border-opacity-100':
                                             hasError,

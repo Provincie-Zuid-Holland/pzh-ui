@@ -2,6 +2,7 @@
 export * from './Badge'
 export * from './Button'
 export * from './Breadcrumbs'
+export * from './Card'
 export * from './Heading'
 export * from './Banner'
 export * from './Feedback'

@@ -16,7 +16,7 @@ describe('Tooltip', () => {
     it('Component renders', () => {
         setup()
 
-        const element = screen.getByTestId('tooltip')
+        const element = screen.getByText('click me')
         expect(element).toBeTruthy()
     })
 })

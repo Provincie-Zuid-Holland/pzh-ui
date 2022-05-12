@@ -1,10 +1,12 @@
 import { CommentDots } from '@pzh-ui/icons'
+import classNames from 'classnames'
 
 import formatDate from '../utils/formatDate'
 
 export interface FeedbackProps {
     email: string
     website: string
+    position?: 'left' | 'right'
 }
 
 /**
@@ -56,7 +58,11 @@ export const getMailToLink = (email: string, website: string) => {
 /**
  * Feedback component with mailto anchor
  */
-export const Feedback = ({ email, website }: FeedbackProps) => {
+export const Feedback = ({
+    email,
+    website,
+    position = 'left',
+}: FeedbackProps) => {
     const mailTo = getMailToLink(email, website)
 
     return (
@@ -64,7 +70,13 @@ export const Feedback = ({ email, website }: FeedbackProps) => {
             <div className="container relative flex px-6 pt-0 mx-auto sm:mt-8 sm:py-10 sm:px-6 lg:px-8">
                 <a
                     href={mailTo}
-                    className="absolute flex items-center pointer-events-auto bottom-0 px-3 pt-2 pb-3 font-bold text-white transition duration-200 ease-out transform translate-y-2 cursor-pointer rounded-t-md bg-pzh-red hover:translate-y-0 left-0 ml-4">
+                    className={classNames(
+                        'absolute flex items-center pointer-events-auto bottom-0 px-3 pt-2 pb-3 font-bold text-white transition duration-200 ease-out transform translate-y-2 cursor-pointer rounded-t-md bg-pzh-red hover:translate-y-0',
+                        {
+                            'left-0 ml-4': position === 'left',
+                            'right-0 mr-4': position === 'right',
+                        }
+                    )}>
                     <CommentDots
                         className="mr-2 -mt-[2px] text-white"
                         size={20}

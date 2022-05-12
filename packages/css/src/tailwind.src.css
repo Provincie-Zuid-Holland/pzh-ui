@@ -58,7 +58,7 @@ h6,
  */
 
 .pzh-button {
-    @apply inline-block transition duration-200 ease-in rounded focus:outline-none focus:ring font-bold leading-none disabled:bg-pzh-gray disabled:text-pzh-blue-dark disabled:text-opacity-35 disabled:cursor-not-allowed;
+    @apply inline-block transition duration-200 ease-in rounded focus:outline-none focus:ring font-bold leading-none disabled:bg-pzh-gray-200 disabled:text-pzh-blue-dark disabled:text-opacity-35 disabled:cursor-not-allowed;
 }
 
 .pzh-form-input {
@@ -94,7 +94,7 @@ h6,
 }
 .pzh-form-radio:disabled + span:before,
 .pzh-form-checkbox:disabled + span:before {
-    @apply border-pzh-gray bg-pzh-gray;
+    @apply border-pzh-gray-200 bg-pzh-gray-200;
 }
 
 .pzh-form-checkbox + span:before {

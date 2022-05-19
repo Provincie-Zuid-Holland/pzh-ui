@@ -85,7 +85,7 @@ export function FieldSelect({
                         Input: props => (
                             <components.Input
                                 {...props}
-                                className="shadow-none focus:shadow-none"
+                                className="shadow-none focus:shadow-none pzh-select-input"
                             />
                         ),
                     }}
@@ -105,7 +105,6 @@ export function FieldSelect({
                             margin: 0,
                             padding: 0,
                             lineHeight: 1,
-                            boxShadow: 'none',
                         }),
                         singleValue: ({ color, ...css }, state) => ({
                             ...css,

@@ -12,6 +12,7 @@ export interface ModalProps {
     ariaLabel: string
     closeButton?: boolean
     position?: 'fixed' | 'absolute'
+    overflowVisible?: boolean
     children: ReactNode
 }
 
@@ -23,6 +24,7 @@ export const Modal = ({
     containerPadding = 'sm:p-8 p-6',
     ariaLabel,
     closeButton,
+    overflowVisible = false,
     position = 'fixed',
 }: ModalProps) => {
     if (position === 'absolute') {
@@ -32,6 +34,7 @@ export const Modal = ({
                     className="absolute h-full inset-0 z-1 overflow-hidden"
                     aria-label={ariaLabel}>
                     <ModalInner
+                        overflowVisible={overflowVisible}
                         containerPadding={containerPadding}
                         closeButton={closeButton}
                         onClose={onClose}
@@ -52,6 +55,7 @@ export const Modal = ({
                 onClose={onClose}
                 aria-label={ariaLabel}>
                 <ModalInner
+                    overflowVisible={overflowVisible}
                     containerPadding={containerPadding}
                     closeButton={closeButton}
                     onClose={onClose}
@@ -71,14 +75,16 @@ const ModalInner = ({
     maxWidth,
     position,
     children,
+    overflowVisible
 }: Partial<ModalProps>) => {
     const { width: screenWidth } = useWindowSize()
 
     return (
         <div
             className={classNames(
-                'flex items-center justify-center overflow-hidden text-center sm:block px-4 pt-4 pb-4 sm:p-2',
+                'flex items-center justify-center text-center sm:block px-4 pt-4 pb-4 sm:p-2',
                 {
+                    'overflow-hidden': !overflowVisible,
                     'min-h-screen': position === 'fixed',
                     'h-full': position === 'absolute',
                 }
@@ -121,7 +127,7 @@ const ModalInner = ({
                 <div
                     className={`inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-[4px] shadow-xl sm:my-8 sm:align-middle sm:w-full ${maxWidth}`}>
                     <div
-                        className={`overflow-y-auto ${containerPadding}`}
+                        className={classNames(`${containerPadding}`, {'overflow-y-auto': !overflowVisible, 'overflow-y-visible': overflowVisible})}
                         style={{
                             maxHeight:
                                 screenWidth < 640

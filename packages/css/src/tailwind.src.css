@@ -286,8 +286,6 @@ h6,
         0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
 }
 
-.pzh-select-input {
-    input {
-        box-shadow: none;
-    }
+.pzh-select-input input {
+    box-shadow: none;
 }

@@ -287,5 +287,5 @@ h6,
 }
 
 .pzh-select-input input {
-    box-shadow: none;
+    box-shadow: none !important;
 }

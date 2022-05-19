@@ -45,7 +45,6 @@ export function FieldSelect({
                     isDisabled={disabled}
                     className={className}
                     name={name}
-                    styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}
                     components={{
                         Control: props => (
                             <components.Control
@@ -129,6 +128,7 @@ export function FieldSelect({
                         }),
                         menu: css => ({
                             ...css,
+                            zIndex: 9999,
                             marginTop: 0,
                             boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.10)',
                         }),

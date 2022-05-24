@@ -193,12 +193,12 @@ module.exports = {
                 dark: '#32265a',
             },
             'pzh-gray': {
-                "600": "#8A889D",
-                "500": "#A2A0B1",
-                "400": "#ADACBA",
-                "300": "#E8E7EB",
-                "200": '#EBEBEB',
-                "100": '#F5F5F5',
+                600: '#8A889D',
+                500: '#A2A0B1',
+                400: '#ADACBA',
+                300: '#E8E7EB',
+                200: '#EBEBEB',
+                100: '#F5F5F5',
             },
             'pzh-cool-gray': {
                 DEFAULT: '#838383',
@@ -223,6 +223,9 @@ module.exports = {
             opacity: {
                 35: '0.35',
                 55: '0.55',
+            },
+            boxShadow: {
+                card: '0px 18px 60px rgba(0, 0, 0, 0.07), 0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275), 0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725)',
             },
         },
     },

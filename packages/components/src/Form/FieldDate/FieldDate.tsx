@@ -1,3 +1,5 @@
+import 'react-datepicker/dist/react-datepicker.css'
+
 import { forwardRef, ReactNode, useState } from 'react'
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import { useUpdateEffect } from 'react-use'

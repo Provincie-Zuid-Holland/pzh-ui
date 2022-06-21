@@ -8,7 +8,7 @@ export interface CardProps {
 
 export const Card = ({ className = '', children }: CardProps) => (
     <div
-        className={classNames('p-6 bg-white rounded pzh-box-shadow', className)}
+        className={classNames('p-6 bg-white rounded shadow-card', className)}
         data-testid="card">
         {children}
     </div>

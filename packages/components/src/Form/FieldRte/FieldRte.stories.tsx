@@ -16,7 +16,7 @@ export const Default: ComponentStory<typeof FieldRte> = Template.bind({})
 Default.args = {
     name: 'field-rte',
     onBlur: console.log,
-    value: '<p>InitialValue</p><ul><li>List<ul><li>List 1</li><li>List 2</li></ul></li></ul>',
+    value: '<p>InitialValue</p><ul><li>List<ul><li>List 1</li><li>List 2</li></ul></li></ul><p>Hier nog meer content.</p>',
 }
 
 export const Disabled: ComponentStory<typeof FieldRte> = Template.bind({})

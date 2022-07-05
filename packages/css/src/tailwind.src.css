@@ -264,6 +264,28 @@ h6,
     font-size: 1rem;
 }
 
+.quill .ql-container .ql-editor p,
+.quill .ql-container .ql-editor ul {
+    margin-bottom: 20px;
+}
+
+.quill .ql-container .ql-editor ul {
+    padding-left: 0;
+}
+
+.quill .ql-container .ql-editor strong {
+    font-family: 'Karbon Medium', sans-serif;
+    font-weight: 700;
+}
+
+.quill .ql-container .ql-editor ul li {
+    padding-left: 20px;
+}
+
+.quill .ql-container .ql-editor ul li.ql-indent-1 {
+    padding-left: 40px;
+}
+
 .quill .editor.ql-container.ql-snow .ql-editor h2 {
     font-size: 1.125rem;
     margin-top: 10px;

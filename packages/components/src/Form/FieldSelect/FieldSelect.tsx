@@ -61,7 +61,9 @@ export function FieldSelect({
                             />
                         ),
                         DropdownIndicator: () => (
-                            <AngleDown className="text-pzh-blue-dark" />
+                            <div className="mr-4">
+                                <AngleDown className="text-pzh-blue-dark" />
+                            </div>
                         ),
                         IndicatorSeparator: () => null,
                         Placeholder: props => (
@@ -134,7 +136,7 @@ export function FieldSelect({
                         }),
                         indicatorsContainer: (css, state) => ({
                             ...css,
-                            width: 48,
+                            // width: 48,
                             justifyContent: 'center',
                             ...(state.isDisabled && {
                                 opacity: 0.55,

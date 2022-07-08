@@ -28,7 +28,7 @@ export function FormikSelect({
                         )}
                         onBlur={() => form.setFieldTouched(name, true)}
                         onChange={(item: any) => {
-                            form.setFieldValue(name, item?.value || null)
+                            form.setFieldValue(name, item?.value || '')
                         }}
                         hasError={Boolean(meta.touched && meta.error)}
                     />

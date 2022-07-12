@@ -14,13 +14,13 @@ const Template = (args: NotificationProps) => <Notification {...args} />
 export const Info: ComponentStory<typeof Notification> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Info.args = {
-    text: 'Dit is een toelichting.',
+    children: 'Dit is een toelichting.',
     variant: 'info',
 }
 
 export const Alert: ComponentStory<typeof Notification> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Alert.args = {
-    text: 'Dit is een melding.',
+    children: 'Dit is een melding.',
     variant: 'alert',
 }

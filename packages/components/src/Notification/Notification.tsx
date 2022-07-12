@@ -32,6 +32,11 @@ export const Notification = ({
                 <CircleInfo size={20} className="mt-[3px]" />
             )}
         </div>
-        <p className="ml-2 md:ml-4 leading-[30px]">{children}</p>
+        <p
+            className={classNames('ml-2 md:ml-4', {
+                'leading-[30px]': size === 'normal',
+            })}>
+            {children}
+        </p>
     </div>
 )

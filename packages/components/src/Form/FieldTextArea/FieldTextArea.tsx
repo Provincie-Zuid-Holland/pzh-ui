@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react'
+import React, { ReactNode, useLayoutEffect, useRef } from 'react'
 import classNames from 'classnames'
 
 import { FieldLabel } from '../FieldLabel'
@@ -38,7 +38,7 @@ export const FieldTextArea = ({
     }
 
     // Update size of textarea on initial load
-    useEffect(() => resizeTextarea(), [])
+    useLayoutEffect(() => resizeTextarea())
 
     return (
         <>

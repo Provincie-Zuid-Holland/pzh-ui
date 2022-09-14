@@ -14,6 +14,7 @@ export function FormikFileUpload({
     ...props
 }: FormikFileUploadProps) {
     const Component = optimized ? FastField : Field
+    const { onChange } = props
 
     return (
         <>
@@ -22,7 +23,7 @@ export function FormikFileUpload({
                     <FieldFileUpload
                         {...props}
                         {...field}
-                        onChange={item => {
+                        onChange={onChange ? onChange : item => {
                             form.setFieldValue(name, item)
                         }}
                     />

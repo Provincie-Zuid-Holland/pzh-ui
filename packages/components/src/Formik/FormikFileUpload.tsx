@@ -3,7 +3,7 @@ import { FastField, Field, FieldProps } from 'formik'
 import { FormikError } from './FormikError'
 import { FieldFileUpload, FieldFileUploadProps } from '../Form/FieldFileUpload'
 
-type FormikFileUploadProps = FieldFileUploadProps & {
+type FormikFileUploadProps = Omit<FieldFileUploadProps, 'onChange'> & {
     optimized?: boolean
 }
 

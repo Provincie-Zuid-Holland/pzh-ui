@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 
 import { ListLink, ListLinkProps } from './ListLink'
 
@@ -10,7 +11,11 @@ describe('ListLink', () => {
 
     const setup = (customProps?: Partial<ListLinkProps>) => {
         const props = { ...defaultProps, ...customProps }
-        render(<ListLink {...props} />)
+        render(
+            <MemoryRouter>
+                <ListLink {...props} />
+            </MemoryRouter>
+        )
     }
 
     it('Component renders', () => {

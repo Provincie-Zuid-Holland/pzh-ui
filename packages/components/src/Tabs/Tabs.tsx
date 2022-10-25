@@ -53,10 +53,10 @@ function Tab({ item, state }: TabProps) {
         <div
             {...tabProps}
             ref={ref}
-            className={classNames('mr-4 -mb-0.5 border-b-2', {
-                'border-pzh-green text-pzh-green font-bold':
+            className={classNames('mr-4 -mb-0.5', {
+                'border-pzh-green border-b-[3px] text-pzh-green font-bold':
                     tabProps['aria-selected'],
-                'border-pzh-gray-400': !tabProps['aria-selected'],
+                'border-pzh-gray-400 border-b-2': !tabProps['aria-selected'],
             })}>
             {rendered}
         </div>

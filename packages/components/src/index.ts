@@ -17,6 +17,7 @@ export * from './DNABar'
 export * from './Divider'
 export * from './BackLink'
 export * from './Table'
+export * from './Tabs'
 export * from './Tooltip'
 export * from './ListLink'
 

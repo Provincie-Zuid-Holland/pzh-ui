@@ -11,6 +11,7 @@ export interface TextProps {
         | 'body-small'
     color?: string
     className?: string
+    id?: string
     children: ReactNode
 }
 
@@ -19,6 +20,7 @@ export const Text = ({
     children,
     color = 'text-pzh-blue-dark',
     className = '',
+    id
 }: TextProps) => {
     const windowSize = useWindowSize()
     const styles = getStylesForElement(windowSize, type)
@@ -26,6 +28,7 @@ export const Text = ({
     if (type === 'quote') {
         return (
             <span
+                id={id}
                 data-testid="quote-span"
                 style={styles}
                 className={`${color} ${className}`}>
@@ -34,13 +37,14 @@ export const Text = ({
         )
     } else if (type === 'span') {
         return (
-            <span style={styles} className={`${color} ${className}`}>
+            <span id={id} style={styles} className={`${color} ${className}`}>
                 {children}
             </span>
         )
     } else if (type === 'subtitle') {
         return (
             <p
+                id={id}
                 style={styles}
                 className={`text-base leading-normal ${color} ${
                     className || 'inline-block'
@@ -51,6 +55,7 @@ export const Text = ({
     } else if (type === 'introduction-paragraph') {
         return (
             <p
+                id={id}
                 style={styles}
                 className={`${color} ${className || 'inline-block'}`}>
                 {children}
@@ -63,6 +68,7 @@ export const Text = ({
     ) {
         return (
             <p
+                id={id}
                 style={styles}
                 className={`${color} ${className || 'inline-block'}`}>
                 {children}

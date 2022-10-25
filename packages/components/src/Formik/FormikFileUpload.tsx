@@ -3,7 +3,8 @@ import { FastField, Field, FieldProps } from 'formik'
 import { FormikError } from './FormikError'
 import { FieldFileUpload, FieldFileUploadProps } from '../Form/FieldFileUpload'
 
-type FormikFileUploadProps = FieldFileUploadProps & {
+type FormikFileUploadProps = Partial<FieldFileUploadProps> & {
+    name: string
     optimized?: boolean
 }
 
@@ -13,6 +14,7 @@ export function FormikFileUpload({
     ...props
 }: FormikFileUploadProps) {
     const Component = optimized ? FastField : Field
+    const { onChange } = props
 
     return (
         <>
@@ -21,7 +23,7 @@ export function FormikFileUpload({
                     <FieldFileUpload
                         {...props}
                         {...field}
-                        onChange={item => {
+                        onChange={onChange ? onChange : item => {
                             form.setFieldValue(name, item)
                         }}
                     />

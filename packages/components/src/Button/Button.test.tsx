@@ -4,9 +4,7 @@ import '@testing-library/jest-dom'
 import { Button, ButtonProps } from './Button'
 
 describe('Button', () => {
-    const defaultProps = {
-        label: 'Button text',
-    }
+    const defaultProps = {}
 
     const setup = (customProps?: Partial<ButtonProps>) => {
         const props = { ...defaultProps, ...customProps }
@@ -20,15 +18,15 @@ describe('Button', () => {
         expect(element).toBeTruthy()
     })
 
-    it('should be possible to click the button when providing onClick', () => {
-        const onClick = jest.fn()
+    it('should be possible to click the button when providing onPress', () => {
+        const onPress = jest.fn()
 
-        setup({ onClick })
+        setup({ onPress })
 
         const element = screen.getByText('Button text')
         expect(element).toBeTruthy()
 
         fireEvent.click(element)
-        expect(onClick).toHaveBeenCalledTimes(1)
+        expect(onPress).toHaveBeenCalledTimes(1)
     })
 })

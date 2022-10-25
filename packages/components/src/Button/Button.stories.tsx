@@ -32,23 +32,23 @@ Primary.args = {
 export const Secondary: ComponentStory<typeof Button> = Template.bind({})
 Secondary.args = {
     variant: 'secondary',
-    label: 'Button',
+    children: 'Button',
 }
 
 export const CTA: ComponentStory<typeof Button> = Template.bind({})
 CTA.args = {
     variant: 'cta',
-    label: 'Button',
+    children: 'Button',
 }
 
 export const Disabled: ComponentStory<typeof Button> = Template.bind({})
 Disabled.args = {
-    label: 'Button',
-    disabled: true,
+    children: 'Button',
+    isDisabled: true,
 }
 
 export const WithIcon: ComponentStory<typeof Button> = Template.bind({})
 WithIcon.args = {
-    label: 'Button',
+    children: 'Button',
     icon: Eye,
 }

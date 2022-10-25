@@ -1,38 +1,34 @@
-import React, { ReactNode } from 'react'
+import { ReactNode, useRef } from 'react'
 import classNames from 'classnames'
 import { Spinner } from '@pzh-ui/icons'
+import { AriaButtonProps, useButton } from 'react-aria'
 
 /**
  * Primary UI component for user interaction
  */
 
-export interface ButtonProps
-    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    label?: string
+export interface ButtonProps extends AriaButtonProps<'button'> {
     variant?: 'primary' | 'secondary' | 'cta'
     size?: 'large' | 'small'
     icon?: any
     isLoading?: boolean
+    className?: string
     children?: ReactNode
 }
 
 export const Button = ({
     variant = 'primary',
-    label,
-    type = 'button',
     size = 'large',
-    disabled,
-    icon,
-    isLoading,
-    className,
-    children,
     ...props
 }: ButtonProps) => {
+    const ref = useRef(null)
+    const { buttonProps } = useButton(props, ref)
+    const { children, isDisabled, isLoading, icon } = props
+
     const Icon = icon && isLoading ? Spinner : icon ? icon : null
 
     return (
         <button
-            type={type}
             className={classNames(
                 'pzh-button',
                 {
@@ -40,17 +36,17 @@ export const Button = ({
                     'text-xs px-[12px] pb-[9px] pt-[12px] h-[36px]':
                         size === 'small',
                     'bg-pzh-blue hover:bg-pzh-blue-dark text-white':
-                        variant === 'primary' && !disabled,
+                        variant === 'primary' && !isDisabled,
                     'text-pzh-blue border border-pzh-blue-dark border-opacity-35 hover:border-opacity-100':
-                        variant === 'secondary' && !disabled,
+                        variant === 'secondary' && !isDisabled,
                     'bg-pzh-green hover:bg-pzh-green-dark text-white':
-                        variant === 'cta' && !disabled,
-                    'cursor-pointer': !disabled,
+                        variant === 'cta' && !isDisabled,
+                    'cursor-pointer': !isDisabled,
                 },
-                className
+                props.className
             )}
-            disabled={disabled}
-            {...props}>
+            ref={ref}
+            {...buttonProps}>
             {Icon ? (
                 <div className="flex items-center">
                     <Icon
@@ -62,7 +58,7 @@ export const Button = ({
                             'animate-spin': isLoading,
                         })}
                     />
-                    <span>{children || label}</span>
+                    <span>{children}</span>
                 </div>
             ) : isLoading ? (
                 <div className="flex items-center">
@@ -74,10 +70,10 @@ export const Button = ({
                             'mr-[8px]': size === 'small',
                         })}
                     />
-                    <span>{children || label}</span>
+                    <span>{children}</span>
                 </div>
             ) : (
-                children || label
+                children
             )}
         </button>
     )

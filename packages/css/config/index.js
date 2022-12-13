@@ -218,6 +218,10 @@ module.exports = {
             'pzh-white': {
                 DEFAULT: '#FFFFFF',
             },
+            'pzh-ui': {
+                white: '#FFFFFF',
+                'light-blue': '#E5EFF8',
+            },
         },
         extend: {
             opacity: {

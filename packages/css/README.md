@@ -10,6 +10,7 @@ After installing the dependency, you can start using the styles as follows:
 
 ```jsx
 // tailwind.config.js
+
 module.exports = {
     presets: [require('@pzh-ui/css/config')],
     content: [

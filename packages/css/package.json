@@ -19,7 +19,7 @@
         "@tailwindcss/line-clamp": "^0.3.1",
         "react-datepicker": "^4.7.0"
     },
-    "gitHead": "119374f6b8dec473c0a29dfe3bb9887b7ea421ab",
+    "gitHead": "2ddf5317b5c742b6e5d2d5417efa730410135caf",
     "devDependencies": {
         "tailwindcss": "^3.0.23"
     }

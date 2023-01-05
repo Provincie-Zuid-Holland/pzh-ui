@@ -35,7 +35,14 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                 {column.canSort ? (
                                     <button
                                         {...column.getSortByToggleProps()}
-                                        className="py-2 px-2 group w-full">
+                                        className="py-2 px-2 group w-full"
+                                        aria-sort={
+                                            column.isSorted
+                                                ? column.isSortedDesc
+                                                    ? 'descending'
+                                                    : 'ascending'
+                                                : 'none'
+                                        }>
                                         <span className="flex items-center">
                                             {column.render('Header')}
 

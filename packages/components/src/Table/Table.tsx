@@ -72,7 +72,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                 ))}
             </thead>
             <tbody {...getTableBodyProps()}>
-                {rows.map((row, index) => {
+                {rows.map(row => {
                     prepareRow(row)
 
                     return (
@@ -90,7 +90,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                 undefined
                             }
                             className="border-b border-pzh-blue-dark border-opacity-35 cursor-pointer hover:bg-pzh-gray-100 focus:bg-pzh-gray-100"
-                            tabIndex={index + 1}>
+                            tabIndex={0}>
                             {row.cells.map(cell => {
                                 return (
                                     <td

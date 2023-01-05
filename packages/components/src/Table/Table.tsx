@@ -25,8 +25,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                 {headerGroups.map(headerGroup => (
                     <tr
                         {...headerGroup.getHeaderGroupProps()}
-                        className="border-b border-pzh-blue-dark border-opacity-35"
-                        tabIndex={0}>
+                        className="border-b border-pzh-blue-dark border-opacity-35">
                         {headerGroup.headers.map(column => (
                             // Add the sorting props to control sorting. For this example
                             // we can add them into the header props
@@ -34,7 +33,10 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                 {...column.getHeaderProps(
                                     column.getSortByToggleProps()
                                 )}
-                                className="py-2 px-2 text-left font-bold group">
+                                className="py-2 px-2 text-left font-bold group"
+                                {...(column.canSort && {
+                                    tabIndex: 0,
+                                })}>
                                 <span className="flex items-center">
                                     {column.render('Header')}
                                     {/* Add a sort direction indicator */}

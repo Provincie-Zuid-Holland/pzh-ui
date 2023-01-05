@@ -30,45 +30,50 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                             // Add the sorting props to control sorting. For this example
                             // we can add them into the header props
                             <th
-                                {...column.getHeaderProps(
-                                    column.getSortByToggleProps()
+                                {...column.getHeaderProps()}
+                                className="text-left font-bold">
+                                {column.canSort ? (
+                                    <button
+                                        {...column.getSortByToggleProps()}
+                                        className="py-2 px-2 group w-full">
+                                        <span className="flex items-center">
+                                            {column.render('Header')}
+
+                                            {/* Add a sort direction indicator */}
+                                            {column.isSortedDesc ? (
+                                                <ArrowDownZA
+                                                    size={18}
+                                                    className={classNames(
+                                                        'ml-2 group-hover:opacity-100',
+                                                        {
+                                                            'opacity-100':
+                                                                column.isSorted,
+                                                            'opacity-0':
+                                                                !column.isSorted,
+                                                        }
+                                                    )}
+                                                />
+                                            ) : (
+                                                <ArrowDownAZ
+                                                    size={18}
+                                                    className={classNames(
+                                                        'ml-2 group-hover:opacity-100',
+                                                        {
+                                                            'opacity-100':
+                                                                column.isSorted,
+                                                            'opacity-0':
+                                                                !column.isSorted,
+                                                        }
+                                                    )}
+                                                />
+                                            )}
+                                        </span>
+                                    </button>
+                                ) : (
+                                    <span className="py-2 px-2">
+                                        {column.render('Header')}
+                                    </span>
                                 )}
-                                className="py-2 px-2 text-left font-bold group"
-                                {...(column.canSort && {
-                                    tabIndex: 0,
-                                })}>
-                                <span className="flex items-center">
-                                    {column.render('Header')}
-                                    {/* Add a sort direction indicator */}
-                                    {column.canSort &&
-                                        (column.isSortedDesc ? (
-                                            <ArrowDownZA
-                                                size={18}
-                                                className={classNames(
-                                                    'ml-2 group-hover:opacity-100',
-                                                    {
-                                                        'opacity-100':
-                                                            column.isSorted,
-                                                        'opacity-0':
-                                                            !column.isSorted,
-                                                    }
-                                                )}
-                                            />
-                                        ) : (
-                                            <ArrowDownAZ
-                                                size={18}
-                                                className={classNames(
-                                                    'ml-2 group-hover:opacity-100',
-                                                    {
-                                                        'opacity-100':
-                                                            column.isSorted,
-                                                        'opacity-0':
-                                                            !column.isSorted,
-                                                    }
-                                                )}
-                                            />
-                                        ))}
-                                </span>
                             </th>
                         ))}
                     </tr>

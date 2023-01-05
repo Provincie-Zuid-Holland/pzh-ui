@@ -31,18 +31,18 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                             // we can add them into the header props
                             <th
                                 {...column.getHeaderProps()}
-                                className="text-left font-bold">
+                                className="text-left font-bold"
+                                {...(column.canSort && {
+                                    'aria-sort': column.isSorted
+                                        ? column.isSortedDesc
+                                            ? 'descending'
+                                            : 'ascending'
+                                        : 'none',
+                                })}>
                                 {column.canSort ? (
                                     <button
                                         {...column.getSortByToggleProps()}
-                                        className="py-2 px-2 group w-full"
-                                        aria-sort={
-                                            column.isSorted
-                                                ? column.isSortedDesc
-                                                    ? 'descending'
-                                                    : 'ascending'
-                                                : 'none'
-                                        }>
+                                        className="py-2 px-2 group w-full">
                                         <span className="flex items-center">
                                             {column.render('Header')}
 

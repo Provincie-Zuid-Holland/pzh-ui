@@ -75,7 +75,7 @@ const ModalInner = ({
     maxWidth,
     position,
     children,
-    overflowVisible
+    overflowVisible,
 }: Partial<ModalProps>) => {
     const { width: screenWidth } = useWindowSize()
 
@@ -125,14 +125,20 @@ const ModalInner = ({
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
                 <div
-                    className={classNames(`inline-block text-left align-bottom transition-all transform bg-white rounded-[4px] shadow-xl sm:my-8 sm:align-middle sm:w-full ${maxWidth}`, {'overflow-hidden': !overflowVisible})}>
+                    className={classNames(
+                        `inline-block text-left align-bottom transition-all transform bg-white rounded-[4px] shadow-xl sm:my-8 sm:align-middle sm:w-full ${maxWidth}`,
+                        { 'overflow-hidden': !overflowVisible }
+                    )}>
                     <div
-                        className={classNames(`${containerPadding}`, {'overflow-y-auto': !overflowVisible, 'overflow-y-visible': overflowVisible})}
+                        className={classNames(`${containerPadding}`, {
+                            'overflow-y-auto': !overflowVisible,
+                            'overflow-y-visible': overflowVisible,
+                        })}
                         style={{
                             maxHeight:
                                 screenWidth < 640
                                     ? 'calc(100vh - 2rem)' // 2rem equals the top and bottom padding
-                                    : '75vh',
+                                    : '90vh',
                         }}>
                         {closeButton && (
                             <div className="absolute top-0 right-0 z-10 block pt-8 pr-8 -mt-8 -mr-8 sm:-mt-2 sm:-mr-2">

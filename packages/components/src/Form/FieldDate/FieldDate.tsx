@@ -23,6 +23,7 @@ export interface FieldDateProps extends Omit<ReactDatePickerProps, 'onChange'> {
     onClose?: () => void
     onChange: (date: Date | null) => void
     hasError?: boolean
+    layout?: 'default' | 'grid'
 }
 
 export const FieldDate = ({
@@ -38,6 +39,7 @@ export const FieldDate = ({
     hasError,
     className,
     value,
+    layout = 'default',
     ...props
 }: FieldDateProps) => {
     const [date, setDate] = useState<Date | null>(
@@ -50,35 +52,46 @@ export const FieldDate = ({
     }, [value])
 
     return (
-        <>
+        <div
+            className={classNames({
+                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+            })}>
             {label && (
                 <FieldLabel
                     name={name}
                     label={label}
                     description={description}
                     required={required}
+                    className={classNames({
+                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                    })}
                 />
             )}
-            <DatePicker
-                locale={nl}
-                name={name}
-                required={required}
-                className={classNames(
-                    'pzh-form-input',
-                    {
-                        'pzh-form-error': hasError,
-                    },
-                    className
-                )}
-                customInput={<DateInput name={name} />}
-                dateFormat={dateFormat}
-                onCalendarClose={onClose}
-                selected={date}
-                placeholderText={placeholder || placeholderText}
-                {...props}
-                onChange={(date: Date | null) => setDate(date)}
-            />
-        </>
+            <div
+                className={classNames({
+                    'md:col-span-4 col-span-6': layout === 'grid',
+                })}>
+                <DatePicker
+                    locale={nl}
+                    name={name}
+                    required={required}
+                    className={classNames(
+                        'pzh-form-input',
+                        {
+                            'pzh-form-error': hasError,
+                        },
+                        className
+                    )}
+                    customInput={<DateInput name={name} />}
+                    dateFormat={dateFormat}
+                    onCalendarClose={onClose}
+                    selected={date}
+                    placeholderText={placeholder || placeholderText}
+                    {...props}
+                    onChange={(date: Date | null) => setDate(date)}
+                />
+            </div>
+        </div>
     )
 }
 

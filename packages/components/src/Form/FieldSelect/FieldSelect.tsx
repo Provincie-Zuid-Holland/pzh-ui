@@ -17,6 +17,7 @@ export interface FieldSelectProps extends Props {
     disabled?: boolean
     hasError?: boolean
     testId?: string
+    layout?: 'default' | 'grid'
 }
 
 export function FieldSelect({
@@ -28,19 +29,30 @@ export function FieldSelect({
     className,
     hasError,
     testId,
+    layout = 'default',
     ...props
 }: FieldSelectProps) {
     return (
-        <>
+        <div
+            className={classNames({
+                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+            })}>
             {label && (
                 <FieldLabel
                     name={name}
                     label={label}
                     description={description}
                     required={required}
+                    className={classNames({
+                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                    })}
                 />
             )}
-            <div data-testid={testId}>
+            <div
+                data-testid={testId}
+                className={classNames('relative', {
+                    'md:col-span-4 col-span-6': layout === 'grid',
+                })}>
                 <ReactSelect
                     isDisabled={disabled}
                     className={className}
@@ -146,6 +158,6 @@ export function FieldSelect({
                     {...props}
                 />
             </div>
-        </>
+        </div>
     )
 }

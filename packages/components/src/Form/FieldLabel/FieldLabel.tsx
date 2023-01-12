@@ -2,6 +2,7 @@
  * Form label element
  */
 
+import classNames from 'classnames'
 import { ReactNode } from 'react'
 
 export interface FieldLabelProps {
@@ -9,6 +10,7 @@ export interface FieldLabelProps {
     label: string
     required?: boolean
     description?: string | ReactNode
+    className?: string
 }
 
 export const FieldLabel = ({
@@ -16,8 +18,9 @@ export const FieldLabel = ({
     label,
     required,
     description,
+    className,
 }: FieldLabelProps) => (
-    <div className="mb-2">
+    <div className={classNames('mb-2', className)}>
         <label htmlFor={name} className="text-pzh-blue-dark font-bold">
             {label}
             {required && <span className="text-pzh-red ml-1">*</span>}

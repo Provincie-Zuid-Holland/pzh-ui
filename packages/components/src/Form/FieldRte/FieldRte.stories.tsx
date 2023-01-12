@@ -37,3 +37,14 @@ WithLabel.args = {
     label: 'WYSIWYG',
     description: 'What you see is what you get',
 }
+
+export const LayoutGrid: ComponentStory<typeof FieldRte> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+LayoutGrid.args = {
+    name: 'field-rte',
+    onBlur: console.log,
+    value: 'InitialValue',
+    label: 'WYSIWYG',
+    description: 'What you see is what you get',
+    layout: 'grid',
+}

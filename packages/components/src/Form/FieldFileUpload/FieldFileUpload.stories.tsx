@@ -26,3 +26,13 @@ WithLabel.args = {
     name: 'file-upload',
     label: 'Form label',
 }
+
+export const LayoutGrid: ComponentStory<typeof FieldFileUpload> = Template.bind(
+    {}
+)
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+LayoutGrid.args = {
+    name: 'file-upload',
+    label: 'Form label',
+    layout: 'grid',
+}

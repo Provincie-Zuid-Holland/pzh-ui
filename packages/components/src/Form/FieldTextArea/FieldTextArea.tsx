@@ -13,6 +13,7 @@ export interface FieldTextAreaProps
     label?: string
     description?: string | ReactNode
     hasError?: boolean
+    layout?: 'default' | 'grid'
 }
 
 export const FieldTextArea = ({
@@ -24,6 +25,7 @@ export const FieldTextArea = ({
     rows = 4,
     className,
     hasError,
+    layout = 'default',
     ...props
 }: FieldTextAreaProps) => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
@@ -41,13 +43,19 @@ export const FieldTextArea = ({
     useLayoutEffect(() => resizeTextarea())
 
     return (
-        <>
+        <div
+            className={classNames({
+                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+            })}>
             {label && (
                 <FieldLabel
                     name={name}
                     label={label}
                     description={description}
                     required={required}
+                    className={classNames({
+                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                    })}
                 />
             )}
             <textarea
@@ -63,11 +71,12 @@ export const FieldTextArea = ({
                     'pzh-form-input overflow-hidden resize-none min-h-[48px]',
                     {
                         'pzh-form-error': hasError,
+                        'md:col-span-4 col-span-6': layout === 'grid',
                     },
                     className
                 )}
                 {...props}
             />
-        </>
+        </div>
     )
 }

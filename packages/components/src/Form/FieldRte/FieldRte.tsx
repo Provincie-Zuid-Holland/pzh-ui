@@ -5,6 +5,7 @@ import ReactQuill, { ReactQuillProps } from 'react-quill'
 
 import { FieldLabel } from '../FieldLabel'
 import { quillDecodeIndent } from '../../utils/quillFixIndent'
+import classNames from 'classnames'
 
 export interface FieldRteProps extends ReactQuillProps {
     name: string
@@ -14,6 +15,7 @@ export interface FieldRteProps extends ReactQuillProps {
     disabled?: boolean
     onBlur?: (value: any) => void
     testId?: string
+    layout?: 'default' | 'grid'
 }
 
 export const FieldRte = ({
@@ -28,6 +30,7 @@ export const FieldRte = ({
     onBlur,
     disabled,
     testId,
+    layout = 'default',
     ...props
 }: FieldRteProps) => {
     const handleBlur: ReactQuillProps['onBlur'] = (
@@ -44,18 +47,27 @@ export const FieldRte = ({
     }
 
     return (
-        <>
+        <div
+            className={classNames({
+                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+            })}>
             {label && (
                 <FieldLabel
                     name={name}
                     label={label}
                     description={description}
                     required={required}
+                    className={classNames({
+                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                    })}
                 />
             )}
             <div
                 data-testid={testId}
-                onDrop={e => !formats.includes('image') && e.preventDefault()}>
+                onDrop={e => !formats.includes('image') && e.preventDefault()}
+                className={classNames({
+                    'md:col-span-4 col-span-6': layout === 'grid',
+                })}>
                 <ReactQuill
                     theme="snow"
                     formats={formats}
@@ -66,7 +78,7 @@ export const FieldRte = ({
                     {...props}
                 />
             </div>
-        </>
+        </div>
     )
 }
 

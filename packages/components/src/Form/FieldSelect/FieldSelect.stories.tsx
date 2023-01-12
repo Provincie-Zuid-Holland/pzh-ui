@@ -107,6 +107,30 @@ WithLabel.args = {
     description: 'Korte omschrijving voor onder het label',
 }
 
+export const LayoutGrid: ComponentStory<typeof FieldSelect> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+LayoutGrid.args = {
+    name: 'select',
+    placeholder: 'Placeholder',
+    options: [
+        {
+            label: 'Option 1',
+            value: 'option-1',
+        },
+        {
+            label: 'Option 2',
+            value: 'option-2',
+        },
+        {
+            label: 'Option 3',
+            value: 'option-3',
+        },
+    ],
+    label: 'Form label',
+    description: 'Korte omschrijving voor onder het label',
+    layout: 'grid',
+}
+
 export const Clearable: ComponentStory<typeof FieldSelect> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Clearable.args = {

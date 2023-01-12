@@ -13,6 +13,7 @@ export interface FieldInputProps extends InputHTMLAttributes<HTMLInputElement> {
     description?: string | ReactNode
     hasError?: boolean
     icon?: any
+    layout?: 'default' | 'grid'
 }
 
 export const FieldInput = ({
@@ -25,18 +26,28 @@ export const FieldInput = ({
     className,
     hasError,
     icon: Icon,
+    layout = 'default',
     ...props
 }: FieldInputProps) => (
-    <>
+    <div
+        className={classNames({
+            'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+        })}>
         {label && (
             <FieldLabel
                 name={name}
                 label={label}
                 description={description}
                 required={required}
+                className={classNames({
+                    'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                })}
             />
         )}
-        <div className="relative">
+        <div
+            className={classNames('relative', {
+                'md:col-span-4 col-span-6': layout === 'grid',
+            })}>
             {Icon && (
                 <Icon
                     size={20}
@@ -61,5 +72,5 @@ export const FieldInput = ({
                 {...props}
             />
         </div>
-    </>
+    </div>
 )

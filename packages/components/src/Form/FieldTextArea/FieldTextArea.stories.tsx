@@ -44,3 +44,15 @@ WithLabel.args = {
     placeholder: 'Tekstvlak',
     label: 'Form label',
 }
+
+export const LayoutGrid: ComponentStory<typeof FieldTextArea> = Template.bind(
+    {}
+)
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+LayoutGrid.args = {
+    placeholder: 'Tekstvlak',
+    label: 'Form label',
+    description: 'Korte omschrijving voor onder het label',
+    required: true,
+    layout: 'grid',
+}

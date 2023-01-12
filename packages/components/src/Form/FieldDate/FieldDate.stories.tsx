@@ -45,3 +45,13 @@ WithLabel.args = {
     label: 'Datum',
     required: true,
 }
+
+export const LayoutGrid: ComponentStory<typeof FieldDate> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+LayoutGrid.args = {
+    name: 'date',
+    placeholderText: 'Datum',
+    label: 'Datum',
+    required: true,
+    layout: 'grid',
+}

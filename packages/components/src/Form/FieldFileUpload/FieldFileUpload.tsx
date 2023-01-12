@@ -19,6 +19,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     description?: string | ReactNode
     required?: boolean
     className?: string
+    layout?: 'default' | 'grid'
 }
 
 export const FieldFileUpload = ({
@@ -35,6 +36,7 @@ export const FieldFileUpload = ({
         'application/vnd.ms-excel',
     ],
     maxSize = 20971520, // = 20 MB
+    layout = 'default',
     ...props
 }: FieldFileUploadProps) => {
     const [myFiles, setMyFiles] = useState<FileWithPath[]>([])
@@ -68,19 +70,26 @@ export const FieldFileUpload = ({
     useUpdateEffect(() => onChange(myFiles), [myFiles])
 
     return (
-        <>
+        <div
+            className={classNames({
+                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+            })}>
             {label && (
                 <FieldLabel
                     name={name}
                     label={label}
                     description={description}
                     required={required}
+                    className={classNames({
+                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                    })}
                 />
             )}
             <div
                 className={classNames(
                     'py-6 text-pzh-blue-dark text-center border border-dashed border-pzh-blue-dark border-opacity-35 rounded-[4px]',
-                    className
+                    className,
+                    { 'md:col-span-4 col-span-6': layout === 'grid' }
                 )}
                 {...getRootProps()}>
                 <input name={name} {...getInputProps()} />
@@ -154,6 +163,6 @@ export const FieldFileUpload = ({
                     ))}
                 </ul>
             )}
-        </>
+        </div>
     )
 }

@@ -1,5 +1,10 @@
 import { ReactNode } from 'react'
-import ReactSelect, { components, Props } from 'react-select'
+import ReactSelect, {
+    components,
+    GroupBase,
+    Props,
+    StylesConfig,
+} from 'react-select'
 import classNames from 'classnames'
 import { AngleDown } from '@pzh-ui/icons'
 
@@ -32,7 +37,6 @@ export function FieldSelect({
     testId,
     layout = 'default',
     tooltip,
-    styles,
     ...props
 }: FieldSelectProps) {
     return (
@@ -108,64 +112,63 @@ export function FieldSelect({
                             />
                         ),
                     }}
-                    styles={{
-                        ...styles,
-                        ...{
-                            control: ({
-                                backgroundColor,
-                                border,
-                                borderColor,
-                                boxShadow,
-                                ...css
-                            }) => ({
-                                ...css,
-                                '&:hover': {},
-                            }),
-                            input: css => ({
-                                ...css,
-                                margin: 0,
-                                padding: 0,
-                                lineHeight: 1,
-                            }),
-                            singleValue: ({ color, ...css }, state) => ({
-                                ...css,
-                                margin: 0,
-                                lineHeight: 1,
-                                ...(state.isDisabled && {
-                                    opacity: 0.55,
-                                }),
-                            }),
-                            valueContainer: css => ({
-                                ...css,
-                                paddingTop: 15,
-                                paddingBottom: 11,
-                                paddingInline: 15,
-                            }),
-                            option: (_, state) => ({
-                                fontWeight: state.isSelected ? 700 : 400,
-                                '&:active': {
-                                    fontWeight: state.isSelected ? 700 : 400,
-                                },
-                            }),
-                            menu: css => ({
-                                ...css,
-                                zIndex: 9999,
-                                marginTop: 0,
-                                boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.10)',
-                            }),
-                            indicatorsContainer: (css, state) => ({
-                                ...css,
-                                // width: 48,
-                                justifyContent: 'center',
-                                ...(state.isDisabled && {
-                                    opacity: 0.55,
-                                }),
-                            }),
-                        },
-                    }}
+                    styles={getSelectStyles()}
                     {...props}
                 />
             </div>
         </div>
     )
 }
+
+export const getSelectStyles = () =>
+    ({
+        control: ({
+            backgroundColor,
+            border,
+            borderColor,
+            boxShadow,
+            ...css
+        }) => ({
+            ...css,
+            '&:hover': {},
+        }),
+        input: css => ({
+            ...css,
+            margin: 0,
+            padding: 0,
+            lineHeight: 1,
+        }),
+        singleValue: ({ color, ...css }, state) => ({
+            ...css,
+            margin: 0,
+            lineHeight: 1,
+            ...(state.isDisabled && {
+                opacity: 0.55,
+            }),
+        }),
+        valueContainer: css => ({
+            ...css,
+            paddingTop: 15,
+            paddingBottom: 11,
+            paddingInline: 15,
+        }),
+        option: (_, state) => ({
+            fontWeight: state.isSelected ? 700 : 400,
+            '&:active': {
+                fontWeight: state.isSelected ? 700 : 400,
+            },
+        }),
+        menu: css => ({
+            ...css,
+            zIndex: 9999,
+            marginTop: 0,
+            boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.10)',
+        }),
+        indicatorsContainer: (css, state) => ({
+            ...css,
+            justifyContent: 'center',
+            ...(state.isDisabled && {
+                opacity: 0.55,
+            }),
+        }),
+    } as StylesConfig<unknown, boolean, GroupBase<unknown>>)

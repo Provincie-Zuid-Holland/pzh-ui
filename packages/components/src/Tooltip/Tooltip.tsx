@@ -100,7 +100,7 @@ export const Tooltip = ({
                         {...getFloatingProps({
                             ref: floating,
                             className:
-                                'px-3 bg-black bg-opacity-80 rounded-[4px] text-white font-normal leading-5',
+                                'px-3 bg-black bg-opacity-80 rounded-[4px] max-w-[300px] text-white font-normal leading-5',
                             style: {
                                 position: strategy,
                                 top: y ?? '',

@@ -18,6 +18,7 @@ export interface FieldSelectProps extends Props {
     hasError?: boolean
     testId?: string
     layout?: 'default' | 'grid'
+    tooltip?: string | JSX.Element
 }
 
 export function FieldSelect({
@@ -30,6 +31,7 @@ export function FieldSelect({
     hasError,
     testId,
     layout = 'default',
+    tooltip,
     ...props
 }: FieldSelectProps) {
     return (
@@ -43,6 +45,7 @@ export function FieldSelect({
                     label={label}
                     description={description}
                     required={required}
+                    tooltip={tooltip}
                     className={classNames({
                         'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
                     })}

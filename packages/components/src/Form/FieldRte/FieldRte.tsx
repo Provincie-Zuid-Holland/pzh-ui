@@ -16,6 +16,7 @@ export interface FieldRteProps extends ReactQuillProps {
     onBlur?: (value: any) => void
     testId?: string
     layout?: 'default' | 'grid'
+    tooltip?: string | JSX.Element
 }
 
 export const FieldRte = ({
@@ -31,6 +32,7 @@ export const FieldRte = ({
     disabled,
     testId,
     layout = 'default',
+    tooltip,
     ...props
 }: FieldRteProps) => {
     const handleBlur: ReactQuillProps['onBlur'] = (
@@ -57,6 +59,7 @@ export const FieldRte = ({
                     label={label}
                     description={description}
                     required={required}
+                    tooltip={tooltip}
                     className={classNames({
                         'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
                     })}

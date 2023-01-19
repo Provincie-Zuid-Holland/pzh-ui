@@ -35,3 +35,12 @@ WithDescription.args = {
     label: 'Form label',
     description: 'Korte omschrijving voor onder het label',
 }
+
+export const WithTooltip: ComponentStory<typeof FieldLabel> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+WithTooltip.args = {
+    name: 'titel',
+    label: 'Form label',
+    description: 'Korte omschrijving voor onder het label',
+    tooltip: 'Dit is een tooltip',
+}

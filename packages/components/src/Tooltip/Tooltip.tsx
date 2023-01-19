@@ -16,7 +16,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 
 export interface TooltipProps {
-    label: string
+    label: string | JSX.Element
     placement?: Placement
     children: JSX.Element
 }

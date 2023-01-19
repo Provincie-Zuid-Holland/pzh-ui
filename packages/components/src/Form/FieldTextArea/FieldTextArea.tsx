@@ -14,6 +14,7 @@ export interface FieldTextAreaProps
     description?: string | ReactNode
     hasError?: boolean
     layout?: 'default' | 'grid'
+    tooltip?: string | JSX.Element
 }
 
 export const FieldTextArea = ({
@@ -26,6 +27,7 @@ export const FieldTextArea = ({
     className,
     hasError,
     layout = 'default',
+    tooltip,
     ...props
 }: FieldTextAreaProps) => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
@@ -53,6 +55,7 @@ export const FieldTextArea = ({
                     label={label}
                     description={description}
                     required={required}
+                    tooltip={tooltip}
                     className={classNames({
                         'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
                     })}

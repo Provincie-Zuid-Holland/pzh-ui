@@ -14,6 +14,7 @@ export interface FieldInputProps extends InputHTMLAttributes<HTMLInputElement> {
     hasError?: boolean
     icon?: any
     layout?: 'default' | 'grid'
+    tooltip?: string | JSX.Element
 }
 
 export const FieldInput = ({
@@ -27,6 +28,7 @@ export const FieldInput = ({
     hasError,
     icon: Icon,
     layout = 'default',
+    tooltip,
     ...props
 }: FieldInputProps) => (
     <div
@@ -39,6 +41,7 @@ export const FieldInput = ({
                 label={label}
                 description={description}
                 required={required}
+                tooltip={tooltip}
                 className={classNames({
                     'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
                 })}

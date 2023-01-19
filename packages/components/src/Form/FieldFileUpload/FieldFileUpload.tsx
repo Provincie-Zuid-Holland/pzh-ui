@@ -20,6 +20,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     required?: boolean
     className?: string
     layout?: 'default' | 'grid'
+    tooltip?: string | JSX.Element
 }
 
 export const FieldFileUpload = ({
@@ -37,6 +38,7 @@ export const FieldFileUpload = ({
     ],
     maxSize = 20971520, // = 20 MB
     layout = 'default',
+    tooltip,
     ...props
 }: FieldFileUploadProps) => {
     const [myFiles, setMyFiles] = useState<FileWithPath[]>([])
@@ -80,6 +82,7 @@ export const FieldFileUpload = ({
                     label={label}
                     description={description}
                     required={required}
+                    tooltip={tooltip}
                     className={classNames({
                         'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
                     })}

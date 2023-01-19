@@ -9,17 +9,19 @@ export interface BreadcrumbsProps {
 }
 
 export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
-    <nav aria-label="Breadcrumb" className={`text-pzh-blue ${className}`}>
+    <nav
+        aria-label="Breadcrumb"
+        className={`w-full text-pzh-blue ${className}`}>
         <ol className="hidden md:flex">
             {items.map((item, index) => {
                 return index === items.length - 1 ? (
-                    <li key={item.name} className="inline-block">
+                    <li key={item.name} className="inline-block truncate">
                         <span aria-current="page">{item.name}</span>
                     </li>
                 ) : (
                     <li
                         key={item.name}
-                        className="flex items-center mr-2 font-bold">
+                        className="flex items-center mr-2 font-bold whitespace-nowrap">
                         <Link to={item.path}>{item.name}</Link>
                         <AngleRight
                             className="ml-2 -mt-[2px] sr-hidden"

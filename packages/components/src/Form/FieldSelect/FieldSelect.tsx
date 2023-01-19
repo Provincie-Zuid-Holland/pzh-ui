@@ -32,6 +32,7 @@ export function FieldSelect({
     testId,
     layout = 'default',
     tooltip,
+    styles,
     ...props
 }: FieldSelectProps) {
     return (
@@ -87,6 +88,7 @@ export function FieldSelect({
                                 className="text-pzh-blue-dark text-opacity-55 m-0 leading-none"
                             />
                         ),
+                        // @ts-ignore
                         Option: props => (
                             <components.Option
                                 {...props}
@@ -107,56 +109,59 @@ export function FieldSelect({
                         ),
                     }}
                     styles={{
-                        control: ({
-                            backgroundColor,
-                            border,
-                            borderColor,
-                            boxShadow,
-                            ...css
-                        }) => ({
-                            ...css,
-                            '&:hover': {},
-                        }),
-                        input: css => ({
-                            ...css,
-                            margin: 0,
-                            padding: 0,
-                            lineHeight: 1,
-                        }),
-                        singleValue: ({ color, ...css }, state) => ({
-                            ...css,
-                            margin: 0,
-                            lineHeight: 1,
-                            ...(state.isDisabled && {
-                                opacity: 0.55,
+                        ...styles,
+                        ...{
+                            control: ({
+                                backgroundColor,
+                                border,
+                                borderColor,
+                                boxShadow,
+                                ...css
+                            }) => ({
+                                ...css,
+                                '&:hover': {},
                             }),
-                        }),
-                        valueContainer: css => ({
-                            ...css,
-                            paddingTop: 15,
-                            paddingBottom: 11,
-                            paddingInline: 15,
-                        }),
-                        option: (_, state) => ({
-                            fontWeight: state.isSelected ? 700 : 400,
-                            '&:active': {
+                            input: css => ({
+                                ...css,
+                                margin: 0,
+                                padding: 0,
+                                lineHeight: 1,
+                            }),
+                            singleValue: ({ color, ...css }, state) => ({
+                                ...css,
+                                margin: 0,
+                                lineHeight: 1,
+                                ...(state.isDisabled && {
+                                    opacity: 0.55,
+                                }),
+                            }),
+                            valueContainer: css => ({
+                                ...css,
+                                paddingTop: 15,
+                                paddingBottom: 11,
+                                paddingInline: 15,
+                            }),
+                            option: (_, state) => ({
                                 fontWeight: state.isSelected ? 700 : 400,
-                            },
-                        }),
-                        menu: css => ({
-                            ...css,
-                            zIndex: 9999,
-                            marginTop: 0,
-                            boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.10)',
-                        }),
-                        indicatorsContainer: (css, state) => ({
-                            ...css,
-                            // width: 48,
-                            justifyContent: 'center',
-                            ...(state.isDisabled && {
-                                opacity: 0.55,
+                                '&:active': {
+                                    fontWeight: state.isSelected ? 700 : 400,
+                                },
                             }),
-                        }),
+                            menu: css => ({
+                                ...css,
+                                zIndex: 9999,
+                                marginTop: 0,
+                                boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.10)',
+                            }),
+                            indicatorsContainer: (css, state) => ({
+                                ...css,
+                                // width: 48,
+                                justifyContent: 'center',
+                                ...(state.isDisabled && {
+                                    opacity: 0.55,
+                                }),
+                            }),
+                        },
                     }}
                     {...props}
                 />

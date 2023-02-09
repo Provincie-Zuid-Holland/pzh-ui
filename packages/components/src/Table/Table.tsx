@@ -90,6 +90,9 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                 {rows.map(row => {
                     prepareRow(row)
 
+                    const hasOnClick =
+                        'onClick' in row.original && !!row.original.onClick
+
                     return (
                         <tr
                             {...row.getRowProps()}
@@ -104,8 +107,14 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                     row.original.onClick?.()) ||
                                 undefined
                             }
-                            className="border-b border-pzh-blue-dark border-opacity-35 cursor-pointer hover:bg-pzh-gray-100 focus:bg-pzh-gray-100"
-                            tabIndex={0}>
+                            className={classNames(
+                                'border-b border-pzh-blue-dark border-opacity-35',
+                                {
+                                    'cursor-pointer hover:bg-pzh-gray-100 focus:bg-pzh-gray-100':
+                                        hasOnClick,
+                                }
+                            )}
+                            tabIndex={hasOnClick ? 0 : undefined}>
                             {row.cells.map(cell => {
                                 return (
                                     <td

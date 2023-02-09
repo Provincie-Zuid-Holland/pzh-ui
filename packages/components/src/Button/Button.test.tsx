@@ -4,7 +4,9 @@ import '@testing-library/jest-dom'
 import { Button, ButtonProps } from './Button'
 
 describe('Button', () => {
-    const defaultProps = {}
+    const defaultProps = {
+        children: 'Button text',
+    }
 
     const setup = (customProps?: Partial<ButtonProps>) => {
         const props = { ...defaultProps, ...customProps }

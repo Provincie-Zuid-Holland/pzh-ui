@@ -14,6 +14,8 @@ const Template = (args: FieldRadioGroupProps) => <FieldRadioGroup {...args} />
 export const Default: ComponentStory<typeof FieldRadioGroup> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+    name: 'radiogroup',
+    label: 'Dit is een vraag',
     options: [
         {
             label: 'Option 1',
@@ -25,4 +27,5 @@ Default.args = {
         },
     ],
     value: 'option-1',
+    optionLayout: 'horizontal',
 }

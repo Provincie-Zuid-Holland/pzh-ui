@@ -7,7 +7,7 @@ import classNames from 'classnames'
 
 export interface FieldRadioProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
-    value?: string
+    value?: string | number
     hasError?: boolean
 }
 

@@ -10,7 +10,7 @@ export interface BreadcrumbsProps {
 
 export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
     <nav
-        aria-label="Breadcrumb"
+        aria-label="Broodkruimelpad"
         className={`w-full text-pzh-blue ${className}`}>
         <ol className="hidden md:flex">
             {items.map((item, index) => {

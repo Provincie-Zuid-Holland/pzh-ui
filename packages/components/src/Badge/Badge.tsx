@@ -2,7 +2,14 @@ import classNames from 'classnames'
 
 export interface BadgeProps {
     text: string
-    variant?: 'green' | 'yellow' | 'red' | 'gray' | 'lightGreen' | 'lightRed'
+    variant?:
+        | 'green'
+        | 'yellow'
+        | 'red'
+        | 'gray'
+        | 'lightGreen'
+        | 'lightRed'
+        | 'purple'
     upperCase?: boolean
     className?: string
 }
@@ -27,6 +34,7 @@ export const Badge = ({
                 'border-pzh-red-light text-pzh-red-light':
                     variant === 'lightRed',
                 'border-pzh-cool-gray text-pzh-cool-gray': variant === 'gray',
+                'border-pzh-purple text-pzh-purple': variant === 'purple',
             },
             className
         )}

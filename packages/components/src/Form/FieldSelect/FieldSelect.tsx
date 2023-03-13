@@ -46,6 +46,7 @@ export function FieldSelect({
     layout = 'default',
     tooltip,
     isAsync,
+    components: providedComponents,
     ...props
 }: FieldSelectProps) {
     const Select = isAsync ? AsyncReactSelect : ReactSelect
@@ -122,6 +123,7 @@ export function FieldSelect({
                                 className="shadow-none focus:shadow-none pzh-select-input"
                             />
                         ),
+                        ...providedComponents,
                     }}
                     styles={getSelectStyles()}
                     {...props}

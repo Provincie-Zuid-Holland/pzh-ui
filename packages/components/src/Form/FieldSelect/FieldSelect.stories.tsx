@@ -1,3 +1,4 @@
+import { MagnifyingGlass } from '@pzh-ui/icons'
 import { ComponentStory } from '@storybook/react'
 
 import { FieldSelect, FieldSelectProps } from './FieldSelect'
@@ -187,4 +188,11 @@ Async.args = {
     loadOptions,
     cacheOptions: true,
     isAsync: true,
+    components: {
+        DropdownIndicator: () => (
+            <div className="mr-4">
+                <MagnifyingGlass className="text-pzh-blue-dark" />
+            </div>
+        ),
+    },
 }

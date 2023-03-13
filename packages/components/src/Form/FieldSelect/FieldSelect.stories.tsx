@@ -152,3 +152,39 @@ Clearable.args = {
     ],
     isClearable: true,
 }
+
+const filterColors = (inputValue: string) => {
+    return [
+        {
+            label: 'Option 1',
+            value: 'option-1',
+        },
+        {
+            label: 'Option 2',
+            value: 'option-2',
+        },
+        {
+            label: 'Option 3',
+            value: 'option-3',
+        },
+    ].filter(i => i.label.toLowerCase().includes(inputValue.toLowerCase()))
+}
+
+const loadOptions = (
+    inputValue: string,
+    callback: (options: { label: string; value: string }[]) => void
+) => {
+    setTimeout(() => {
+        callback(filterColors(inputValue))
+    }, 1000)
+}
+
+export const Async: ComponentStory<typeof FieldSelect> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Async.args = {
+    name: 'select',
+    placeholder: 'Placeholder',
+    loadOptions,
+    cacheOptions: true,
+    isAsync: true,
+}

@@ -5,16 +5,23 @@ import ReactSelect, {
     Props,
     StylesConfig,
 } from 'react-select'
+import AsyncReactSelect, { AsyncProps } from 'react-select/async'
 import classNames from 'classnames'
 import { AngleDown } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
 
+type SelectProps = Props &
+    Pick<
+        AsyncProps<unknown, boolean, GroupBase<unknown>>,
+        'defaultOptions' | 'cacheOptions' | 'loadOptions' | 'isLoading'
+    >
+
 /**
  * Form select element
  */
 
-export interface FieldSelectProps extends Props {
+export interface FieldSelectProps extends SelectProps {
     name: string
     label?: string
     description?: string | ReactNode
@@ -24,6 +31,7 @@ export interface FieldSelectProps extends Props {
     testId?: string
     layout?: 'default' | 'grid'
     tooltip?: string | JSX.Element
+    isAsync?: boolean
 }
 
 export function FieldSelect({
@@ -37,8 +45,11 @@ export function FieldSelect({
     testId,
     layout = 'default',
     tooltip,
+    isAsync,
     ...props
 }: FieldSelectProps) {
+    const Select = isAsync ? AsyncReactSelect : ReactSelect
+
     return (
         <div
             className={classNames({
@@ -61,7 +72,7 @@ export function FieldSelect({
                 className={classNames('relative', {
                     'md:col-span-4 col-span-6': layout === 'grid',
                 })}>
-                <ReactSelect
+                <Select
                     isDisabled={disabled}
                     className={className}
                     name={name}

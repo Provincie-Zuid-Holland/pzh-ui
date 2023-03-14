@@ -1,7 +1,7 @@
 import { FastField, Field, FieldProps } from 'formik'
 
 import { FormikError } from './FormikError'
-import { FieldRte, FieldRteProps } from '../Form/FieldRte'
+import { FieldRte, FieldRteProps } from '../Form/FieldRteDeprecated'
 
 type FormikRteProps = FieldRteProps & {
     name: string

@@ -1,13 +1,13 @@
-import 'react-quill/dist/quill.snow.css'
-
 import { ReactNode } from 'react'
-import ReactQuill, { ReactQuillProps } from 'react-quill'
+import { useEditor, EditorContent } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import Underline from '@tiptap/extension-underline'
 
 import { FieldLabel } from '../FieldLabel'
-import { quillDecodeIndent } from '../../utils/quillFixIndent'
 import classNames from 'classnames'
+import RteMenuBar from './components/RteMenuBar'
 
-export interface FieldRteProps extends ReactQuillProps {
+export interface FieldRteProps {
     name: string
     label?: string
     description?: string | ReactNode
@@ -23,30 +23,15 @@ export const FieldRte = ({
     name,
     label,
     description,
-    className,
     required,
-    formats = DEFAULT_FORMATS,
-    modules = DEFAULT_MODULES,
-    onChange,
-    onBlur,
-    disabled,
     testId,
     layout = 'default',
     tooltip,
-    ...props
 }: FieldRteProps) => {
-    const handleBlur: ReactQuillProps['onBlur'] = (
-        previousSelection,
-        source,
-        editor
-    ) => {
-        const justHtml = editor.getHTML()
-        const fixedHtml = quillDecodeIndent(justHtml)
-
-        onBlur?.(fixedHtml)
-
-        return { previousSelection, source, editor }
-    }
+    const editor = useEditor({
+        extensions: [StarterKit, Underline],
+        content: '<p>Hello World!</p>',
+    })
 
     return (
         <div
@@ -67,67 +52,16 @@ export const FieldRte = ({
             )}
             <div
                 data-testid={testId}
-                onDrop={e => !formats.includes('image') && e.preventDefault()}
                 className={classNames({
                     'md:col-span-4 col-span-6': layout === 'grid',
                 })}>
-                <ReactQuill
-                    theme="snow"
-                    formats={formats}
-                    modules={{ ...modules, ...keyBoardBindings }}
-                    className={className}
-                    onBlur={handleBlur}
-                    readOnly={disabled}
-                    {...props}
-                />
+                <div className="border border-pzh-gray-600 rounded-[4px]">
+                    <RteMenuBar editor={editor} />
+                    <div className="p-4">
+                        <EditorContent editor={editor} />
+                    </div>
+                </div>
             </div>
         </div>
     )
-}
-
-const DEFAULT_MODULES = {
-    toolbar: [
-        ['bold', 'italic', 'underline'],
-        [{ list: 'bullet' }, { list: 'ordered' }],
-    ],
-}
-
-const DEFAULT_FORMATS = ['bold', 'italic', 'underline', 'list', 'indent']
-
-const keyBoardBindings = {
-    keyboard: {
-        bindings: {
-            indent: {
-                key: 9,
-                format: ['blockquote', 'indent', 'list'],
-                handler: function (this: any, range: { index: number }) {
-                    // We want to disable the indentation if:
-                    // - (1) The current line is the first line and the indent level is 0 (not indented)
-                    // - (2) The current line is a list and the previous line is not a list
-                    // - (3) The current line is a list and the previous line too, but the previous lines indentation level is already one level lower
-
-                    const currentLineFormats = this.quill.getFormat(range.index)
-                    const previousLineFormats = this.quill.getFormat(
-                        range.index - 1
-                    )
-                    const currentLineIsAList = !!currentLineFormats.list
-                    const previousLineIsAList = !!previousLineFormats.list
-                    const currentLineIndent = currentLineFormats.indent || 0
-                    const previousLineIndent = previousLineFormats.indent || 0
-
-                    if (
-                        (range.index === 0 && currentLineIndent === 0) ||
-                        (currentLineIsAList && !previousLineIsAList) ||
-                        (currentLineIsAList &&
-                            previousLineIsAList &&
-                            previousLineIndent === currentLineIndent - 1)
-                    ) {
-                        return
-                    }
-
-                    return this.quill.format('indent', '+1', 'user')
-                },
-            },
-        },
-    },
 }

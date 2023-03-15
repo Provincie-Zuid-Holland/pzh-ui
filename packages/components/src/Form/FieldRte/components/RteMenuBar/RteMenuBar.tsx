@@ -27,11 +27,9 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                                     editor.chain().focus().toggleBold().run()
                                 }
                                 disabled={disabled}
-                                className={classNames({
-                                    'bg-pzh-gray-100 text-pzh-green':
-                                        editor.isActive('bold'),
-                                })}
-                                aria-label="bold">
+                                isActive={editor.isActive('bold')}
+                                aria-label="Vetgedrukt"
+                                title="Vetgedrukt">
                                 <Bold />
                             </MenuButton>
                         )
@@ -43,11 +41,9 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                                     editor.chain().focus().toggleItalic().run()
                                 }
                                 disabled={disabled}
-                                className={classNames({
-                                    'bg-pzh-gray-100 text-pzh-green':
-                                        editor.isActive('italic'),
-                                })}
-                                aria-label="italic">
+                                isActive={editor.isActive('italic')}
+                                aria-label="Cursief"
+                                title="Cursief">
                                 <Italic />
                             </MenuButton>
                         )
@@ -63,11 +59,9 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                                         .run()
                                 }
                                 disabled={disabled}
-                                className={classNames({
-                                    'bg-pzh-gray-100 text-pzh-green':
-                                        editor.isActive('underline'),
-                                })}
-                                aria-label="underline">
+                                isActive={editor.isActive('underline')}
+                                aria-label="Onderstreept"
+                                title="Onderstreept">
                                 <Underline />
                             </MenuButton>
                         )
@@ -83,11 +77,9 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                                         .run()
                                 }
                                 disabled={disabled}
-                                className={classNames({
-                                    'bg-pzh-gray-100 text-pzh-green':
-                                        editor.isActive('bulletList'),
-                                })}
-                                aria-label="bullet list">
+                                isActive={editor.isActive('bulletList')}
+                                aria-label="Ongeordende lijst"
+                                title="Ongeordende lijst">
                                 <ListUl />
                             </MenuButton>
                         )
@@ -103,11 +95,9 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                                         .run()
                                 }
                                 disabled={disabled}
-                                className={classNames({
-                                    'bg-pzh-gray-100 text-pzh-green':
-                                        editor.isActive('orderedList'),
-                                })}
-                                aria-label="ordered list">
+                                isActive={editor.isActive('orderedList')}
+                                aria-label="Genummerde lijst"
+                                title="Genummerde lijst">
                                 <ListOl />
                             </MenuButton>
                         )
@@ -115,9 +105,10 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                         return (
                             <label
                                 key={option}
-                                aria-label="Upload afbeelding"
+                                aria-label="Afbeelding"
+                                title="Afbeelding"
                                 className={classNames(
-                                    'w-8 h-8 flex items-center justify-center cursor-pointer',
+                                    'm-0.5 w-7 h-7 flex items-center justify-center cursor-pointer',
                                     {
                                         'pointer-events-none': disabled,
                                     }
@@ -160,14 +151,16 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
 const MenuButton = ({
     className,
     children,
+    isActive,
     ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement>) => (
+}: ButtonHTMLAttributes<HTMLButtonElement> & { isActive: boolean }) => (
     <button
         className={classNames(
-            'w-8 h-8 flex items-center justify-center',
+            'm-0.5 w-7 h-7 flex items-center justify-center rounded-[4px]',
             className,
             {
                 'pointer-events-none': rest.disabled,
+                'bg-pzh-gray-100 text-pzh-green': isActive,
             }
         )}
         type="button"

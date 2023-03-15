@@ -73,7 +73,7 @@ export const FieldRte = ({
         },
         editorProps: {
             attributes: {
-                class: 'prose prose-neutral p-4 max-w-full text-pzh-blue-dark marker:text-pzh-blue-dark leading-6',
+                class: 'prose prose-neutral p-4 max-w-full text-pzh-blue-dark marker:text-pzh-blue-dark leading-6 outline-none',
             },
         },
         injectCSS: false,

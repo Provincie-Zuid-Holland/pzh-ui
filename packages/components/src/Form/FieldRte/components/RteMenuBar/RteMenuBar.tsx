@@ -3,10 +3,13 @@ import { EditorContentProps } from '@tiptap/react'
 import classNames from 'classnames'
 import { ButtonHTMLAttributes } from 'react'
 import { blobToBase64 } from '../../extensions/imageUpload'
-import { TextEditorMenuOptions } from '../../FieldRte'
+import {
+    TextEditorCustomMenuOptions,
+    TextEditorMenuOptions,
+} from '../../FieldRte'
 
 interface RteMenuBarProps extends EditorContentProps {
-    menuOptions: TextEditorMenuOptions[]
+    menuOptions: (TextEditorMenuOptions | TextEditorCustomMenuOptions)[]
 }
 
 const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {

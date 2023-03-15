@@ -32,7 +32,9 @@ export interface FieldRteProps {
     /** Add tooltip element */
     tooltip?: string | JSX.Element
     /** List of menu options that should be enabled */
-    menuOptions: TextEditorMenuOptions[]
+    menuOptions?: TextEditorMenuOptions[]
+    /** List of custom menu options that should be enabled */
+    customMenuOptions?: TextEditorCustomMenuOptions[]
 }
 
 export type TextEditorMenuOptions =
@@ -41,7 +43,8 @@ export type TextEditorMenuOptions =
     | 'underline'
     | 'bulletList'
     | 'orderedList'
-    | 'image'
+
+export type TextEditorCustomMenuOptions = 'image'
 
 export const FieldRte = ({
     name,
@@ -54,14 +57,8 @@ export const FieldRte = ({
     disabled,
     onBlur,
     initialContent,
-    menuOptions = [
-        'bold',
-        'italic',
-        'underline',
-        'bulletList',
-        'orderedList',
-        'image',
-    ],
+    menuOptions = ['bold', 'italic', 'underline', 'bulletList', 'orderedList'],
+    customMenuOptions,
 }: FieldRteProps) => {
     const editor = useEditor({
         extensions: getEditorExtensions(),
@@ -91,7 +88,7 @@ export const FieldRte = ({
             Underline,
         ]
 
-        if (!!menuOptions.find(el => el === 'image'))
+        if (!!customMenuOptions?.find(el => el === 'image'))
             extensions.push(
                 Image.configure({
                     allowBase64: true,
@@ -145,7 +142,10 @@ export const FieldRte = ({
                     )}>
                     <RteMenuBar
                         editor={editor}
-                        menuOptions={menuOptions}
+                        menuOptions={[
+                            ...menuOptions,
+                            ...(customMenuOptions || []),
+                        ]}
                         disabled={disabled}
                     />
                     <EditorContent editor={editor} />

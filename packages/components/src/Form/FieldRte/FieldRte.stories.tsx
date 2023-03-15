@@ -41,6 +41,7 @@ Default.args = {
     name: 'field-rte',
     onBlur: console.log,
     initialContent,
+    customMenuOptions: ['image'],
 }
 
 export const Disabled: ComponentStory<typeof FieldRte> = Template.bind({})

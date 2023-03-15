@@ -164,6 +164,7 @@ const MenuButton = ({
                 'pointer-events-none': rest.disabled,
             }
         )}
+        type="button"
         {...rest}>
         {children}
     </button>

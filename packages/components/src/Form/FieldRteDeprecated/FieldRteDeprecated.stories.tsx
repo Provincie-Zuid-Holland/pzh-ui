@@ -1,6 +1,9 @@
 import { ComponentStory } from '@storybook/react'
 
-import { FieldRteDeprecated, FieldRteProps } from './FieldRte'
+import {
+    FieldRteDeprecated,
+    FieldRteDeprecatedProps,
+} from './FieldRteDeprecated'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -9,7 +12,9 @@ export default {
 }
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args: FieldRteProps) => <FieldRteDeprecated {...args} />
+const Template = (args: FieldRteDeprecatedProps) => (
+    <FieldRteDeprecated {...args} />
+)
 
 export const Default: ComponentStory<typeof FieldRteDeprecated> = Template.bind(
     {}

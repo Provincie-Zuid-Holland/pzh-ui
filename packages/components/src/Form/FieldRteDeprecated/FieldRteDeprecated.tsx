@@ -7,7 +7,7 @@ import { FieldLabel } from '../FieldLabel'
 import { quillDecodeIndent } from '../../utils/quillFixIndent'
 import classNames from 'classnames'
 
-export interface FieldRteProps extends ReactQuillProps {
+export interface FieldRteDeprecatedProps extends ReactQuillProps {
     name: string
     label?: string
     description?: string | ReactNode
@@ -34,7 +34,7 @@ export const FieldRteDeprecated = ({
     layout = 'default',
     tooltip,
     ...props
-}: FieldRteProps) => {
+}: FieldRteDeprecatedProps) => {
     const handleBlur: ReactQuillProps['onBlur'] = (
         previousSelection,
         source,

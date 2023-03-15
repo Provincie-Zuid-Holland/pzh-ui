@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { FieldRteDeprecated } from './FieldRte'
+import { FieldRteDeprecated } from './FieldRteDeprecated'
 
 describe('FieldRte', () => {
     const defaultProps = {

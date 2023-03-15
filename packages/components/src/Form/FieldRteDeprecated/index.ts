@@ -1,1 +1,1 @@
-export * from './FieldRte'
+export * from './FieldRteDeprecated'

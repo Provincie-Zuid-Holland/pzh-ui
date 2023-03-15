@@ -22,6 +22,7 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                     case 'bold':
                         return (
                             <MenuButton
+                                key={option}
                                 onClick={() =>
                                     editor.chain().focus().toggleBold().run()
                                 }
@@ -37,6 +38,7 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                     case 'italic':
                         return (
                             <MenuButton
+                                key={option}
                                 onClick={() =>
                                     editor.chain().focus().toggleItalic().run()
                                 }
@@ -52,6 +54,7 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                     case 'underline':
                         return (
                             <MenuButton
+                                key={option}
                                 onClick={() =>
                                     editor
                                         .chain()
@@ -71,6 +74,7 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                     case 'bulletList':
                         return (
                             <MenuButton
+                                key={option}
                                 onClick={() =>
                                     editor
                                         .chain()
@@ -90,6 +94,7 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                     case 'orderedList':
                         return (
                             <MenuButton
+                                key={option}
                                 onClick={() =>
                                     editor
                                         .chain()
@@ -109,6 +114,7 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                     case 'image':
                         return (
                             <label
+                                key={option}
                                 aria-label="Upload afbeelding"
                                 className={classNames(
                                     'w-8 h-8 flex items-center justify-center cursor-pointer',

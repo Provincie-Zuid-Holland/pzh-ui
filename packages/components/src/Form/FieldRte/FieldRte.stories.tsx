@@ -1,4 +1,6 @@
 import { ComponentStory } from '@storybook/react'
+import { Form, Formik } from 'formik'
+import { FormikRte } from '../../Formik'
 
 import { FieldRte, FieldRteProps } from './FieldRte'
 
@@ -35,7 +37,15 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: FieldRteProps) => <FieldRte {...args} />
 
-export const Default: ComponentStory<typeof FieldRte> = Template.bind({})
+const Test = (args: FieldRteProps) => (
+    <Formik initialValues={{ 'field-rte': '' }} onSubmit={console.log}>
+        <Form>
+            <FormikRte {...args} />
+        </Form>
+    </Formik>
+)
+
+export const Default: ComponentStory<typeof FieldRte> = Test.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
     name: 'field-rte',

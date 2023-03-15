@@ -1,25 +1,25 @@
 import { FastField, Field, FieldProps } from 'formik'
 
 import { FormikError } from './FormikError'
-import { FieldRte, FieldRteProps } from '../Form/FieldRteDeprecated'
+import { FieldRteDeprecated, FieldRteProps } from '../Form/FieldRteDeprecated'
 
-type FormikRteProps = FieldRteProps & {
+type FormikRteDeprecatedProps = FieldRteProps & {
     name: string
     optimized?: boolean
 }
 
-export const FormikRte = ({
+export const FormikRteDeprecated = ({
     name,
     optimized = true,
     ...props
-}: FormikRteProps) => {
+}: FormikRteDeprecatedProps) => {
     const Component = optimized ? FastField : Field
 
     return (
         <>
             <Component name={name}>
                 {({ field, form }: FieldProps<any>) => (
-                    <FieldRte
+                    <FieldRteDeprecated
                         {...props}
                         {...field}
                         value={field.value ?? ''}

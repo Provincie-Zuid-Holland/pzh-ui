@@ -34,6 +34,7 @@
         "@floating-ui/react-dom-interactions": "^0.3.1",
         "@headlessui/react": "^1.5.0",
         "@pzh-ui/icons": "^0.0.18",
+        "@tiptap/extension-image": "^2.0.0-beta.220",
         "@tiptap/extension-underline": "^2.0.0-beta.220",
         "@tiptap/pm": "^2.0.0-beta.220",
         "@tiptap/react": "^2.0.0-beta.220",
@@ -97,5 +98,5 @@
             "^.+\\.svg$": "<rootDir>/jest.svgMock.js"
         }
     },
-    "gitHead": "a9d77a5dea8a50064a774ff25a1ef25f839b3392"
+    "gitHead": "ba90c332f541f879ea52948ca52434d692f6a11a"
 }

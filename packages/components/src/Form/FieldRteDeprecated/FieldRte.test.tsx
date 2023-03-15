@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { FieldRte } from './FieldRte'
+import { FieldRteDeprecated } from './FieldRte'
 
 describe('FieldRte', () => {
     const defaultProps = {
@@ -11,7 +11,7 @@ describe('FieldRte', () => {
 
     it('should render', () => {
         const props = { ...defaultProps }
-        render(<FieldRte {...props} />)
+        render(<FieldRteDeprecated {...props} />)
 
         expect(screen.getByText('InitialValue')).toBeTruthy()
     })

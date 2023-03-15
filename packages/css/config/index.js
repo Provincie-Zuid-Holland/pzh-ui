@@ -14,6 +14,7 @@ module.exports = {
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/forms'),
         require('@tailwindcss/custom-forms'),
+        require('@tailwindcss/typography'),
     ],
     theme: {
         screens: {
@@ -230,6 +231,17 @@ module.exports = {
             },
             boxShadow: {
                 card: '0px 18px 60px rgba(0, 0, 0, 0.07), 0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275), 0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725)',
+            },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        li: {
+                            p: {
+                                margin: 0,
+                            },
+                        },
+                    },
+                },
             },
         },
     },

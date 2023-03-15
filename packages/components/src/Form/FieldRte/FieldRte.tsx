@@ -1,23 +1,47 @@
 import { ReactNode } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
+import { Editor, Extensions } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
+import Image from '@tiptap/extension-image'
 
 import { FieldLabel } from '../FieldLabel'
 import classNames from 'classnames'
 import RteMenuBar from './components/RteMenuBar'
+import ImageUpload from './extensions/imageUpload'
 
 export interface FieldRteProps {
+    /** Name text */
     name: string
+    /** Label text */
     label?: string
+    /** Description underneath the label */
     description?: string | ReactNode
+    /** Is field required */
     required?: boolean
+    /** Applies disabled styling and disables the editor */
     disabled?: boolean
-    onBlur?: (value: any) => void
+    /** Is called when the text is updated on blur */
+    onBlur: (value: string) => void
+    /** Sets the initial text of the editor */
+    initialContent?: string
+    /** Add test-id for test purposes */
     testId?: string
+    /** List of menu options that should be enabled */
     layout?: 'default' | 'grid'
+    /** Add tooltip element */
     tooltip?: string | JSX.Element
+    /** List of menu options that should be enabled */
+    menuOptions: TextEditorMenuOptions[]
 }
+
+export type TextEditorMenuOptions =
+    | 'bold'
+    | 'italic'
+    | 'underline'
+    | 'bulletList'
+    | 'orderedList'
+    | 'image'
 
 export const FieldRte = ({
     name,
@@ -27,11 +51,68 @@ export const FieldRte = ({
     testId,
     layout = 'default',
     tooltip,
+    disabled,
+    onBlur,
+    initialContent,
+    menuOptions = [
+        'bold',
+        'italic',
+        'underline',
+        'bulletList',
+        'orderedList',
+        'image',
+    ],
 }: FieldRteProps) => {
     const editor = useEditor({
-        extensions: [StarterKit, Underline],
-        content: '<p>Hello World!</p>',
+        extensions: getEditorExtensions(),
+        editable: !disabled,
+        content: initialContent,
+        onBlur({ editor }) {
+            handleUpdate(editor)
+        },
+        editorProps: {
+            attributes: {
+                class: 'prose prose-neutral p-4 max-w-full text-pzh-blue-dark marker:text-pzh-blue-dark leading-6',
+            },
+        },
+        injectCSS: false,
     })
+
+    function getEditorExtensions() {
+        const extensions: Extensions = [
+            StarterKit.configure({
+                blockquote: false,
+                code: false,
+                codeBlock: false,
+                strike: false,
+                heading: false,
+                horizontalRule: false,
+            }),
+            Underline,
+        ]
+
+        if (!!menuOptions.find(el => el === 'image'))
+            extensions.push(
+                Image.configure({
+                    allowBase64: true,
+                }),
+                ImageUpload
+            )
+
+        return extensions
+    }
+
+    const handleUpdate = (editor: Editor) => {
+        const html = editor.getHTML()
+
+        // When the editor is empty, it still returns <p></p>.
+        // We need to make sure we return an empty string in that case.
+        if (html === '<p></p>') {
+            onBlur('')
+        } else {
+            onBlur(html)
+        }
+    }
 
     return (
         <div
@@ -55,11 +136,19 @@ export const FieldRte = ({
                 className={classNames({
                     'md:col-span-4 col-span-6': layout === 'grid',
                 })}>
-                <div className="border border-pzh-gray-600 rounded-[4px]">
-                    <RteMenuBar editor={editor} />
-                    <div className="p-4">
-                        <EditorContent editor={editor} />
-                    </div>
+                <div
+                    className={classNames(
+                        'border border-pzh-gray-600 rounded-[4px]',
+                        {
+                            'bg-pzh-gray-100': disabled,
+                        }
+                    )}>
+                    <RteMenuBar
+                        editor={editor}
+                        menuOptions={menuOptions}
+                        disabled={disabled}
+                    />
+                    <EditorContent editor={editor} />
                 </div>
             </div>
         </div>

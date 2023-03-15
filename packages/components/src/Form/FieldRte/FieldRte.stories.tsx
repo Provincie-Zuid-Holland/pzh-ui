@@ -41,6 +41,7 @@ Default.args = {
     name: 'field-rte',
     onBlur: console.log,
     initialContent,
+    placeholder: 'Start met typen...',
     customMenuOptions: ['image'],
 }
 

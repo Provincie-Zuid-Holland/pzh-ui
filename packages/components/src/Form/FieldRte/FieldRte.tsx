@@ -4,6 +4,7 @@ import { Editor, Extensions } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
+import Placeholder from '@tiptap/extension-placeholder'
 
 import { FieldLabel } from '../FieldLabel'
 import classNames from 'classnames'
@@ -17,6 +18,8 @@ export interface FieldRteProps {
     label?: string
     /** Description underneath the label */
     description?: string | ReactNode
+    /** Placeholder text */
+    placeholder?: string
     /** Is field required */
     required?: boolean
     /** Applies disabled styling and disables the editor */
@@ -50,6 +53,7 @@ export const FieldRte = ({
     name,
     label,
     description,
+    placeholder,
     required,
     testId,
     layout = 'default',
@@ -87,6 +91,13 @@ export const FieldRte = ({
             }),
             Underline,
         ]
+
+        if (placeholder)
+            extensions.push(
+                Placeholder.configure({
+                    placeholder,
+                })
+            )
 
         if (!!customMenuOptions?.find(el => el === 'image'))
             extensions.push(

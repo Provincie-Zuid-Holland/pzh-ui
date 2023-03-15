@@ -1,9 +1,12 @@
 import { FastField, Field, FieldProps } from 'formik'
 
 import { FormikError } from './FormikError'
-import { FieldRteDeprecated, FieldRteProps } from '../Form/FieldRteDeprecated'
+import {
+    FieldRteDeprecated,
+    FieldRteDeprecatedProps,
+} from '../Form/FieldRteDeprecated'
 
-type FormikRteDeprecatedProps = FieldRteProps & {
+type FormikRteDeprecatedProps = FieldRteDeprecatedProps & {
     name: string
     optimized?: boolean
 }

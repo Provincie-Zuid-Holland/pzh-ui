@@ -25,7 +25,7 @@ export interface FieldRteProps {
     /** Applies disabled styling and disables the editor */
     disabled?: boolean
     /** Is called when the text is updated on blur */
-    onBlur: (value: string) => void
+    onBlur?: (value: string) => void
     /** Sets the initial text of the editor */
     initialContent?: string
     /** Add test-id for test purposes */
@@ -116,9 +116,9 @@ export const FieldRte = ({
         // When the editor is empty, it still returns <p></p>.
         // We need to make sure we return an empty string in that case.
         if (html === '<p></p>') {
-            onBlur('')
+            onBlur?.('')
         } else {
-            onBlur(html)
+            onBlur?.(html)
         }
     }
 

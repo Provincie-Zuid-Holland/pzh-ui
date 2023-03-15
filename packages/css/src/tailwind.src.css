@@ -307,9 +307,9 @@ b {
 }
 
 .ProseMirror p.is-editor-empty:first-child::before {
+    @apply text-pzh-blue-dark/55;
     content: attr(data-placeholder);
     float: left;
-    color: #adb5bd;
     pointer-events: none;
     height: 0;
 }

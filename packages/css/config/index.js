@@ -239,6 +239,12 @@ module.exports = {
                             p: {
                                 margin: 0,
                             },
+                            '&>ol': {
+                                margin: 0,
+                            },
+                            '&>ul': {
+                                margin: 0,
+                            },
                         },
                     },
                 },

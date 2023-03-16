@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import { Editor, Extensions } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
@@ -121,6 +121,15 @@ export const FieldRte = ({
             onBlur?.(html)
         }
     }
+
+    useEffect(() => {
+        if (!editor) return
+
+        editor.off('blur')
+        editor.on('blur', ({ editor }) => {
+            handleUpdate(editor)
+        })
+    }, [editor, handleUpdate])
 
     return (
         <div

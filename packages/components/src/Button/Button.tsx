@@ -8,7 +8,7 @@ import { AriaButtonProps, useButton } from 'react-aria'
  */
 
 export interface ButtonProps extends AriaButtonProps<'button'> {
-    variant?: 'primary' | 'secondary' | 'cta'
+    variant?: 'primary' | 'secondary' | 'cta' | 'link'
     size?: 'large' | 'small'
     icon?: any
     isLoading?: boolean
@@ -32,9 +32,12 @@ export const Button = ({
             className={classNames(
                 'pzh-button',
                 {
-                    'px-4 pt-[15px] pb-[12px] h-[48px]': size === 'large',
-                    'text-xs px-[12px] pb-[9px] pt-[10px] h-[36px]':
-                        size === 'small',
+                    'pt-[15px] pb-[12px] h-[48px]': size === 'large',
+                    'px-4': size === 'large' && variant !== 'link',
+                    'text-xs pb-[9px] pt-[10px] h-[36px]': size === 'small',
+                    'px-[12px]': size === 'small' && variant !== 'link',
+                    'underline font-normal': variant === 'link',
+                    'font-bold': variant !== 'link',
                     'bg-pzh-blue hover:bg-pzh-blue-dark text-white':
                         variant === 'primary' && !isDisabled,
                     'text-pzh-blue border border-pzh-blue-dark border-opacity-35 hover:border-opacity-100':

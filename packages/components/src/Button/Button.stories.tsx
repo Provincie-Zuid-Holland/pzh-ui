@@ -52,3 +52,9 @@ WithIcon.args = {
     children: 'Button',
     icon: Eye,
 }
+
+export const Link: ComponentStory<typeof Button> = Template.bind({})
+Link.args = {
+    children: 'Button',
+    variant: 'link',
+}

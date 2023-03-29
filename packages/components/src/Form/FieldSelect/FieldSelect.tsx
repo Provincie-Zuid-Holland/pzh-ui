@@ -47,6 +47,7 @@ export function FieldSelect({
     tooltip,
     isAsync,
     components: providedComponents,
+    styles: providedStyles,
     ...props
 }: FieldSelectProps) {
     const Select = isAsync ? AsyncReactSelect : ReactSelect
@@ -125,7 +126,7 @@ export function FieldSelect({
                         ),
                         ...providedComponents,
                     }}
-                    styles={getSelectStyles()}
+                    styles={{ ...getSelectStyles(), ...providedStyles }}
                     {...props}
                 />
             </div>

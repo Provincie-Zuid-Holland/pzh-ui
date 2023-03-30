@@ -83,12 +83,10 @@ export function FieldSelect({
                             <components.Control
                                 {...props}
                                 className={classNames(
-                                    'border-pzh-blue-dark border-opacity-35 bg-white hover:border-pzh-blue-dark hover:border-opacity-35',
+                                    'border-pzh-gray-600 bg-white hover:border-pzh-blue-dark',
                                     {
-                                        'bg-pzh-gray-200 border-opacity-10':
-                                            props.isDisabled,
-                                        'border-pzh-red border-opacity-100':
-                                            hasError,
+                                        'border-pzh-red': hasError,
+                                        'bg-pzh-gray-200': props.isDisabled,
                                     }
                                 )}
                             />
@@ -102,7 +100,7 @@ export function FieldSelect({
                         Placeholder: props => (
                             <components.Placeholder
                                 {...props}
-                                className="text-pzh-blue-dark text-opacity-55 m-0 leading-none"
+                                className="text-pzh-gray-600 m-0 leading-none"
                             />
                         ),
                         // @ts-ignore

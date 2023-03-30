@@ -31,7 +31,7 @@ export const FieldCheckbox = ({
             className={classNames(
                 'relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px]',
                 {
-                    'text-opacity-35': disabled,
+                    'text-pzh-gray-600': disabled,
                 }
             )}>
             {children}

@@ -40,7 +40,7 @@ export const Button = ({
                     'font-bold': variant !== 'link',
                     'bg-pzh-blue hover:bg-pzh-blue-dark text-white':
                         variant === 'primary' && !isDisabled,
-                    'text-pzh-blue border border-pzh-blue-dark border-opacity-35 hover:border-opacity-100':
+                    'text-pzh-blue border border-pzh-gray-600 hover:border-pzh-blue':
                         variant === 'secondary' && !isDisabled,
                     'bg-pzh-green hover:bg-pzh-green-dark text-white':
                         variant === 'cta' && !isDisabled,

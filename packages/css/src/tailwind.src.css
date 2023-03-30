@@ -62,7 +62,7 @@ b {
 }
 
 .pzh-form-input {
-    @apply block w-full pt-[10px] pb-[6px] leading-[30px] placeholder-pzh-blue-dark placeholder-opacity-55 text-pzh-blue-dark border border-pzh-blue-dark border-opacity-35 rounded appearance-none focus:outline-none hover:border-gray-500 focus:border-pzh-blue-light disabled:border-pzh-blue-dark disabled:border-opacity-10 disabled:bg-pzh-gray-200 disabled:text-opacity-55;
+    @apply block w-full pt-[10px] pb-[6px] leading-[30px] placeholder-pzh-gray-600 text-pzh-blue-dark border border-pzh-gray-600 rounded appearance-none focus:outline-none hover:border-pzh-blue-dark focus:border-pzh-blue-light disabled:bg-pzh-gray-200;
 }
 
 .pzh-form-error,
@@ -74,7 +74,7 @@ b {
 
 .pzh-form-radio:checked + span:before,
 .pzh-form-radio:not(:checked) + span:before {
-    @apply absolute left-0 top-0 w-[24px] h-[24px] border-pzh-blue-dark border border-opacity-35 bg-pzh-form rounded-full;
+    @apply absolute left-0 top-0 w-[24px] h-[24px] border-pzh-gray-600 border bg-pzh-gray-200 rounded-full;
     content: '';
 }
 .pzh-form-radio:checked + span:after,
@@ -98,7 +98,7 @@ b {
 }
 
 .pzh-form-checkbox + span:before {
-    @apply absolute left-0 top-0 w-[24px] h-[24px] border-pzh-blue-dark border border-opacity-35 bg-pzh-form rounded-[4px] transition duration-200;
+    @apply absolute left-0 top-0 w-[24px] h-[24px] border-pzh-gray-600 border bg-pzh-gray-200 rounded-[4px] transition duration-200;
     content: '';
 }
 

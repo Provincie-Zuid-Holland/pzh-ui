@@ -23,8 +23,9 @@ export const FormikRte = ({
                         {...props}
                         {...field}
                         initialContent={field.value ?? ''}
-                        onBlur={value => {
-                            form.setFieldValue(name, value, true)
+                        onBlur={async value => {
+                            await form.setFieldValue(name, value)
+                            form.setFieldTouched(name, true)
                         }}
                         hasError={Boolean(meta.touched && meta.error)}
                     />

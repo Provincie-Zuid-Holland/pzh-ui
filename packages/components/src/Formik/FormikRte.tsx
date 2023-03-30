@@ -25,6 +25,7 @@ export const FormikRte = ({
                         initialContent={field.value ?? ''}
                         onBlur={value => {
                             form.setFieldValue(name, value)
+                            form.validateField(name)
                             form.setFieldTouched(name, true)
                         }}
                         hasError={Boolean(meta.touched && meta.error)}

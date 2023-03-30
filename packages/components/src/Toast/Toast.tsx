@@ -1,4 +1,9 @@
-import { Xmark } from '@pzh-ui/icons'
+import {
+    CircleCheck,
+    CircleInfo,
+    TriangleExclamation,
+    Xmark,
+} from '@pzh-ui/icons'
 import classNames from 'classnames'
 import {
     toast,
@@ -8,38 +13,45 @@ import {
 import 'react-toastify/dist/ReactToastify.min.css'
 
 const contextClass = {
-    success: '',
-    error: '',
-    info: '',
-    warning: '',
-    default: '',
-    dark: '',
+    success: 'bg-pzh-green',
+    error: 'bg-pzh-red',
+    info: 'bg-pzh-blue-light',
+    warning: 'bg-pzh-orange',
+    default: 'bg-pzh-green',
+    dark: 'bg-pzh-green',
 }
 
 const contextIcon = {
-    success: '',
-    error: '',
-    info: '',
-    warning: '',
-    default: '',
-    dark: '',
+    success: <CircleCheck size={20} className="text-pzh-green" />,
+    error: <TriangleExclamation size={20} className="text-pzh-red" />,
+    info: <CircleInfo size={20} className="text-pzh-blue-light" />,
+    warning: <TriangleExclamation size={20} className="text-pzh-orange" />,
+    default: <CircleCheck size={20} className="text-pzh-green" />,
+    dark: <CircleCheck size={20} className="text-pzh-green" />,
 }
 
 export type ToastContainerProps = ContainerProps
 
 export const ToastContainer = ({ ...props }: ToastContainerProps) => (
     <Container
-        toastClassName={context =>
+        className="!w-max min-w-[320px] max-w-[400px]"
+        toastClassName={() =>
+            'relative mt-3 p-3 flex items-center rounded-[4px] shadow-card justify-between overflow-hidden cursor-pointer bg-white text-pzh-blue-dark'
+        }
+        bodyClassName={() => 'pr-2 flex items-center leading-none'}
+        closeButton={() => <Xmark size={18} />}
+        progressClassName={context =>
             classNames(
                 contextClass[context?.type || 'default'],
-                'relative mt-3 w-[320px] py-2 px-3 flex items-center rounded-[4px] shadow-card justify-between overflow-hidden cursor-pointer text-pzh-blue-dark'
+                'Toastify__progress-bar--animated absolute bottom-0 left-0 w-full h-[4px] origin-left'
             )
         }
-        bodyClassName={() => 'flex items-center'}
-        closeButton={() => <Xmark size={18} />}
-        icon={() => <Xmark size={18} />}
+        icon={context => (
+            <div className="-mt-[4px]">{contextIcon[context.type]}</div>
+        )}
         position="bottom-right"
-        autoClose={false}
+        draggable={false}
+        limit={5}
         {...props}
     />
 )

@@ -71,3 +71,13 @@ LayoutGrid.args = {
     layout: 'grid',
     initialContent,
 }
+
+export const WithError: ComponentStory<typeof FieldRte> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+WithError.args = {
+    name: 'field-rte',
+    label: 'WYSIWYG',
+    description: 'What you see is what you get',
+    initialContent,
+    hasError: true,
+}

@@ -18,7 +18,7 @@ export const FormikRte = ({
     return (
         <>
             <Component name={name}>
-                {({ field, form }: FieldProps<any>) => (
+                {({ field, form, meta }: FieldProps<any>) => (
                     <FieldRte
                         {...props}
                         {...field}
@@ -26,6 +26,7 @@ export const FormikRte = ({
                         onBlur={value => {
                             form.setFieldValue(name, value)
                         }}
+                        hasError={Boolean(meta.touched && meta.error)}
                     />
                 )}
             </Component>

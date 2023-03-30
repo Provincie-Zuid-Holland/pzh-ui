@@ -38,6 +38,8 @@ export interface FieldRteProps {
     menuOptions?: TextEditorMenuOptions[]
     /** List of custom menu options that should be enabled */
     customMenuOptions?: TextEditorCustomMenuOptions[]
+    /** Has field an error */
+    hasError?: boolean
 }
 
 export type TextEditorMenuOptions =
@@ -63,6 +65,7 @@ export const FieldRte = ({
     initialContent,
     menuOptions = ['bold', 'italic', 'underline', 'bulletList', 'orderedList'],
     customMenuOptions,
+    hasError,
 }: FieldRteProps) => {
     const editor = useEditor({
         extensions: getEditorExtensions(),
@@ -158,6 +161,7 @@ export const FieldRte = ({
                         'border border-pzh-gray-600 rounded-[4px]',
                         {
                             'bg-pzh-gray-100': disabled,
+                            'pzh-form-error': hasError,
                         }
                     )}>
                     <RteMenuBar

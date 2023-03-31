@@ -18,8 +18,14 @@ export const FormikRadio = ({
     return (
         <>
             <Component name={name}>
-                {({ field }: FieldProps<any>) => (
-                    <FieldRadio {...props} {...field} />
+                {({ field, form }: FieldProps<any>) => (
+                    <FieldRadio
+                        {...props}
+                        {...field}
+                        onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                            form.setFieldValue(name, e.currentTarget.value)
+                        }
+                    />
                 )}
             </Component>
             <FormikError name={name} />

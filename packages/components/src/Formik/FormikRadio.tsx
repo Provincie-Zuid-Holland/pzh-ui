@@ -20,8 +20,8 @@ export const FormikRadio = ({
             <Component name={name}>
                 {({ field, form }: FieldProps<any>) => (
                     <FieldRadio
-                        {...props}
                         {...field}
+                        {...props}
                         onChange={(e: React.FormEvent<HTMLInputElement>) =>
                             form.setFieldValue(name, e.currentTarget.value)
                         }

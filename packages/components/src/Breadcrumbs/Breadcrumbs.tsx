@@ -11,7 +11,7 @@ export interface BreadcrumbsProps {
 export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
     <nav
         aria-label="Broodkruimelpad"
-        className={`w-full text-pzh-blue ${className}`}>
+        className={`w-full text-pzh-blue-dark ${className}`}>
         <ol className="hidden md:flex">
             {items.map((item, index) => {
                 return index === items.length - 1 ? (
@@ -21,10 +21,10 @@ export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
                 ) : (
                     <li
                         key={item.name}
-                        className="flex items-center mr-2 font-bold whitespace-nowrap">
+                        className="flex items-center mr-[8px] underline underline-offset-2 whitespace-nowrap">
                         <Link to={item.path}>{item.name}</Link>
                         <AngleRight
-                            className="ml-2 -mt-[2px] sr-hidden"
+                            className="ml-[8px] -mt-[2px] sr-hidden"
                             aria-hidden
                         />
                     </li>

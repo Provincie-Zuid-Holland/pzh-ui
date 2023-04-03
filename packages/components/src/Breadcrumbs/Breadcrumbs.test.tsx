@@ -18,6 +18,7 @@ describe('Breadcrumbs', () => {
 
     const setup = (customProps?: Partial<BreadcrumbsProps>) => {
         const props = { ...defaultProps, ...customProps }
+
         render(
             <MemoryRouter>
                 <Breadcrumbs {...props} />

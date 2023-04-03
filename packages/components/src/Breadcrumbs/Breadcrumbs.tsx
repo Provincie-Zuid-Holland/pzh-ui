@@ -5,7 +5,10 @@ import { BackLink } from '../BackLink'
 
 export interface BreadcrumbsProps {
     className?: string
-    items: { name: string; path: string }[]
+    items: {
+        name: string
+        path: string
+    }[]
 }
 
 export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (

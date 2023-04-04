@@ -10,6 +10,7 @@ export interface BadgeProps {
         | 'lightGreen'
         | 'lightRed'
         | 'purple'
+        | 'white'
     upperCase?: boolean
     className?: string
 }
@@ -35,6 +36,7 @@ export const Badge = ({
                     variant === 'lightRed',
                 'border-pzh-cool-gray text-pzh-cool-gray': variant === 'gray',
                 'border-pzh-purple text-pzh-purple': variant === 'purple',
+                'border-pzh-white text-pzh-white': variant === 'white',
             },
             className
         )}

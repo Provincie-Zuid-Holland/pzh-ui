@@ -100,7 +100,7 @@ export const Tooltip = ({
                         {...getFloatingProps({
                             ref: floating,
                             className:
-                                'px-3 bg-black bg-opacity-80 rounded-[4px] max-w-[300px] text-white font-normal leading-5',
+                                'px-3 rounded-[4px] max-w-[300px] text-white font-normal leading-5',
                             style: {
                                 position: strategy,
                                 top: y ?? '',
@@ -108,12 +108,13 @@ export const Tooltip = ({
                                 paddingTop: 8,
                                 paddingBottom: 4,
                                 fontFamily: 'Karbon Regular',
+                                background: '#333333',
                             },
                         })}>
                         {label}
                         <div
                             ref={arrowRef}
-                            className="absolute overflow-hidden rotate-45 w-[8px] h-[8px] bg-black bg-opacity-80"
+                            className="absolute overflow-hidden rotate-45 w-[8px] h-[8px] bg-[#333333]"
                             style={
                                 (staticSide && {
                                     left: arrowX != null ? `${arrowX}px` : '',

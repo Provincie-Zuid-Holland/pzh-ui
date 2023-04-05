@@ -24,7 +24,7 @@ export const FormikDate = ({
                         {...field}
                         onClose={() => form.setFieldTouched(name, true)}
                         onChange={(date: Date | null) => {
-                            form.setFieldValue(name, date)
+                            form.setFieldValue(name, date?.toISOString())
                         }}
                         hasError={Boolean(meta.touched && meta.error)}
                     />

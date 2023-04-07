@@ -1,4 +1,4 @@
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, FocusTrap, Transition } from '@headlessui/react'
 import { Xmark } from '@pzh-ui/icons'
 import classNames from 'classnames'
 import { Fragment, ReactNode } from 'react'
@@ -30,19 +30,21 @@ export const Modal = ({
     if (position === 'absolute') {
         return (
             <Transition show={open} as={Fragment}>
-                <div
-                    className="absolute h-full inset-0 z-1 overflow-hidden"
-                    aria-label={ariaLabel}>
-                    <ModalInner
-                        overflowVisible={overflowVisible}
-                        containerPadding={containerPadding}
-                        closeButton={closeButton}
-                        onClose={onClose}
-                        maxWidth={maxWidth}
-                        position={position}>
-                        {children}
-                    </ModalInner>
-                </div>
+                <FocusTrap>
+                    <div
+                        className="absolute h-full inset-0 z-1 overflow-hidden"
+                        aria-label={ariaLabel}>
+                        <ModalInner
+                            overflowVisible={overflowVisible}
+                            containerPadding={containerPadding}
+                            closeButton={closeButton}
+                            onClose={onClose}
+                            maxWidth={maxWidth}
+                            position={position}>
+                            {children}
+                        </ModalInner>
+                    </div>
+                </FocusTrap>
             </Transition>
         )
     }

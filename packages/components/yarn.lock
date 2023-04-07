@@ -1906,10 +1906,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.4.tgz#d8c7b8db9226d2d7664553a0741ad7d0397ee503"
   integrity sha512-q/ytXxO5NKvyT37pmisQAItCFqA7FD/vNb8dgaJy3/630Fsc+Mz9/9f2SziBoIZ30TJooXyTwZmhi1zjXmObYg==
 
-"@pzh-ui/css@^0.0.58":
-  version "0.0.58"
-  resolved "https://registry.yarnpkg.com/@pzh-ui/css/-/css-0.0.58.tgz#f35f4cac92eaf218adbc5ffec6256d7781bee36f"
-  integrity sha512-h4Cg8xylrtWFFIdlhKHVdYBLpIm+dShfncP54NpnuWiZkjdN7LW9XRCPxX+69No142Ni7OMjHLzpA7KCyQURpg==
+"@pzh-ui/css@^0.0.59":
+  version "0.0.59"
+  resolved "https://registry.yarnpkg.com/@pzh-ui/css/-/css-0.0.59.tgz#9e498bd76bcbe5f8c148bd0449ea6b87fa319bae"
+  integrity sha512-mIW4Z+FW6v2II1O0+pfS7YdRgPGQkjxSgY1bog6AEfT94q+Ajlhu5ikJmX2tR3NbdAv3Vov6K4Yh1E7UE3Ro+A==
   dependencies:
     "@rollup/plugin-typescript" "^8.3.1"
     "@tailwindcss/custom-forms" "^0.2.1"

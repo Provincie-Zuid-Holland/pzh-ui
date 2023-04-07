@@ -1,8 +1,9 @@
-import { Dialog, FocusTrap, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react'
 import { Xmark } from '@pzh-ui/icons'
 import classNames from 'classnames'
 import { Fragment, ReactNode } from 'react'
 import { useWindowSize } from 'react-use'
+import FocusTrap from 'focus-trap-react'
 
 export interface ModalProps {
     open?: boolean

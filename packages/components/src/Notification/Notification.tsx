@@ -6,6 +6,7 @@ export interface NotificationProps {
     size?: 'small' | 'normal'
     className?: string
     children: JSX.Element | string
+    icon?: any
 }
 
 export const Notification = ({
@@ -13,10 +14,11 @@ export const Notification = ({
     size = 'normal',
     className = '',
     children,
+    icon: Icon,
 }: NotificationProps) => (
     <div
         className={classNames(
-            'flex p-2 md:p-4 pb-1.5 md:pb-4',
+            'flex px-4 pt-3 pb-2',
             {
                 'bg-pzh-blue-light bg-opacity-20': variant === 'info',
                 'bg-pzh-yellow': variant === 'alert',
@@ -26,7 +28,9 @@ export const Notification = ({
             className
         )}>
         <div>
-            {variant === 'alert' ? (
+            {Icon ? (
+                <Icon size={20} className="mt-[3px]" />
+            ) : variant === 'alert' ? (
                 <TriangleExclamation size={20} className="mt-[3px]" />
             ) : (
                 <CircleInfo size={20} className="mt-[3px]" />

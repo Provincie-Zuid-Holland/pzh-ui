@@ -175,7 +175,7 @@ export const getSelectStyles = () =>
         menu: css => ({
             ...css,
             zIndex: 9999,
-            marginTop: 0,
+            marginTop: 2,
             boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.10)',
         }),
         indicatorsContainer: (css, state) => ({

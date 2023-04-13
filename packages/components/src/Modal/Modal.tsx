@@ -31,10 +31,10 @@ export const Modal = ({
     if (position === 'absolute') {
         return (
             <Transition show={open} as={Fragment}>
-                <FocusTrap>
-                    <div
-                        className="absolute h-full inset-0 z-1 overflow-hidden"
-                        aria-label={ariaLabel}>
+                <div
+                    className="absolute h-full inset-0 z-1 overflow-hidden"
+                    aria-label={ariaLabel}>
+                    <FocusTrap>
                         <ModalInner
                             overflowVisible={overflowVisible}
                             containerPadding={containerPadding}
@@ -44,8 +44,8 @@ export const Modal = ({
                             position={position}>
                             {children}
                         </ModalInner>
-                    </div>
-                </FocusTrap>
+                    </FocusTrap>
+                </div>
             </Transition>
         )
     }

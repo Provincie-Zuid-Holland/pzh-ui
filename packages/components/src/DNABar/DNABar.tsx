@@ -27,8 +27,11 @@ export function DNABar({ blocks = 5, className }: DNABarProps) {
     return (
         <div
             className={classNames(
-                'absolute pointer-events-none right-0 top-0 z-10',
-                { hidden: windowSize.width <= 640 },
+                'absolute pointer-events-none right-0 z-10',
+                {
+                    hidden: windowSize.width <= 640,
+                    'top-0': !className,
+                },
                 className
             )}>
             {blocks !== 2 && (

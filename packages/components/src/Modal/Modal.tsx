@@ -35,15 +35,17 @@ export const Modal = ({
                     className="absolute h-full inset-0 z-1 overflow-hidden"
                     aria-label={ariaLabel}>
                     <FocusTrap>
-                        <ModalInner
-                            overflowVisible={overflowVisible}
-                            containerPadding={containerPadding}
-                            closeButton={closeButton}
-                            onClose={onClose}
-                            maxWidth={maxWidth}
-                            position={position}>
-                            {children}
-                        </ModalInner>
+                        <div>
+                            <ModalInner
+                                overflowVisible={overflowVisible}
+                                containerPadding={containerPadding}
+                                closeButton={closeButton}
+                                onClose={onClose}
+                                maxWidth={maxWidth}
+                                position={position}>
+                                {children}
+                            </ModalInner>
+                        </div>
                     </FocusTrap>
                 </div>
             </Transition>

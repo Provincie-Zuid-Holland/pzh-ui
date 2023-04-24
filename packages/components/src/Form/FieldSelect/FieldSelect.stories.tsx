@@ -108,6 +108,90 @@ WithLabel.args = {
     description: 'Korte omschrijving voor onder het label',
 }
 
+export const IsMulti: ComponentStory<typeof FieldSelect> = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+IsMulti.args = {
+    name: 'select',
+    placeholder: 'Placeholder',
+    options: [
+        {
+            label: 'Option 1',
+            value: 'option-1',
+        },
+        {
+            label: 'Option 2',
+            value: 'option-2',
+        },
+        {
+            label: 'Option 3',
+            value: 'option-3',
+        },
+    ],
+    defaultValue: {
+        label: 'Option 1',
+        value: 'option-1',
+    },
+    label: 'Form label',
+    description: 'Korte omschrijving voor onder het label',
+    isMulti: true,
+    closeMenuOnSelect: false,
+    hideSelectedOptions: false,
+}
+
+export const IsMultiGrouped: ComponentStory<typeof FieldSelect> = Template.bind(
+    {}
+)
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+IsMultiGrouped.args = {
+    name: 'select',
+    placeholder: 'Placeholder',
+    options: [
+        {
+            label: 'Group 1',
+            options: [
+                {
+                    label: 'Option 1',
+                    value: 'option-1',
+                },
+                {
+                    label: 'Option 2',
+                    value: 'option-2',
+                },
+                {
+                    label: 'Option 3',
+                    value: 'option-3',
+                },
+            ],
+        },
+        {
+            label: 'Group 2',
+            options: [
+                {
+                    label: 'Option 4',
+                    value: 'option-4',
+                },
+                {
+                    label: 'Option 5',
+                    value: 'option-5',
+                },
+                {
+                    label: 'Option 6',
+                    value: 'option-6',
+                },
+            ],
+        },
+    ],
+    defaultValue: {
+        label: 'Option 1',
+        value: 'option-1',
+    },
+    label: 'Form label',
+    description: 'Korte omschrijving voor onder het label',
+    isMulti: true,
+    closeMenuOnSelect: false,
+    hideSelectedOptions: false,
+}
+
 export const LayoutGrid: ComponentStory<typeof FieldSelect> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 LayoutGrid.args = {

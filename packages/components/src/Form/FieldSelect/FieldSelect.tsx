@@ -10,6 +10,10 @@ import classNames from 'classnames'
 import { AngleDown } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
+import { Tag } from '../../Tag'
+import { Text } from '../../Text'
+
+type Option = { label: string; value: string }
 
 type SelectProps = Props &
     Pick<
@@ -93,6 +97,12 @@ export function FieldSelect({
                                 )}
                             />
                         ),
+                        ValueContainer: props => (
+                            <components.ValueContainer
+                                {...props}
+                                className="h-[48px] !py-0 !flex-nowrap !overflow-x-auto whitespace-nowrap"
+                            />
+                        ),
                         DropdownIndicator: () => (
                             <div className="mr-4">
                                 <AngleDown className="text-pzh-blue-dark" />
@@ -109,8 +119,23 @@ export function FieldSelect({
                         Option: props => (
                             <components.Option
                                 {...props}
-                                className="text-pzh-blue-dark py-1 px-4 cursor-pointer hover:text-pzh-green hover:underline"
-                            />
+                                className="text-pzh-blue-dark py-1 px-4 cursor-pointer hover:text-pzh-green hover:underline">
+                                {props.isMulti ? (
+                                    <div className="flex items-center">
+                                        <input
+                                            className="absolute -left-[9999px] pzh-form-checkbox"
+                                            checked={props.isSelected}
+                                            onChange={() => null}
+                                            type="checkbox"
+                                        />
+                                        <span className="relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px]">
+                                            {props.label}
+                                        </span>
+                                    </div>
+                                ) : (
+                                    props.label
+                                )}
+                            </components.Option>
                         ),
                         SingleValue: props => (
                             <components.SingleValue
@@ -123,6 +148,31 @@ export function FieldSelect({
                                 {...props}
                                 className="shadow-none focus:shadow-none pzh-select-input"
                             />
+                        ),
+                        MultiValue: props => (
+                            <Tag
+                                text={props.children as string}
+                                className="mr-1"
+                                onClick={() =>
+                                    props.setValue(
+                                        props
+                                            .getValue()
+                                            .filter(
+                                                option =>
+                                                    (option as Option).value !==
+                                                    (props.data as Option).value
+                                            ),
+                                        'deselect-option'
+                                    )
+                                }
+                            />
+                        ),
+                        GroupHeading: props => (
+                            <components.GroupHeading {...props}>
+                                <Text type="body-bold" className="normal-case">
+                                    {props.children}
+                                </Text>
+                            </components.GroupHeading>
                         ),
                         ...providedComponents,
                     }}
@@ -184,5 +234,8 @@ export const getSelectStyles = () =>
             ...(state.isDisabled && {
                 opacity: 0.55,
             }),
+        }),
+        multiValue: css => ({
+            ...css,
         }),
     } as StylesConfig<unknown, boolean, GroupBase<unknown>>)

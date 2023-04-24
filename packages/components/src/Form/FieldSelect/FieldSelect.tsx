@@ -115,7 +115,6 @@ export function FieldSelect({
                                 className="text-pzh-gray-600 m-0 leading-none"
                             />
                         ),
-                        // @ts-ignore
                         Option: props => (
                             <components.Option
                                 {...props}
@@ -128,7 +127,7 @@ export function FieldSelect({
                                             onChange={() => null}
                                             type="checkbox"
                                         />
-                                        <span className="relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px]">
+                                        <span className="relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px] font-normal">
                                             {props.label}
                                         </span>
                                     </div>

@@ -10,7 +10,6 @@ import classNames from 'classnames'
 import { AngleDown } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
-import { Tag } from '../../Tag'
 import { Text } from '../../Text'
 
 type Option = { label: string; value: string }
@@ -100,8 +99,16 @@ export function FieldSelect({
                         ValueContainer: props => (
                             <components.ValueContainer
                                 {...props}
-                                className="h-[48px] !py-0 !flex-nowrap !overflow-x-auto whitespace-nowrap"
-                            />
+                                className="h-[48px] !py-0 !flex-nowrap !overflow-x-auto whitespace-nowrap">
+                                {props.isMulti && props.hasValue
+                                    ? Array.isArray(props.children) && (
+                                          <>
+                                              {props.selectProps.placeholder}
+                                              {props.children[1]}
+                                          </>
+                                      )
+                                    : props.children}
+                            </components.ValueContainer>
                         ),
                         DropdownIndicator: () => (
                             <div className="mr-4">
@@ -146,24 +153,6 @@ export function FieldSelect({
                             <components.Input
                                 {...props}
                                 className="shadow-none focus:shadow-none pzh-select-input"
-                            />
-                        ),
-                        MultiValue: props => (
-                            <Tag
-                                text={props.children as string}
-                                className="mr-1"
-                                onClick={() =>
-                                    props.setValue(
-                                        props
-                                            .getValue()
-                                            .filter(
-                                                option =>
-                                                    (option as Option).value !==
-                                                    (props.data as Option).value
-                                            ),
-                                        'deselect-option'
-                                    )
-                                }
                             />
                         ),
                         GroupHeading: props => (

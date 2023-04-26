@@ -136,7 +136,8 @@ IsMulti.args = {
     isMulti: true,
     closeMenuOnSelect: false,
     hideSelectedOptions: false,
-    isSearchable: false,
+    isSearchable: true,
+    controlShouldRenderValue: false,
 }
 
 export const IsMultiGrouped: ComponentStory<typeof FieldSelect> = Template.bind(

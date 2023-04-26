@@ -99,16 +99,8 @@ export function FieldSelect({
                         ValueContainer: props => (
                             <components.ValueContainer
                                 {...props}
-                                className="h-[48px] !py-0 !flex-nowrap !overflow-x-auto whitespace-nowrap">
-                                {props.isMulti && props.hasValue
-                                    ? Array.isArray(props.children) && (
-                                          <>
-                                              {props.selectProps.placeholder}
-                                              {props.children[1]}
-                                          </>
-                                      )
-                                    : props.children}
-                            </components.ValueContainer>
+                                className="h-[48px] !py-0 !flex-nowrap !overflow-x-auto whitespace-nowrap"
+                            />
                         ),
                         DropdownIndicator: () => (
                             <div className="mr-4">

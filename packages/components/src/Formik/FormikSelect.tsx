@@ -23,16 +23,34 @@ export function FormikSelect({
                         {...props}
                         {...field}
                         options={options}
-                        value={options?.find(
-                            (option: any) => option.value === field.value
-                        )}
+                        value={
+                            props.isMulti
+                                ? options?.filter(
+                                      (option: any) =>
+                                          option.value === field.value
+                                  )
+                                : options?.find(
+                                      (option: any) =>
+                                          option.value === field.value
+                                  )
+                        }
                         onBlur={() => form.setFieldTouched(name, true)}
                         onChange={(item: any) => {
-                            form.setFieldValue(name, item?.value || null)
-                            props.onChange?.(item?.value, {
-                                action: 'select-option',
-                                option: undefined,
-                            })
+                            form.setFieldValue(
+                                name,
+                                props.isMulti
+                                    ? item?.map((e: any) => e.value)
+                                    : item?.value || null
+                            )
+                            props.onChange?.(
+                                props.isMulti
+                                    ? item?.map((e: any) => e.value)
+                                    : item?.value,
+                                {
+                                    action: 'select-option',
+                                    option: undefined,
+                                }
+                            )
                         }}
                         hasError={Boolean(meta.touched && meta.error)}
                     />

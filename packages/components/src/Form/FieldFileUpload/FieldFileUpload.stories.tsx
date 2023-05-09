@@ -16,6 +16,8 @@ export const Default: ComponentStory<typeof FieldFileUpload> = Template.bind({})
 Default.args = {
     name: 'file-upload',
     onChange: e => console.log(e),
+    maxFiles: 1,
+    preview: true,
 }
 
 export const WithLabel: ComponentStory<typeof FieldFileUpload> = Template.bind(

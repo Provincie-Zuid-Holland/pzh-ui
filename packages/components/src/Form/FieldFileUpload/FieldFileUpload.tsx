@@ -193,6 +193,9 @@ export const FieldFileUpload = ({
                                             size={16}
                                             className="ml-4 -mt-[2px] text-pzh-red"
                                         />
+                                        <span className="sr-only">
+                                            Verwijderen
+                                        </span>
                                     </button>
                                 </div>
                             </div>
@@ -200,6 +203,7 @@ export const FieldFileUpload = ({
                                 <div>
                                     <img
                                         src={file.preview}
+                                        alt={file.name}
                                         onLoad={() =>
                                             URL.revokeObjectURL(file.preview!)
                                         }

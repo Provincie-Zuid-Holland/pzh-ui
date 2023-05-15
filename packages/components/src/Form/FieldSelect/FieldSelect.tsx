@@ -12,8 +12,6 @@ import { AngleDown } from '@pzh-ui/icons'
 import { FieldLabel } from '../FieldLabel'
 import { Text } from '../../Text'
 
-type Option = { label: string; value: string }
-
 type SelectProps = Props &
     Pick<
         AsyncProps<unknown, boolean, GroupBase<unknown>>,
@@ -80,7 +78,7 @@ export function FieldSelect({
                 <Select
                     isDisabled={disabled}
                     className={className}
-                    name={name}
+                    inputId={name}
                     components={{
                         Control: props => (
                             <components.Control
@@ -197,10 +195,7 @@ export const getSelectStyles = () =>
             paddingInline: 15,
         }),
         option: (_, state) => ({
-            fontWeight: state.isSelected ? 700 : 400,
-            '&:active': {
-                fontWeight: state.isSelected ? 700 : 400,
-            },
+            fontWeight: state.isSelected || state.isFocused ? 700 : 400,
         }),
         menu: css => ({
             ...css,

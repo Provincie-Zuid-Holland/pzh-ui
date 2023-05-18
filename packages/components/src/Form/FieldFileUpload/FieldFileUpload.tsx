@@ -88,11 +88,12 @@ export const FieldFileUpload = ({
     )
 
     useEffect(() => {
-        // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-        return () =>
-            myFiles.forEach(
-                file => file.preview && URL.revokeObjectURL(file.preview)
-            )
+        if (!!myFiles.length)
+            // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+            return () =>
+                myFiles.forEach(
+                    file => file.preview && URL.revokeObjectURL(file.preview)
+                )
     }, [])
 
     useEffect(() => {

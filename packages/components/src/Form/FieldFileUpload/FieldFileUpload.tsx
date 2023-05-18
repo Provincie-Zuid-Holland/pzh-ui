@@ -98,9 +98,7 @@ export const FieldFileUpload = ({
     useEffect(() => {
         if (!!defaultValue.length) {
             Promise.all(defaultValue.map(val => base64ToFile(val, name))).then(
-                files => {
-                    onDrop(files)
-                }
+                onDrop
             )
         }
     }, [defaultValue])
@@ -182,9 +180,9 @@ export const FieldFileUpload = ({
             </div>
             {!!myFiles.length && (
                 <ul>
-                    {myFiles.map(file => (
+                    {myFiles.map((file, index) => (
                         <li
-                            key={file.path}
+                            key={file.path || `file-${index}`}
                             className="pzh-form-input mt-2 overflow-hidden"
                             style={preview ? { paddingBottom: 0 } : undefined}>
                             <div

@@ -7,6 +7,7 @@ import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
 import formatBytes from '../../utils/formatBytes'
+import { base64ToFile } from '../../utils/file'
 
 /**
  * Form file upload element
@@ -24,7 +25,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     layout?: 'default' | 'grid'
     tooltip?: string | JSX.Element
     preview?: boolean
-    defaultValue?: File[]
+    defaultValue?: string[]
 }
 
 export const FieldFileUpload = ({
@@ -48,7 +49,7 @@ export const FieldFileUpload = ({
     defaultValue = [],
     ...props
 }: FieldFileUploadProps) => {
-    const [myFiles, setMyFiles] = useState<File[]>(defaultValue)
+    const [myFiles, setMyFiles] = useState<File[]>([])
 
     const onDrop = useCallback(
         (acceptedFiles: File[]) =>
@@ -64,8 +65,6 @@ export const FieldFileUpload = ({
             ]),
         [myFiles]
     )
-
-    console.log('defaultValue', defaultValue)
 
     const { getRootProps, getInputProps, isDragActive, isDragReject } =
         useDropzone({
@@ -95,6 +94,16 @@ export const FieldFileUpload = ({
                 file => file.preview && URL.revokeObjectURL(file.preview)
             )
     }, [])
+
+    useEffect(() => {
+        if (!!defaultValue.length) {
+            Promise.all(defaultValue.map(val => base64ToFile(val, name))).then(
+                files => {
+                    onDrop(files)
+                }
+            )
+        }
+    }, [defaultValue])
 
     useUpdateEffect(() => onChange(myFiles), [myFiles])
 
@@ -185,7 +194,7 @@ export const FieldFileUpload = ({
                                         'pb-1': preview,
                                     }
                                 )}>
-                                <span>{file.path}</span>
+                                <span>{file.path || label}</span>
                                 <div className="flex items-center nowrap">
                                     <span className="text-[16px] text-pzh-blue-dark/50">
                                         {formatBytes(file.size)}

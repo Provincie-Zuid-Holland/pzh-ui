@@ -1,5 +1,6 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
+import { useUpdateEffect } from 'react-use'
 import { getExtension } from 'mime'
 import classNames from 'classnames'
 import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
@@ -104,7 +105,11 @@ export const FieldFileUpload = ({
         }
     }, [defaultValue])
 
-    useEffect(() => onChange(myFiles), [myFiles])
+    useUpdateEffect(() => {
+        onChange(myFiles)
+
+        return
+    }, [myFiles])
 
     return (
         <div

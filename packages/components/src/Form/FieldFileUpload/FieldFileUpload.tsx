@@ -97,13 +97,13 @@ export const FieldFileUpload = ({
     }, [])
 
     useEffect(() => {
-        if (!!!defaultValue.length) return
+        if (!defaultValue?.length) return
 
-        Promise.all(defaultValue.map(val => base64ToFile(val, name))).then(
-            onDrop
-        )
-
-        return
+        if (defaultValue.every(e => typeof e === 'string')) {
+            Promise.all(defaultValue.map(val => base64ToFile(val, name))).then(
+                onDrop
+            )
+        }
     }, [defaultValue])
 
     useUpdateEffect(() => onChange(myFiles), [myFiles])

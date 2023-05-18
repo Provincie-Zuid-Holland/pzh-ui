@@ -24,6 +24,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     layout?: 'default' | 'grid'
     tooltip?: string | JSX.Element
     preview?: boolean
+    defaultValue?: File[]
 }
 
 export const FieldFileUpload = ({
@@ -44,9 +45,10 @@ export const FieldFileUpload = ({
     layout = 'default',
     tooltip,
     preview,
+    defaultValue = [],
     ...props
 }: FieldFileUploadProps) => {
-    const [myFiles, setMyFiles] = useState<File[]>([])
+    const [myFiles, setMyFiles] = useState<File[]>(defaultValue)
 
     const onDrop = useCallback(
         (acceptedFiles: File[]) =>

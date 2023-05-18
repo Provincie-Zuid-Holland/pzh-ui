@@ -96,7 +96,7 @@ export const FieldFileUpload = ({
             )
     }, [])
 
-    useEffectOnce(() => {
+    useEffect(() => {
         if (!defaultValue?.length) return
 
         if (defaultValue.every(e => typeof e === 'string')) {
@@ -104,7 +104,9 @@ export const FieldFileUpload = ({
                 onDrop
             )
         }
-    })
+
+        return
+    }, [defaultValue])
 
     useUpdateEffect(() => onChange(myFiles), [myFiles])
 

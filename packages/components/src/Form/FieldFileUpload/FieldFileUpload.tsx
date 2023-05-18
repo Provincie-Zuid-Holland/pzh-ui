@@ -65,6 +65,8 @@ export const FieldFileUpload = ({
         [myFiles]
     )
 
+    console.log('defaultValue', defaultValue)
+
     const { getRootProps, getInputProps, isDragActive, isDragReject } =
         useDropzone({
             accept,

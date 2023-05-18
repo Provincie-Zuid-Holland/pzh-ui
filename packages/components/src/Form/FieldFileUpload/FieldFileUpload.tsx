@@ -88,20 +88,22 @@ export const FieldFileUpload = ({
     )
 
     useEffect(() => {
-        if (!!myFiles.length)
-            // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-            return () =>
-                myFiles.forEach(
-                    file => file.preview && URL.revokeObjectURL(file.preview)
-                )
+        if (!!!myFiles.length) return
+        // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+        return () =>
+            myFiles.forEach(
+                file => file.preview && URL.revokeObjectURL(file.preview)
+            )
     }, [])
 
     useEffect(() => {
-        if (!!defaultValue.length) {
-            Promise.all(defaultValue.map(val => base64ToFile(val, name))).then(
-                onDrop
-            )
-        }
+        if (!!!defaultValue.length) return
+
+        Promise.all(defaultValue.map(val => base64ToFile(val, name))).then(
+            onDrop
+        )
+
+        return
     }, [defaultValue])
 
     useUpdateEffect(() => onChange(myFiles), [myFiles])

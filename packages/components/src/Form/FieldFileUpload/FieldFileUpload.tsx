@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
-import { useEffectOnce, useUpdateEffect } from 'react-use'
+import { useUpdateEffect } from 'react-use'
 import { getExtension } from 'mime'
 import classNames from 'classnames'
 import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
@@ -88,7 +88,6 @@ export const FieldFileUpload = ({
     )
 
     useEffect(() => {
-        if (!!!myFiles.length) return
         // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
         return () =>
             myFiles.forEach(
@@ -104,8 +103,6 @@ export const FieldFileUpload = ({
                 onDrop
             )
         }
-
-        return
     }, [defaultValue])
 
     useUpdateEffect(() => onChange(myFiles), [myFiles])

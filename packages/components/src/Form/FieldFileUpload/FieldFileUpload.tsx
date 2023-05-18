@@ -172,7 +172,7 @@ export const FieldFileUpload = ({
                     {myFiles.map(file => (
                         <li
                             key={file.path}
-                            className="pzh-form-input mt-2"
+                            className="pzh-form-input mt-2 overflow-hidden"
                             style={preview ? { paddingBottom: 0 } : undefined}>
                             <div
                                 className={classNames(
@@ -183,7 +183,7 @@ export const FieldFileUpload = ({
                                 )}>
                                 <span>{file.path}</span>
                                 <div className="flex items-center nowrap">
-                                    <span className="text-[16px] text-pzh-blue-dark text-opacity-50">
+                                    <span className="text-[16px] text-pzh-blue-dark/50">
                                         {formatBytes(file.size)}
                                     </span>
                                     <button
@@ -200,7 +200,7 @@ export const FieldFileUpload = ({
                                 </div>
                             </div>
                             {file.preview && (
-                                <div>
+                                <div className="border-t border-pzh-gray-600">
                                     <img
                                         src={file.preview}
                                         alt={file.name}

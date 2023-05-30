@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
-import { useUpdateEffect } from 'react-use'
+import { useEffectOnce, useUpdateEffect } from 'react-use'
 import { getExtension } from 'mime'
 import classNames from 'classnames'
 import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
@@ -95,7 +95,7 @@ export const FieldFileUpload = ({
             )
     }, [])
 
-    useEffect(() => {
+    useEffectOnce(() => {
         if (!defaultValue?.length) return
 
         setMyFiles([])
@@ -105,7 +105,7 @@ export const FieldFileUpload = ({
                 onDrop
             )
         }
-    }, [defaultValue])
+    })
 
     useUpdateEffect(() => {
         onChange(myFiles)

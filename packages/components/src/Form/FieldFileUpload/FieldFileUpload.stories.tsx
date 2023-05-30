@@ -30,6 +30,8 @@ export const WithLabel: ComponentStory<typeof FieldFileUpload> = Template.bind(
 WithLabel.args = {
     name: 'file-upload',
     label: 'Form label',
+    maxFiles: 1,
+    preview: true,
 }
 
 export const LayoutGrid: ComponentStory<typeof FieldFileUpload> = Template.bind(

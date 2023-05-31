@@ -85,6 +85,7 @@ export const FieldDate = ({
                         },
                         className
                     )}
+                    calendarClassName="pzh-datepicker"
                     customInput={<DateInput name={name} />}
                     dateFormat={dateFormat}
                     onCalendarClose={onClose}

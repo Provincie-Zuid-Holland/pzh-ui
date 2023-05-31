@@ -7,7 +7,7 @@ import ReactSelect, {
 } from 'react-select'
 import AsyncReactSelect, { AsyncProps } from 'react-select/async'
 import classNames from 'classnames'
-import { AngleDown } from '@pzh-ui/icons'
+import { AngleDown, Xmark } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
 import { Text } from '../../Text'
@@ -151,6 +151,16 @@ export function FieldSelect({
                                     {props.children}
                                 </Text>
                             </components.GroupHeading>
+                        ),
+                        ClearIndicator: props => (
+                            <components.ClearIndicator {...props}>
+                                <button onClick={props.clearValue}>
+                                    <span className="sr-only">
+                                        Veld leegmaken
+                                    </span>
+                                    <Xmark size={14} />
+                                </button>
+                            </components.ClearIndicator>
                         ),
                         ...providedComponents,
                     }}

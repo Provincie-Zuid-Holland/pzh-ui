@@ -84,8 +84,9 @@ export function FieldSelect({
                             <components.Control
                                 {...props}
                                 className={classNames(
-                                    'border-pzh-gray-600 bg-white hover:border-pzh-blue-dark',
+                                    'border-pzh-gray-600 hover:border-pzh-blue-dark',
                                     {
+                                        'bg-white': !disabled,
                                         'border-pzh-red': hasError,
                                         'bg-pzh-gray-200': disabled,
                                         'ring ring-2 ring-pzh-blue border-pzh-blue':

@@ -27,5 +27,25 @@ Default.args = {
         },
     ],
     value: 'option-1',
+}
+
+export const Horizontal: ComponentStory<typeof FieldRadioGroup> = Template.bind(
+    {}
+)
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Horizontal.args = {
+    name: 'radiogroup',
+    label: 'Dit is een vraag',
+    options: [
+        {
+            label: 'Option 1',
+            value: 'option-1',
+        },
+        {
+            label: 'Option 2',
+            value: 'option-2',
+        },
+    ],
+    value: 'option-1',
     optionLayout: 'horizontal',
 }

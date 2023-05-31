@@ -52,7 +52,10 @@ export const FieldRadioGroup = ({
                 })}
             />
         )}
-        <div className={classNames({ flex: optionLayout === 'horizontal' })}>
+        <div
+            className={classNames('flex', {
+                'flex-col': optionLayout === 'vertical',
+            })}>
             {options.map((option, index) => (
                 <FieldRadio
                     key={`${option.value}-${index}`}
@@ -65,6 +68,7 @@ export const FieldRadioGroup = ({
                         'mb-2':
                             index + 1 !== options.length &&
                             optionLayout !== 'horizontal',
+                        'w-fit': optionLayout === 'vertical',
                     })}
                     {...props}
                     checked={value === option.value}>

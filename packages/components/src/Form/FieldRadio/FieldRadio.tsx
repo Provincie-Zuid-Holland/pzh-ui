@@ -18,7 +18,7 @@ export const FieldRadio = ({
     children,
     ...props
 }: FieldRadioProps) => (
-    <label className={classNames('flex items-center', className)}>
+    <label className={classNames('inline-block items-center', className)}>
         <input
             data-testid="pzh-form-radio"
             disabled={disabled}

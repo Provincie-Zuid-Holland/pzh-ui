@@ -87,7 +87,7 @@ export function FieldSelect({
                                     'border-pzh-gray-600 bg-white hover:border-pzh-blue-dark',
                                     {
                                         'border-pzh-red': hasError,
-                                        'bg-pzh-gray-200': props.isDisabled,
+                                        'bg-pzh-gray-200': disabled,
                                         'ring ring-2 ring-pzh-blue border-pzh-blue':
                                             props.isFocused,
                                     }

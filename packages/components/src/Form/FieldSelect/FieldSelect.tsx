@@ -195,7 +195,10 @@ export const getSelectStyles = () =>
             paddingInline: 15,
         }),
         option: (_, state) => ({
-            fontWeight: state.isSelected || state.isFocused ? 700 : 400,
+            fontFamily:
+                state.isSelected || state.isFocused
+                    ? 'Karbon Medium'
+                    : 'Karbon Regular',
         }),
         menu: css => ({
             ...css,

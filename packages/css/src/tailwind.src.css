@@ -44,6 +44,10 @@ b {
     font-family: 'Karbon Medium', sans-serif;
 }
 
+.font-normal {
+    font-family: 'Karbon Regular', sans-serif;
+}
+
 .bold {
     font-weight: 700;
 }

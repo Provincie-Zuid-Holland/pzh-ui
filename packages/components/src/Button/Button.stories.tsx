@@ -2,6 +2,8 @@ import { Eye } from '@pzh-ui/icons'
 import { ComponentStory } from '@storybook/react'
 
 import { Button, ButtonProps } from './Button'
+import { ElementType } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -20,13 +22,19 @@ export default {
 }
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args: ButtonProps) => <Button {...args} />
+const Template = (args: ButtonProps<ElementType>) => (
+    <Router>
+        <Button {...args} />
+    </Router>
+)
 
 export const Primary: ComponentStory<typeof Button> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
+    as: 'a',
     variant: 'primary',
     children: 'Button',
+    href: '/test',
 }
 
 export const Secondary: ComponentStory<typeof Button> = Template.bind({})

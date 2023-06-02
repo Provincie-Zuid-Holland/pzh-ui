@@ -1,13 +1,16 @@
-import { ReactNode, useRef } from 'react'
+import { ElementType, ReactNode, useRef } from 'react'
 import classNames from 'classnames'
 import { Spinner } from '@pzh-ui/icons'
 import { AriaButtonProps, useButton } from 'react-aria'
+import { Link } from 'react-router-dom'
 
 /**
  * Primary UI component for user interaction
  */
 
-export interface ButtonProps extends AriaButtonProps<'button'> {
+export interface ButtonProps<T extends ElementType>
+    extends AriaButtonProps<'button'> {
+    as?: T
     variant?: 'primary' | 'secondary' | 'cta' | 'link'
     size?: 'large' | 'small'
     icon?: any
@@ -16,19 +19,25 @@ export interface ButtonProps extends AriaButtonProps<'button'> {
     children?: ReactNode
 }
 
-export const Button = ({
+export const Button = <T extends ElementType = 'button'>({
+    as,
     variant = 'primary',
     size = 'large',
     ...props
-}: ButtonProps) => {
+}: ButtonProps<T>) => {
     const ref = useRef(null)
-    const { buttonProps } = useButton(props, ref)
+    const { buttonProps } = useButton({ ...props, elementType: as }, ref)
     const { children, isDisabled, isLoading, icon } = props
+
+    const Component = as === 'a' ? Link : as || 'button'
 
     const Icon = icon && isLoading ? Spinner : icon ? icon : null
 
     return (
-        <button
+        <Component
+            {...(as === 'a' && {
+                to: props.href,
+            })}
             className={classNames(
                 'pzh-button',
                 {
@@ -78,6 +87,6 @@ export const Button = ({
             ) : (
                 children
             )}
-        </button>
+        </Component>
     )
 }

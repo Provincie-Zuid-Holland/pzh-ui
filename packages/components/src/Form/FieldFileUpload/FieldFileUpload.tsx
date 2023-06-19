@@ -129,7 +129,7 @@ export const FieldFileUpload = ({
             )}
             <div
                 className={classNames(
-                    'py-6 text-pzh-blue-dark text-center border border-dashed border-pzh-gray-600 rounded-[4px]',
+                    'py-6 text-pzh-blue-dark text-center border border-dashed border-pzh-gray-600 rounded-[4px] cursor-pointer',
                     className,
                     {
                         'md:col-span-4 col-span-6': layout === 'grid',
@@ -137,7 +137,18 @@ export const FieldFileUpload = ({
                     }
                 )}
                 {...getRootProps()}>
-                <input {...getInputProps({ required, name })} />
+                <input
+                    {...getInputProps({ required, name })}
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        left: 0,
+                        opacity: 0.00001,
+                        pointerEvents: 'none',
+                    }}
+                />
 
                 <div>
                     <CloudArrowUp

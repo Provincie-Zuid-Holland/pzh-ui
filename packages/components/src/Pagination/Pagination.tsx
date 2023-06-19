@@ -50,8 +50,8 @@ export const Pagination = ({
                             type="button"
                             aria-label={
                                 currPage === index + 1
-                                    ? 'Pagina 1 is de huidge pagina'
-                                    : 'Ga naar pagina 1'
+                                    ? `Pagina ${index + 1} is de huidge pagina`
+                                    : `Ga naar pagina ${index + 1}`
                             }
                             aria-current={
                                 currPage === index + 1 ? 'page' : undefined

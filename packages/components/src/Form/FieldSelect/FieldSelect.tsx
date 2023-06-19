@@ -125,7 +125,14 @@ export function FieldSelect({
                                             onChange={() => null}
                                             type="checkbox"
                                         />
-                                        <span className="relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px] font-normal">
+                                        <span
+                                            className={classNames(
+                                                'relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px] font-normal',
+                                                {
+                                                    'before:ring before:ring-2 before:ring-pzh-blue before:outline-none before:border-pzh-blue':
+                                                        props.isFocused,
+                                                }
+                                            )}>
                                             {props.label}
                                         </span>
                                     </div>

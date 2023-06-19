@@ -1,7 +1,6 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
 import { useEffectOnce, useUpdateEffect } from 'react-use'
-import { getExtension } from 'mime'
 import classNames from 'classnames'
 import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 
@@ -35,13 +34,9 @@ export const FieldFileUpload = ({
     label,
     description,
     className,
-    accept = [
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/pdf',
-        'application/vnd.ms-excel',
-        'image/jpeg',
-    ],
+    accept = {
+        'image/*': ['.png', '.jpeg', '.webp'],
+    },
     maxSize = 20971520, // = 20 MB
     layout = 'default',
     tooltip,
@@ -81,8 +76,10 @@ export const FieldFileUpload = ({
 
     const acceptedTypes = useMemo(
         () =>
-            (Array.isArray(accept) &&
-                accept.map(type => `.${getExtension(type)}`)) ||
+            (Object.keys(accept) &&
+                Object.keys(accept).flatMap(type =>
+                    accept[type].map(type => type)
+                )) ||
             accept,
         [accept]
     )
@@ -140,7 +137,7 @@ export const FieldFileUpload = ({
                     }
                 )}
                 {...getRootProps()}>
-                <input name={name} {...getInputProps()} />
+                <input {...getInputProps({ required, name })} />
 
                 <div>
                     <CloudArrowUp

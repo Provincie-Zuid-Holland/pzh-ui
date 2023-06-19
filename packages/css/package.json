@@ -23,6 +23,6 @@
     },
     "gitHead": "2ddf5317b5c742b6e5d2d5417efa730410135caf",
     "devDependencies": {
-        "tailwindcss": "^3.0.23"
+        "tailwindcss": "^3.3.2"
     }
 }

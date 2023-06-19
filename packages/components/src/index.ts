@@ -21,6 +21,7 @@ export * from './Tabs'
 export * from './Tooltip'
 export * from './Toast'
 export * from './ListLink'
+export * from './Pagination'
 
 // Utils
 export * from './utils'

@@ -129,16 +129,19 @@ export const FieldFileUpload = ({
             )}
             <div className="relative">
                 <input
-                    {...getInputProps({ required, name })}
-                    style={{
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                        bottom: 0,
-                        left: 0,
-                        opacity: 0.00001,
-                        pointerEvents: 'none',
-                    }}
+                    {...getInputProps({
+                        required,
+                        name,
+                        style: {
+                            position: 'absolute',
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0,
+                            opacity: 0.00001,
+                            pointerEvents: 'none',
+                        },
+                    })}
                 />
 
                 <div

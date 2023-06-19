@@ -1,4 +1,4 @@
-import '@pzh-ui/css/src/tailwind.css'
+import '../../css/src/tailwind.css'
 
 import { withTests } from '@storybook/addon-jest'
 

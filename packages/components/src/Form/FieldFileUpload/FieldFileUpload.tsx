@@ -129,7 +129,7 @@ export const FieldFileUpload = ({
             )}
             <div
                 className={classNames(
-                    'py-6 text-pzh-blue-dark text-center border border-dashed border-pzh-gray-600 rounded-[4px] cursor-pointer',
+                    'relative py-6 text-pzh-blue-dark text-center border border-dashed border-pzh-gray-600 rounded-[4px] cursor-pointer',
                     className,
                     {
                         'md:col-span-4 col-span-6': layout === 'grid',

@@ -57,7 +57,7 @@ export const FieldRte = ({
     description,
     placeholder,
     required,
-    testId,
+    testId = name,
     layout = 'default',
     tooltip,
     disabled,

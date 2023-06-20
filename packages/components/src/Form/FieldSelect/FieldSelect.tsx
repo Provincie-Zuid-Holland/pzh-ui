@@ -43,7 +43,7 @@ export function FieldSelect({
     description,
     className,
     hasError,
-    testId,
+    testId = name,
     layout = 'default',
     tooltip,
     isAsync,
@@ -118,7 +118,9 @@ export function FieldSelect({
                                 {...props}
                                 className="text-pzh-blue-dark py-1 px-4 cursor-pointer hover:text-pzh-green hover:underline">
                                 {props.isMulti ? (
-                                    <div className="flex items-center">
+                                    <div
+                                        className="flex items-center"
+                                        data-testid={`${name}-option`}>
                                         <input
                                             className="absolute -left-[9999px] pzh-form-checkbox"
                                             checked={props.isSelected}
@@ -137,7 +139,9 @@ export function FieldSelect({
                                         </span>
                                     </div>
                                 ) : (
-                                    props.label
+                                    <span data-testid={`${name}-option`}>
+                                        {props.label}
+                                    </span>
                                 )}
                             </components.Option>
                         ),

@@ -37,7 +37,7 @@ export const FieldFileUpload = ({
     accept = {
         'image/*': ['.png', '.jpeg', '.webp'],
     },
-    maxSize = 20971520, // = 20 MB
+    maxSize = 1048576, // = 20 MB
     layout = 'default',
     tooltip,
     preview,
@@ -61,12 +61,18 @@ export const FieldFileUpload = ({
         [myFiles]
     )
 
-    const { getRootProps, getInputProps, isDragActive, isDragReject } =
-        useDropzone({
-            accept,
-            ...props,
-            onDrop,
-        })
+    const {
+        getRootProps,
+        getInputProps,
+        isDragActive,
+        isDragReject,
+        fileRejections,
+    } = useDropzone({
+        accept,
+        maxSize,
+        ...props,
+        onDrop,
+    })
 
     const removeFile = (file: File) => () => {
         const newFiles = [...myFiles]
@@ -127,7 +133,10 @@ export const FieldFileUpload = ({
                     })}
                 />
             )}
-            <div className="relative">
+            <div
+                className={classNames('relative', {
+                    'md:col-span-4 col-span-6': layout === 'grid',
+                })}>
                 <input
                     {...getInputProps({
                         required,
@@ -149,7 +158,6 @@ export const FieldFileUpload = ({
                         'py-6 text-pzh-blue-dark text-center border border-dashed border-pzh-gray-600 rounded-[4px] cursor-pointer',
                         className,
                         {
-                            'md:col-span-4 col-span-6': layout === 'grid',
                             hidden: myFiles.length === props.maxFiles,
                         }
                     )}
@@ -159,13 +167,16 @@ export const FieldFileUpload = ({
                             size={60}
                             className={classNames('mb-2 mx-auto max-w-[2rem]', {
                                 'text-pzh-blue-dark': !isDragActive,
-                                'text-pzh-green': isDragActive && !isDragReject,
-                                'text-pzh-red': isDragReject && isDragActive,
+                                'text-pzh-green':
+                                    isDragActive &&
+                                    (!isDragReject || !!!fileRejections.length),
+                                'text-pzh-red':
+                                    isDragReject || !!fileRejections.length,
                             })}
                         />
 
                         <p>
-                            {!isDragReject ? (
+                            {!isDragReject && !!!fileRejections.length ? (
                                 <>
                                     Sleep hier je bestanden naartoe of{' '}
                                     {!isDragActive && (
@@ -175,7 +186,11 @@ export const FieldFileUpload = ({
                                     )}
                                 </>
                             ) : (
-                                <>Dit bestandstype is niet toegestaan.</>
+                                <>
+                                    Sorry, het opgegeven bestandstype is niet
+                                    toegestaan of de bestandsgrootte is te
+                                    groot.
+                                </>
                             )}
                         </p>
                         <span className="text-pzh-gray-600">

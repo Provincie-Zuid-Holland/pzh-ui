@@ -1,4 +1,12 @@
-import { Bold, Images, Italic, ListOl, ListUl, Underline } from '@pzh-ui/icons'
+import {
+    Bold,
+    Images,
+    Italic,
+    Link,
+    ListOl,
+    ListUl,
+    Underline,
+} from '@pzh-ui/icons'
 import { EditorContentProps } from '@tiptap/react'
 import classNames from 'classnames'
 import { ButtonHTMLAttributes } from 'react'
@@ -139,6 +147,53 @@ const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
                                     }}
                                 />
                             </label>
+                        )
+                    case 'link':
+                        return (
+                            <MenuButton
+                                key={option}
+                                onClick={() => {
+                                    const previousUrl =
+                                        editor.getAttributes('link').href
+                                    const url = window.prompt(
+                                        'URL',
+                                        previousUrl
+                                    )
+
+                                    // cancelled
+                                    if (url === null) {
+                                        return
+                                    }
+
+                                    // empty
+                                    if (url === '') {
+                                        editor
+                                            .chain()
+                                            .focus()
+                                            .extendMarkRange('link')
+                                            .unsetLink()
+                                            .run()
+
+                                        return
+                                    }
+
+                                    // update link
+                                    editor
+                                        .chain()
+                                        .focus()
+                                        .extendMarkRange('link')
+                                        .setLink({
+                                            href: url,
+                                            target: '_blank',
+                                        })
+                                        .run()
+                                }}
+                                disabled={disabled}
+                                isActive={editor.isActive('link')}
+                                aria-label="Link"
+                                title="Link">
+                                <Link />
+                            </MenuButton>
                         )
                     default:
                         break

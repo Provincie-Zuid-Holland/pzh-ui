@@ -4,6 +4,7 @@ import { Editor, Extensions } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
+import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 
 import { FieldLabel } from '../FieldLabel'
@@ -49,7 +50,7 @@ export type TextEditorMenuOptions =
     | 'bulletList'
     | 'orderedList'
 
-export type TextEditorCustomMenuOptions = 'image'
+export type TextEditorCustomMenuOptions = 'image' | 'link'
 
 export const FieldRte = ({
     name,
@@ -76,7 +77,7 @@ export const FieldRte = ({
         },
         editorProps: {
             attributes: {
-                class: 'prose prose-neutral prose-li:my-0 p-4 max-w-full text-pzh-blue-dark marker:text-pzh-blue-dark leading-6 outline-none',
+                class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green p-4 max-w-full text-pzh-blue-dark marker:text-pzh-blue-dark leading-6 outline-none',
             },
         },
         injectCSS: false,
@@ -108,6 +109,14 @@ export const FieldRte = ({
                     allowBase64: true,
                 }),
                 ImageUpload
+            )
+
+        if (!!customMenuOptions?.find(el => el === 'link'))
+            extensions.push(
+                Link.configure({
+                    openOnClick: false,
+                    validate: href => /^https?:\/\//.test(href),
+                })
             )
 
         return extensions

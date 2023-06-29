@@ -42,7 +42,7 @@ Default.args = {
     onBlur: console.log,
     initialContent,
     placeholder: 'Start met typen...',
-    customMenuOptions: ['image'],
+    customMenuOptions: ['image', 'link'],
 }
 
 export const Disabled: ComponentStory<typeof FieldRte> = Template.bind({})

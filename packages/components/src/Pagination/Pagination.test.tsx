@@ -6,6 +6,7 @@ import { Pagination, PaginationProps } from './Pagination'
 describe('Pagination', () => {
     const defaultProps = {
         onChange: console.log,
+        pageCount: 10,
     }
 
     const setup = (customProps?: Partial<PaginationProps>) => {

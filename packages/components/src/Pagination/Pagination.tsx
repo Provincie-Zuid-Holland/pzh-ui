@@ -2,7 +2,7 @@ import { AngleLeft, AngleRight } from '@pzh-ui/icons'
 import { useMemo } from 'react'
 import ReactPaginate, { ReactPaginateProps } from 'react-paginate'
 
-export interface PaginationProps extends ReactPaginateProps {
+export interface PaginationProps extends Omit<ReactPaginateProps, 'pageCount'> {
     /** Initial page number */
     initialPage?: number
     /** Items per page */

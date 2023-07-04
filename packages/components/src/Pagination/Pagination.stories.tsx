@@ -15,5 +15,6 @@ export const Default: ComponentStory<typeof Pagination> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
     onChange: console.log,
-    total: 300,
+    total: 228,
+    limit: 10,
 }

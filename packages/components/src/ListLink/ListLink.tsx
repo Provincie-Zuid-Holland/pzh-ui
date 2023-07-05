@@ -19,7 +19,7 @@ export const ListLink = ({ text, to, className }: ListLinkProps) => {
                 className
             )}
             to={to}>
-            <AngleRight className="mr-2 relative -bottom-[6px]" />
+            <AngleRight className="mr-2 relative -bottom-[6px] min-w-[14px]" />
             <span>{text}</span>
         </Link>
     )

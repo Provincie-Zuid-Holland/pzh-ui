@@ -31,18 +31,18 @@ export const Pagination = ({
             data-testid="pagination"
             initialPage={initialPage}
             breakLabel="..."
-            breakClassName="mx-1 text-pzh-green"
+            breakClassName="mx-1"
             nextLabel={<AngleRight size={18} />}
-            nextClassName="w-8 h-8 -mt-0.5 flex items-center justify-center text-pzh-green"
+            nextClassName="w-8 h-8 -mt-0.5 flex items-center justify-center"
             onPageChange={handleClick}
             pageRangeDisplayed={5}
             previousLabel={<AngleLeft size={18} />}
-            previousClassName="w-8 h-8 -mt-0.5 flex items-center justify-center text-pzh-green"
+            previousClassName="w-8 h-8 -mt-0.5 flex items-center justify-center"
             renderOnZeroPageCount={null}
-            className="flex items-center font-bold"
+            className="flex items-center font-bold text-pzh-green"
             disabledClassName="text-pzh-gray-400 pointer-events-none"
             pageLinkClassName="w-full h-full flex items-center justify-center rounded-[4px] focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2"
-            pageClassName="w-8 h-8 mx-1 rounded-[4px] text-pzh-green"
+            pageClassName="w-8 h-8 mx-1 rounded-[4px]"
             activeClassName="text-pzh-white bg-pzh-green"
             {...rest}
             pageCount={pageCount}

@@ -39,6 +39,8 @@ export interface FieldRteProps {
     menuOptions?: TextEditorMenuOptions[]
     /** List of custom menu options that should be enabled */
     customMenuOptions?: TextEditorCustomMenuOptions[]
+    /** Classnames of menu */
+    menuClassName?: string
     /** Has field an error */
     hasError?: boolean
 }
@@ -66,6 +68,7 @@ export const FieldRte = ({
     initialContent,
     menuOptions = ['bold', 'italic', 'underline', 'bulletList', 'orderedList'],
     customMenuOptions,
+    menuClassName,
     hasError,
 }: FieldRteProps) => {
     const editor = useEditor({
@@ -168,7 +171,7 @@ export const FieldRte = ({
                 })}>
                 <div
                     className={classNames(
-                        'border border-pzh-gray-600 rounded-[4px]',
+                        'relative border border-pzh-gray-600 rounded-[4px]',
                         {
                             'bg-pzh-gray-100': disabled,
                             'pzh-form-error': hasError,
@@ -180,6 +183,7 @@ export const FieldRte = ({
                             ...menuOptions,
                             ...(customMenuOptions || []),
                         ]}
+                        menuClassName={menuClassName}
                         disabled={disabled}
                     />
                     <EditorContent editor={editor} />

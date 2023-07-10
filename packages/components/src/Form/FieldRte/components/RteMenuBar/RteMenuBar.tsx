@@ -18,13 +18,23 @@ import {
 
 interface RteMenuBarProps extends EditorContentProps {
     menuOptions: (TextEditorMenuOptions | TextEditorCustomMenuOptions)[]
+    menuClassName?: string
 }
 
-const RteMenuBar = ({ editor, disabled, menuOptions }: RteMenuBarProps) => {
+const RteMenuBar = ({
+    editor,
+    disabled,
+    menuOptions,
+    menuClassName,
+}: RteMenuBarProps) => {
     if (!editor) return null
 
     return (
-        <div className="px-2 flex border-b border-pzh-gray-600">
+        <div
+            className={classNames(
+                'px-2 flex border-b border-pzh-gray-600 bg-pzh-white rounded-t-[4px]',
+                menuClassName
+            )}>
             {menuOptions.map(option => {
                 switch (option) {
                     case 'bold':

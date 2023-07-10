@@ -10,8 +10,6 @@ this is a basic <em>basic</em> example of <strong>tiptap</strong>. Sure, there a
     AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
         9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
 <ul>
-  AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
-        9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
 <li>That’s a bullet list with one …</li>
 <li>
     … or two list items.

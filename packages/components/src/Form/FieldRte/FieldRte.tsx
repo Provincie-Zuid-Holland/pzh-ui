@@ -107,6 +107,7 @@ export const FieldRte = ({
             extensions.push(
                 Image.configure({
                     allowBase64: true,
+                    inline: true,
                 }),
                 ImageUpload
             )

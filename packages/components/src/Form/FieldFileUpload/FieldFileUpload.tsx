@@ -151,6 +151,7 @@ export const FieldFileUpload = ({
                             opacity: 0.00001,
                             pointerEvents: 'none',
                         },
+                        multiple: (props.maxFiles || 0) > 1,
                     })}
                 />
 

@@ -139,8 +139,6 @@ export const FieldFileUpload = ({
                 })}>
                 <input
                     {...getInputProps({
-                        required,
-                        id: name,
                         name,
                         style: {
                             position: 'absolute',

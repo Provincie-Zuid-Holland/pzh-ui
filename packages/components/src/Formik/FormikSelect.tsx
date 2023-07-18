@@ -27,7 +27,9 @@ export function FormikSelect({
                             props.isMulti
                                 ? field.value?.map((val: any) =>
                                       options?.find(
-                                          (option: any) => option.value === val
+                                          (option: any) =>
+                                              JSON.stringify(option.value) ===
+                                              JSON.stringify(val)
                                       )
                                   )
                                 : options?.find(

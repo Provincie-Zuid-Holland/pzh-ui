@@ -31,7 +31,7 @@ export function Tabs(props: TabsProps) {
             <div
                 {...tabListProps}
                 ref={ref}
-                className="flex flex-column border-b-2 border-pzh-gray-400"
+                className="flex flex-column border-b border-pzh-gray-400"
                 data-testid="tabs">
                 {[...state.collection].map(item => (
                     <Tab key={item.key} item={item} state={state} />
@@ -53,10 +53,10 @@ function Tab({ item, state }: TabProps) {
         <div
             {...tabProps}
             ref={ref}
-            className={classNames('mr-4 -mb-[2px] cursor-pointer', {
-                'border-pzh-green border-b-[3px] text-pzh-green font-bold':
+            className={classNames('mr-4 -mb-px cursor-pointer font-bold', {
+                'border-pzh-green border-b-[3px] text-pzh-green':
                     tabProps['aria-selected'],
-                'border-pzh-gray-400 border-b-2': !tabProps['aria-selected'],
+                'border-pzh-gray-400 text-pzh-blue': !tabProps['aria-selected'],
             })}>
             {rendered}
         </div>

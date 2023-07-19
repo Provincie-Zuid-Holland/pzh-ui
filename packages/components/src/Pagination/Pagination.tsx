@@ -39,11 +39,11 @@ export const Pagination = ({
             previousLabel={<AngleLeft size={18} />}
             previousClassName="w-8 h-8 -mt-0.5 flex items-center justify-center"
             renderOnZeroPageCount={null}
-            className="flex items-center font-bold text-pzh-green"
+            className="flex items-center font-bold text-pzh-blue"
             disabledClassName="text-pzh-gray-400 pointer-events-none"
             pageLinkClassName="w-full h-full flex items-center justify-center rounded-[4px] focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2"
             pageClassName="w-8 h-8 mx-1 rounded-[4px]"
-            activeClassName="text-pzh-white bg-pzh-green"
+            activeClassName="border border-pzh-blue"
             {...rest}
             pageCount={pageCount}
         />

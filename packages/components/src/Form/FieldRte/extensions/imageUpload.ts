@@ -19,21 +19,6 @@ const ImageUpload = Extension.create({
             new Plugin({
                 key: new PluginKey('imageUpload'),
                 props: {
-                    // @ts-ignore
-                    handlePaste: async (_, event) => {
-                        const files = event.clipboardData?.files
-
-                        if (files?.length) {
-                            event.preventDefault()
-                            const src = (await blobToBase64(files[0])) as string
-                            src &&
-                                this.editor
-                                    .chain()
-                                    .focus()
-                                    .setImage({ src })
-                                    .run()
-                        }
-                    },
                     handleDOMEvents: {
                         // @ts-ignore
                         drop: async (_, event) => {

@@ -149,7 +149,7 @@ const ModalInner = ({
                             <div className="absolute top-0 right-0 z-10 block pt-8 pr-8 -mt-8 -mr-8 sm:-mt-2 sm:-mr-2">
                                 <button
                                     type="button"
-                                    className="p-2 pb-0 text-pzh-blue-dark rounded-md pointer-events-auto hover:text-pzh-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    className="p-2 pb-0 text-pzh-blue-dark rounded-md pointer-events-auto hover:text-pzh-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pzh-blue-dark"
                                     onClick={onClose}>
                                     <Xmark className="w-4 h-4" />
                                     <span className="sr-only">Sluiten</span>

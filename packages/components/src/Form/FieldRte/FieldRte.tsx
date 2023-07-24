@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from 'react'
-import { useEditor, EditorContent } from '@tiptap/react'
-import { Editor, Extensions } from '@tiptap/core'
+import { useEditor, EditorContent, Editor } from '@tiptap/react'
+import { Extensions } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
@@ -76,7 +76,7 @@ export const FieldRte = ({
         editable: !disabled,
         content: initialContent,
         onBlur({ editor }) {
-            handleUpdate(editor)
+            handleUpdate(editor as Editor)
         },
         editorProps: {
             attributes: {
@@ -143,7 +143,7 @@ export const FieldRte = ({
 
         editor.off('blur')
         editor.on('blur', ({ editor }) => {
-            handleUpdate(editor)
+            handleUpdate(editor as Editor)
         })
     }, [editor, handleUpdate])
 

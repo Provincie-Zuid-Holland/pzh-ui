@@ -7,7 +7,7 @@ interface FormikErrorProps {
 export const FormikError = ({ name }: FormikErrorProps) => {
     return (
         <ErrorMessage name={name}>
-            {message => {
+            {(message: string) => {
                 return (
                     <span className="block mt-1 text-pzh-red text-xs">
                         {message}

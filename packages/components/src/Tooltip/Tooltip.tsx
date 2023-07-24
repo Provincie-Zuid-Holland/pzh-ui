@@ -12,7 +12,7 @@ import {
     useFocus,
     useRole,
     useDismiss,
-} from '@floating-ui/react-dom-interactions'
+} from '@floating-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export interface TooltipProps {
@@ -33,8 +33,6 @@ export const Tooltip = ({
     const {
         x,
         y,
-        reference,
-        floating,
         strategy,
         context,
         refs,
@@ -83,7 +81,7 @@ export const Tooltip = ({
         <>
             {cloneElement(
                 children,
-                getReferenceProps({ ref: reference, ...children.props })
+                getReferenceProps({ ref: refs.setReference, ...children.props })
             )}
             <AnimatePresence>
                 {open && (
@@ -98,7 +96,7 @@ export const Tooltip = ({
                         }}
                         data-testid="tooltip"
                         {...getFloatingProps({
-                            ref: floating,
+                            ref: refs.setFloating,
                             className:
                                 'px-3 rounded-[4px] max-w-[300px] text-white font-normal leading-5',
                             style: {

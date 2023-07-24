@@ -1,16 +1,25 @@
 import { ReactNode, useEffect } from 'react'
 import { useEditor, EditorContent, Editor } from '@tiptap/react'
 import { Extensions } from '@tiptap/core'
-import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
+import Bold from '@tiptap/extension-bold'
+import Italic from '@tiptap/extension-italic'
+import Document from '@tiptap/extension-document'
+import Text from '@tiptap/extension-text'
+import Paragraph from '@tiptap/extension-paragraph'
+import BulletList from '@tiptap/extension-bullet-list'
+import OrderedList from '@tiptap/extension-ordered-list'
+import ListItem from '@tiptap/extension-list-item'
+import History from '@tiptap/extension-history'
 
 import { FieldLabel } from '../FieldLabel'
 import classNames from 'classnames'
 import RteMenuBar from './components/RteMenuBar'
 import ImageUpload from './extensions/imageUpload'
+
 
 export interface FieldRteProps {
     /** Name text */
@@ -88,15 +97,16 @@ export const FieldRte = ({
 
     function getEditorExtensions() {
         const extensions: Extensions = [
-            StarterKit.configure({
-                blockquote: false,
-                code: false,
-                codeBlock: false,
-                strike: false,
-                heading: false,
-                horizontalRule: false,
-            }),
+            Document,
+            Text,
+            Paragraph,
+            Bold,
+            Italic,
             Underline,
+            BulletList,
+            OrderedList,
+            ListItem,
+            History,
         ]
 
         if (placeholder)

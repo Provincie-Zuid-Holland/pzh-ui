@@ -42,7 +42,7 @@ export const PillButton = <T extends ElementType = 'button'>({
             ref={ref}
             {...buttonProps}>
             {Icon && <Icon size={12} className="mr-[8px]" />}
-            <span className='-mb-[2px]'>{children}</span>
+            <span className='-mb-0.5'>{children}</span>
         </Component>
     )
 }

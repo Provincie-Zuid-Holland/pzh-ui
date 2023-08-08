@@ -109,5 +109,5 @@
             "^.+\\.svg$": "<rootDir>/jest.svgMock.js"
         }
     },
-    "gitHead": "c7952936b43c1a4461711cad43c18f8c89205f41"
+    "gitHead": "ae8fc4e5a60d20f98ecda7720fb81b349173d3de"
 }

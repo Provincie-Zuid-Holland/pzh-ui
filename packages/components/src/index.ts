@@ -22,6 +22,7 @@ export * from './Tooltip'
 export * from './Toast'
 export * from './ListLink'
 export * from './Pagination'
+export * from './PillButton'
 
 // Utils
 export * from './utils'

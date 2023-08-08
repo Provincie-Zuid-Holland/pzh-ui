@@ -15,11 +15,11 @@ const SVGIcon = forwardRef<SVGSVGElement, CustomIconProps>(
                 viewBox="0 0 448 512"
                 ref={svgRef}
                 {...props}>
-                <path d="M32 192c0-88.4 71.6-160 160-160h232c13.3 0 24 10.7 24 24s-10.7 24-24 24h-40v376c0 13.3-10.7 24-24 24s-24-10.7-24-24V80h-48v376c0 13.3-10.7 24-24 24s-24-10.7-24-24V352h-48c-88.4 0-160-71.6-160-160zm208 112V80h-48c-61.9 0-112 50.1-112 112s50.1 112 112 112h48z" />
+                <path d="M246.2 46.9c-3.7-9-12.4-14.9-22.2-14.9s-18.5 5.9-22.2 14.9L44.6 432H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h112c13.3 0 24-10.7 24-24s-10.7-24-24-24H96.5l32.7-80h189.7l32.7 80H312c-13.3 0-24 10.7-24 24s10.7 24 24 24h112c13.3 0 24-10.7 24-24s-10.7-24-24-24h-20.6L246.2 46.9zM299.3 304H148.7L224 119.5 299.3 304z" />
             </svg>
         )
     }
 )
-const ParagraphIcon = SVGIcon
-ParagraphIcon.displayName = 'Paragraph'
-export default ParagraphIcon
+const FontIcon = SVGIcon
+FontIcon.displayName = 'Font'
+export default FontIcon

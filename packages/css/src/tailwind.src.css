@@ -188,8 +188,8 @@ b {
         @apply rounded-full hover:rounded-full;
     }
 
-    .pzh-datepicker .react-datepicker__day--today,
-    .pzh-datepicker .react-datepicker__day--today:hover,
+    .pzh-datepicker .react-datepicker__day--today:not(.react-datepicker__day--selected),
+    .pzh-datepicker .react-datepicker__day--today:hover:not(.react-datepicker__day--selected),
     .pzh-datepicker .react-datepicker__day--keyboard-selected {
         @apply bg-pzh-blue-dark bg-opacity-10 text-pzh-blue-dark;
     }

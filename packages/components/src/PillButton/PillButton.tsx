@@ -34,7 +34,7 @@ export const PillButton = <T extends ElementType = 'button'>({
             })}
             className={classNames('flex items-center h-[24px] px-3 border text-[16px] rounded-[40px] focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2 transition',
                 {
-                    'text-pzh-green border-pzh-green cursor-pointer hover:bg-pzh-green hover:text-pzh-white': !isDisabled,
+                    'text-pzh-green border-pzh-green cursor-pointer hover:bg-pzh-green-dark hover:border-pzh-green-dark hover:text-pzh-white': !isDisabled,
                     'text-pzh-gray bg-pzh-gray-200 text-pzh-blue-dark/35 cursor-not-allowed': isDisabled,
                 },
                 props.className

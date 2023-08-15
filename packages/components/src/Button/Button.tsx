@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 export interface ButtonProps<T extends ElementType>
     extends AriaButtonProps<'button'> {
     as?: T
-    variant?: 'primary' | 'secondary' | 'cta' | 'link'
+    variant?: 'primary' | 'secondary' | 'cta' | 'link' | 'default'
     size?: 'large' | 'small'
     icon?: any
     isLoading?: boolean
@@ -39,17 +39,17 @@ export const Button = <T extends ElementType = 'button'>({
                 to: props.href,
             })}
             className={classNames(
-                'pzh-button',
-                {
-                    'pt-[15px] pb-[12px] h-[48px]': size === 'large',
+                variant !== 'default' && {
+                    'pzh-button': true,
+                    'h-[48px] pb-[12px] pt-[15px]': size === 'large',
                     'px-4': size === 'large' && variant !== 'link',
-                    'text-xs pb-[9px] pt-[10px] h-[36px]': size === 'small',
+                    'h-[36px] pb-[9px] pt-[10px] text-xs': size === 'small',
                     'px-[12px]': size === 'small' && variant !== 'link',
-                    'underline font-normal': variant === 'link',
+                    'font-normal underline': variant === 'link',
                     'font-bold': variant !== 'link',
                     'bg-pzh-blue hover:bg-pzh-blue-dark text-white':
                         variant === 'primary' && !isDisabled,
-                    'text-pzh-blue border border-pzh-gray-600 hover:border-pzh-blue':
+                    'text-pzh-blue border-pzh-gray-600 hover:border-pzh-blue border':
                         variant === 'secondary' && !isDisabled,
                     'bg-pzh-green hover:bg-pzh-green-dark text-white':
                         variant === 'cta' && !isDisabled,

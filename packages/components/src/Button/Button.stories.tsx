@@ -11,7 +11,7 @@ export default {
     component: Button,
     argTypes: {
         variant: {
-            options: ['primary', 'secondary', 'cta'],
+            options: ['primary', 'secondary', 'cta', 'link', 'default'],
             control: { type: 'select' },
         },
         size: {

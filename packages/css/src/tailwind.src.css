@@ -64,11 +64,11 @@ b {
     */
 
     .pzh-button {
-        @apply inline-block transition duration-200 ease-in rounded focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2 leading-none disabled:bg-pzh-gray-200 disabled:text-pzh-blue-dark disabled:text-opacity-35 disabled:cursor-not-allowed;
+        @apply focus:ring-pzh-blue-dark disabled:bg-pzh-gray-200 disabled:text-pzh-blue-dark disabled:text-opacity-35 inline-block rounded leading-none ring-offset-2 transition duration-200 ease-in focus:outline-none focus:ring disabled:cursor-not-allowed;
     }
 
     .pzh-form-input {
-        @apply block w-full pt-[10px] pb-[6px] leading-[30px] placeholder-pzh-gray-600 text-pzh-blue-dark border border-pzh-gray-600 rounded appearance-none focus:outline-none hover:border-pzh-blue focus:ring focus:ring-2 focus:ring-pzh-blue focus:outline-none focus:border-pzh-blue disabled:bg-pzh-gray-200;
+        @apply placeholder-pzh-gray-600 text-pzh-blue-dark border-pzh-gray-600 hover:border-pzh-blue focus:ring-pzh-blue focus:border-pzh-blue disabled:bg-pzh-gray-200 block w-full appearance-none rounded border pb-[6px] pt-[10px] leading-[30px] focus:outline-none focus:outline-none focus:ring focus:ring-2;
     }
 
     .pzh-form-error,
@@ -80,12 +80,12 @@ b {
 
     .pzh-form-radio:checked + span:before,
     .pzh-form-radio:not(:checked) + span:before {
-        @apply absolute left-0 top-0 w-[24px] h-[24px] border-pzh-gray-600 border bg-pzh-gray-200 rounded-full;
+        @apply border-pzh-gray-600 bg-pzh-gray-200 absolute left-0 top-0 h-[24px] w-[24px] rounded-full border;
         content: '';
     }
     .pzh-form-radio:checked + span:after,
     .pzh-form-radio:not(:checked) + span:after {
-        @apply absolute top-1 left-1 w-[14px] h-[14px] rounded-full bg-pzh-green transition duration-200;
+        @apply bg-pzh-green absolute left-1 top-1 h-[14px] w-[14px] rounded-full transition duration-200;
         content: '';
     }
     .pzh-form-radio:not(:checked) + span:after,
@@ -104,7 +104,7 @@ b {
     }
 
     .pzh-form-checkbox + span:before {
-        @apply absolute left-0 top-0 w-[24px] h-[24px] border-pzh-gray-600 border bg-pzh-gray-200 rounded-[4px] transition duration-200;
+        @apply border-pzh-gray-600 bg-pzh-gray-200 absolute left-0 top-0 h-[24px] w-[24px] rounded-[4px] border transition duration-200;
         content: '';
     }
 
@@ -114,7 +114,7 @@ b {
 
     .pzh-form-checkbox:checked + span:after,
     .pzh-form-checkbox:not(:checked) + span:after {
-        @apply absolute top-[2px] left-1 w-[14px] h-[14px] text-white transition duration-200;
+        @apply absolute left-1 top-[2px] h-[14px] w-[14px] text-white transition duration-200;
         content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='white' d='M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z'/></svg>");
     }
 
@@ -124,11 +124,11 @@ b {
 
     .pzh-form-radio:focus + span:before,
     .pzh-form-checkbox:focus + span:before {
-        @apply ring ring-2 ring-pzh-blue outline-none border-pzh-blue;
+        @apply ring-pzh-blue border-pzh-blue outline-none ring ring-2;
     }
 
     .form-field-label {
-        @apply block mb-2 text-xs tracking-wide text-gray-700 uppercase;
+        @apply mb-2 block text-xs uppercase tracking-wide text-gray-700;
     }
 
     .form-field-description {
@@ -143,7 +143,8 @@ b {
         font-family: 'Karbon Regular', sans-serif;
         font-weight: 400;
         font-size: 0.8rem;
-        box-shadow: 0px 18px 60px rgba(0, 0, 0, 0.07),
+        box-shadow:
+            0px 18px 60px rgba(0, 0, 0, 0.07),
             0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275),
             0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
         @apply text-pzh-blue-dark border-none;
@@ -154,11 +155,11 @@ b {
     }
 
     .pzh-datepicker .react-datepicker__header {
-        @apply bg-white border-none;
+        @apply border-none bg-white;
     }
 
     .pzh-datepicker .react-datepicker__month {
-        @apply mt-0 mx-0.5;
+        @apply mx-0.5 mt-0;
     }
 
     .pzh-datepicker .react-datepicker__day-names {
@@ -166,7 +167,7 @@ b {
     }
 
     .pzh-datepicker .react-datepicker__day-name {
-        @apply bold leading-[26px] my-0;
+        @apply bold my-0 leading-[26px];
     }
 
     .pzh-datepicker .react-datepicker__current-month {
@@ -174,24 +175,30 @@ b {
     }
 
     .pzh-datepicker
-        .react-datepicker__day--outside-month:not(.react-datepicker__day--selected) {
+        .react-datepicker__day--outside-month:not(
+            .react-datepicker__day--selected
+        ) {
         @apply text-pzh-blue-dark text-opacity-35;
     }
 
     .pzh-datepicker .react-datepicker__day-name,
     .pzh-datepicker .react-datepicker__day,
     .pzh-datepicker .react-datepicker__time-name {
-        @apply w-[26px] h-[26px] leading-[28px] mx-2 my-1;
+        @apply mx-2 my-1 h-[26px] w-[26px] leading-[28px];
     }
 
     .pzh-datepicker .react-datepicker__day {
         @apply rounded-full hover:rounded-full;
     }
 
-    .pzh-datepicker .react-datepicker__day--today:not(.react-datepicker__day--selected),
-    .pzh-datepicker .react-datepicker__day--today:hover:not(.react-datepicker__day--selected),
+    .pzh-datepicker
+        .react-datepicker__day--today:not(.react-datepicker__day--selected),
+    .pzh-datepicker
+        .react-datepicker__day--today:hover:not(
+            .react-datepicker__day--selected
+        ),
     .pzh-datepicker .react-datepicker__day--keyboard-selected {
-        @apply bg-pzh-blue-dark bg-opacity-10 text-pzh-blue-dark;
+        @apply bg-pzh-blue-dark text-pzh-blue-dark bg-opacity-10;
     }
 
     .pzh-datepicker .react-datepicker__day--keyboard-selected:hover {
@@ -207,7 +214,7 @@ b {
     .pzh-datepicker .react-datepicker__month-read-view--down-arrow,
     .pzh-datepicker .react-datepicker__month-year-read-view--down-arrow,
     .pzh-datepicker .react-datepicker__navigation-icon::before {
-        @apply w-[7px] h-[7px] border border-black border-0 border-t-[1px] border-r-[1px];
+        @apply h-[7px] w-[7px] border border-0 border-r-[1px] border-t-[1px] border-black;
     }
 
     .pzh-datepicker .react-datepicker__navigation-icon {
@@ -224,5 +231,25 @@ b {
         float: left;
         pointer-events: none;
         height: 0;
+    }
+
+    .pzh-modal {
+        &[data-entering] {
+            animation: fade 150ms;
+        }
+
+        &[data-exiting] {
+            animation: fade 150ms reverse ease-in;
+        }
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 }

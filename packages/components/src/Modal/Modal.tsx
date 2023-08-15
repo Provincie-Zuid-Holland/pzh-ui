@@ -1,165 +1,110 @@
-import { Dialog, Transition } from '@headlessui/react'
+import { forwardRef, useRef } from 'react'
+import {
+    Overlay,
+    useModalOverlay,
+    ModalProviderProps,
+    AriaModalOverlayProps,
+} from 'react-aria'
+import { OverlayTriggerProps, useOverlayTriggerState } from 'react-stately'
+import { Dialog } from '../Dialog'
+import { Button } from '../Button'
 import { Xmark } from '@pzh-ui/icons'
+import { useEnterAnimation, useExitAnimation, useRenderProps } from './utils'
+import { useObjectRef } from '@react-aria/utils'
 import classNames from 'classnames'
-import { Fragment, ReactNode } from 'react'
-import { useWindowSize } from 'react-use'
-import FocusTrap from 'focus-trap-react'
 
-export interface ModalProps {
-    open?: boolean
-    onClose: () => void
-    maxWidth?: string
-    containerPadding?: string
-    ariaLabel: string
-    closeButton?: boolean
-    position?: 'fixed' | 'absolute'
-    overflowVisible?: boolean
-    children: ReactNode
+export interface ModalProps
+    extends ModalProviderProps,
+        AriaModalOverlayProps,
+        OverlayTriggerProps {
+    size?: 's' | 'm' | 'l' | 'xl'
 }
 
 export const Modal = ({
     children,
-    open,
-    onClose,
-    maxWidth = 'max-w-6xl',
-    containerPadding = 'sm:p-8 p-6',
-    ariaLabel,
-    closeButton,
-    overflowVisible = false,
-    position = 'fixed',
+    isDismissable = true,
+    size = 'm',
+    ...props
 }: ModalProps) => {
-    if (position === 'absolute') {
-        return (
-            <Transition show={open} as={Fragment}>
-                <div
-                    className="absolute h-full inset-0 z-1 overflow-hidden"
-                    aria-label={ariaLabel}>
-                    <FocusTrap>
-                        <div>
-                            <ModalInner
-                                overflowVisible={overflowVisible}
-                                containerPadding={containerPadding}
-                                closeButton={closeButton}
-                                onClose={onClose}
-                                maxWidth={maxWidth}
-                                position={position}>
-                                {children}
-                            </ModalInner>
-                        </div>
-                    </FocusTrap>
-                </div>
-            </Transition>
-        )
-    }
+    const state = useOverlayTriggerState(props)
+
+    const ref = useRef(null)
+    const { modalProps, underlayProps } = useModalOverlay(
+        { ...props, isDismissable },
+        state,
+        ref
+    )
+
+    let objectRef = useObjectRef(ref)
+    let isExiting = useExitAnimation(objectRef, state.isOpen)
+
+    if (!state.isOpen && !isExiting) return null
 
     return (
-        <Transition show={open} as={Fragment}>
-            <Dialog
-                as="div"
-                className="fixed inset-0 z-50 overflow-hidden"
-                onClose={onClose}
-                aria-label={ariaLabel}>
+        <Overlay isExiting={isExiting}>
+            <div
+                className="fixed bottom-0 left-0 right-0 top-0 z-[100] flex items-center justify-center bg-black/30 duration-300 ease-in-out"
+                {...underlayProps}>
                 <ModalInner
-                    overflowVisible={overflowVisible}
-                    containerPadding={containerPadding}
-                    closeButton={closeButton}
-                    onClose={onClose}
-                    maxWidth={maxWidth}
-                    position={position}>
+                    {...modalProps}
+                    isDismissable={isDismissable}
+                    onClose={state.close}
+                    ref={objectRef}
+                    isExiting={isExiting}
+                    size={size}>
                     {children}
                 </ModalInner>
-            </Dialog>
-        </Transition>
+            </div>
+        </Overlay>
     )
 }
 
-const ModalInner = ({
-    containerPadding,
-    closeButton,
-    onClose,
-    maxWidth,
-    position,
-    children,
-    overflowVisible,
-}: Partial<ModalProps>) => {
-    const { width: screenWidth } = useWindowSize()
-
-    return (
-        <div
-            className={classNames(
-                'flex items-center justify-center text-center sm:block px-4 pt-4 pb-4 sm:p-2',
-                {
-                    'overflow-hidden': !overflowVisible,
-                    'min-h-screen': position === 'fixed',
-                    'h-full': position === 'absolute',
-                }
-            )}>
-            <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0">
-                {position === 'fixed' ? (
-                    <Dialog.Overlay className="fixed inset-0 transition-opacity bg-opacity-50 bg-pzh-cool-gray-dark" />
-                ) : (
-                    <div className="absolute inset-0 transition-opacity bg-opacity-50 bg-pzh-cool-gray-dark" />
-                )}
-            </Transition.Child>
-
-            {/* This element is to trick the browser into centering the modal contents. */}
-            <span
-                className={classNames(
-                    'hidden sm:inline-block sm:align-middle',
-                    {
-                        'sm:h-screen': position === 'fixed',
-                        'h-full': position === 'absolute',
-                    }
-                )}
-                aria-hidden="true">
-                &#8203;
-            </span>
-            <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-                <div
-                    className={classNames(
-                        `inline-block text-left align-bottom transition-all transform bg-white rounded-[4px] shadow-xl sm:my-8 sm:align-middle sm:w-full ${maxWidth}`,
-                        { 'overflow-hidden': !overflowVisible }
-                    )}>
-                    <div
-                        className={classNames(`${containerPadding}`, {
-                            'overflow-y-auto': !overflowVisible,
-                            'overflow-y-visible': overflowVisible,
-                        })}
-                        style={{
-                            maxHeight:
-                                screenWidth < 640
-                                    ? 'calc(100vh - 2rem)' // 2rem equals the top and bottom padding
-                                    : '90vh',
-                        }}>
-                        {closeButton && (
-                            <div className="absolute top-0 right-0 z-10 block pt-8 pr-8 -mt-8 -mr-8 sm:-mt-2 sm:-mr-2">
-                                <button
-                                    type="button"
-                                    className="p-2 text-pzh-blue-dark rounded-md pointer-events-auto hover:text-pzh-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pzh-blue-dark"
-                                    onClick={onClose}>
-                                    <Xmark className="w-4 h-4" />
-                                    <span className="sr-only">Sluiten</span>
-                                </button>
-                            </div>
-                        )}
-                        <div className="pointer-events-auto">{children}</div>
-                    </div>
-                </div>
-            </Transition.Child>
-        </div>
-    )
+interface ModalInnerProps extends ModalProps {
+    isExiting: boolean
+    onClose: () => void
 }
+
+const ModalInner = forwardRef<HTMLDivElement, ModalInnerProps>(
+    (
+        { isDismissable, isExiting, onClose, size, onKeyDown, ...rest },
+        objectRef
+    ) => {
+        let ref = useObjectRef(objectRef)
+        let entering = useEnterAnimation(ref)
+
+        let renderProps = useRenderProps({
+            ...rest,
+            className: classNames('pzh-modal w-full', {
+                'max-w-[600px]': size === 's',
+                'max-w-[812px]': size === 'm',
+                'max-w-[980px]': size === 'l',
+                'max-w-[1200px]': size === 'xl',
+            }),
+            values: {
+                isEntering: entering,
+                isExiting,
+            },
+        })
+
+        return (
+            <div
+                {...renderProps}
+                data-entering={entering || undefined}
+                data-exiting={isExiting || undefined}
+                ref={ref}
+                onKeyDown={onKeyDown}>
+                <Dialog className="bg-pzh-white relative w-full overflow-hidden rounded-[4px] shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] outline-none duration-300 ease-in-out">
+                    {isDismissable && onClose && (
+                        <Button
+                            variant="default"
+                            onPress={onClose}
+                            className="absolute right-8 top-4">
+                            <Xmark size={16} className="text-pzh-blue-dark" />
+                        </Button>
+                    )}
+                    {renderProps.children}
+                </Dialog>
+            </div>
+        )
+    }
+)

@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Modal, ModalProps } from './Modal'
+import { OLDModal, OLDModalProps } from './Modal'
 
 describe('Modal', () => {
     const closeMock = jest.fn()
@@ -12,13 +12,13 @@ describe('Modal', () => {
         ariaLabel: 'test',
     }
 
-    const setup = (customProps?: Partial<ModalProps>) => {
+    const setup = (customProps?: Partial<OLDModalProps>) => {
         const props = { ...defaultProps, ...customProps }
 
         render(
-            <Modal {...props}>
+            <OLDModal {...props}>
                 <span>Test Modal Text</span>
-            </Modal>
+            </OLDModal>
         )
     }
 

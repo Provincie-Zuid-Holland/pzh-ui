@@ -98,7 +98,7 @@ const ModalInner = forwardRef<HTMLDivElement, ModalInnerProps>(
                         <Button
                             variant="default"
                             onPress={onClose}
-                            className="absolute right-8 top-4">
+                            className="absolute right-8 top-[24px]">
                             <Xmark size={16} className="text-pzh-blue-dark" />
                         </Button>
                     )}

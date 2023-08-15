@@ -26,6 +26,7 @@ const Template = ({ ...args }: ModalProps) => {
 export const Default: ComponentStory<typeof Modal> = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+    title: 'Modal',
     children: (
         <form className="flex flex-col p-4">
             <label htmlFor="first-name">First Name:</label>

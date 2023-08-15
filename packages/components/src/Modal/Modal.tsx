@@ -18,12 +18,14 @@ export interface ModalProps
         AriaModalOverlayProps,
         OverlayTriggerProps {
     size?: 's' | 'm' | 'l' | 'xl'
+    title: string
 }
 
 export const Modal = ({
     children,
     isDismissable = true,
     size = 'm',
+    title,
     ...props
 }: ModalProps) => {
     const state = useOverlayTriggerState(props)
@@ -51,7 +53,8 @@ export const Modal = ({
                     onClose={state.close}
                     ref={objectRef}
                     isExiting={isExiting}
-                    size={size}>
+                    size={size}
+                    title={title}>
                     {children}
                 </ModalInner>
             </div>
@@ -66,7 +69,7 @@ interface ModalInnerProps extends ModalProps {
 
 const ModalInner = forwardRef<HTMLDivElement, ModalInnerProps>(
     (
-        { isDismissable, isExiting, onClose, size, onKeyDown, ...rest },
+        { isDismissable, isExiting, onClose, size, onKeyDown, title, ...rest },
         objectRef
     ) => {
         let ref = useObjectRef(objectRef)
@@ -93,7 +96,9 @@ const ModalInner = forwardRef<HTMLDivElement, ModalInnerProps>(
                 data-exiting={isExiting || undefined}
                 ref={ref}
                 onKeyDown={onKeyDown}>
-                <Dialog className="bg-pzh-white relative w-full overflow-hidden rounded-[4px] shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] outline-none duration-300 ease-in-out">
+                <Dialog
+                    aria-label={title}
+                    className="bg-pzh-white relative w-full overflow-hidden rounded-[4px] shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] outline-none duration-300 ease-in-out">
                     {isDismissable && onClose && (
                         <Button
                             variant="default"

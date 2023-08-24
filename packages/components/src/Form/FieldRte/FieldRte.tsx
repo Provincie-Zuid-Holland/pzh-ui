@@ -14,6 +14,7 @@ import BulletList from '@tiptap/extension-bullet-list'
 import OrderedList from '@tiptap/extension-ordered-list'
 import ListItem from '@tiptap/extension-list-item'
 import History from '@tiptap/extension-history'
+import HardBreak from '@tiptap/extension-hard-break'
 
 import { FieldLabel } from '../FieldLabel'
 import classNames from 'classnames'
@@ -82,7 +83,7 @@ export const FieldRte = ({
     const editor = useEditor({
         extensions: getEditorExtensions(),
         editable: !disabled,
-        content: initialContent,
+        content: initialContent?.replace(/\n/g, '<br />'),
         onBlur({ editor }) {
             handleUpdate(editor as Editor)
         },
@@ -92,9 +93,6 @@ export const FieldRte = ({
             },
         },
         injectCSS: false,
-        parseOptions: {
-            preserveWhitespace: 'full',
-        },
     })
 
     function getEditorExtensions() {
@@ -109,6 +107,7 @@ export const FieldRte = ({
             OrderedList,
             ListItem,
             History,
+            HardBreak,
         ]
 
         if (placeholder)
@@ -157,7 +156,7 @@ export const FieldRte = ({
         editor.on('blur', ({ editor }) => {
             handleUpdate(editor as Editor)
         })
-    }, [editor, handleUpdate])
+    }, [editor])
 
     return (
         <div

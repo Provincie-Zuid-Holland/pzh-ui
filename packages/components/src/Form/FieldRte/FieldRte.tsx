@@ -20,7 +20,6 @@ import classNames from 'classnames'
 import RteMenuBar from './components/RteMenuBar'
 import ImageUpload from './extensions/imageUpload'
 
-
 export interface FieldRteProps {
     /** Name text */
     name: string
@@ -89,10 +88,13 @@ export const FieldRte = ({
         },
         editorProps: {
             attributes: {
-                class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-4 max-w-full text-pzh-blue-dark marker:text-pzh-blue-dark leading-6 outline-none',
+                class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-4 max-w-full text-pzh-blue-dark marker:text-pzh-blue-dark leading-6 outline-none whitespace-pre-line',
             },
         },
         injectCSS: false,
+        parseOptions: {
+            preserveWhitespace: 'full',
+        },
     })
 
     function getEditorExtensions() {
@@ -160,7 +162,7 @@ export const FieldRte = ({
     return (
         <div
             className={classNames({
-                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+                'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
             })}>
             {label && (
                 <FieldLabel
@@ -170,18 +172,18 @@ export const FieldRte = ({
                     required={required}
                     tooltip={tooltip}
                     className={classNames({
-                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                        'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
                     })}
                 />
             )}
             <div
                 data-testid={testId}
                 className={classNames({
-                    'md:col-span-4 col-span-6': layout === 'grid',
+                    'col-span-6 md:col-span-4': layout === 'grid',
                 })}>
                 <div
                     className={classNames(
-                        'relative border border-pzh-gray-600 rounded-[4px]',
+                        'border-pzh-gray-600 relative rounded-[4px] border',
                         {
                             'bg-pzh-gray-100': disabled,
                             'pzh-form-error': hasError,

@@ -27,9 +27,6 @@ Default.args = {
             header: 'HS',
             accessorKey: 'currentSituation',
             enableSorting: false,
-            cell: props => (
-                <div dangerouslySetInnerHTML={{ __html: props.getValue() }} />
-            ),
         },
     ],
     data: [

@@ -98,7 +98,7 @@ const ModalInner = forwardRef<HTMLDivElement, ModalInnerProps>(
                 onKeyDown={onKeyDown}>
                 <Dialog
                     aria-label={title}
-                    className="bg-pzh-white relative w-full overflow-hidden rounded-[4px] shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] outline-none duration-300 ease-in-out">
+                    className="bg-pzh-white relative h-full max-h-[85vh] w-full overflow-auto rounded-[4px] shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] outline-none duration-300 ease-in-out">
                     {isDismissable && onClose && (
                         <Button
                             variant="default"

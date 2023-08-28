@@ -28,7 +28,7 @@ export const Default: ComponentStory<typeof Modal> = Template.bind({})
 Default.args = {
     title: 'Modal',
     children: (
-        <form className="flex flex-col p-4">
+        <form className="mb-[1000px] flex flex-col p-4">
             <label htmlFor="first-name">First Name:</label>
             <FieldInput name="first-name" />
             <label htmlFor="last-name">Last Name:</label>

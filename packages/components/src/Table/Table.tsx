@@ -1,6 +1,13 @@
 import { ArrowDownAZ, ArrowDownZA } from '@pzh-ui/icons'
 import classNames from 'classnames'
-import { useTable, useSortBy, TableOptions } from 'react-table'
+import {
+    useReactTable,
+    TableOptions,
+    getCoreRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+    flexRender,
+} from '@tanstack/react-table'
 
 export interface TableProps
     extends TableOptions<object | { onClick?: () => void }> {
@@ -8,68 +15,92 @@ export interface TableProps
 }
 
 export const Table = ({ className = '', ...rest }: TableProps) => {
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-        useTable(
-            {
-                ...rest,
-            },
-            useSortBy
-        )
+    const tableInstance = useReactTable({
+        ...rest,
+        getCoreRowModel: getCoreRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+    })
+
+    const headerGroups = tableInstance.getHeaderGroups()
 
     return (
         <table
-            className={classNames('w-full text-pzh-blue-dark', className)}
-            data-testid="table"
-            {...getTableProps()}>
+            className={classNames('text-pzh-blue-dark w-full', className)}
+            data-testid="table">
             <thead>
                 {headerGroups.map(headerGroup => (
                     <tr
-                        {...headerGroup.getHeaderGroupProps()}
-                        className="border-b border-pzh-blue-dark border-opacity-35">
-                        {headerGroup.headers.map(column => (
-                            // Add the sorting props to control sorting. For this example
-                            // we can add them into the header props
+                        key={headerGroup.id}
+                        className="border-pzh-blue-dark border-opacity-35 border-b">
+                        {headerGroup.headers.map(header => (
                             <th
-                                {...column.getHeaderProps()}
+                                key={header.id}
                                 className="text-left font-bold"
-                                {...(column.canSort && {
-                                    'aria-sort': column.isSorted
-                                        ? column.isSortedDesc
+                                {...(header.column.getCanSort() && {
+                                    'aria-sort': header.column.getIsSorted()
+                                        ? header.column.getSortIndex()
                                             ? 'descending'
                                             : 'ascending'
                                         : 'none',
                                 })}>
-                                {column.canSort ? (
+                                {header.column.getCanSort() ? (
                                     <button
-                                        {...column.getSortByToggleProps()}
-                                        className="py-2 px-2 group w-full">
+                                        {...{
+                                            className: 'group w-full px-2 py-2',
+                                            onClick:
+                                                header.column.getToggleSortingHandler(),
+                                        }}>
                                         <span className="flex items-center">
-                                            {column.render('Header')}
+                                            {header.isPlaceholder
+                                                ? null
+                                                : flexRender(
+                                                      header.column.columnDef
+                                                          .header,
+                                                      header.getContext()
+                                                  )}
 
-                                            {/* Add a sort direction indicator */}
-                                            {column.isSortedDesc ? (
-                                                <ArrowDownZA
-                                                    size={18}
-                                                    className={classNames(
-                                                        'ml-2 group-hover:opacity-100',
-                                                        {
-                                                            'opacity-100':
-                                                                column.isSorted,
-                                                            'opacity-0':
-                                                                !column.isSorted,
-                                                        }
-                                                    )}
-                                                />
-                                            ) : (
+                                            {{
+                                                asc: (
+                                                    <ArrowDownAZ
+                                                        size={18}
+                                                        className={classNames(
+                                                            'ml-2 group-hover:opacity-100',
+                                                            {
+                                                                'opacity-100':
+                                                                    header.column.getIsSorted(),
+                                                                'opacity-0':
+                                                                    !header.column.getIsSorted(),
+                                                            }
+                                                        )}
+                                                    />
+                                                ),
+                                                desc: (
+                                                    <ArrowDownZA
+                                                        size={18}
+                                                        className={classNames(
+                                                            'ml-2 group-hover:opacity-100',
+                                                            {
+                                                                'opacity-100':
+                                                                    header.column.getIsSorted(),
+                                                                'opacity-0':
+                                                                    !header.column.getIsSorted(),
+                                                            }
+                                                        )}
+                                                    />
+                                                ),
+                                            }[
+                                                header.column.getIsSorted() as string
+                                            ] ?? (
                                                 <ArrowDownAZ
                                                     size={18}
                                                     className={classNames(
                                                         'ml-2 group-hover:opacity-100',
                                                         {
                                                             'opacity-100':
-                                                                column.isSorted,
+                                                                header.column.getIsSorted(),
                                                             'opacity-0':
-                                                                !column.isSorted,
+                                                                !header.column.getIsSorted(),
                                                         }
                                                     )}
                                                 />
@@ -77,8 +108,14 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                         </span>
                                     </button>
                                 ) : (
-                                    <span className="py-2 px-2">
-                                        {column.render('Header')}
+                                    <span className="px-2 py-2">
+                                        {header.isPlaceholder
+                                            ? null
+                                            : flexRender(
+                                                  header.column.columnDef
+                                                      .header,
+                                                  header.getContext()
+                                              )}
                                     </span>
                                 )}
                             </th>
@@ -86,16 +123,14 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                     </tr>
                 ))}
             </thead>
-            <tbody {...getTableBodyProps()}>
-                {rows.map(row => {
-                    prepareRow(row)
-
+            <tbody>
+                {tableInstance.getRowModel().rows.map(row => {
                     const hasOnClick =
                         'onClick' in row.original && !!row.original.onClick
 
                     return (
                         <tr
-                            {...row.getRowProps()}
+                            key={row.id}
                             onClick={
                                 ('onClick' in row.original &&
                                     row.original.onClick) ||
@@ -108,22 +143,21 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                 undefined
                             }
                             className={classNames(
-                                'border-b border-pzh-blue-dark border-opacity-35',
+                                'border-pzh-blue-dark border-opacity-35 border-b',
                                 {
-                                    'cursor-pointer hover:bg-pzh-gray-100 focus:bg-pzh-gray-100':
+                                    'hover:bg-pzh-gray-100 focus:bg-pzh-gray-100 cursor-pointer':
                                         hasOnClick,
                                 }
                             )}
                             tabIndex={hasOnClick ? 0 : undefined}>
-                            {row.cells.map(cell => {
-                                return (
-                                    <td
-                                        {...cell.getCellProps()}
-                                        className="px-2 h-8">
-                                        {cell.render('Cell')}
-                                    </td>
-                                )
-                            })}
+                            {row.getVisibleCells().map(cell => (
+                                <td key={cell.id} className="h-8 px-2">
+                                    {flexRender(
+                                        cell.column.columnDef.cell,
+                                        cell.getContext()
+                                    )}
+                                </td>
+                            ))}
                         </tr>
                     )
                 })}

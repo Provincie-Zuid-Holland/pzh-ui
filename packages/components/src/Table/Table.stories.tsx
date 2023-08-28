@@ -16,17 +16,20 @@ export const Default: ComponentStory<typeof Table> = Template.bind({})
 Default.args = {
     columns: [
         {
-            Header: 'Thema',
-            accessor: 'theme',
+            header: 'Thema',
+            accessorKey: 'theme',
         },
         {
-            Header: 'Titel',
-            accessor: 'title',
+            header: 'Titel',
+            accessorKey: 'title',
         },
         {
-            Header: 'HS',
-            accessor: 'currentSituation',
-            disableSortBy: true,
+            header: 'HS',
+            accessorKey: 'currentSituation',
+            enableSorting: false,
+            cell: props => (
+                <div dangerouslySetInnerHTML={{ __html: props.getValue() }} />
+            ),
         },
     ],
     data: [
@@ -34,7 +37,7 @@ Default.args = {
             theme: 'Economie',
             title: 'Innovatie Zuid-Holland',
             currentSituation: (
-                <div className="bg-pzh-red w-4 h-4 rounded-full" />
+                <div className="bg-pzh-red h-4 w-4 rounded-full" />
             ),
             onClick: () => console.log('clicked'),
         },
@@ -42,14 +45,14 @@ Default.args = {
             theme: 'Economie',
             title: 'Grondstoffen gebruik',
             currentSituation: (
-                <div className="bg-pzh-red w-4 h-4 rounded-full" />
+                <div className="bg-pzh-red h-4 w-4 rounded-full" />
             ),
         },
         {
             theme: 'Klimaat en water',
             title: 'Waterveiligheid',
             currentSituation: (
-                <div className="bg-pzh-yellow w-4 h-4 rounded-full" />
+                <div className="bg-pzh-yellow h-4 w-4 rounded-full" />
             ),
         },
     ],

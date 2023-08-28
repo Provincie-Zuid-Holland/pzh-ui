@@ -16,17 +16,17 @@ export const Default: ComponentStory<typeof Table> = Template.bind({})
 Default.args = {
     columns: [
         {
-            header: 'Thema',
-            accessorKey: 'theme',
+            Header: 'Thema',
+            accessor: 'theme',
         },
         {
-            header: 'Titel',
-            accessorKey: 'title',
+            Header: 'Titel',
+            accessor: 'title',
         },
         {
-            header: 'HS',
-            accessorKey: 'currentSituation',
-            enableSorting: false,
+            Header: 'HS',
+            accessor: 'currentSituation',
+            disableSortBy: true,
         },
     ],
     data: [

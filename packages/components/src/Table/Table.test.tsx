@@ -1,24 +1,24 @@
 import { render, screen } from '@testing-library/react'
 
-import { Table } from './Table'
+import { Table, TableProps } from './Table'
 
 describe('Table', () => {
     const defaultProps = {
         className: '',
         columns: [
             {
-                header: 'Thema',
-                accessorKey: 'theme',
+                Header: 'Thema',
+                accessor: 'theme',
             },
             {
-                header: 'Titel',
-                accessorKey: 'title',
-                enableSorting: false,
+                Header: 'Titel',
+                accessor: 'title',
+                disableSortBy: true,
             },
             {
-                header: 'HS',
-                accessorKey: 'currentSituation',
-                enableSorting: false,
+                Header: 'HS',
+                accessor: 'currentSituation',
+                disableSortBy: true,
             },
         ],
         data: [
@@ -37,7 +37,7 @@ describe('Table', () => {
         ],
     }
 
-    const setup = (customProps?: any) => {
+    const setup = (customProps?: Partial<TableProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(<Table {...props} />)
     }

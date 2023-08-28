@@ -10,7 +10,10 @@ import {
 } from '@tanstack/react-table'
 
 export interface TableProps
-    extends TableOptions<object | { onClick?: () => void }> {
+    extends Omit<
+        TableOptions<object | { onClick?: () => void }>,
+        'getCoreRowModel' | 'getPaginationRowModel' | 'getSortedRowModel'
+    > {
     className?: string
 }
 

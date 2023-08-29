@@ -57,29 +57,6 @@ module.exports = {
         'import/default': 'off',
         'import/named': 'off',
         'import/namespace': 'off',
-        'import/order': [
-            'warn',
-            {
-                groups: ['builtin', 'external', ['parent', 'sibling'], 'index'],
-                'newlines-between': 'always',
-                pathGroups: [
-                    {
-                        pattern: '@/**',
-                        group: 'external',
-                        position: 'after',
-                    },
-                    {
-                        pattern: '@test/**',
-                        group: 'external',
-                        position: 'after',
-                    },
-                ],
-                alphabetize: {
-                    order: 'asc' /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
-                    caseInsensitive: true /* ignore case. Options: [true, false] */,
-                },
-            },
-        ],
         'jsx-a11y/click-events-have-key-events': 'off',
         'jsx-a11y/anchor-is-valid': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',

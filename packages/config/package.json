@@ -26,10 +26,10 @@
         "eslint-plugin-react": "^7.29.3",
         "eslint-plugin-react-hooks": "^4.3.0",
         "prettier": "^2.5.1",
+        "prettier-plugin-tailwindcss": "^0.4.1",
         "react-toastify": "^9.1.2"
     },
     "devDependencies": {
-        "prettier-plugin-tailwindcss": "^0.4.1",
         "vite": "^2.8.6"
     },
     "gitHead": "56967bc900f7949a31b7c27d814adeaa9eb8bf0e"

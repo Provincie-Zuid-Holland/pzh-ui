@@ -1,21 +1,40 @@
 import classNames from 'classnames'
-import { ElementType, ReactNode } from 'react'
+import { ElementType } from 'react'
 
-import { PolymorphicComponentProp } from '../types/polymorphicComponent'
+import { PolymorphicComponentProp } from '../utils/polymorphicComponent'
+
+type PossibleTypes =
+    | 'p'
+    | 'span'
+    | 'b'
+    | 'strong'
+    | 'i'
+    | 'em'
+    | 'mark'
+    | 'small'
+    | 'del'
+    | 'ins'
+    | 'sub'
+    | 'sup'
+    | 'blockquote'
+    | 'code'
+    | 'pre'
+    | 'li'
+    | 'dt'
+    | 'dd'
 
 export interface TextProps {
     size?: 's' | 'm' | 'l'
-    children?: ReactNode
 }
 
-export const Text = <C extends ElementType>({
+export const Text = <C extends PossibleTypes>({
     as,
     size = 'm',
     className,
     children,
     ...rest
 }: PolymorphicComponentProp<C, TextProps>) => {
-    const Component = as || 'p'
+    const Component = as || ('p' as ElementType)
     const styles = getTextStyles(size)
 
     return (

@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 export interface HeadingProps {
     className?: string
     id?: string
-    color?: string
+    color?: `text-${string}`
     level?: '1' | '2' | '3' | '4' | '5' | '6'
     size?: 'xxxl' | 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'
     children: ReactNode

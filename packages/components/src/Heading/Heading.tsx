@@ -15,7 +15,7 @@ export const Heading = ({
     id,
     color = 'text-pzh-blue',
     level = '1',
-    size = 'xl',
+    size = 'l',
     children,
 }: HeadingProps) => {
     const styles = getHeadingStyles(size)
@@ -25,19 +25,22 @@ export const Heading = ({
     return (
         <Component
             id={id}
-            className={classNames('break-words hyphens-manual', styles, color, className)}>
+            className={classNames(
+                'hyphens-manual break-words',
+                styles,
+                color,
+                className
+            )}>
             {children}
         </Component>
     )
 }
 
-export const getHeadingStyles = (
-    size: HeadingProps['size'],
-): string => {
+export const getHeadingStyles = (size: HeadingProps['size']): string => {
     switch (size) {
         case 'xxxl':
             return 'text-[4rem] leading-[110%]'
-        case 'xxl': 
+        case 'xxl':
             return 'text-[3rem] leading-[125%]'
         case 'xl':
             return 'text-[2.5rem] leading-[125%]'
@@ -49,7 +52,7 @@ export const getHeadingStyles = (
             return 'text-[1.25rem] leading-[125%]'
         case 'xs':
             return 'text-[1.125rem] leading-[125%]'
-        default: 
+        default:
             return ''
     }
 }

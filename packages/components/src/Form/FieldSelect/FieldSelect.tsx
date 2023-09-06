@@ -10,7 +10,6 @@ import classNames from 'classnames'
 import { AngleDown, Xmark } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
-import { Text } from '../../Text'
 
 type SelectProps = Props &
     Pick<
@@ -159,9 +158,9 @@ export function FieldSelect({
                         ),
                         GroupHeading: props => (
                             <components.GroupHeading {...props}>
-                                <Text type="body-bold" className="normal-case">
+                                <p className="text-m normal-case font-bold">
                                     {props.children}
-                                </Text>
+                                </p>
                             </components.GroupHeading>
                         ),
                         ClearIndicator: props => (

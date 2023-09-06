@@ -10,7 +10,7 @@ export interface TextProps {
 
 export const Text = <C extends ElementType>({
     as,
-    size,
+    size = 'm',
     className,
     children,
     ...rest

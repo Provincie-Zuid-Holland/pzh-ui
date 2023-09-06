@@ -25,7 +25,7 @@ export const Heading = ({
     return (
         <Component
             id={id}
-            className={classNames('break-words hyphens-manual',styles,color, className)}>
+            className={classNames('break-words hyphens-manual', styles, color, className)}>
             {children}
         </Component>
     )

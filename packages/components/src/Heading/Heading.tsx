@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { ReactNode } from 'react'
 
 export interface HeadingProps {
@@ -6,7 +7,6 @@ export interface HeadingProps {
     color?: string
     level?: '1' | '2' | '3' | '4' | '5' | '6'
     size?: 'xxxl' | 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'
-    customStyles?: any
     children: ReactNode
 }
 
@@ -17,7 +17,6 @@ export const Heading = ({
     level = '1',
     size = 'xl',
     children,
-    customStyles,
 }: HeadingProps) => {
     const styles = getHeadingStyles(size)
 
@@ -25,9 +24,8 @@ export const Heading = ({
 
     return (
         <Component
-            style={customStyles || styles}
             id={id}
-            className={`break-words hyphens-manual ${color} ${className}`}>
+            className={classNames('break-words hyphens-manual',styles,color, className)}>
             {children}
         </Component>
     )

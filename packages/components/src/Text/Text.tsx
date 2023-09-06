@@ -25,11 +25,13 @@ type PossibleTypes =
 
 export interface TextProps {
     size?: 's' | 'm' | 'l'
+    color?: `text-${string}`
 }
 
 export const Text = <C extends PossibleTypes>({
     as,
     size = 'm',
+    color = 'text-pzh-blue-dark',
     className,
     children,
     ...rest
@@ -38,9 +40,7 @@ export const Text = <C extends PossibleTypes>({
     const styles = getTextStyles(size)
 
     return (
-        <Component
-            className={classNames('text-pzh-blue-dark', styles, className)}
-            {...rest}>
+        <Component className={classNames(color, styles, className)} {...rest}>
             {children}
         </Component>
     )

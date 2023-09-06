@@ -1,12 +1,11 @@
-import { CSSProperties, ReactNode } from 'react'
-import { useMedia } from 'react-use'
+import { ReactNode } from 'react'
 
 export interface HeadingProps {
     className?: string
     id?: string
     color?: string
     level?: '1' | '2' | '3' | '4' | '5' | '6'
-    as?: '1' | '2' | '3' | '4' | '5' | '6'
+    size?: 'xxxl' | 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'
     customStyles?: any
     children: ReactNode
 }
@@ -16,73 +15,43 @@ export const Heading = ({
     id,
     color = 'text-pzh-blue',
     level = '1',
-    as,
+    size = 'xl',
     children,
     customStyles,
 }: HeadingProps) => {
-    const isMobile = useMedia('(max-width: 640px)')
-    const styles = getHeadingStyles(level, isMobile)
+    const styles = getHeadingStyles(size)
 
-    const Component = `h${as || level}` as keyof JSX.IntrinsicElements
+    const Component = `h${level}` as keyof JSX.IntrinsicElements
 
     return (
         <Component
             style={customStyles || styles}
             id={id}
-            className={`break-words ${color} ${className}`}>
+            className={`break-words hyphens-manual ${color} ${className}`}>
             {children}
         </Component>
     )
 }
 
 export const getHeadingStyles = (
-    level?: '1' | '2' | '3' | '4' | '5' | '6',
-    isMobile?: boolean
-): CSSProperties => {
-    if (level === '1') {
-        if (isMobile) {
-            return {
-                hyphens: 'manual',
-                fontSize: '1.6rem',
-                lineHeight: '1.75rem',
-            }
-        } else {
-            return {
-                hyphens: 'manual',
-                fontSize: '2.4rem',
-                lineHeight: '2.8rem',
-            }
-        }
-    } else if (level === '2') {
-        if (isMobile) {
-            return {
-                hyphens: 'manual',
-                fontSize: '1.2rem',
-                lineHeight: '1.6rem',
-            }
-        } else {
-            return {
-                hyphens: 'manual',
-                fontSize: '1.8rem',
-                lineHeight: '2.2rem',
-            }
-        }
-    } else if (level === '3') {
-        if (isMobile) {
-            return {
-                hyphens: 'manual',
-                fontSize: '1.1rem',
-                lineHeight: '1.5rem',
-            }
-        } else {
-            return {
-                hyphens: 'manual',
-                fontSize: '1.2rem',
-                lineHeight: '1.6rem',
-            }
-        }
-    } else {
-        // No custom styles yet for heading 4, 5 and 6
-        return {}
+    size: HeadingProps['size'],
+): string => {
+    switch (size) {
+        case 'xxxl':
+            return 'text-[4rem] leading-[110%]'
+        case 'xxl': 
+            return 'text-[3rem] leading-[125%]'
+        case 'xl':
+            return 'text-[2.5rem] leading-[125%]'
+        case 'l':
+            return 'text-[2rem] leading-[125%]'
+        case 'm':
+            return 'text-[1.5rem] leading-[125%]'
+        case 's':
+            return 'text-[1.25rem] leading-[125%]'
+        case 'xs':
+            return 'text-[1.125rem] leading-[125%]'
+        default: 
+            return ''
     }
 }

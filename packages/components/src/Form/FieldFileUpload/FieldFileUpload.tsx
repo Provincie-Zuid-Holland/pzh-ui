@@ -233,7 +233,7 @@ export const FieldFileUpload = ({
                                     )}>
                                     <span>{file.path || label}</span>
                                     <div className="nowrap flex items-center">
-                                        <span className="text-pzh-blue-dark/50 text-4">
+                                        <span className="text-pzh-blue-dark/50 text-s">
                                             {formatBytes(file.size)}
                                         </span>
                                         <button

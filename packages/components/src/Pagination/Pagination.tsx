@@ -1,6 +1,7 @@
-import { AngleLeft, AngleRight } from '@pzh-ui/icons'
 import { useMemo } from 'react'
 import ReactPaginate, { ReactPaginateProps } from 'react-paginate'
+
+import { AngleLeft, AngleRight } from '@pzh-ui/icons'
 
 export interface PaginationProps extends Omit<ReactPaginateProps, 'pageCount'> {
     /** Initial page number */
@@ -31,18 +32,18 @@ export const Pagination = ({
             data-testid="pagination"
             initialPage={initialPage}
             breakLabel="..."
-            breakClassName="mx-1"
+            breakLinkClassName="w-10 h-10 flex items-center justify-center focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2 rounded"
             nextLabel={<AngleRight size={18} />}
-            nextClassName="w-8 h-8 -mt-0.5 flex items-center justify-center"
+            nextLinkClassName="w-10 h-10 flex items-center justify-center focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2 rounded"
             onPageChange={handleClick}
             pageRangeDisplayed={5}
             previousLabel={<AngleLeft size={18} />}
-            previousClassName="w-8 h-8 -mt-0.5 flex items-center justify-center"
+            previousLinkClassName="w-10 h-10 flex items-center justify-center focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2 rounded"
             renderOnZeroPageCount={null}
-            className="flex items-center font-bold text-pzh-blue"
+            className="text-pzh-blue flex items-center gap-2 font-bold"
             disabledClassName="text-pzh-gray-400 pointer-events-none"
-            pageLinkClassName="w-full h-full flex items-center justify-center rounded-[4px] focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2"
-            pageClassName="w-8 h-8 mx-1 rounded-[4px]"
+            pageLinkClassName="w-full h-full pt-1 flex items-center justify-center rounded focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2"
+            pageClassName="w-10 h-10 rounded"
             activeClassName="border border-pzh-blue"
             {...rest}
             pageCount={pageCount}

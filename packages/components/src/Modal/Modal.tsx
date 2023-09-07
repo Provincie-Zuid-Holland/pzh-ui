@@ -1,17 +1,19 @@
-import { forwardRef, useRef } from 'react'
-import {
-    Overlay,
-    useModalOverlay,
-    ModalProviderProps,
-    AriaModalOverlayProps,
-} from 'react-aria'
-import { OverlayTriggerProps, useOverlayTriggerState } from 'react-stately'
-import { Dialog } from '../Dialog'
-import { Button } from '../Button'
-import { Xmark } from '@pzh-ui/icons'
-import { useEnterAnimation, useExitAnimation, useRenderProps } from './utils'
 import { useObjectRef } from '@react-aria/utils'
 import classNames from 'classnames'
+import { forwardRef, useRef } from 'react'
+import {
+    AriaModalOverlayProps,
+    ModalProviderProps,
+    Overlay,
+    useModalOverlay,
+} from 'react-aria'
+import { OverlayTriggerProps, useOverlayTriggerState } from 'react-stately'
+
+import { Xmark } from '@pzh-ui/icons'
+
+import { Button } from '../Button'
+import { Dialog } from '../Dialog'
+import { useEnterAnimation, useExitAnimation, useRenderProps } from './utils'
 
 export interface ModalProps
     extends ModalProviderProps,
@@ -98,12 +100,12 @@ const ModalInner = forwardRef<HTMLDivElement, ModalInnerProps>(
                 onKeyDown={onKeyDown}>
                 <Dialog
                     aria-label={title}
-                    className="bg-pzh-white relative h-full max-h-[85vh] w-full overflow-auto rounded-[4px] shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] outline-none duration-300 ease-in-out">
+                    className="bg-pzh-white relative h-full max-h-[85vh] w-full overflow-auto rounded shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] outline-none duration-300 ease-in-out">
                     {isDismissable && onClose && (
                         <Button
                             variant="default"
                             onPress={onClose}
-                            className="absolute right-8 top-[24px]">
+                            className="absolute right-8 top-6">
                             <span className="sr-only">Sluiten</span>
                             <Xmark size={20} className="text-pzh-blue-dark" />
                         </Button>

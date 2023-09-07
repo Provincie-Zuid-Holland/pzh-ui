@@ -1,3 +1,7 @@
+import { EditorContentProps } from '@tiptap/react'
+import classNames from 'classnames'
+import { ButtonHTMLAttributes } from 'react'
+
 import {
     Bold,
     Images,
@@ -7,14 +11,12 @@ import {
     ListUl,
     Underline,
 } from '@pzh-ui/icons'
-import { EditorContentProps } from '@tiptap/react'
-import classNames from 'classnames'
-import { ButtonHTMLAttributes } from 'react'
-import { blobToBase64 } from '../../extensions/imageUpload'
+
 import {
     TextEditorCustomMenuOptions,
     TextEditorMenuOptions,
 } from '../../FieldRte'
+import { blobToBase64 } from '../../extensions/imageUpload'
 
 interface RteMenuBarProps extends EditorContentProps {
     menuOptions: (TextEditorMenuOptions | TextEditorCustomMenuOptions)[]
@@ -32,7 +34,7 @@ const RteMenuBar = ({
     return (
         <div
             className={classNames(
-                'px-2 flex border-b border-pzh-gray-600 bg-pzh-white rounded-t-[4px]',
+                'border-pzh-gray-600 bg-pzh-white rounded-t-1 flex border-b px-2',
                 menuClassName
             )}>
             {menuOptions.map(option => {
@@ -126,7 +128,7 @@ const RteMenuBar = ({
                                 aria-label="Afbeelding"
                                 title="Afbeelding"
                                 className={classNames(
-                                    'm-0.5 w-7 h-7 flex items-center justify-center cursor-pointer',
+                                    'm-1 flex h-8 w-8 cursor-pointer items-center justify-center',
                                     {
                                         'pointer-events-none': disabled,
                                     }
@@ -221,7 +223,7 @@ const MenuButton = ({
 }: ButtonHTMLAttributes<HTMLButtonElement> & { isActive: boolean }) => (
     <button
         className={classNames(
-            'm-0.5 w-7 h-7 flex items-center justify-center rounded-[4px]',
+            'm-1 flex h-8 w-8 items-center justify-center rounded',
             className,
             {
                 'pointer-events-none': rest.disabled,

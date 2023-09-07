@@ -1,5 +1,5 @@
-import React from 'react'
 import classNames from 'classnames'
+import React from 'react'
 
 /**
  * Form radio element
@@ -22,7 +22,7 @@ export const FieldRadio = ({
         <input
             data-testid="pzh-form-radio"
             disabled={disabled}
-            className={classNames('absolute -left-[9999px] pzh-form-radio', {
+            className={classNames('pzh-form-radio absolute -left-[9999px]', {
                 'pzh-form-error': hasError,
             })}
             type="radio"
@@ -30,7 +30,7 @@ export const FieldRadio = ({
         />
         <span
             className={classNames(
-                'relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px]',
+                'text-pzh-blue-dark relative inline-block cursor-pointer pl-[34px] leading-7',
                 {
                     'text-pzh-gray-600': disabled,
                 }

@@ -1,19 +1,19 @@
-import { cloneElement, useEffect, useRef, useState } from 'react'
 import {
-    arrow,
     Placement,
-    offset,
-    flip,
-    shift,
+    arrow,
     autoUpdate,
-    useFloating,
-    useInteractions,
-    useHover,
-    useFocus,
-    useRole,
+    flip,
+    offset,
+    shift,
     useDismiss,
+    useFloating,
+    useFocus,
+    useHover,
+    useInteractions,
+    useRole,
 } from '@floating-ui/react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import { cloneElement, useEffect, useRef, useState } from 'react'
 
 export interface TooltipProps {
     label: string | JSX.Element
@@ -98,7 +98,7 @@ export const Tooltip = ({
                         {...getFloatingProps({
                             ref: refs.setFloating,
                             className:
-                                'px-3 rounded-[4px] max-w-[300px] text-white font-normal leading-5',
+                                'px-3 rounded max-w-[300px] text-white font-normal leading-5',
                             style: {
                                 position: strategy,
                                 top: y ?? '',
@@ -112,7 +112,7 @@ export const Tooltip = ({
                         {label}
                         <div
                             ref={arrowRef}
-                            className="absolute overflow-hidden rotate-45 w-[8px] h-[8px] bg-[#333333]"
+                            className="absolute h-2 w-2 rotate-45 overflow-hidden bg-[#333333]"
                             style={
                                 (staticSide && {
                                     left: arrowX != null ? `${arrowX}px` : '',

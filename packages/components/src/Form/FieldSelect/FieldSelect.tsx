@@ -1,12 +1,13 @@
+import classNames from 'classnames'
 import { ReactNode } from 'react'
 import ReactSelect, {
-    components,
     GroupBase,
     Props,
     StylesConfig,
+    components,
 } from 'react-select'
 import AsyncReactSelect, { AsyncProps } from 'react-select/async'
-import classNames from 'classnames'
+
 import { AngleDown, Xmark } from '@pzh-ui/icons'
 
 import { FieldLabel } from '../FieldLabel'
@@ -55,7 +56,7 @@ export function FieldSelect({
     return (
         <div
             className={classNames({
-                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+                'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
             })}>
             {label && (
                 <FieldLabel
@@ -65,14 +66,14 @@ export function FieldSelect({
                     required={required}
                     tooltip={tooltip}
                     className={classNames({
-                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                        'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
                     })}
                 />
             )}
             <div
                 data-testid={testId}
                 className={classNames('relative', {
-                    'md:col-span-4 col-span-6': layout === 'grid',
+                    'col-span-6 md:col-span-4': layout === 'grid',
                 })}>
                 <Select
                     isDisabled={disabled}
@@ -88,7 +89,7 @@ export function FieldSelect({
                                         'bg-white': !disabled,
                                         'border-pzh-red': hasError,
                                         'bg-pzh-gray-200': disabled,
-                                        'ring ring-2 ring-pzh-blue border-pzh-blue':
+                                        'ring-pzh-blue border-pzh-blue ring ring-2':
                                             props.isFocused,
                                     }
                                 )}
@@ -97,7 +98,7 @@ export function FieldSelect({
                         ValueContainer: props => (
                             <components.ValueContainer
                                 {...props}
-                                className="h-[48px] !py-0 !flex-nowrap !overflow-x-auto whitespace-nowrap"
+                                className="h-[48px] !flex-nowrap !overflow-x-auto whitespace-nowrap !py-0"
                             />
                         ),
                         DropdownIndicator: () => (
@@ -115,22 +116,22 @@ export function FieldSelect({
                         Option: props => (
                             <components.Option
                                 {...props}
-                                className="text-pzh-blue-dark py-1 px-4 cursor-pointer hover:text-pzh-green hover:underline">
+                                className="text-pzh-blue-dark hover:text-pzh-green cursor-pointer px-4 py-1 hover:underline">
                                 {props.isMulti ? (
                                     <div
                                         className="flex items-center"
                                         data-testid={`${name}-option`}>
                                         <input
-                                            className="absolute -left-[9999px] pzh-form-checkbox"
+                                            className="pzh-form-checkbox absolute -left-[9999px]"
                                             checked={props.isSelected}
                                             onChange={() => null}
                                             type="checkbox"
                                         />
                                         <span
                                             className={classNames(
-                                                'relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px] font-normal',
+                                                'text-pzh-blue-dark relative inline-block cursor-pointer pl-[34px] font-normal leading-7',
                                                 {
-                                                    'before:ring before:ring-2 before:ring-pzh-blue before:outline-none before:border-pzh-blue':
+                                                    'before:ring-pzh-blue before:border-pzh-blue before:outline-none before:ring before:ring-2':
                                                         props.isFocused,
                                                 }
                                             )}>
@@ -153,12 +154,12 @@ export function FieldSelect({
                         Input: props => (
                             <components.Input
                                 {...props}
-                                className="shadow-none focus:shadow-none pzh-select-input"
+                                className="pzh-select-input shadow-none focus:shadow-none"
                             />
                         ),
                         GroupHeading: props => (
                             <components.GroupHeading {...props}>
-                                <p className="text-m normal-case font-bold">
+                                <p className="text-m font-bold normal-case">
                                     {props.children}
                                 </p>
                             </components.GroupHeading>
@@ -237,4 +238,4 @@ export const getSelectStyles = () =>
         multiValue: css => ({
             ...css,
         }),
-    } as StylesConfig<unknown, boolean, GroupBase<unknown>>)
+    }) as StylesConfig<unknown, boolean, GroupBase<unknown>>

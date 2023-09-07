@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+
 import { CircleInfo, TriangleExclamation } from '@pzh-ui/icons'
 
 export interface NotificationProps {
@@ -18,12 +19,12 @@ export const Notification = ({
 }: NotificationProps) => (
     <div
         className={classNames(
-            'flex px-4 pt-3 pb-2',
+            'flex px-4 pb-2 pt-3',
             {
                 'bg-pzh-blue-light bg-opacity-20': variant === 'info',
                 'bg-pzh-yellow': variant === 'alert',
-                'text-sm md:text-base': size === 'normal',
-                'text-sm': size === 'small',
+                'md:text-m text-base': size === 'normal',
+                'text-base': size === 'small',
             },
             className
         )}>

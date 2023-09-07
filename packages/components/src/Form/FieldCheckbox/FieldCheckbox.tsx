@@ -1,5 +1,5 @@
-import React from 'react'
 import classNames from 'classnames'
+import React from 'react'
 
 /**
  * Form checkbox element
@@ -21,7 +21,7 @@ export const FieldCheckbox = ({
         <input
             data-testid="pzh-form-checkbox"
             disabled={disabled}
-            className={classNames('absolute -left-[9999px] pzh-form-checkbox', {
+            className={classNames('pzh-form-checkbox absolute -left-[9999px]', {
                 'pzh-form-error': hasError,
             })}
             type="checkbox"
@@ -29,7 +29,7 @@ export const FieldCheckbox = ({
         />
         <span
             className={classNames(
-                'relative pl-[34px] cursor-pointer inline-block text-pzh-blue-dark leading-[28px]',
+                'text-pzh-blue-dark relative inline-block cursor-pointer pl-[34px] leading-7',
                 {
                     'text-pzh-gray-600': disabled,
                 }

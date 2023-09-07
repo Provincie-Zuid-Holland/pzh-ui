@@ -2,11 +2,11 @@ import { Node } from '@react-types/shared'
 import classNames from 'classnames'
 import { useRef } from 'react'
 import {
+    AriaTabListProps,
+    AriaTabPanelProps,
     useTab,
     useTabList,
     useTabPanel,
-    AriaTabListProps,
-    AriaTabPanelProps,
 } from 'react-aria'
 import { Item, TabListState, useTabListState } from 'react-stately'
 
@@ -31,7 +31,7 @@ export function Tabs(props: TabsProps) {
             <div
                 {...tabListProps}
                 ref={ref}
-                className="flex-column border-pzh-gray-300 flex border-b"
+                className="flex-column border-pzh-gray-300 flex gap-4 border-b"
                 data-testid="tabs">
                 {[...state.collection].map(item => (
                     <Tab key={item.key} item={item} state={state} />
@@ -53,7 +53,7 @@ function Tab({ item, state }: TabProps) {
         <div
             {...tabProps}
             ref={ref}
-            className={classNames('-mb-px mr-4 font-bold', {
+            className={classNames('-mb-px pb-1 font-bold', {
                 'border-pzh-green text-pzh-green border-b-[3px]':
                     tabProps['aria-selected'],
                 'border-pzh-gray-400 text-pzh-blue': !tabProps['aria-selected'],

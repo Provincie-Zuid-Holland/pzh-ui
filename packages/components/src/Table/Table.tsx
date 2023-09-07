@@ -1,6 +1,7 @@
-import { ArrowDownAZ, ArrowDownZA } from '@pzh-ui/icons'
 import classNames from 'classnames'
-import { useTable, useSortBy, TableOptions } from 'react-table'
+import { TableOptions, useSortBy, useTable } from 'react-table'
+
+import { ArrowDownAZ, ArrowDownZA } from '@pzh-ui/icons'
 
 export interface TableProps
     extends TableOptions<object | { onClick?: () => void }> {
@@ -25,7 +26,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                 {headerGroups.map(headerGroup => (
                     <tr
                         {...headerGroup.getHeaderGroupProps()}
-                        className="border-pzh-blue-dark border-opacity-35 border-b">
+                        className="border-pzh-blue-dark/35 border-b">
                         {headerGroup.headers.map(column => (
                             // Add the sorting props to control sorting. For this example
                             // we can add them into the header props
@@ -42,7 +43,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                 {column.canSort ? (
                                     <button
                                         {...column.getSortByToggleProps()}
-                                        className="group w-full px-2 py-2">
+                                        className="group w-full px-4 py-2">
                                         <span className="flex items-center">
                                             {column.render('Header')}
 
@@ -77,7 +78,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                         </span>
                                     </button>
                                 ) : (
-                                    <span className="px-2 py-2">
+                                    <span className="p-4">
                                         {column.render('Header')}
                                     </span>
                                 )}
@@ -108,7 +109,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                 undefined
                             }
                             className={classNames(
-                                'border-pzh-blue-dark border-opacity-35 border-b',
+                                'border-pzh-blue-dark/35 border-b',
                                 {
                                     'hover:bg-pzh-gray-100 focus:bg-pzh-gray-100 cursor-pointer':
                                         hasOnClick,
@@ -119,7 +120,7 @@ export const Table = ({ className = '', ...rest }: TableProps) => {
                                 return (
                                     <td
                                         {...cell.getCellProps()}
-                                        className="h-8 px-2">
+                                        className="h-10 px-4">
                                         {cell.render('Cell')}
                                     </td>
                                 )

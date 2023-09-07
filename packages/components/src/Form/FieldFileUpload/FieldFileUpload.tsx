@@ -1,12 +1,13 @@
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
-import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone'
-import { useEffectOnce, useUpdateEffect } from 'react-use'
 import classNames from 'classnames'
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
+import { DropzoneOptions, FileWithPath, useDropzone } from 'react-dropzone'
+import { useEffectOnce, useUpdateEffect } from 'react-use'
+
 import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 
-import { FieldLabel } from '../FieldLabel'
-import formatBytes from '../../utils/formatBytes'
 import { base64ToFile } from '../../utils/file'
+import formatBytes from '../../utils/formatBytes'
+import { FieldLabel } from '../FieldLabel'
 
 /**
  * Form file upload element
@@ -119,7 +120,7 @@ export const FieldFileUpload = ({
     return (
         <div
             className={classNames({
-                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+                'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
             })}>
             {label && (
                 <FieldLabel
@@ -129,13 +130,13 @@ export const FieldFileUpload = ({
                     required={required}
                     tooltip={tooltip}
                     className={classNames({
-                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                        'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
                     })}
                 />
             )}
             <div
                 className={classNames('relative', {
-                    'md:col-span-4 col-span-6': layout === 'grid',
+                    'col-span-6 md:col-span-4': layout === 'grid',
                 })}>
                 <input
                     {...getInputProps({
@@ -155,7 +156,7 @@ export const FieldFileUpload = ({
 
                 <div
                     className={classNames(
-                        'py-6 text-pzh-blue-dark text-center border border-dashed border-pzh-gray-600 rounded-[4px] cursor-pointer',
+                        'text-pzh-blue-dark border-pzh-gray-600 cursor-pointer rounded border border-dashed py-6 text-center',
                         className,
                         {
                             hidden: myFiles.length === props.maxFiles,
@@ -165,7 +166,7 @@ export const FieldFileUpload = ({
                     <div>
                         <CloudArrowUp
                             size={60}
-                            className={classNames('mb-2 mx-auto max-w-[2rem]', {
+                            className={classNames('mx-auto mb-2 max-w-[2rem]', {
                                 'text-pzh-blue-dark': !isDragActive,
                                 'text-pzh-green':
                                     isDragActive &&
@@ -225,14 +226,14 @@ export const FieldFileUpload = ({
                                 }>
                                 <div
                                     className={classNames(
-                                        'flex justify-between items-center px-4',
+                                        'flex items-center justify-between px-4',
                                         {
                                             'pb-1': preview,
                                         }
                                     )}>
                                     <span>{file.path || label}</span>
-                                    <div className="flex items-center nowrap">
-                                        <span className="text-[16px] text-pzh-blue-dark/50">
+                                    <div className="nowrap flex items-center">
+                                        <span className="text-pzh-blue-dark/50 text-4">
                                             {formatBytes(file.size)}
                                         </span>
                                         <button
@@ -240,7 +241,7 @@ export const FieldFileUpload = ({
                                             onClick={removeFile(file)}>
                                             <TrashCan
                                                 size={16}
-                                                className="ml-4 -mt-[2px] text-pzh-red"
+                                                className="text-pzh-red -mt-[2px] ml-4"
                                             />
                                             <span className="sr-only">
                                                 Verwijderen
@@ -249,7 +250,7 @@ export const FieldFileUpload = ({
                                     </div>
                                 </div>
                                 {file.preview && (
-                                    <div className="border-t border-pzh-gray-600">
+                                    <div className="border-pzh-gray-600 border-t">
                                         <img
                                             src={file.preview}
                                             alt={file.name}

@@ -9,7 +9,7 @@ export const FormikError = ({ name }: FormikErrorProps) => {
         <ErrorMessage name={name}>
             {(message: string) => {
                 return (
-                    <span className="block mt-1 text-pzh-red text-xs">
+                    <span className="text-pzh-red text-s mt-1 block">
                         {message}
                     </span>
                 )

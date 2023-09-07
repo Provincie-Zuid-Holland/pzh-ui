@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+
 import { Xmark } from '@pzh-ui/icons'
 
 export interface TagProps {
@@ -13,9 +14,9 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
     return (
         <Component
             className={classNames(
-                'inline-flex items-center border border-pzh-blue-dark rounded-lg px-3',
+                'border-pzh-blue-dark inline-flex items-center rounded border px-3',
                 {
-                    'transition duration-150 hover:bg-pzh-blue-dark hover:text-white focus:bg-pzh-blue focus:text-white':
+                    'hover:bg-pzh-blue-dark focus:bg-pzh-blue transition duration-150 hover:text-white focus:text-white':
                         !!onClick,
                 },
                 className
@@ -27,7 +28,7 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
             style={{ paddingTop: 2 }}
             data-testid="tag">
             <span>{text}</span>
-            {!!onClick && <Xmark className="ml-2 -mt-[2px]" />}
+            {!!onClick && <Xmark className="-mt-[2px] ml-2" />}
         </Component>
     )
 }

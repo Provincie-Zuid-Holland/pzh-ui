@@ -62,14 +62,14 @@ export const Banner = ({
                 },
                 className
             )}>
-            <div className="max-w-screen-xl px-3 py-2 mx-auto sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-screen-xl px-3 py-2 sm:px-6 lg:px-8">
                 <div className="pr-16 sm:text-center">
-                    <p className="text-sm bold rounded">{text}</p>
+                    <p className="text-s bold rounded">{text}</p>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-start pt-1 pr-1 sm:pt-1 sm:pr-2 sm:items-start">
+                <div className="absolute inset-y-0 right-0 flex items-start pr-1 pt-1 sm:items-start sm:pr-2 sm:pt-1">
                     <button
                         type="button"
-                        className="flex p-1 transition duration-150 ease-in-out rounded-lg focus:outline-none hover:bg-white hover:bg-opacity-10"
+                        className="flex rounded-lg p-1 transition duration-150 ease-in-out hover:bg-white hover:bg-opacity-10 focus:outline-none"
                         onClick={() => {
                             setShowBanner(!showBanner)
                             removeBanner()
@@ -77,7 +77,7 @@ export const Banner = ({
                         }}
                         aria-label="sluiten">
                         <svg
-                            className="w-6 h-6"
+                            className="h-6 w-6"
                             stroke="currentColor"
                             fill="none"
                             viewBox="0 0 24 24">

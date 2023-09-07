@@ -1,8 +1,9 @@
-import { ElementType, ReactNode, useRef } from 'react'
 import classNames from 'classnames'
-import { Spinner } from '@pzh-ui/icons'
+import { ElementType, ReactNode, useRef } from 'react'
 import { AriaButtonProps, useButton } from 'react-aria'
 import { Link } from 'react-router-dom'
+
+import { Spinner } from '@pzh-ui/icons'
 
 /**
  * Primary UI component for user interaction
@@ -41,10 +42,10 @@ export const Button = <T extends ElementType = 'button'>({
             className={classNames(
                 variant !== 'default' && {
                     'pzh-button': true,
-                    'h-[48px] pb-[12px] pt-[15px]': size === 'large',
+                    'h-12 pb-3 pt-[15px]': size === 'large',
                     'px-4': size === 'large' && variant !== 'link',
-                    'h-[36px] pb-[9px] pt-[10px] text-xs': size === 'small',
-                    'px-[12px]': size === 'small' && variant !== 'link',
+                    'text-s h-10 pb-[9px] pt-[10px]': size === 'small',
+                    'px-3': size === 'small' && variant !== 'link',
                     'font-normal underline': variant === 'link',
                     'font-bold': variant !== 'link',
                     'bg-pzh-blue hover:bg-pzh-blue-dark text-white':
@@ -61,27 +62,12 @@ export const Button = <T extends ElementType = 'button'>({
             {...buttonProps}>
             {Icon ? (
                 <div className="flex items-center">
-                    <Icon
-                        className={classNames({
-                            '-mt-[2px]': variant !== 'secondary',
-                            '-mt-0.5': variant === 'secondary',
-                            'mr-2': size === 'large',
-                            'mr-[8px]': size === 'small',
-                            'animate-spin': isLoading,
-                        })}
-                    />
+                    <Icon className="-mt-0.5 mr-2" />
                     <span>{children}</span>
                 </div>
             ) : isLoading ? (
                 <div className="flex items-center">
-                    <Spinner
-                        className={classNames('animate-spin', {
-                            '-mt-[2px]': variant !== 'secondary',
-                            '-mt-0.5': variant === 'secondary',
-                            'mr-2': size === 'large',
-                            'mr-[8px]': size === 'small',
-                        })}
-                    />
+                    <Spinner className="-mt-0.5 mr-2 animate-spin" />
                     <span>{children}</span>
                 </div>
             ) : (

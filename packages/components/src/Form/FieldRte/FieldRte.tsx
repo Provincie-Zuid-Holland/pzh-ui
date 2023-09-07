@@ -1,23 +1,23 @@
-import { ReactNode, useEffect } from 'react'
-import { useEditor, EditorContent, Editor } from '@tiptap/react'
 import { Extensions } from '@tiptap/core'
-import Underline from '@tiptap/extension-underline'
-import Image from '@tiptap/extension-image'
-import Link from '@tiptap/extension-link'
-import Placeholder from '@tiptap/extension-placeholder'
 import Bold from '@tiptap/extension-bold'
-import Italic from '@tiptap/extension-italic'
-import Document from '@tiptap/extension-document'
-import Text from '@tiptap/extension-text'
-import Paragraph from '@tiptap/extension-paragraph'
 import BulletList from '@tiptap/extension-bullet-list'
-import OrderedList from '@tiptap/extension-ordered-list'
-import ListItem from '@tiptap/extension-list-item'
-import History from '@tiptap/extension-history'
+import Document from '@tiptap/extension-document'
 import HardBreak from '@tiptap/extension-hard-break'
+import History from '@tiptap/extension-history'
+import Image from '@tiptap/extension-image'
+import Italic from '@tiptap/extension-italic'
+import Link from '@tiptap/extension-link'
+import ListItem from '@tiptap/extension-list-item'
+import OrderedList from '@tiptap/extension-ordered-list'
+import Paragraph from '@tiptap/extension-paragraph'
+import Placeholder from '@tiptap/extension-placeholder'
+import Text from '@tiptap/extension-text'
+import Underline from '@tiptap/extension-underline'
+import { Editor, EditorContent, useEditor } from '@tiptap/react'
+import classNames from 'classnames'
+import { ReactNode, useEffect } from 'react'
 
 import { FieldLabel } from '../FieldLabel'
-import classNames from 'classnames'
 import RteMenuBar from './components/RteMenuBar'
 import ImageUpload from './extensions/imageUpload'
 
@@ -89,7 +89,7 @@ export const FieldRte = ({
         },
         editorProps: {
             attributes: {
-                class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-4 max-w-full text-pzh-blue-dark marker:text-pzh-blue-dark leading-6 outline-none whitespace-pre-line',
+                class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-dark marker:text-pzh-blue-dark outline-none whitespace-pre-line',
             },
         },
         injectCSS: false,
@@ -182,7 +182,7 @@ export const FieldRte = ({
                 })}>
                 <div
                     className={classNames(
-                        'border-pzh-gray-600 relative rounded-[4px] border',
+                        'border-pzh-gray-600 relative overflow-hidden rounded border',
                         {
                             'bg-pzh-gray-100': disabled,
                             'pzh-form-error': hasError,

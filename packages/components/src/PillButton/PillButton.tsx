@@ -1,5 +1,5 @@
-import { ElementType, ReactNode, useRef } from 'react'
 import classNames from 'classnames'
+import { ElementType, ReactNode, useRef } from 'react'
 import { AriaButtonProps, useButton } from 'react-aria'
 import { Link } from 'react-router-dom'
 
@@ -32,17 +32,20 @@ export const PillButton = <T extends ElementType = 'button'>({
             {...(as === 'a' && {
                 to: props.href,
             })}
-            className={classNames('flex items-center h-[24px] px-3 border text-[16px] rounded-[40px] focus:outline-none focus:ring focus:ring-pzh-blue-dark ring-offset-2 transition',
+            className={classNames(
+                'focus:ring-pzh-blue-dark text-s flex h-6 items-center rounded-full border px-4 ring-offset-2 transition focus:outline-none focus:ring',
                 {
-                    'text-pzh-green border-pzh-green cursor-pointer hover:bg-pzh-green-dark hover:border-pzh-green-dark hover:text-pzh-white': !isDisabled,
-                    'text-pzh-gray bg-pzh-gray-200 text-pzh-blue-dark/35 cursor-not-allowed': isDisabled,
+                    'text-pzh-green border-pzh-green hover:bg-pzh-green-dark hover:border-pzh-green-dark hover:text-pzh-white cursor-pointer':
+                        !isDisabled,
+                    'text-pzh-gray bg-pzh-gray-200 text-pzh-blue-dark/35 cursor-not-allowed':
+                        isDisabled,
                 },
                 props.className
             )}
             ref={ref}
             {...buttonProps}>
-            {Icon && <Icon size={12} className="mr-[8px]" />}
-            <span className='-mb-0.5'>{children}</span>
+            {Icon && <Icon size={12} className="mr-2" />}
+            <span className="-mb-[3px]">{children}</span>
         </Component>
     )
 }

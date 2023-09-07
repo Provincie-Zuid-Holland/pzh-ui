@@ -1,16 +1,17 @@
+import classNames from 'classnames'
+import {
+    ToastContainer as Container,
+    ToastContainerProps as ContainerProps,
+    toast,
+} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
+
 import {
     CircleCheck,
     CircleInfo,
     TriangleExclamation,
     Xmark,
 } from '@pzh-ui/icons'
-import classNames from 'classnames'
-import {
-    toast,
-    ToastContainer as Container,
-    ToastContainerProps as ContainerProps,
-} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
 
 const contextClass = {
     success: 'bg-pzh-green',
@@ -36,18 +37,18 @@ export const ToastContainer = ({ ...props }: ToastContainerProps) => (
     <Container
         className="!w-max min-w-[320px] max-w-[400px]"
         toastClassName={() =>
-            'relative mt-3 p-3 flex items-center rounded-[4px] shadow-card justify-between overflow-hidden cursor-pointer bg-white text-pzh-blue-dark'
+            'relative mt-3 p-3 flex items-center rounded shadow-card justify-between overflow-hidden cursor-pointer bg-white text-pzh-blue-dark'
         }
         bodyClassName={() => 'pr-2 flex items-center leading-none'}
         closeButton={() => <Xmark size={18} />}
         progressClassName={context =>
             classNames(
                 contextClass[context?.type || 'default'],
-                'Toastify__progress-bar--animated absolute bottom-0 left-0 w-full h-[4px] origin-left'
+                'Toastify__progress-bar--animated absolute bottom-0 left-0 w-full h-1 origin-left'
             )
         }
         icon={context => (
-            <div className="-mt-[4px]">{contextIcon[context.type]}</div>
+            <div className="-mt-1">{contextIcon[context.type]}</div>
         )}
         position="bottom-right"
         draggable={false}

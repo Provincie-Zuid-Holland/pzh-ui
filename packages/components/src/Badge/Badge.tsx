@@ -25,7 +25,7 @@ export const Badge = ({
 }: BadgeProps) => (
     <div
         className={classNames(
-            'inline-block border rounded px-1.5 text-[16px] h-[28px] font-bold',
+            'text-4 inline-block h-7 rounded border px-1.5 font-bold',
             {
                 uppercase: upperCase,
                 'border-pzh-green text-pzh-green':

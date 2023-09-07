@@ -1,5 +1,6 @@
-import { AngleRight } from '@pzh-ui/icons'
 import { Link } from 'react-router-dom'
+
+import { AngleRight } from '@pzh-ui/icons'
 
 import { BackLink } from '../BackLink'
 
@@ -14,7 +15,7 @@ export interface BreadcrumbsProps {
 export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
     <nav
         aria-label="Broodkruimelpad"
-        className={`w-full text-pzh-blue-dark text-[18px] ${className}`}>
+        className={`text-pzh-blue-dark text-s w-full ${className}`}>
         <ol className="hidden md:flex">
             {items.map((item, index) => {
                 return index === items.length - 1 ? (
@@ -26,14 +27,11 @@ export const Breadcrumbs = ({ className, items = [] }: BreadcrumbsProps) => (
                 ) : (
                     <li
                         key={item.name + index}
-                        className="flex items-center mr-[8px] underline underline-offset-2 whitespace-nowrap">
-                        <Link to={item.path} className="mr-[8px]">
+                        className="mr-2 flex items-center whitespace-nowrap underline underline-offset-2">
+                        <Link to={item.path} className="mr-2">
                             {item.name}
                         </Link>
-                        <AngleRight
-                            className="-mt-[2px] sr-hidden"
-                            aria-hidden
-                        />
+                        <AngleRight className="sr-hidden -mt-0.5" aria-hidden />
                     </li>
                 )
             })}

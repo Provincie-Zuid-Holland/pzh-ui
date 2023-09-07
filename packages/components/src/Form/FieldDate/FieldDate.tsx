@@ -1,14 +1,14 @@
-import 'react-datepicker/dist/react-datepicker.css'
-
-import { forwardRef, ReactNode, useState } from 'react'
-import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
-import { useUpdateEffect } from 'react-use'
-import nl from 'date-fns/locale/nl'
 import classNames from 'classnames'
+import nl from 'date-fns/locale/nl'
+import { ReactNode, forwardRef, useState } from 'react'
+import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { useUpdateEffect } from 'react-use'
+
 import { CalendarAlt } from '@pzh-ui/icons'
 
-import { FieldLabel } from '../FieldLabel'
 import { FieldInputProps } from '../FieldInput'
+import { FieldLabel } from '../FieldLabel'
 
 /**
  * Form date element
@@ -56,7 +56,7 @@ export const FieldDate = ({
     return (
         <div
             className={classNames({
-                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+                'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
             })}>
             {label && (
                 <FieldLabel
@@ -66,13 +66,13 @@ export const FieldDate = ({
                     required={required}
                     tooltip={tooltip}
                     className={classNames({
-                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                        'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
                     })}
                 />
             )}
             <div
                 className={classNames({
-                    'md:col-span-4 col-span-6': layout === 'grid',
+                    'col-span-6 md:col-span-4': layout === 'grid',
                 })}>
                 <DatePicker
                     locale={nl}
@@ -85,6 +85,7 @@ export const FieldDate = ({
                         },
                         className
                     )}
+                    wrapperClassName="w-full"
                     calendarClassName="pzh-datepicker"
                     customInput={<DateInput name={name} />}
                     dateFormat={dateFormat}

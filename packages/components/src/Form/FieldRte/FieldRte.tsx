@@ -182,7 +182,7 @@ export const FieldRte = ({
                 })}>
                 <div
                     className={classNames(
-                        'border-pzh-gray-600 relative overflow-hidden rounded border',
+                        'border-pzh-gray-600 relative rounded border',
                         {
                             'bg-pzh-gray-100': disabled,
                             'pzh-form-error': hasError,

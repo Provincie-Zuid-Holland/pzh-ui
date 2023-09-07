@@ -34,7 +34,7 @@ const RteMenuBar = ({
     return (
         <div
             className={classNames(
-                'border-pzh-gray-600 bg-pzh-white rounded-t-1 flex border-b px-2',
+                'border-pzh-gray-600 bg-pzh-white flex rounded-t border-b px-2',
                 menuClassName
             )}>
             {menuOptions.map(option => {

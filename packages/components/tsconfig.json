@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "ESNext",
         "lib": ["dom", "dom.iterable", "esnext"],
+        "types": ["vite/client", "node", "vitest/globals"],
         "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": false,
@@ -17,8 +18,7 @@
         "emitDeclarationOnly": true,
         "declarationMap": true,
         "outDir": "dist",
-        "jsx": "react-jsx",
-        "typeRoots": ["./node_modules/@types"]
+        "jsx": "react-jsx"
     },
     "include": ["src", "types/*"],
     "exclude": ["node_modules", "dist"]

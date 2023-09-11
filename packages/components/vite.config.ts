@@ -6,6 +6,8 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
+const isExternal = id => !id.startsWith('.') && !path.isAbsolute(id)
+
 export default defineConfig({
     plugins: [
         react({
@@ -22,6 +24,7 @@ export default defineConfig({
         sourcemap: true,
         emptyOutDir: true,
         rollupOptions: {
+            external: isExternal,
             plugins: [
                 typescriptPlugin({
                     exclude: ['**/*.test.tsx', '**/*.stories.tsx'],

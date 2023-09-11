@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { TypeOptions } from 'react-toastify'
 
 import { ToastContainer, ToastContainerProps, toastNotification } from './Toast'
@@ -7,7 +7,9 @@ import { ToastContainer, ToastContainerProps, toastNotification } from './Toast'
 export default {
     title: 'Components/Toast',
     component: ToastContainer,
-}
+} satisfies Meta<typeof ToastContainer>
+
+type Story = StoryObj<typeof ToastContainer>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: ToastContainerProps) => {
@@ -24,19 +26,19 @@ const Template = (args: ToastContainerProps) => {
 
             <button
                 onClick={() => notify('Error toast!', 'error')}
-                className="block mt-4">
+                className="mt-4 block">
                 Error
             </button>
 
             <button
                 onClick={() => notify('Warning toast!', 'warning')}
-                className="block mt-4">
+                className="mt-4 block">
                 Warning
             </button>
 
             <button
                 onClick={() => notify('Info toast!', 'info')}
-                className="block mt-4">
+                className="mt-4 block">
                 Info
             </button>
 
@@ -47,7 +49,7 @@ const Template = (args: ToastContainerProps) => {
                         'info'
                     )
                 }
-                className="block mt-4">
+                className="mt-4 block">
                 Large
             </button>
             <ToastContainer {...args} />
@@ -55,6 +57,7 @@ const Template = (args: ToastContainerProps) => {
     )
 }
 
-export const Default: ComponentStory<typeof ToastContainer> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {}
+export const Default = {
+    render: Template,
+    args: {},
+} satisfies Story

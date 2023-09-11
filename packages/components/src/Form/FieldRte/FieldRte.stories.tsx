@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { FieldRte, FieldRteProps } from './FieldRte'
 
@@ -8,54 +8,61 @@ const initialContent = `De kern van het erfgoedbeleid van Zuid-Holland is het be
 export default {
     title: 'Components/Form/FieldRte',
     component: FieldRte,
-}
+} satisfies Meta<typeof FieldRte>
+
+type Story = StoryObj<typeof FieldRte>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: FieldRteProps) => <FieldRte {...args} />
 
-export const Default: ComponentStory<typeof FieldRte> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    name: 'field-rte',
-    onBlur: console.log,
-    initialContent,
-    placeholder: 'Start met typen...',
-    customMenuOptions: ['image', 'link'],
-}
+export const Default = {
+    render: Template,
+    args: {
+        name: 'field-rte',
+        onBlur: console.log,
+        initialContent,
+        placeholder: 'Start met typen...',
+        customMenuOptions: ['image', 'link'],
+    },
+} satisfies Story
 
-export const Disabled: ComponentStory<typeof FieldRte> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Disabled.args = {
-    name: 'field-rte',
-    disabled: true,
-    initialContent,
-}
+export const Disabled = {
+    render: Template,
+    args: {
+        name: 'field-rte',
+        disabled: true,
+        initialContent,
+    },
+} satisfies Story
 
-export const WithLabel: ComponentStory<typeof FieldRte> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithLabel.args = {
-    name: 'field-rte',
-    label: 'WYSIWYG',
-    description: 'What you see is what you get',
-    initialContent,
-}
+export const WithLabel = {
+    render: Template,
+    args: {
+        name: 'field-rte',
+        label: 'WYSIWYG',
+        description: 'What you see is what you get',
+        initialContent,
+    },
+} satisfies Story
 
-export const LayoutGrid: ComponentStory<typeof FieldRte> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-LayoutGrid.args = {
-    name: 'field-rte',
-    label: 'WYSIWYG',
-    description: 'What you see is what you get',
-    layout: 'grid',
-    initialContent,
-}
+export const LayoutGrid = {
+    render: Template,
+    args: {
+        name: 'field-rte',
+        label: 'WYSIWYG',
+        description: 'What you see is what you get',
+        layout: 'grid',
+        initialContent,
+    },
+} satisfies Story
 
-export const WithError: ComponentStory<typeof FieldRte> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithError.args = {
-    name: 'field-rte',
-    label: 'WYSIWYG',
-    description: 'What you see is what you get',
-    initialContent,
-    hasError: true,
-}
+export const WithError = {
+    render: Template,
+    args: {
+        name: 'field-rte',
+        label: 'WYSIWYG',
+        description: 'What you see is what you get',
+        initialContent,
+        hasError: true,
+    },
+} satisfies Story

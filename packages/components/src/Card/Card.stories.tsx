@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Card, CardProps } from './Card'
 
@@ -6,13 +6,16 @@ import { Card, CardProps } from './Card'
 export default {
     title: 'Components/Card',
     component: Card,
-}
+} satisfies Meta<typeof Card>
+
+type Story = StoryObj<typeof Card>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: CardProps) => <Card {...args} />
 
-export const Default: ComponentStory<typeof Card> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    children: 'Content',
-}
+export const Default = {
+    render: Template,
+    args: {
+        children: 'Content',
+    },
+} satisfies Story

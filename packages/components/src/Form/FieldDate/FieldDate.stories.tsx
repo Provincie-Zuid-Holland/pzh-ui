@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { FieldDate, FieldDateProps } from './FieldDate'
@@ -7,7 +7,9 @@ import { FieldDate, FieldDateProps } from './FieldDate'
 export default {
     title: 'Components/Form/FieldDate',
     component: FieldDate,
-}
+} satisfies Meta<typeof FieldDate>
+
+type Story = StoryObj<typeof FieldDate>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: FieldDateProps) => {
@@ -22,36 +24,40 @@ const Template = (args: FieldDateProps) => {
     )
 }
 
-export const Default: ComponentStory<typeof FieldDate> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    name: 'date',
-    placeholderText: 'Datum',
-}
+export const Default = {
+    render: Template,
+    args: {
+        name: 'date',
+        placeholderText: 'Datum',
+    },
+} satisfies Story
 
-export const Disabled: ComponentStory<typeof FieldDate> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Disabled.args = {
-    name: 'date',
-    placeholderText: 'Datum',
-    disabled: true,
-}
+export const Disabled = {
+    render: Template,
+    args: {
+        name: 'date',
+        placeholderText: 'Datum',
+        disabled: true,
+    },
+} satisfies Story
 
-export const WithLabel: ComponentStory<typeof FieldDate> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithLabel.args = {
-    name: 'date',
-    placeholderText: 'Datum',
-    label: 'Datum',
-    required: true,
-}
+export const WithLabel = {
+    render: Template,
+    args: {
+        name: 'date',
+        placeholderText: 'Datum',
+        label: 'Datum',
+        required: true,
+    },
+} satisfies Story
 
-export const LayoutGrid: ComponentStory<typeof FieldDate> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-LayoutGrid.args = {
-    name: 'date',
-    placeholderText: 'Datum',
-    label: 'Datum',
-    required: true,
-    layout: 'grid',
-}
+export const LayoutGrid = {
+    render: Template,
+    args: {
+        name: 'date',
+        placeholderText: 'Datum',
+        label: 'Datum',
+        required: true,
+        layout: 'grid',
+    },
+} satisfies Story

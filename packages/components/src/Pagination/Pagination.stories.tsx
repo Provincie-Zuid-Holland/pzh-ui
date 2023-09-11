@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Pagination, PaginationProps } from './Pagination'
 
@@ -6,15 +6,18 @@ import { Pagination, PaginationProps } from './Pagination'
 export default {
     title: 'Components/Pagination',
     component: Pagination,
-}
+} satisfies Meta<typeof Pagination>
+
+type Story = StoryObj<typeof Pagination>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: PaginationProps) => <Pagination {...args} />
 
-export const Default: ComponentStory<typeof Pagination> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    onChange: console.log,
-    total: 228,
-    limit: 10,
-}
+export const Default = {
+    render: Template,
+    args: {
+        onChange: console.log,
+        total: 228,
+        limit: 10,
+    },
+} satisfies Story

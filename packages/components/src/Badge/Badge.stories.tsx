@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Badge, BadgeProps } from './Badge'
 
@@ -6,13 +6,16 @@ import { Badge, BadgeProps } from './Badge'
 export default {
     title: 'Components/Badge',
     component: Badge,
-}
+} satisfies Meta<typeof Badge>
+
+type Story = StoryObj<typeof Badge>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: BadgeProps) => <Badge {...args} />
 
-export const Default: ComponentStory<typeof Badge> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    text: 'Wegenbouw',
-}
+export const Default = {
+    render: Template,
+    args: {
+        text: 'Wegenbouw',
+    },
+} satisfies Story

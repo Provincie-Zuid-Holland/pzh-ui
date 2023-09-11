@@ -1,9 +1,11 @@
+/// <reference types="vitest" />
 import typescriptPlugin from '@rollup/plugin-typescript'
 import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
-import { getClientConfiguration } from '../config/vite'
+import { defineConfig } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
-export default getClientConfiguration({
+export default defineConfig({
     plugins: [
         react({
             jsxRuntime: 'classic',
@@ -12,8 +14,11 @@ export default getClientConfiguration({
             },
         }),
         visualizer(),
+        tsconfigPaths(),
     ],
     build: {
+        target: 'esnext',
+        sourcemap: true,
         rollupOptions: {
             plugins: [
                 typescriptPlugin({
@@ -25,5 +30,10 @@ export default getClientConfiguration({
                 preserveModules: true,
             },
         },
+    },
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: './setupTests.ts',
     },
 })

@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Feedback, FeedbackProps } from './Feedback'
 
@@ -6,14 +6,17 @@ import { Feedback, FeedbackProps } from './Feedback'
 export default {
     title: 'Components/Feedback',
     component: Feedback,
-}
+} satisfies Meta<typeof Feedback>
+
+type Story = StoryObj<typeof Feedback>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: FeedbackProps) => <Feedback {...args} />
 
-export const Default: ComponentStory<typeof Feedback> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    email: 'omgevingsbeleid@pzh.nl',
-    website: 'obzh.nl',
-}
+export const Default = {
+    render: Template,
+    args: {
+        email: 'omgevingsbeleid@pzh.nl',
+        website: 'obzh.nl',
+    },
+} satisfies Story

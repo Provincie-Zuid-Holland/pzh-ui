@@ -1,12 +1,14 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
-import { Tabs, TabItem, TabsProps } from './Tabs'
+import { TabItem, Tabs, TabsProps } from './Tabs'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
     title: 'Components/Tabs',
     component: Tabs,
-}
+} satisfies Meta<typeof Tabs>
+
+type Story = StoryObj<typeof Tabs>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: TabsProps) => (
@@ -23,8 +25,9 @@ const Template = (args: TabsProps) => (
     </Tabs>
 )
 
-export const Default: ComponentStory<typeof Tabs> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    disabledKeys: ['3'],
-}
+export const Default = {
+    render: Template,
+    args: {
+        disabledKeys: ['3'],
+    },
+} satisfies Story

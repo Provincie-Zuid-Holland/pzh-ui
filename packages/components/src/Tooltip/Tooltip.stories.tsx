@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Tooltip, TooltipProps } from './Tooltip'
 
@@ -6,7 +6,9 @@ import { Tooltip, TooltipProps } from './Tooltip'
 export default {
     title: 'Components/Tooltip',
     component: Tooltip,
-}
+} satisfies Meta<typeof Tooltip>
+
+type Story = StoryObj<typeof Tooltip>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: TooltipProps) => (
@@ -15,9 +17,10 @@ const Template = (args: TooltipProps) => (
     </div>
 )
 
-export const Default: ComponentStory<typeof Tooltip> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    children: <p className="inline-block font-bold">hover me</p>,
-    label: 'Tooltip',
-}
+export const Default = {
+    render: Template,
+    args: {
+        children: <p className="inline-block font-bold">hover me</p>,
+        label: 'Tooltip',
+    },
+} satisfies Story

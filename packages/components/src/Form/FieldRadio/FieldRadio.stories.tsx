@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { FieldRadio, FieldRadioProps } from './FieldRadio'
 
@@ -6,22 +6,26 @@ import { FieldRadio, FieldRadioProps } from './FieldRadio'
 export default {
     title: 'Components/Form/FieldRadio',
     component: FieldRadio,
-}
+} satisfies Meta<typeof FieldRadio>
+
+type Story = StoryObj<typeof FieldRadio>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: FieldRadioProps) => <FieldRadio {...args} />
 
-export const Default: ComponentStory<typeof FieldRadio> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    children: 'Option 1',
-    name: 'option-1',
-}
+export const Default = {
+    render: Template,
+    args: {
+        children: 'Option 1',
+        name: 'option-1',
+    },
+} satisfies Story
 
-export const Disabled: ComponentStory<typeof FieldRadio> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Disabled.args = {
-    children: 'Option 1',
-    name: 'option-1',
-    disabled: true,
-}
+export const Disabled = {
+    render: Template,
+    args: {
+        children: 'Option 1',
+        name: 'option-1',
+        disabled: true,
+    },
+} satisfies Story

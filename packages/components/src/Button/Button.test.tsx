@@ -1,8 +1,8 @@
-import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { ElementType } from 'react'
 
 import { Button, ButtonProps } from './Button'
-import { ElementType } from 'react'
 
 describe('Button', () => {
     const defaultProps = {
@@ -22,7 +22,7 @@ describe('Button', () => {
     })
 
     it('should be possible to click the button when providing onPress', () => {
-        const onPress = jest.fn()
+        const onPress = vi.fn()
 
         setup({ onPress })
 

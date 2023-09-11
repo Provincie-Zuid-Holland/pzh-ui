@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import { Hyperlink, HyperlinkProps } from './Hyperlink'
@@ -7,7 +7,9 @@ import { Hyperlink, HyperlinkProps } from './Hyperlink'
 export default {
     title: 'Components/Hyperlink',
     component: Hyperlink,
-}
+} satisfies Meta<typeof Hyperlink>
+
+type Story = StoryObj<typeof Hyperlink>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: HyperlinkProps) => (
@@ -16,9 +18,10 @@ const Template = (args: HyperlinkProps) => (
     </Router>
 )
 
-export const Default: ComponentStory<typeof Hyperlink> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    text: 'Hyperlink text',
-    to: '/to-page',
-}
+export const Default = {
+    render: Template,
+    args: {
+        text: 'Hyperlink text',
+        to: '/to-page',
+    },
+} satisfies Story

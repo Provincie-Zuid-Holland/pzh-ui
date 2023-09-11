@@ -1,72 +1,77 @@
-import { MagnifyingGlass } from '../../../../icons'
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
+import { MagnifyingGlass } from '../../../../icons'
 import { FieldInput, FieldInputProps } from './FieldInput'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
     title: 'Components/Form/FieldInput',
     component: FieldInput,
-}
+} satisfies Meta<typeof FieldInput>
+
+type Story = StoryObj<typeof FieldInput>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: FieldInputProps) => <FieldInput {...args} />
 
-export const Default: ComponentStory<typeof FieldInput> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    placeholder: 'Tekstvlak',
-}
+export const Default = {
+    render: Template,
+    args: {
+        placeholder: 'Tekstvlak',
+    },
+} satisfies Story
 
-export const DisabledEmpty: ComponentStory<typeof FieldInput> = Template.bind(
-    {}
-)
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-DisabledEmpty.args = {
-    placeholder: 'Tekstvlak',
-    disabled: true,
-}
+export const DisabledEmpty = {
+    render: Template,
+    args: {
+        placeholder: 'Tekstvlak',
+        disabled: true,
+    },
+} satisfies Story
 
-export const DisabledFilled: ComponentStory<typeof FieldInput> = Template.bind(
-    {}
-)
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-DisabledFilled.args = {
-    placeholder: 'Tekstvlak',
-    disabled: true,
-    value: 'Waarde',
-}
+export const DisabledFilled = {
+    render: Template,
+    args: {
+        placeholder: 'Tekstvlak',
+        disabled: true,
+        value: 'Waarde',
+    },
+} satisfies Story
 
-export const WithLabel: ComponentStory<typeof FieldInput> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithLabel.args = {
-    placeholder: 'Tekstvlak',
-    label: 'Form label',
-    description: 'Korte omschrijving voor onder het label',
-    required: true,
-}
+export const WithLabel = {
+    render: Template,
+    args: {
+        placeholder: 'Tekstvlak',
+        label: 'Form label',
+        description: 'Korte omschrijving voor onder het label',
+        required: true,
+    },
+} satisfies Story
 
-export const LayoutGrid: ComponentStory<typeof FieldInput> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-LayoutGrid.args = {
-    placeholder: 'Tekstvlak',
-    label: 'Form label',
-    description: 'Korte omschrijving voor onder het label',
-    required: true,
-    layout: 'grid',
-}
+export const LayoutGrid = {
+    render: Template,
+    args: {
+        placeholder: 'Tekstvlak',
+        label: 'Form label',
+        description: 'Korte omschrijving voor onder het label',
+        required: true,
+        layout: 'grid',
+    },
+} satisfies Story
 
-export const WithError: ComponentStory<typeof FieldInput> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithError.args = {
-    placeholder: 'Tekstvlak',
-    hasError: true,
-    value: 'Waarde',
-}
+export const WithError = {
+    render: Template,
+    args: {
+        placeholder: 'Tekstvlak',
+        hasError: true,
+        value: 'Waarde',
+    },
+} satisfies Story
 
-export const WithIcon: ComponentStory<typeof FieldInput> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithIcon.args = {
-    placeholder: 'Zoek naar indicator',
-    icon: MagnifyingGlass,
-}
+export const WithIcon = {
+    render: Template,
+    args: {
+        placeholder: 'Zoek naar indicator',
+        icon: MagnifyingGlass as any,
+    },
+} satisfies Story

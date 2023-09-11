@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import { ListLink, ListLinkProps } from './ListLink'
@@ -7,7 +7,9 @@ import { ListLink, ListLinkProps } from './ListLink'
 export default {
     title: 'Components/ListLink',
     component: ListLink,
-}
+} satisfies Meta<typeof ListLink>
+
+type Story = StoryObj<typeof ListLink>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: ListLinkProps) => (
@@ -16,9 +18,10 @@ const Template = (args: ListLinkProps) => (
     </Router>
 )
 
-export const Default: ComponentStory<typeof ListLink> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    text: 'ListLink text',
-    to: '/to-page',
-}
+export const Default = {
+    render: Template,
+    args: {
+        text: 'ListLink text',
+        to: '/to-page',
+    },
+} satisfies Story

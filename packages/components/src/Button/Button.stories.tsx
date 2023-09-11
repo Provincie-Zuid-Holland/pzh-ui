@@ -1,25 +1,18 @@
-import { Eye } from '@pzh-ui/icons'
-import { ComponentStory } from '@storybook/react'
-
-import { Button, ButtonProps } from './Button'
+import { Meta, StoryObj } from '@storybook/react'
 import { ElementType } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
+
+import { Eye } from '@pzh-ui/icons'
+
+import { Button, ButtonProps } from './Button'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
     title: 'Components/Button',
     component: Button,
-    argTypes: {
-        variant: {
-            options: ['primary', 'secondary', 'cta', 'link', 'default'],
-            control: { type: 'select' },
-        },
-        size: {
-            options: ['large', 'small'],
-            control: { type: 'select' },
-        },
-    },
-}
+} satisfies Meta<typeof Button>
+
+type Story = StoryObj<typeof Button>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: ButtonProps<ElementType>) => (
@@ -28,41 +21,52 @@ const Template = (args: ButtonProps<ElementType>) => (
     </Router>
 )
 
-export const Primary: ComponentStory<typeof Button> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-    as: 'a',
-    variant: 'primary',
-    children: 'Button',
-    href: '/test',
-}
+export const Primary = {
+    render: Template,
+    args: {
+        as: 'a',
+        variant: 'primary',
+        children: 'Button',
+        href: '/test',
+    },
+} satisfies Story
 
-export const Secondary: ComponentStory<typeof Button> = Template.bind({})
-Secondary.args = {
-    variant: 'secondary',
-    children: 'Button',
-}
+export const Secondary = {
+    render: Template,
+    args: {
+        variant: 'secondary',
+        children: 'Button',
+    },
+} satisfies Story
 
-export const CTA: ComponentStory<typeof Button> = Template.bind({})
-CTA.args = {
-    variant: 'cta',
-    children: 'Button',
-}
+export const CTA = {
+    render: Template,
+    args: {
+        variant: 'cta',
+        children: 'Button',
+    },
+} satisfies Story
 
-export const Disabled: ComponentStory<typeof Button> = Template.bind({})
-Disabled.args = {
-    children: 'Button',
-    isDisabled: true,
-}
+export const Disabled = {
+    render: Template,
+    args: {
+        isDisabled: true,
+        children: 'Button',
+    },
+} satisfies Story
 
-export const WithIcon: ComponentStory<typeof Button> = Template.bind({})
-WithIcon.args = {
-    children: 'Button',
-    icon: Eye,
-}
+export const WithIcon = {
+    render: Template,
+    args: {
+        children: 'Button',
+        icon: Eye as any,
+    },
+} satisfies Story
 
-export const Link: ComponentStory<typeof Button> = Template.bind({})
-Link.args = {
-    children: 'Button',
-    variant: 'link',
-}
+export const Link = {
+    render: Template,
+    args: {
+        children: 'Button',
+        variant: 'link',
+    },
+} satisfies Story

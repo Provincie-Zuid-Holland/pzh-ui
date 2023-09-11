@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Banner, BannerProps } from './Banner'
 
@@ -6,15 +6,18 @@ import { Banner, BannerProps } from './Banner'
 export default {
     title: 'Components/Banner',
     component: Banner,
-}
+} satisfies Meta<typeof Banner>
+
+type Story = StoryObj<typeof Banner>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: BannerProps) => <Banner {...args} />
 
-export const Default: ComponentStory<typeof Banner> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    text: 'Let op! De Monitor Leefomgeving van Provincie Zuid-Holland is momenteel nog in ontwikkeling.',
-    isActive: true,
-    color: 'blue',
-}
+export const Default = {
+    render: Template,
+    args: {
+        text: 'Let op! De Monitor Leefomgeving van Provincie Zuid-Holland is momenteel nog in ontwikkeling.',
+        isActive: true,
+        color: 'blue',
+    },
+} satisfies Story

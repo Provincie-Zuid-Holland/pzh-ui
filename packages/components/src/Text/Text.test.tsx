@@ -4,7 +4,7 @@ import { Text, TextProps } from './Text'
 
 describe('Text', () => {
     const defaultProps = {
-        id: 'text',
+        ['data-testid']: 'text',
         children: 'Text',
     }
 

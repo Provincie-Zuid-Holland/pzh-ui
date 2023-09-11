@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { cloneElement, useState } from 'react'
 
 import { FieldInput } from './FieldInput'
@@ -13,7 +13,7 @@ const ParentWrapper = ({
 }) => {
     const [value, setValue] = useState(initEmpty ? '' : 'Test Value')
 
-    const handleChange = jest.fn(e => {
+    const handleChange = vi.fn(e => {
         setValue(e.target.value)
     })
 

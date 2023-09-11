@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { FieldLabel, FieldLabelProps } from './FieldLabel'
 
@@ -6,41 +6,45 @@ import { FieldLabel, FieldLabelProps } from './FieldLabel'
 export default {
     title: 'Components/Form/FieldLabel',
     component: FieldLabel,
-}
+} satisfies Meta<typeof FieldLabel>
+
+type Story = StoryObj<typeof FieldLabel>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: FieldLabelProps) => <FieldLabel {...args} />
 
-export const Default: ComponentStory<typeof FieldLabel> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    name: 'titel',
-    label: 'Form label',
-}
+export const Default = {
+    render: Template,
+    args: {
+        name: 'titel',
+        label: 'Form label',
+    },
+} satisfies Story
 
-export const Required: ComponentStory<typeof FieldLabel> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Required.args = {
-    name: 'titel',
-    label: 'Form label',
-    required: true,
-}
+export const Required = {
+    render: Template,
+    args: {
+        name: 'titel',
+        label: 'Form label',
+        required: true,
+    },
+} satisfies Story
 
-export const WithDescription: ComponentStory<typeof FieldLabel> = Template.bind(
-    {}
-)
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithDescription.args = {
-    name: 'titel',
-    label: 'Form label',
-    description: 'Korte omschrijving voor onder het label',
-}
+export const WithDescription = {
+    render: Template,
+    args: {
+        name: 'titel',
+        label: 'Form label',
+        description: 'Korte omschrijving voor onder het label',
+    },
+} satisfies Story
 
-export const WithTooltip: ComponentStory<typeof FieldLabel> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithTooltip.args = {
-    name: 'titel',
-    label: 'Form label',
-    description: 'Korte omschrijving voor onder het label',
-    tooltip: 'Dit is een tooltip',
-}
+export const WithTooltip = {
+    render: Template,
+    args: {
+        name: 'titel',
+        label: 'Form label',
+        description: 'Korte omschrijving voor onder het label',
+        tooltip: 'Dit is een tooltip',
+    },
+} satisfies Story

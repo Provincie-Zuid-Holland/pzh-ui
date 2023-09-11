@@ -1,9 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import { Tag, TagProps } from './Tag'
 
 describe('Tag', () => {
-    const clickTag = jest.fn()
+    const clickTag = vi.fn()
     const defaultProps = {
         text: 'Tag',
         className: '',

@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Notification, NotificationProps } from './Notification'
 
@@ -6,21 +6,25 @@ import { Notification, NotificationProps } from './Notification'
 export default {
     title: 'Components/Notification',
     component: Notification,
-}
+} satisfies Meta<typeof Notification>
+
+type Story = StoryObj<typeof Notification>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: NotificationProps) => <Notification {...args} />
 
-export const Info: ComponentStory<typeof Notification> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Info.args = {
-    children: 'Dit is een toelichting.',
-    variant: 'info',
-}
+export const Info = {
+    render: Template,
+    args: {
+        children: 'Dit is een toelichting.',
+        variant: 'info',
+    },
+} satisfies Story
 
-export const Alert: ComponentStory<typeof Notification> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Alert.args = {
-    children: 'Dit is een melding.',
-    variant: 'alert',
-}
+export const Alert = {
+    render: Template,
+    args: {
+        children: 'Dit is een melding.',
+        variant: 'alert',
+    },
+} satisfies Story

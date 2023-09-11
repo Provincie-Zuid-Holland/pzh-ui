@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import { BackLink, BackLinkProps } from './BackLink'
@@ -7,7 +7,9 @@ import { BackLink, BackLinkProps } from './BackLink'
 export default {
     title: 'Components/BackLink',
     component: BackLink,
-}
+} satisfies Meta<typeof BackLink>
+
+type Story = StoryObj<typeof BackLink>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: BackLinkProps) => (
@@ -16,9 +18,10 @@ const Template = (args: BackLinkProps) => (
     </Router>
 )
 
-export const Default: ComponentStory<typeof BackLink> = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-    to: '/',
-    label: 'Terug',
-}
+export const Default = {
+    render: Template,
+    args: {
+        to: '/',
+        label: 'Terug',
+    },
+} satisfies Story

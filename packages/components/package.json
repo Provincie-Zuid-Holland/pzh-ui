@@ -17,8 +17,7 @@
         ".": {
             "import": "./dist/index.es.js",
             "require": "./dist/index.cjs.js"
-        },
-        "./dist/style.css": "./dist/style.css"
+        }
     },
     "scripts": {
         "test:generate-output": "vitest run --outputFile.json=.jest-test-results.json",

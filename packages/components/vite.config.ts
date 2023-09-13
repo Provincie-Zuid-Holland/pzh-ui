@@ -3,7 +3,7 @@ import typescriptPlugin from '@rollup/plugin-typescript'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
-import { defineConfig } from 'vite'
+import { PluginOption, defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 const isExternal = id => !id.startsWith('.') && !path.isAbsolute(id)
@@ -16,7 +16,12 @@ export default defineConfig({
                 configFile: true,
             },
         }),
-        visualizer(),
+        visualizer({
+            template: 'treemap', // or sunburst
+            gzipSize: true,
+            brotliSize: true,
+            filename: 'analyse.html', // will be saved in project's root
+        }) as PluginOption,
         tsconfigPaths(),
     ],
     build: {

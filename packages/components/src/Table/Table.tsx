@@ -83,52 +83,54 @@ export const Table = ({
                                                 header.column.columnDef.header,
                                                 header.getContext()
                                             )}
-                                            {{
-                                                asc: (
-                                                    <ArrowDownAZ
-                                                        size={18}
-                                                        className={classNames(
-                                                            'text-pzh-green ml-2',
-                                                            {
-                                                                'opacity-100':
-                                                                    !!header.column.getIsSorted(),
-                                                                'opacity-0 group-hover:opacity-40':
-                                                                    !!!header.column.getIsSorted(),
-                                                            }
-                                                        )}
-                                                    />
-                                                ),
-                                                desc: (
-                                                    <ArrowDownZA
-                                                        size={18}
-                                                        className={classNames(
-                                                            'text-pzh-green ml-2',
-                                                            {
-                                                                'opacity-100':
-                                                                    !!header.column.getIsSorted(),
-                                                                'opacity-0 group-hover:opacity-40':
-                                                                    !!!header.column.getIsSorted(),
-                                                            }
-                                                        )}
-                                                    />
-                                                ),
-                                                false: (
-                                                    <ArrowDownAZ
-                                                        size={18}
-                                                        className={classNames(
-                                                            'text-pzh-green ml-2',
-                                                            {
-                                                                'opacity-100':
-                                                                    !!header.column.getIsSorted(),
-                                                                'opacity-0 group-hover:opacity-40':
-                                                                    !!!header.column.getIsSorted(),
-                                                            }
-                                                        )}
-                                                    />
-                                                ),
-                                            }[
-                                                header.column.getIsSorted() as string
-                                            ] ?? null}
+                                            {header.column.getCanSort() &&
+                                                ({
+                                                    asc: (
+                                                        <ArrowDownAZ
+                                                            size={18}
+                                                            className={classNames(
+                                                                'text-pzh-green ml-2',
+                                                                {
+                                                                    'opacity-100':
+                                                                        !!header.column.getIsSorted(),
+                                                                    'opacity-0 group-hover:opacity-40':
+                                                                        !!!header.column.getIsSorted(),
+                                                                }
+                                                            )}
+                                                        />
+                                                    ),
+                                                    desc: (
+                                                        <ArrowDownZA
+                                                            size={18}
+                                                            className={classNames(
+                                                                'text-pzh-green ml-2',
+                                                                {
+                                                                    'opacity-100':
+                                                                        !!header.column.getIsSorted(),
+                                                                    'opacity-0 group-hover:opacity-40':
+                                                                        !!!header.column.getIsSorted(),
+                                                                }
+                                                            )}
+                                                        />
+                                                    ),
+                                                    false: (
+                                                        <ArrowDownAZ
+                                                            size={18}
+                                                            className={classNames(
+                                                                'text-pzh-green ml-2',
+                                                                {
+                                                                    'opacity-100':
+                                                                        !!header.column.getIsSorted(),
+                                                                    'opacity-0 group-hover:opacity-40':
+                                                                        !!!header.column.getIsSorted(),
+                                                                }
+                                                            )}
+                                                        />
+                                                    ),
+                                                }[
+                                                    header.column.getIsSorted() as string
+                                                ] ??
+                                                    null)}
                                         </div>
                                     )}
                                 </th>

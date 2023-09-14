@@ -8,7 +8,7 @@ import {
 import classNames from 'classnames'
 import { ReactNode } from 'react'
 
-import { ArrowDownAZ, ArrowDownZA } from '@pzh-ui/icons'
+import { ArrowDownAZ, ArrowDownZA, Spinner } from '@pzh-ui/icons'
 
 import { Pagination } from '../Pagination'
 
@@ -20,12 +20,14 @@ export interface TableProps
     className?: string
     limit?: number
     total?: number
+    isLoading?: boolean
 }
 
 export const Table = ({
     className = '',
     limit = 20,
     total,
+    isLoading,
     ...rest
 }: TableProps) => {
     const table = useReactTable({
@@ -134,7 +136,7 @@ export const Table = ({
                         </tr>
                     ))}
                 </thead>
-                <tbody>
+                <tbody className="relative">
                     {table.getRowModel().rows.map(row => {
                         const hasOnClick =
                             'onClick' in (row.original as any) &&
@@ -170,9 +172,17 @@ export const Table = ({
                             </tr>
                         )
                     })}
+                    {isLoading && (
+                        <div className="bg-pzh-gray-800/10 absolute left-0 top-0 flex h-full w-full animate-pulse items-center justify-center">
+                            <Spinner
+                                className={`inline-block animate-spin ${className}`}
+                                data-testid="loader-spinner"
+                            />
+                        </div>
+                    )}
                 </tbody>
             </table>
-            {!!total && !!limit && (
+            {!!total && !!limit && total > limit && (
                 <Pagination
                     onChange={page => table.setPageIndex(page)}
                     total={total}

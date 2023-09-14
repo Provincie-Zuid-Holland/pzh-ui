@@ -2,6 +2,7 @@ import {
     TableOptions,
     flexRender,
     getCoreRowModel,
+    getSortedRowModel,
     useReactTable,
 } from '@tanstack/react-table'
 import classNames from 'classnames'
@@ -14,7 +15,7 @@ import { Pagination } from '../Pagination'
 export interface TableProps
     extends Omit<
         TableOptions<unknown>,
-        'getCoreRowModel' | 'manualPagination'
+        'getCoreRowModel' | 'getSortedRowModel' | 'manualPagination'
     > {
     className?: string
     limit?: number
@@ -30,6 +31,7 @@ export const Table = ({
     const table = useReactTable({
         ...rest,
         getCoreRowModel: getCoreRowModel(),
+        getSortedRowModel: getSortedRowModel(),
         manualPagination: true,
     })
 

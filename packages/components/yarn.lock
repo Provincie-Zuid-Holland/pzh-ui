@@ -1822,10 +1822,10 @@
     react-datepicker "^4.7.0"
     react-toastify "^9.1.2"
 
-"@pzh-ui/icons@^0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@pzh-ui/icons/-/icons-0.0.33.tgz#6250faf6da832d83ecaab4f0f4bd30bb03a5b008"
-  integrity sha512-JN+Gz44Ywx4UGptUPERmKALJWy+BghGfECNnXEKg2w68LvrTU39gnoP7BeIka5PW2yNqpb/vM0z7Z/7C4CuX7A==
+"@pzh-ui/icons@^0.0.35":
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/@pzh-ui/icons/-/icons-0.0.35.tgz#844fd17c0c7f6f6893fcc6244c0bafb4afa7207e"
+  integrity sha512-UK2/iQP98HQKqB8ifSUjWaWrn9Xl/DgeX920Nx9p+pGttEBdelYO+7lbln+T1WHo/f739PPAWqaAAspyF+PPnw==
   dependencies:
     react "^18.0.0"
     react-toastify "^9.1.2"
@@ -4030,6 +4030,18 @@
     lodash.isplainobject "^4.0.6"
     lodash.merge "^4.6.2"
     postcss-selector-parser "6.0.10"
+
+"@tanstack/react-table@^8.9.9":
+  version "8.9.9"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.9.9.tgz#c19d6b800699623f458abd67bb57373be5a4f53d"
+  integrity sha512-BzffnRo4+4wNa7OFnOxw6Dgq3jFvkfvZBqg1janXfZobo0VRmMMI8KNVu/WRkescr1VWbrGUDKzEzEe3L1veKw==
+  dependencies:
+    "@tanstack/table-core" "8.9.9"
+
+"@tanstack/table-core@8.9.9":
+  version "8.9.9"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.9.9.tgz#81663535e778906901eb85a2f07c8643bcd3d9e7"
+  integrity sha512-cv9J3qmIn5t9dljp19S3GDsqMyAVV5+XsvK2tbOezUV3WZW4xQzkpS20uMihHMlD8uup1v0i/OePGadz2TC2Eg==
 
 "@testing-library/dom@^8.0.0", "@testing-library/dom@^8.11.3":
   version "8.20.1"

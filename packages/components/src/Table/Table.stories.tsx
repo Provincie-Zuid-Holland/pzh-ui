@@ -16,19 +16,21 @@ const Template = (args: TableProps) => <Table {...args} />
 export const Default = {
     render: Template,
     args: {
+        limit: 3,
+        total: 13,
         columns: [
             {
-                Header: 'Thema',
-                accessor: 'theme',
+                header: 'Thema',
+                accessorKey: 'theme',
             },
             {
-                Header: 'Titel',
-                accessor: 'title',
+                header: 'Titel',
+                accessorKey: 'title',
             },
             {
-                Header: 'HS',
-                accessor: 'currentSituation',
-                disableSortBy: true,
+                header: 'HS',
+                accessorKey: 'currentSituation',
+                enableSorting: false,
             },
         ],
         data: [
@@ -54,6 +56,58 @@ export const Default = {
                     <div className="bg-pzh-yellow h-4 w-4 rounded-full" />
                 ),
             },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
+            {
+                theme: 'Klimaat en water',
+                title: 'Test',
+                currentSituation: 'Test',
+            },
         ],
+        enableSortingRemoval: false,
+        enableMultiSort: false,
     },
 } satisfies Story

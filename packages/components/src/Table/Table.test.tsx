@@ -7,32 +7,41 @@ describe('Table', () => {
         className: '',
         columns: [
             {
-                Header: 'Thema',
-                accessor: 'theme',
+                header: 'Thema',
+                accessorKey: 'theme',
             },
             {
-                Header: 'Titel',
-                accessor: 'title',
-                disableSortBy: true,
+                header: 'Titel',
+                accessorKey: 'title',
             },
             {
-                Header: 'HS',
-                accessor: 'currentSituation',
-                disableSortBy: true,
+                header: 'HS',
+                accessorKey: 'currentSituation',
+                enableSorting: false,
             },
         ],
         data: [
             {
                 theme: 'Economie',
                 title: 'Innovatie Zuid-Holland',
+                currentSituation: (
+                    <div className="bg-pzh-red h-4 w-4 rounded-full" />
+                ),
+                onClick: () => console.log('clicked'),
             },
             {
                 theme: 'Economie',
                 title: 'Grondstoffen gebruik',
+                currentSituation: (
+                    <div className="bg-pzh-red h-4 w-4 rounded-full" />
+                ),
             },
             {
                 theme: 'Klimaat en water',
                 title: 'Waterveiligheid',
+                currentSituation: (
+                    <div className="bg-pzh-yellow h-4 w-4 rounded-full" />
+                ),
             },
         ],
     }

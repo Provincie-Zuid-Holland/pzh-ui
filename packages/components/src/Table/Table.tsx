@@ -1,21 +1,42 @@
 import classNames from 'classnames'
-import { TableOptions, useSortBy, useTable } from 'react-table'
+import { SortingRule, TableOptions, useSortBy, useTable } from 'react-table'
+import { useUpdateEffect } from 'react-use'
 
 import { ArrowDownAZ, ArrowDownZA } from '@pzh-ui/icons'
 
 export interface TableProps
     extends TableOptions<object | { onClick?: () => void }> {
     className?: string
+    getSortedColumn?: (
+        sortBy: SortingRule<{ id: string; desc: boolean }>[]
+    ) => void
 }
 
-export const Table = ({ className = '', ...rest }: TableProps) => {
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-        useTable(
-            {
-                ...rest,
-            },
-            useSortBy
-        )
+export const Table = ({
+    className = '',
+    getSortedColumn,
+    ...rest
+}: TableProps) => {
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+        state,
+    } = useTable(
+        {
+            ...rest,
+        },
+        useSortBy
+    )
+
+    /**
+     * Get currently sorted column
+     */
+    useUpdateEffect(() => {
+        getSortedColumn?.(state.sortBy)
+    }, [state.sortBy])
 
     return (
         <table

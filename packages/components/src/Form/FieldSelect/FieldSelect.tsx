@@ -194,6 +194,7 @@ export const getSelectStyles = () =>
             ...css
         }) => ({
             ...css,
+            maxHeight: 48,
             '&:hover': {},
         }),
         input: css => ({
@@ -238,4 +239,4 @@ export const getSelectStyles = () =>
         multiValue: css => ({
             ...css,
         }),
-    }) as StylesConfig<unknown, boolean, GroupBase<unknown>>
+    } as StylesConfig<unknown, boolean, GroupBase<unknown>>)

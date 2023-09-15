@@ -15,6 +15,7 @@ export interface ButtonProps<T extends ElementType>
     variant?: 'primary' | 'secondary' | 'cta' | 'link' | 'default'
     size?: 'large' | 'small'
     icon?: any
+    iconSize?: number
     isLoading?: boolean
     className?: string
     children?: ReactNode
@@ -24,6 +25,7 @@ export const Button = <T extends ElementType = 'button'>({
     as,
     variant = 'primary',
     size = 'large',
+    iconSize = 14,
     ...props
 }: ButtonProps<T>) => {
     const ref = useRef(null)
@@ -62,7 +64,7 @@ export const Button = <T extends ElementType = 'button'>({
             {...buttonProps}>
             {Icon ? (
                 <div className="flex items-center">
-                    <Icon className="-mt-0.5 mr-2" />
+                    <Icon size={iconSize} className="-mt-0.5 mr-2" />
                     <span>{children}</span>
                 </div>
             ) : isLoading ? (

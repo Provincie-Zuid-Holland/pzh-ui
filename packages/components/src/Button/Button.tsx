@@ -50,7 +50,7 @@ export const Button = <T extends ElementType = 'button'>({
                     'font-bold': variant !== 'link',
                     'bg-pzh-blue hover:bg-pzh-blue-dark text-white':
                         variant === 'primary' && !isDisabled,
-                    'text-pzh-blue border-pzh-gray-600 hover:border-pzh-blue border':
+                    'bg-pzh-white text-pzh-blue border-pzh-gray-600 hover:border-pzh-blue border':
                         variant === 'secondary' && !isDisabled,
                     'bg-pzh-green hover:bg-pzh-green-dark text-white':
                         variant === 'cta' && !isDisabled,

@@ -104,7 +104,7 @@ export const FieldFileUpload = ({
                 if (maxWidth && width > maxWidth) {
                     resolve({
                         code: 'image-too-wide',
-                        message: `Afbeeldingsbreedte overschrijdt de maximaal toegestane breedte van ${maxWidth}px`,
+                        message: `De afbeeldingsbreedte overschrijdt de maximaal toegestane breedte van ${maxWidth}px`,
                     })
                 } else if (maxHeight && height > maxHeight) {
                     resolve({

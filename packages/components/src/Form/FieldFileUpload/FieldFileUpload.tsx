@@ -1,6 +1,11 @@
 import classNames from 'classnames'
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
-import { DropzoneOptions, FileWithPath, useDropzone } from 'react-dropzone'
+import {
+    DropzoneOptions,
+    FileError,
+    FileWithPath,
+    useDropzone,
+} from 'react-dropzone'
 import { useEffectOnce, useUpdateEffect } from 'react-use'
 
 import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
@@ -26,6 +31,8 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     tooltip?: string | JSX.Element
     preview?: boolean
     defaultValue?: string[]
+    maxWidth?: number
+    maxHeight?: number
 }
 
 export const FieldFileUpload = ({
@@ -43,24 +50,74 @@ export const FieldFileUpload = ({
     tooltip,
     preview,
     defaultValue = [],
+    maxWidth = 1500,
+    maxHeight = 2500,
     ...props
 }: FieldFileUploadProps) => {
     const [myFiles, setMyFiles] = useState<File[]>([])
+    const [errors, setErrors] = useState<FileError[] | null>(null)
 
     const onDrop = useCallback(
-        (acceptedFiles: File[]) =>
-            setMyFiles([
-                ...myFiles,
-                ...(preview
-                    ? acceptedFiles.map(file =>
-                          Object.assign(file, {
-                              preview: URL.createObjectURL(file),
-                          })
-                      )
-                    : acceptedFiles),
-            ]),
-        [myFiles]
+        async (acceptedFiles: File[]) => {
+            setErrors(null)
+
+            const validationPromises: Promise<FileError | null>[] =
+                acceptedFiles.map(
+                    async file => await validateImageDimensions(file)
+                )
+
+            Promise.all(validationPromises)
+                .then(results => {
+                    const errors = results.filter(Boolean) as FileError[]
+                    if (errors.length > 0) {
+                        // Handle validation errors here (e.g., display error messages)
+                        setErrors(errors)
+                    } else {
+                        // No validation errors, proceed with adding files
+                        setMyFiles([
+                            ...myFiles,
+                            ...(preview
+                                ? acceptedFiles.map(file =>
+                                      Object.assign(file, {
+                                          preview: URL.createObjectURL(file),
+                                      })
+                                  )
+                                : acceptedFiles),
+                        ])
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during validation:', error)
+                })
+        },
+        [myFiles, preview]
     )
+
+    const validateImageDimensions = async (file: File) => {
+        return new Promise<FileError | null>(resolve => {
+            const image = new Image()
+            image.src = URL.createObjectURL(file)
+            image.onload = () => {
+                const width = image.width
+                const height = image.height
+
+                if (maxWidth && width > maxWidth) {
+                    resolve({
+                        code: 'image-too-wide',
+                        message: `Afbeeldingsbreedte overschrijdt de maximaal toegestane breedte van ${maxWidth}px`,
+                    })
+                } else if (maxHeight && height > maxHeight) {
+                    resolve({
+                        code: 'image-too-high',
+                        message: `De afbeeldingshoogte overschrijdt de maximaal toegestane hoogte van ${maxHeight}px`,
+                    })
+                } else {
+                    resolve(null)
+                }
+                URL.revokeObjectURL(image.src)
+            }
+        })
+    }
 
     const {
         getRootProps,
@@ -170,14 +227,20 @@ export const FieldFileUpload = ({
                                 'text-pzh-blue-dark': !isDragActive,
                                 'text-pzh-green':
                                     isDragActive &&
-                                    (!isDragReject || !!!fileRejections.length),
+                                    (!isDragReject ||
+                                        !!!fileRejections.length ||
+                                        !!!errors?.length),
                                 'text-pzh-red':
-                                    isDragReject || !!fileRejections.length,
+                                    isDragReject ||
+                                    !!fileRejections.length ||
+                                    !!errors?.length,
                             })}
                         />
 
                         <p>
-                            {!isDragReject && !!!fileRejections.length ? (
+                            {!isDragReject &&
+                            !!!fileRejections.length &&
+                            !!!errors?.length ? (
                                 <>
                                     Sleep hier je bestanden naartoe of{' '}
                                     {!isDragActive && (
@@ -188,9 +251,9 @@ export const FieldFileUpload = ({
                                 </>
                             ) : (
                                 <>
-                                    Sorry, het opgegeven bestandstype is niet
-                                    toegestaan of de bestandsgrootte is te
-                                    groot.
+                                    {!!errors?.length
+                                        ? errors.map(err => err.message)
+                                        : 'Sorry, het opgegeven bestandstype is niet toegestaan of de bestandsgrootte is te groot.'}
                                 </>
                             )}
                         </p>
@@ -212,6 +275,8 @@ export const FieldFileUpload = ({
                                     {formatBytes(maxSize)}.
                                 </>
                             )}
+                            {maxWidth && ` Maximale breedte ${maxWidth}px.`}
+                            {maxHeight && ` Maximale hoogte ${maxHeight}px.`}
                         </span>
                     </div>
                 </div>

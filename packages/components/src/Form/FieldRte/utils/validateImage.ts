@@ -41,7 +41,7 @@ const validateImage = (
     Array.from(files).forEach(async file => {
         if (file.size > maxSize) {
             return alert(
-                `De afbeeldingsgrootte overschrijdt de maximaal toegestane grootte van ${formatBytes(
+                `De bestandsgrootte overschrijdt de maximaal toegestane grootte van ${formatBytes(
                     maxSize
                 )}`
             )

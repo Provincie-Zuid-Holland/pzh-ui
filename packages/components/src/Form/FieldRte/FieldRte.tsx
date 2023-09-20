@@ -210,6 +210,7 @@ export const FieldRte = ({
                         ]}
                         menuClassName={menuClassName}
                         disabled={disabled}
+                        imageOptions={imageOptions}
                     />
                     <EditorContent editor={editor} />
                 </div>

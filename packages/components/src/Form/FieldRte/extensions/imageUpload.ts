@@ -1,5 +1,8 @@
 import { Extension } from '@tiptap/core'
+import { Editor } from '@tiptap/react'
 import { Plugin, PluginKey } from 'prosemirror-state'
+
+import validateImage from '../utils/validateImage'
 
 // convert a blob to base64
 export const blobToBase64 = async (blob: Blob) => {
@@ -13,6 +16,13 @@ export const blobToBase64 = async (blob: Blob) => {
 
 const ImageUpload = Extension.create({
     name: 'ImageUpload',
+    addOptions() {
+        return {
+            maxHeight: 2500,
+            maxWidth: 1500,
+            maxSize: 1048576,
+        }
+    },
 
     addProseMirrorPlugins() {
         return [
@@ -21,20 +31,19 @@ const ImageUpload = Extension.create({
                 props: {
                     handleDOMEvents: {
                         // @ts-ignore
-                        drop: async (_, event) => {
+                        drop: (_, event) => {
                             const files = event.dataTransfer?.files
 
                             if (files?.length) {
                                 event.preventDefault()
-                                const src = (await blobToBase64(
-                                    files[0]
-                                )) as string
-                                src &&
-                                    this.editor
-                                        .chain()
-                                        .focus()
-                                        .setImage({ src })
-                                        .run()
+
+                                return validateImage(
+                                    this.editor as Editor,
+                                    files,
+                                    this.options.maxSize,
+                                    this.options.maxHeight,
+                                    this.options.maxWidth
+                                )
                             }
                         },
                     },

@@ -52,6 +52,15 @@ export interface FieldRteProps {
     menuClassName?: string
     /** Has field an error */
     hasError?: boolean
+    /** Options for image */
+    imageOptions?: {
+        /** Height in pixels, default 2500px */
+        maxHeight?: number
+        /** Width in pixels, default 1500px */
+        maxWidth?: number
+        /** Size in bytes, default 1048576 (1MB) */
+        maxSize?: number
+    }
 }
 
 export type TextEditorMenuOptions =
@@ -79,6 +88,11 @@ export const FieldRte = ({
     customMenuOptions,
     menuClassName,
     hasError,
+    imageOptions = {
+        maxHeight: 2500,
+        maxWidth: 1500,
+        maxSize: 1048576,
+    },
 }: FieldRteProps) => {
     const editor = useEditor({
         extensions: getEditorExtensions(),
@@ -123,7 +137,7 @@ export const FieldRte = ({
                     allowBase64: true,
                     inline: true,
                 }),
-                ImageUpload
+                ImageUpload.configure(imageOptions)
             )
 
         if (!!customMenuOptions?.find(el => el === 'link'))

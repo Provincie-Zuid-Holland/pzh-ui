@@ -45,7 +45,7 @@ export const FieldFileUpload = ({
     accept = {
         'image/*': ['.png', '.jpeg', '.webp'],
     },
-    maxSize = 1048576, // = 20 MB
+    maxSize = 1048576, // = 1 MB
     layout = 'default',
     tooltip,
     preview,

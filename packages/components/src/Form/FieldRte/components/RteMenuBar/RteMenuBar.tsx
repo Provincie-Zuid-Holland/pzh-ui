@@ -13,14 +13,16 @@ import {
 } from '@pzh-ui/icons'
 
 import {
+    FieldRteProps,
     TextEditorCustomMenuOptions,
     TextEditorMenuOptions,
 } from '../../FieldRte'
-import { blobToBase64 } from '../../extensions/imageUpload'
+import validateImage from '../../utils/validateImage'
 
 interface RteMenuBarProps extends EditorContentProps {
     menuOptions: (TextEditorMenuOptions | TextEditorCustomMenuOptions)[]
     menuClassName?: string
+    imageOptions?: FieldRteProps['imageOptions']
 }
 
 const RteMenuBar = ({
@@ -28,6 +30,7 @@ const RteMenuBar = ({
     disabled,
     menuOptions,
     menuClassName,
+    imageOptions,
 }: RteMenuBarProps) => {
     if (!editor) return null
 
@@ -142,16 +145,13 @@ const RteMenuBar = ({
                                         const files = event.target.files
 
                                         if (files?.length) {
-                                            event.preventDefault()
-                                            const src = (await blobToBase64(
-                                                files[0]
-                                            )) as string
-                                            src &&
-                                                editor
-                                                    .chain()
-                                                    .focus()
-                                                    .setImage({ src })
-                                                    .run()
+                                            validateImage(
+                                                editor,
+                                                files,
+                                                imageOptions?.maxSize,
+                                                imageOptions?.maxHeight,
+                                                imageOptions?.maxWidth
+                                            )
                                         }
 
                                         // Clear input after change so new images can be uploaded

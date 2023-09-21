@@ -1822,10 +1822,10 @@
     react-datepicker "^4.7.0"
     react-toastify "^9.1.2"
 
-"@pzh-ui/icons@^0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@pzh-ui/icons/-/icons-0.0.35.tgz#844fd17c0c7f6f6893fcc6244c0bafb4afa7207e"
-  integrity sha512-UK2/iQP98HQKqB8ifSUjWaWrn9Xl/DgeX920Nx9p+pGttEBdelYO+7lbln+T1WHo/f739PPAWqaAAspyF+PPnw==
+"@pzh-ui/icons@^0.0.39":
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/@pzh-ui/icons/-/icons-0.0.39.tgz#fb4a5fcec9d20ed9a2172ee6fb60d2c1e4ec0249"
+  integrity sha512-SsyYwlv3IQ3c8D4NQXple3o1QkACRKancVhePfPcI9lq5pPbmHFPME5XHeZ+PY7XjQtabVt//KQxME1rLAjvYg==
   dependencies:
     react "^18.0.0"
     react-toastify "^9.1.2"
@@ -4180,6 +4180,11 @@
   version "2.1.7"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-placeholder/-/extension-placeholder-2.1.7.tgz#8477cf5116c89f0f75e8e2e3b8528e146a7f0f24"
   integrity sha512-IiBoItYYNS7hb/zmPitw3w6Cylmp9qX+zW+QKe3lDkCNPeKxyQr86AnVLcQYOuXg62cLV9dp+4azZzHoz9SOcg==
+
+"@tiptap/extension-text-style@^2.1.10":
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-text-style/-/extension-text-style-2.1.10.tgz#7d12e4d42da61ea5b4a675f31fea16482326c37b"
+  integrity sha512-ptgCZQfpy/8aQHHzktVMMAy30uMvC0XkPbJPmD0nYJqt/m+3QFHHWiGyaKXmYhqyg/TjPvTTMHjcvTvk5k4Sug==
 
 "@tiptap/extension-text@^2.1.7":
   version "2.1.7"

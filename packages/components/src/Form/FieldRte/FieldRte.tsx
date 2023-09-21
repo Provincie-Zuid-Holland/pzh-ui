@@ -13,6 +13,7 @@ import Paragraph from '@tiptap/extension-paragraph'
 import Placeholder from '@tiptap/extension-placeholder'
 import Text from '@tiptap/extension-text'
 import Underline from '@tiptap/extension-underline'
+import { Node, ResolvedPos } from '@tiptap/pm/model'
 import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import classNames from 'classnames'
 import { ReactNode, useEffect } from 'react'
@@ -20,6 +21,7 @@ import { ReactNode, useEffect } from 'react'
 import { FieldLabel } from '../FieldLabel'
 import RteMenuBar from './components/RteMenuBar'
 import ImageUpload from './extensions/imageUpload'
+import limitNestedLists from './utils/limitNestedLists'
 
 export interface FieldRteProps {
     /** Name text */
@@ -101,6 +103,7 @@ export const FieldRte = ({
         onBlur({ editor }) {
             handleUpdate(editor as Editor)
         },
+        onUpdate: limitNestedLists,
         editorProps: {
             attributes: {
                 class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-dark marker:text-pzh-blue-dark outline-none whitespace-pre-line',

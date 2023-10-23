@@ -1,8 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react'
+import { useWindowSize } from '@react-hookz/web'
 import classNames from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { Fragment, ReactNode } from 'react'
-import { useWindowSize } from 'react-use'
 
 import { Xmark } from '@pzh-ui/icons'
 

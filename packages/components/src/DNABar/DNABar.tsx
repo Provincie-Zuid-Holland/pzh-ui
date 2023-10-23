@@ -1,6 +1,6 @@
+import { useWindowSize } from '@react-hookz/web'
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
-import { useWindowSize } from 'react-use'
 
 import detailPatterns from '../assets/detail-patterns.svg'
 import primaryPatterns from '../assets/primary-patterns.svg'
@@ -27,7 +27,7 @@ export function DNABar({ blocks = 5, className }: DNABarProps) {
     return (
         <div
             className={classNames(
-                'absolute pointer-events-none right-0 z-10',
+                'pointer-events-none absolute right-0 z-10',
                 {
                     hidden: windowSize.width <= 640,
                     'top-0': !className,
@@ -37,44 +37,44 @@ export function DNABar({ blocks = 5, className }: DNABarProps) {
             {blocks !== 2 && (
                 <img
                     src={primaryPatterns}
-                    className="w-[96px] absolute top-[192px]"
+                    className="absolute top-[192px] w-[96px]"
                     alt=""
                 />
             )}
             {blocks === 2 && (
                 <img
                     src={detailPatterns}
-                    className="w-[96px] absolute top-[288px]"
+                    className="absolute top-[288px] w-[96px]"
                     alt=""
                 />
             )}
             <div
-                className={classNames('w-[96px] h-[96px] bg-pzh-red', {
+                className={classNames('bg-pzh-red h-[96px] w-[96px]', {
                     'opacity-0': blocks === 2,
                 })}
             />
             <div
-                className={classNames('w-[96px] h-[96px] bg-pzh-yellow', {
+                className={classNames('bg-pzh-yellow h-[96px] w-[96px]', {
                     'opacity-0': blocks === 2,
                 })}
             />
             <div
-                className={classNames('w-[96px] h-[96px]', {
+                className={classNames('h-[96px] w-[96px]', {
                     'opacity-0': blocks === 2,
                 })}
             />
 
             <div
-                className={classNames('w-[96px] h-[96px]', {
+                className={classNames('h-[96px] w-[96px]', {
                     'bg-pzh-red': blocks === 2,
                 })}
             />
             <div
-                className={classNames('w-[96px] h-[96px]', {
+                className={classNames('h-[96px] w-[96px]', {
                     'bg-pzh-red': blocks !== 2,
                 })}
             />
-            {blocks === 6 && <div className="w-[96px] h-[96px] bg-pzh-blue" />}
+            {blocks === 6 && <div className="bg-pzh-blue h-[96px] w-[96px]" />}
         </div>
     )
 }

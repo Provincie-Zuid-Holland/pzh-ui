@@ -1,3 +1,4 @@
+import { useMountEffect, useUpdateEffect } from '@react-hookz/web'
 import classNames from 'classnames'
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import {
@@ -6,7 +7,6 @@ import {
     FileWithPath,
     useDropzone,
 } from 'react-dropzone'
-import { useEffectOnce, useUpdateEffect } from 'react-use'
 
 import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 
@@ -156,7 +156,7 @@ export const FieldFileUpload = ({
             )
     }, [])
 
-    useEffectOnce(() => {
+    useMountEffect(() => {
         if (!defaultValue?.length) return
 
         setMyFiles([])

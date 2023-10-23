@@ -1,3 +1,4 @@
+import { useUpdateEffect } from '@react-hookz/web'
 import classNames from 'classnames'
 import {
     SortingRule,
@@ -6,7 +7,6 @@ import {
     useSortBy,
     useTable,
 } from 'react-table'
-import { useUpdateEffect } from 'react-use'
 
 import { ArrowDownAZ, ArrowDownZA } from '@pzh-ui/icons'
 

@@ -22,6 +22,7 @@ type PossibleTypes =
     | 'li'
     | 'dt'
     | 'dd'
+    | 'label'
 
 export interface TextProps {
     size?: 's' | 'm' | 'l'

@@ -9,12 +9,4 @@ module.exports = {
     arrowParens: 'avoid',
     singleQuote: true,
     bracketSameLine: true,
-    importOrder: [
-        '<THIRD_PARTY_MODULES>',
-        '^@pzh-ui/(.*)$',
-        '^@/(.*)$',
-        '^[./]',
-    ],
-    importOrderSeparation: true,
-    importOrderSortSpecifiers: true,
 }

@@ -116,7 +116,10 @@ export function FieldSelect({
                         Option: props => (
                             <components.Option
                                 {...props}
-                                className="text-pzh-blue-dark hover:text-pzh-green cursor-pointer px-4 py-1 hover:underline">
+                                className={classNames(" px-4 py-1", {
+                                    'text-pzh-blue-dark hover:text-pzh-green cursor-pointer hover:underline': !props.isDisabled,
+                                    'text-pzh-gray-500': props.isDisabled
+                                })}>
                                 {props.isMulti ? (
                                     <div
                                         className="flex items-center"

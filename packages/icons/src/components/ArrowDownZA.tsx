@@ -1,5 +1,4 @@
-import { SVGProps, forwardRef } from 'react'
-
+import { forwardRef, SVGProps } from 'react'
 interface CustomIconProps extends SVGProps<SVGSVGElement> {
     size?: number
 }

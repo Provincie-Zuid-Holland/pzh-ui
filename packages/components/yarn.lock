@@ -1822,10 +1822,10 @@
     react-datepicker "^4.7.0"
     react-toastify "^9.1.2"
 
-"@pzh-ui/icons@^0.0.44":
-  version "0.0.40"
-  resolved "https://registry.yarnpkg.com/@pzh-ui/icons/-/icons-0.0.40.tgz#90052f4a8771255fe7bae1b91e7e8c495713ca2f"
-  integrity sha512-LanAtzMGOyL4UmK2/RJQd9tu+D7l0J/wj2WEoQ89KQKgtYGiucTD0oMF1sOtGn5ZWAnyl/WdsAPi17Pua35Dzw==
+"@pzh-ui/icons@^0.0.46":
+  version "0.0.46"
+  resolved "https://registry.yarnpkg.com/@pzh-ui/icons/-/icons-0.0.46.tgz#6eb05c77794c3c19f498f6df813fad41f192f152"
+  integrity sha512-+sreuIpHtOTuPe0PdvD231j6BNpwoNhxgvmN6c9d/q1+elHkicEf+iigncK+YRsr64ozx1ZKLxkuMkn1aqx9RQ==
   dependencies:
     react "^18.0.0"
     react-toastify "^9.1.2"
@@ -4151,6 +4151,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-hard-break/-/extension-hard-break-2.1.7.tgz#1cd783adfe2788d41614f8851b8d7a52ec027cce"
   integrity sha512-6gFXXlCGAdXjy27BW29q4yfCQPAEFd18k7zRTnbd4aE/zIWUtLqdiTfI3kotUMab9Tt9/z1BRmCbEUxRsf1Nww==
 
+"@tiptap/extension-heading@^2.1.12":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-heading/-/extension-heading-2.1.12.tgz#05ae4684d6f29ae611495ab114038e14a5d1dff6"
+  integrity sha512-MoANP3POAP68Ko9YXarfDKLM/kXtscgp6m+xRagPAghRNujVY88nK1qBMZ3JdvTVN6b/ATJhp8UdrZX96TLV2w==
+
 "@tiptap/extension-history@^2.1.7":
   version "2.1.7"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-history/-/extension-history-2.1.7.tgz#baa566875ef1278c5dd8821970362d85348b266c"
@@ -4192,6 +4197,16 @@
   version "2.1.7"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-placeholder/-/extension-placeholder-2.1.7.tgz#8477cf5116c89f0f75e8e2e3b8528e146a7f0f24"
   integrity sha512-IiBoItYYNS7hb/zmPitw3w6Cylmp9qX+zW+QKe3lDkCNPeKxyQr86AnVLcQYOuXg62cLV9dp+4azZzHoz9SOcg==
+
+"@tiptap/extension-subscript@^2.1.12":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-subscript/-/extension-subscript-2.1.12.tgz#19f4114d779775bb772eee45dcf31b5ef9363f86"
+  integrity sha512-tb1jysEvf4SIiXwEOgDTXiyrG39RVNHvn/zsGMg5wy5t9qUp9m1k7kKYTH084ktuKDAPQonCcpn3hwc+ngTFzg==
+
+"@tiptap/extension-superscript@^2.1.12":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-superscript/-/extension-superscript-2.1.12.tgz#6964d9c9b7591101bdc8e7058e88a75fe164d0a9"
+  integrity sha512-ek6L+DNsrjiJieArlgTvQt1VfJ56d8V19WAPW/ciRhq88YRlTEY9nSO3QuUCSUO1nGmE5OWQpgrsiW/XZbONVw==
 
 "@tiptap/extension-text-style@^2.1.10":
   version "2.1.10"
@@ -8374,7 +8389,17 @@ postcss@^8.4.27:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-prettier@^2.8.0:
+prettier-plugin-organize-imports@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-organize-imports/-/prettier-plugin-organize-imports-3.2.3.tgz#6b0141ac71f7ee9a673ce83e95456319e3a7cf0d"
+  integrity sha512-KFvk8C/zGyvUaE3RvxN2MhCLwzV6OBbFSkwZ2OamCrs9ZY4i5L77jQ/w4UmUr+lqX8qbaqVq6bZZkApn+IgJSg==
+
+prettier-plugin-tailwindcss@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.6.tgz#8e511857a49bf127f078985f52b04a70e8e92285"
+  integrity sha512-2Xgb+GQlkPAUCFi3sV+NOYcSI5XgduvDBL2Zt/hwJudeKXkyvRS65c38SB0yb9UB40+1rL83I6m0RtlOQ8eHdg==
+
+prettier@2.8.8, prettier@^2.8.0:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==

@@ -23,6 +23,9 @@ import RteMenuBar from './components/RteMenuBar'
 import ImageUpload from './extensions/imageUpload'
 // import { OrderedList } from './extensions/orderedList'
 import limitNestedLists from './utils/limitNestedLists'
+import Heading from '@tiptap/extension-heading'
+import Subscript from '@tiptap/extension-subscript'
+import Superscript from '@tiptap/extension-superscript'
 
 export interface FieldRteProps {
     /** Name text */
@@ -73,7 +76,7 @@ export type TextEditorMenuOptions =
     | 'bulletList'
     | 'orderedList'
 
-export type TextEditorCustomMenuOptions = 'image' | 'link'
+export type TextEditorCustomMenuOptions = 'image' | 'link' | 'heading' | 'subscript' | 'superscript'
 
 export const FieldRte = ({
     name,
@@ -165,6 +168,19 @@ export const FieldRte = ({
                     validate: href => /^https?:\/\//.test(href),
                 })
             )
+
+        if (!!customMenuOptions?.find(el => el === 'heading'))
+            extensions.push(
+                Heading.configure({
+                    levels: [3],
+                })
+            )
+                
+        if (!!customMenuOptions?.find(el => el === 'subscript'))
+            extensions.push(Subscript)
+
+        if (!!customMenuOptions?.find(el => el === 'superscript'))
+            extensions.push(Superscript)
 
         return extensions
     }

@@ -22,7 +22,7 @@ export const Default = {
         onBlur: console.log,
         initialContent,
         placeholder: 'Start met typen...',
-        customMenuOptions: ['image', 'link'],
+        customMenuOptions: ['heading', 'subscript', 'superscript', 'image', 'link'],
     },
 } satisfies Story
 

@@ -4,11 +4,14 @@ import { ButtonHTMLAttributes } from 'react'
 
 import {
     Bold,
+    Heading,
     Images,
     Italic,
     Link,
     ListOl,
     ListUl,
+    Subscript,
+    Superscript,
     Underline,
 } from '@pzh-ui/icons'
 
@@ -207,6 +210,60 @@ const RteMenuBar = ({
                                 <Link />
                             </MenuButton>
                         )
+                        case 'heading':
+                            return (
+                                <MenuButton 
+                                    key={option} 
+                                    onClick={() =>
+                                        editor
+                                            .chain()
+                                            .focus()
+                                            .toggleHeading({ level: 3 })
+                                            .run()
+                                    }
+                                    disabled={disabled}
+                                    isActive={editor.isActive('heading')}
+                                    aria-label="Kop"
+                                    title="Kop">
+                                    <Heading />
+                                </MenuButton>
+                            )
+                        case 'subscript':
+                            return (
+                                <MenuButton 
+                                    key={option} 
+                                    onClick={() =>
+                                        editor
+                                            .chain()
+                                            .focus()
+                                            .toggleSubscript()
+                                            .run()
+                                    }
+                                    disabled={disabled}
+                                    isActive={editor.isActive('subscript')}
+                                    aria-label="Onderschrift"
+                                    title="Onderschrift">
+                                    <Subscript />
+                                </MenuButton>
+                            )
+                        case 'superscript':
+                            return (
+                                <MenuButton 
+                                    key={option} 
+                                    onClick={() =>
+                                        editor
+                                            .chain()
+                                            .focus()
+                                            .toggleSuperscript()
+                                            .run()
+                                    }
+                                    disabled={disabled}
+                                    isActive={editor.isActive('superscript')}
+                                    aria-label="Bovenschrift"
+                                    title="Bovenschrift">
+                                    <Superscript />
+                                </MenuButton>
+                            )
                     default:
                         break
                 }

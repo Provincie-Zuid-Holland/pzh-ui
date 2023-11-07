@@ -86,10 +86,10 @@ export const Tooltip = ({
             <Transition
                 data-testid="tooltip"
                 show={open}
-                enter="transition-all ease-out duration-100 transform"
+                enter="transition-[transform,opacity] ease-out duration-100 transform"
                 enterFrom="scale-90 opacity-0"
                 enterTo="scale-100 opacity-100"
-                leave="transition-all ease-in duration-100 transform"
+                leave="transition-[transform,opacity] ease-in duration-100 transform"
                 leaveFrom="scale-100 opacity-100"
                 leaveTo="scale-90 opacity-0"
                 {...getFloatingProps({

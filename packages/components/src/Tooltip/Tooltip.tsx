@@ -12,7 +12,7 @@ import {
     useInteractions,
     useRole,
 } from '@floating-ui/react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { Transition } from '@headlessui/react'
 import { cloneElement, useEffect, useRef, useState } from 'react'
 
 export interface TooltipProps {
@@ -83,48 +83,43 @@ export const Tooltip = ({
                 children,
                 getReferenceProps({ ref: refs.setReference, ...children.props })
             )}
-            <AnimatePresence>
-                {open && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.85 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{
-                            type: 'spring',
-                            damping: 20,
-                            stiffness: 300,
-                        }}
-                        data-testid="tooltip"
-                        {...getFloatingProps({
-                            ref: refs.setFloating,
-                            className:
-                                'px-3 rounded max-w-[300px] text-white font-normal leading-5',
-                            style: {
-                                position: strategy,
-                                top: y ?? '',
-                                left: x ?? '',
-                                paddingTop: 8,
-                                paddingBottom: 4,
-                                fontFamily: 'Karbon Regular',
-                                background: '#333333',
-                            },
-                        })}>
-                        {label}
-                        <div
-                            ref={arrowRef}
-                            className="absolute h-2 w-2 rotate-45 overflow-hidden bg-[#333333]"
-                            style={
-                                (staticSide && {
-                                    left: arrowX != null ? `${arrowX}px` : '',
-                                    top: arrowY != null ? `${arrowY}px` : '',
-                                    [staticSide]: '-4px',
-                                }) ||
-                                undefined
-                            }
-                        />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <Transition
+                data-testid="tooltip"
+                show={open}
+                enter="transition-all ease-out duration-100 transform"
+                enterFrom="scale-90 opacity-0"
+                enterTo="scale-100 opacity-100"
+                leave="transition-all ease-in duration-100 transform"
+                leaveFrom="scale-100 opacity-100"
+                leaveTo="scale-90 opacity-0"
+                {...getFloatingProps({
+                    ref: refs.setFloating,
+                    className:
+                        'px-3 rounded max-w-[300px] text-white font-normal leading-5',
+                    style: {
+                        position: strategy,
+                        top: y ?? '',
+                        left: x ?? '',
+                        paddingTop: 8,
+                        paddingBottom: 4,
+                        fontFamily: 'Karbon Regular',
+                        background: '#333333',
+                    },
+                })}>
+                    {label}
+                    <div
+                        ref={arrowRef}
+                        className="absolute h-2 w-2 rotate-45 overflow-hidden bg-[#333333]"
+                        style={
+                            (staticSide && {
+                                left: arrowX != null ? `${arrowX}px` : '',
+                                top: arrowY != null ? `${arrowY}px` : '',
+                                [staticSide]: '-4px',
+                            }) ||
+                            undefined
+                        }
+                    />
+            </Transition>
         </>
     )
 }

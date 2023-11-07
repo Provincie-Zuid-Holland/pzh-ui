@@ -1,6 +1,6 @@
 module.exports = {
     plugins: [
-        // 'prettier-plugin-organize-imports',
+        'prettier-plugin-organize-imports',
         'prettier-plugin-tailwindcss',
     ],
     trailingComma: 'es5',

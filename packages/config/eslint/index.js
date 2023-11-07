@@ -72,7 +72,7 @@ module.exports = {
         'react/no-unescaped-entities': 'off',
         'import/no-unresolved': 'error',
         'import/order': [
-            'error',
+            'warn',
             {
                 groups: [
                     'builtin', // Built-in imports (come from NodeJS native) go first

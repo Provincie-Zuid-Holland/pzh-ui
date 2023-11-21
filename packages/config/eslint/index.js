@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     root: true,
     parser: '@babel/eslint-parser',
     parserOptions: {

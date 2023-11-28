@@ -12,15 +12,15 @@ const SVGIcon = forwardRef<SVGSVGElement, CustomIconProps>(
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
-        viewBox="0 0 448 512"
+        viewBox="0 0 512 512"
         ref={svgRef}
         {...props}
       >
-        <path d="M447.1 256c0 17.7-13.4 32-31.1 32H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25-6.3 6.25-14.5 9.35-22.7 9.35s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416c17.7 0 31.1 14.3 31.1 32z" />
+        <path d="M48 264V160h184v104H48zm0 48h184v120H64c-8.8 0-16-7.2-16-16V312zm232 120V312h184v104c0 8.8-7.2 16-16 16H280zm184-168H280V160h184v104zM64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z" />
       </svg>
     );
   }
 );
-const ArrowLeftIcon = SVGIcon;
-ArrowLeftIcon.displayName = "ArrowLeft";
-export default ArrowLeftIcon;
+const TableIcon = SVGIcon;
+TableIcon.displayName = "Table";
+export default TableIcon;

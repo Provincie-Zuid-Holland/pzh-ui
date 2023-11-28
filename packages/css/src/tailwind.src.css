@@ -267,4 +267,24 @@ ol li ol li ol li {
             opacity: 1;
         }
     }
+
+    table {
+        @apply !text-m;
+    }
+
+    table, table td, table th {
+        @apply border border-pzh-gray-600;
+    }
+
+    table tr th {
+        @apply bg-pzh-gray-100 font-bold;
+    }
+
+    table tr {
+        @apply border-b border-pzh-gray-600;
+    }
+
+    table td, table th {
+        @apply p-2;
+    }
 }

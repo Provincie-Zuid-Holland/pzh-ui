@@ -9,7 +9,6 @@ import Italic from '@tiptap/extension-italic'
 import Link from '@tiptap/extension-link'
 import ListItem from '@tiptap/extension-list-item'
 import OrderedList from '@tiptap/extension-ordered-list'
-// import OrderedList from '@tiptap/extension-ordered-list'
 import Paragraph from '@tiptap/extension-paragraph'
 import Placeholder from '@tiptap/extension-placeholder'
 import Text from '@tiptap/extension-text'
@@ -18,14 +17,17 @@ import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import classNames from 'classnames'
 import { ReactNode, useEffect } from 'react'
 
-import { FieldLabel } from '../FieldLabel'
-import RteMenuBar from './components/RteMenuBar'
-import ImageUpload from './extensions/imageUpload'
-// import { OrderedList } from './extensions/orderedList'
-import limitNestedLists from './utils/limitNestedLists'
 import Heading from '@tiptap/extension-heading'
 import Subscript from '@tiptap/extension-subscript'
 import Superscript from '@tiptap/extension-superscript'
+import Table from '@tiptap/extension-table'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
+import TableRow from '@tiptap/extension-table-row'
+import { FieldLabel } from '../FieldLabel'
+import RteMenuBar from './components/RteMenuBar'
+import ImageUpload from './extensions/imageUpload'
+import limitNestedLists from './utils/limitNestedLists'
 
 export interface FieldRteProps {
     /** Name text */
@@ -76,7 +78,13 @@ export type TextEditorMenuOptions =
     | 'bulletList'
     | 'orderedList'
 
-export type TextEditorCustomMenuOptions = 'image' | 'link' | 'heading' | 'subscript' | 'superscript'
+export type TextEditorCustomMenuOptions =
+    | 'image'
+    | 'link'
+    | 'heading'
+    | 'subscript'
+    | 'superscript'
+    | 'table'
 
 export const FieldRte = ({
     name,
@@ -175,12 +183,24 @@ export const FieldRte = ({
                     levels: [3],
                 })
             )
-                
+
         if (!!customMenuOptions?.find(el => el === 'subscript'))
             extensions.push(Subscript)
 
         if (!!customMenuOptions?.find(el => el === 'superscript'))
             extensions.push(Superscript)
+
+        if (!!customMenuOptions?.find(el => el === 'table'))
+            extensions.push(
+                Table.configure({
+                    HTMLAttributes: {
+                        class: 'not-prose',
+                    },
+                }),
+                TableRow,
+                TableCell,
+                TableHeader
+            )
 
         return extensions
     }

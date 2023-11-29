@@ -73,7 +73,10 @@ const sanitiseFunctions: SanitiseFunction[] = [
             rows.forEach(row => {
                 const cells = Array.from(row.querySelectorAll('th, td'))
 
-                cells.forEach(cell => {
+                if (rows.length === 1 && cells.length === 1)
+                    return table.remove()
+
+                return cells.forEach(cell => {
                     const colspan = parseInt(
                         cell.getAttribute('colspan') || '',
                         10

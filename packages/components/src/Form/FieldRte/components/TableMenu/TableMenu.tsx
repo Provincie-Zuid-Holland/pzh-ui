@@ -1,6 +1,8 @@
 import { useKeyboardEvent } from '@react-hookz/web'
+import { Node, ResolvedPos } from '@tiptap/pm/model'
+import { Selection } from '@tiptap/pm/state'
 import { EditorContentProps } from '@tiptap/react'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Divider } from '../../../../Divider'
 
 interface TableMenuProps extends EditorContentProps {
@@ -10,12 +12,43 @@ interface TableMenuProps extends EditorContentProps {
 const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
     const ref = useRef(null)
 
+    const [canDeleteCol, setCanDeleteCol] = useState(true)
+
     /** Handle close on Escape key event */
     useKeyboardEvent(true, ev => {
         ev.key === 'Escape' && setRightClick(false)
     })
 
     if (!editor) return null
+
+    const handleColDeletion = (selection: Selection) => {
+        const el = selection.$anchor as ResolvedPos & {
+            path: Node[]
+        }
+
+        // Filter out the table in the path
+        const table = el.path.find((el: Node) => el.type?.name === 'table')
+
+        // If there are no tables, return early
+        if (!table || table.content.childCount > 1) return
+
+        // Tables cannot have less then 2 columns
+        table.content.forEach(row => {
+            if (row.content.childCount <= 2) {
+                setCanDeleteCol(false)
+            } else {
+                setCanDeleteCol(true)
+            }
+        })
+    }
+
+    editor.on('transaction', ({ transaction }) =>
+        handleColDeletion(transaction.selection)
+    )
+
+    useEffect(() => {
+        handleColDeletion(editor.state.selection)
+    }, [])
 
     return (
         <div
@@ -43,11 +76,13 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
                 className="text-pzh-blue text-left font-bold">
                 Rij verwijderen
             </button>
-            <button
-                onClick={() => editor.chain().focus().deleteColumn().run()}
-                className="text-pzh-blue text-left font-bold">
-                Kolom verwijderen
-            </button>
+            {canDeleteCol && (
+                <button
+                    onClick={() => editor.chain().focus().deleteColumn().run()}
+                    className="text-pzh-blue text-left font-bold">
+                    Kolom verwijderen
+                </button>
+            )}
             <Divider className="bg-pzh-gray-600" />
             <button
                 onClick={() => editor.chain().focus().toggleHeaderRow().run()}

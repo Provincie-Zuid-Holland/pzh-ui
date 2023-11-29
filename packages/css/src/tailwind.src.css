@@ -1,35 +1,35 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @font-face {
-    font-family: 'Karbon Regular';
-    src: url('./../fonts/Karbon-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-display: swap;
+  font-family: "Karbon Regular";
+  src: url("./../fonts/Karbon-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Karbon Medium';
-    src: url('./../fonts/Karbon-Medium.woff2') format('woff2');
-    font-weight: bold;
-    font-display: swap;
+  font-family: "Karbon Medium";
+  src: url("./../fonts/Karbon-Medium.woff2") format("woff2");
+  font-weight: bold;
+  font-display: swap;
 }
 
 html {
-    height: 100%;
-    overflow: auto;
+  height: 100%;
+  overflow: auto;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    line-height: 1.5em;
-    font-family: 'Karbon Regular', sans-serif;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.5em;
+  font-family: "Karbon Regular", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -41,250 +41,255 @@ h6,
 .font-bold,
 strong,
 b {
-    font-family: 'Karbon Medium', sans-serif;
+  font-family: "Karbon Medium", sans-serif;
 }
 
 ul li ul li {
-    list-style-type: circle;
+  list-style-type: circle;
 }
 
 ul li ul li ul li {
-    list-style-type: square;
+  list-style-type: square;
 }
 
 ol li ol li {
-    list-style-type: lower-alpha;
+  list-style-type: lower-alpha;
 }
 
 ol li ol li ol li {
-    list-style-type: lower-roman;
+  list-style-type: lower-roman;
 }
 
 .font-normal {
-    font-family: 'Karbon Regular', sans-serif;
+  font-family: "Karbon Regular", sans-serif;
 }
 
 .bold {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 @layer utilities {
-    .pzh-transition-colors {
-        @apply transition-colors duration-200 ease-in;
-    }
+  .pzh-transition-colors {
+    @apply transition-colors duration-200 ease-in;
+  }
 }
 
 @layer components {
-    /*
+  /*
     * Form elements
     */
 
-    .pzh-button {
-        @apply focus:ring-pzh-blue-dark disabled:bg-pzh-gray-200 disabled:text-pzh-blue-dark disabled:text-opacity-35 inline-block rounded leading-none ring-offset-2 transition duration-200 ease-in focus:outline-none focus:ring disabled:cursor-not-allowed;
-    }
+  .pzh-button {
+    @apply focus:ring-pzh-blue-dark disabled:bg-pzh-gray-200 disabled:text-pzh-blue-dark disabled:text-opacity-35 inline-block rounded leading-none ring-offset-2 transition duration-200 ease-in focus:outline-none focus:ring disabled:cursor-not-allowed;
+  }
 
-    .pzh-form-input {
-        @apply placeholder-pzh-gray-600 text-pzh-blue-dark border-pzh-gray-600 hover:border-pzh-blue focus:ring-pzh-blue focus:border-pzh-blue disabled:bg-pzh-gray-200 text-m block w-full appearance-none rounded border pb-[6px] pt-[10px] leading-[30px] focus:outline-none focus:outline-none focus:ring focus:ring-2;
-    }
+  .pzh-form-input {
+    @apply placeholder-pzh-gray-600 text-pzh-blue-dark border-pzh-gray-600 hover:border-pzh-blue focus:ring-pzh-blue focus:border-pzh-blue disabled:bg-pzh-gray-200 text-m block w-full appearance-none rounded border pb-[6px] pt-[10px] leading-[30px] focus:outline-none focus:outline-none focus:ring focus:ring-2;
+  }
 
-    .pzh-form-error,
-    .pzh-form-checkbox.pzh-form-error + span:before,
-    .pzh-form-radio:checked.pzh-form-error + span:before,
-    .pzh-form-radio:not(:checked).pzh-form-error + span:before {
-        @apply border-pzh-red;
-    }
+  .pzh-form-error,
+  .pzh-form-checkbox.pzh-form-error + span:before,
+  .pzh-form-radio:checked.pzh-form-error + span:before,
+  .pzh-form-radio:not(:checked).pzh-form-error + span:before {
+    @apply border-pzh-red;
+  }
 
-    .pzh-form-radio:checked + span:before,
-    .pzh-form-radio:not(:checked) + span:before {
-        @apply border-pzh-gray-600 bg-pzh-gray-200 absolute left-0 top-0 h-6 w-6 rounded-full border;
-        content: '';
-    }
-    .pzh-form-radio:checked + span:after,
-    .pzh-form-radio:not(:checked) + span:after {
-        @apply bg-pzh-green absolute left-[5px] top-[5px] h-[14px] w-[14px] rounded-full transition duration-200;
-        content: '';
-    }
-    .pzh-form-radio:not(:checked) + span:after,
-    .pzh-form-checkbox:not(:checked) + span:after {
-        opacity: 0;
-        transform: scale(0);
-    }
-    .pzh-form-radio:checked + span:after,
-    .pzh-form-checkbox:checked + span:after {
-        opacity: 1;
-        transform: scale(1);
-    }
-    .pzh-form-radio:disabled + span:before,
-    .pzh-form-checkbox:disabled + span:before {
-        @apply border-pzh-gray-200 bg-pzh-gray-200;
-    }
+  .pzh-form-radio:checked + span:before,
+  .pzh-form-radio:not(:checked) + span:before {
+    @apply border-pzh-gray-600 bg-pzh-gray-200 absolute left-0 top-0 h-6 w-6 rounded-full border;
+    content: "";
+  }
+  .pzh-form-radio:checked + span:after,
+  .pzh-form-radio:not(:checked) + span:after {
+    @apply bg-pzh-green absolute left-[5px] top-[5px] h-[14px] w-[14px] rounded-full transition duration-200;
+    content: "";
+  }
+  .pzh-form-radio:not(:checked) + span:after,
+  .pzh-form-checkbox:not(:checked) + span:after {
+    opacity: 0;
+    transform: scale(0);
+  }
+  .pzh-form-radio:checked + span:after,
+  .pzh-form-checkbox:checked + span:after {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .pzh-form-radio:disabled + span:before,
+  .pzh-form-checkbox:disabled + span:before {
+    @apply border-pzh-gray-200 bg-pzh-gray-200;
+  }
 
-    .pzh-form-checkbox + span:before {
-        @apply border-pzh-gray-600 bg-pzh-gray-200 absolute left-0 top-0 h-6 w-6 rounded border transition duration-200;
-        content: '';
-    }
+  .pzh-form-checkbox + span:before {
+    @apply border-pzh-gray-600 bg-pzh-gray-200 absolute left-0 top-0 h-6 w-6 rounded border transition duration-200;
+    content: "";
+  }
 
-    .pzh-form-checkbox:checked:not(:disabled) + span:before {
-        @apply bg-pzh-green;
-    }
+  .pzh-form-checkbox:checked:not(:disabled) + span:before {
+    @apply bg-pzh-green;
+  }
 
-    .pzh-form-checkbox:checked + span:after,
-    .pzh-form-checkbox:not(:checked) + span:after {
-        @apply absolute left-[5px] top-0.5 h-[14px] w-[14px] text-white transition duration-200;
-        content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='white' d='M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z'/></svg>");
-    }
+  .pzh-form-checkbox:checked + span:after,
+  .pzh-form-checkbox:not(:checked) + span:after {
+    @apply absolute left-[5px] top-0.5 h-[14px] w-[14px] text-white transition duration-200;
+    content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='white' d='M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z'/></svg>");
+  }
 
-    .pzh-form-checkbox:checked:disabled + span:after {
-        content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='rgba(22, 17, 59, 0.35)' d='M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z'/></svg>");
-    }
+  .pzh-form-checkbox:checked:disabled + span:after {
+    content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='rgba(22, 17, 59, 0.35)' d='M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z'/></svg>");
+  }
 
-    .pzh-form-radio:focus + span:before,
-    .pzh-form-checkbox:focus + span:before {
-        @apply ring-pzh-blue border-pzh-blue outline-none ring ring-2;
-    }
+  .pzh-form-radio:focus + span:before,
+  .pzh-form-checkbox:focus + span:before {
+    @apply ring-pzh-blue border-pzh-blue outline-none ring ring-2;
+  }
 
-    .form-field-label {
-        @apply text-s mb-2 block uppercase tracking-wide text-gray-700;
-    }
+  .form-field-label {
+    @apply text-s mb-2 block uppercase tracking-wide text-gray-700;
+  }
 
-    .form-field-description {
-        @apply text-s mb-2 text-gray-700;
-    }
+  .form-field-description {
+    @apply text-s mb-2 text-gray-700;
+  }
 
-    /*
+  /*
     * React Datepicker
     */
 
-    .react-datepicker.pzh-datepicker {
-        font-family: 'Karbon Regular', sans-serif;
-        font-weight: 400;
-        font-size: 0.8rem;
-        box-shadow: 0px 18px 60px rgba(0, 0, 0, 0.07),
-            0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275),
-            0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
-        @apply text-pzh-blue-dark border-none;
+  .react-datepicker.pzh-datepicker {
+    font-family: "Karbon Regular", sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    box-shadow: 0px 18px 60px rgba(0, 0, 0, 0.07),
+      0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275),
+      0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
+    @apply text-pzh-blue-dark border-none;
+  }
+
+  .pzh-datepicker .react-datepicker__triangle {
+    display: none;
+  }
+
+  .pzh-datepicker .react-datepicker__header {
+    @apply border-none bg-white;
+  }
+
+  .pzh-datepicker .react-datepicker__month {
+    @apply mx-0.5 mt-0;
+  }
+
+  .pzh-datepicker .react-datepicker__day-names {
+    @apply bg-pzh-blue-dark bg-opacity-10;
+  }
+
+  .pzh-datepicker .react-datepicker__day-name {
+    @apply bold my-0 leading-[26px];
+  }
+
+  .pzh-datepicker .react-datepicker__current-month {
+    @apply mb-2;
+  }
+
+  .pzh-datepicker
+    .react-datepicker__day--outside-month:not(
+      .react-datepicker__day--selected
+    ) {
+    @apply text-pzh-blue-dark text-opacity-35;
+  }
+
+  .pzh-datepicker .react-datepicker__day-name,
+  .pzh-datepicker .react-datepicker__day,
+  .pzh-datepicker .react-datepicker__time-name {
+    @apply mx-2 my-1 h-[26px] w-[26px] leading-7;
+  }
+
+  .pzh-datepicker .react-datepicker__day {
+    @apply rounded-full hover:rounded-full;
+  }
+
+  .pzh-datepicker
+    .react-datepicker__day--today:not(.react-datepicker__day--selected),
+  .pzh-datepicker
+    .react-datepicker__day--today:hover:not(.react-datepicker__day--selected),
+  .pzh-datepicker .react-datepicker__day--keyboard-selected {
+    @apply bg-pzh-blue-dark text-pzh-blue-dark bg-opacity-10;
+  }
+
+  .pzh-datepicker .react-datepicker__day--keyboard-selected:hover {
+    @apply bg-pzh-blue-dark bg-opacity-10;
+  }
+
+  .pzh-datepicker .react-datepicker__day--selected,
+  .pzh-datepicker .react-datepicker__day--selected:hover {
+    @apply bg-pzh-green bold;
+  }
+
+  .pzh-datepicker .react-datepicker__year-read-view--down-arrow,
+  .pzh-datepicker .react-datepicker__month-read-view--down-arrow,
+  .pzh-datepicker .react-datepicker__month-year-read-view--down-arrow,
+  .pzh-datepicker .react-datepicker__navigation-icon::before {
+    @apply h-[7px] w-[7px] border border-0 border-r-[1px] border-t-[1px] border-black;
+  }
+
+  .pzh-datepicker .react-datepicker__navigation-icon {
+    @apply leading-[14px];
+  }
+
+  .pzh-select-input input {
+    box-shadow: none !important;
+  }
+
+  .ProseMirror p.is-editor-empty:first-child::before {
+    @apply text-pzh-blue-dark/55;
+    content: attr(data-placeholder);
+    float: left;
+    pointer-events: none;
+    height: 0;
+  }
+
+  .pzh-modal {
+    &[data-entering] {
+      animation: fade 150ms;
     }
 
-    .pzh-datepicker .react-datepicker__triangle {
-        display: none;
+    &[data-exiting] {
+      animation: fade 150ms reverse ease-in;
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
     }
 
-    .pzh-datepicker .react-datepicker__header {
-        @apply border-none bg-white;
+    to {
+      opacity: 1;
     }
+  }
 
-    .pzh-datepicker .react-datepicker__month {
-        @apply mx-0.5 mt-0;
-    }
+  table {
+    @apply !text-m;
+  }
 
-    .pzh-datepicker .react-datepicker__day-names {
-        @apply bg-pzh-blue-dark bg-opacity-10;
-    }
+  table,
+  table td,
+  table th {
+    @apply border border-pzh-gray-600;
+  }
 
-    .pzh-datepicker .react-datepicker__day-name {
-        @apply bold my-0 leading-[26px];
-    }
+  table tr th {
+    @apply bg-pzh-gray-100 font-bold;
+  }
 
-    .pzh-datepicker .react-datepicker__current-month {
-        @apply mb-2;
-    }
+  table tr {
+    @apply border-b border-pzh-gray-600;
+  }
 
-    .pzh-datepicker
-        .react-datepicker__day--outside-month:not(
-            .react-datepicker__day--selected
-        ) {
-        @apply text-pzh-blue-dark text-opacity-35;
-    }
+  table td,
+  table th {
+    @apply !p-2;
+  }
 
-    .pzh-datepicker .react-datepicker__day-name,
-    .pzh-datepicker .react-datepicker__day,
-    .pzh-datepicker .react-datepicker__time-name {
-        @apply mx-2 my-1 h-[26px] w-[26px] leading-7;
-    }
-
-    .pzh-datepicker .react-datepicker__day {
-        @apply rounded-full hover:rounded-full;
-    }
-
-    .pzh-datepicker
-        .react-datepicker__day--today:not(.react-datepicker__day--selected),
-    .pzh-datepicker
-        .react-datepicker__day--today:hover:not(
-            .react-datepicker__day--selected
-        ),
-    .pzh-datepicker .react-datepicker__day--keyboard-selected {
-        @apply bg-pzh-blue-dark text-pzh-blue-dark bg-opacity-10;
-    }
-
-    .pzh-datepicker .react-datepicker__day--keyboard-selected:hover {
-        @apply bg-pzh-blue-dark bg-opacity-10;
-    }
-
-    .pzh-datepicker .react-datepicker__day--selected,
-    .pzh-datepicker .react-datepicker__day--selected:hover {
-        @apply bg-pzh-green bold;
-    }
-
-    .pzh-datepicker .react-datepicker__year-read-view--down-arrow,
-    .pzh-datepicker .react-datepicker__month-read-view--down-arrow,
-    .pzh-datepicker .react-datepicker__month-year-read-view--down-arrow,
-    .pzh-datepicker .react-datepicker__navigation-icon::before {
-        @apply h-[7px] w-[7px] border border-0 border-r-[1px] border-t-[1px] border-black;
-    }
-
-    .pzh-datepicker .react-datepicker__navigation-icon {
-        @apply leading-[14px];
-    }
-
-    .pzh-select-input input {
-        box-shadow: none !important;
-    }
-
-    .ProseMirror p.is-editor-empty:first-child::before {
-        @apply text-pzh-blue-dark/55;
-        content: attr(data-placeholder);
-        float: left;
-        pointer-events: none;
-        height: 0;
-    }
-
-    .pzh-modal {
-        &[data-entering] {
-            animation: fade 150ms;
-        }
-
-        &[data-exiting] {
-            animation: fade 150ms reverse ease-in;
-        }
-    }
-
-    @keyframes fade {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    table {
-        @apply !text-m;
-    }
-
-    table, table td, table th {
-        @apply border border-pzh-gray-600;
-    }
-
-    table tr th {
-        @apply bg-pzh-gray-100 font-bold;
-    }
-
-    table tr {
-        @apply border-b border-pzh-gray-600;
-    }
-
-    table td, table th {
-        @apply p-2;
-    }
+  table p {
+    @apply !my-0;
+  }
 }

@@ -198,7 +198,7 @@ export const FieldRte = ({
             extensions.push(
                 Table.configure({
                     HTMLAttributes: {
-                        class: 'not-prose',
+                        // class: 'not-prose',
                     },
                 }),
                 TableRow,

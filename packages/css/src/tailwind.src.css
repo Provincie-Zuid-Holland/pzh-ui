@@ -266,30 +266,30 @@ ol li ol li ol li {
     }
   }
 
-  table {
+  .prose table {
     @apply !text-m;
   }
 
-  table,
-  table td,
-  table th {
+  .prose table,
+  .prose table td,
+  .prose table th {
     @apply border border-pzh-gray-600;
   }
 
-  table tr th {
+  .prose table tr th {
     @apply bg-pzh-gray-100 font-bold;
   }
 
-  table tr {
+  .prose table tr {
     @apply border-b border-pzh-gray-600;
   }
 
-  table td,
-  table th {
+  .prose table td,
+  .prose table th {
     @apply !p-2;
   }
 
-  table p {
+  .prose table p {
     @apply !my-0;
   }
 }

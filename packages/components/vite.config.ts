@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-// import typescriptPlugin from '@rollup/plugin-typescript'
+import typescriptPlugin from '@rollup/plugin-typescript'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -30,11 +30,11 @@ export default defineConfig({
         emptyOutDir: true,
         rollupOptions: {
             external: isExternal,
-            // plugins: [
-            //     typescriptPlugin({
-            //         exclude: ['**/*.test.tsx', '**/*.stories.tsx'],
-            //     }),
-            // ],
+            plugins: [
+                typescriptPlugin({
+                    exclude: ['**/*.test.tsx', '**/*.stories.tsx'],
+                }) as PluginOption,
+            ],
             output: {
                 entryFileNames: '[name].[format].js',
                 preserveModules: true,

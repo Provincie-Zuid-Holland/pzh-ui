@@ -86,7 +86,7 @@
         "@babel/preset-typescript": "^7.23.3",
         "@pzh-ui/css": "^0.0.75",
         "@rollup/plugin-babel": "^5.3.1",
-        "@rollup/plugin-typescript": "^8.3.1",
+        "@rollup/plugin-typescript": "^11.1.5",
         "@storybook/addon-a11y": "^7.4.0",
         "@storybook/addon-actions": "^7.4.0",
         "@storybook/addon-essentials": "^7.4.0",
@@ -122,7 +122,7 @@
         "typescript": "^5.3.2",
         "vite": "^5.0.2",
         "vite-tsconfig-paths": "^4.2.1",
-        "vitest": "^0.34.4"
+        "vitest": "^0.34.6"
     },
     "resolutions": {
         "jackspeak": "2.1.1"

@@ -58,6 +58,38 @@ const sanitiseFunctions: SanitiseFunction[] = [
 
         return error
     },
+
+    /**
+     * Remove rows from tables when cells have a colspan greater than 1.
+     */
+    ({ element }) => {
+        const tables = Array.from(
+            element.querySelectorAll<HTMLTableElement>('table')
+        )
+
+        tables.forEach(table => {
+            const rows = Array.from(table.querySelectorAll('tr'))
+
+            rows.forEach(row => {
+                const cells = Array.from(row.querySelectorAll('th, td'))
+
+                cells.forEach(cell => {
+                    const colspan = parseInt(
+                        cell.getAttribute('colspan') || '',
+                        10
+                    )
+                    const rowspan = parseInt(
+                        cell.getAttribute('rowspan') || '',
+                        10
+                    )
+
+                    if (colspan > 1 || rowspan > 1) {
+                        row.remove()
+                    }
+                })
+            })
+        })
+    },
 ]
 
 /**

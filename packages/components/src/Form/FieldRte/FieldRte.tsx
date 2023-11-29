@@ -15,7 +15,7 @@ import Text from '@tiptap/extension-text'
 import Underline from '@tiptap/extension-underline'
 import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import classNames from 'classnames'
-import { ReactNode, useEffect } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 import Heading from '@tiptap/extension-heading'
 import Subscript from '@tiptap/extension-subscript'
@@ -108,6 +108,8 @@ export const FieldRte = ({
         maxSize: 1048576,
     },
 }: FieldRteProps) => {
+    const [rightClick, setRightClick] = useState(false)
+
     const editor = useEditor({
         extensions: getEditorExtensions(),
         editable: !disabled,
@@ -119,6 +121,15 @@ export const FieldRte = ({
         editorProps: {
             attributes: {
                 class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-dark marker:text-pzh-blue-dark outline-none whitespace-pre-line',
+            },
+            handleDOMEvents: {
+                contextmenu: (_, event) => {
+                    event.preventDefault()
+                    setRightClick(true)
+                },
+                mousedown: () => {
+                    setRightClick(false)
+                },
             },
         },
         injectCSS: false,
@@ -265,6 +276,8 @@ export const FieldRte = ({
                         menuClassName={menuClassName}
                         disabled={disabled}
                         imageOptions={imageOptions}
+                        rightClick={rightClick}
+                        setRightClick={setRightClick}
                     />
                     <EditorContent editor={editor} />
                 </div>

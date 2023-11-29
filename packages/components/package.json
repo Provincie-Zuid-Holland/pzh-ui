@@ -27,7 +27,7 @@
         "prebuild:storybook": "npm run test:generate-output",
         "build:storybook": "storybook build",
         "build": "vite build",
-        "chromatic": "npx chromatic --project-token=9c6f933cf59e --auto-accept-changes"
+        "chromatic": "npx chromatic --project-token=9c6f933cf59e --auto-accept-changes --build-script-name=build:storybook"
     },
     "dependencies": {
         "@floating-ui/react": "^0.24.8",
@@ -108,7 +108,7 @@
         "@vitejs/plugin-react": "^4.0.4",
         "babel-loader": "^8.2.3",
         "babel-plugin-import": "^1.13.3",
-        "chromatic": "^6.5.2",
+        "chromatic": "^9.1.0",
         "css-loader": "^6.7.1",
         "eslint-plugin-storybook": "^0.6.13",
         "jsdom": "^22.1.0",

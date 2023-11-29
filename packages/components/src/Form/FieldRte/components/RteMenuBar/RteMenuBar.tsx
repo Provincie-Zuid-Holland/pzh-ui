@@ -1,6 +1,6 @@
-import { EditorContentProps } from '@tiptap/react'
+import { BubbleMenu, EditorContentProps } from '@tiptap/react'
 import classNames from 'classnames'
-import { ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes, Fragment } from 'react'
 
 import {
     Bold,
@@ -12,6 +12,7 @@ import {
     ListUl,
     Subscript,
     Superscript,
+    Table,
     Underline,
 } from '@pzh-ui/icons'
 
@@ -21,11 +22,14 @@ import {
     TextEditorMenuOptions,
 } from '../../FieldRte'
 import validateImage from '../../utils/validateImage'
+import TableMenu from '../TableMenu'
 
 interface RteMenuBarProps extends EditorContentProps {
     menuOptions: (TextEditorMenuOptions | TextEditorCustomMenuOptions)[]
     menuClassName?: string
     imageOptions?: FieldRteProps['imageOptions']
+    rightClick: boolean
+    setRightClick: (rightClick: boolean) => void
 }
 
 const RteMenuBar = ({
@@ -34,6 +38,8 @@ const RteMenuBar = ({
     menuOptions,
     menuClassName,
     imageOptions,
+    rightClick,
+    setRightClick,
 }: RteMenuBarProps) => {
     if (!editor) return null
 
@@ -266,25 +272,46 @@ const RteMenuBar = ({
                         )
                     case 'table':
                         return (
-                            <MenuButton
-                                key={option}
-                                onClick={() =>
-                                    editor
-                                        .chain()
-                                        .focus()
-                                        .insertTable({
-                                            rows: 3,
-                                            cols: 4,
-                                            withHeaderRow: true,
-                                        })
-                                        .run()
-                                }
-                                disabled={disabled}
-                                isActive={editor.isActive('table')}
-                                aria-label="Tabel"
-                                title="Tabel">
-                                <Superscript />
-                            </MenuButton>
+                            <Fragment key={option}>
+                                {editor && (
+                                    <BubbleMenu
+                                        editor={editor}
+                                        tippyOptions={{
+                                            duration: 100,
+                                            placement: 'bottom',
+                                        }}
+                                        shouldShow={({ editor }) =>
+                                            editor.isActive('table')
+                                        }>
+                                        {rightClick && (
+                                            <TableMenu
+                                                editor={editor}
+                                                setRightClick={setRightClick}
+                                            />
+                                        )}
+                                    </BubbleMenu>
+                                )}
+                                <MenuButton
+                                    onClick={() =>
+                                        editor
+                                            .chain()
+                                            .focus()
+                                            .insertTable({
+                                                rows: 3,
+                                                cols: 4,
+                                                withHeaderRow: true,
+                                            })
+                                            .run()
+                                    }
+                                    disabled={
+                                        disabled || editor.isActive('table')
+                                    }
+                                    isActive={editor.isActive('table')}
+                                    aria-label="Tabel"
+                                    title="Tabel">
+                                    <Table />
+                                </MenuButton>
+                            </Fragment>
                         )
                     default:
                         break

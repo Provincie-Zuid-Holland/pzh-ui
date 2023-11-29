@@ -26,7 +26,9 @@ import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import { FieldLabel } from '../FieldLabel'
 import RteMenuBar from './components/RteMenuBar'
+import { HandleDOMEvents } from './extensions/handleDOMEvents'
 import ImageUpload from './extensions/imageUpload'
+import { SanitisePastedHtml } from './extensions/sanitisePastedHtml'
 import limitNestedLists from './utils/limitNestedLists'
 
 export interface FieldRteProps {
@@ -122,15 +124,6 @@ export const FieldRte = ({
             attributes: {
                 class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-dark marker:text-pzh-blue-dark outline-none whitespace-pre-line',
             },
-            handleDOMEvents: {
-                contextmenu: (_, event) => {
-                    event.preventDefault()
-                    setRightClick(true)
-                },
-                mousedown: () => {
-                    setRightClick(false)
-                },
-            },
         },
         injectCSS: false,
     })
@@ -210,7 +203,9 @@ export const FieldRte = ({
                 }),
                 TableRow,
                 TableCell,
-                TableHeader
+                TableHeader,
+                SanitisePastedHtml,
+                HandleDOMEvents.configure({ callback: setRightClick })
             )
 
         return extensions

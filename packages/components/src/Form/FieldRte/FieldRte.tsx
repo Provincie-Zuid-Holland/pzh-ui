@@ -123,6 +123,7 @@ export const FieldRte = ({
         editorProps: {
             attributes: {
                 class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-dark marker:text-pzh-blue-dark outline-none whitespace-pre-line',
+                'data-testid': testId,
             },
         },
         injectCSS: false,
@@ -250,7 +251,6 @@ export const FieldRte = ({
                 />
             )}
             <div
-                data-testid={testId}
                 className={classNames({
                     'col-span-6 md:col-span-4': layout === 'grid',
                 })}>

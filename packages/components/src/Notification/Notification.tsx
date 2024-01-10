@@ -12,7 +12,7 @@ import { Text } from '../Text'
 export interface NotificationProps {
     variant?: 'info' | 'warning' | 'positive' | 'negative'
     className?: string
-    children: JSX.Element | string
+    children?: JSX.Element | string
     title?: string
     icon?: any
 }
@@ -72,9 +72,11 @@ export const Notification = ({
                             {title}
                         </Text>
                     )}
-                    <Text size="s" className={colors.body}>
-                        {children}
-                    </Text>
+                    {children && (
+                        <Text size="s" className={colors.body}>
+                            {children}
+                        </Text>
+                    )}
                 </div>
             </div>
         </div>

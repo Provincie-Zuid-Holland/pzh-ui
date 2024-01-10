@@ -56,7 +56,9 @@ export const Notification = ({
                 className
             )}>
             <div className="flex">
-                <Icon size={18} className={classNames('mt-px', colors.body)} />
+                <div className="mt-px min-w-[18px]">
+                    <Icon size={18} className={colors.body} />
+                </div>
                 <div className="ml-2">
                     {title && (
                         <Text

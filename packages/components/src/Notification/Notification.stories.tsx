@@ -16,15 +16,34 @@ const Template = (args: NotificationProps) => <Notification {...args} />
 export const Info = {
     render: Template,
     args: {
+        title: 'Titel van melding',
         children: 'Dit is een toelichting.',
         variant: 'info',
     },
 } satisfies Story
 
-export const Alert = {
+export const Warning = {
     render: Template,
     args: {
         children: 'Dit is een melding.',
-        variant: 'alert',
+        variant: 'warning',
+    },
+} satisfies Story
+
+export const Positive = {
+    render: Template,
+    args: {
+        title: 'Titel van de melding',
+        children: 'Dit is een melding.',
+        variant: 'positive',
+    },
+} satisfies Story
+
+export const Negative = {
+    render: Template,
+    args: {
+        title: 'Titel van de melding',
+        children: 'Dit is een melding.',
+        variant: 'negative',
     },
 } satisfies Story

@@ -38,7 +38,7 @@ export const FieldRadioGroup = ({
 }: FieldRadioGroupProps) => (
     <div
         className={classNames({
-            'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+            'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
         })}>
         {label && (
             <FieldLabel
@@ -48,7 +48,7 @@ export const FieldRadioGroup = ({
                 required={required}
                 tooltip={tooltip}
                 className={classNames({
-                    'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                    'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
                 })}
             />
         )}
@@ -62,7 +62,7 @@ export const FieldRadioGroup = ({
                     name={name}
                     value={option.value}
                     className={classNames({
-                        'mr-4':
+                        'mr-8':
                             index + 1 !== options.length &&
                             optionLayout === 'horizontal',
                         'mb-2':

@@ -30,7 +30,7 @@ export const FieldRadio = ({
         />
         <span
             className={classNames(
-                'text-pzh-blue-dark relative inline-block cursor-pointer pl-[34px] leading-7',
+                'text-pzh-blue-dark relative inline-block cursor-pointer pl-7',
                 {
                     'text-pzh-gray-600': disabled,
                 }

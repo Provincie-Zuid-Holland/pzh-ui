@@ -256,7 +256,7 @@ export const FieldRte = ({
                 })}>
                 <div
                     className={classNames(
-                        'border-pzh-gray-600 ring-pzh-blue relative rounded border focus:ring-2',
+                        'border-pzh-gray-600 relative rounded border',
                         {
                             'bg-pzh-gray-100': disabled,
                             'bg-pzh-white': !disabled,

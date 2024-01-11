@@ -89,7 +89,7 @@ export function FieldSelect({
                                         'bg-white': !disabled,
                                         'border-pzh-red': hasError,
                                         'bg-pzh-gray-200': disabled,
-                                        'ring-pzh-blue border-pzh-blue ring ring-2':
+                                        'ring-pzh-focus border-pzh-blue ring ring-2':
                                             props.isFocused,
                                     }
                                 )}
@@ -116,9 +116,10 @@ export function FieldSelect({
                         Option: props => (
                             <components.Option
                                 {...props}
-                                className={classNames(" px-4 py-1", {
-                                    'text-pzh-blue-dark hover:text-pzh-green cursor-pointer hover:underline': !props.isDisabled,
-                                    'text-pzh-gray-500': props.isDisabled
+                                className={classNames(' px-4 py-1', {
+                                    'text-pzh-blue-dark hover:text-pzh-green cursor-pointer hover:underline':
+                                        !props.isDisabled,
+                                    'text-pzh-gray-500': props.isDisabled,
                                 })}>
                                 {props.isMulti ? (
                                     <div
@@ -134,7 +135,7 @@ export function FieldSelect({
                                             className={classNames(
                                                 'text-pzh-blue-dark relative inline-block cursor-pointer pl-[34px] font-normal leading-7',
                                                 {
-                                                    'before:ring-pzh-blue before:border-pzh-blue before:outline-none before:ring before:ring-2':
+                                                    'before:ring-pzh-focus before:border-pzh-blue before:outline-none before:ring before:ring-2':
                                                         props.isFocused,
                                                 }
                                             )}>

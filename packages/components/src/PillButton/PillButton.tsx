@@ -33,7 +33,7 @@ export const PillButton = <T extends ElementType = 'button'>({
                 to: props.href,
             })}
             className={classNames(
-                'focus:ring-pzh-blue-dark text-s flex h-6 items-center rounded-full border px-4 ring-offset-2 transition focus:outline-none focus:ring',
+                'focus:ring-pzh-focus text-s flex h-6 items-center rounded-full border px-4 ring-offset-2 transition focus:outline-none focus:ring',
                 {
                     'text-pzh-green border-pzh-green hover:bg-pzh-green-dark hover:border-pzh-green-dark hover:text-pzh-white cursor-pointer':
                         !isDisabled,

@@ -220,7 +220,7 @@ ol li ol li ol li {
 
   .pzh-datepicker .react-datepicker__day--selected,
   .pzh-datepicker .react-datepicker__day--selected:hover {
-    @apply bg-pzh-green bold;
+    @apply bg-pzh-green font-bold;
   }
 
   .pzh-datepicker .react-datepicker__year-read-view--down-arrow,
@@ -232,6 +232,12 @@ ol li ol li ol li {
 
   .pzh-datepicker .react-datepicker__navigation-icon {
     @apply leading-[14px];
+  }
+
+  .pzh-datepicker .react-datepicker__current-month,
+  .pzh-datepicker .react-datepicker__day-name,
+  .pzh-datepicker .react-datepicker__day--today {
+    @apply font-bold;
   }
 
   .pzh-select-input input {

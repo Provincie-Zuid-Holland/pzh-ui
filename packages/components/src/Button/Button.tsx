@@ -64,7 +64,12 @@ export const Button = <T extends ElementType = 'button'>({
             {...buttonProps}>
             {Icon ? (
                 <div className="flex items-center">
-                    <Icon size={iconSize} className="-mt-0.5 mr-2" />
+                    <Icon
+                        size={iconSize}
+                        className={classNames('-mt-0.5', {
+                            'mr-2': !!children,
+                        })}
+                    />
                     <span>{children}</span>
                 </div>
             ) : isLoading ? (

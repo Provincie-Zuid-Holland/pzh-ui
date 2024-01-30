@@ -28,7 +28,7 @@ export const Default = {
             {
                 label: 'Option 2',
                 value: 'option-2',
-                isDisabled: true
+                isDisabled: true,
             },
             {
                 label: 'Option 3',

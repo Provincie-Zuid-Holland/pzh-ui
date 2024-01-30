@@ -197,11 +197,7 @@ export const FieldRte = ({
 
         if (!!customMenuOptions?.find(el => el === 'table'))
             extensions.push(
-                Table.configure({
-                    HTMLAttributes: {
-                        // class: 'not-prose',
-                    },
-                }),
+                Table,
                 TableRow,
                 TableCell,
                 TableHeader,

@@ -29,3 +29,13 @@ export const Disabled = {
         disabled: true,
     },
 } satisfies Story
+
+export const DisabledChecked = {
+    render: Template,
+    args: {
+        children: 'Option 1',
+        name: 'option-1',
+        disabled: true,
+        checked: true,
+    },
+} satisfies Story

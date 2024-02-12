@@ -99,8 +99,8 @@ ol li ol li ol li {
     @apply border-pzh-gray-600 absolute left-0 top-0.5 h-5 w-5 rounded-full border;
     content: "";
   }
-  .pzh-form-radio:not(:checked):hover + span:before,
-  .pzh-form-checkbox:not(:checked):hover + span:before {
+  .pzh-form-radio:not(:checked):not(:disabled):hover + span:before,
+  .pzh-form-checkbox:not(:checked):not(:disabled):hover + span:before {
     @apply border-pzh-green-500 bg-pzh-green-10;
   }
   .pzh-form-radio:checked + span:after,
@@ -121,7 +121,7 @@ ol li ol li ol li {
     opacity: 1;
     transform: scale(1);
   }
-  .pzh-form-radio:disabled + span:before,
+  .pzh-form-radio:not(:checked):disabled + span:before,
   .pzh-form-checkbox:disabled + span:before {
     @apply border-pzh-gray-500 bg-pzh-gray-200;
   }

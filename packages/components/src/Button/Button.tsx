@@ -68,6 +68,7 @@ export const Button = <T extends ElementType = 'button'>({
                         size={iconSize}
                         className={classNames('-mt-0.5', {
                             'mr-2': !!children,
+                            'animate-spin': isLoading,
                         })}
                     />
                     <span>{children}</span>

@@ -86,7 +86,7 @@ export const FieldDate = ({
                         className
                     )}
                     wrapperClassName="w-full"
-                    calendarClassName="pzh-datepicker"
+                    popperClassName="pzh-datepicker"
                     customInput={<DateInput name={name} />}
                     dateFormat={dateFormat}
                     onCalendarClose={onClose}

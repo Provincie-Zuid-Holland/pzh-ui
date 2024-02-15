@@ -1,7 +1,8 @@
 import { FastField, Field, FieldProps } from 'formik'
 
-import { FormikError } from './FormikError'
 import { FieldDate, FieldDateProps } from '../Form/FieldDate'
+import { formatDate } from '../utils'
+import { FormikError } from './FormikError'
 
 type FormikDateProps = Omit<FieldDateProps, 'onChange'> & {
     name: string
@@ -24,7 +25,12 @@ export const FormikDate = ({
                         {...field}
                         onClose={() => form.setFieldTouched(name, true)}
                         onChange={(date: Date | null) => {
-                            form.setFieldValue(name, date?.toISOString())
+                            form.setFieldValue(
+                                name,
+                                date
+                                    ? formatDate(new Date(date), 'yyyy-MM-dd')
+                                    : null
+                            )
                         }}
                         hasError={Boolean(meta.touched && meta.error)}
                     />

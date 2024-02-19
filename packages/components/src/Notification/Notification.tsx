@@ -65,9 +65,12 @@ export const Notification = ({
                             as="span"
                             bold
                             className={classNames(
-                                'mb-2 block',
+                                'block',
                                 getHeadingStyles('s'),
-                                colors.body
+                                colors.body,
+                                {
+                                    'mb-2': !!children,
+                                }
                             )}>
                             {title}
                         </Text>

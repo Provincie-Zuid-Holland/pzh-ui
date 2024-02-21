@@ -28,6 +28,7 @@ export const Primary = {
         variant: 'primary',
         children: 'Button',
         href: '/test',
+        onPress: () => console.log('test'),
     },
 } satisfies Story
 

@@ -24,11 +24,8 @@ const Template = (args: ButtonProps<ElementType>) => (
 export const Primary = {
     render: Template,
     args: {
-        as: 'a',
         variant: 'primary',
         children: 'Button',
-        href: '/test',
-        onPress: () => console.log('test'),
     },
 } satisfies Story
 

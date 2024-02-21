@@ -1,11 +1,10 @@
 import classNames from 'classnames'
 import { ElementType, ReactNode, forwardRef } from 'react'
-import { AriaButtonProps, useButton, useFocusRing, useHover } from 'react-aria'
+import { AriaButtonProps, useButton } from 'react-aria'
 import { Link } from 'react-router-dom'
 
 import { Spinner } from '@pzh-ui/icons'
-import { mergeProps, useObjectRef } from '@react-aria/utils'
-import { useRenderProps } from '../Modal/utils'
+import { useObjectRef } from '@react-aria/utils'
 
 /**
  * Primary UI component for user interaction
@@ -28,23 +27,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<ElementType>>(
         forwardedRef
     ) => {
         const ref = useObjectRef(forwardedRef)
-        const { buttonProps, isPressed } = useButton(
-            { ...props, elementType: as },
-            ref
-        )
+        const { buttonProps } = useButton({ ...props, elementType: as }, ref)
         const { children, isDisabled, isLoading, icon } = props
-        let { focusProps, isFocused, isFocusVisible } = useFocusRing(props)
-        let { hoverProps, isHovered } = useHover(props)
-        let renderProps = useRenderProps({
-            ...props,
-            values: {
-                isHovered,
-                isPressed,
-                isFocused,
-                isFocusVisible,
-                isDisabled: props.isDisabled || false,
-            },
-        })
 
         const Component = as === 'a' ? Link : as || 'button'
 
@@ -52,8 +36,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<ElementType>>(
 
         return (
             <Component
-                {...mergeProps(buttonProps, focusProps, hoverProps)}
-                {...renderProps}
+                {...buttonProps}
                 {...(as === 'a' && {
                     to: props.href,
                 })}

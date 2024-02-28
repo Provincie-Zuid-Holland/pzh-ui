@@ -14,9 +14,9 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
     return (
         <Component
             className={classNames(
-                'border-pzh-blue-dark inline-flex items-center rounded border px-3',
+                'border-pzh-blue-500 focus:ring-pzh-focus inline-flex h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring',
                 {
-                    'hover:bg-pzh-blue-dark focus:bg-pzh-blue transition duration-150 hover:text-white focus:text-white':
+                    'hover:bg-pzh-blue-500 transition duration-150 hover:text-white':
                         !!onClick,
                 },
                 className
@@ -25,10 +25,9 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
                 onClick,
                 type: 'button',
             })}
-            style={{ paddingTop: 2 }}
             data-testid="tag">
-            <span>{text}</span>
-            {!!onClick && <Xmark className="-mt-[2px] ml-2" />}
+            <span className="-mb-px">{text}</span>
+            {!!onClick && <Xmark className="ml-2" />}
         </Component>
     )
 }

@@ -1,5 +1,5 @@
-import { InputHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
+import { InputHTMLAttributes, ReactNode } from 'react'
 
 import { FieldLabel } from '../FieldLabel'
 
@@ -33,7 +33,7 @@ export const FieldInput = ({
 }: FieldInputProps) => (
     <div
         className={classNames({
-            'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+            'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
         })}>
         {label && (
             <FieldLabel
@@ -43,18 +43,18 @@ export const FieldInput = ({
                 required={required}
                 tooltip={tooltip}
                 className={classNames({
-                    'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                    'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
                 })}
             />
         )}
         <div
             className={classNames('relative', {
-                'md:col-span-4 col-span-6': layout === 'grid',
+                'col-span-6 md:col-span-4': layout === 'grid',
             })}>
             {Icon && (
                 <Icon
                     size={20}
-                    className="absolute right-3 h-[48px] text-pzh-blue"
+                    className="text-pzh-blue absolute right-3 h-[48px]"
                 />
             )}
             <input

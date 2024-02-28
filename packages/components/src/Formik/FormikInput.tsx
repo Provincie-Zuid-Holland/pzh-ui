@@ -1,7 +1,7 @@
 import { FastField, Field, FieldProps } from 'formik'
 
-import { FormikError } from './FormikError'
 import { FieldInput, FieldInputProps } from '../Form/FieldInput'
+import { FormikError } from './FormikError'
 
 type FormikInputProps = FieldInputProps & {
     name: string

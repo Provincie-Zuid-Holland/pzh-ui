@@ -1,5 +1,6 @@
 import { FastField, Field, FieldProps } from 'formik'
 
+import { zonedTimeToUtc } from 'date-fns-tz'
 import { FieldDate, FieldDateProps } from '../Form/FieldDate'
 import { formatDate } from '../utils'
 import { FormikError } from './FormikError'
@@ -28,7 +29,13 @@ export const FormikDate = ({
                             form.setFieldValue(
                                 name,
                                 date
-                                    ? formatDate(new Date(date), 'yyyy-MM-dd')
+                                    ? formatDate(
+                                          zonedTimeToUtc(
+                                              new Date(date),
+                                              'Europe/Amsterdam'
+                                          ),
+                                          'yyyy-MM-dd'
+                                      )
                                     : null
                             )
                         }}

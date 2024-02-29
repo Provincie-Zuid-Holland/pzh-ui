@@ -1,5 +1,5 @@
 import { useUpdateEffect } from '@react-hookz/web'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import nl from 'date-fns/locale/nl'
 import { ReactNode, forwardRef, useState } from 'react'
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'

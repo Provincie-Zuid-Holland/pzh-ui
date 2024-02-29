@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { ElementType } from 'react'
 
 import { PolymorphicComponentProp } from '../utils/polymorphicComponent'

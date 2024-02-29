@@ -1,5 +1,5 @@
 import { BubbleMenu, EditorContentProps } from '@tiptap/react'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { ButtonHTMLAttributes, Fragment } from 'react'
 
 import {

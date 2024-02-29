@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { ReactNode } from 'react'
 
 export interface CardProps {
@@ -8,7 +8,7 @@ export interface CardProps {
 
 export const Card = ({ className = '', children }: CardProps) => (
     <div
-        className={classNames('p-6 bg-white rounded shadow-card', className)}
+        className={classNames('shadow-card rounded bg-white p-6', className)}
         data-testid="card">
         {children}
     </div>

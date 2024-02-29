@@ -1,5 +1,5 @@
+import classNames from 'clsx'
 import React, { ReactNode, useLayoutEffect, useRef } from 'react'
-import classNames from 'classnames'
 
 import { FieldLabel } from '../FieldLabel'
 
@@ -47,7 +47,7 @@ export const FieldTextArea = ({
     return (
         <div
             className={classNames({
-                'grid grid-cols-6 md:gap-8 gap-2': layout === 'grid',
+                'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
             })}>
             {label && (
                 <FieldLabel
@@ -57,7 +57,7 @@ export const FieldTextArea = ({
                     required={required}
                     tooltip={tooltip}
                     className={classNames({
-                        'md:col-span-2 col-span-6 mb-0 mt-2': layout === 'grid',
+                        'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
                     })}
                 />
             )}
@@ -71,10 +71,10 @@ export const FieldTextArea = ({
                 onInput={resizeTextarea}
                 rows={rows}
                 className={classNames(
-                    'pzh-form-input overflow-hidden resize-none min-h-[48px]',
+                    'pzh-form-input min-h-[48px] resize-none overflow-hidden',
                     {
                         'pzh-form-error': hasError,
-                        'md:col-span-4 col-span-6': layout === 'grid',
+                        'col-span-6 md:col-span-4': layout === 'grid',
                     },
                     className
                 )}

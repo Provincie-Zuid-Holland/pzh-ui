@@ -63,7 +63,7 @@
         "@tiptap/pm": "^2.0.3",
         "@tiptap/react": "^2.0.3",
         "@types/react-table": "^7.7.15",
-        "classnames": "^2.3.2",
+        "clsx": "^2.1.0",
         "date-fns": "^2.30.0",
         "focus-trap-react": "^10.1.1",
         "formik": "^2.4.2",

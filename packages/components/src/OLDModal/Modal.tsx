@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { useWindowSize } from '@react-hookz/web'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import FocusTrap from 'focus-trap-react'
 import { Fragment, ReactNode } from 'react'
 

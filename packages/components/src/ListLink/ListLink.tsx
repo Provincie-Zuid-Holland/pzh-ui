@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import { AngleRight } from '@pzh-ui/icons'
-import classNames from 'classnames'
+import classNames from 'clsx'
+import { Link } from 'react-router-dom'
 
 export interface ListLinkProps {
     text: string
@@ -19,7 +19,7 @@ export const ListLink = ({ text, to, className }: ListLinkProps) => {
                 className
             )}
             to={to}>
-            <AngleRight className="mr-2 relative -bottom-[6px] min-w-[14px]" />
+            <AngleRight className="relative -bottom-[6px] mr-2 min-w-[14px]" />
             <span>{text}</span>
         </Link>
     )

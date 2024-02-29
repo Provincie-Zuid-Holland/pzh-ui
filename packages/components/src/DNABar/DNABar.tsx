@@ -1,5 +1,5 @@
 import { useWindowSize } from '@react-hookz/web'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { useEffect, useState } from 'react'
 
 import detailPatterns from '../assets/detail-patterns.svg'

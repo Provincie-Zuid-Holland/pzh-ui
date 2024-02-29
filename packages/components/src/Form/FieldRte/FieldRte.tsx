@@ -14,7 +14,7 @@ import Placeholder from '@tiptap/extension-placeholder'
 import Text from '@tiptap/extension-text'
 import Underline from '@tiptap/extension-underline'
 import { Editor, EditorContent, useEditor } from '@tiptap/react'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { ReactNode, useEffect, useState } from 'react'
 
 import Heading from '@tiptap/extension-heading'

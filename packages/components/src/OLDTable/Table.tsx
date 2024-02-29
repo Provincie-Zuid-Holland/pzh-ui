@@ -1,5 +1,5 @@
 import { useUpdateEffect } from '@react-hookz/web'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import {
     SortingRule,
     TableOptions,

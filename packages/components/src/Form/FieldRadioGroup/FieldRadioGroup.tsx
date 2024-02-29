@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { ReactNode } from 'react'
 import { FieldLabel } from '..'
 import { FieldRadio, FieldRadioProps } from '../FieldRadio'

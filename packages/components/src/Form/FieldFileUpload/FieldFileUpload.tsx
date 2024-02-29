@@ -1,5 +1,5 @@
 import { useMountEffect, useUpdateEffect } from '@react-hookz/web'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import {
     DropzoneOptions,

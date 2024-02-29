@@ -1,7 +1,7 @@
 /**
  * Form label element
  */
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { ReactNode } from 'react'
 
 import { CircleInfo } from '@pzh-ui/icons'

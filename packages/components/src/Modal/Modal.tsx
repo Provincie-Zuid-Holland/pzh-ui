@@ -1,5 +1,5 @@
 import { useObjectRef } from '@react-aria/utils'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { forwardRef, useRef } from 'react'
 import {
     AriaModalOverlayProps,

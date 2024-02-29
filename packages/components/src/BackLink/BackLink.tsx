@@ -1,5 +1,5 @@
 import { AngleLeft } from '@pzh-ui/icons'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { Link, LinkProps } from 'react-router-dom'
 
 export interface BackLinkProps extends LinkProps {
@@ -11,11 +11,11 @@ export const BackLink = ({ to, label = 'Terug', className }: BackLinkProps) => (
     <Link
         to={to}
         className={classNames(
-            'flex items-center text-pzh-blue-dark',
+            'text-pzh-blue-dark flex items-center',
             className
         )}
         data-testid="back-link">
-        <AngleLeft className="mr-2 -mt-[2px]" />
+        <AngleLeft className="-mt-[2px] mr-2" />
         {label}
     </Link>
 )

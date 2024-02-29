@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'clsx'
 
 export interface DividerProps {
     className?: string
@@ -7,6 +7,6 @@ export interface DividerProps {
 export const Divider = ({ className = 'my-2' }: DividerProps) => (
     <div
         data-testid="divider"
-        className={classNames('w-full h-px bg-pzh-gray-300', className)}
+        className={classNames('bg-pzh-gray-300 h-px w-full', className)}
     />
 )

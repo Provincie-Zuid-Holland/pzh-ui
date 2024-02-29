@@ -5,7 +5,7 @@ import {
     getSortedRowModel,
     useReactTable,
 } from '@tanstack/react-table'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import { ReactNode } from 'react'
 
 import { ArrowDownAZ, ArrowDownZA, Spinner } from '@pzh-ui/icons'

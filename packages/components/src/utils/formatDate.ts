@@ -6,9 +6,9 @@
 // eslint-disable-next-line
 import { format } from 'date-fns'
 // eslint-disable-next-line
-import nlLocale from 'date-fns/locale/nl'
+import { nl } from 'date-fns/locale'
 
 const formatDate = (date: Date, dateFormat: string) =>
-    format(date, dateFormat, { locale: nlLocale })
+    format(date, dateFormat, { locale: nl })
 
 export default formatDate

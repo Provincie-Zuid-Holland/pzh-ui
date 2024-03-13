@@ -1,5 +1,5 @@
 import classNames from 'clsx'
-import { ReactNode } from 'react'
+import { KeyboardEventHandler, ReactNode, useState } from 'react'
 import ReactSelect, {
     GroupBase,
     Props,
@@ -7,9 +7,11 @@ import ReactSelect, {
     components,
 } from 'react-select'
 import AsyncReactSelect, { AsyncProps } from 'react-select/async'
+import CreatableSelect from 'react-select/creatable'
 
 import { AngleDown, Xmark } from '@pzh-ui/icons'
 
+import { Tag } from '../../Tag'
 import { FieldLabel } from '../FieldLabel'
 
 type SelectProps = Props &
@@ -17,6 +19,16 @@ type SelectProps = Props &
         AsyncProps<unknown, boolean, GroupBase<unknown>>,
         'defaultOptions' | 'cacheOptions' | 'loadOptions' | 'isLoading'
     >
+
+interface Option {
+    readonly label: string
+    readonly value: string
+}
+
+const createOption = (label: string) => ({
+    label,
+    value: label,
+})
 
 /**
  * Form select element
@@ -33,6 +45,7 @@ export interface FieldSelectProps extends SelectProps {
     layout?: 'default' | 'grid'
     tooltip?: string | JSX.Element
     isAsync?: boolean
+    isCreatable?: boolean
 }
 
 export function FieldSelect({
@@ -47,11 +60,39 @@ export function FieldSelect({
     layout = 'default',
     tooltip,
     isAsync,
+    isCreatable,
     components: providedComponents,
     styles: providedStyles,
     ...props
 }: FieldSelectProps) {
-    const Select = isAsync ? AsyncReactSelect : ReactSelect
+    const Select = isAsync
+        ? AsyncReactSelect
+        : isCreatable
+        ? CreatableSelect
+        : ReactSelect
+
+    const [inputValue, setInputValue] = useState('')
+    const [value, setValue] = useState<readonly Option[]>([])
+
+    const handleKeyDown: KeyboardEventHandler = event => {
+        if (!inputValue) return
+        switch (event.key) {
+            case 'Enter':
+            case 'Tab':
+                setValue(prev => [...prev, createOption(inputValue)])
+                setInputValue('')
+                event.preventDefault()
+        }
+    }
+
+    if (isCreatable) {
+        props.isMulti = true
+        props.inputValue = inputValue
+        props.onKeyDown = handleKeyDown
+        props.onInputChange = setInputValue
+        props.onChange = (newValue: any) => setValue(newValue)
+        props.value = value
+    }
 
     return (
         <div
@@ -155,6 +196,17 @@ export function FieldSelect({
                                 className="text-pzh-blue-dark"
                             />
                         ),
+                        MultiValue: props => (
+                            <components.MultiValue {...props}>
+                                <Tag
+                                    text={
+                                        (props.data as { label: string })?.label
+                                    }
+                                    onClick={props.clearValue}
+                                />
+                            </components.MultiValue>
+                        ),
+                        MultiValueRemove: () => null,
                         Input: props => (
                             <components.Input
                                 {...props}
@@ -240,7 +292,5 @@ export const getSelectStyles = () =>
                 opacity: 0.55,
             }),
         }),
-        multiValue: css => ({
-            ...css,
-        }),
+        multiValue: () => ({}),
     } as StylesConfig<unknown, boolean, GroupBase<unknown>>)

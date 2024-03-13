@@ -289,3 +289,16 @@ export const Async = {
         },
     },
 } satisfies Story
+
+export const Creatable = {
+    render: Template,
+    args: {
+        name: 'select',
+        placeholder: 'Placeholder',
+        isCreatable: true,
+        menuIsOpen: false,
+        components: {
+            DropdownIndicator: () => null,
+        },
+    },
+} satisfies Story

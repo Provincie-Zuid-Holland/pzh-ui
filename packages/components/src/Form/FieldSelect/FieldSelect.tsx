@@ -10,8 +10,6 @@ import AsyncReactSelect, { AsyncProps } from 'react-select/async'
 import CreatableSelect from 'react-select/creatable'
 
 import { AngleDown, Xmark } from '@pzh-ui/icons'
-
-import { Tag } from '../../Tag'
 import { FieldLabel } from '../FieldLabel'
 
 type SelectProps = Props &
@@ -87,11 +85,10 @@ export function FieldSelect({
 
     if (isCreatable) {
         props.isMulti = true
-        props.inputValue = inputValue
         props.onKeyDown = handleKeyDown
         props.onInputChange = setInputValue
-        props.onChange = (newValue: any) => setValue(newValue)
         props.value = value
+        props.inputValue = inputValue
     }
 
     return (
@@ -121,39 +118,12 @@ export function FieldSelect({
                     className={className}
                     inputId={name}
                     components={{
-                        Control: props => (
-                            <components.Control
-                                {...props}
-                                className={classNames(
-                                    'border-pzh-gray-600 hover:border-pzh-blue-dark',
-                                    {
-                                        'bg-white': !disabled,
-                                        'border-pzh-red': hasError,
-                                        'bg-pzh-gray-200': disabled,
-                                        'ring-pzh-focus border-pzh-blue ring ring-2':
-                                            props.isFocused,
-                                    }
-                                )}
-                            />
-                        ),
-                        ValueContainer: props => (
-                            <components.ValueContainer
-                                {...props}
-                                className="h-[48px] !flex-nowrap !overflow-x-auto whitespace-nowrap !py-0"
-                            />
-                        ),
                         DropdownIndicator: () => (
                             <div className="mr-4">
                                 <AngleDown className="text-pzh-blue-dark" />
                             </div>
                         ),
-                        IndicatorSeparator: () => null,
-                        Placeholder: props => (
-                            <components.Placeholder
-                                {...props}
-                                className="text-pzh-gray-600 m-0 leading-none"
-                            />
-                        ),
+                        IndicatorSeparator: null,
                         Option: props => (
                             <components.Option
                                 {...props}
@@ -190,29 +160,6 @@ export function FieldSelect({
                                 )}
                             </components.Option>
                         ),
-                        SingleValue: props => (
-                            <components.SingleValue
-                                {...props}
-                                className="text-pzh-blue-dark"
-                            />
-                        ),
-                        MultiValue: props => (
-                            <components.MultiValue {...props}>
-                                <Tag
-                                    text={
-                                        (props.data as { label: string })?.label
-                                    }
-                                    onClick={props.clearValue}
-                                />
-                            </components.MultiValue>
-                        ),
-                        MultiValueRemove: () => null,
-                        Input: props => (
-                            <components.Input
-                                {...props}
-                                className="pzh-select-input shadow-none focus:shadow-none"
-                            />
-                        ),
                         GroupHeading: props => (
                             <components.GroupHeading {...props}>
                                 <p className="text-m font-bold normal-case">
@@ -232,8 +179,34 @@ export function FieldSelect({
                         ),
                         ...providedComponents,
                     }}
+                    classNames={{
+                        control: state =>
+                            classNames(
+                                'border-pzh-gray-600 hover:border-pzh-blue-900',
+                                {
+                                    'bg-white': !disabled,
+                                    'border-pzh-red': hasError,
+                                    'bg-pzh-gray-200': disabled,
+                                    'ring-pzh-focus border-pzh-blue ring ring-2':
+                                        state.isFocused,
+                                }
+                            ),
+                        singleValue: () => 'text-pzh-blue-900',
+                        placeholder: () => 'text-pzh-gray-600 m-0 leading-none',
+                        valueContainer: () => 'gap-2',
+                        multiValue: () =>
+                            'border-pzh-blue-500 text-pzh-blue-500 focus:ring-pzh-focus inline-flex gap-2 h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring hover:bg-pzh-blue-500 transition duration-150 hover:text-white',
+                        multiValueLabel: () => '-mb-px',
+                    }}
                     styles={{ ...getSelectStyles(), ...providedStyles }}
                     {...props}
+                    onChange={(newValue: any) => {
+                        props.onChange?.(newValue, {
+                            action: 'select-option',
+                            option: undefined,
+                        })
+                        setValue(newValue)
+                    }}
                 />
             </div>
         </div>
@@ -258,6 +231,9 @@ export const getSelectStyles = () =>
             margin: 0,
             padding: 0,
             lineHeight: 1,
+            '> input': {
+                boxShadow: 'none !important',
+            },
         }),
         singleValue: ({ color, ...css }, state) => ({
             ...css,
@@ -269,9 +245,12 @@ export const getSelectStyles = () =>
         }),
         valueContainer: css => ({
             ...css,
-            paddingTop: 15,
-            paddingBottom: 11,
+            paddingBlock: 0,
             paddingInline: 15,
+            height: 48,
+            flexWrap: 'nowrap',
+            whiteSpace: 'nowrap',
+            overflowX: 'auto',
         }),
         option: (_, state) => ({
             fontFamily:
@@ -288,9 +267,12 @@ export const getSelectStyles = () =>
         indicatorsContainer: (css, state) => ({
             ...css,
             justifyContent: 'center',
+            paddingRight: 8,
             ...(state.isDisabled && {
                 opacity: 0.55,
             }),
         }),
         multiValue: () => ({}),
+        multiValueLabel: () => ({}),
+        multiValueRemove: () => ({}),
     } as StylesConfig<unknown, boolean, GroupBase<unknown>>)

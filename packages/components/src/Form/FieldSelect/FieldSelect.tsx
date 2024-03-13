@@ -78,6 +78,8 @@ export function FieldSelect({
         switch (event.key) {
             case 'Enter':
             case 'Tab':
+                if (value.find(val => val.value === inputValue)) return
+
                 setValue(prev => [...prev, createOption(inputValue)])
                 setInputValue('')
                 event.preventDefault()

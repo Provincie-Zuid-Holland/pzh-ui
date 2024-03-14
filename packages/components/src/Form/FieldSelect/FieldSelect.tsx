@@ -131,7 +131,7 @@ export function FieldSelect({
                         Option: props => (
                             <components.Option
                                 {...props}
-                                className={classNames(' px-4 py-1', {
+                                className={classNames('px-4 py-1', {
                                     'text-pzh-blue-dark hover:text-pzh-green cursor-pointer hover:underline':
                                         !props.isDisabled,
                                     'text-pzh-gray-500': props.isDisabled,
@@ -197,7 +197,7 @@ export function FieldSelect({
                             ),
                         singleValue: () => 'text-pzh-blue-900',
                         placeholder: () => 'text-pzh-gray-600 m-0 leading-none',
-                        valueContainer: () => 'gap-2',
+                        valueContainer: () => 'gap-2 flex-wrap py-2',
                         multiValue: () =>
                             'border-pzh-blue-500 text-pzh-blue-500 focus:ring-pzh-focus inline-flex gap-2 h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring hover:bg-pzh-blue-500 transition duration-150 hover:text-white',
                         multiValueLabel: () => '-mb-px',
@@ -227,7 +227,6 @@ export const getSelectStyles = () =>
             ...css
         }) => ({
             ...css,
-            maxHeight: 48,
             '&:hover': {},
         }),
         input: css => ({
@@ -249,10 +248,9 @@ export const getSelectStyles = () =>
         }),
         valueContainer: css => ({
             ...css,
-            paddingBlock: 0,
-            paddingInline: 15,
-            height: 48,
-            flexWrap: 'nowrap',
+            paddingBlock: 8,
+            paddingInline: 16,
+            minHeight: 48,
             whiteSpace: 'nowrap',
             overflowX: 'auto',
         }),

@@ -1,7 +1,7 @@
 import { FastField, Field, FieldProps } from 'formik'
 
-import { FormikError } from './FormikError'
 import { FieldSelect, FieldSelectProps } from '../Form/FieldSelect'
+import { FormikError } from './FormikError'
 
 type FormikSelectProps = FieldSelectProps & {
     optimized?: boolean
@@ -24,7 +24,7 @@ export function FormikSelect({
                         {...field}
                         options={options}
                         value={
-                            props.isMulti
+                            props.isMulti && !props.isCreatable
                                 ? field.value?.map((val: any) =>
                                       options?.find(
                                           (option: any) =>
@@ -32,6 +32,11 @@ export function FormikSelect({
                                               JSON.stringify(val)
                                       )
                                   )
+                                : props.isCreatable && props.isMulti
+                                ? field.value?.map((val: any) => ({
+                                      label: val,
+                                      value: val,
+                                  }))
                                 : options?.find(
                                       (option: any) =>
                                           option.value === field.value

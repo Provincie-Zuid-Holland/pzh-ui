@@ -81,7 +81,16 @@ export function FieldSelect({
             case 'Tab':
                 if (value.find(val => val.value === inputValue)) return
 
-                setValue(prev => [...prev, createOption(inputValue)])
+                setValue(prev => {
+                    const newVal = [...prev, createOption(inputValue)]
+
+                    props.onChange?.(newVal, {
+                        action: 'create-option',
+                        option: undefined,
+                    })
+
+                    return newVal
+                })
                 setInputValue('')
                 event.preventDefault()
         }

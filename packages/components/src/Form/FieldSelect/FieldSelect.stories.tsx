@@ -300,5 +300,6 @@ export const Creatable = {
         components: {
             DropdownIndicator: () => null,
         },
+        value: [{ label: 'tst', value: 'tst' }],
     },
 } satisfies Story

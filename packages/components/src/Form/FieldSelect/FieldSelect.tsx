@@ -10,7 +10,6 @@ import AsyncReactSelect, { AsyncProps } from 'react-select/async'
 import CreatableSelect from 'react-select/creatable'
 
 import { AngleDown, Xmark } from '@pzh-ui/icons'
-import { useUpdateEffect } from '@react-aria/utils'
 import { FieldLabel } from '../FieldLabel'
 
 type SelectProps = Props &
@@ -95,15 +94,6 @@ export function FieldSelect({
         props.value = value
         props.inputValue = inputValue
     }
-
-    useUpdateEffect(() => {
-        if (isCreatable) {
-            props.onChange?.(value, {
-                action: 'create-option',
-                option: undefined,
-            })
-        }
-    }, [value])
 
     return (
         <div
@@ -214,6 +204,13 @@ export function FieldSelect({
                     }}
                     styles={{ ...getSelectStyles(), ...providedStyles }}
                     {...props}
+                    onChange={newValue => {
+                        setValue(newValue as Option[])
+                        props.onChange?.(newValue, {
+                            action: 'select-option',
+                            option: undefined,
+                        })
+                    }}
                 />
             </div>
         </div>

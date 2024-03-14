@@ -71,7 +71,9 @@ export function FieldSelect({
         : ReactSelect
 
     const [inputValue, setInputValue] = useState('')
-    const [value, setValue] = useState<readonly Option[]>([])
+    const [value, setValue] = useState<readonly Option[]>(
+        Array.isArray(props.value) ? props.value : []
+    )
 
     const handleKeyDown: KeyboardEventHandler = event => {
         if (!inputValue) return

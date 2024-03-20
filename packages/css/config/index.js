@@ -100,7 +100,7 @@ module.exports = {
         white: "#FFFFFF",
         black: "#000000",
         "visited-link": "#5F29A2",
-        backdrop: "#5C5C5C",
+        backdrop: "rgba(92,92,92,.5)",
         focus: "#2360C5",
       },
       /** OLD colors */

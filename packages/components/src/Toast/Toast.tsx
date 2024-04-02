@@ -4,7 +4,7 @@ import {
     ToastContainerProps as ContainerProps,
     toast,
 } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
+import './style.css'
 
 import {
     CircleCheck,

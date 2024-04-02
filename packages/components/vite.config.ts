@@ -36,14 +36,13 @@ export default defineConfig({
                 }) as PluginOption,
             ],
             output: {
-                entryFileNames: '[name].[format].js',
+                entryFileNames: '[name].js',
                 preserveModules: true,
             },
         },
         lib: {
             entry: path.resolve(path.resolve(path.dirname('')), 'src/index.ts'),
-            formats: ['es', 'cjs'],
-            fileName: ext => `index.${ext}.js`,
+            formats: ['es'],
         },
     },
     // @ts-ignore

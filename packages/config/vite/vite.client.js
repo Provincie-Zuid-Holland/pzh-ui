@@ -11,8 +11,7 @@ module.exports = {
         sourcemap: true,
         lib: {
             entry: path.resolve(path.resolve(path.dirname('')), 'src/index.ts'),
-            formats: ['es', 'cjs'],
-            fileName: ext => `index.${ext}.js`,
+            formats: ['es'],
         },
         rollupOptions: {
             external: isExternal,

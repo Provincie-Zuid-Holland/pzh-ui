@@ -6,7 +6,7 @@ import {
     FileError,
     FileWithPath,
     useDropzone,
-} from 'react-dropzone'
+} from 'react-dropzone-esm'
 
 import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 

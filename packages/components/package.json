@@ -1,6 +1,6 @@
 {
     "name": "@pzh-ui/components",
-    "version": "0.0.492",
+    "version": "0.0.493",
     "description": "Contains default components to use in Provincie Zuid-Holland projects.",
     "license": "ISC",
     "publishConfig": {
@@ -29,7 +29,7 @@
     "dependencies": {
         "@floating-ui/react": "^0.24.8",
         "@headlessui/react": "^1.5.0",
-        "@pzh-ui/icons": "^0.0.51",
+        "@pzh-ui/icons": "^0.0.52",
         "@react-aria/utils": "^3.23.2",
         "@react-hookz/web": "^24.0.4",
         "@react-types/shared": "^3.19.0",

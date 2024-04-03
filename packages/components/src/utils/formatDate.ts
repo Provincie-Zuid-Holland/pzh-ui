@@ -1,7 +1,5 @@
-/**
- * Eslint needs to be disabled for these imports,
- * otherwise eslint will merge them together causing a conflict.
- */
+// Eslint needs to be disabled for these imports,
+// otherwise eslint will merge them together causing a conflict.
 
 // eslint-disable-next-line
 import { format } from 'date-fns'

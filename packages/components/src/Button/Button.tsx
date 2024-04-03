@@ -11,12 +11,19 @@ import { useObjectRef } from '@react-aria/utils'
  */
 
 export interface ButtonProps<T extends ElementType> extends AriaButtonProps<T> {
+    /** The elements tag which should be used, defaults to 'button' */
     as?: T
+    /** Variant of the button */
     variant?: 'primary' | 'secondary' | 'cta' | 'link' | 'default'
+    /** Size of the button */
     size?: 'large' | 'small'
+    /** Option to provide an icon component inside the button */
     icon?: any
+    /** Size of provided icon */
     iconSize?: number
+    /** Wether the button has a loading state */
     isLoading?: boolean
+    /** Custom classNames */
     className?: string
     children?: ReactNode
 }

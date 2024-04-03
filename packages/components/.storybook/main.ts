@@ -4,7 +4,7 @@ const config: StorybookConfig = {
     stories: [
         './stories/Introduction.stories.mdx',
         './stories/*.stories.mdx',
-        '../src/**/*.stories.mdx',
+        '../src/**/*.mdx',
         '../src/**/*.stories.@(js|jsx|ts|tsx)',
     ],
     addons: [
@@ -33,8 +33,21 @@ const config: StorybookConfig = {
         reactDocgen: 'react-docgen-typescript',
         reactDocgenTypescriptOptions: {
             shouldExtractLiteralValuesFromEnum: true,
-            propFilter: prop =>
-                prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+            propFilter: (prop: any) => {
+                if (prop.parent && /node_modules/.test(prop.parent.fileName)) {
+                    return !(
+                        prop.parent.name === 'AnchorHTMLAttributes' ||
+                        prop.parent.name === 'AriaAttributes' ||
+                        prop.parent.name === 'ButtonHTMLAttributes' ||
+                        prop.parent.name === 'DOMAttributes' ||
+                        prop.parent.name === 'FormHTMLAttributes' ||
+                        prop.parent.name === 'HTMLAttributes' ||
+                        prop.parent.name === 'ImgHTMLAttributes' ||
+                        prop.parent.name === 'InputHTMLAttributes'
+                    )
+                }
+                return true
+            },
         },
     },
     docs: {

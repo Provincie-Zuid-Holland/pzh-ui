@@ -18,6 +18,7 @@ export interface TableProps
         'getCoreRowModel' | 'getSortedRowModel' | 'manualPagination'
     > {
     className?: string
+    current?: number
     limit?: number
     total?: number
     isLoading?: boolean
@@ -27,6 +28,7 @@ export const Table = ({
     className = '',
     limit = 20,
     total,
+    current,
     isLoading,
     ...rest
 }: TableProps) => {
@@ -184,11 +186,12 @@ export const Table = ({
                     )}
                 </tbody>
             </table>
-            {!!total && !!limit && total > limit && (
+            {!!current && !!total && !!limit && total > limit && (
                 <Pagination
-                    onChange={page => table.setPageIndex(page)}
+                    onPageChange={table.setPageIndex}
                     total={total}
                     limit={limit}
+                    current={current}
                 />
             )}
         </div>

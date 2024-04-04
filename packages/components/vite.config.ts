@@ -1,14 +1,16 @@
 /// <reference types="vitest" />
 import typescriptPlugin from '@rollup/plugin-typescript'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+import { glob } from 'glob'
+import { fileURLToPath } from 'node:url'
+import { extname, isAbsolute, relative, resolve } from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { PluginOption, defineConfig } from 'vite'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-const isExternal = id => !id.startsWith('.') && !path.isAbsolute(id)
+const isExternal = id => !id.startsWith('.') && !isAbsolute(id)
 
 export default defineConfig({
     plugins: [
@@ -38,14 +40,26 @@ export default defineConfig({
                     exclude: ['**/*.test.tsx', '**/*.stories.tsx'],
                 }) as PluginOption,
             ],
+            input: Object.fromEntries(
+                glob
+                    .sync('src/**/*.{ts,tsx}', {
+                        ignore: ['**/*.test.tsx', '**/*.stories.tsx'],
+                    })
+                    .map(file => [
+                        relative(
+                            'src',
+                            file.slice(0, file.length - extname(file).length)
+                        ),
+                        fileURLToPath(new URL(file, import.meta.url)),
+                    ])
+            ),
             output: {
                 assetFileNames: 'assets/[name][extname]',
                 entryFileNames: '[name].js',
-                // preserveModules: true,
             },
         },
         lib: {
-            entry: path.resolve(path.resolve(path.dirname('')), 'src/index.ts'),
+            entry: resolve(__dirname, 'src/index.ts'),
             formats: ['es'],
         },
     },

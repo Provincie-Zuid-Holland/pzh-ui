@@ -18,7 +18,7 @@ describe('Pagination', () => {
     it('Component renders', () => {
         setup()
 
-        const element = screen.getByRole('navigation')
+        const element = screen.getByText('1')
         expect(element).toBeTruthy()
     })
 })

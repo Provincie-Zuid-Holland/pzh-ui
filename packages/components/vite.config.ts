@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { PluginOption, defineConfig } from 'vite'
+import { libInjectCss } from 'vite-plugin-lib-inject-css'
+
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 const isExternal = id => !id.startsWith('.') && !path.isAbsolute(id)
@@ -16,6 +18,7 @@ export default defineConfig({
                 configFile: true,
             },
         }),
+        libInjectCss(),
         visualizer({
             template: 'treemap', // or sunburst
             gzipSize: true,
@@ -36,8 +39,9 @@ export default defineConfig({
                 }) as PluginOption,
             ],
             output: {
+                assetFileNames: 'assets/[name][extname]',
                 entryFileNames: '[name].js',
-                preserveModules: true,
+                // preserveModules: true,
             },
         },
         lib: {

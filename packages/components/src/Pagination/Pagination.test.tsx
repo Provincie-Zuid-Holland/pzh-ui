@@ -1,12 +1,13 @@
-import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { render, screen } from '@testing-library/react'
 
 import { Pagination, PaginationProps } from './Pagination'
 
 describe('Pagination', () => {
     const defaultProps = {
-        onChange: console.log,
+        onPageChange: console.log,
         total: 100,
+        current: 1,
     }
 
     const setup = (customProps?: Partial<PaginationProps>) => {

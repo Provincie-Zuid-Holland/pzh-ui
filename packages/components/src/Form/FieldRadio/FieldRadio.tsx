@@ -1,5 +1,6 @@
 import classNames from 'clsx'
 import React from 'react'
+import { cn } from '../../utils'
 
 /**
  * Form radio element
@@ -18,7 +19,7 @@ export const FieldRadio = ({
     children,
     ...props
 }: FieldRadioProps) => (
-    <label className={classNames('inline-block items-center', className)}>
+    <label className={cn('inline-block items-center', className)}>
         <input
             data-testid="pzh-form-radio"
             disabled={disabled}

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 import detailPatterns from '../assets/detail-patterns.svg'
 import primaryPatterns from '../assets/primary-patterns.svg'
+import { cn } from '../utils'
 
 export const useDnaBarWidth = () => {
     const windowSize = useWindowSize()
@@ -26,7 +27,7 @@ export function DNABar({ blocks = 5, className }: DNABarProps) {
 
     return (
         <div
-            className={classNames(
+            className={cn(
                 'pointer-events-none absolute right-0 z-10',
                 {
                     hidden: windowSize.width <= 640,

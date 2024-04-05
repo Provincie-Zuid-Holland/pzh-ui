@@ -8,6 +8,7 @@ import {
 } from '@pzh-ui/icons'
 import { getHeadingStyles } from '../Heading'
 import { Text } from '../Text'
+import { cn } from '../utils'
 
 export interface NotificationProps {
     variant?: 'info' | 'warning' | 'positive' | 'negative'
@@ -50,7 +51,7 @@ export const Notification = ({
 
     return (
         <div
-            className={classNames(
+            className={cn(
                 'inline-block rounded border px-4 py-3',
                 colors.container,
                 className

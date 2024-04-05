@@ -11,6 +11,7 @@ import { ReactNode } from 'react'
 import { ArrowDownAZ, ArrowDownZA, Spinner } from '@pzh-ui/icons'
 
 import { Pagination } from '../Pagination'
+import { cn } from '../utils'
 
 export interface TableProps
     extends Omit<
@@ -42,10 +43,7 @@ export const Table = ({
     return (
         <div className="flex flex-col items-center">
             <table
-                className={classNames(
-                    'text-pzh-blue-dark mb-8 w-full',
-                    className
-                )}
+                className={cn('text-pzh-blue-dark mb-8 w-full', className)}
                 data-testid="table">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (

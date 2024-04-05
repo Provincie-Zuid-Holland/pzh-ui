@@ -1,6 +1,7 @@
 import classNames from 'clsx'
 import React, { ReactNode, useLayoutEffect, useRef } from 'react'
 
+import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
 
 /**
@@ -70,7 +71,7 @@ export const FieldTextArea = ({
                 required={required}
                 onInput={resizeTextarea}
                 rows={rows}
-                className={classNames(
+                className={cn(
                     'pzh-form-input min-h-[48px] resize-none overflow-hidden',
                     {
                         'pzh-form-error': hasError,

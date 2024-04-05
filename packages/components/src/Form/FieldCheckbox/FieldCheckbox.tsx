@@ -1,5 +1,6 @@
 import classNames from 'clsx'
 import React from 'react'
+import { cn } from '../../utils'
 
 /**
  * Form checkbox element
@@ -17,7 +18,7 @@ export const FieldCheckbox = ({
     children,
     ...props
 }: FieldCheckboxProps) => (
-    <label className={classNames('flex items-center', className)}>
+    <label className={cn('flex items-center', className)}>
         <input
             data-testid="pzh-form-checkbox"
             disabled={disabled}

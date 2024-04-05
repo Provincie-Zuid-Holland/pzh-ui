@@ -1,6 +1,6 @@
-import classNames from 'clsx'
 import { ElementType } from 'react'
 
+import { cn } from '../utils'
 import { PolymorphicComponentProp } from '../utils/polymorphicComponent'
 
 type PossibleTypes =
@@ -44,7 +44,7 @@ export const Text = <C extends PossibleTypes>({
 
     return (
         <Component
-            className={classNames(color, styles, className, {
+            className={cn(color, styles, className, {
                 'font-bold': bold,
             })}
             {...rest}>

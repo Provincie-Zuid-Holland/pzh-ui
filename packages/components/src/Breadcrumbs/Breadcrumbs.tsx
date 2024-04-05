@@ -2,7 +2,7 @@ import { AngleRight } from '@pzh-ui/icons'
 
 import { Slot } from '@radix-ui/react-slot'
 import { ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '../utils'
 
 export interface BreadcrumbsProps {
     className?: string
@@ -12,7 +12,7 @@ export interface BreadcrumbsProps {
 export const Breadcrumbs = ({ children, className }: BreadcrumbsProps) => (
     <nav
         aria-label="Broodkruimelpad"
-        className={twMerge('text-pzh-blue-dark text-s w-full', className)}>
+        className={cn('text-pzh-blue-dark text-s w-full', className)}>
         {children}
     </nav>
 )
@@ -26,12 +26,11 @@ export const BreadCrumbsList = ({
     children,
     className,
 }: BreadcrumbsListProps) => (
-    <ol className={twMerge('flex', className)}>{children}</ol>
+    <ol className={cn('flex', className)}>{children}</ol>
 )
 
 export interface BreadcrumbItemProps
     extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-    children?: ReactNode
     asChild?: boolean
     isCurrent?: boolean
 }

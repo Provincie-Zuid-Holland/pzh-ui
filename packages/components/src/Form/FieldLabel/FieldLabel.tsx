@@ -1,12 +1,12 @@
 /**
  * Form label element
  */
-import classNames from 'clsx'
 import { ReactNode } from 'react'
 
 import { CircleInfo } from '@pzh-ui/icons'
 
-import { Tooltip } from '../..'
+import { Tooltip } from '../../Tooltip'
+import { cn } from '../../utils'
 
 export interface FieldLabelProps {
     name: string
@@ -25,7 +25,7 @@ export const FieldLabel = ({
     tooltip,
     className,
 }: FieldLabelProps) => (
-    <div className={classNames('mb-2', className)}>
+    <div className={cn('mb-2', className)}>
         <div className="flex items-center">
             <label htmlFor={name} className="text-pzh-blue-dark font-bold">
                 {label}

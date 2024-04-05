@@ -1,6 +1,6 @@
 import { AngleRight } from '@pzh-ui/icons'
 import { Slot, Slottable } from '@radix-ui/react-slot'
-import classNames from 'clsx'
+import { cn } from '../utils'
 
 export interface ListLinkProps
     extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -18,7 +18,7 @@ export const ListLink = ({
 
     return (
         <Component
-            className={classNames(
+            className={cn(
                 'inline-flex items-start underline decoration-1 ',
                 {
                     'text-pzh-blue-dark hover:text-pzh-green': !className,

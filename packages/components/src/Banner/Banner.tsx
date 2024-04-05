@@ -1,5 +1,5 @@
-import classNames from 'clsx'
 import { useCallback, useEffect, useState } from 'react'
+import { cn } from '../utils'
 
 /**
  * Displays a banner
@@ -52,7 +52,7 @@ export const Banner = ({
 
     return (
         <div
-            className={classNames(
+            className={cn(
                 'relative',
                 {
                     'bg-pzh-blue text-white': color === 'blue',

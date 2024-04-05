@@ -5,6 +5,7 @@ import { AriaButtonProps, useButton } from 'react-aria'
 
 import { Spinner } from '@pzh-ui/icons'
 import { useObjectRef } from '@react-aria/utils'
+import { cn } from '../utils'
 
 /**
  * Primary UI component for user interaction
@@ -49,7 +50,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <Component
                 {...buttonProps}
-                className={classNames(
+                className={cn(
                     variant !== 'default' && {
                         'pzh-button': true,
                         'h-12 pb-3 pt-[15px]': size === 'large',

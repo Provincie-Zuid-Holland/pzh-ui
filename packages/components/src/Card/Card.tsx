@@ -1,5 +1,5 @@
-import classNames from 'clsx'
 import { ReactNode } from 'react'
+import { cn } from '../utils'
 
 export interface CardProps {
     className?: string
@@ -8,7 +8,7 @@ export interface CardProps {
 
 export const Card = ({ className = '', children }: CardProps) => (
     <div
-        className={classNames('shadow-card rounded bg-white p-6', className)}
+        className={cn('shadow-card rounded bg-white p-6', className)}
         data-testid="card">
         {children}
     </div>

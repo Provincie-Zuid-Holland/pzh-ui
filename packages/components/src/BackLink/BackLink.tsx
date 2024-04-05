@@ -1,6 +1,6 @@
 import { AngleLeft } from '@pzh-ui/icons'
 import { Slot, Slottable } from '@radix-ui/react-slot'
-import classNames from 'clsx'
+import { cn } from '../utils'
 
 export interface BackLinkProps
     extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -18,10 +18,7 @@ export const BackLink = ({
 
     return (
         <Component
-            className={classNames(
-                'text-pzh-blue-dark flex items-center',
-                className
-            )}
+            className={cn('text-pzh-blue-dark flex items-center', className)}
             data-testid="back-link"
             {...rest}>
             <AngleLeft className="-mt-[2px] mr-2" />

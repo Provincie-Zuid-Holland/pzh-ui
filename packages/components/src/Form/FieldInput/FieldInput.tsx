@@ -1,6 +1,7 @@
 import classNames from 'clsx'
 import { InputHTMLAttributes, ReactNode } from 'react'
 
+import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
 
 /**
@@ -63,7 +64,7 @@ export const FieldInput = ({
                 name={name}
                 required={required}
                 disabled={disabled}
-                className={classNames(
+                className={cn(
                     'pzh-form-input',
                     {
                         'pzh-form-error': hasError,

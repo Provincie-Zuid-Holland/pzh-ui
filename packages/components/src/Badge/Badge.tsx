@@ -1,4 +1,4 @@
-import classNames from 'clsx'
+import { cn } from '../utils'
 
 export interface BadgeProps {
     text: string
@@ -24,7 +24,7 @@ export const Badge = ({
     className = '',
 }: BadgeProps) => (
     <div
-        className={classNames(
+        className={cn(
             'text-s inline-block h-6 rounded border px-2 pt-px font-bold',
             {
                 uppercase: upperCase,

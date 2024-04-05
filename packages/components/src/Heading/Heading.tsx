@@ -1,5 +1,5 @@
-import classNames from 'clsx'
 import { ReactNode } from 'react'
+import { cn } from '../utils'
 
 export interface HeadingProps {
     className?: string
@@ -25,7 +25,7 @@ export const Heading = ({
     return (
         <Component
             id={id}
-            className={classNames(
+            className={cn(
                 'hyphens-manual break-words',
                 styles,
                 color,

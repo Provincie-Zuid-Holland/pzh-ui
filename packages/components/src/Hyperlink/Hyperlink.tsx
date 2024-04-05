@@ -2,15 +2,14 @@ import { Slot, Slottable } from '@radix-ui/react-slot'
 
 export interface HyperlinkProps
     extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-    text: string
     icon?: any
     asChild?: boolean
 }
 
 export const Hyperlink = ({
-    text,
     icon: Icon,
     asChild,
+    children,
     ...rest
 }: HyperlinkProps) => {
     const Component = asChild ? Slot : 'a'
@@ -19,7 +18,7 @@ export const Hyperlink = ({
         <Component
             className="text-pzh-green hover:text-pzh-blue-dark inline-flex items-center underline"
             {...rest}>
-            <Slottable>{text}</Slottable>
+            <Slottable>{children}</Slottable>
             {Icon ? <Icon className="ml-2 mt-[1px]" /> : null}
         </Component>
     )

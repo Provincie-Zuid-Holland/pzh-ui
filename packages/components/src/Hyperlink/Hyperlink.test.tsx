@@ -4,8 +4,7 @@ import { Hyperlink, HyperlinkProps } from './Hyperlink'
 
 describe('Hyperlink', () => {
     const defaultProps = {
-        text: 'Button text',
-        to: '/to-page',
+        children: 'Button text',
     }
 
     const setup = (customProps?: Partial<HyperlinkProps>) => {

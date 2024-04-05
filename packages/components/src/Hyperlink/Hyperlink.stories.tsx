@@ -16,6 +16,6 @@ const Template = (args: HyperlinkProps) => <Hyperlink {...args} />
 export const Default = {
     render: Template,
     args: {
-        text: 'Hyperlink text',
+        children: 'Hyperlink text',
     },
 } satisfies Story

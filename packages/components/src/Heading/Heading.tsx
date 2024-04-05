@@ -39,19 +39,19 @@ export const Heading = ({
 export const getHeadingStyles = (size: HeadingProps['size']): string => {
     switch (size) {
         case 'xxxl':
-            return 'text-[4rem] leading-[110%]'
+            return 'text-heading-xxxl'
         case 'xxl':
-            return 'text-[3rem] leading-[125%]'
+            return 'text-heading-xxl'
         case 'xl':
-            return 'text-[2.5rem] leading-[125%]'
+            return 'text-heading-xl'
         case 'l':
-            return 'text-[2rem] leading-[125%]'
+            return 'text-heading-l'
         case 'm':
-            return 'text-[1.5rem] leading-[125%]'
+            return 'text-heading-m'
         case 's':
-            return 'text-[1.25rem] leading-[125%]'
+            return 'text-heading-s'
         case 'xs':
-            return 'text-[1.125rem] leading-[125%]'
+            return 'text-heading-xs'
         default:
             return ''
     }

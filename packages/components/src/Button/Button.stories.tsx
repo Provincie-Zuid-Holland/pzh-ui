@@ -1,6 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { ElementType } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
 
 import { Eye } from '@pzh-ui/icons'
 
@@ -15,17 +13,14 @@ export default {
 type Story = StoryObj<typeof Button>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args: ButtonProps<ElementType>) => (
-    <Router>
-        <Button {...args} />
-    </Router>
-)
+const Template = (args: ButtonProps) => <Button {...args} />
 
 export const Primary = {
     render: Template,
     args: {
         variant: 'primary',
-        children: 'Button',
+        children: <a href="/to-page">Button</a>,
+        asChild: true,
     },
 } satisfies Story
 

@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
 
 import { Hyperlink, HyperlinkProps } from './Hyperlink'
 
@@ -11,11 +10,7 @@ describe('Hyperlink', () => {
 
     const setup = (customProps?: Partial<HyperlinkProps>) => {
         const props = { ...defaultProps, ...customProps }
-        render(
-            <MemoryRouter>
-                <Hyperlink {...props} />
-            </MemoryRouter>
-        )
+        render(<Hyperlink {...props} />)
     }
 
     it('Component renders', () => {

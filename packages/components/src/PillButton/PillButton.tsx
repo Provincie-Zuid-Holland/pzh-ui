@@ -1,37 +1,30 @@
+import { Slot } from '@radix-ui/react-slot'
 import classNames from 'clsx'
-import { ElementType, ReactNode, useRef } from 'react'
+import { ReactNode, useRef } from 'react'
 import { AriaButtonProps, useButton } from 'react-aria'
-import { Link } from 'react-router-dom'
 
 /**
  * Primary UI component for user interaction
  */
 
-export interface PillButtonProps<T extends ElementType>
-    extends AriaButtonProps<'button'> {
-    as?: T
+export interface PillButtonProps extends AriaButtonProps {
     icon?: any
     className?: string
     children?: ReactNode
+    asChild?: boolean
 }
 
-export const PillButton = <T extends ElementType = 'button'>({
-    as,
-    ...props
-}: PillButtonProps<T>) => {
+export const PillButton = ({ asChild, ...props }: PillButtonProps) => {
     const ref = useRef(null)
-    const { buttonProps } = useButton({ ...props, elementType: as }, ref)
+    const { buttonProps } = useButton({ ...props }, ref)
     const { children, isDisabled, icon } = props
 
-    const Component = as === 'a' ? Link : as || 'button'
+    const Component = asChild ? Slot : 'button'
 
     const Icon = icon
 
     return (
         <Component
-            {...(as === 'a' && {
-                to: props.href,
-            })}
             className={classNames(
                 'focus:ring-pzh-focus text-s flex h-6 items-center rounded-full border px-4 ring-offset-2 transition focus:outline-none focus:ring',
                 {

@@ -1,16 +1,23 @@
 import { AngleRight } from '@pzh-ui/icons'
+import { Slot, Slottable } from '@radix-ui/react-slot'
 import classNames from 'clsx'
-import { Link } from 'react-router-dom'
 
-export interface ListLinkProps {
-    text: string
-    to: string
+export interface ListLinkProps
+    extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     className?: string
+    asChild?: boolean
 }
 
-export const ListLink = ({ text, to, className }: ListLinkProps) => {
+export const ListLink = ({
+    children,
+    asChild,
+    className,
+    ...rest
+}: ListLinkProps) => {
+    const Component = asChild ? Slot : 'a'
+
     return (
-        <Link
+        <Component
             className={classNames(
                 'inline-flex items-start underline decoration-1 ',
                 {
@@ -18,9 +25,9 @@ export const ListLink = ({ text, to, className }: ListLinkProps) => {
                 },
                 className
             )}
-            to={to}>
+            {...rest}>
             <AngleRight className="relative -bottom-[6px] mr-2 min-w-[14px]" />
-            <span>{text}</span>
-        </Link>
+            <Slottable>{children}</Slottable>
+        </Component>
     )
 }

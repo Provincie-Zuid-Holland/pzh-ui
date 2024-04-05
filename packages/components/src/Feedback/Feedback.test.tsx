@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { MemoryRouter } from 'react-router-dom'
+import { render, screen } from '@testing-library/react'
 
 import { Feedback, FeedbackProps, getMailToLink } from './Feedback'
 
@@ -12,11 +11,7 @@ describe('FeedbackComponent', () => {
 
     const setup = (customProps?: Partial<FeedbackProps>) => {
         const props = { ...defaultProps, ...customProps }
-        render(
-            <MemoryRouter>
-                <Feedback {...props} />
-            </MemoryRouter>
-        )
+        render(<Feedback {...props} />)
     }
 
     it('should render', () => {

@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { ElementType } from 'react'
 
 import { Button, ButtonProps } from './Button'
 
@@ -9,7 +8,7 @@ describe('Button', () => {
         children: 'Button text',
     }
 
-    const setup = (customProps?: Partial<ButtonProps<ElementType>>) => {
+    const setup = (customProps?: Partial<ButtonProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(<Button {...props} />)
     }

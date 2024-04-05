@@ -1,20 +1,26 @@
-import { Link } from "react-router-dom"
+import { Slot, Slottable } from '@radix-ui/react-slot'
 
-export interface HyperlinkProps {
+export interface HyperlinkProps
+    extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     text: string
-    to: string
     icon?: any
+    asChild?: boolean
 }
 
-export const Hyperlink = ({ text, icon: Icon, to }: HyperlinkProps) => {
+export const Hyperlink = ({
+    text,
+    icon: Icon,
+    asChild,
+    ...rest
+}: HyperlinkProps) => {
+    const Component = asChild ? Slot : 'a'
+
     return (
-        <>
-            <Link
-                className="inline-flex items-center underline text-pzh-green hover:text-pzh-blue-dark"
-                to={to}>
-                <span>{text}</span>
-                {Icon ? <Icon className="ml-2 mt-[1px]" /> : null}
-            </Link>
-        </>
+        <Component
+            className="text-pzh-green hover:text-pzh-blue-dark inline-flex items-center underline"
+            {...rest}>
+            <Slottable>{text}</Slottable>
+            {Icon ? <Icon className="ml-2 mt-[1px]" /> : null}
+        </Component>
     )
 }

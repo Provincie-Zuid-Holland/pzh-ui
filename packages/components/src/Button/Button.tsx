@@ -1,7 +1,7 @@
+import { Slot, Slottable } from '@radix-ui/react-slot'
 import classNames from 'clsx'
-import { ElementType, ReactNode, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { AriaButtonProps, useButton } from 'react-aria'
-import { Link } from 'react-router-dom'
 
 import { Spinner } from '@pzh-ui/icons'
 import { useObjectRef } from '@react-aria/utils'
@@ -10,9 +10,7 @@ import { useObjectRef } from '@react-aria/utils'
  * Primary UI component for user interaction
  */
 
-export interface ButtonProps<T extends ElementType> extends AriaButtonProps<T> {
-    /** The elements tag which should be used, defaults to 'button' */
-    as?: T
+export interface ButtonProps extends AriaButtonProps {
     /** Variant of the button */
     variant?: 'primary' | 'secondary' | 'cta' | 'link' | 'default'
     /** Size of the button */
@@ -25,28 +23,32 @@ export interface ButtonProps<T extends ElementType> extends AriaButtonProps<T> {
     isLoading?: boolean
     /** Custom classNames */
     className?: string
-    children?: ReactNode
+    /** Can be used to render a Next.js link for example */
+    asChild?: boolean
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps<ElementType>>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     (
-        { as, variant = 'primary', size = 'large', iconSize = 14, ...props },
+        {
+            asChild = false,
+            variant = 'primary',
+            size = 'large',
+            iconSize = 14,
+            ...props
+        },
         forwardedRef
     ) => {
         const ref = useObjectRef(forwardedRef)
-        const { buttonProps } = useButton({ ...props, elementType: as }, ref)
+        const { buttonProps } = useButton({ ...props }, ref)
         const { children, isDisabled, isLoading, icon } = props
 
-        const Component = as === 'a' ? Link : as || 'button'
+        const Component = asChild ? Slot : 'button'
 
         const Icon = icon && isLoading ? Spinner : icon ? icon : null
 
         return (
             <Component
                 {...buttonProps}
-                {...(as === 'a' && {
-                    to: props.href,
-                })}
                 className={classNames(
                     variant !== 'default' && {
                         'pzh-button': true,
@@ -64,28 +66,24 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<ElementType>>(
                             variant === 'cta' && !isDisabled,
                         'cursor-pointer': !isDisabled,
                     },
+                    {
+                        'inline-flex items-center': !!Icon || !!isLoading,
+                    },
                     props.className
                 )}
                 ref={ref}>
                 {Icon ? (
-                    <div className="flex items-center">
-                        <Icon
-                            size={iconSize}
-                            className={classNames('-mt-0.5', {
-                                'mr-2': !!children,
-                                'animate-spin': isLoading,
-                            })}
-                        />
-                        <span>{children}</span>
-                    </div>
+                    <Icon
+                        size={iconSize}
+                        className={classNames('-mt-0.5', {
+                            'mr-2': !!children,
+                            'animate-spin': isLoading,
+                        })}
+                    />
                 ) : isLoading ? (
-                    <div className="flex items-center">
-                        <Spinner className="-mt-0.5 mr-2 animate-spin" />
-                        <span>{children}</span>
-                    </div>
-                ) : (
-                    children
-                )}
+                    <Spinner className="-mt-0.5 mr-2 animate-spin" />
+                ) : null}
+                <Slottable>{children}</Slottable>
             </Component>
         )
     }

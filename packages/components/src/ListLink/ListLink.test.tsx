@@ -1,21 +1,15 @@
 import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
 
 import { ListLink, ListLinkProps } from './ListLink'
 
 describe('ListLink', () => {
     const defaultProps = {
-        text: 'Button text',
-        to: '/to-page',
+        children: 'Button text',
     }
 
     const setup = (customProps?: Partial<ListLinkProps>) => {
         const props = { ...defaultProps, ...customProps }
-        render(
-            <MemoryRouter>
-                <ListLink {...props} />
-            </MemoryRouter>
-        )
+        render(<ListLink {...props} />)
     }
 
     it('Component renders', () => {

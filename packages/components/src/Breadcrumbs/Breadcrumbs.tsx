@@ -2,6 +2,7 @@ import { AngleRight } from '@pzh-ui/icons'
 
 import { Slot } from '@radix-ui/react-slot'
 import { ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export interface BreadcrumbsProps {
     className?: string
@@ -11,9 +12,21 @@ export interface BreadcrumbsProps {
 export const Breadcrumbs = ({ children, className }: BreadcrumbsProps) => (
     <nav
         aria-label="Broodkruimelpad"
-        className={`text-pzh-blue-dark text-s w-full ${className}`}>
-        <ol className="hidden md:flex">{children}</ol>
+        className={twMerge('text-pzh-blue-dark text-s w-full', className)}>
+        {children}
     </nav>
+)
+
+export interface BreadcrumbsListProps {
+    className?: string
+    children: ReactNode
+}
+
+export const BreadCrumbsList = ({
+    children,
+    className,
+}: BreadcrumbsListProps) => (
+    <ol className={twMerge('flex', className)}>{children}</ol>
 )
 
 export interface BreadcrumbItemProps

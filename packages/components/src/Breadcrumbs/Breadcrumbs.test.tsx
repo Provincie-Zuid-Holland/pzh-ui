@@ -1,7 +1,12 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
-import { BreadcrumbItem, Breadcrumbs, BreadcrumbsProps } from './Breadcrumbs'
+import {
+    BreadCrumbsList,
+    BreadcrumbItem,
+    Breadcrumbs,
+    BreadcrumbsProps,
+} from './Breadcrumbs'
 
 describe('Breadcrumbs', () => {
     const defaultProps = {
@@ -20,11 +25,13 @@ describe('Breadcrumbs', () => {
 
         render(
             <Breadcrumbs>
-                {props.items.map(item => (
-                    <BreadcrumbItem key={item.name} href={item.path}>
-                        {item.name}
-                    </BreadcrumbItem>
-                ))}
+                <BreadCrumbsList>
+                    {props.items.map(item => (
+                        <BreadcrumbItem key={item.name} href={item.path}>
+                            {item.name}
+                        </BreadcrumbItem>
+                    ))}
+                </BreadCrumbsList>
             </Breadcrumbs>
         )
     }

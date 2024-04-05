@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { ElementType } from 'react'
 
 import { PillButton, PillButtonProps } from './PillButton'
 
@@ -9,7 +8,7 @@ describe('Button', () => {
         children: 'Button text',
     }
 
-    const setup = (customProps?: Partial<PillButtonProps<ElementType>>) => {
+    const setup = (customProps?: Partial<PillButtonProps>) => {
         const props = { ...defaultProps, ...customProps }
         render(<PillButton {...props} />)
     }

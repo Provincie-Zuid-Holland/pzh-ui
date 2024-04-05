@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { ElementType } from 'react'
 
 import { Plus } from '@pzh-ui/icons'
 
@@ -14,9 +13,7 @@ export default {
 type Story = StoryObj<typeof PillButton>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args: PillButtonProps<ElementType>) => (
-    <PillButton {...args} />
-)
+const Template = (args: PillButtonProps) => <PillButton {...args} />
 
 export const Default = {
     render: Template,

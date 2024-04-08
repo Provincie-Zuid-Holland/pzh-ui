@@ -1,28 +1,28 @@
 {
-    "name": "@pzh-ui/css",
-    "version": "0.0.84",
-    "description": "Contains default styling for projects whitin Provincie Zuid-Holland.",
-    "license": "ISC",
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {
-        "prepare": "npm run-script build-tailwind",
-        "build-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css",
-        "watch-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css --watch",
-        "build": "npm run-script build-tailwind"
-    },
-    "dependencies": {
-        "@rollup/plugin-typescript": "^8.3.1",
-        "@tailwindcss/custom-forms": "^0.2.1",
-        "@tailwindcss/forms": "^0.5.0",
-        "@tailwindcss/line-clamp": "^0.3.1",
-        "@tailwindcss/typography": "^0.5.9",
-        "react-datepicker": "^4.7.0",
-        "react-toastify": "^9.1.2"
-    },
-    "gitHead": "2ddf5317b5c742b6e5d2d5417efa730410135caf",
-    "devDependencies": {
-        "tailwindcss": "^3.3.2"
-    }
+  "name": "@pzh-ui/css",
+  "version": "0.0.84",
+  "description": "Contains default styling for projects within Provincie Zuid-Holland.",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "npm run-script build-tailwind",
+    "build-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css",
+    "watch-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css --watch",
+    "build": "npm run-script build-tailwind"
+  },
+  "dependencies": {
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.9",
+    "react-datepicker": "^4.7.0",
+    "react-toastify": "^9.1.2"
+  },
+  "gitHead": "2ddf5317b5c742b6e5d2d5417efa730410135caf",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
 }

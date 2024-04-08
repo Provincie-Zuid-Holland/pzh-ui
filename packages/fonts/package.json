@@ -1,0 +1,17 @@
+{
+  "name": "@pzh-ui/fonts",
+  "version": "1.0.0",
+  "description": "Contains default fonts for projects within Provincie Zuid-Holland.",
+  "homepage": "https://github.com/Provincie-Zuid-Holland/pzh-ui#readme",
+  "license": "ISC",
+  "files": [
+    "assets/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Provincie-Zuid-Holland/pzh-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"
+  }
+}

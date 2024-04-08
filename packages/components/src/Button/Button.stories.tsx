@@ -19,8 +19,7 @@ export const Primary = {
     render: Template,
     args: {
         variant: 'primary',
-        children: <a href="/to-page">Button</a>,
-        asChild: true,
+        children: 'Button',
     },
 } satisfies Story
 

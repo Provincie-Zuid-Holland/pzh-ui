@@ -53,9 +53,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 className={cn(
                     variant !== 'default' && {
                         'pzh-button': true,
-                        'h-12 pb-3 pt-[15px]': size === 'large',
+                        'h-12 pb-2 pt-2.5': size === 'large',
                         'px-4': size === 'large' && variant !== 'link',
-                        'text-s h-10 pb-[9px] pt-[10px]': size === 'small',
+                        'text-s h-10 pb-[7px] pt-[9px]': size === 'small',
                         'px-3': size === 'small' && variant !== 'link',
                         'font-normal underline': variant === 'link',
                         'font-bold': variant !== 'link',

@@ -1,6 +1,6 @@
 {
   "name": "@pzh-ui/css",
-  "version": "0.0.88",
+  "version": "0.0.89",
   "description": "Contains default styling for projects within Provincie Zuid-Holland.",
   "license": "ISC",
   "publishConfig": {

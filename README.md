@@ -8,10 +8,10 @@ We use [Lerna](https://github.com/lerna/lerna) to add and publish new packages. 
 
 When run, this command will:
 
--   npm install all external dependencies of each package.
--   Symlink together all Lerna packages that are dependencies of each other.
--   npm run prepublish in all bootstrapped packages (unless --ignore-prepublish is passed).
--   npm run prepare in all bootstrapped packages.
+- npm install all external dependencies of each package.
+- Symlink together all Lerna packages that are dependencies of each other.
+- npm run prepublish in all bootstrapped packages (unless --ignore-prepublish is passed).
+- npm run prepare in all bootstrapped packages.
 
 ## Publish a new version
 

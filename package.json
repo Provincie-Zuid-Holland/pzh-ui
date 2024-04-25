@@ -1,6 +1,6 @@
 {
   "name": "pzh-ui",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",

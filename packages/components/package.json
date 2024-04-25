@@ -65,7 +65,6 @@
         "@types/react-table": "^7.7.15",
         "clsx": "^2.1.0",
         "date-fns": "^3.3.1",
-        "focus-trap-react": "^10.1.1",
         "formik": "^2.4.5",
         "react": "^18.2.0",
         "react-aria": "^3.32.1",
@@ -76,7 +75,6 @@
         "react-responsive-pagination": "^2.4.2",
         "react-select": "^5.8.0",
         "react-stately": "^3.30.1",
-        "react-table": "^7.8.0",
         "react-toastify": "^9.1.2",
         "tailwind-merge": "^2.2.2"
     },
@@ -129,5 +127,5 @@
         "jackspeak": "2.1.1",
         "@types/react": "^18.2.79"
     },
-    "gitHead": "51a14d6d257c6d56a81a67e62e324f16c804681e"
+    "gitHead": "fc2eabd41193895973fcd5635196d12605c35bb3"
 }

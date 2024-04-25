@@ -47,7 +47,7 @@ export const TabItem = Item
 function Tab({ item, state }: TabProps) {
     const { key, rendered } = item
     const ref = useRef(null)
-    const { tabProps } = useTab({ key }, state, ref)
+    const { tabProps } = useTab({ key: key.toString() }, state, ref)
 
     return (
         <div

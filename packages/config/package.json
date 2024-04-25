@@ -30,6 +30,7 @@
         "react-toastify": "^9.1.2"
     },
     "devDependencies": {
+        "@types/react-datepicker": "^6.2.0",
         "vite": "^2.8.6"
     },
     "gitHead": "e232b6725884129b5c058b4684db746314a09259"

@@ -70,7 +70,7 @@
         "react": "^18.2.0",
         "react-aria": "^3.32.1",
         "react-aria-components": "^1.1.1",
-        "react-datepicker": "^6.1.0",
+        "react-datepicker": "^6.9.0",
         "react-dom": "^18.2.0",
         "react-dropzone-esm": "^15.0.1",
         "react-responsive-pagination": "^2.4.2",
@@ -102,8 +102,8 @@
         "@testing-library/dom": "^8.11.3",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^12.1.2",
-        "@types/react": "^18.2.15",
-        "@types/react-datepicker": "^6.0.0",
+        "@types/react": "^18.2.79",
+        "@types/react-datepicker": "^6.2.0",
         "@types/react-dom": "^18.2.7",
         "@vitejs/plugin-react": "^4.0.4",
         "babel-loader": "^8.2.3",
@@ -126,7 +126,8 @@
         "vitest": "^0.34.6"
     },
     "resolutions": {
-        "jackspeak": "2.1.1"
+        "jackspeak": "2.1.1",
+        "@types/react": "^18.2.79"
     },
-    "gitHead": "e232b6725884129b5c058b4684db746314a09259"
+    "gitHead": "51a14d6d257c6d56a81a67e62e324f16c804681e"
 }

@@ -1,5 +1,5 @@
 import classNames from 'clsx'
-import React, { ReactNode, useLayoutEffect, useRef } from 'react'
+import React, { ReactNode } from 'react'
 
 import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
@@ -30,57 +30,43 @@ export const FieldTextArea = ({
     layout = 'default',
     tooltip,
     ...props
-}: FieldTextAreaProps) => {
-    const textAreaRef = useRef<HTMLTextAreaElement>(null)
-
-    // Resize size of textarea based on contents
-    const resizeTextarea = () => {
-        if (!textAreaRef.current) return
-
-        textAreaRef.current.style.height = 'auto'
-        textAreaRef.current.style.height =
-            textAreaRef.current.scrollHeight + 'px'
-    }
-
-    // Update size of textarea on initial load
-    useLayoutEffect(() => resizeTextarea())
-
-    return (
-        <div
-            className={classNames({
-                'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
-            })}>
-            {label && (
-                <FieldLabel
-                    name={name}
-                    label={label}
-                    description={description}
-                    required={required}
-                    tooltip={tooltip}
-                    className={classNames({
-                        'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
-                    })}
-                />
-            )}
-            <textarea
-                ref={textAreaRef}
-                data-testid="pzh-form-textarea"
-                id={name}
+}: FieldTextAreaProps) => (
+    <div
+        className={classNames({
+            'grid grid-cols-6 gap-2 md:gap-8': layout === 'grid',
+        })}>
+        {label && (
+            <FieldLabel
                 name={name}
-                disabled={disabled}
+                label={label}
+                description={description}
                 required={required}
-                onInput={resizeTextarea}
-                rows={rows}
-                className={cn(
-                    'pzh-form-input min-h-[48px] resize-none overflow-hidden',
-                    {
-                        'pzh-form-error': hasError,
-                        'col-span-6 md:col-span-4': layout === 'grid',
-                    },
-                    className
-                )}
-                {...props}
+                tooltip={tooltip}
+                className={classNames({
+                    'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
+                })}
             />
-        </div>
-    )
-}
+        )}
+        <textarea
+            data-testid="pzh-form-textarea"
+            id={name}
+            name={name}
+            disabled={disabled}
+            required={required}
+            rows={rows}
+            className={cn(
+                'pzh-form-input min-h-[48px] min-h-[calc(2lh+2*10px)] resize-none overflow-hidden',
+                {
+                    'pzh-form-error': hasError,
+                    'col-span-6 md:col-span-4': layout === 'grid',
+                },
+                className
+            )}
+            style={{
+                // @ts-ignore
+                fieldSizing: 'content',
+            }}
+            {...props}
+        />
+    </div>
+)

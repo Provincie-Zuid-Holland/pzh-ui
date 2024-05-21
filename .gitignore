@@ -8,6 +8,8 @@ dist
 .jest-test-results.json
 storybook-static
 build-storybook.log
+storybook.log
+migration-storybook.log
 .env
 stats.html
 analyse.html

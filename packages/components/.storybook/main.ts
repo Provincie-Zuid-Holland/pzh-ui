@@ -2,8 +2,8 @@ import type { StorybookConfig } from '@storybook/react-vite'
 
 const config: StorybookConfig = {
     stories: [
-        './stories/Introduction.stories.mdx',
-        './stories/*.stories.mdx',
+        './stories/Introduction.mdx',
+        './stories/*.mdx',
         '../src/**/*.mdx',
         '../src/**/*.stories.@(js|jsx|ts|tsx)',
     ],
@@ -21,13 +21,12 @@ const config: StorybookConfig = {
         '@storybook/addon-jest',
         'storybook-addon-react-router-v6',
         '@storybook/addon-a11y',
+        '@storybook/addon-mdx-gfm',
     ],
-    core: {
-        builder: '@storybook/builder-vite',
-    },
-    framework: '@storybook/react-vite',
-    features: {
-        storyStoreV7: true,
+    core: {},
+    framework: {
+        name: '@storybook/react-vite',
+        options: {},
     },
     typescript: {
         reactDocgen: 'react-docgen-typescript',

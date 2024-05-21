@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
 
 import { Banner, BannerProps } from './Banner'
 
@@ -19,5 +20,6 @@ export const Default = {
         text: 'Let op! De Monitor Leefomgeving van Provincie Zuid-Holland is momenteel nog in ontwikkeling.',
         isActive: true,
         color: 'blue',
+        onRemoveCallback: fn(),
     },
 } satisfies Story

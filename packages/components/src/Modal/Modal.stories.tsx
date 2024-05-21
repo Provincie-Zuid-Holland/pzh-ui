@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Modal>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = ({ ...args }: ModalProps) => {
-    const [isOpen, setOpen] = useState(true)
+    const [isOpen, setOpen] = useState(false)
 
     return (
         <>

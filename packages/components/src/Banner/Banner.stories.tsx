@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Banner>
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: BannerProps) => <Banner {...args} />
 
-export const Default = {
+export const Default: Story = {
     render: Template,
     args: {
         text: 'Let op! De Monitor Leefomgeving van Provincie Zuid-Holland is momenteel nog in ontwikkeling.',
@@ -22,4 +22,4 @@ export const Default = {
         color: 'blue',
         onRemoveCallback: fn(),
     },
-} satisfies Story
+}

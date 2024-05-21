@@ -1,13 +1,13 @@
 /// <reference types="vitest" />
+import { fileURLToPath } from 'node:url'
+import { extname, isAbsolute, relative, resolve } from 'path'
+
 import typescriptPlugin from '@rollup/plugin-typescript'
 import react from '@vitejs/plugin-react'
 import { glob } from 'glob'
-import { fileURLToPath } from 'node:url'
-import { extname, isAbsolute, relative, resolve } from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { PluginOption, defineConfig } from 'vite'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
-
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 const isExternal = id => !id.startsWith('.') && !isAbsolute(id)
@@ -68,5 +68,8 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         setupFiles: './setupTests.ts',
+        coverage: {
+            exclude: ['node_modules/', 'src/*.stories.tsx'],
+        },
     },
 })

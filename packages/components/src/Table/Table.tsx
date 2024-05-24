@@ -17,6 +17,7 @@ export interface TableProps
         TableOptions<unknown>,
         'getCoreRowModel' | 'getSortedRowModel' | 'manualPagination'
     > {
+    caption?: string
     className?: string
     current?: number
     limit?: number
@@ -25,6 +26,7 @@ export interface TableProps
 }
 
 export const Table = ({
+    caption,
     className = '',
     limit = 20,
     total,
@@ -44,6 +46,7 @@ export const Table = ({
             <table
                 className={cn('text-pzh-blue-dark mb-8 w-full', className)}
                 data-testid="table">
+                {caption && <caption className="sr-only">{caption}</caption>}
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr

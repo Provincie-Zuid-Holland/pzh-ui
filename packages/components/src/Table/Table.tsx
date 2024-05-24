@@ -57,7 +57,6 @@ export const Table = ({
                                     colSpan={header.colSpan}
                                     className="text-left font-bold"
                                     {...(header.column.getCanSort() && {
-                                        tabIndex: 0,
                                         'aria-sort':
                                             !!header.column.getIsSorted()
                                                 ? header.column.getIsSorted() ===
@@ -65,12 +64,6 @@ export const Table = ({
                                                     ? 'descending'
                                                     : 'ascending'
                                                 : 'none',
-                                        onKeyPress: e =>
-                                            e.key === 'Enter' ||
-                                            (e.key === ' ' &&
-                                                header.column.getToggleSortingHandler()),
-                                        onClick:
-                                            header.column.getToggleSortingHandler(),
                                     })}>
                                     {header.isPlaceholder ? null : (
                                         <div
@@ -82,6 +75,16 @@ export const Table = ({
                                                             header.column.getCanSort(),
                                                     }
                                                 ),
+                                                tabIndex:
+                                                    header.column.getCanSort()
+                                                        ? 0
+                                                        : -1,
+                                                onKeyPress: e =>
+                                                    e.key === 'Enter' ||
+                                                    (e.key === ' ' &&
+                                                        header.column.getToggleSortingHandler()),
+                                                onClick:
+                                                    header.column.getToggleSortingHandler(),
                                             }}>
                                             {flexRender(
                                                 header.column.columnDef.header,

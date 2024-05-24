@@ -1,9 +1,8 @@
-import { ReactNode } from 'react'
+import { ElementType, HTMLAttributes, ReactNode } from 'react'
+
 import { cn } from '../utils'
 
-export interface HeadingProps {
-    className?: string
-    id?: string
+export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
     color?: `text-${string}`
     level?: '1' | '2' | '3' | '4' | '5' | '6'
     size?: 'xxxl' | 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'
@@ -17,10 +16,11 @@ export const Heading = ({
     level = '1',
     size = 'l',
     children,
+    ...rest
 }: HeadingProps) => {
     const styles = getHeadingStyles(size)
 
-    const Component = `h${level}` as keyof JSX.IntrinsicElements
+    const Component = `h${level}` as ElementType
 
     return (
         <Component
@@ -30,7 +30,8 @@ export const Heading = ({
                 styles,
                 color,
                 className
-            )}>
+            )}
+            {...rest}>
             {children}
         </Component>
     )

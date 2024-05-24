@@ -1,3 +1,4 @@
+import { ArrowDownAZ, ArrowDownZA, Spinner } from '@pzh-ui/icons'
 import {
     TableOptions,
     flexRender,
@@ -7,8 +8,6 @@ import {
 } from '@tanstack/react-table'
 import classNames from 'clsx'
 import { ReactNode } from 'react'
-
-import { ArrowDownAZ, ArrowDownZA, Spinner } from '@pzh-ui/icons'
 
 import { Pagination } from '../Pagination'
 import { cn } from '../utils'
@@ -76,6 +75,14 @@ export const Table = ({
                                                             header.column.getCanSort(),
                                                     }
                                                 ),
+                                                tabIndex:
+                                                    header.column.getCanSort()
+                                                        ? 0
+                                                        : -1,
+                                                onKeyPress: e =>
+                                                    e.key === 'Enter' ||
+                                                    (e.key === ' ' &&
+                                                        header.column.getToggleSortingHandler()),
                                                 onClick:
                                                     header.column.getToggleSortingHandler(),
                                             }}>
@@ -93,7 +100,7 @@ export const Table = ({
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
-                                                                    'opacity-0 group-hover:opacity-40':
+                                                                    'opacity-0 group-hover:opacity-40 group-focus:opacity-40':
                                                                         !!!header.column.getIsSorted(),
                                                                 }
                                                             )}
@@ -107,7 +114,7 @@ export const Table = ({
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
-                                                                    'opacity-0 group-hover:opacity-40':
+                                                                    'opacity-0 group-hover:opacity-40 group-focus:opacity-40':
                                                                         !!!header.column.getIsSorted(),
                                                                 }
                                                             )}
@@ -121,7 +128,7 @@ export const Table = ({
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
-                                                                    'opacity-0 group-hover:opacity-40':
+                                                                    'opacity-0 group-hover:opacity-40 group-focus:opacity-40':
                                                                         !!!header.column.getIsSorted(),
                                                                 }
                                                             )}

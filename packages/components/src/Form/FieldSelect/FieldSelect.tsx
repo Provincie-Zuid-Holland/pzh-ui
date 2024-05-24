@@ -1,3 +1,4 @@
+import { AngleDown, Xmark } from '@pzh-ui/icons'
 import classNames from 'clsx'
 import { KeyboardEventHandler, ReactNode, useState } from 'react'
 import ReactSelect, {
@@ -9,7 +10,6 @@ import ReactSelect, {
 import AsyncReactSelect, { AsyncProps } from 'react-select/async'
 import CreatableSelect from 'react-select/creatable'
 
-import { AngleDown, Xmark } from '@pzh-ui/icons'
 import { FieldLabel } from '../FieldLabel'
 
 type SelectProps = Props &
@@ -144,6 +144,7 @@ export function FieldSelect({
                                     'text-pzh-blue-dark hover:text-pzh-green cursor-pointer hover:underline':
                                         !props.isDisabled,
                                     'text-pzh-gray-500': props.isDisabled,
+                                    underline: props.isFocused,
                                 })}>
                                 {props.isMulti ? (
                                     <div

@@ -16,8 +16,6 @@ const Template = (args: TableProps) => <Table {...args} />
 export const Default = {
     render: Template,
     args: {
-        limit: 3,
-        total: 13,
         columns: [
             {
                 header: 'Thema',

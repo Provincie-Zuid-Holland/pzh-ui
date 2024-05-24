@@ -82,7 +82,7 @@ export const Table = ({
                                                 onKeyPress: e =>
                                                     (e.key === 'Enter' ||
                                                         e.key === ' ') &&
-                                                    header.column.getToggleSortingHandler(),
+                                                    header.column.toggleSorting(),
                                                 onClick:
                                                     header.column.getToggleSortingHandler(),
                                             }}>

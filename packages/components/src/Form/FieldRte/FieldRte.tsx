@@ -3,6 +3,7 @@ import Bold from '@tiptap/extension-bold'
 import BulletList from '@tiptap/extension-bullet-list'
 import Document from '@tiptap/extension-document'
 import HardBreak from '@tiptap/extension-hard-break'
+import Heading from '@tiptap/extension-heading'
 import History from '@tiptap/extension-history'
 import Image from '@tiptap/extension-image'
 import Italic from '@tiptap/extension-italic'
@@ -11,19 +12,18 @@ import ListItem from '@tiptap/extension-list-item'
 import OrderedList from '@tiptap/extension-ordered-list'
 import Paragraph from '@tiptap/extension-paragraph'
 import Placeholder from '@tiptap/extension-placeholder'
-import Text from '@tiptap/extension-text'
-import Underline from '@tiptap/extension-underline'
-import { Editor, EditorContent, useEditor } from '@tiptap/react'
-import classNames from 'clsx'
-import { ReactNode, useEffect, useState } from 'react'
-
-import Heading from '@tiptap/extension-heading'
 import Subscript from '@tiptap/extension-subscript'
 import Superscript from '@tiptap/extension-superscript'
 import Table from '@tiptap/extension-table'
 import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
+import Text from '@tiptap/extension-text'
+import Underline from '@tiptap/extension-underline'
+import { Editor, EditorContent, useEditor } from '@tiptap/react'
+import classNames from 'clsx'
+import { ReactNode, useEffect, useState } from 'react'
+
 import { FieldLabel } from '../FieldLabel'
 import RteMenuBar from './components/RteMenuBar'
 import { HandleDOMEvents } from './extensions/handleDOMEvents'
@@ -251,14 +251,12 @@ export const FieldRte = ({
                     'col-span-6 md:col-span-4': layout === 'grid',
                 })}>
                 <div
-                    className={classNames(
-                        'border-pzh-gray-600 relative rounded border',
-                        {
-                            'bg-pzh-gray-100': disabled,
-                            'bg-pzh-white': !disabled,
-                            'pzh-form-error': hasError,
-                        }
-                    )}>
+                    className={classNames('relative rounded border', {
+                        'bg-pzh-gray-100': disabled,
+                        'bg-pzh-white': !disabled,
+                        'pzh-form-error': hasError,
+                        'border-pzh-gray-600': !hasError,
+                    })}>
                     <RteMenuBar
                         editor={editor}
                         menuOptions={[

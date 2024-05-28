@@ -1,6 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react'
-
 import { MagnifyingGlass } from '@pzh-ui/icons'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { FieldSelect, FieldSelectProps } from './FieldSelect'
 
@@ -109,6 +108,7 @@ export const WithLabel = {
         ],
         label: 'Form label',
         description: 'Korte omschrijving voor onder het label',
+        tooltip: 'test',
     },
 } satisfies Story
 

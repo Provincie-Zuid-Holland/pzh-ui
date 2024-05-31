@@ -1,4 +1,5 @@
 // Components
+export * from './Accordion'
 export * from './BackLink'
 export * from './Badge'
 export * from './Banner'

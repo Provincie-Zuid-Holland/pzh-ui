@@ -180,6 +180,20 @@ module.exports = {
       boxShadow: {
         card: "0px 18px 60px rgba(0, 0, 0, 0.07), 0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275), 0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725)",
       },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       typography: {
         DEFAULT: {
           css: {

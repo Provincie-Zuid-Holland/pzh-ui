@@ -1,10 +1,9 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
-    AccordionProps,
     AccordionTrigger,
 } from './Accordion'
 
@@ -17,7 +16,7 @@ export default {
 type Story = StoryObj<typeof Accordion>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args: AccordionProps) => (
+const Template = (args: React.ComponentProps<typeof Accordion>) => (
     <Accordion {...args}>
         <AccordionItem value="item-1">
             <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -37,6 +36,7 @@ const Template = (args: AccordionProps) => (
 export const Default = {
     render: Template,
     args: {
+        type: 'single',
         collapsible: true,
     },
 } satisfies Story

@@ -4,10 +4,6 @@ import * as React from 'react'
 
 import { cn } from '../utils'
 
-export type AccordionProps =
-    | AccordionPrimitive.AccordionSingleProps
-    | AccordionPrimitive.AccordionMultipleProps
-
 const Accordion = AccordionPrimitive.Root
 
 const AccordionItem = React.forwardRef<

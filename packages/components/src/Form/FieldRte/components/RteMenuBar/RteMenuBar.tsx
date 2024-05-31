@@ -1,7 +1,3 @@
-import { BubbleMenu, EditorContentProps } from '@tiptap/react'
-import classNames from 'clsx'
-import { ButtonHTMLAttributes, Fragment } from 'react'
-
 import {
     Bold,
     Heading,
@@ -15,6 +11,9 @@ import {
     Table,
     Underline,
 } from '@pzh-ui/icons'
+import { BubbleMenu, EditorContentProps } from '@tiptap/react'
+import classNames from 'clsx'
+import { ButtonHTMLAttributes, Fragment } from 'react'
 
 import {
     FieldRteProps,
@@ -27,6 +26,7 @@ import TableMenu from '../TableMenu'
 interface RteMenuBarProps extends EditorContentProps {
     menuOptions: (TextEditorMenuOptions | TextEditorCustomMenuOptions)[]
     menuClassName?: string
+    customMenuButtons?: FieldRteProps['customMenuButtons']
     imageOptions?: FieldRteProps['imageOptions']
     rightClick: boolean
     setRightClick: (rightClick: boolean) => void
@@ -37,6 +37,7 @@ const RteMenuBar = ({
     disabled,
     menuOptions,
     menuClassName,
+    customMenuButtons,
     imageOptions,
     rightClick,
     setRightClick,
@@ -317,11 +318,12 @@ const RteMenuBar = ({
                         break
                 }
             })}
+            {!!customMenuButtons?.length && customMenuButtons}
         </div>
     )
 }
 
-const MenuButton = ({
+export const MenuButton = ({
     className,
     children,
     isActive,

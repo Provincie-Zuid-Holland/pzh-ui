@@ -1,4 +1,9 @@
-import { Extensions, mergeAttributes } from '@tiptap/core'
+import {
+    AnyExtension,
+    EditorOptions,
+    Extensions,
+    mergeAttributes,
+} from '@tiptap/core'
 import Bold from '@tiptap/extension-bold'
 import BulletList from '@tiptap/extension-bullet-list'
 import Document from '@tiptap/extension-document'
@@ -31,7 +36,7 @@ import ImageUpload from './extensions/imageUpload'
 import { SanitisePastedHtml } from './extensions/sanitisePastedHtml'
 import limitNestedLists from './utils/limitNestedLists'
 
-export interface FieldRteProps {
+export interface FieldRteProps extends Omit<EditorOptions, 'onBlur'> {
     /** Name text */
     name: string
     /** Label text */
@@ -58,6 +63,10 @@ export interface FieldRteProps {
     menuOptions?: TextEditorMenuOptions[]
     /** List of custom menu options that should be enabled */
     customMenuOptions?: TextEditorCustomMenuOptions[]
+    /** List of custom menu buttons */
+    customMenuButtons?: ReactNode[]
+    /** List of custom extensions */
+    customExtensions?: AnyExtension[]
     /** Classnames of menu */
     menuClassName?: string
     /** Has field an error */
@@ -102,6 +111,8 @@ export const FieldRte = ({
     initialContent,
     menuOptions = ['bold', 'italic', 'underline', 'bulletList', 'orderedList'],
     customMenuOptions,
+    customMenuButtons,
+    customExtensions,
     menuClassName,
     hasError,
     imageOptions = {
@@ -109,10 +120,12 @@ export const FieldRte = ({
         maxWidth: 1500,
         maxSize: 1048576,
     },
+    ...rest
 }: FieldRteProps) => {
     const [rightClick, setRightClick] = useState(false)
 
     const editor = useEditor({
+        ...rest,
         extensions: getEditorExtensions(),
         editable: !disabled,
         content: initialContent?.replace(/\n/g, '<br />'),
@@ -156,6 +169,7 @@ export const FieldRte = ({
             ListItem,
             History,
             HardBreak,
+            ...(customExtensions || []),
         ]
 
         if (placeholder)
@@ -263,6 +277,7 @@ export const FieldRte = ({
                             ...menuOptions,
                             ...(customMenuOptions || []),
                         ]}
+                        customMenuButtons={customMenuButtons}
                         menuClassName={menuClassName}
                         disabled={disabled}
                         imageOptions={imageOptions}

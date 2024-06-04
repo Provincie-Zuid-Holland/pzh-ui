@@ -1,9 +1,4 @@
-import {
-    AnyExtension,
-    EditorOptions,
-    Extensions,
-    mergeAttributes,
-} from '@tiptap/core'
+import { AnyExtension, Extensions, mergeAttributes } from '@tiptap/core'
 import Bold from '@tiptap/extension-bold'
 import BulletList from '@tiptap/extension-bullet-list'
 import Document from '@tiptap/extension-document'
@@ -36,7 +31,7 @@ import ImageUpload from './extensions/imageUpload'
 import { SanitisePastedHtml } from './extensions/sanitisePastedHtml'
 import limitNestedLists from './utils/limitNestedLists'
 
-export interface FieldRteProps extends Omit<EditorOptions, 'onBlur'> {
+export interface FieldRteProps {
     /** Name text */
     name: string
     /** Label text */
@@ -120,12 +115,10 @@ export const FieldRte = ({
         maxWidth: 1500,
         maxSize: 1048576,
     },
-    ...rest
 }: FieldRteProps) => {
     const [rightClick, setRightClick] = useState(false)
 
     const editor = useEditor({
-        ...rest,
         extensions: getEditorExtensions(),
         editable: !disabled,
         content: initialContent?.replace(/\n/g, '<br />'),

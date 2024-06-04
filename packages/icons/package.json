@@ -24,7 +24,7 @@
   "scripts": {
     "prepare": "tsc && vite build",
     "build": "vite build",
-    "svgr": "npx @svgr/cli@5 ./src --template ./svgrtemplate.js --ext tsx --out-dir ./src/components --ref"
+    "svgr": "npx @svgr/cli@5 ./src --template ./svgrtemplate.cjs --ext tsx --out-dir ./src/components --ref"
   },
   "bugs": {
     "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"

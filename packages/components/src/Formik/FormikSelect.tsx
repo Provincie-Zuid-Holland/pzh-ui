@@ -42,7 +42,11 @@ export function FormikSelect({
                                           option.value === field.value
                                   )
                         }
-                        onBlur={() => form.setFieldTouched(name, true)}
+                        onBlur={() =>
+                            setTimeout(() => {
+                                form.setFieldTouched(name, true)
+                            }, 1)
+                        }
                         onChange={(item: any) => {
                             form.setFieldValue(
                                 name,

@@ -7,13 +7,12 @@ describe('FieldDate', () => {
     const defaultProps = {
         name: 'date',
         placeholderText: 'Date field',
+        onChange: vi.fn(),
     }
 
     const setup = (customProps?: Partial<FieldDateProps>) => {
-        const onChange = vi.fn()
-
         const props = { ...defaultProps, ...customProps }
-        render(<FieldDate onChange={onChange} {...props} />)
+        render(<FieldDate {...(props as FieldDateProps)} />)
     }
 
     it('Component renders', () => {

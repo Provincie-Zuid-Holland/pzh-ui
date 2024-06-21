@@ -1,20 +1,24 @@
+import { CalendarAlt } from '@pzh-ui/icons'
 import { useUpdateEffect } from '@react-hookz/web'
 import classNames from 'clsx'
 import { nl } from 'date-fns/locale'
 import { ReactNode, forwardRef, useState } from 'react'
-import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
-import './style.css'
-
-import { CalendarAlt } from '@pzh-ui/icons'
+import DatePicker, { DatePickerProps } from 'react-datepicker'
 
 import { FieldInputProps } from '../FieldInput'
 import { FieldLabel } from '../FieldLabel'
+
+import './style.css'
 
 /**
  * Form date element
  */
 
-export interface FieldDateProps extends Omit<ReactDatePickerProps, 'onChange'> {
+export interface FieldDateProps
+    extends Omit<
+        DatePickerProps,
+        'onChange' | 'selectsRange' | 'selectsMultiple'
+    > {
     name: string
     label?: string
     required?: boolean

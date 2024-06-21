@@ -39,7 +39,6 @@
     "@babel/preset-typescript": "^7.16.7",
     "@rollup/plugin-typescript": "^8.3.1",
     "@types/react": "^18.2.79",
-    "@types/react-datepicker": "^6.2.0",
     "@vitejs/plugin-react": "^1.2.0",
     "babel-plugin-import": "^1.13.3",
     "prettier-plugin-organize-imports": "^3.2.3",

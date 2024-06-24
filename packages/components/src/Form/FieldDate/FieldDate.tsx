@@ -3,12 +3,17 @@ import { useUpdateEffect } from '@react-hookz/web'
 import classNames from 'clsx'
 import { nl } from 'date-fns/locale'
 import { ReactNode, forwardRef, useState } from 'react'
-import * as DatePicker from 'react-datepicker'
+import ReactDatePicker, { type DatePickerProps } from 'react-datepicker'
 
 import { FieldInputProps } from '../FieldInput'
 import { FieldLabel } from '../FieldLabel'
 
 import './style.css'
+
+// @ts-ignore
+const DatePicker =
+    (ReactDatePicker as unknown as { default: typeof ReactDatePicker })
+        .default ?? ReactDatePicker
 
 /**
  * Form date element
@@ -16,7 +21,7 @@ import './style.css'
 
 export interface FieldDateProps
     extends Omit<
-        DatePicker.DatePickerProps,
+        DatePickerProps,
         'onChange' | 'selectsRange' | 'selectsMultiple'
     > {
     name: string
@@ -78,7 +83,7 @@ export const FieldDate = ({
                 className={classNames({
                     'col-span-6 md:col-span-4': layout === 'grid',
                 })}>
-                <DatePicker.default
+                <DatePicker
                     locale={nl}
                     name={name}
                     required={required}

@@ -183,7 +183,9 @@ export function FieldSelect({
                         ),
                         ClearIndicator: props => (
                             <components.ClearIndicator {...props}>
-                                <button onClick={props.clearValue}>
+                                <button
+                                    type="button"
+                                    onClick={props.clearValue}>
                                     <span className="sr-only">
                                         Veld leegmaken
                                     </span>

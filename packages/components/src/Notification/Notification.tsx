@@ -1,11 +1,11 @@
-import classNames from 'clsx'
-
 import {
     Ban,
     CircleCheck,
     CircleInfo,
     TriangleExclamation,
 } from '@pzh-ui/icons'
+import classNames from 'clsx'
+
 import { getHeadingStyles } from '../Heading'
 import { Text } from '../Text'
 import { cn } from '../utils'
@@ -14,7 +14,7 @@ export interface NotificationProps {
     variant?: 'info' | 'warning' | 'positive' | 'negative'
     className?: string
     children?: JSX.Element | string
-    title?: string
+    title?: JSX.Element | string
     icon?: any
 }
 

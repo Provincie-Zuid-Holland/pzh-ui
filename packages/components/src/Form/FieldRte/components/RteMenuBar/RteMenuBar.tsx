@@ -318,7 +318,7 @@ const RteMenuBar = ({
                         break
                 }
             })}
-            {!!customMenuButtons?.length && customMenuButtons}
+            {customMenuButtons?.(editor)}
         </div>
     )
 }

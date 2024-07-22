@@ -59,7 +59,7 @@ export interface FieldRteProps {
     /** List of custom menu options that should be enabled */
     customMenuOptions?: TextEditorCustomMenuOptions[]
     /** List of custom menu buttons */
-    customMenuButtons?: ReactNode[]
+    customMenuButtons?: (editor: Editor) => ReactNode[]
     /** List of custom extensions */
     customExtensions?: AnyExtension[]
     /** Classnames of menu */

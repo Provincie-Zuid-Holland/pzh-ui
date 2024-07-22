@@ -24,6 +24,7 @@ import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import classNames from 'clsx'
 import { ReactNode, useEffect, useState } from 'react'
 
+import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
 import RteMenuBar from './components/RteMenuBar'
 import { HandleDOMEvents } from './extensions/handleDOMEvents'
@@ -62,6 +63,8 @@ export interface FieldRteProps {
     customMenuButtons?: (editor: Editor) => ReactNode[]
     /** List of custom extensions */
     customExtensions?: AnyExtension[]
+    /** Classnames of Tiptap editor */
+    className?: string
     /** Classnames of menu */
     menuClassName?: string
     /** Has field an error */
@@ -105,6 +108,7 @@ export const FieldRte = ({
     onBlur,
     initialContent,
     menuOptions = ['bold', 'italic', 'underline', 'bulletList', 'orderedList'],
+    className,
     customMenuOptions,
     customMenuButtons,
     customExtensions,
@@ -128,7 +132,10 @@ export const FieldRte = ({
         onUpdate: limitNestedLists,
         editorProps: {
             attributes: {
-                class: 'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-dark marker:text-pzh-blue-dark outline-none whitespace-pre-line',
+                class: cn(
+                    'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-dark marker:text-pzh-blue-dark outline-none whitespace-pre-line',
+                    className
+                ),
                 'data-testid': testId,
             },
         },

@@ -47,9 +47,7 @@ export const Table = ({
                 {caption && <caption className="sr-only">{caption}</caption>}
                 <thead className="text-pzh-blue-900">
                     {table.getHeaderGroups().map(headerGroup => (
-                        <tr
-                            key={headerGroup.id}
-                            className="border-pzh-blue-900/35 border-b">
+                        <tr key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
                                 <th
                                     key={header.id}
@@ -68,7 +66,7 @@ export const Table = ({
                                         <div
                                             {...{
                                                 className: classNames(
-                                                    'flex items-center group w-full px-4 py-2',
+                                                    'flex items-center group w-full',
                                                     {
                                                         'cursor-pointer select-none':
                                                             header.column.getCanSort(),
@@ -165,7 +163,7 @@ export const Table = ({
                                     undefined
                                 }
                                 className={classNames(
-                                    'border-pzh-blue-900/35 border-b',
+                                    'border-pzh-gray-300 border-b',
                                     {
                                         'hover:bg-pzh-gray-100 focus:bg-pzh-gray-100 cursor-pointer':
                                             hasOnClick,
@@ -173,7 +171,7 @@ export const Table = ({
                                 )}
                                 tabIndex={hasOnClick ? 0 : undefined}>
                                 {row.getVisibleCells().map(cell => (
-                                    <td key={cell.id} className="p-4">
+                                    <td key={cell.id} className="py-4 pr-4">
                                         {cell.renderValue() as ReactNode}
                                     </td>
                                 ))}

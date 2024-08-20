@@ -44,17 +44,15 @@ export const Table = ({
     return (
         <div className="flex flex-col items-center">
             <table
-                className={cn('text-pzh-blue-dark mb-8 w-full', className)}
+                className={cn('text-pzh-blue-900 mb-8 w-full', className)}
                 data-testid="table">
                 {caption && <caption className="sr-only">{caption}</caption>}
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr
                             key={headerGroup.id}
-                            className="border-pzh-blue-dark/35 border-b">
+                            className="border-pzh-blue-900/35 border-b">
                             {headerGroup.headers.map(header => (
-                                // Add the sorting props to control sorting. For this example
-                                // we can add them into the header props
                                 <th
                                     key={header.id}
                                     colSpan={header.colSpan}
@@ -99,7 +97,7 @@ export const Table = ({
                                                         <ArrowDownAZ
                                                             size={18}
                                                             className={classNames(
-                                                                'text-pzh-green ml-2',
+                                                                'text-pzh-green-500 ml-2',
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
@@ -113,7 +111,7 @@ export const Table = ({
                                                         <ArrowDownZA
                                                             size={18}
                                                             className={classNames(
-                                                                'text-pzh-green ml-2',
+                                                                'text-pzh-green-500 ml-2',
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
@@ -127,7 +125,7 @@ export const Table = ({
                                                         <ArrowDownAZ
                                                             size={18}
                                                             className={classNames(
-                                                                'text-pzh-green ml-2',
+                                                                'text-pzh-green-500 ml-2',
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
@@ -169,7 +167,7 @@ export const Table = ({
                                     undefined
                                 }
                                 className={classNames(
-                                    'border-pzh-blue-dark/35 border-b',
+                                    'border-pzh-blue-900/35 border-b',
                                     {
                                         'hover:bg-pzh-gray-100 focus:bg-pzh-gray-100 cursor-pointer':
                                             hasOnClick,
@@ -177,7 +175,7 @@ export const Table = ({
                                 )}
                                 tabIndex={hasOnClick ? 0 : undefined}>
                                 {row.getVisibleCells().map(cell => (
-                                    <td key={cell.id} className="h-10 px-4">
+                                    <td key={cell.id} className="p-4">
                                         {cell.renderValue() as ReactNode}
                                     </td>
                                 ))}

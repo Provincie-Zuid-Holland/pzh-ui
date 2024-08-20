@@ -31,7 +31,7 @@ export function Tabs(props: TabsProps) {
             <div
                 {...tabListProps}
                 ref={ref}
-                className="flex-column border-pzh-gray-300 flex gap-4 border-b"
+                className="flex-column border-pzh-gray-300 flex gap-6 border-b"
                 data-testid="tabs">
                 {[...state.collection].map(item => (
                     <Tab key={item.key} item={item} state={state} />

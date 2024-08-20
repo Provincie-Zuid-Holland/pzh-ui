@@ -80,7 +80,7 @@ ol li ol li ol li {
     */
 
   .pzh-button {
-    @apply focus:ring-pzh-focus disabled:bg-pzh-gray-200 disabled:text-pzh-blue-dark disabled:text-opacity-35 inline-block rounded leading-none ring-offset-2 transition duration-200 ease-in focus:outline-none focus:ring disabled:cursor-not-allowed;
+    @apply focus:ring-pzh-focus disabled:bg-pzh-gray-200 disabled:text-pzh-blue-dark disabled:text-opacity-35 flex items-center rounded leading-none ring-offset-2 transition duration-200 ease-in focus:outline-none focus:ring disabled:cursor-not-allowed;
   }
 
   .pzh-form-input {

@@ -1,10 +1,10 @@
+import { Spinner } from '@pzh-ui/icons'
 import { Slot, Slottable } from '@radix-ui/react-slot'
+import { useObjectRef } from '@react-aria/utils'
 import classNames from 'clsx'
 import { forwardRef } from 'react'
 import { AriaButtonProps, useButton } from 'react-aria'
 
-import { Spinner } from '@pzh-ui/icons'
-import { useObjectRef } from '@react-aria/utils'
 import { cn } from '../utils'
 
 /**
@@ -66,9 +66,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         'bg-pzh-green hover:bg-pzh-green-dark text-white':
                             variant === 'cta' && !isDisabled,
                         'cursor-pointer': !isDisabled,
-                    },
-                    {
-                        'inline-flex items-center': !!Icon || !!isLoading,
                     },
                     props.className
                 )}

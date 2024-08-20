@@ -1,4 +1,4 @@
-import { ArrowDownAZ, ArrowDownZA, Spinner } from '@pzh-ui/icons'
+import { ArrowDownArrowUp, ArrowUpArrowDown, Spinner } from '@pzh-ui/icons'
 import {
     TableOptions,
     flexRender,
@@ -43,11 +43,9 @@ export const Table = ({
 
     return (
         <div className="flex flex-col items-center">
-            <table
-                className={cn('text-pzh-blue-900 mb-8 w-full', className)}
-                data-testid="table">
+            <table className={cn('mb-8 w-full', className)} data-testid="table">
                 {caption && <caption className="sr-only">{caption}</caption>}
-                <thead>
+                <thead className="text-pzh-blue-900">
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr
                             key={headerGroup.id}
@@ -94,10 +92,10 @@ export const Table = ({
                                             {header.column.getCanSort() &&
                                                 ({
                                                     asc: (
-                                                        <ArrowDownAZ
-                                                            size={18}
+                                                        <ArrowUpArrowDown
+                                                            size={21}
                                                             className={classNames(
-                                                                'text-pzh-green-500 ml-2',
+                                                                'text-pzh-green-500 -mt-1 ml-2',
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
@@ -108,10 +106,10 @@ export const Table = ({
                                                         />
                                                     ),
                                                     desc: (
-                                                        <ArrowDownZA
-                                                            size={18}
+                                                        <ArrowDownArrowUp
+                                                            size={21}
                                                             className={classNames(
-                                                                'text-pzh-green-500 ml-2',
+                                                                'text-pzh-green-500 -mt-1 ml-2',
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
@@ -122,10 +120,10 @@ export const Table = ({
                                                         />
                                                     ),
                                                     false: (
-                                                        <ArrowDownAZ
-                                                            size={18}
+                                                        <ArrowUpArrowDown
+                                                            size={21}
                                                             className={classNames(
-                                                                'text-pzh-green-500 ml-2',
+                                                                'text-pzh-green-500 -mt-1 ml-2',
                                                                 {
                                                                     'opacity-100':
                                                                         !!header.column.getIsSorted(),
@@ -146,7 +144,7 @@ export const Table = ({
                         </tr>
                     ))}
                 </thead>
-                <tbody className="relative">
+                <tbody className="text-pzh-blue-500 relative">
                     {table.getRowModel().rows.map(row => {
                         const hasOnClick =
                             'onClick' in (row.original as any) &&

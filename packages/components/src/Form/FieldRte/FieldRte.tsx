@@ -20,6 +20,7 @@ import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Text from '@tiptap/extension-text'
 import Underline from '@tiptap/extension-underline'
+import { DOMOutputSpec } from '@tiptap/pm/model'
 import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import classNames from 'clsx'
 import { ReactNode, useEffect, useState } from 'react'
@@ -211,7 +212,20 @@ export const FieldRte = ({
 
         if (!!customMenuOptions?.find(el => el === 'table'))
             extensions.push(
-                Table,
+                Table.extend({
+                    renderHTML({ HTMLAttributes }) {
+                        const table: DOMOutputSpec = [
+                            'table',
+                            mergeAttributes(
+                                this.options.HTMLAttributes,
+                                HTMLAttributes
+                            ),
+                            ['tbody', 0],
+                        ]
+
+                        return table
+                    },
+                }),
                 TableRow,
                 TableCell,
                 TableHeader,

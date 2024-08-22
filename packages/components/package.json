@@ -124,7 +124,8 @@
         "vitest": "^0.34.6"
     },
     "resolutions": {
-        "jackspeak": "2.1.1"
+        "jackspeak": "2.1.1",
+        "prosemirror-model": "^1.18.1"
     },
     "gitHead": "3f6f1829db7edc7eb6adbeff975add5b77550981"
 }

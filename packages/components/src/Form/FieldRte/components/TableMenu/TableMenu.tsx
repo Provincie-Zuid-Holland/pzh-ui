@@ -21,7 +21,8 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
     })
 
     const handleColDeletion = (selection: Selection) => {
-        const el = selection.$anchor as ResolvedPos & {
+        const anchor = selection.$anchor as unknown
+        const el = anchor as ResolvedPos & {
             path: Node[]
         }
 

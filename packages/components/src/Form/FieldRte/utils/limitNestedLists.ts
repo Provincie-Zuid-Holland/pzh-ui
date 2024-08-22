@@ -10,7 +10,8 @@ const limitNestedLists: EditorOptions['onUpdate'] = ({
     editor,
 }) => {
     // Get the anchor position with path information
-    const el = transaction.selection.$anchor as ResolvedPos & { path: Node[] }
+    const anchor = transaction.selection.$anchor as unknown
+    const el = anchor as ResolvedPos & { path: Node[] }
 
     // Filter out the lists (bulletList or orderedList nodes) in the path
     const lists = el.path.filter(

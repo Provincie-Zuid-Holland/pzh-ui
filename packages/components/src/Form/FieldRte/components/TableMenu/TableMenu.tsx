@@ -3,6 +3,7 @@ import { Node, ResolvedPos } from '@tiptap/pm/model'
 import { Selection } from '@tiptap/pm/state'
 import { EditorContentProps } from '@tiptap/react'
 import { useEffect, useRef, useState } from 'react'
+
 import { Divider } from '../../../../Divider'
 
 interface TableMenuProps extends EditorContentProps {
@@ -18,8 +19,6 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
     useKeyboardEvent(true, ev => {
         ev.key === 'Escape' && setRightClick(false)
     })
-
-    if (!editor) return null
 
     const handleColDeletion = (selection: Selection) => {
         const el = selection.$anchor as ResolvedPos & {
@@ -42,13 +41,17 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
         })
     }
 
-    editor.on('transaction', ({ transaction }) =>
+    editor?.on('transaction', ({ transaction }) =>
         handleColDeletion(transaction.selection)
     )
 
     useEffect(() => {
+        if (!editor) return
+
         handleColDeletion(editor.state.selection)
-    }, [])
+    }, [editor])
+
+    if (!editor) return null
 
     return (
         <div
@@ -94,6 +97,12 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
                 onClick={() => editor.chain().focus().toggleHeaderRow().run()}
                 className="text-pzh-blue text-left font-bold">
                 Headerrij aan/uit
+            </button>
+            <button
+                type="button"
+                onClick={() => editor.chain().focus().deleteTable().run()}
+                className="text-pzh-blue text-left font-bold">
+                Tabel verwijderen
             </button>
         </div>
     )

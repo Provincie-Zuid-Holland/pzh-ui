@@ -31,6 +31,7 @@ export const FieldCheckbox = ({
                     !!withBorder,
                 'h-10 px-2': !!withBorder && size === 'small',
                 'h-12 px-4': !!withBorder && size === 'large',
+                'bg-pzh-red-10 border-pzh-red-500': !!withBorder && !!hasError,
             },
             className
         )}>

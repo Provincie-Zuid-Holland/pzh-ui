@@ -105,4 +105,5 @@ export { default as UpRightAndDownLeftFromCenter } from './UpRightAndDownLeftFro
 export { default as User } from './User'
 export { default as Users } from './Users'
 export { default as WavyLines } from './WavyLines'
+export { default as XmarkLarge } from './XmarkLarge'
 export { default as Xmark } from './Xmark'

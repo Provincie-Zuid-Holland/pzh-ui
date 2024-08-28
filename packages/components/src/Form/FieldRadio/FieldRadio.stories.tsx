@@ -39,3 +39,12 @@ export const DisabledChecked = {
         checked: true,
     },
 } satisfies Story
+
+export const WithBorder = {
+    render: Template,
+    args: {
+        children: 'Option 1',
+        name: 'option-1',
+        withBorder: true,
+    },
+} satisfies Story

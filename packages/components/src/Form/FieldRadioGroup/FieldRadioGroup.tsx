@@ -1,5 +1,6 @@
 import classNames from 'clsx'
 import { ReactNode } from 'react'
+
 import { FieldLabel } from '..'
 import { FieldRadio, FieldRadioProps } from '../FieldRadio'
 
@@ -54,7 +55,8 @@ export const FieldRadioGroup = ({
         )}
         <div
             className={classNames('flex', {
-                'flex-col': optionLayout === 'vertical',
+                'flex-col gap-2': optionLayout === 'vertical',
+                'gap-2 md:gap-4': optionLayout === 'horizontal',
             })}>
             {options.map((option, index) => (
                 <FieldRadio
@@ -62,12 +64,6 @@ export const FieldRadioGroup = ({
                     name={name}
                     value={option.value}
                     className={classNames({
-                        'mr-8':
-                            index + 1 !== options.length &&
-                            optionLayout === 'horizontal',
-                        'mb-2':
-                            index + 1 !== options.length &&
-                            optionLayout !== 'horizontal',
                         'w-fit': optionLayout === 'vertical',
                     })}
                     {...props}

@@ -1,5 +1,6 @@
 import classNames from 'clsx'
 import React from 'react'
+
 import { cn } from '../../utils'
 
 /**
@@ -7,19 +8,33 @@ import { cn } from '../../utils'
  */
 
 export interface FieldRadioProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
     value?: string | number
     hasError?: boolean
+    withBorder?: boolean
+    size?: 'small' | 'large'
 }
 
 export const FieldRadio = ({
     disabled,
     hasError,
+    withBorder,
+    size = 'large',
     className,
     children,
     ...props
 }: FieldRadioProps) => (
-    <label className={cn('inline-block items-center', className)}>
+    <label
+        className={cn(
+            'text-pzh-blue-500 inline-block items-center',
+            {
+                'has-[:focus]:ring-pzh-focus has-[:checked]:border-pzh-green-500 has-[:checked]:bg-pzh-green-10 border-pzh-blue-500 hover:border-pzh-green-500 hover:text-pzh-green-500 has-[:focus]:ring has-[:focus]:ring-2 inline-flex items-center rounded border font-bold':
+                    !!withBorder,
+                'h-10 px-2': !!withBorder && size === 'small',
+                'h-12 px-4': !!withBorder && size === 'large',
+            },
+            className
+        )}>
         <input
             data-testid="pzh-form-radio"
             disabled={disabled}
@@ -30,12 +45,9 @@ export const FieldRadio = ({
             {...props}
         />
         <span
-            className={classNames(
-                'text-pzh-blue-dark relative inline-block cursor-pointer pl-7',
-                {
-                    'text-pzh-gray-600': disabled,
-                }
-            )}>
+            className={classNames('relative inline-block cursor-pointer pl-7', {
+                'text-pzh-gray-600': disabled,
+            })}>
             {children}
         </span>
     </label>

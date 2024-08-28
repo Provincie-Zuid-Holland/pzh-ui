@@ -1,5 +1,6 @@
 import classNames from 'clsx'
 import React from 'react'
+
 import { cn } from '../../utils'
 
 /**
@@ -7,18 +8,32 @@ import { cn } from '../../utils'
  */
 
 export interface FieldCheckboxProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
     hasError?: boolean
+    withBorder?: boolean
+    size?: 'small' | 'large'
 }
 
 export const FieldCheckbox = ({
     disabled,
     className,
     hasError,
+    withBorder,
+    size = 'large',
     children,
     ...props
 }: FieldCheckboxProps) => (
-    <label className={cn('flex items-center', className)}>
+    <label
+        className={cn(
+            'text-pzh-blue-500 inline-flex items-center',
+            {
+                'has-[:focus]:ring-pzh-focus has-[:checked]:border-pzh-green-500 has-[:checked]:bg-pzh-green-10 border-pzh-blue-500 hover:border-pzh-green-500 hover:text-pzh-green-500 has-[:focus]:ring has-[:focus]:ring-2 items-center rounded border font-bold':
+                    !!withBorder,
+                'h-10 px-2': !!withBorder && size === 'small',
+                'h-12 px-4': !!withBorder && size === 'large',
+            },
+            className
+        )}>
         <input
             data-testid="pzh-form-checkbox"
             disabled={disabled}

@@ -51,3 +51,24 @@ export const Horizontal = {
         optionLayout: 'horizontal',
     },
 } satisfies Story
+
+export const WithBorder = {
+    render: Template,
+    args: {
+        name: 'radiogroup',
+        label: 'Dit is een vraag',
+        options: [
+            {
+                label: 'Option 1',
+                value: 'option-1',
+            },
+            {
+                label: 'Option 2',
+                value: 'option-2',
+            },
+        ],
+        value: 'option-1',
+        optionLayout: 'horizontal',
+        withBorder: true,
+    },
+} satisfies Story

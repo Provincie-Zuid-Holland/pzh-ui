@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+
 import { FieldCheckbox, FieldCheckboxProps } from '../FieldCheckbox'
 
 /**
@@ -14,17 +16,27 @@ export interface FieldCheckboxGroupProps extends FieldCheckboxProps {
     name: string
     value: string[]
     hasError?: boolean
+    layout?: 'horizontal' | 'vertical'
 }
 
 export const FieldCheckboxGroup = ({
     name,
     options,
     value,
+    layout = 'vertical',
     onChange,
     className,
     ...props
 }: FieldCheckboxGroupProps) => (
-    <div className={className}>
+    <div
+        className={clsx(
+            'flex',
+            {
+                'flex-col gap-2': layout === 'vertical',
+                'gap-2 md:gap-4': layout === 'horizontal',
+            },
+            className
+        )}>
         {options.map((option, index) => {
             const checked = Boolean(value && value.includes(option.value))
 
@@ -34,9 +46,9 @@ export const FieldCheckboxGroup = ({
                     name={name}
                     value={option.value}
                     onChange={onChange}
-                    className={
-                        index + 1 !== options.length ? 'mb-2' : undefined
-                    }
+                    className={clsx({
+                        'w-fit': layout === 'vertical',
+                    })}
                     {...props}
                     checked={checked}>
                     {option.label}

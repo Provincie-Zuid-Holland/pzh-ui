@@ -34,3 +34,22 @@ export const Default = {
         ],
     },
 } satisfies Story
+
+export const WithBorder = {
+    render: Template,
+    args: {
+        name: 'radiogroup',
+        options: [
+            {
+                label: 'Option 1',
+                value: 'option-1',
+            },
+            {
+                label: 'Option 2',
+                value: 'option-2',
+            },
+        ],
+        layout: 'horizontal',
+        withBorder: true,
+    },
+} satisfies Story

@@ -63,6 +63,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                             variant === 'primary' && !isDisabled,
                         'bg-pzh-white text-pzh-blue border-pzh-gray-600 hover:border-pzh-blue border':
                             variant === 'secondary' && !isDisabled,
+                        'border-pzh-gray-200 border':
+                            variant === 'secondary' && isDisabled,
                         'bg-pzh-green hover:bg-pzh-green-dark text-white':
                             variant === 'cta' && !isDisabled,
                         'cursor-pointer': !isDisabled,

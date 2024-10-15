@@ -42,3 +42,17 @@ export const LayoutGrid = {
         layout: 'grid',
     },
 } satisfies Story
+
+export const WithoutDescription = {
+    render: Template,
+    args: {
+        name: 'file-upload',
+        label: 'Form label',
+        hideDescription: true,
+        hideIcon: true,
+        className: 'py-24',
+        accept: {
+            '*': [],
+        },
+    },
+} satisfies Story

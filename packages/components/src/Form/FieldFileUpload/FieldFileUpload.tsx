@@ -1,3 +1,4 @@
+import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
 import { useMountEffect, useUpdateEffect } from '@react-hookz/web'
 import classNames from 'clsx'
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
@@ -8,8 +9,8 @@ import {
     useDropzone,
 } from 'react-dropzone-esm'
 
-import { CloudArrowUp, TrashCan } from '@pzh-ui/icons'
-
+import { Text } from '../../Text'
+import { cn } from '../../utils'
 import { base64ToFile } from '../../utils/file'
 import formatBytes from '../../utils/formatBytes'
 import { FieldLabel } from '../FieldLabel'
@@ -33,6 +34,9 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     defaultValue?: string[]
     maxWidth?: number
     maxHeight?: number
+    hideDescription?: boolean
+    hideIcon?: boolean
+    hideSelectedFiles?: boolean
 }
 
 export const FieldFileUpload = ({
@@ -52,6 +56,9 @@ export const FieldFileUpload = ({
     defaultValue = [],
     maxWidth = 1500,
     maxHeight = 2500,
+    hideDescription,
+    hideIcon,
+    hideSelectedFiles,
     ...props
 }: FieldFileUploadProps) => {
     const [myFiles, setMyFiles] = useState<File[]>([])
@@ -95,6 +102,10 @@ export const FieldFileUpload = ({
 
     const validateImageDimensions = async (file: File) => {
         return new Promise<FileError | null>(resolve => {
+            if (!file.type.includes('image')) {
+                resolve(null)
+            }
+
             const image = new Image()
             image.src = URL.createObjectURL(file)
             image.onload = () => {
@@ -212,42 +223,47 @@ export const FieldFileUpload = ({
                 />
 
                 <div
-                    className={classNames(
+                    className={cn(
                         'text-pzh-blue-dark border-pzh-gray-600 cursor-pointer rounded border border-dashed py-6 text-center',
                         className,
                         {
                             hidden: myFiles.length === props.maxFiles,
+                            'border-pzh-positive ring-pzh-positive border-solid ring ring-1':
+                                isDragActive,
                         }
                     )}
                     {...getRootProps()}>
                     <div>
-                        <CloudArrowUp
-                            size={60}
-                            className={classNames('mx-auto mb-2 max-w-[2rem]', {
-                                'text-pzh-blue-dark': !isDragActive,
-                                'text-pzh-green':
-                                    isDragActive &&
-                                    (!isDragReject ||
-                                        !!!fileRejections.length ||
-                                        !!!errors?.length),
-                                'text-pzh-red':
-                                    isDragReject ||
-                                    !!fileRejections.length ||
-                                    !!errors?.length,
-                            })}
-                        />
+                        {!hideIcon && (
+                            <CloudArrowUp
+                                size={60}
+                                className={classNames(
+                                    'mx-auto mb-2 max-w-[2rem]',
+                                    {
+                                        'text-pzh-blue-dark': !isDragActive,
+                                        'text-pzh-green':
+                                            isDragActive &&
+                                            (!isDragReject ||
+                                                !!!fileRejections.length ||
+                                                !!!errors?.length),
+                                        'text-pzh-red':
+                                            isDragReject ||
+                                            !!fileRejections.length ||
+                                            !!errors?.length,
+                                    }
+                                )}
+                            />
+                        )}
 
-                        <p>
+                        <Text>
                             {!isDragReject &&
                             !!!fileRejections.length &&
                             !!!errors?.length ? (
                                 <>
-                                    Sleep hier je bestanden naartoe of{' '}
-                                    {!isDragActive && (
-                                        <span className="text-pzh-green underline">
-                                            blader door je bestanden
-                                        </span>
-                                    )}
+                                    Sleep hier je bestand(en) naartoe of{' '}
+                                    <span className="text-pzh-green-500 underline">
+                                        blader door je bestand(en)
+                                    </span>
                                 </>
                             ) : (
                                 <>
@@ -256,80 +272,95 @@ export const FieldFileUpload = ({
                                         : 'Sorry, het opgegeven bestandstype is niet toegestaan of de bestandsgrootte is te groot.'}
                                 </>
                             )}
-                        </p>
-                        <span className="text-pzh-gray-600">
-                            {Array.isArray(acceptedTypes) &&
-                            acceptedTypes.length > 0 ? (
-                                <>
-                                    De ondersteunde bestandstypen zijn{' '}
-                                    {acceptedTypes
-                                        .join(', ')
-                                        .replace(/,(?!.*,)/gim, ' en')}
-                                    . Maximale bestandsgrootte{' '}
-                                    {formatBytes(maxSize)}.
-                                </>
-                            ) : (
-                                <>
-                                    Het ondersteunde bestandstype is {accept}.
-                                    Maximale bestandsgrootte{' '}
-                                    {formatBytes(maxSize)}.
-                                </>
-                            )}
-                            {maxWidth && ` Maximale breedte ${maxWidth}px.`}
-                            {maxHeight && ` Maximale hoogte ${maxHeight}px.`}
-                        </span>
+                        </Text>
+                        {!hideDescription && (
+                            <Text as="span" className="text-pzh-gray-600">
+                                {Array.isArray(acceptedTypes) &&
+                                acceptedTypes.length > 0 ? (
+                                    <>
+                                        De ondersteunde bestandstypen zijn{' '}
+                                        {acceptedTypes
+                                            .join(', ')
+                                            .replace(/,(?!.*,)/gim, ' en')}
+                                        . Maximale bestandsgrootte{' '}
+                                        {formatBytes(maxSize)}.
+                                    </>
+                                ) : (
+                                    <>
+                                        Het ondersteunde bestandstype is{' '}
+                                        {accept}. Maximale bestandsgrootte{' '}
+                                        {formatBytes(maxSize)}.
+                                    </>
+                                )}
+                                {maxWidth && ` Maximale breedte ${maxWidth}px.`}
+                                {maxHeight &&
+                                    ` Maximale hoogte ${maxHeight}px.`}
+                            </Text>
+                        )}
                     </div>
                 </div>
-                {!!myFiles.length && (
-                    <ul>
-                        {myFiles.map((file, index) => (
-                            <li
-                                key={file.path || `file-${index}`}
-                                className="pzh-form-input mt-2 overflow-hidden"
-                                style={
-                                    preview ? { paddingBottom: 0 } : undefined
-                                }>
-                                <div
-                                    className={classNames(
-                                        'flex items-center justify-between px-4',
-                                        {
-                                            'pb-1': preview,
-                                        }
-                                    )}>
-                                    <span>{file.path || label}</span>
-                                    <div className="nowrap flex items-center">
-                                        <span className="text-pzh-blue-dark/50 text-s">
-                                            {formatBytes(file.size)}
-                                        </span>
-                                        <button
-                                            type="button"
-                                            onClick={removeFile(file)}>
-                                            <TrashCan
-                                                size={16}
-                                                className="text-pzh-red -mt-[2px] ml-4"
-                                            />
-                                            <span className="sr-only">
-                                                Verwijderen
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                                {file.preview && (
-                                    <div className="border-pzh-gray-600 border-t">
-                                        <img
-                                            src={file.preview}
-                                            alt={file.name}
-                                            onLoad={() =>
-                                                URL.revokeObjectURL(
-                                                    file.preview!
-                                                )
+                {!!myFiles.length && !hideSelectedFiles && (
+                    <div className="border-pzh-gray-300 mt-6 rounded border p-4">
+                        <Text bold color="text-pzh-blue-500 mb-2">
+                            Geselecteerde bestanden
+                        </Text>
+                        <ul className="flex flex-col gap-2">
+                            {myFiles.map((file, index) => (
+                                <li
+                                    key={file.path || `file-${index}`}
+                                    className="pzh-form-input border-pzh-gray-200 overflow-hidden"
+                                    style={
+                                        preview
+                                            ? { paddingBottom: 0 }
+                                            : undefined
+                                    }>
+                                    <div
+                                        className={classNames(
+                                            'flex items-center justify-between px-4',
+                                            {
+                                                'pb-1': preview,
                                             }
-                                        />
+                                        )}>
+                                        <Text bold color="text-pzh-blue-500">
+                                            {file.path || label}
+                                        </Text>
+                                        <div className="nowrap flex items-center">
+                                            <Text
+                                                as="span"
+                                                size="s"
+                                                color="text-pzh-gray-600">
+                                                {formatBytes(file.size)}
+                                            </Text>
+                                            <button
+                                                type="button"
+                                                onClick={removeFile(file)}>
+                                                <TrashCan
+                                                    size={16}
+                                                    className="text-pzh-red -mt-[2px] ml-4"
+                                                />
+                                                <span className="sr-only">
+                                                    Verwijderen
+                                                </span>
+                                            </button>
+                                        </div>
                                     </div>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
+                                    {file.preview && (
+                                        <div className="border-pzh-gray-600 border-t">
+                                            <img
+                                                src={file.preview}
+                                                alt={file.name}
+                                                onLoad={() =>
+                                                    URL.revokeObjectURL(
+                                                        file.preview!
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 )}
             </div>
         </div>

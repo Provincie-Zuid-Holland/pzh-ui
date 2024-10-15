@@ -19,7 +19,7 @@ import { FieldLabel } from '../FieldLabel'
  * Form file upload element
  */
 
-type File = FileWithPath & { preview?: string }
+export type File = FileWithPath & { preview?: string }
 
 export interface FieldFileUploadProps extends DropzoneOptions {
     name: string

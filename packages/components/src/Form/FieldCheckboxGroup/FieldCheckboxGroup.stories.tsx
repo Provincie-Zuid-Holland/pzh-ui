@@ -49,7 +49,23 @@ export const WithBorder = {
                 value: 'option-2',
             },
         ],
-        layout: 'horizontal',
+        optionLayout: 'horizontal',
         withBorder: true,
+    },
+} satisfies Story
+
+export const WithLabel = {
+    render: Template,
+    args: {
+        name: 'option',
+        options: [
+            {
+                label: 'Option 1',
+                value: 'option-1',
+            },
+        ],
+        label: 'Form label',
+        description: 'Korte omschrijving voor onder het label',
+        required: true,
     },
 } satisfies Story

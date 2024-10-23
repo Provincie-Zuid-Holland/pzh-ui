@@ -13,7 +13,7 @@ describe('FieldFileUpload', () => {
         render(<FieldFileUpload {...props} />)
 
         expect(
-            screen.getByText('Sleep hier je bestanden naartoe of')
+            screen.getByText('Sleep hier je bestand(en) naartoe of')
         ).toBeTruthy()
     })
 })

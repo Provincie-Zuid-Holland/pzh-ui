@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
+import { Form, Formik } from 'formik'
 
+import { FormikCheckboxGroup } from '../../Formik'
 import {
     FieldCheckboxGroup,
     FieldCheckboxGroupProps,
@@ -16,6 +18,14 @@ type Story = StoryObj<typeof FieldCheckboxGroup>
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args: FieldCheckboxGroupProps) => (
     <FieldCheckboxGroup {...args} />
+)
+
+const Test = (args: FieldCheckboxGroupProps) => (
+    <Formik initialValues={{}} onSubmit={console.log}>
+        <Form>
+            <FormikCheckboxGroup {...args} />
+        </Form>
+    </Formik>
 )
 
 export const Default = {
@@ -55,7 +65,7 @@ export const WithBorder = {
 } satisfies Story
 
 export const WithLabel = {
-    render: Template,
+    render: Test,
     args: {
         name: 'option',
         options: [

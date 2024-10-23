@@ -29,7 +29,7 @@ export const FormikCheckboxGroup = ({
                         {...field}
                         onChange={(e: React.FormEvent<HTMLInputElement>) => {
                             const target = e.currentTarget
-                            const newValue = [...field.value]
+                            const newValue = [...(field.value || [])]
                             if (target.checked) {
                                 newValue.push(target.value)
                             } else {

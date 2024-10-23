@@ -42,7 +42,6 @@ export const FormikCheckboxGroup = ({
                                 )
                             }
 
-                            console.log(name, newValue, target)
                             form.setFieldValue(name, newValue)
                         }}
                         hasError={Boolean(meta.touched && meta.error)}

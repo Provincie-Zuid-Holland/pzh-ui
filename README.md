@@ -4,7 +4,7 @@ We use [Lerna](https://github.com/lerna/lerna) to add and publish new packages. 
 
 ## Installation
 
-`lerna bootstrap`
+`yarn install`
 
 When run, this command will:
 
@@ -29,8 +29,8 @@ Run `lerna create` which will give you a list of options to go through. After fi
 
 Add local or remote package as dependency to packages in the current Lerna repo. Note that only a single package can be added at a time.
 
-`lerna add <dependency>[@version] <package> [--dev] [--exact] [--peer]`
+`yarn install <dependency> -w <package>`
 
-e.g. `lerna add react packages/components`
+e.g. `yarn install react -w components`
 
 Above command will add the react dependency to the components package. In order to add a devDependency simply add a `--dev` flag to the command.

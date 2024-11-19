@@ -280,7 +280,7 @@ export const FieldRte = ({
                 })}>
                 <div
                     className={classNames('relative rounded border', {
-                        'bg-pzh-gray-100': disabled,
+                        'bg-pzh-gray-200': disabled,
                         'bg-pzh-white': !disabled,
                         'pzh-form-error': hasError,
                         'border-pzh-gray-600': !hasError,

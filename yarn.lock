@@ -2008,7 +2008,7 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@pzh-ui/css@workspace:^":
+"@pzh-ui/css@workspace:*":
   version "0.0.100"
   resolved "https://registry.yarnpkg.com/@pzh-ui/css/-/css-0.0.100.tgz#3bd05b71c0d3ace1311faebf748fa3c874ad9371"
   integrity sha512-Sw7q3XaGWUQz5GhKxnKiKJFLdN20EfZM9AuK9Z6bHliQwNwM5yZRsqVPLRV07yNV04dabFOjD9jfn+v7Rovauw==
@@ -2021,7 +2021,7 @@
     react-datepicker "^4.7.0"
     react-toastify "^9.1.2"
 
-"@pzh-ui/icons@workspace:^":
+"@pzh-ui/icons@workspace:*":
   version "0.0.70"
   resolved "https://registry.yarnpkg.com/@pzh-ui/icons/-/icons-0.0.70.tgz#e9190ac56afebad6a28c9377228b09f0f88d820c"
   integrity sha512-vyvTEXpv9FEYmkQ7Npq5SrFhYR210Tmj0lQqV9seRYlG02/eX8Cw8rLmJ0N6ry2O0Qc9jCnUTFEuKUQT7rosTA==

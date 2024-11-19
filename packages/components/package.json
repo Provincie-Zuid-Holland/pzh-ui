@@ -31,7 +31,7 @@
     "dependencies": {
         "@floating-ui/react": "^0.24.8",
         "@headlessui/react": "^1.5.0",
-        "@pzh-ui/icons": "workspace:^",
+        "@pzh-ui/icons": "^0.0.70",
         "@radix-ui/react-accordion": "^1.1.2",
         "@radix-ui/react-slot": "^1.0.2",
         "@react-aria/utils": "^3.23.2",
@@ -85,7 +85,7 @@
         "@babel/preset-env": "^7.22.15",
         "@babel/preset-react": "^7.22.15",
         "@babel/preset-typescript": "^7.23.3",
-        "@pzh-ui/css": "workspace:^",
+        "@pzh-ui/css": "^0.0.101",
         "@rollup/plugin-babel": "^5.3.1",
         "@rollup/plugin-typescript": "^11.1.5",
         "@storybook/addon-a11y": "^8.1.1",
@@ -127,5 +127,5 @@
         "jackspeak": "2.1.1",
         "prosemirror-model": "^1.18.1"
     },
-    "gitHead": "3f6f1829db7edc7eb6adbeff975add5b77550981"
+    "gitHead": "4ffc1646d815f71dc9138caca67de53b179ea348"
 }

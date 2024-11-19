@@ -21,7 +21,7 @@
     "react-datepicker": "^4.7.0",
     "react-toastify": "^9.1.2"
   },
-  "gitHead": "07f170276b4ec4e92c6f24a7ebcd8c05667a34ac",
+  "gitHead": "4ffc1646d815f71dc9138caca67de53b179ea348",
   "devDependencies": {
     "tailwindcss": "^3.4.10"
   }

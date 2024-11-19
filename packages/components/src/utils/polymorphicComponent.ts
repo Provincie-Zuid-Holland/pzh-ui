@@ -18,7 +18,7 @@ type PropsToOmit<Component extends As, Props> = keyof (AsProp<Component> &
 
 export type PolymorphicComponentProp<
     Component extends As,
-    Props = object,
+    Props = object
 > = React.PropsWithChildren<Props & AsProp<Component>> &
     Omit<
         React.ComponentPropsWithoutRef<Component>,
@@ -28,7 +28,7 @@ export type PolymorphicComponentProp<
 
 export type PolymorphicComponentPropWithRef<
     Component extends As,
-    Props = object,
+    Props = object
 > = PolymorphicComponentProp<Component, Props> & {
     ref?: PolymorphicRef<Component>
 } & DataProps
@@ -39,6 +39,7 @@ export function forwardRef<Props extends object, Component extends As = As>(
         PolymorphicComponentProp<Component, Props>
     >
 ) {
+    // @ts-ignore
     return forwardRefReact(component) as unknown as <Component extends As>(
         props: PolymorphicComponentPropWithRef<Component, Props>
     ) => React.ReactElement | null

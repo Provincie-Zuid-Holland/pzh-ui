@@ -83,6 +83,7 @@ export const FieldDate = ({
                 className={classNames({
                     'col-span-6 md:col-span-4': layout === 'grid',
                 })}>
+                {/** @ts-ignore */}
                 <DatePicker
                     locale={nl}
                     name={name}

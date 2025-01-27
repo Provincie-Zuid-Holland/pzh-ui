@@ -11,13 +11,13 @@ For example, `yarn add @pzh-ui/icons`.
 After installing the dependency, you can start using the icons as follows:
 
 ```jsx
-import { Check } from '@pzh-ui/icons'
+import { Check } from "@pzh-ui/icons";
 
 function Page() {
-    return <Check />
+  return <Check />;
 }
 ```
 
 ## Adding new icons
 
-Add your new SVG icon to the `src/` folder. After that run `yarn svgr` and your new icon will be generated in `src/components/`.
+Add your new SVG icon to the `src/` folder. After that run `yarn svgr` and your new icon will be generated in `src/components/`

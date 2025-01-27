@@ -21,7 +21,7 @@
     "scripts": {
         "test:generate-output": "vitest run --outputFile.json=.jest-test-results.json",
         "test": "vitest",
-        "prepare": "npx tsc && vite build",
+        "prepare": "npx tsc && npx vite build",
         "storybook": "npm run prebuild:storybook && storybook dev -p 6006",
         "prebuild:storybook": "npm run test:generate-output",
         "build:storybook": "storybook build",
@@ -127,5 +127,5 @@
         "jackspeak": "2.1.1",
         "prosemirror-model": "^1.18.1"
     },
-    "gitHead": "0e856bb1dfdcf960f730b607aeb4c1cb0b82b3ad"
+    "gitHead": "4c48a7ba5ab702f4ddb625e7b61a0fc09d22fd93"
 }

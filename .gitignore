@@ -25,3 +25,4 @@ tailwind.css
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+packages/*/.yarn

@@ -117,7 +117,7 @@
         "rollup-plugin-visualizer": "^5.9.2",
         "storybook": "^8.1.1",
         "storybook-addon-react-router-v6": "^2.0.15",
-        "typescript": "^5.6.3",
+        "typescript": "^5.4.5",
         "vite": "^5.0.2",
         "vite-plugin-lib-inject-css": "^2.0.1",
         "vite-tsconfig-paths": "^4.2.1",
@@ -127,5 +127,5 @@
         "jackspeak": "2.1.1",
         "prosemirror-model": "^1.18.1"
     },
-    "gitHead": "a6223e25a5260285baf58adf14ce0406dbbb6b45"
+    "gitHead": "d0c5422143d840c58be734390d34a69dbd158beb"
 }

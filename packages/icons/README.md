@@ -20,4 +20,4 @@ function Page() {
 
 ## Adding new icons
 
-Add your new SVG icon to the `src/` folder. After that run `yarn svgr` and your new icon will be generated in `src/components/`.
+Add your new SVG icon to the `src/` folder. After that run `yarn svgr` and your new icon will be generated in `src/components/`

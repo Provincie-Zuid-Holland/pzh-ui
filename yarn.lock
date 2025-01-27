@@ -2908,7 +2908,7 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.23.3"
     "@floating-ui/react": "npm:^0.24.8"
     "@headlessui/react": "npm:^1.5.0"
-    "@pzh-ui/css": "npm:^0.0.102"
+    "@pzh-ui/css": "npm:^0.0.104"
     "@pzh-ui/icons": "npm:^0.0.70"
     "@radix-ui/react-accordion": "npm:^1.1.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
@@ -3024,7 +3024,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/css@npm:^0.0.102, @pzh-ui/css@workspace:packages/css":
+"@pzh-ui/css@npm:^0.0.104, @pzh-ui/css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/css@workspace:packages/css"
   dependencies:
@@ -3039,7 +3039,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/icons@npm:^0.0.70, @pzh-ui/icons@workspace:packages/icons":
+"@pzh-ui/icons@npm:^0.0.70":
+  version: 0.0.70
+  resolution: "@pzh-ui/icons@npm:0.0.70"
+  dependencies:
+    react: "npm:^18.2.0"
+    react-toastify: "npm:^9.1.2"
+  checksum: 10c0/d5a28274fbaf5e087360cffb332fd2b67a42a0c78330502ee413204e106a6462d588a31ab0e9042256492bb5a175950c851e14926f31ca5daf87b537965b9e45
+  languageName: node
+  linkType: hard
+
+"@pzh-ui/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/icons@workspace:packages/icons"
   dependencies:

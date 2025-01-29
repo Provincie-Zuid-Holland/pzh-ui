@@ -1,37 +1,40 @@
 {
-  "name": "@pzh-ui/config",
-  "version": "0.0.77",
-  "description": "Contains configuration files for projects within Provincie Zuid-Holland.",
-  "license": "ISC",
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
-  "dependencies": {
-    "@babel/eslint-parser": "^7.26.5",
-    "@babel/preset-env": "^7.26.7",
-    "@babel/preset-react": "^7.26.3",
-    "@babel/preset-typescript": "^7.26.0",
-    "@eslint/js": "^9.19.0",
-    "@rollup/plugin-typescript": "^12.1.2",
-    "@typescript-eslint/eslint-plugin": "^8.22.0",
-    "@typescript-eslint/parser": "^8.22.0",
-    "babel-plugin-import": "^1.13.8",
-    "eslint": "^9.19.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-import-resolver-typescript": "^3.7.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-tailwindcss": "^0.6.11"
-  },
-  "devDependencies": {
-    "vite": "^6.0.11"
-  },
-  "prettier": "./prettier",
-  "gitHead": "07f170276b4ec4e92c6f24a7ebcd8c05667a34ac"
+    "name": "@pzh-ui/config",
+    "version": "0.0.77",
+    "description": "Contains configuration files for projects within Provincie Zuid-Holland.",
+    "license": "ISC",
+    "publishConfig": {
+        "access": "public"
+    },
+    "sideEffects": false,
+    "dependencies": {
+        "@babel/eslint-parser": "^7.26.5",
+        "@babel/preset-env": "^7.26.7",
+        "@babel/preset-react": "^7.26.3",
+        "@babel/preset-typescript": "^7.26.0",
+        "@eslint/js": "^9.19.0",
+        "@rollup/plugin-typescript": "^12.1.2",
+        "@typescript-eslint/eslint-plugin": "^8.22.0",
+        "@typescript-eslint/parser": "^8.22.0",
+        "babel-plugin-import": "^1.13.8",
+        "eslint": "^9.19.0",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-import-resolver-typescript": "^3.7.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "eslint-plugin-prettier": "^5.2.3",
+        "eslint-plugin-react": "^7.37.4",
+        "eslint-plugin-react-hooks": "^5.1.0",
+        "prettier": "^3.4.2",
+        "prettier-plugin-organize-imports": "^4.1.0",
+        "prettier-plugin-tailwindcss": "^0.6.11"
+    },
+    "devDependencies": {
+        "vite": "^6.0.11"
+    },
+    "prettier": "./prettier",
+    "gitHead": "07f170276b4ec4e92c6f24a7ebcd8c05667a34ac",
+    "resolutions": {
+        "globals": "^15.14.0"
+    }
 }

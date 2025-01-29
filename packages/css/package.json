@@ -1,28 +1,29 @@
 {
-  "name": "@pzh-ui/css",
-  "version": "0.0.104",
-  "description": "Contains default styling for projects within Provincie Zuid-Holland.",
-  "license": "ISC",
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "prepare": "npm run-script build-tailwind",
-    "build-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css",
-    "watch-tailwind": "npx tailwindcss -c ./config/custom.js -i src/tailwind.src.css -o src/tailwind.css --watch",
-    "build": "npm run-script build-tailwind"
-  },
-  "dependencies": {
-    "@rollup/plugin-typescript": "^8.3.1",
-    "@tailwindcss/custom-forms": "^0.2.1",
-    "@tailwindcss/forms": "^0.5.0",
-    "@tailwindcss/line-clamp": "^0.3.1",
-    "@tailwindcss/typography": "^0.5.9",
-    "react-datepicker": "^4.7.0",
-    "react-toastify": "^9.1.2"
-  },
-  "gitHead": "8a554dc08a29dd8c96805d6e2c437ad6a92c8a7c",
-  "devDependencies": {
-    "tailwindcss": "^3.4.10"
-  }
+    "name": "@pzh-ui/css",
+    "version": "0.0.104",
+    "description": "Contains default styling for projects within Provincie Zuid-Holland.",
+    "license": "ISC",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "prepare": "npm run-script build-tailwind",
+        "build-tailwind": "npx @tailwindcss/cli -c ./config/custom.ts -i src/tailwind.src.css -o src/tailwind.css",
+        "watch-tailwind": "npx @tailwindcss/cli -c ./config/custom.ts -i src/tailwind.src.css -o src/tailwind.css --watch",
+        "build": "npm run-script build-tailwind"
+    },
+    "dependencies": {
+        "@rollup/plugin-typescript": "^8.3.1",
+        "@tailwindcss/custom-forms": "^0.2.1",
+        "@tailwindcss/forms": "^0.5.0",
+        "@tailwindcss/line-clamp": "^0.3.1",
+        "@tailwindcss/typography": "^0.5.9",
+        "react-datepicker": "^4.7.0",
+        "react-toastify": "^9.1.2"
+    },
+    "gitHead": "8a554dc08a29dd8c96805d6e2c437ad6a92c8a7c",
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.0.0",
+        "tailwindcss": "^4.0.0"
+    }
 }

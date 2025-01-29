@@ -31,5 +31,6 @@
   "devDependencies": {
     "vite": "^6.0.11"
   },
+  "prettier": "./prettier",
   "gitHead": "07f170276b4ec4e92c6f24a7ebcd8c05667a34ac"
 }

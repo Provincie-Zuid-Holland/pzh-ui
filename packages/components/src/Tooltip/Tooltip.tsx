@@ -95,7 +95,7 @@ export const Tooltip = ({
                 {...getFloatingProps({
                     ref: refs.setFloating,
                     className:
-                        'px-3 rounded max-w-[300px] text-white font-normal leading-5',
+                        'px-3 rounded max-w-[300px] text-white font-normal leading-5 z-10',
                     style: {
                         position: strategy,
                         top: y ?? '',
@@ -106,19 +106,19 @@ export const Tooltip = ({
                         background: '#333333',
                     },
                 })}>
-                    {label}
-                    <div
-                        ref={arrowRef}
-                        className="absolute h-2 w-2 rotate-45 overflow-hidden bg-[#333333]"
-                        style={
-                            (staticSide && {
-                                left: arrowX != null ? `${arrowX}px` : '',
-                                top: arrowY != null ? `${arrowY}px` : '',
-                                [staticSide]: '-4px',
-                            }) ||
-                            undefined
-                        }
-                    />
+                {label}
+                <div
+                    ref={arrowRef}
+                    className="absolute h-2 w-2 rotate-45 overflow-hidden bg-[#333333]"
+                    style={
+                        (staticSide && {
+                            left: arrowX != null ? `${arrowX}px` : '',
+                            top: arrowY != null ? `${arrowY}px` : '',
+                            [staticSide]: '-4px',
+                        }) ||
+                        undefined
+                    }
+                />
             </Transition>
         </>
     )

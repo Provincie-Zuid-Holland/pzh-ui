@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
+import { fn } from '@storybook/test'
 import { TabItem, Tabs, TabsProps } from './Tabs'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -25,16 +26,20 @@ const Template = (args: TabsProps) => (
     </Tabs>
 )
 
-export const Default = {
+export const Default: Story = {
     render: Template,
     args: {
-        //    disabledKeys: ['3'],
+        disabledKeys: ['3'],
+        onSelectionChange: fn(),
     },
 } satisfies Story
 
-export const Filled = {
+export const Filled: Story = {
     render: Template,
     args: {
+        disabledKeys: ['3'],
         variant: 'filled',
+        className: 'place-self-center',
+        onSelectionChange: fn(),
     },
 } satisfies Story

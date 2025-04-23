@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source('../../components/src');
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -112,7 +112,8 @@
     --color-pzh-ui-light-blue: #e5eff8;
 
     /* Shadows */
-    --shadow-card: 0px 18px 60px rgba(0, 0, 0, 0.07),
+    --shadow-card:
+        0px 18px 60px rgba(0, 0, 0, 0.07),
         0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275),
         0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
 
@@ -217,11 +218,11 @@ ol li ol li ol li {
     /* Form elements*/
 
     .pzh-button {
-        @apply focus:ring-pzh-focus disabled:bg-pzh-gray-200 disabled:text-pzh-blue-900/35 inline-flex items-center rounded leading-none ring-offset-2 transition duration-200 ease-in focus:outline-none focus:ring-2 disabled:cursor-not-allowed;
+        @apply focus:ring-pzh-focus disabled:bg-pzh-gray-200 disabled:text-pzh-blue-900/35 inline-flex items-center rounded leading-none ring-offset-2 transition duration-200 ease-in focus:ring-2 focus:outline-none disabled:cursor-not-allowed;
     }
 
     .pzh-form-input {
-        @apply placeholder-pzh-gray-600 text-pzh-blue-900 border-pzh-gray-600 hover:border-pzh-blue-500 focus:ring-pzh-focus focus:border-pzh-focus disabled:bg-pzh-gray-200 text-m block w-full appearance-none rounded border px-4 py-2 leading-[30px] focus:outline-none focus:ring-2;
+        @apply placeholder-pzh-gray-600 text-pzh-blue-900 border-pzh-gray-600 hover:border-pzh-blue-500 focus:ring-pzh-focus focus:border-pzh-focus disabled:bg-pzh-gray-200 text-m block w-full appearance-none rounded border px-4 py-2 leading-[30px] focus:ring-2 focus:outline-none;
     }
 
     .pzh-form-error,
@@ -233,7 +234,7 @@ ol li ol li ol li {
 
     .pzh-form-radio:checked + span:before,
     .pzh-form-radio:not(:checked) + span:before {
-        @apply border-pzh-gray-600 absolute left-0 top-1 h-5 w-5 rounded-full border;
+        @apply border-pzh-gray-600 absolute top-1 left-0 h-5 w-5 rounded-full border;
         content: '';
     }
     .pzh-form-radio:not(:checked):not(:disabled):hover + span:before,
@@ -242,7 +243,7 @@ ol li ol li ol li {
     }
     .pzh-form-radio:checked + span:after,
     .pzh-form-radio:not(:checked) + span:after {
-        @apply bg-pzh-white absolute left-1.5 top-2.5 h-2 w-2 rounded-full transition duration-200;
+        @apply bg-pzh-white absolute top-2.5 left-1.5 h-2 w-2 rounded-full transition duration-200;
         content: '';
     }
     .pzh-form-radio:checked + span:before {
@@ -264,7 +265,7 @@ ol li ol li ol li {
     }
 
     .pzh-form-checkbox + span:before {
-        @apply border-pzh-gray-600 absolute left-0 top-1 h-5 w-5 rounded border transition duration-200;
+        @apply border-pzh-gray-600 absolute top-1 left-0 h-5 w-5 rounded border transition duration-200;
         content: '';
     }
 
@@ -284,11 +285,11 @@ ol li ol li ol li {
 
     .pzh-form-radio:focus + span:before,
     .pzh-form-checkbox:focus + span:before {
-        @apply ring-pzh-focus border-pzh-focus outline-none ring-2;
+        @apply ring-pzh-focus border-pzh-focus ring-2 outline-none;
     }
 
     .form-field-label {
-        @apply text-s text-pzh-gray-700 mb-2 block uppercase tracking-wide;
+        @apply text-s text-pzh-gray-700 mb-2 block tracking-wide uppercase;
     }
 
     .form-field-description {
@@ -364,7 +365,8 @@ ol li ol li ol li {
     font-family: 'Karbon Regular', sans-serif;
     font-weight: 400;
     font-size: 0.8rem;
-    box-shadow: 0px 18px 60px rgba(0, 0, 0, 0.07),
+    box-shadow:
+        0px 18px 60px rgba(0, 0, 0, 0.07),
         0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275),
         0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
     @apply text-pzh-blue-900 border-none;
@@ -387,7 +389,7 @@ ol li ol li ol li {
 }
 
 .pzh-datepicker .react-datepicker__day-name {
-    @apply my-0 font-bold leading-[26px];
+    @apply my-0 leading-[26px] font-bold;
 }
 
 .pzh-datepicker .react-datepicker__current-month {
@@ -432,7 +434,7 @@ ol li ol li ol li {
 .pzh-datepicker .react-datepicker__month-read-view--down-arrow,
 .pzh-datepicker .react-datepicker__month-year-read-view--down-arrow,
 .pzh-datepicker .react-datepicker__navigation-icon::before {
-    @apply border-pzh-black h-[7px] w-[7px] border-0 border-r-[1px] border-t-[1px];
+    @apply border-pzh-black h-[7px] w-[7px] border-0 border-t-[1px] border-r-[1px];
 }
 
 .pzh-datepicker .react-datepicker__navigation-icon {

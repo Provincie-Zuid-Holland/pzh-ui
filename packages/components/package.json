@@ -71,7 +71,7 @@
         "react": "^18.3.1",
         "react-aria": "^3.32.1",
         "react-aria-components": "^1.1.1",
-        "react-datepicker": "^7.5.0",
+        "react-datepicker": "^8.3.0",
         "react-dom": "^18.3.1",
         "react-dropzone-esm": "^15.0.1",
         "react-responsive-pagination": "^2.4.2",
@@ -101,7 +101,7 @@
         "@tailwindcss/vite": "^4.1.4",
         "@testing-library/dom": "^8.11.3",
         "@testing-library/jest-dom": "^5.14.1",
-        "@testing-library/react": "^12.1.2",
+        "@testing-library/react": "^16.3.0",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
         "@vitejs/plugin-react": "^4.0.4",
@@ -119,14 +119,14 @@
         "storybook": "^8.1.1",
         "storybook-addon-react-router-v6": "^2.0.15",
         "typescript": "^5.4.5",
-        "vite": "^5.0.2",
-        "vite-plugin-lib-inject-css": "^2.0.1",
-        "vite-tsconfig-paths": "^4.2.1",
-        "vitest": "^0.34.6"
+        "vite": "^6.3.2",
+        "vite-plugin-lib-inject-css": "^2.2.2",
+        "vite-tsconfig-paths": "^5.1.4",
+        "vitest": "^3.1.2"
     },
     "resolutions": {
         "jackspeak": "2.1.1",
         "prosemirror-model": "^1.18.1"
     },
-    "gitHead": "4c48a7ba5ab702f4ddb625e7b61a0fc09d22fd93"
+    "gitHead": "7f91f1ff27290a9465fff226532b7224224c5bc8"
 }

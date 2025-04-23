@@ -8,18 +8,16 @@
     },
     "scripts": {
         "prepare": "npm run-script build-tailwind",
-        "build-tailwind": "npx @tailwindcss/cli -c ./config/custom.ts -i src/tailwind.src.css -o src/tailwind.css",
+        "build-tailwind": "npx @tailwindcss/cli -i src/tailwind.src.css -o src/tailwind.css",
         "watch-tailwind": "npx @tailwindcss/cli -c ./config/custom.ts -i src/tailwind.src.css -o src/tailwind.css --watch",
         "build": "npm run-script build-tailwind"
     },
     "dependencies": {
         "@rollup/plugin-typescript": "^12.1.2",
-        "@tailwindcss/line-clamp": "^0.4.4",
         "@tailwindcss/typography": "^0.5.16",
-        "react-datepicker": "^4.7.0",
         "react-toastify": "^9.1.2"
     },
-    "gitHead": "8a554dc08a29dd8c96805d6e2c437ad6a92c8a7c",
+    "gitHead": "7f91f1ff27290a9465fff226532b7224224c5bc8",
     "devDependencies": {
         "@tailwindcss/cli": "^4.1.4",
         "tailwindcss": "^4.1.4"

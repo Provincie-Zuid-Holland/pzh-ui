@@ -9,7 +9,7 @@
     "scripts": {
         "prepare": "npm run-script build-tailwind",
         "build-tailwind": "npx @tailwindcss/cli -i src/tailwind.src.css -o src/tailwind.css",
-        "watch-tailwind": "npx @tailwindcss/cli -c ./config/custom.ts -i src/tailwind.src.css -o src/tailwind.css --watch",
+        "watch-tailwind": "npx @tailwindcss/cli -i src/tailwind.src.css -o src/tailwind.css --watch",
         "build": "npm run-script build-tailwind"
     },
     "dependencies": {

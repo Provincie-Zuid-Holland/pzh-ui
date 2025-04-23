@@ -222,7 +222,7 @@ ol li ol li ol li {
     }
 
     .pzh-form-input {
-        @apply placeholder-pzh-gray-600 text-pzh-blue-900 border-pzh-gray-600 hover:border-pzh-blue-500 focus:ring-pzh-focus focus:border-pzh-focus disabled:bg-pzh-gray-200 text-m block w-full appearance-none rounded border px-4 py-2 leading-[30px] focus:ring-2 focus:outline-none;
+        @apply placeholder-pzh-gray-600 bg-pzh-white text-pzh-blue-900 border-pzh-gray-600 hover:border-pzh-blue-500 focus:ring-pzh-focus focus:border-pzh-focus disabled:bg-pzh-gray-200 text-m block w-full appearance-none rounded border px-4 py-2 leading-[30px] focus:ring-2 focus:outline-none;
     }
 
     .pzh-form-error,

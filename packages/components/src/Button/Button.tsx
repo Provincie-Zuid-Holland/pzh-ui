@@ -61,7 +61,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         'font-bold': variant !== 'link',
                         'bg-pzh-blue-500 hover:bg-pzh-blue-900 text-pzh-white':
                             variant === 'primary' && !isDisabled,
-                        'bg-pzh-white text-pzh-blue border-pzh-gray-600 hover:border-pzh-blue-500 border':
+                        'bg-pzh-white text-pzh-blue-500 border-pzh-gray-600 hover:border-pzh-blue-500 border':
                             variant === 'secondary' && !isDisabled,
                         'border-pzh-gray-200 border':
                             variant === 'secondary' && isDisabled,

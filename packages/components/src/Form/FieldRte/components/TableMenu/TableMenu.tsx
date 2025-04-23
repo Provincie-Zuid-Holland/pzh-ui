@@ -61,14 +61,14 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
             <button
                 type="button"
                 onClick={() => editor.chain().focus().addRowAfter().run()}
-                className="text-pzh-blue text-left font-bold">
+                className="text-pzh-blue-500 text-left font-bold">
                 Rij onder invoegen
             </button>
             <Divider className="bg-pzh-gray-600" />
             <button
                 type="button"
                 onClick={() => editor.chain().focus().addColumnBefore().run()}
-                className="text-pzh-blue text-left font-bold">
+                className="text-pzh-blue-500 text-left font-bold">
                 Kolom links invoegen
             </button>
             <button

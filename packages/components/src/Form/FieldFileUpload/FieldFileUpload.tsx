@@ -241,7 +241,7 @@ export const FieldFileUpload = ({
                                     'mx-auto mb-2 max-w-[2rem]',
                                     {
                                         'text-pzh-blue-900': !isDragActive,
-                                        'text-pzh-green':
+                                        'text-pzh-green-500':
                                             isDragActive &&
                                             (!isDragReject ||
                                                 !!!fileRejections.length ||

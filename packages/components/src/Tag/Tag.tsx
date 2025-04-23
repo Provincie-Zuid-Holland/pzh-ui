@@ -13,9 +13,9 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
     return (
         <Component
             className={cn(
-                'border-pzh-blue-500 focus:ring-pzh-focus inline-flex h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring',
+                'border-pzh-blue-500 focus:ring-pzh-focus inline-flex h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring-2',
                 {
-                    'hover:bg-pzh-blue-500 transition duration-150 hover:text-white':
+                    'hover:bg-pzh-blue-500 hover:text-pzh-white transition duration-150':
                         !!onClick,
                 },
                 className
@@ -25,7 +25,7 @@ export const Tag = ({ text, onClick, className = '' }: TagProps) => {
                 type: 'button',
             })}
             data-testid="tag">
-            <span className="-mb-px">{text}</span>
+            <span>{text}</span>
             {!!onClick && <Xmark className="ml-2" />}
         </Component>
     )

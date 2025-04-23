@@ -9,6 +9,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import { PluginOption, defineConfig } from 'vite'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import tailwindcss from "@tailwindcss/vite"
 
 const isExternal = id => !id.startsWith('.') && !isAbsolute(id)
 
@@ -20,6 +21,7 @@ export default defineConfig({
                 configFile: true,
             },
         }),
+        tailwindcss(),
         libInjectCss(),
         visualizer({
             template: 'treemap', // or sunburst

@@ -25,39 +25,40 @@ export const Badge = ({
 }: BadgeProps) => (
     <div
         className={cn(
-            'text-s inline-block h-6 rounded border px-2 pt-px font-bold',
+            'text-s inline-block h-6 rounded border px-2 font-bold',
             {
                 uppercase: upperCase,
-                'border-pzh-green text-pzh-green':
+                'border-pzh-green-500 text-pzh-green-500':
                     variant === 'green' && !solid,
-                'bg-pzh-green border-pzh-green text-pzh-white':
+                'bg-pzh-green-500 border-pzh-green-500 text-pzh-white':
                     variant === 'green' && solid,
-                'border-pzh-green-light text-pzh-green-light':
+                'border-pzh-green-100 text-pzh-green-100':
                     variant === 'lightGreen' && !solid,
-                'bg-pzh-green-light border-pzh-green-light text-pzh-blue':
+                'bg-pzh-green-100 border-pzh-green-100 text-pzh-blue-500':
                     variant === 'lightGreen' && solid,
-                'border-pzh-yellow-dark text-pzh-yellow-dark':
+                'border-pzh-yellow-900 text-pzh-yellow-900':
                     variant === 'yellow' && !solid,
-                'bg-pzh-yellow border-pzh-yellow text-pzh-blue':
+                'bg-pzh-yellow-500 border-pzh-yellow-500 text-pzh-blue-500':
                     variant === 'yellow' && solid,
-                'border-pzh-red text-pzh-red': variant === 'red' && !solid,
-                'bg-pzh-red border-pzh-red text-pzh-white':
+                'border-pzh-red-500 text-pzh-red-500':
+                    variant === 'red' && !solid,
+                'bg-pzh-red-500 border-pzh-red-500 text-pzh-white':
                     variant === 'red' && solid,
-                'border-pzh-red-light text-pzh-red-light':
+                'border-pzh-red-100 text-pzh-red-100':
                     variant === 'lightRed' && !solid,
-                'bg-pzh-red-light border-pzh-red-light text-pzh-blue':
+                'bg-pzh-red-100 border-pzh-red-100 text-pzh-blue-500':
                     variant === 'lightRed' && solid,
-                'border-pzh-cool-gray-dark text-pzh-cool-gray-dark':
+                'border-pzh-gray-600 text-pzh-gray-600':
                     variant === 'gray' && !solid,
-                'bg-pzh-cool-gray-dark border-pzh-cool-gray-dark text-pzh-white':
+                'bg-pzh-gray-600 border-pzh-gray-600 text-pzh-white':
                     variant === 'gray' && solid,
-                'border-pzh-purple text-pzh-purple':
+                'border-pzh-purple-500 text-pzh-purple-500':
                     variant === 'purple' && !solid,
-                'bg-pzh-purple border-pzh-purple text-pzh-white':
+                'bg-pzh-purple-500 border-pzh-purple-500 text-pzh-white':
                     variant === 'purple' && solid,
                 'border-pzh-white text-pzh-white':
                     variant === 'white' && !solid,
-                'bg-pzh-white border-pzh-white text-pzh-blue':
+                'bg-pzh-white border-pzh-white text-pzh-blue-500':
                     variant === 'white' && solid,
             },
             className

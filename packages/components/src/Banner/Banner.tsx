@@ -55,10 +55,10 @@ export const Banner = ({
             className={cn(
                 'relative',
                 {
-                    'bg-pzh-blue text-white': color === 'blue',
-                    'bg-pzh-red text-white': color === 'red',
-                    'bg-pzh-yellow': color === 'yellow',
-                    'bg-pzh-green text-white': color === 'green',
+                    'bg-pzh-blue-500 text-pzh-white': color === 'blue',
+                    'bg-pzh-red-500 text-pzh-white': color === 'red',
+                    'bg-pzh-yellow-500': color === 'yellow',
+                    'bg-pzh-green-500 text-pzh-white': color === 'green',
                 },
                 className
             )}>
@@ -69,7 +69,7 @@ export const Banner = ({
                 <div className="absolute inset-y-0 right-0 flex items-start pr-1 pt-1 sm:items-start sm:pr-2 sm:pt-1">
                     <button
                         type="button"
-                        className="flex rounded-lg p-1 transition duration-150 ease-in-out hover:bg-white hover:bg-opacity-10 focus:outline-none"
+                        className="hover:bg-pzh-white/10 flex rounded-lg p-1 transition duration-150 ease-in-out focus:outline-none"
                         onClick={() => {
                             setShowBanner(!showBanner)
                             removeBanner()

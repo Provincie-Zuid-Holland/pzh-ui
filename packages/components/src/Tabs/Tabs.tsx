@@ -10,7 +10,9 @@ import {
 } from 'react-aria'
 import { Item, TabListState, useTabListState } from 'react-stately'
 
-export interface TabsProps extends AriaTabListProps<object> {}
+export interface TabsProps extends AriaTabListProps<object> {
+    variant?: 'underline' | 'filled'
+}
 
 interface TabPanelProps extends AriaTabPanelProps {
     state: TabListState<object>
@@ -19,6 +21,7 @@ interface TabPanelProps extends AriaTabPanelProps {
 interface TabProps {
     item: Node<object>
     state: TabListState<object>
+    variant?: 'underline' | 'filled'
 }
 
 export function Tabs(props: TabsProps) {
@@ -31,10 +34,15 @@ export function Tabs(props: TabsProps) {
             <div
                 {...tabListProps}
                 ref={ref}
-                className="flex-column border-pzh-gray-300 flex gap-6 border-b"
+                className="border-pzh-gray-300 flex gap-6 border-b"
                 data-testid="tabs">
                 {[...state.collection].map(item => (
-                    <Tab key={item.key} item={item} state={state} />
+                    <Tab
+                        key={item.key}
+                        item={item}
+                        state={state}
+                        variant={props.variant}
+                    />
                 ))}
             </div>
             <TabPanel key={state.selectedItem?.key} state={state} />
@@ -44,22 +52,25 @@ export function Tabs(props: TabsProps) {
 
 export const TabItem = Item
 
-function Tab({ item, state }: TabProps) {
+function Tab({ item, state, variant = 'underline' }: TabProps) {
     const { key, rendered } = item
     const ref = useRef(null)
     const { tabProps } = useTab({ key: key.toString() }, state, ref)
 
+    const styles = {
+        underline: {
+            '-mb-px pb-1 font-bold': true,
+            'border-pzh-green-500 text-pzh-green-500 border-b-[3px]':
+                tabProps['aria-selected'],
+            'border-pzh-gray-400 text-pzh-blue': !tabProps['aria-selected'],
+            'text-pzh-gray-400': tabProps['aria-disabled'],
+            'cursor-pointer': !tabProps['aria-disabled'],
+        },
+        filled: {},
+    }
+
     return (
-        <div
-            {...tabProps}
-            ref={ref}
-            className={classNames('-mb-px pb-1 font-bold', {
-                'border-pzh-green text-pzh-green border-b-[3px]':
-                    tabProps['aria-selected'],
-                'border-pzh-gray-400 text-pzh-blue': !tabProps['aria-selected'],
-                'text-pzh-gray-400': tabProps['aria-disabled'],
-                'cursor-pointer': !tabProps['aria-disabled'],
-            })}>
+        <div {...tabProps} ref={ref} className={classNames(styles[variant])}>
             {rendered}
         </div>
     )

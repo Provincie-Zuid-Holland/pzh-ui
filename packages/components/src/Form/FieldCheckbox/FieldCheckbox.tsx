@@ -27,7 +27,7 @@ export const FieldCheckbox = ({
         className={cn(
             'text-pzh-blue-500 inline-flex items-center',
             {
-                'has-[:focus]:ring-pzh-focus has-[:checked]:border-pzh-green-500 has-[:checked]:bg-pzh-green-10 border-pzh-blue-500 hover:border-pzh-green-500 hover:text-pzh-green-500 has-[:focus]:ring has-[:focus]:ring-2 items-center rounded border font-bold':
+                'has-[:focus]:ring-pzh-focus has-[:checked]:border-pzh-green-500 has-[:checked]:bg-pzh-green-10 border-pzh-blue-500 hover:border-pzh-green-500 hover:text-pzh-green-500 items-center rounded border font-bold has-[:focus]:ring-2':
                     !!withBorder,
                 'h-10 px-2': !!withBorder && size === 'small',
                 'h-12 px-4': !!withBorder && size === 'large',
@@ -46,7 +46,7 @@ export const FieldCheckbox = ({
         />
         <span
             className={classNames(
-                'text-pzh-blue-dark relative inline-block cursor-pointer pl-7',
+                'text-pzh-blue-900 relative inline-block cursor-pointer pl-7',
                 {
                     'text-pzh-gray-600': disabled,
                 }

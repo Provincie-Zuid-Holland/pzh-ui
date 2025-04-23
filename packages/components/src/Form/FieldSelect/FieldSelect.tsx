@@ -132,8 +132,8 @@ export function FieldSelect({
                     inputId={name}
                     components={{
                         DropdownIndicator: () => (
-                            <div className="mr-4">
-                                <AngleDown className="text-pzh-blue-dark" />
+                            <div className="mr-2">
+                                <AngleDown className="text-pzh-blue-900" />
                             </div>
                         ),
                         IndicatorSeparator: null,
@@ -141,7 +141,7 @@ export function FieldSelect({
                             <components.Option
                                 {...props}
                                 className={classNames('px-4 py-1', {
-                                    'text-pzh-blue-dark hover:text-pzh-green cursor-pointer hover:underline':
+                                    'text-pzh-blue-900 hover:text-pzh-green-500 cursor-pointer hover:underline':
                                         !props.isDisabled,
                                     'text-pzh-gray-500': props.isDisabled,
                                     underline: props.isFocused,
@@ -158,9 +158,9 @@ export function FieldSelect({
                                         />
                                         <span
                                             className={classNames(
-                                                'text-pzh-blue-dark relative inline-block cursor-pointer pl-[34px] font-normal leading-7',
+                                                'text-pzh-blue-900 relative inline-block cursor-pointer pl-[34px] font-normal leading-7',
                                                 {
-                                                    'before:ring-pzh-focus before:border-pzh-blue before:outline-none before:ring before:ring-2':
+                                                    'before:ring-pzh-focus before:border-pzh-blue-500 before:outline-none before:ring-2':
                                                         props.isFocused,
                                                 }
                                             )}>
@@ -200,10 +200,10 @@ export function FieldSelect({
                             classNames(
                                 'border-pzh-gray-600 hover:border-pzh-blue-900',
                                 {
-                                    'bg-white': !disabled,
-                                    'border-pzh-red': hasError,
+                                    'bg-pzh-white': !disabled,
+                                    'border-pzh-red-500': hasError,
                                     'bg-pzh-gray-200': disabled,
-                                    'ring-pzh-focus border-pzh-blue ring ring-2':
+                                    'ring-pzh-focus border-pzh-blue-500 ring-2':
                                         state.isFocused,
                                 }
                             ),
@@ -211,7 +211,7 @@ export function FieldSelect({
                         placeholder: () => 'text-pzh-gray-600 m-0 leading-none',
                         valueContainer: () => 'gap-2 flex-wrap py-2',
                         multiValue: () =>
-                            'border-pzh-blue-500 text-pzh-blue-500 focus:ring-pzh-focus inline-flex gap-2 h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring hover:bg-pzh-blue-500 transition duration-150 hover:text-white',
+                            'border-pzh-blue-500 text-pzh-blue-500 focus:ring-pzh-focus inline-flex gap-2 h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring-2 hover:bg-pzh-blue-500 transition duration-150 hover:text-pzh-white',
                         multiValueLabel: () => '-mb-px',
                     }}
                     styles={{ ...getSelectStyles(), ...providedStyles }}

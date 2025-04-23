@@ -50,12 +50,12 @@ export function DNABar({ blocks = 5, className }: DNABarProps) {
                 />
             )}
             <div
-                className={classNames('bg-pzh-red h-[96px] w-[96px]', {
+                className={classNames('bg-pzh-red-500 h-[96px] w-[96px]', {
                     'opacity-0': blocks === 2,
                 })}
             />
             <div
-                className={classNames('bg-pzh-yellow h-[96px] w-[96px]', {
+                className={classNames('bg-pzh-yellow-500 h-[96px] w-[96px]', {
                     'opacity-0': blocks === 2,
                 })}
             />
@@ -67,15 +67,17 @@ export function DNABar({ blocks = 5, className }: DNABarProps) {
 
             <div
                 className={classNames('h-[96px] w-[96px]', {
-                    'bg-pzh-red': blocks === 2,
+                    'bg-pzh-red-500': blocks === 2,
                 })}
             />
             <div
                 className={classNames('h-[96px] w-[96px]', {
-                    'bg-pzh-red': blocks !== 2,
+                    'bg-pzh-red-500': blocks !== 2,
                 })}
             />
-            {blocks === 6 && <div className="bg-pzh-blue h-[96px] w-[96px]" />}
+            {blocks === 6 && (
+                <div className="bg-pzh-blue-500 h-[96px] w-[96px]" />
+            )}
         </div>
     )
 }

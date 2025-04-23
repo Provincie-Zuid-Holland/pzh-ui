@@ -22,18 +22,18 @@ export const Pagination = ({
     return (
         <ResponsivePagination
             data-testid="pagination"
-            nextLabel={<AngleRight size={18} className="-mt-1" />}
+            nextLabel={<AngleRight size={18} />}
             nextClassName="mr-0 min-w-10 min-h-10"
             previousLabel={<AngleLeft size={18} />}
             previousClassName="min-w-10 min-h-10 ml-0"
             className={cn(
-                'text-pzh-blue flex items-center justify-center font-bold',
+                'text-pzh-blue-500 flex items-center justify-center font-bold',
                 className
             )}
             disabledItemClassName="text-pzh-gray-400 pointer-events-none"
-            pageLinkClassName="w-full h-10 leading-10 flex items-center justify-center rounded focus:outline-none focus:ring focus:ring-pzh-focus ring-offset-2"
+            pageLinkClassName="w-full h-10 leading-10 flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-pzh-focus ring-offset-2"
             pageItemClassName="min-w-10 min-h-10 h-10 rounded mx-1"
-            activeItemClassName="[&_a]:border [&_a]:border-pzh-blue"
+            activeItemClassName="[&_a]:border [&_a]:border-pzh-blue-500"
             {...rest}
             total={pageCount}
         />

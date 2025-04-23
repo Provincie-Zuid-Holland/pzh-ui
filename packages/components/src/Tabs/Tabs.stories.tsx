@@ -28,6 +28,13 @@ const Template = (args: TabsProps) => (
 export const Default = {
     render: Template,
     args: {
-        disabledKeys: ['3'],
+        //    disabledKeys: ['3'],
+    },
+} satisfies Story
+
+export const Filled = {
+    render: Template,
+    args: {
+        variant: 'filled',
     },
 } satisfies Story

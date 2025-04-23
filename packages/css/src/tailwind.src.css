@@ -1,4 +1,143 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+    /* Screens */
+    --screen-sm: 640px;
+    --screen-md: 768px;
+    --screen-lg: 1024px;
+    --screen-xl: 1280px;
+    --screen-2xl: 1440px;
+
+    /* Font sizes */
+    --text-s: 1rem;
+    --text-s--line-height: 1.5rem;
+
+    --text-m: 1.25rem;
+    --text-m--line-height: 1.875rem;
+
+    --text-l: 1.5rem;
+    --text-l--line-height: 1.875rem;
+
+    --text-heading-xs: 1.125rem;
+    --text-heading-xs--line-height: 125%;
+
+    --text-heading-s: 1.25rem;
+    --text-heading-s--line-height: 125%;
+
+    --text-heading-m: 1.5rem;
+    --text-heading-m--line-height: 125%;
+
+    --text-heading-l: 2rem;
+    --text-heading-l--line-height: 125%;
+
+    --text-heading-xl: 2.5rem;
+    --text-heading-xl--line-height: 125%;
+
+    --text-heading-xxl: 3rem;
+    --text-heading-xxl--line-height: 125%;
+
+    --text-heading-xxxl: 4rem;
+    --text-heading-xxxl--line-height: 110%;
+
+    /* Custom Colors */
+    --color-*: initial;
+
+    --color-pzh-white: #fff;
+    --color-pzh-black: #000000;
+
+    --color-pzh-form: #f4f4f7;
+
+    --color-pzh-red-10: #ffedf0;
+    --color-pzh-red-100: #eb7085;
+    --color-pzh-red-500: #d11f3d;
+    --color-pzh-red-900: #97162c;
+
+    --color-pzh-yellow-10: #fff9e3;
+    --color-pzh-yellow-100: #f1db7e;
+    --color-pzh-yellow-500: #efcc36;
+    --color-pzh-yellow-900: #c6a410;
+
+    --color-pzh-blue-10: #f2f7fc;
+    --color-pzh-blue-100: #7badde;
+    --color-pzh-blue-500: #281f6b;
+    --color-pzh-blue-900: #16113b;
+
+    --color-pzh-pink-100: #d76aac;
+    --color-pzh-pink-500: #aa0067;
+    --color-pzh-pink-900: #750047;
+
+    --color-pzh-orange-100: #fba66a;
+    --color-pzh-orange-500: #ff6b02;
+    --color-pzh-orange-900: #b24a00;
+
+    --color-pzh-apple-green-100: #add57d;
+    --color-pzh-apple-green-500: #76bc21;
+    --color-pzh-apple-green-900: #629623;
+
+    --color-pzh-purple-100: #9b99cc;
+    --color-pzh-purple-500: #503d90;
+    --color-pzh-purple-900: #32265a;
+
+    --color-pzh-warm-gray-100: #beb1a7;
+    --color-pzh-warm-gray-500: #847062;
+    --color-pzh-warm-gray-900: #584b41;
+
+    --color-pzh-green-10: #edfaf0;
+    --color-pzh-green-100: #61b375;
+    --color-pzh-green-500: #00804d;
+    --color-pzh-green-900: #004d2e;
+
+    --color-pzh-gray-100: #f8f8f8;
+    --color-pzh-gray-200: #e6e6e6;
+    --color-pzh-gray-300: #d5d5d5;
+    --color-pzh-gray-400: #bfbfbf;
+    --color-pzh-gray-500: #838383;
+    --color-pzh-gray-600: #5c5c5c;
+    --color-pzh-gray-700: #464646;
+    --color-pzh-gray-800: #222222;
+
+    --color-pzh-positive: #00804d;
+    --color-pzh-neutral: #7badde;
+    --color-pzh-negative: #d11f3d;
+    --color-pzh-visited-link: #5f29a2;
+    --color-pzh-backdrop: rgba(92, 92, 92, 0.5);
+    --color-pzh-focus: #2360c5;
+
+    --color-pzh-badge-green: #50a658;
+    --color-pzh-badge-red: #cb3b36;
+    --color-pzh-badge-orange: #f9b53c;
+
+    --color-pzh-ui-white: #ffffff;
+    --color-pzh-ui-light-blue: #e5eff8;
+
+    /* Shadows */
+    --shadow-card: 0px 18px 60px rgba(0, 0, 0, 0.07),
+        0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275),
+        0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
+
+    /* Animations */
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+
+    @keyframes accordion-down {
+        0% {
+            height: 0;
+        }
+        100% {
+            height: var(--radix-accordion-content-height);
+        }
+    }
+
+    @keyframes accordion-up {
+        0% {
+            height: var(--radix-accordion-content-height);
+        }
+        100% {
+            height: 0;
+        }
+    }
+}
 
 @font-face {
     font-family: 'Karbon Regular';
@@ -75,23 +214,21 @@ ol li ol li ol li {
 }
 
 @layer components {
-    /*
-    * Form elements
-    */
+    /* Form elements*/
 
     .pzh-button {
-        @apply focus:ring-pzh-focus disabled:bg-pzh-gray-200 disabled:text-pzh-blue-dark inline-flex items-center rounded leading-none ring-offset-2 transition duration-200 ease-in focus:outline-none focus:ring disabled:cursor-not-allowed disabled:text-opacity-35;
+        @apply focus:ring-pzh-focus disabled:bg-pzh-gray-200 disabled:text-pzh-blue-900/35 inline-flex items-center rounded leading-none ring-offset-2 transition duration-200 ease-in focus:outline-none focus:ring-2 disabled:cursor-not-allowed;
     }
 
     .pzh-form-input {
-        @apply placeholder-pzh-gray-600 text-pzh-blue-dark border-pzh-gray-600 hover:border-pzh-blue focus:ring-pzh-focus focus:border-pzh-focus disabled:bg-pzh-gray-200 text-m block w-full appearance-none rounded border pb-[6px] pt-[10px] leading-[30px] focus:outline-none focus:outline-none focus:ring focus:ring-2;
+        @apply placeholder-pzh-gray-600 text-pzh-blue-900 border-pzh-gray-600 hover:border-pzh-blue-500 focus:ring-pzh-focus focus:border-pzh-focus disabled:bg-pzh-gray-200 text-m block w-full appearance-none rounded border px-4 py-2 leading-[30px] focus:outline-none focus:ring-2;
     }
 
     .pzh-form-error,
     .pzh-form-checkbox.pzh-form-error + span:before,
     .pzh-form-radio:checked.pzh-form-error + span:before,
     .pzh-form-radio:not(:checked).pzh-form-error + span:before {
-        @apply border-pzh-red;
+        @apply border-pzh-red-500;
     }
 
     .pzh-form-radio:checked + span:before,
@@ -137,7 +274,7 @@ ol li ol li ol li {
 
     .pzh-form-checkbox:checked + span:after,
     .pzh-form-checkbox:not(:checked) + span:after {
-        @apply absolute left-1 top-0.5 h-3 w-3 text-white transition duration-200;
+        @apply text-pzh-white absolute left-1 h-3 w-3 transition duration-200;
         content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='white' d='M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z'/></svg>");
     }
 
@@ -147,118 +284,19 @@ ol li ol li ol li {
 
     .pzh-form-radio:focus + span:before,
     .pzh-form-checkbox:focus + span:before {
-        @apply ring-pzh-focus border-pzh-focus outline-none ring ring-2;
+        @apply ring-pzh-focus border-pzh-focus outline-none ring-2;
     }
 
     .form-field-label {
-        @apply text-s mb-2 block uppercase tracking-wide text-gray-700;
+        @apply text-s text-pzh-gray-700 mb-2 block uppercase tracking-wide;
     }
 
     .form-field-description {
-        @apply text-s mb-2 text-gray-700;
-    }
-
-    /*
-    * React Datepicker
-    */
-
-    .pzh-datepicker .react-datepicker {
-        font-family: 'Karbon Regular', sans-serif;
-        font-weight: 400;
-        font-size: 0.8rem;
-        box-shadow: 0px 18px 60px rgba(0, 0, 0, 0.07),
-            0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275),
-            0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
-        @apply text-pzh-blue-dark border-none;
-    }
-
-    .pzh-datepicker .react-datepicker__triangle {
-        display: none;
-    }
-
-    .pzh-datepicker .react-datepicker__header {
-        @apply border-none bg-white;
-    }
-
-    .pzh-datepicker .react-datepicker__month {
-        @apply mx-0.5 mt-0;
-    }
-
-    .pzh-datepicker .react-datepicker__day-names {
-        @apply bg-pzh-blue-dark bg-opacity-10;
-    }
-
-    .pzh-datepicker .react-datepicker__day-name {
-        @apply bold my-0 leading-[26px];
-    }
-
-    .pzh-datepicker .react-datepicker__current-month {
-        @apply mb-2;
-    }
-
-    .pzh-datepicker
-        .react-datepicker__day--outside-month:not(
-            .react-datepicker__day--selected
-        ) {
-        @apply text-pzh-blue-dark text-opacity-35;
-    }
-
-    .pzh-datepicker .react-datepicker__day-name,
-    .pzh-datepicker .react-datepicker__day,
-    .pzh-datepicker .react-datepicker__time-name {
-        @apply mx-2 my-1 h-[26px] w-[26px] leading-7;
-    }
-
-    .pzh-datepicker .react-datepicker__day {
-        @apply rounded-full hover:rounded-full;
-    }
-
-    .pzh-datepicker
-        .react-datepicker__day--today:not(.react-datepicker__day--selected),
-    .pzh-datepicker
-        .react-datepicker__day--today:hover:not(
-            .react-datepicker__day--selected
-        ),
-    .pzh-datepicker .react-datepicker__day--keyboard-selected {
-        @apply bg-pzh-blue-dark text-pzh-blue-dark bg-opacity-10;
-    }
-
-    .pzh-datepicker .react-datepicker__day--keyboard-selected:hover {
-        @apply bg-pzh-blue-dark bg-opacity-10;
-    }
-
-    .pzh-datepicker .react-datepicker__day--selected,
-    .pzh-datepicker .react-datepicker__day--selected:hover {
-        @apply bg-pzh-green font-bold;
-    }
-
-    .pzh-datepicker .react-datepicker__year-read-view--down-arrow,
-    .pzh-datepicker .react-datepicker__month-read-view--down-arrow,
-    .pzh-datepicker .react-datepicker__month-year-read-view--down-arrow,
-    .pzh-datepicker .react-datepicker__navigation-icon::before {
-        @apply h-[7px] w-[7px] border border-0 border-r-[1px] border-t-[1px] border-black;
-    }
-
-    .pzh-datepicker .react-datepicker__navigation-icon {
-        @apply leading-[14px];
-    }
-
-    .pzh-datepicker .react-datepicker__current-month,
-    .pzh-datepicker .react-datepicker__day-name,
-    .pzh-datepicker .react-datepicker__day--today {
-        @apply font-bold;
+        @apply text-s text-pzh-gray-700 mb-2;
     }
 
     .pzh-select-input input {
         box-shadow: none !important;
-    }
-
-    .ProseMirror p.is-editor-empty:first-child::before {
-        @apply text-pzh-blue-dark/55;
-        content: attr(data-placeholder);
-        float: left;
-        pointer-events: none;
-        height: 0;
     }
 
     .pzh-modal {
@@ -280,31 +318,129 @@ ol li ol li ol li {
             opacity: 1;
         }
     }
+}
 
-    .prose table {
-        @apply !text-m;
+@utility prose {
+    p.is-editor-empty:first-child::before {
+        @apply text-pzh-blue-900/55;
+        content: attr(data-placeholder);
+        float: left;
+        pointer-events: none;
+        height: 0;
     }
 
-    .prose table,
-    .prose table td,
-    .prose table th {
-        @apply border-pzh-gray-600 border;
+    li {
+        p,
+        & > ol,
+        & > ul {
+            margin: 0;
+        }
     }
 
-    .prose table tr th {
-        @apply bg-pzh-gray-100 font-bold;
-    }
+    table {
+        @apply text-m border-pzh-gray-600 border;
 
-    .prose table tr {
-        @apply border-pzh-gray-600 border-b;
-    }
+        p {
+            margin: 0;
+        }
 
-    .prose table td,
-    .prose table th {
-        @apply !p-2;
-    }
+        td,
+        th {
+            @apply border-pzh-gray-600 border p-2;
+        }
 
-    .prose table p {
-        @apply !my-0;
+        tr {
+            @apply border-pzh-gray-600 border-b;
+
+            th {
+                @apply bg-pzh-gray-100 font-bold;
+            }
+        }
     }
+}
+
+/* React Datepicker */
+.pzh-datepicker .react-datepicker {
+    font-family: 'Karbon Regular', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    box-shadow: 0px 18px 60px rgba(0, 0, 0, 0.07),
+        0px 4.02054px 13.4018px rgba(0, 0, 0, 0.0417275),
+        0px 1.19702px 3.99006px rgba(0, 0, 0, 0.0282725);
+    @apply text-pzh-blue-900 border-none;
+}
+
+.pzh-datepicker .react-datepicker__triangle {
+    display: none;
+}
+
+.pzh-datepicker .react-datepicker__header {
+    @apply bg-pzh-white border-none;
+}
+
+.pzh-datepicker .react-datepicker__month {
+    @apply mx-0.5 mt-0;
+}
+
+.pzh-datepicker .react-datepicker__day-names {
+    @apply bg-pzh-blue-900/10;
+}
+
+.pzh-datepicker .react-datepicker__day-name {
+    @apply my-0 font-bold leading-[26px];
+}
+
+.pzh-datepicker .react-datepicker__current-month {
+    @apply mb-2;
+}
+
+.pzh-datepicker
+    .react-datepicker__day--outside-month:not(
+        .react-datepicker__day--selected
+    ) {
+    @apply text-pzh-blue-900/35;
+}
+
+.pzh-datepicker .react-datepicker__day-name,
+.pzh-datepicker .react-datepicker__day,
+.pzh-datepicker .react-datepicker__time-name {
+    @apply mx-2 my-1 h-[26px] w-[26px] leading-7;
+}
+
+.pzh-datepicker .react-datepicker__day {
+    @apply rounded-full hover:rounded-full;
+}
+
+.pzh-datepicker
+    .react-datepicker__day--today:not(.react-datepicker__day--selected),
+.pzh-datepicker
+    .react-datepicker__day--today:hover:not(.react-datepicker__day--selected),
+.pzh-datepicker .react-datepicker__day--keyboard-selected {
+    @apply bg-pzh-blue-900/10 text-pzh-blue-900;
+}
+
+.pzh-datepicker .react-datepicker__day--keyboard-selected:hover {
+    @apply bg-pzh-blue-900/10;
+}
+
+.pzh-datepicker .react-datepicker__day--selected,
+.pzh-datepicker .react-datepicker__day--selected:hover {
+    @apply bg-pzh-green-500 font-bold;
+}
+
+.pzh-datepicker .react-datepicker__year-read-view--down-arrow,
+.pzh-datepicker .react-datepicker__month-read-view--down-arrow,
+.pzh-datepicker .react-datepicker__month-year-read-view--down-arrow,
+.pzh-datepicker .react-datepicker__navigation-icon::before {
+    @apply border-pzh-black h-[7px] w-[7px] border-0 border-r-[1px] border-t-[1px];
+}
+
+.pzh-datepicker .react-datepicker__navigation-icon {
+    @apply leading-[14px];
+}
+
+.pzh-datepicker .react-datepicker__current-month,
+.pzh-datepicker .react-datepicker__day-name,
+.pzh-datepicker .react-datepicker__day--today {
+    @apply font-bold;
 }

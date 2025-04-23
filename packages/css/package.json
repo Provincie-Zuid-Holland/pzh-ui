@@ -13,17 +13,15 @@
         "build": "npm run-script build-tailwind"
     },
     "dependencies": {
-        "@rollup/plugin-typescript": "^8.3.1",
-        "@tailwindcss/custom-forms": "^0.2.1",
-        "@tailwindcss/forms": "^0.5.0",
-        "@tailwindcss/line-clamp": "^0.3.1",
-        "@tailwindcss/typography": "^0.5.9",
+        "@rollup/plugin-typescript": "^12.1.2",
+        "@tailwindcss/line-clamp": "^0.4.4",
+        "@tailwindcss/typography": "^0.5.16",
         "react-datepicker": "^4.7.0",
         "react-toastify": "^9.1.2"
     },
     "gitHead": "8a554dc08a29dd8c96805d6e2c437ad6a92c8a7c",
     "devDependencies": {
-        "@tailwindcss/cli": "^4.0.0",
-        "tailwindcss": "^4.0.0"
+        "@tailwindcss/cli": "^4.1.4",
+        "tailwindcss": "^4.1.4"
     }
 }

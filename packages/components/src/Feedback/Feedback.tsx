@@ -71,14 +71,14 @@ export const Feedback = ({
                 <a
                     href={mailTo}
                     className={classNames(
-                        'bg-pzh-red pointer-events-auto absolute bottom-0 flex translate-y-2 transform cursor-pointer items-center rounded-t-md px-3 pb-3 pt-2 font-bold text-white transition duration-200 ease-out hover:translate-y-0',
+                        'bg-pzh-red-500 text-pzh-white pointer-events-auto absolute bottom-0 flex translate-y-2 transform cursor-pointer items-center rounded-t-md px-3 pb-3 pt-2 font-bold transition duration-200 ease-out hover:translate-y-0',
                         {
                             'left-0 ml-4': position === 'left',
                             'right-0 mr-4': position === 'right',
                         }
                     )}>
                     <CommentDots
-                        className="-mt-[2px] mr-2 text-white"
+                        className="text-pzh-white mr-2"
                         size={20}
                     />
                     Feedback

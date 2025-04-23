@@ -12,7 +12,7 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 export const Heading = ({
     className = '',
     id,
-    color = 'text-pzh-blue',
+    color = 'text-pzh-blue-500',
     level = '1',
     size = 'l',
     children,

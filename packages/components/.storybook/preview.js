@@ -1,4 +1,4 @@
-import '../../css/src/tailwind.css'
+import '../../css/src/tailwind.src.css'
 
 import { withTests } from '@storybook/addon-jest'
 

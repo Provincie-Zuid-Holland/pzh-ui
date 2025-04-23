@@ -53,19 +53,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 className={cn(
                     variant !== 'default' && {
                         'pzh-button': true,
-                        'h-12 pb-2 pt-2.5': size === 'large',
+                        'h-12 py-2': size === 'large',
                         'px-4': size === 'large' && variant !== 'link',
-                        'text-s h-10 pb-[7px] pt-[9px]': size === 'small',
+                        'text-s h-10 py-2': size === 'small',
                         'px-3': size === 'small' && variant !== 'link',
                         'font-normal underline': variant === 'link',
                         'font-bold': variant !== 'link',
-                        'bg-pzh-blue hover:bg-pzh-blue-dark text-white':
+                        'bg-pzh-blue-500 hover:bg-pzh-blue-900 text-pzh-white':
                             variant === 'primary' && !isDisabled,
-                        'bg-pzh-white text-pzh-blue border-pzh-gray-600 hover:border-pzh-blue border':
+                        'bg-pzh-white text-pzh-blue border-pzh-gray-600 hover:border-pzh-blue-500 border':
                             variant === 'secondary' && !isDisabled,
                         'border-pzh-gray-200 border':
                             variant === 'secondary' && isDisabled,
-                        'bg-pzh-green hover:bg-pzh-green-dark text-white':
+                        'bg-pzh-green-500 hover:bg-pzh-green-900 text-pzh-white':
                             variant === 'cta' && !isDisabled,
                         'cursor-pointer': !isDisabled,
                     },
@@ -75,13 +75,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 {Icon ? (
                     <Icon
                         size={iconSize}
-                        className={classNames('-mt-0.5', {
+                        className={classNames({
                             'mr-2': !!children,
                             'animate-spin': isLoading,
                         })}
                     />
                 ) : isLoading ? (
-                    <Spinner className="-mt-0.5 mr-2 animate-spin" />
+                    <Spinner className="mr-2 animate-spin" />
                 ) : null}
                 <Slottable>{children}</Slottable>
             </Component>

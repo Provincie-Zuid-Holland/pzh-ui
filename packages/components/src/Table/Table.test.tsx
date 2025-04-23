@@ -25,7 +25,7 @@ describe('Table', () => {
                 theme: 'Economie',
                 title: 'Innovatie Zuid-Holland',
                 currentSituation: (
-                    <div className="bg-pzh-red h-4 w-4 rounded-full" />
+                    <div className="bg-pzh-red-500 h-4 w-4 rounded-full" />
                 ),
                 onClick: () => console.log('clicked'),
             },
@@ -33,14 +33,14 @@ describe('Table', () => {
                 theme: 'Economie',
                 title: 'Grondstoffen gebruik',
                 currentSituation: (
-                    <div className="bg-pzh-red h-4 w-4 rounded-full" />
+                    <div className="bg-pzh-red-500 h-4 w-4 rounded-full" />
                 ),
             },
             {
                 theme: 'Klimaat en water',
                 title: 'Waterveiligheid',
                 currentSituation: (
-                    <div className="bg-pzh-yellow h-4 w-4 rounded-full" />
+                    <div className="bg-pzh-yellow-500 h-4 w-4 rounded-full" />
                 ),
             },
         ],

@@ -224,11 +224,11 @@ export const FieldFileUpload = ({
 
                 <div
                     className={cn(
-                        'text-pzh-blue-dark border-pzh-gray-600 cursor-pointer rounded border border-dashed py-6 text-center',
+                        'text-pzh-blue-900 border-pzh-gray-600 cursor-pointer rounded border border-dashed py-6 text-center',
                         className,
                         {
                             hidden: myFiles.length === props.maxFiles,
-                            'border-pzh-positive ring-pzh-positive border-solid ring ring-1':
+                            'border-pzh-positive ring-pzh-positive border-solid ring-1':
                                 isDragActive,
                         }
                     )}
@@ -240,13 +240,13 @@ export const FieldFileUpload = ({
                                 className={classNames(
                                     'mx-auto mb-2 max-w-[2rem]',
                                     {
-                                        'text-pzh-blue-dark': !isDragActive,
+                                        'text-pzh-blue-900': !isDragActive,
                                         'text-pzh-green':
                                             isDragActive &&
                                             (!isDragReject ||
                                                 !!!fileRejections.length ||
                                                 !!!errors?.length),
-                                        'text-pzh-red':
+                                        'text-pzh-red-500':
                                             isDragReject ||
                                             !!fileRejections.length ||
                                             !!errors?.length,
@@ -336,7 +336,7 @@ export const FieldFileUpload = ({
                                                 onClick={removeFile(file)}>
                                                 <TrashCan
                                                     size={16}
-                                                    className="text-pzh-red -mt-[2px] ml-4"
+                                                    className="text-pzh-red-500 -mt-[2px] ml-4"
                                                 />
                                                 <span className="sr-only">
                                                     Verwijderen

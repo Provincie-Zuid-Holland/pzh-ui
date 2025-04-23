@@ -335,7 +335,7 @@ export const MenuButton = ({
             className,
             {
                 'pointer-events-none': rest.disabled,
-                'bg-pzh-gray-100 text-pzh-green': isActive,
+                'bg-pzh-gray-100 text-pzh-green-500': isActive,
             }
         )}
         type="button"

@@ -12,7 +12,7 @@ export interface BreadcrumbsProps {
 export const Breadcrumbs = ({ children, className }: BreadcrumbsProps) => (
     <nav
         aria-label="Broodkruimelpad"
-        className={cn('text-pzh-blue-dark text-s w-full', className)}>
+        className={cn('text-pzh-blue-900 text-s w-full', className)}>
         {children}
     </nav>
 )
@@ -54,7 +54,7 @@ export const BreadcrumbItem = ({
     return (
         <li className="mr-2 flex items-center whitespace-nowrap underline underline-offset-2">
             <Component {...rest}>{children}</Component>
-            <AngleRight className="sr-hidden -mt-0.5 ml-2" aria-hidden />
+            <AngleRight className="sr-hidden ml-2" aria-hidden />
         </li>
     )
 }

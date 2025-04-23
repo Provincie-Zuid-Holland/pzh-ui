@@ -55,7 +55,7 @@ export const FieldInput = ({
             {Icon && (
                 <Icon
                     size={20}
-                    className="text-pzh-blue absolute right-3 h-[48px]"
+                    className="text-pzh-blue-500 absolute right-3 h-[48px]"
                 />
             )}
             <input

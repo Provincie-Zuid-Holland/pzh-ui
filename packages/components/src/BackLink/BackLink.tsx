@@ -18,10 +18,10 @@ export const BackLink = ({
 
     return (
         <Component
-            className={cn('text-pzh-blue-dark flex items-center', className)}
+            className={cn('text-pzh-blue-900 flex items-center', className)}
             data-testid="back-link"
             {...rest}>
-            <AngleLeft className="-mt-[2px] mr-2" />
+            <AngleLeft className="mr-2" />
             <Slottable>{children}</Slottable>
         </Component>
     )

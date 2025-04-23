@@ -74,21 +74,21 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
             <button
                 type="button"
                 onClick={() => editor.chain().focus().addColumnAfter().run()}
-                className="text-pzh-blue text-left font-bold">
+                className="text-pzh-blue-500 text-left font-bold">
                 Kolom rechts invoegen
             </button>
             <Divider className="bg-pzh-gray-600" />
             <button
                 type="button"
                 onClick={() => editor.chain().focus().deleteRow().run()}
-                className="text-pzh-blue text-left font-bold">
+                className="text-pzh-blue-500 text-left font-bold">
                 Rij verwijderen
             </button>
             {canDeleteCol && (
                 <button
                     type="button"
                     onClick={() => editor.chain().focus().deleteColumn().run()}
-                    className="text-pzh-blue text-left font-bold">
+                    className="text-pzh-blue-500 text-left font-bold">
                     Kolom verwijderen
                 </button>
             )}
@@ -96,13 +96,13 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
             <button
                 type="button"
                 onClick={() => editor.chain().focus().toggleHeaderRow().run()}
-                className="text-pzh-blue text-left font-bold">
+                className="text-pzh-blue-500 text-left font-bold">
                 Headerrij aan/uit
             </button>
             <button
                 type="button"
                 onClick={() => editor.chain().focus().deleteTable().run()}
-                className="text-pzh-blue text-left font-bold">
+                className="text-pzh-blue-500 text-left font-bold">
                 Tabel verwijderen
             </button>
         </div>

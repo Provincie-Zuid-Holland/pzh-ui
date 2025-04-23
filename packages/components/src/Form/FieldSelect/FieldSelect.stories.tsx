@@ -282,8 +282,8 @@ export const Async = {
         isAsync: true,
         components: {
             DropdownIndicator: () => (
-                <div className="mr-4">
-                    <MagnifyingGlass className="text-pzh-blue-dark" />
+                <div className="mr-2">
+                    <MagnifyingGlass className="text-pzh-blue-900" />
                 </div>
             ),
         },

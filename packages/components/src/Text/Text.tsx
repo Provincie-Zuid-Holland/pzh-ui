@@ -33,7 +33,7 @@ export interface TextProps {
 export const Text = <C extends PossibleTypes>({
     as,
     size = 'm',
-    color = 'text-pzh-blue-dark',
+    color = 'text-pzh-blue-900',
     bold,
     className,
     children,

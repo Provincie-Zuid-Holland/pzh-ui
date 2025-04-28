@@ -99,11 +99,11 @@ function Tab({ item, state, variant = 'underline' }: TabProps) {
             {variant === 'filled' && isSelected && (
                 <motion.div
                     layoutId="tab-filled-bg"
-                    className="bg-pzh-white absolute inset-0 z-0 rounded"
+                    className="bg-pzh-white absolute inset-0 rounded"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
             )}
-            <span className="relative z-10">{rendered}</span>
+            <span className="relative">{rendered}</span>
             {variant === 'underline' && isSelected && (
                 <motion.div
                     layoutId="tab-underline"

@@ -9,6 +9,7 @@ import {
     useTabPanel,
 } from 'react-aria'
 import { Item, TabListState, useTabListState } from 'react-stately'
+import { v4 as uuidv4 } from 'uuid'
 import { cn } from '../utils'
 
 export interface TabsProps extends AriaTabListProps<object> {
@@ -24,6 +25,7 @@ interface TabProps {
     item: Node<object>
     state: TabListState<object>
     variant?: 'underline' | 'filled'
+    id: string
 }
 
 export function Tabs({
@@ -34,6 +36,7 @@ export function Tabs({
     const state = useTabListState(props)
     const ref = useRef(null)
     const { tabListProps } = useTabList(props, state, ref)
+    const id = useRef(uuidv4())
 
     return (
         <>
@@ -57,6 +60,7 @@ export function Tabs({
                         item={item}
                         state={state}
                         variant={variant}
+                        id={id.current}
                     />
                 ))}
             </div>
@@ -67,7 +71,7 @@ export function Tabs({
 
 export const TabItem = Item
 
-function Tab({ item, state, variant = 'underline' }: TabProps) {
+function Tab({ item, state, variant = 'underline', id }: TabProps) {
     const { key, rendered } = item
     const ref = useRef(null)
     const { tabProps } = useTab({ key: key.toString() }, state, ref)
@@ -98,7 +102,7 @@ function Tab({ item, state, variant = 'underline' }: TabProps) {
         <div {...tabProps} ref={ref} className={classMap[variant]}>
             {variant === 'filled' && isSelected && (
                 <motion.div
-                    layoutId="tab-filled-bg"
+                    layoutId={`tab-filled-bg-${id}`}
                     className="bg-pzh-white absolute inset-0 rounded"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
@@ -106,7 +110,7 @@ function Tab({ item, state, variant = 'underline' }: TabProps) {
             <span className="relative">{rendered}</span>
             {variant === 'underline' && isSelected && (
                 <motion.div
-                    layoutId="tab-underline"
+                    layoutId={`tab-underline-${id}`}
                     className="bg-pzh-green-500 absolute right-0 bottom-0 left-0 h-[3px]"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />

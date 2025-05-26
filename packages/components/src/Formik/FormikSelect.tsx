@@ -33,14 +33,14 @@ export function FormikSelect({
                                       )
                                   )
                                 : props.isCreatable && props.isMulti
-                                ? field.value?.map((val: any) => ({
-                                      label: val,
-                                      value: val,
-                                  }))
-                                : options?.find(
-                                      (option: any) =>
-                                          option.value === field.value
-                                  )
+                                  ? field.value?.map((val: any) => ({
+                                        label: val,
+                                        value: val,
+                                    }))
+                                  : options?.find(
+                                        (option: any) =>
+                                            option.value === field.value
+                                    )
                         }
                         onBlur={() =>
                             setTimeout(() => {
@@ -54,15 +54,10 @@ export function FormikSelect({
                                     ? item?.map((e: any) => e.value)
                                     : item?.value || null
                             )
-                            props.onChange?.(
-                                props.isMulti
-                                    ? item?.map((e: any) => e.value)
-                                    : item?.value,
-                                {
-                                    action: 'select-option',
-                                    option: undefined,
-                                }
-                            )
+                            props.onChange?.(item, {
+                                action: 'select-option',
+                                option: undefined,
+                            })
                         }}
                         hasError={Boolean(meta.touched && meta.error)}
                     />

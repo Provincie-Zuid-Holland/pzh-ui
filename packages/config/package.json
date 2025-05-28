@@ -35,6 +35,6 @@
     "prettier": "./prettier",
     "gitHead": "07f170276b4ec4e92c6f24a7ebcd8c05667a34ac",
     "resolutions": {
-        "globals": "^15.14.0"
+        "globals": "^16.2.0"
     }
 }

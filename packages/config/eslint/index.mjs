@@ -8,6 +8,12 @@ import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import globals from 'globals'
 
+const GLOBALS_BROWSER_FIX = Object.assign({}, globals.browser, {
+    AudioWorkletGlobalScope: globals.browser['AudioWorkletGlobalScope '],
+})
+
+delete GLOBALS_BROWSER_FIX['AudioWorkletGlobalScope ']
+
 export default [
     js.configs.recommended,
     eslintConfigPrettier,
@@ -23,7 +29,7 @@ export default [
                 project: './tsconfig.json',
             },
             globals: {
-                ...globals.browser,
+                ...GLOBALS_BROWSER_FIX,
                 ...globals.node,
             },
         },

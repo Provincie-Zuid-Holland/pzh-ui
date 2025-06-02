@@ -27,13 +27,13 @@ export const FieldLabel = ({
 }: FieldLabelProps) => (
     <div className={cn('mb-2', className)}>
         <div className="flex items-center">
-            <label htmlFor={name} className="text-pzh-blue-900 font-bold">
+            <label htmlFor={name} className="text-pzh-blue-500 font-bold">
                 {label}
                 {required && <span className="text-pzh-red-500 ml-1">*</span>}
             </label>
             {tooltip && (
                 <Tooltip label={tooltip}>
-                    <CircleInfo className="text-pzh-blue-900 -mt-1 ml-1 cursor-pointer" />
+                    <CircleInfo className="text-pzh-blue-500 -mt-1 ml-1 cursor-pointer" />
                 </Tooltip>
             )}
         </div>

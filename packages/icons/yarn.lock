@@ -1486,6 +1486,7 @@ __metadata:
     "@types/react": "npm:^18.2.79"
     "@vitejs/plugin-react": "npm:^1.2.0"
     babel-plugin-import: "npm:^1.13.3"
+    prettier: "npm:2.8.8"
     prettier-plugin-organize-imports: "npm:^3.2.3"
     prettier-plugin-tailwindcss: "npm:^0.4.1"
     react: "npm:^18.2.0"
@@ -2845,6 +2846,15 @@ __metadata:
     prettier-plugin-twig-melody:
       optional: true
   checksum: 10c0/da9dc4c8c80b5510d51e671de61bc230e2b076bd4c14ddd3e8bd4fa5395373800d10473718bbf22e1cabe09167e8d2eb1bedaa06587ee905d6e6106003b69d11
+  languageName: node
+  linkType: hard
+
+"prettier@npm:2.8.8":
+  version: 2.8.8
+  resolution: "prettier@npm:2.8.8"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 10c0/463ea8f9a0946cd5b828d8cf27bd8b567345cf02f56562d5ecde198b91f47a76b7ac9eae0facd247ace70e927143af6135e8cf411986b8cb8478784a4d6d724a
   languageName: node
   linkType: hard
 

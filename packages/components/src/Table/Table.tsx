@@ -45,7 +45,7 @@ export const Table = ({
         <div className="flex flex-col items-center">
             <table className={cn('mb-8 w-full', className)} data-testid="table">
                 {caption && <caption className="sr-only">{caption}</caption>}
-                <thead className="text-pzh-blue-900">
+                <thead className="text-pzh-blue-500">
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
@@ -179,7 +179,7 @@ export const Table = ({
                         )
                     })}
                     {isLoading && (
-                        <div className="bg-pzh-gray-800/10 absolute left-0 top-0 flex h-full w-full animate-pulse items-center justify-center">
+                        <div className="bg-pzh-gray-800/10 absolute top-0 left-0 flex h-full w-full animate-pulse items-center justify-center">
                             <Spinner
                                 className={`inline-block animate-spin ${className}`}
                                 data-testid="loader-spinner"

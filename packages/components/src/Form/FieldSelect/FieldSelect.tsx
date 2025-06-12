@@ -90,6 +90,7 @@ export function FieldSelect({
             multiValue: () =>
                 'border-pzh-blue-500 text-pzh-blue-500 focus:ring-pzh-focus inline-flex gap-2 h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring-2 hover:bg-pzh-blue-500 transition duration-150 hover:text-pzh-white',
             multiValueLabel: () => '-mb-px',
+            menu: () => 'border border-pzh-gray-600',
         },
         styles: { ...getSelectStyles(), ...styles },
         onChange: handleChange,

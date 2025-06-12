@@ -38,17 +38,14 @@ export const getSelectStyles = () =>
             whiteSpace: 'nowrap',
             overflowX: 'auto',
         }),
-        option: (_, state) => ({
-            fontFamily:
-                state.isSelected || state.isFocused
-                    ? 'Karbon Medium'
-                    : 'Karbon Regular',
+        option: () => ({
+            fontFamily: 'Karbon Regular',
         }),
         menu: css => ({
             ...css,
             zIndex: 9999,
-            marginTop: 2,
-            boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.10)',
+            marginTop: 4,
+            boxShadow: 'none',
         }),
         indicatorsContainer: (css, state) => ({
             ...css,

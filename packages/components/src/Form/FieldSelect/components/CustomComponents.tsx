@@ -6,6 +6,7 @@ import type {
     OptionProps,
 } from 'react-select'
 import { components } from 'react-select'
+import { cn } from '../../../utils'
 
 interface Option {
     label: string
@@ -22,12 +23,16 @@ export const CustomComponents = ({ name }: { name: string }) => ({
     Option: (props: OptionProps<Option, boolean>) => (
         <components.Option
             {...props}
-            className={classNames('px-4 py-1', {
-                'text-pzh-blue-900 hover:text-pzh-green-500 cursor-pointer hover:underline':
-                    !props.isDisabled,
-                'text-pzh-gray-500': props.isDisabled,
-                underline: props.isFocused,
-            })}>
+            className={cn(
+                'active:bg-pzh-blue-100 text-pzh-gray-600 h-12 px-4 py-2',
+                {
+                    'hover:bg-pzh-blue-10 cursor-pointer hover:no-underline':
+                        !props.isDisabled,
+                    'bg-pzh-gray-200': props.isDisabled,
+                    'bg-pzh-blue-10': props.isFocused,
+                    'bg-pzh-blue-10 text-pzh-blue-900': props.isSelected,
+                }
+            )}>
             {props.isMulti ? (
                 <div
                     className="flex items-center"
@@ -40,11 +45,7 @@ export const CustomComponents = ({ name }: { name: string }) => ({
                     />
                     <span
                         className={classNames(
-                            'text-pzh-blue-900 relative inline-block cursor-pointer pl-[34px] leading-7 font-normal',
-                            {
-                                'before:ring-pzh-focus before:border-pzh-blue-500 before:ring-2 before:outline-none':
-                                    props.isFocused,
-                            }
+                            'relative inline-block pl-[34px] leading-7'
                         )}>
                         {props.label}
                     </span>

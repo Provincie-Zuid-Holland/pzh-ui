@@ -10,14 +10,14 @@ import { useCreatableHandlers } from './hooks/useCreatableHandlers'
 import { getSelectStyles } from './styles/selectStyles'
 
 export interface Option {
-    readonly label: string
-    readonly value: string
+    readonly label?: string | JSX.Element
+    readonly value?: unknown
     readonly isDisabled?: boolean
 }
 
-type SelectProps = Props<Option, boolean, GroupBase<Option>> &
+type SelectProps = Props &
     Pick<
-        AsyncProps<Option, boolean, GroupBase<Option>>,
+        AsyncProps<unknown, boolean, GroupBase<unknown>>,
         'defaultOptions' | 'cacheOptions' | 'loadOptions' | 'isLoading'
     >
 
@@ -73,7 +73,7 @@ export function FieldSelect({
         components: {
             ...CustomComponents({ name }),
             ...components,
-        },
+        } as Props['components'],
         className,
         classNames: {
             control: state =>
@@ -92,7 +92,7 @@ export function FieldSelect({
             multiValueLabel: () => '-mb-px',
             menu: () => 'border border-pzh-gray-600',
         },
-        styles: { ...getSelectStyles(), ...styles },
+        styles: { ...getSelectStyles(), ...styles } as Props['styles'],
         onChange: handleChange,
         'aria-invalid': hasError,
         tabSelectsValue,

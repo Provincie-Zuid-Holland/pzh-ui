@@ -7,11 +7,7 @@ import type {
 } from 'react-select'
 import { components } from 'react-select'
 import { cn } from '../../../utils'
-
-interface Option {
-    label: string
-    value: string
-}
+import { Option } from '../FieldSelect'
 
 export const CustomComponents = ({ name }: { name: string }) => ({
     DropdownIndicator: () => (

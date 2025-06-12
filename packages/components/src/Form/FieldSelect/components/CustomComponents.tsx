@@ -63,7 +63,8 @@ export const CustomComponents = ({ name }: { name: string }) => ({
         <Button
             variant="default"
             onPress={props.clearValue}
-            className="text-pzh-blue-500 mr-2 cursor-pointer">
+            className="text-pzh-blue-500 mr-2 cursor-pointer"
+            tabIndex={0}>
             <span className="sr-only">Veld leegmaken</span>
             <Xmark size={14} />
         </Button>

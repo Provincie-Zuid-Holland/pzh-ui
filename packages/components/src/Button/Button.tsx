@@ -26,6 +26,8 @@ export interface ButtonProps extends AriaButtonProps {
     className?: string
     /** Can be used to render a Next.js link for example */
     asChild?: boolean
+    /** Can be used to change tabindex of element */
+    tabIndex?: number
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

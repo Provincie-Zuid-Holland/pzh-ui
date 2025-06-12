@@ -6,13 +6,14 @@ import type {
     OptionProps,
 } from 'react-select'
 import { components } from 'react-select'
+import { Button } from '../../../Button'
 import { cn } from '../../../utils'
 import { Option } from '../FieldSelect'
 
 export const CustomComponents = ({ name }: { name: string }) => ({
     DropdownIndicator: () => (
         <div className="mr-2">
-            <AngleDown className="text-pzh-blue-900" />
+            <AngleDown className="text-pzh-blue-500 cursor-pointer" />
         </div>
     ),
     IndicatorSeparator: null,
@@ -53,17 +54,18 @@ export const CustomComponents = ({ name }: { name: string }) => ({
     ),
     GroupHeading: (props: GroupHeadingProps<Option, boolean>) => (
         <components.GroupHeading {...props}>
-            <p className="text-m text-pzh-blue-900 font-bold normal-case">
+            <p className="text-m text-pzh-blue-500 font-bold normal-case">
                 {props.children}
             </p>
         </components.GroupHeading>
     ),
     ClearIndicator: (props: ClearIndicatorProps<Option, boolean>) => (
-        <components.ClearIndicator {...props}>
-            <button type="button" onClick={props.clearValue}>
-                <span className="sr-only">Veld leegmaken</span>
-                <Xmark size={14} />
-            </button>
-        </components.ClearIndicator>
+        <Button
+            variant="default"
+            onPress={props.clearValue}
+            className="text-pzh-blue-500 mr-2 cursor-pointer">
+            <span className="sr-only">Veld leegmaken</span>
+            <Xmark size={14} />
+        </Button>
     ),
 })

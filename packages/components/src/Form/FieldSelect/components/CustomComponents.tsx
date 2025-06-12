@@ -57,7 +57,9 @@ export const CustomComponents = ({ name }: { name: string }) => ({
     ),
     GroupHeading: (props: GroupHeadingProps<Option, boolean>) => (
         <components.GroupHeading {...props}>
-            <p className="text-m font-bold normal-case">{props.children}</p>
+            <p className="text-m text-pzh-blue-900 font-bold normal-case">
+                {props.children}
+            </p>
         </components.GroupHeading>
     ),
     ClearIndicator: (props: ClearIndicatorProps<Option, boolean>) => (

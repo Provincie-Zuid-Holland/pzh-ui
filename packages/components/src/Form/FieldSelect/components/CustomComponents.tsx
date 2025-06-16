@@ -21,7 +21,7 @@ export const CustomComponents = ({ name }: { name: string }) => ({
         <components.Option
             {...props}
             className={cn(
-                'active:bg-pzh-blue-100 text-pzh-gray-600 h-12 px-4 py-2',
+                'active:bg-pzh-blue-100 text-pzh-gray-600 min-h-12 px-4 py-2',
                 {
                     'hover:bg-pzh-blue-10 cursor-pointer hover:no-underline':
                         !props.isDisabled,

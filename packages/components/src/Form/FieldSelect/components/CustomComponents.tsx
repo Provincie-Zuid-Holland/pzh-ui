@@ -39,6 +39,7 @@ export const CustomComponents = ({ name }: { name: string }) => ({
                         checked={props.isSelected}
                         onChange={() => null}
                         type="checkbox"
+                        tabIndex={-1}
                     />
                     <span
                         className={classNames(

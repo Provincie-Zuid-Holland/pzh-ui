@@ -72,7 +72,7 @@ const TableHeader = ({
                             {header.isPlaceholder ? null : (
                                 <div
                                     className={classNames(
-                                        'group border-pzh-gray-300 flex w-full items-center border-b pb-2',
+                                        'group border-pzh-gray-300 flex w-full items-center border-b px-2 pb-2',
                                         {
                                             'cursor-pointer select-none':
                                                 canSort,
@@ -145,7 +145,7 @@ const TableBody = ({
                             hasOnClick,
                     })}>
                     {row.getVisibleCells().map(cell => (
-                        <td key={cell.id} className="py-4 pr-4">
+                        <td key={cell.id} className="px-2 py-4">
                             {cell.renderValue() as ReactNode}
                         </td>
                     ))}

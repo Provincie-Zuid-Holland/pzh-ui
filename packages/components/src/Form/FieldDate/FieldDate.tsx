@@ -75,7 +75,7 @@ export const FieldDate = ({
                     required={required}
                     tooltip={tooltip}
                     className={classNames({
-                        'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
+                        'col-span-6 mt-2 mb-0 md:col-span-2': layout === 'grid',
                     })}
                 />
             )}
@@ -116,9 +116,12 @@ const DateInput = forwardRef<HTMLInputElement, FieldInputProps>(
             <input type="text" {...props} ref={ref} />
             <CalendarAlt
                 size={20}
-                className={classNames('absolute right-[14px] top-[14px]', {
-                    'opacity-50': props.disabled,
-                })}
+                className={classNames(
+                    'pointer-events-none absolute top-[14px] right-[14px]',
+                    {
+                        'opacity-50': props.disabled,
+                    }
+                )}
             />
         </div>
     )

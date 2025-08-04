@@ -37,6 +37,7 @@ export const FieldCheckboxGroup = ({
     tooltip,
     onChange,
     className,
+    hasError,
     ...props
 }: FieldCheckboxGroupProps) => (
     <div
@@ -51,8 +52,9 @@ export const FieldCheckboxGroup = ({
                 required={required}
                 tooltip={tooltip}
                 className={clsx({
-                    'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
+                    'col-span-6 mt-2 mb-0 md:col-span-2': layout === 'grid',
                 })}
+                hasError={hasError}
             />
         )}
         <div
@@ -77,6 +79,7 @@ export const FieldCheckboxGroup = ({
                         className={clsx({
                             'w-fit': optionLayout === 'vertical',
                         })}
+                        hasError={hasError}
                         {...props}
                         checked={checked}>
                         {option.label}

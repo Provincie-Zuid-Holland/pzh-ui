@@ -43,8 +43,9 @@ export const FieldTextArea = ({
                 required={required}
                 tooltip={tooltip}
                 className={classNames({
-                    'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
+                    'col-span-6 mt-2 mb-0 md:col-span-2': layout === 'grid',
                 })}
+                hasError={hasError}
             />
         )}
         <textarea
@@ -55,7 +56,7 @@ export const FieldTextArea = ({
             required={required}
             rows={rows}
             className={cn(
-                'pzh-form-input min-h-[48px] min-h-[calc(2lh+2*10px)] resize-none overflow-hidden',
+                'pzh-form-input min-h-[calc(2lh+2*10px)] resize-none overflow-hidden',
                 {
                     'pzh-form-error': hasError,
                     'col-span-6 md:col-span-4': layout === 'grid',

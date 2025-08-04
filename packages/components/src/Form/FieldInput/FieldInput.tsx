@@ -44,8 +44,9 @@ export const FieldInput = ({
                 required={required}
                 tooltip={tooltip}
                 className={classNames({
-                    'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
+                    'col-span-6 mt-2 mb-0 md:col-span-2': layout === 'grid',
                 })}
+                hasError={hasError}
             />
         )}
         <div

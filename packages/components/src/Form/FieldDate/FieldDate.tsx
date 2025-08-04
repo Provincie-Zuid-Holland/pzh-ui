@@ -77,6 +77,7 @@ export const FieldDate = ({
                     className={classNames({
                         'col-span-6 mt-2 mb-0 md:col-span-2': layout === 'grid',
                     })}
+                    hasError={hasError}
                 />
             )}
             <div

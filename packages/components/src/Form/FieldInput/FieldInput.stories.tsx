@@ -63,7 +63,9 @@ export const WithError = {
     render: Template,
     args: {
         placeholder: 'Tekstvlak',
+        label: 'Form label',
         hasError: true,
+        required: true,
         value: 'Waarde',
     },
 } satisfies Story

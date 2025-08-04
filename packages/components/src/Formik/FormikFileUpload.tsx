@@ -1,7 +1,7 @@
 import { FastField, Field, FieldProps } from 'formik'
 
-import { FormikError } from './FormikError'
 import { FieldFileUpload, FieldFileUploadProps } from '../Form/FieldFileUpload'
+import { FormikError } from './FormikError'
 
 type FormikFileUploadProps = Partial<FieldFileUploadProps> & {
     name: string
@@ -19,13 +19,18 @@ export function FormikFileUpload({
     return (
         <>
             <Component name={name}>
-                {({ field, form }: FieldProps<any>) => (
+                {({ field, form, meta }: FieldProps<any>) => (
                     <FieldFileUpload
                         {...props}
                         {...field}
-                        onChange={onChange ? onChange : item => {
-                            form.setFieldValue(name, item)
-                        }}
+                        onChange={
+                            onChange
+                                ? onChange
+                                : item => {
+                                      form.setFieldValue(name, item)
+                                  }
+                        }
+                        hasError={Boolean(meta.touched && meta.error)}
                     />
                 )}
             </Component>

@@ -35,6 +35,7 @@ export const FieldRadioGroup = ({
     optionLayout = 'vertical',
     tooltip,
     required,
+    hasError,
     ...props
 }: FieldRadioGroupProps) => (
     <div
@@ -49,8 +50,9 @@ export const FieldRadioGroup = ({
                 required={required}
                 tooltip={tooltip}
                 className={classNames({
-                    'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
+                    'col-span-6 mt-2 mb-0 md:col-span-2': layout === 'grid',
                 })}
+                hasError={hasError}
             />
         )}
         <div
@@ -66,6 +68,7 @@ export const FieldRadioGroup = ({
                     className={classNames({
                         'w-fit': optionLayout === 'vertical',
                     })}
+                    hasError={hasError}
                     {...props}
                     checked={value === option.value}>
                     {option.label}

@@ -37,6 +37,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     hideDescription?: boolean
     hideIcon?: boolean
     hideSelectedFiles?: boolean
+    hasError?: boolean
 }
 
 export const FieldFileUpload = ({
@@ -59,6 +60,7 @@ export const FieldFileUpload = ({
     hideDescription,
     hideIcon,
     hideSelectedFiles,
+    hasError,
     ...props
 }: FieldFileUploadProps) => {
     const [myFiles, setMyFiles] = useState<File[]>([])
@@ -198,8 +200,9 @@ export const FieldFileUpload = ({
                     required={required}
                     tooltip={tooltip}
                     className={classNames({
-                        'col-span-6 mb-0 mt-2 md:col-span-2': layout === 'grid',
+                        'col-span-6 mt-2 mb-0 md:col-span-2': layout === 'grid',
                     })}
+                    hasError={hasError}
                 />
             )}
             <div

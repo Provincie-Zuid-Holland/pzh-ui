@@ -24,6 +24,7 @@ import { DOMOutputSpec } from '@tiptap/pm/model'
 import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import classNames from 'clsx'
 import { ReactNode, useEffect, useState } from 'react'
+import { Gapcursor } from '@tiptap/extensions'
 
 import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
@@ -173,6 +174,7 @@ export const FieldRte = ({
             ListItem,
             History,
             HardBreak,
+            Gapcursor,
             ...(customExtensions || []),
         ]
 

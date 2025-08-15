@@ -318,7 +318,7 @@ const RteMenuBar = ({
                         break
                 }
             })}
-            {customMenuButtons?.(editor)}
+            {customMenuButtons?.(editor, { rightClick, setRightClick })}
         </div>
     )
 }

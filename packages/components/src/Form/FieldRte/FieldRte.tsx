@@ -61,7 +61,13 @@ export interface FieldRteProps {
     /** List of custom menu options that should be enabled */
     customMenuOptions?: TextEditorCustomMenuOptions[]
     /** List of custom menu buttons */
-    customMenuButtons?: (editor: Editor) => ReactNode[]
+    customMenuButtons?: (
+        editor: Editor,
+        options?: {
+            rightClick?: boolean
+            setRightClick?: (rightClick: boolean) => void
+        }
+    ) => ReactNode[]
     /** List of custom extensions */
     customExtensions?: AnyExtension[]
     /** Classnames of Tiptap editor */

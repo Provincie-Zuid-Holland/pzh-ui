@@ -272,6 +272,12 @@ export const FieldRte = ({
     }
 
     useEffect(() => {
+        if (editor && initialContent) {
+            editor.commands.setContent(initialContent?.replace(/\n/g, '<br />'),)
+        }
+    }, [initialContent])
+
+    useEffect(() => {
         if (!editor) return
 
         editor.off('blur')

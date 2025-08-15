@@ -144,7 +144,7 @@ export const FieldRte = ({
             },
         },
         injectCSS: false,
-    })
+    }, [disabled])
 
     function getEditorExtensions() {
         const extensions: Extensions = [

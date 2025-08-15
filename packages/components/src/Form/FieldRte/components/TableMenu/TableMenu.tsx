@@ -5,12 +5,19 @@ import { EditorContentProps } from '@tiptap/react'
 import { useEffect, useRef, useState } from 'react'
 
 import { Divider } from '../../../../Divider'
+import { Text } from '../../../../Text'
+import ColorPicker from './ColorPicker'
 
 interface TableMenuProps extends EditorContentProps {
     setRightClick: (rightClick: boolean) => void
+    enableColorPicker?: boolean
 }
 
-const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
+const TableMenu = ({
+    editor,
+    setRightClick,
+    enableColorPicker,
+}: TableMenuProps) => {
     const ref = useRef(null)
 
     const [canDeleteCol, setCanDeleteCol] = useState(true)
@@ -54,10 +61,13 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
 
     if (!editor) return null
 
+    const currentCellColor =
+        editor.getAttributes('tableCell')?.backgroundColor || '#FFFFFF'
+
     return (
         <div
             ref={ref}
-            className="bg-pzh-white after:content-[`' '`] after:border-b-pzh-white flex flex-col gap-2 px-6 py-4 shadow-[0_1px_8px_0_rgba(0,0,0,0.2)] after:absolute after:-top-2 after:left-0 after:right-0 after:mx-auto after:block after:h-0 after:w-0 after:border-x-[10px] after:border-b-[10px] after:border-t-0 after:border-x-[transparent] after:border-t-transparent">
+            className="bg-pzh-white after:content-[`' '`] after:border-b-pzh-white flex flex-col gap-2 px-6 py-4 shadow-[0_1px_8px_0_rgba(0,0,0,0.2)] after:absolute after:-top-2 after:right-0 after:left-0 after:mx-auto after:block after:h-0 after:w-0 after:border-x-[10px] after:border-t-0 after:border-b-[10px] after:border-x-[transparent] after:border-t-transparent">
             <button
                 type="button"
                 onClick={() => editor.chain().focus().addRowAfter().run()}
@@ -105,6 +115,24 @@ const TableMenu = ({ editor, setRightClick }: TableMenuProps) => {
                 className="text-pzh-blue-500 text-left font-bold">
                 Tabel verwijderen
             </button>
+            {enableColorPicker && (
+                <>
+                    <Divider className="bg-pzh-gray-600" />
+                    <Text bold color="text-pzh-blue-500">
+                        Achtergrondkleur
+                    </Text>
+                    <ColorPicker
+                        initialColor={currentCellColor}
+                        onApply={color => {
+                            editor
+                                ?.chain()
+                                .focus()
+                                .setCellAttribute('backgroundColor', color)
+                                .run()
+                        }}
+                    />
+                </>
+            )}
         </div>
     )
 }

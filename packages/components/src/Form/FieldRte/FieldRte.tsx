@@ -61,13 +61,7 @@ export interface FieldRteProps {
     /** List of custom menu options that should be enabled */
     customMenuOptions?: TextEditorCustomMenuOptions[]
     /** List of custom menu buttons */
-    customMenuButtons?: (
-        editor: Editor,
-        options?: {
-            rightClick?: boolean
-            setRightClick?: (rightClick: boolean) => void
-        }
-    ) => ReactNode[]
+    customMenuButtons?: (editor: Editor) => ReactNode[]
     /** List of custom extensions */
     customExtensions?: AnyExtension[]
     /** Classnames of Tiptap editor */
@@ -85,6 +79,8 @@ export interface FieldRteProps {
         /** Size in bytes, default 1048576 (1MB) */
         maxSize?: number
     }
+    /** Enable Color picker if Table opion is enabled */
+    enableColorPicker?: boolean
 }
 
 export type TextEditorMenuOptions =
@@ -126,6 +122,7 @@ export const FieldRte = ({
         maxWidth: 1500,
         maxSize: 1048576,
     },
+    enableColorPicker = false,
 }: FieldRteProps) => {
     const [rightClick, setRightClick] = useState(false)
 
@@ -233,7 +230,27 @@ export const FieldRte = ({
                     },
                 }),
                 TableRow,
-                TableCell,
+                TableCell.extend({
+                    addAttributes() {
+                        return {
+                            ...this.parent?.(),
+                            backgroundColor: {
+                                default: null,
+                                parseHTML: element =>
+                                    element.style.backgroundColor || null,
+                                renderHTML: attributes => {
+                                    if (!attributes.backgroundColor) {
+                                        return {}
+                                    }
+
+                                    return {
+                                        style: `background-color: ${attributes.backgroundColor}`,
+                                    }
+                                },
+                            },
+                        }
+                    },
+                }),
                 TableHeader,
                 SanitisePastedHtml,
                 HandleDOMEvents.configure({ callback: setRightClick })
@@ -304,6 +321,7 @@ export const FieldRte = ({
                         imageOptions={imageOptions}
                         rightClick={rightClick}
                         setRightClick={setRightClick}
+                        enableColorPicker={enableColorPicker}
                     />
                     <EditorContent editor={editor} />
                 </div>

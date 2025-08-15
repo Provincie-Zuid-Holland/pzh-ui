@@ -30,6 +30,7 @@ interface RteMenuBarProps extends EditorContentProps {
     imageOptions?: FieldRteProps['imageOptions']
     rightClick: boolean
     setRightClick: (rightClick: boolean) => void
+    enableColorPicker?: boolean
 }
 
 const RteMenuBar = ({
@@ -41,6 +42,7 @@ const RteMenuBar = ({
     imageOptions,
     rightClick,
     setRightClick,
+    enableColorPicker,
 }: RteMenuBarProps) => {
     if (!editor) return null
 
@@ -288,6 +290,9 @@ const RteMenuBar = ({
                                             <TableMenu
                                                 editor={editor}
                                                 setRightClick={setRightClick}
+                                                enableColorPicker={
+                                                    enableColorPicker
+                                                }
                                             />
                                         )}
                                     </BubbleMenu>
@@ -318,7 +323,7 @@ const RteMenuBar = ({
                         break
                 }
             })}
-            {customMenuButtons?.(editor, { rightClick, setRightClick })}
+            {customMenuButtons?.(editor)}
         </div>
     )
 }

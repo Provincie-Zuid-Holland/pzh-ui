@@ -160,9 +160,9 @@ const RteMenuBar = ({
                                             validateImage(
                                                 editor,
                                                 files,
-                                                imageOptions?.maxSize,
-                                                imageOptions?.maxHeight,
-                                                imageOptions?.maxWidth
+                                                imageOptions?.uploadOptions?.maxSize,
+                                                imageOptions?.uploadOptions?.maxHeight,
+                                                imageOptions?.uploadOptions?.maxWidth
                                             )
                                         }
 

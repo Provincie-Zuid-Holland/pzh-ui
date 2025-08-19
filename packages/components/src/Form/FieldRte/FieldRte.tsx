@@ -5,7 +5,7 @@ import Document from '@tiptap/extension-document'
 import HardBreak from '@tiptap/extension-hard-break'
 import Heading from '@tiptap/extension-heading'
 import History from '@tiptap/extension-history'
-import Image from '@tiptap/extension-image'
+import Image, { ImageOptions } from '@tiptap/extension-image'
 import Italic from '@tiptap/extension-italic'
 import Link from '@tiptap/extension-link'
 import ListItem from '@tiptap/extension-list-item'
@@ -73,12 +73,15 @@ export interface FieldRteProps {
     hasError?: boolean
     /** Options for image */
     imageOptions?: {
-        /** Height in pixels, default 2500px */
-        maxHeight?: number
-        /** Width in pixels, default 1500px */
-        maxWidth?: number
-        /** Size in bytes, default 1048576 (1MB) */
-        maxSize?: number
+        options?: Partial<ImageOptions>
+        uploadOptions?: {
+            /** Height in pixels, default 2500px */
+            maxHeight?: number
+            /** Width in pixels, default 1500px */
+            maxWidth?: number
+            /** Size in bytes, default 1048576 (1MB) */
+            maxSize?: number
+        }
     }
     /** Enable Color picker if Table opion is enabled */
     enableColorPicker?: boolean
@@ -119,9 +122,15 @@ export const FieldRte = ({
     menuClassName,
     hasError,
     imageOptions = {
-        maxHeight: 2500,
-        maxWidth: 1500,
-        maxSize: 1048576,
+        options: {
+            allowBase64: true,
+            inline: true,
+        },
+        uploadOptions: {
+            maxHeight: 2500,
+            maxWidth: 1500,
+            maxSize: 1048576,
+        }
     },
     enableColorPicker = false,
 }: FieldRteProps) => {
@@ -187,11 +196,8 @@ export const FieldRte = ({
 
         if (!!customMenuOptions?.find(el => el === 'image'))
             extensions.push(
-                Image.configure({
-                    allowBase64: true,
-                    inline: true,
-                }),
-                ImageUpload.configure(imageOptions)
+                Image.configure(imageOptions['options']),
+                ImageUpload.configure(imageOptions['uploadOptions'])
             )
 
         if (!!customMenuOptions?.find(el => el === 'link'))

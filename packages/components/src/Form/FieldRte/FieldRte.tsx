@@ -293,6 +293,7 @@ export const FieldRte = ({
     useEffect(() => {
         if (editor && initialContent) {
             editor.commands.setContent(initialContent?.replace(/\n/g, '<br />'))
+            editor.commands.focus('start')
         }
     }, [initialContent])
 

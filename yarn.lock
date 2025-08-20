@@ -15474,6 +15474,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier-plugin-organize-imports@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "prettier-plugin-organize-imports@npm:4.2.0"
+  peerDependencies:
+    prettier: ">=2.0"
+    typescript: ">=2.9"
+    vue-tsc: ^2.1.0 || 3
+  peerDependenciesMeta:
+    vue-tsc:
+      optional: true
+  checksum: 10c0/3b20652d7ff71786c088bdb4189b315bca086faee70db1c10aca21dc41efadbcba45ef37b0842fb91f14f31927b6bed63433b2725346dc79b3833b6694b33eed
+  languageName: node
+  linkType: hard
+
 "prettier-plugin-tailwindcss@npm:^0.4.1":
   version: 0.4.1
   resolution: "prettier-plugin-tailwindcss@npm:0.4.1"
@@ -15529,7 +15543,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.6.12":
+"prettier-plugin-tailwindcss@npm:^0.6.12, prettier-plugin-tailwindcss@npm:^0.6.14":
   version: 0.6.14
   resolution: "prettier-plugin-tailwindcss@npm:0.6.14"
   peerDependencies:
@@ -15975,6 +15989,8 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.3.0"
     lerna: "npm:^8.1.9"
     prettier: "npm:^3.4.2"
+    prettier-plugin-organize-imports: "npm:^4.2.0"
+    prettier-plugin-tailwindcss: "npm:^0.6.14"
   languageName: unknown
   linkType: soft
 

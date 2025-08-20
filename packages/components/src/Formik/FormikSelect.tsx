@@ -25,13 +25,21 @@ export function FormikSelect({
                         options={options}
                         value={
                             props.isMulti && !props.isCreatable
-                                ? field.value?.map((val: any) =>
-                                      options?.find(
+                                ? field.value?.map((val: any) => {
+                                      if (
+                                          val &&
+                                          typeof val === 'object' &&
+                                          'value' in val
+                                      ) {
+                                          return val
+                                      }
+
+                                      return options?.find(
                                           (option: any) =>
                                               JSON.stringify(option.value) ===
                                               JSON.stringify(val)
                                       )
-                                  )
+                                  })
                                 : props.isCreatable && props.isMulti
                                   ? field.value?.map((val: any) => ({
                                         label: val,
@@ -51,7 +59,13 @@ export function FormikSelect({
                             form.setFieldValue(
                                 name,
                                 props.isMulti
-                                    ? item?.map((e: any) => e.value)
+                                    ? item?.map((e: any) =>
+                                          e &&
+                                          typeof e === 'object' &&
+                                          'value' in e
+                                              ? e
+                                              : { value: e }
+                                      )
                                     : item?.value || null
                             )
                             props.onChange?.(item, {

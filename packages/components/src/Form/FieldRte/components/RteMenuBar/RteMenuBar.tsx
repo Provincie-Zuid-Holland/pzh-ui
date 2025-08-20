@@ -59,7 +59,7 @@ const RteMenuBar = ({
                             <MenuButton
                                 key={option}
                                 onClick={() =>
-                                    editor.chain().focus().toggleBold().run()
+                                    editor.chain().toggleBold().focus().run()
                                 }
                                 disabled={disabled}
                                 isActive={editor.isActive('bold')}
@@ -73,7 +73,7 @@ const RteMenuBar = ({
                             <MenuButton
                                 key={option}
                                 onClick={() =>
-                                    editor.chain().focus().toggleItalic().run()
+                                    editor.chain().toggleItalic().focus().run()
                                 }
                                 disabled={disabled}
                                 isActive={editor.isActive('italic')}
@@ -89,8 +89,8 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .focus()
                                         .toggleUnderline()
+                                        .focus()
                                         .run()
                                 }
                                 disabled={disabled}
@@ -107,8 +107,8 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .focus()
                                         .toggleBulletList()
+                                        .focus()
                                         .run()
                                 }
                                 disabled={disabled}
@@ -125,8 +125,8 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .focus()
                                         .toggleOrderedList()
+                                        .focus()
                                         .run()
                                 }
                                 disabled={disabled}
@@ -160,9 +160,12 @@ const RteMenuBar = ({
                                             validateImage(
                                                 editor,
                                                 files,
-                                                imageOptions?.uploadOptions?.maxSize,
-                                                imageOptions?.uploadOptions?.maxHeight,
-                                                imageOptions?.uploadOptions?.maxWidth
+                                                imageOptions?.uploadOptions
+                                                    ?.maxSize,
+                                                imageOptions?.uploadOptions
+                                                    ?.maxHeight,
+                                                imageOptions?.uploadOptions
+                                                    ?.maxWidth
                                             )
                                         }
 
@@ -193,9 +196,9 @@ const RteMenuBar = ({
                                     if (url === '') {
                                         editor
                                             .chain()
-                                            .focus()
                                             .extendMarkRange('link')
                                             .unsetLink()
+                                            .focus()
                                             .run()
 
                                         return
@@ -204,12 +207,12 @@ const RteMenuBar = ({
                                     // update link
                                     editor
                                         .chain()
-                                        .focus()
                                         .extendMarkRange('link')
                                         .setLink({
                                             href: url,
                                             target: '_blank',
                                         })
+                                        .focus()
                                         .run()
                                 }}
                                 disabled={disabled}
@@ -226,8 +229,8 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .focus()
                                         .toggleHeading({ level: 3 })
+                                        .focus()
                                         .run()
                                 }
                                 disabled={disabled}
@@ -244,8 +247,8 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .focus()
                                         .toggleSubscript()
+                                        .focus()
                                         .run()
                                 }
                                 disabled={disabled}
@@ -262,8 +265,8 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .focus()
                                         .toggleSuperscript()
+                                        .focus()
                                         .run()
                                 }
                                 disabled={disabled}
@@ -301,12 +304,12 @@ const RteMenuBar = ({
                                     onClick={() =>
                                         editor
                                             .chain()
-                                            .focus()
                                             .insertTable({
                                                 rows: 3,
                                                 cols: 4,
                                                 withHeaderRow: true,
                                             })
+                                            .focus()
                                             .run()
                                     }
                                     disabled={

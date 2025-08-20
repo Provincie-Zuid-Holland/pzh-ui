@@ -70,34 +70,34 @@ const TableMenu = ({
             className="bg-pzh-white after:content-[`' '`] after:border-b-pzh-white flex flex-col gap-2 px-6 py-4 shadow-[0_1px_8px_0_rgba(0,0,0,0.2)] after:absolute after:-top-2 after:right-0 after:left-0 after:mx-auto after:block after:h-0 after:w-0 after:border-x-[10px] after:border-t-0 after:border-b-[10px] after:border-x-[transparent] after:border-t-transparent">
             <button
                 type="button"
-                onClick={() => editor.chain().focus().addRowAfter().run()}
+                onClick={() => editor.chain().addRowAfter().focus().run()}
                 className="text-pzh-blue-500 text-left font-bold">
                 Rij onder invoegen
             </button>
             <Divider className="bg-pzh-gray-600" />
             <button
                 type="button"
-                onClick={() => editor.chain().focus().addColumnBefore().run()}
+                onClick={() => editor.chain().addColumnBefore().focus().run()}
                 className="text-pzh-blue-500 text-left font-bold">
                 Kolom links invoegen
             </button>
             <button
                 type="button"
-                onClick={() => editor.chain().focus().addColumnAfter().run()}
+                onClick={() => editor.chain().addColumnAfter().focus().run()}
                 className="text-pzh-blue-500 text-left font-bold">
                 Kolom rechts invoegen
             </button>
             <Divider className="bg-pzh-gray-600" />
             <button
                 type="button"
-                onClick={() => editor.chain().focus().deleteRow().run()}
+                onClick={() => editor.chain().deleteRow().focus().run()}
                 className="text-pzh-blue-500 text-left font-bold">
                 Rij verwijderen
             </button>
             {canDeleteCol && (
                 <button
                     type="button"
-                    onClick={() => editor.chain().focus().deleteColumn().run()}
+                    onClick={() => editor.chain().deleteColumn().focus().run()}
                     className="text-pzh-blue-500 text-left font-bold">
                     Kolom verwijderen
                 </button>
@@ -105,13 +105,13 @@ const TableMenu = ({
             <Divider className="bg-pzh-gray-600" />
             <button
                 type="button"
-                onClick={() => editor.chain().focus().toggleHeaderRow().run()}
+                onClick={() => editor.chain().toggleHeaderRow().focus().run()}
                 className="text-pzh-blue-500 text-left font-bold">
                 Headerrij aan/uit
             </button>
             <button
                 type="button"
-                onClick={() => editor.chain().focus().deleteTable().run()}
+                onClick={() => editor.chain().deleteTable().focus().run()}
                 className="text-pzh-blue-500 text-left font-bold">
                 Tabel verwijderen
             </button>
@@ -126,8 +126,8 @@ const TableMenu = ({
                         onApply={color => {
                             editor
                                 ?.chain()
-                                .focus()
                                 .setCellAttribute('backgroundColor', color)
+                                .focus()
                                 .run()
                         }}
                     />

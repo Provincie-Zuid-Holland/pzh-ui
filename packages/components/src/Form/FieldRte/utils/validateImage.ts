@@ -58,7 +58,7 @@ const validateImage = (
         }
 
         const src = (await blobToBase64(file)) as string
-        src && editor.chain().focus().setImage({ src }).run()
+        src && editor.chain().setImage({ src }).focus().run()
     })
 }
 

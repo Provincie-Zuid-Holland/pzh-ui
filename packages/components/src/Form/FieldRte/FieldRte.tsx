@@ -152,6 +152,14 @@ export const FieldRte = ({
                     ),
                     'data-testid': testId,
                 },
+                handleDOMEvents: {
+                    mousedown: (_view, event) => {
+                        // Prevent blur when clicking toolbar
+                        if ((event.target as HTMLElement).closest('.toolbar')) {
+                            event.preventDefault()
+                        }
+                    },
+                },
             },
             injectCSS: false,
         },

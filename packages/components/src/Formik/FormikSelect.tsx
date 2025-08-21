@@ -1,12 +1,13 @@
 import { FastField, Field, FieldProps } from 'formik'
-import { FieldSelect, FieldSelectProps, Option } from '../Form/FieldSelect'
+
+import { FieldSelect, FieldSelectProps } from '../Form/FieldSelect'
 import { FormikError } from './FormikError'
 
 type FormikSelectProps = FieldSelectProps & {
     optimized?: boolean
 }
 
-export function FormikSelect<T extends unknown>({
+export function FormikSelect({
     name,
     options,
     optimized = true,
@@ -17,68 +18,64 @@ export function FormikSelect<T extends unknown>({
     return (
         <>
             <Component name={name}>
-                {({ field, form, meta }: FieldProps<T>) => {
-                    // Determine the select value
-                    const selectValue = props.isMulti
-                        ? Array.isArray(field.value)
-                            ? (field.value
-                                  .map(val =>
-                                      (options as Option[] | undefined)?.find(
-                                          (opt: Option) =>
-                                              JSON.stringify(opt.value) ===
+                {({ field, form, meta }: FieldProps<any>) => (
+                    <FieldSelect
+                        {...props}
+                        {...field}
+                        options={options}
+                        value={
+                            props.isMulti && !props.isCreatable
+                                ? field.value?.map((val: any) => {
+                                      if (
+                                          val &&
+                                          typeof val === 'object' &&
+                                          'value' in val
+                                      ) {
+                                          return val
+                                      }
+
+                                      return options?.find(
+                                          (option: any) =>
+                                              JSON.stringify(option.value) ===
                                               JSON.stringify(val)
                                       )
-                                  )
-                                  .filter(Boolean) as Option[])
-                            : []
-                        : (options as Option[] | undefined)?.find(
-                              opt => opt.value === field.value
-                          ) || null
-
-                    return (
-                        <FieldSelect
-                            {...props}
-                            {...field}
-                            options={options}
-                            value={selectValue}
-                            onBlur={() =>
-                                setTimeout(
-                                    () => form.setFieldTouched(name, true),
-                                    1
-                                )
-                            }
-                            onChange={(newValue, actionMeta) => {
-                                const selected = newValue as
-                                    | Option
-                                    | Option[]
-                                    | null
-
-                                if (props.isMulti) {
-                                    form.setFieldValue(
-                                        name,
-                                        Array.isArray(selected)
-                                            ? selected.map(item =>
-                                                  'value' in item
-                                                      ? item.value
-                                                      : item
-                                              )
-                                            : []
+                                  })
+                                : props.isCreatable && props.isMulti
+                                  ? field.value?.map((val: any) => ({
+                                        label: val,
+                                        value: val,
+                                    }))
+                                  : options?.find(
+                                        (option: any) =>
+                                            option.value === field.value
                                     )
-                                } else {
-                                    form.setFieldValue(
-                                        name,
-                                        selected && 'value' in selected
-                                            ? selected.value
-                                            : null
-                                    )
-                                }
-
-                                props.onChange?.(selected, actionMeta)
-                            }}
-                            hasError={Boolean(meta.touched && meta.error)}
-                        />
-                    )
-                }}
+                        }
+                        onBlur={() =>
+                            setTimeout(() => {
+                                form.setFieldTouched(name, true)
+                            }, 1)
+                        }
+                        onChange={(item: any) => {
+                            form.setFieldValue(
+                                name,
+                                props.isMulti
+                                    ? item?.map((e: any) =>
+                                          e &&
+                                          typeof e === 'object' &&
+                                          'value' in e
+                                              ? e
+                                              : { value: e }
+                                      )
+                                    : item?.value || null
+                            )
+                            props.onChange?.(item, {
+                                action: 'select-option',
+                                option: undefined,
+                            })
+                        }}
+                        hasError={Boolean(meta.touched && meta.error)}
+                    />
+                )}
             </Component>
             <FormikError name={name} />
         </>

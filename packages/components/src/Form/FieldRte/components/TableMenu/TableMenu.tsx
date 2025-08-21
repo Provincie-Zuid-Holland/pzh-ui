@@ -100,14 +100,13 @@ const TableMenu = ({
             )}
             {tableMenuOptions.includes('splitCell') && (
                 <>
-                    {' '}
                     <button
                         type="button"
                         onClick={() => editor.chain().focus().splitCell().run()}
                         className="text-pzh-blue-500 text-left font-bold">
                         Cel splitsen
                     </button>
-                    <Divider className="bg-pzh-gray-600" />{' '}
+                    <Divider className="bg-pzh-gray-600" />
                 </>
             )}
             {tableMenuOptions.includes('addRowAfter') && (

@@ -99,7 +99,7 @@ export { FormikTextArea } from './Formik/FormikTextArea'
 // Other Components
 // ───────────────────────────────────────────────
 
-export { Heading } from './Heading'
+export { Heading, getHeadingStyles } from './Heading'
 export type { HeadingProps } from './Heading'
 
 export { Hyperlink } from './Hyperlink'

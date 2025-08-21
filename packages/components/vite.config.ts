@@ -3,38 +3,43 @@ import { fileURLToPath } from 'node:url'
 import { extname, isAbsolute, relative, resolve } from 'path'
 
 import typescriptPlugin from '@rollup/plugin-typescript'
+import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { glob } from 'glob'
 import { visualizer } from 'rollup-plugin-visualizer'
-import { PluginOption, defineConfig } from 'vite'
+import { defineConfig, PluginOption } from 'vite'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import tailwindcss from "@tailwindcss/vite"
 
-const isExternal = id => !id.startsWith('.') && !isAbsolute(id)
+// Consider marking external dependencies for Rollup explicitly
+const isExternal = (id: string) => !id.startsWith('.') && !isAbsolute(id)
 
 export default defineConfig({
     plugins: [
         react({
-            jsxRuntime: 'classic',
+            jsxRuntime: 'classic', // only needed if you specifically want classic runtime
             babel: {
-                configFile: true,
+                configFile: true, // uses your existing babel config
             },
         }),
         tailwindcss(),
         libInjectCss(),
+        tsconfigPaths(),
         visualizer({
-            template: 'treemap', // or sunburst
+            template: 'treemap', // easier to read large bundles
             gzipSize: true,
             brotliSize: true,
-            filename: 'analyse.html', // will be saved in project's root
+            filename: 'analyse.html',
         }) as PluginOption,
-        tsconfigPaths(),
     ],
     build: {
-        target: 'esnext',
+        target: 'esnext', // modern browsers
         sourcemap: true,
         emptyOutDir: true,
+        lib: {
+            entry: resolve(__dirname, 'src/index.ts'),
+            formats: ['es'], // only generating ES module, lighter build
+        },
         rollupOptions: {
             external: isExternal,
             plugins: [
@@ -56,13 +61,12 @@ export default defineConfig({
                     ])
             ),
             output: {
-                assetFileNames: 'assets/[name][extname]',
                 entryFileNames: '[name].js',
+                assetFileNames: 'assets/[name][extname]',
+                // preserveModules allows better tree-shaking for libraries
+                preserveModules: true,
+                preserveModulesRoot: 'src',
             },
-        },
-        lib: {
-            entry: resolve(__dirname, 'src/index.ts'),
-            formats: ['es'],
         },
     },
     // @ts-ignore

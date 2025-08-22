@@ -22,7 +22,12 @@ import Text from '@tiptap/extension-text'
 import Underline from '@tiptap/extension-underline'
 import { Gapcursor } from '@tiptap/extensions'
 import { DOMOutputSpec } from '@tiptap/pm/model'
-import { Editor, EditorContent, useEditor } from '@tiptap/react'
+import {
+    Editor,
+    EditorContent,
+    useEditor,
+    UseEditorOptions,
+} from '@tiptap/react'
 import classNames from 'clsx'
 import { ReactNode, useEffect, useState } from 'react'
 
@@ -50,6 +55,8 @@ export interface FieldRteProps {
     disabled?: boolean
     /** Is called when the text is updated on blur */
     onBlur?: (value: string) => void
+    /** Is called when the editor is created */
+    onCreate?: UseEditorOptions['onCreate']
     /** Sets the initial text of the editor */
     initialContent?: string
     /** Add test-id for test purposes */
@@ -116,6 +123,7 @@ export const FieldRte = ({
     tooltip,
     disabled,
     onBlur,
+    onCreate,
     initialContent,
     menuOptions = ['bold', 'italic', 'underline', 'bulletList', 'orderedList'],
     className,
@@ -148,6 +156,7 @@ export const FieldRte = ({
             onBlur({ editor }) {
                 handleUpdate(editor as Editor)
             },
+            onCreate,
             editorProps: {
                 attributes: {
                     class: cn(

@@ -29,6 +29,7 @@ import { ReactNode, useEffect, useState } from 'react'
 import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
 import RteMenuBar from './components/RteMenuBar'
+import { TableMenuOption } from './components/TableMenu/TableMenu'
 import { HandleDOMEvents } from './extensions/handleDOMEvents'
 import ImageUpload from './extensions/imageUpload'
 import { NestedListLimit } from './extensions/limitNestedLists'
@@ -65,6 +66,8 @@ export interface FieldRteProps {
     customMenuButtons?: (editor: Editor) => ReactNode[]
     /** List of custom extensions */
     customExtensions?: AnyExtension[]
+    /** List of custom context-menu options when editing tables */
+    customTableMenuOptions?: TableMenuOption[]
     /** Classnames of Tiptap editor */
     className?: string
     /** Classnames of menu */
@@ -83,8 +86,8 @@ export interface FieldRteProps {
             maxSize?: number
         }
     }
-    /** Enable Color picker if Table opion is enabled */
-    enableColorPicker?: boolean
+    /** Allow table columns to be resizable */
+    resizableTable?: boolean
 }
 
 export type TextEditorMenuOptions =
@@ -132,7 +135,8 @@ export const FieldRte = ({
             maxSize: 1048576,
         },
     },
-    enableColorPicker = false,
+    customTableMenuOptions,
+    resizableTable = false,
 }: FieldRteProps) => {
     const [rightClick, setRightClick] = useState(false)
 
@@ -247,6 +251,8 @@ export const FieldRte = ({
 
                         return table
                     },
+                }).configure({
+                    resizable: resizableTable,
                 }),
                 TableRow,
                 TableCell.extend({
@@ -347,7 +353,7 @@ export const FieldRte = ({
                         imageOptions={imageOptions}
                         rightClick={rightClick}
                         setRightClick={setRightClick}
-                        enableColorPicker={enableColorPicker}
+                        tableMenuOptions={customTableMenuOptions}
                     />
                     <EditorContent editor={editor} />
                 </div>

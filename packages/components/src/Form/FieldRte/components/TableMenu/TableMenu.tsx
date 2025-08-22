@@ -8,15 +8,37 @@ import { Divider } from '../../../../Divider'
 import { Text } from '../../../../Text'
 import ColorPicker from './ColorPicker'
 
+export type TableMenuOption =
+    | 'mergeCells'
+    | 'splitCell'
+    | 'addRowAfter'
+    | 'addColumnBefore'
+    | 'addColumnAfter'
+    | 'deleteRow'
+    | 'deleteColumn'
+    | 'toggleHeaderRow'
+    | 'deleteTable'
+    | 'backgroundColor'
+
 interface TableMenuProps extends EditorContentProps {
     setRightClick: (rightClick: boolean) => void
-    enableColorPicker?: boolean
+    tableMenuOptions?: TableMenuOption[]
 }
+
+const DEFAULT_TABLE_MENU_OPTIONS: TableMenuOption[] = [
+    'addRowAfter',
+    'addColumnBefore',
+    'addColumnAfter',
+    'deleteRow',
+    'deleteColumn',
+    'toggleHeaderRow',
+    'deleteTable',
+]
 
 const TableMenu = ({
     editor,
     setRightClick,
-    enableColorPicker,
+    tableMenuOptions = DEFAULT_TABLE_MENU_OPTIONS,
 }: TableMenuProps) => {
     const ref = useRef(null)
 
@@ -68,33 +90,68 @@ const TableMenu = ({
         <div
             ref={ref}
             className="bg-pzh-white after:content-[`' '`] after:border-b-pzh-white flex flex-col gap-2 px-6 py-4 shadow-[0_1px_8px_0_rgba(0,0,0,0.2)] after:absolute after:-top-2 after:right-0 after:left-0 after:mx-auto after:block after:h-0 after:w-0 after:border-x-[10px] after:border-t-0 after:border-b-[10px] after:border-x-[transparent] after:border-t-transparent">
-            <button
-                type="button"
-                onClick={() => editor.chain().addRowAfter().focus().run()}
-                className="text-pzh-blue-500 text-left font-bold">
-                Rij onder invoegen
-            </button>
-            <Divider className="bg-pzh-gray-600" />
-            <button
-                type="button"
-                onClick={() => editor.chain().addColumnBefore().focus().run()}
-                className="text-pzh-blue-500 text-left font-bold">
-                Kolom links invoegen
-            </button>
-            <button
-                type="button"
-                onClick={() => editor.chain().addColumnAfter().focus().run()}
-                className="text-pzh-blue-500 text-left font-bold">
-                Kolom rechts invoegen
-            </button>
-            <Divider className="bg-pzh-gray-600" />
-            <button
-                type="button"
-                onClick={() => editor.chain().deleteRow().focus().run()}
-                className="text-pzh-blue-500 text-left font-bold">
-                Rij verwijderen
-            </button>
-            {canDeleteCol && (
+            {tableMenuOptions.includes('mergeCells') && (
+                <button
+                    type="button"
+                    onClick={() => editor.chain().focus().mergeCells().run()}
+                    className="text-pzh-blue-500 text-left font-bold">
+                    Cellen samenvoegen
+                </button>
+            )}
+            {tableMenuOptions.includes('splitCell') && (
+                <>
+                    <button
+                        type="button"
+                        onClick={() => editor.chain().focus().splitCell().run()}
+                        className="text-pzh-blue-500 text-left font-bold">
+                        Cel splitsen
+                    </button>
+                    <Divider className="bg-pzh-gray-600" />
+                </>
+            )}
+            {tableMenuOptions.includes('addRowAfter') && (
+                <button
+                    type="button"
+                    onClick={() => editor.chain().addRowAfter().focus().run()}
+                    className="text-pzh-blue-500 text-left font-bold">
+                    Rij onder invoegen
+                </button>
+            )}
+            {tableMenuOptions.includes('addColumnBefore') && (
+                <>
+                    <Divider className="bg-pzh-gray-600" />
+                    <button
+                        type="button"
+                        onClick={() =>
+                            editor.chain().addColumnBefore().focus().run()
+                        }
+                        className="text-pzh-blue-500 text-left font-bold">
+                        Kolom links invoegen
+                    </button>
+                </>
+            )}
+            {tableMenuOptions.includes('addColumnAfter') && (
+                <button
+                    type="button"
+                    onClick={() =>
+                        editor.chain().addColumnAfter().focus().run()
+                    }
+                    className="text-pzh-blue-500 text-left font-bold">
+                    Kolom rechts invoegen
+                </button>
+            )}
+            {tableMenuOptions.includes('deleteRow') && (
+                <>
+                    <Divider className="bg-pzh-gray-600" />
+                    <button
+                        type="button"
+                        onClick={() => editor.chain().deleteRow().focus().run()}
+                        className="text-pzh-blue-500 text-left font-bold">
+                        Rij verwijderen
+                    </button>
+                </>
+            )}
+            {canDeleteCol && tableMenuOptions.includes('deleteColumn') && (
                 <button
                     type="button"
                     onClick={() => editor.chain().deleteColumn().focus().run()}
@@ -102,20 +159,28 @@ const TableMenu = ({
                     Kolom verwijderen
                 </button>
             )}
-            <Divider className="bg-pzh-gray-600" />
-            <button
-                type="button"
-                onClick={() => editor.chain().toggleHeaderRow().focus().run()}
-                className="text-pzh-blue-500 text-left font-bold">
-                Headerrij aan/uit
-            </button>
-            <button
-                type="button"
-                onClick={() => editor.chain().deleteTable().focus().run()}
-                className="text-pzh-blue-500 text-left font-bold">
-                Tabel verwijderen
-            </button>
-            {enableColorPicker && (
+            {tableMenuOptions.includes('toggleHeaderRow') && (
+                <>
+                    <Divider className="bg-pzh-gray-600" />
+                    <button
+                        type="button"
+                        onClick={() =>
+                            editor.chain().toggleHeaderRow().focus().run()
+                        }
+                        className="text-pzh-blue-500 text-left font-bold">
+                        Headerrij aan/uit
+                    </button>
+                </>
+            )}
+            {tableMenuOptions.includes('deleteTable') && (
+                <button
+                    type="button"
+                    onClick={() => editor.chain().deleteTable().focus().run()}
+                    className="text-pzh-blue-500 text-left font-bold">
+                    Tabel verwijderen
+                </button>
+            )}
+            {tableMenuOptions.includes('backgroundColor') && (
                 <>
                     <Divider className="bg-pzh-gray-600" />
                     <Text bold color="text-pzh-blue-500">

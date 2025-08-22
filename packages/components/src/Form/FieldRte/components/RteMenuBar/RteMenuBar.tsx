@@ -22,6 +22,7 @@ import {
 } from '../../FieldRte'
 import validateImage from '../../utils/validateImage'
 import TableMenu from '../TableMenu'
+import { TableMenuOption } from '../TableMenu/TableMenu'
 
 interface RteMenuBarProps extends EditorContentProps {
     menuOptions: (TextEditorMenuOptions | TextEditorCustomMenuOptions)[]
@@ -30,7 +31,7 @@ interface RteMenuBarProps extends EditorContentProps {
     imageOptions?: FieldRteProps['imageOptions']
     rightClick: boolean
     setRightClick: (rightClick: boolean) => void
-    enableColorPicker?: boolean
+    tableMenuOptions?: TableMenuOption[]
 }
 
 const RteMenuBar = ({
@@ -42,7 +43,7 @@ const RteMenuBar = ({
     imageOptions,
     rightClick,
     setRightClick,
-    enableColorPicker,
+    tableMenuOptions,
 }: RteMenuBarProps) => {
     if (!editor) return null
 
@@ -293,8 +294,8 @@ const RteMenuBar = ({
                                             <TableMenu
                                                 editor={editor}
                                                 setRightClick={setRightClick}
-                                                enableColorPicker={
-                                                    enableColorPicker
+                                                tableMenuOptions={
+                                                    tableMenuOptions
                                                 }
                                             />
                                         )}

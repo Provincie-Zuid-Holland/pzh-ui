@@ -86,6 +86,8 @@ export interface FieldRteProps {
             maxSize?: number
         }
     }
+    /** Allow table columns to be resizable */
+    resizableTable?: boolean
 }
 
 export type TextEditorMenuOptions =
@@ -134,6 +136,7 @@ export const FieldRte = ({
         },
     },
     customTableMenuOptions,
+    resizableTable = false,
 }: FieldRteProps) => {
     const [rightClick, setRightClick] = useState(false)
 
@@ -248,6 +251,8 @@ export const FieldRte = ({
 
                         return table
                     },
+                }).configure({
+                    resizable: resizableTable,
                 }),
                 TableRow,
                 TableCell.extend({

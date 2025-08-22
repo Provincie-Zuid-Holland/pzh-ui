@@ -1,5 +1,5 @@
 import { MagnifyingGlass } from '@pzh-ui/icons'
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react-vite'
 
 import { FieldSelect, FieldSelectProps } from './FieldSelect'
 

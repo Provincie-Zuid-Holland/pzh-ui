@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react-vite'
 
 import { MagnifyingGlass } from '../../../../icons'
 import { FieldInput, FieldInputProps } from './FieldInput'

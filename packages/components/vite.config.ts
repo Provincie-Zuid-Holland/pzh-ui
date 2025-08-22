@@ -16,29 +16,24 @@ const isExternal = (id: string) => !id.startsWith('.') && !isAbsolute(id)
 
 export default defineConfig({
     plugins: [
-        react({
-            jsxRuntime: 'classic', // only needed if you specifically want classic runtime
-            babel: {
-                configFile: true, // uses your existing babel config
-            },
-        }),
+        react(),
         tailwindcss(),
         libInjectCss(),
         tsconfigPaths(),
         visualizer({
-            template: 'treemap', // easier to read large bundles
+            template: 'treemap',
             gzipSize: true,
             brotliSize: true,
             filename: 'analyse.html',
         }) as PluginOption,
     ],
     build: {
-        target: 'esnext', // modern browsers
+        target: 'esnext',
         sourcemap: true,
         emptyOutDir: true,
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
-            formats: ['es'], // only generating ES module, lighter build
+            formats: ['es'],
         },
         rollupOptions: {
             external: isExternal,
@@ -63,7 +58,6 @@ export default defineConfig({
             output: {
                 entryFileNames: '[name].js',
                 assetFileNames: 'assets/[name][extname]',
-                // preserveModules allows better tree-shaking for libraries
                 preserveModules: true,
                 preserveModulesRoot: 'src',
             },

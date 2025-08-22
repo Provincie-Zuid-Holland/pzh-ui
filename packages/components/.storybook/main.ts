@@ -1,4 +1,8 @@
 import type { StorybookConfig } from '@storybook/react-vite'
+import { createRequire } from 'node:module'
+import { dirname, join } from 'node:path'
+
+const require = createRequire(import.meta.url)
 
 const config: StorybookConfig = {
     stories: [
@@ -7,27 +11,22 @@ const config: StorybookConfig = {
         '../src/**/*.mdx',
         '../src/**/*.stories.@(js|jsx|ts|tsx)',
     ],
+
     addons: [
-        {
-            name: '@storybook/addon-essentials',
-            options: {
-                measure: false,
-                outline: false,
-            },
-        },
-        '@storybook/addon-links',
-        '@storybook/addon-interactions',
-        '@storybook/addon-storysource',
-        '@storybook/addon-jest',
-        'storybook-addon-react-router-v6',
-        '@storybook/addon-a11y',
-        '@storybook/addon-mdx-gfm',
+        getAbsolutePath('@storybook/addon-links'),
+        getAbsolutePath('@storybook/addon-jest'),
+        getAbsolutePath('storybook-addon-remix-react-router'),
+        getAbsolutePath('@storybook/addon-a11y'),
+        getAbsolutePath('@storybook/addon-docs'),
     ],
+
     core: {},
+
     framework: {
-        name: '@storybook/react-vite',
+        name: getAbsolutePath('@storybook/react-vite'),
         options: {},
     },
+
     typescript: {
         reactDocgen: 'react-docgen-typescript',
         reactDocgenTypescriptOptions: {
@@ -49,10 +48,8 @@ const config: StorybookConfig = {
             },
         },
     },
-    docs: {
-        autodocs: true,
-    },
-    async viteFinal(config, { configType }) {
+
+    async viteFinal(config) {
         config.resolve = {
             ...config.resolve,
             alias: {
@@ -63,6 +60,15 @@ const config: StorybookConfig = {
 
         return config
     },
+
+    features: {
+        measure: false,
+        outline: false,
+    },
 }
 
 export default config
+
+function getAbsolutePath(value: string): any {
+    return dirname(require.resolve(join(value, 'package.json')))
+}

@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react-vite'
 
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { TabItem, Tabs, TabsProps } from './Tabs'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

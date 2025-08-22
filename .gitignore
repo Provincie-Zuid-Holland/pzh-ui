@@ -10,6 +10,7 @@ storybook-static
 build-storybook.log
 storybook.log
 migration-storybook.log
+debug-storybook.log
 .env
 stats.html
 analyse.html

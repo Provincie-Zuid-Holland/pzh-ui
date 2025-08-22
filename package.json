@@ -1,26 +1,26 @@
 {
-    "name": "pzh-ui",
-    "version": "1.0.0",
-    "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
-    "devDependencies": {
-        "@babel/eslint-parser": "^7.17.0",
-        "@typescript-eslint/eslint-plugin": "^6.13.1",
-        "@typescript-eslint/parser": "^6.13.1",
-        "eslint": "^8.48.0",
-        "eslint-config-next": "^12.1.0",
-        "eslint-config-prettier": "^9.0.0",
-        "eslint-import-resolver-typescript": "^2.5.0",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-react": "^7.29.3",
-        "eslint-plugin-react-hooks": "^4.3.0",
-        "lerna": "^8.1.9",
-        "prettier": "^3.4.2",
-        "prettier-plugin-organize-imports": "^4.2.0",
-        "prettier-plugin-tailwindcss": "^0.6.14"
-    },
-    "prettier": "./packages/config/prettier",
-    "packageManager": "yarn@4.9.1"
+  "name": "pzh-ui",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.48.0",
+    "eslint-config-next": "^12.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.3",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "lerna": "^8.1.9",
+    "prettier": "^3.4.2",
+    "prettier-plugin-organize-imports": "^4.2.0",
+    "prettier-plugin-tailwindcss": "^0.6.14"
+  },
+  "prettier": "./packages/config/prettier",
+  "packageManager": "yarn@4.9.1"
 }

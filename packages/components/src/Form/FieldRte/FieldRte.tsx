@@ -73,8 +73,6 @@ export interface FieldRteProps {
     customMenuButtons?: (editor: Editor) => ReactNode[]
     /** List of custom extensions */
     customExtensions?: AnyExtension[]
-    /** List of custom context-menu options when editing tables */
-    customTableMenuOptions?: TableMenuOption[]
     /** Classnames of Tiptap editor */
     className?: string
     /** Classnames of menu */
@@ -93,9 +91,15 @@ export interface FieldRteProps {
             maxSize?: number
         }
     }
-    /** Allow table columns to be resizable */
-    resizableTable?: boolean
-    disableBuiltInSanitisation?: boolean
+    /** Custom options for tables */
+    tableOptions?: {
+        /** List of custom context-menu options when editing tables */
+        customTableMenuOptions?: TableMenuOption[]
+        /** Allow table columns to be resizable */
+        resizableTable?: boolean
+        /** Disable built-in sanitisation of pasted HTML in tables */
+        disableBuiltInSanitisation?: boolean
+    }
 }
 
 export type TextEditorMenuOptions =
@@ -144,11 +148,19 @@ export const FieldRte = ({
             maxSize: 1048576,
         },
     },
-    customTableMenuOptions,
-    resizableTable = false,
-    disableBuiltInSanitisation = false,
+    tableOptions = {
+        customTableMenuOptions: undefined,
+        resizableTable: false,
+        disableBuiltInSanitisation: false,
+    },
 }: FieldRteProps) => {
     const [rightClick, setRightClick] = useState(false)
+
+    const {
+        customTableMenuOptions,
+        resizableTable,
+        disableBuiltInSanitisation,
+    } = tableOptions || {}
 
     const editor = useEditor(
         {

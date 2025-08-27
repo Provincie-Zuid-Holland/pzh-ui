@@ -95,6 +95,7 @@ export interface FieldRteProps {
     }
     /** Allow table columns to be resizable */
     resizableTable?: boolean
+    disableBuiltInSanitisation?: boolean
 }
 
 export type TextEditorMenuOptions =
@@ -145,6 +146,7 @@ export const FieldRte = ({
     },
     customTableMenuOptions,
     resizableTable = false,
+    disableBuiltInSanitisation = false,
 }: FieldRteProps) => {
     const [rightClick, setRightClick] = useState(false)
 
@@ -245,8 +247,8 @@ export const FieldRte = ({
         if (!!customMenuOptions?.find(el => el === 'superscript'))
             extensions.push(Superscript)
 
-        if (!!customMenuOptions?.find(el => el === 'table'))
-            extensions.push(
+        if (!!customMenuOptions?.find(el => el === 'table')) {
+            const tableExtensions: Extensions = [
                 Table.extend({
                     renderHTML({ HTMLAttributes }) {
                         const table: DOMOutputSpec = [
@@ -287,8 +289,15 @@ export const FieldRte = ({
                 }),
                 TableHeader,
                 SanitisePastedHtml,
-                HandleDOMEvents.configure({ callback: setRightClick })
-            )
+                HandleDOMEvents.configure({ callback: setRightClick }),
+            ]
+
+            if (!disableBuiltInSanitisation) {
+                tableExtensions.push(SanitisePastedHtml)
+            }
+
+            extensions.push(...tableExtensions)
+        }
 
         return extensions
     }

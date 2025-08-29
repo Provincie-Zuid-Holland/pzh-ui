@@ -73,8 +73,6 @@ export interface FieldRteProps {
     customMenuButtons?: (editor: Editor) => ReactNode[]
     /** List of custom extensions */
     customExtensions?: AnyExtension[]
-    /** List of custom context-menu options when editing tables */
-    customTableMenuOptions?: TableMenuOption[]
     /** Classnames of Tiptap editor */
     className?: string
     /** Classnames of menu */
@@ -93,8 +91,15 @@ export interface FieldRteProps {
             maxSize?: number
         }
     }
-    /** Allow table columns to be resizable */
-    resizableTable?: boolean
+    /** Custom options for tables */
+    tableOptions?: {
+        /** List of custom context-menu options when editing tables */
+        customTableMenuOptions?: TableMenuOption[]
+        /** Allow table columns to be resizable */
+        resizableTable?: boolean
+        /** Disable built-in sanitisation of pasted HTML in tables */
+        disableBuiltInSanitisation?: boolean
+    }
 }
 
 export type TextEditorMenuOptions =
@@ -143,10 +148,19 @@ export const FieldRte = ({
             maxSize: 1048576,
         },
     },
-    customTableMenuOptions,
-    resizableTable = false,
+    tableOptions = {
+        customTableMenuOptions: undefined,
+        resizableTable: false,
+        disableBuiltInSanitisation: false,
+    },
 }: FieldRteProps) => {
     const [rightClick, setRightClick] = useState(false)
+
+    const {
+        customTableMenuOptions,
+        resizableTable,
+        disableBuiltInSanitisation,
+    } = tableOptions || {}
 
     const editor = useEditor(
         {
@@ -245,8 +259,8 @@ export const FieldRte = ({
         if (!!customMenuOptions?.find(el => el === 'superscript'))
             extensions.push(Superscript)
 
-        if (!!customMenuOptions?.find(el => el === 'table'))
-            extensions.push(
+        if (!!customMenuOptions?.find(el => el === 'table')) {
+            const tableExtensions: Extensions = [
                 Table.extend({
                     renderHTML({ HTMLAttributes }) {
                         const table: DOMOutputSpec = [
@@ -287,8 +301,15 @@ export const FieldRte = ({
                 }),
                 TableHeader,
                 SanitisePastedHtml,
-                HandleDOMEvents.configure({ callback: setRightClick })
-            )
+                HandleDOMEvents.configure({ callback: setRightClick }),
+            ]
+
+            if (!disableBuiltInSanitisation) {
+                tableExtensions.push(SanitisePastedHtml)
+            }
+
+            extensions.push(...tableExtensions)
+        }
 
         return extensions
     }

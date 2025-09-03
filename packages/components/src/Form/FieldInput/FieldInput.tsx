@@ -16,6 +16,7 @@ export interface FieldInputProps extends InputHTMLAttributes<HTMLInputElement> {
     icon?: any
     layout?: 'default' | 'grid'
     tooltip?: string | JSX.Element
+    inlineButton?: ReactNode
 }
 
 export const FieldInput = ({
@@ -30,6 +31,7 @@ export const FieldInput = ({
     icon: Icon,
     layout = 'default',
     tooltip,
+    inlineButton,
     ...props
 }: FieldInputProps) => (
     <div
@@ -76,6 +78,7 @@ export const FieldInput = ({
                 type={type}
                 {...props}
             />
+            {inlineButton}
         </div>
     </div>
 )

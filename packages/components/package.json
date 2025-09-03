@@ -1,6 +1,6 @@
 {
     "name": "@pzh-ui/components",
-    "version": "0.0.648",
+    "version": "0.0.649",
     "description": "Contains default components to use in Provincie Zuid-Holland projects.",
     "license": "ISC",
     "publishConfig": {
@@ -89,7 +89,7 @@
         "@babel/preset-env": "^7.22.15",
         "@babel/preset-react": "^7.22.15",
         "@babel/preset-typescript": "^7.23.3",
-        "@pzh-ui/css": "^0.0.114",
+        "@pzh-ui/css": "^0.0.115",
         "@rollup/plugin-babel": "^5.3.1",
         "@rollup/plugin-typescript": "^11.1.5",
         "@storybook/addon-a11y": "^9.1.3",

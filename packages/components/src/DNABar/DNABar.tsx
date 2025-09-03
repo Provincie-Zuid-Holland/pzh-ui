@@ -1,20 +1,36 @@
 import { useWindowSize } from '@react-hookz/web'
 import classNames from 'clsx'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import detailPatterns from '../assets/detail-patterns.svg'
 import primaryPatterns from '../assets/primary-patterns.svg'
 import { cn } from '../utils'
 
-export const useDnaBarWidth = () => {
-    const windowSize = useWindowSize()
-    const [dnaBarWidth, setDnaBarWidth] = useState(96)
+type BarConfig = {
+    size: number
+    primaryTop: number
+    detailTop: number
+}
+
+export const useDnaBarConfig = (): BarConfig => {
+    const { width } = useWindowSize()
+    const [config, setConfig] = useState<BarConfig>({
+        size: 96,
+        primaryTop: 192,
+        detailTop: 288,
+    })
 
     useEffect(() => {
-        setDnaBarWidth(windowSize.width < 768 ? 40 : 96)
-    }, [windowSize])
+        if (width < 768) {
+            setConfig({ size: 40, primaryTop: 80, detailTop: 120 })
+        } else if (width < 1600) {
+            setConfig({ size: 80, primaryTop: 160, detailTop: 240 })
+        } else {
+            setConfig({ size: 96, primaryTop: 192, detailTop: 288 })
+        }
+    }, [width])
 
-    return dnaBarWidth
+    return config
 }
 
 export interface DNABarProps {
@@ -23,14 +39,17 @@ export interface DNABarProps {
 }
 
 export function DNABar({ blocks = 5, className }: DNABarProps) {
-    const windowSize = useWindowSize()
+    const { width } = useWindowSize()
+    const { size, primaryTop, detailTop } = useDnaBarConfig()
+
+    const blockStyle = useMemo(() => ({ width: size, height: size }), [size])
 
     return (
         <div
             className={cn(
                 'pointer-events-none absolute right-0 z-10',
                 {
-                    hidden: windowSize.width <= 640,
+                    hidden: width <= 640,
                     'top-0': !className,
                 },
                 className
@@ -38,45 +57,49 @@ export function DNABar({ blocks = 5, className }: DNABarProps) {
             {blocks !== 2 && (
                 <img
                     src={primaryPatterns}
-                    className="absolute top-[192px] w-[96px]"
+                    className="absolute"
+                    style={{ width: size, top: primaryTop }}
                     alt=""
                 />
             )}
+
             {blocks === 2 && (
                 <img
                     src={detailPatterns}
-                    className="absolute top-[288px] w-[96px]"
+                    className="absolute"
+                    style={{ width: size, top: detailTop }}
                     alt=""
                 />
             )}
+
             <div
-                className={classNames('bg-pzh-red-500 h-[96px] w-[96px]', {
+                className={classNames('bg-pzh-red-500', {
                     'opacity-0': blocks === 2,
                 })}
+                style={blockStyle}
             />
             <div
-                className={classNames('bg-pzh-yellow-500 h-[96px] w-[96px]', {
+                className={classNames('bg-pzh-yellow-500', {
                     'opacity-0': blocks === 2,
                 })}
+                style={blockStyle}
             />
             <div
-                className={classNames('h-[96px] w-[96px]', {
-                    'opacity-0': blocks === 2,
-                })}
+                className={classNames({ 'opacity-0': blocks === 2 })}
+                style={blockStyle}
             />
 
             <div
-                className={classNames('h-[96px] w-[96px]', {
-                    'bg-pzh-red-500': blocks === 2,
-                })}
+                className={classNames({ 'bg-pzh-red-500': blocks === 2 })}
+                style={blockStyle}
             />
             <div
-                className={classNames('h-[96px] w-[96px]', {
-                    'bg-pzh-red-500': blocks !== 2,
-                })}
+                className={classNames({ 'bg-pzh-red-500': blocks !== 2 })}
+                style={blockStyle}
             />
+
             {blocks === 6 && (
-                <div className="bg-pzh-blue-500 h-[96px] w-[96px]" />
+                <div className="bg-pzh-blue-500" style={blockStyle} />
             )}
         </div>
     )

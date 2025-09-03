@@ -174,7 +174,7 @@ export const FieldRte = ({
             editorProps: {
                 attributes: {
                     class: cn(
-                        'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green-500 prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-900 marker:text-pzh-blue-900 outline-none whitespace-pre-line',
+                        'prose prose-neutral prose-li:my-0 prose-a:text-pzh-green-500 prose-strong:text-inherit prose-img:my-0 p-5 max-w-full text-m text-pzh-blue-900 marker:text-pzh-blue-900 outline-none whitespace-pre-line',
                         className
                     ),
                     'data-testid': testId,

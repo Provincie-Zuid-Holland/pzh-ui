@@ -138,6 +138,9 @@
             height: 0;
         }
     }
+
+    /* Prose styles */
+    --tw-prose-bold: inherit;
 }
 
 @font-face {

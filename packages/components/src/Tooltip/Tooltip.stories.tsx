@@ -24,3 +24,19 @@ export const Default = {
         label: 'Tooltip',
     },
 } satisfies Story
+
+export const WithHTML = {
+    render: Template,
+    args: {
+        children: <p className="inline-block font-bold">Tooltip with HTML</p>,
+        label: '<p>Some <strong>HTML</strong> here</p>',
+    },
+} satisfies Story
+
+export const WithReactNode = {
+    render: Template,
+    args: {
+        children: <p className="inline-block font-bold">Tooltip with HTML</p>,
+        label: <p>Label</p>,
+    },
+} satisfies Story

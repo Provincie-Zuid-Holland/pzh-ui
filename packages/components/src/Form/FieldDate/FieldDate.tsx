@@ -1,4 +1,4 @@
-import { CalendarAlt } from '@pzh-ui/icons'
+import { Calendar } from '@pzh-ui/icons'
 import { useUpdateEffect } from '@react-hookz/web'
 import classNames from 'clsx'
 import { nl } from 'date-fns/locale'
@@ -115,7 +115,7 @@ const DateInput = forwardRef<HTMLInputElement, FieldInputProps>(
     (props, ref) => (
         <div className="relative flex">
             <input type="text" {...props} ref={ref} />
-            <CalendarAlt
+            <Calendar
                 size={20}
                 className={classNames(
                     'pointer-events-none absolute top-[14px] right-[14px]',

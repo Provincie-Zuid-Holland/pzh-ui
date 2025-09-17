@@ -1,8 +1,8 @@
 import {
     Ban,
-    CircleCheck,
-    CircleInfo,
-    TriangleExclamation,
+    CircleCheckSolid,
+    CircleInfoSolid,
+    TriangleExclamationSolid,
 } from '@pzh-ui/icons'
 import classNames from 'clsx'
 
@@ -27,12 +27,12 @@ export const Notification = ({
 }: NotificationProps) => {
     const Icon =
         icon || variant === 'warning'
-            ? TriangleExclamation
+            ? TriangleExclamationSolid
             : variant === 'positive'
-            ? CircleCheck
-            : variant === 'negative'
-            ? Ban
-            : CircleInfo
+              ? CircleCheckSolid
+              : variant === 'negative'
+                ? Ban
+                : CircleInfoSolid
 
     const colors = {
         container: classNames({

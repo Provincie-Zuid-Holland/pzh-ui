@@ -12,6 +12,7 @@ import {
     useInteractions,
     useRole,
 } from '@floating-ui/react'
+import classNames from 'clsx'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { cloneElement, useEffect, useMemo, useRef, useState } from 'react'
 
@@ -19,12 +20,14 @@ export interface TooltipProps {
     label: string | JSX.Element
     placement?: Placement
     children: JSX.Element
+    className?: string
 }
 
 export const Tooltip = ({
     children,
     label,
     placement = 'bottom',
+    className,
 }: TooltipProps) => {
     const [open, setOpen] = useState(false)
     const arrowRef = useRef<HTMLDivElement | null>(null)
@@ -114,9 +117,7 @@ export const Tooltip = ({
             exit: {
                 opacity: 0,
                 scale: 0.98,
-                transition: prefersReducedMotion
-                    ? { duration: 0.08 }
-                    : { duration: 0.08 },
+                transition: { duration: 0.12 },
             },
         }),
         [prefersReducedMotion]
@@ -140,8 +141,10 @@ export const Tooltip = ({
                         variants={variants}
                         {...getFloatingProps({
                             ref: refs.setFloating,
-                            className:
+                            className: classNames(
                                 'pointer-events-none px-3 rounded max-w-[300px] text-pzh-white font-normal leading-5 transform-gpu',
+                                className
+                            ),
                             style: {
                                 position: strategy,
                                 top: y ?? 0,

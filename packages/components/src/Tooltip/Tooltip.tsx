@@ -117,9 +117,7 @@ export const Tooltip = ({
             exit: {
                 opacity: 0,
                 scale: 0.98,
-                transition: prefersReducedMotion
-                    ? { duration: 0.12 }
-                    : { duration: 0.08 },
+                transition: { duration: 0.12 },
             },
         }),
         [prefersReducedMotion]

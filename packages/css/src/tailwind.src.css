@@ -383,12 +383,12 @@ ol li ol li ol li {
     @apply bg-pzh-white border-none;
 }
 
-.pzh-datepicker .react-datepicker__month {
-    @apply mx-0.5 mt-0;
+.pzh-datepicker .react-datepicker__month-container .react-datepicker__month {
+    @apply mx-0.5 mt-2;
 }
 
 .pzh-datepicker .react-datepicker__day-names {
-    @apply bg-pzh-blue-900/10;
+    @apply bg-pzh-blue-900/10 py-1;
 }
 
 .pzh-datepicker .react-datepicker__day-name {
@@ -447,5 +447,9 @@ ol li ol li ol li {
 .pzh-datepicker .react-datepicker__current-month,
 .pzh-datepicker .react-datepicker__day-name,
 .pzh-datepicker .react-datepicker__day--today {
-    @apply font-bold;
+    @apply my-0 font-bold;
+}
+
+.pzh-datepicker .react-datepicker__sr-only {
+    @apply sr-only;
 }

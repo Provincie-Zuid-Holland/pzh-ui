@@ -74,7 +74,7 @@
         "react-aria": "^3.41.1",
         "react-aria-components": "^1.10.1",
         "react-color": "^2.19.3",
-        "react-datepicker": "^8.3.0",
+        "react-datepicker": "^8.7.0",
         "react-dom": "^18.3.1",
         "react-dropzone-esm": "^15.0.1",
         "react-responsive-pagination": "^2.4.2",

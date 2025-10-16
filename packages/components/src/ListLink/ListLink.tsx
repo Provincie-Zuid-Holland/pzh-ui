@@ -19,14 +19,11 @@ export const ListLink = ({
     return (
         <Component
             className={cn(
-                'inline-flex items-center underline decoration-1 ',
-                {
-                    'text-pzh-blue-900 hover:text-pzh-green-500': !className,
-                },
+                'text-pzh-blue-500 hover:text-pzh-green-500 inline-flex items-center font-bold',
                 className
             )}
             {...rest}>
-            <AngleRight className="relative mr-2 min-w-[14px]" />
+            <AngleRight className="relative mr-1 min-w-[14px]" size={18} />
             <Slottable>{children}</Slottable>
         </Component>
     )

@@ -4,6 +4,7 @@ import {
     autoUpdate,
     flip,
     offset,
+    safePolygon,
     shift,
     useDismiss,
     useFloating,
@@ -54,7 +55,11 @@ export const Tooltip = ({
     })
 
     const { getReferenceProps, getFloatingProps } = useInteractions([
-        useHover(context, { delay: { open: 1000 }, restMs: 40 }),
+        useHover(context, {
+            delay: { open: 1000 },
+            restMs: 40,
+            handleClose: safePolygon(),
+        }),
         useFocus(context),
         useRole(context, { role: 'tooltip' }),
         useDismiss(context),
@@ -62,7 +67,6 @@ export const Tooltip = ({
 
     useEffect(() => {
         if (refs.reference.current && refs.floating.current && open) {
-            // Sync repositions to rAF for smoother animations
             return autoUpdate(
                 refs.reference.current,
                 refs.floating.current,
@@ -98,7 +102,6 @@ export const Tooltip = ({
         }
     }, [side])
 
-    // Motion variants: light spring for snappy but smooth feel
     const variants = useMemo(
         () => ({
             hidden: { opacity: 0, scale: 0.96 },
@@ -142,7 +145,7 @@ export const Tooltip = ({
                         {...getFloatingProps({
                             ref: refs.setFloating,
                             className: classNames(
-                                'pointer-events-none px-3 rounded max-w-[300px] text-pzh-white font-normal leading-5 transform-gpu',
+                                'px-3 rounded max-w-[300px] text-pzh-white font-normal leading-5 transform-gpu',
                                 className
                             ),
                             style: {

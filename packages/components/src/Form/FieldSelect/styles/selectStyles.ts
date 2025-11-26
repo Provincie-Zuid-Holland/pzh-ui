@@ -58,4 +58,7 @@ export const getSelectStyles = () =>
         multiValue: () => ({}),
         multiValueLabel: () => ({}),
         multiValueRemove: () => ({}),
+        placeholder: () => ({
+            gridArea: '1/1/2/3',
+        }),
     }) as StylesConfig<Option, boolean, GroupBase<Option>>

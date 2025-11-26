@@ -76,6 +76,10 @@ export const FieldInput = ({
                     className
                 )}
                 type={type}
+                {...(!!hasError &&
+                    !!name && {
+                        'aria-describedby': `error-${name}`,
+                    })}
                 {...props}
             />
             {inlineButton}

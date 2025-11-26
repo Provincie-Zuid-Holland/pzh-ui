@@ -85,16 +85,24 @@ export function FieldSelect({
                         state.isFocused,
                 }),
             singleValue: () => 'text-pzh-blue-900',
-            placeholder: () => 'text-pzh-gray-600 m-0 leading-none',
+            placeholder: () => 'text-pzh-gray-600 leading-none',
             valueContainer: () => 'gap-2 flex-wrap py-2',
             multiValue: () =>
-                'border-pzh-blue-500 text-pzh-blue-500 focus:ring-pzh-focus inline-flex gap-2 h-8 items-center rounded border px-2 ring-offset-2 focus:outline-none focus:ring-2 hover:bg-pzh-blue-500 transition duration-150 hover:text-pzh-white',
+                'border-pzh-blue-500 text-pzh-blue-500 focus:ring-pzh-focus inline-flex gap-2 h-8 items-center rounded border px-2 ring-offset-2 focus:ring-2 hover:bg-pzh-blue-500 transition duration-150 hover:text-pzh-white',
             multiValueLabel: () => '-mb-px',
             menu: () => 'border border-pzh-gray-600',
+            option: state =>
+                classNames({
+                    'inset-ring-pzh-focus inset-ring-2': state.isFocused,
+                }),
         },
         styles: { ...getSelectStyles(), ...styles } as Props['styles'],
         onChange: handleChange,
         'aria-invalid': hasError,
+        ...(!!hasError &&
+            !!name && {
+                'aria-describedby': `error-${name}`,
+            }),
         tabSelectsValue,
     }
 

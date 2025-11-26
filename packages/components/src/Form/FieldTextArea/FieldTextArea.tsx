@@ -67,6 +67,10 @@ export const FieldTextArea = ({
                 // @ts-ignore
                 fieldSizing: 'content',
             }}
+            {...(!!hasError &&
+                !!name && {
+                    'aria-describedby': `error-${name}`,
+                })}
             {...props}
         />
     </div>

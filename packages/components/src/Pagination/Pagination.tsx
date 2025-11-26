@@ -2,6 +2,7 @@ import { AngleLeft, AngleRight } from '@pzh-ui/icons'
 import { useMemo } from 'react'
 import ResponsivePagination, {
     ResponsivePaginationProps,
+    srOnlySpanLabel,
 } from 'react-responsive-pagination'
 
 import { cn } from '../utils'
@@ -22,9 +23,14 @@ export const Pagination = ({
     return (
         <ResponsivePagination
             data-testid="pagination"
+            labelBehaviour={srOnlySpanLabel({
+                a11yActiveLabel: '(huidige pagina)',
+            })}
             nextLabel={<AngleRight size={18} />}
+            ariaNextLabel="Volgende pagina"
             nextClassName="mr-0 min-w-10 min-h-10"
             previousLabel={<AngleLeft size={18} />}
+            ariaPreviousLabel="Vorige pagina"
             previousClassName="min-w-10 min-h-10 ml-0"
             className={cn(
                 'text-pzh-blue-500 flex items-center justify-center font-bold',

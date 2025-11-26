@@ -222,6 +222,10 @@ export const FieldFileUpload = ({
                             pointerEvents: 'none',
                         },
                         multiple: (props.maxFiles || 0) > 1,
+                        ...(!!hasError &&
+                            !!name && {
+                                'aria-describedby': `error-${name}`,
+                            }),
                     })}
                 />
 

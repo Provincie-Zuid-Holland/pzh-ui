@@ -105,6 +105,10 @@ export const FieldDate = ({
                     placeholderText={placeholder || placeholderText}
                     {...props}
                     onChange={(date: Date | null) => setDate(date)}
+                    {...(!!hasError &&
+                        !!name && {
+                            'aria-describedby': `error-${name}`,
+                        })}
                 />
             </div>
         </div>

@@ -178,6 +178,10 @@ export const FieldRte = ({
                         className
                     ),
                     'data-testid': testId,
+                    ...(!!hasError &&
+                        !!name && {
+                            'aria-describedby': `error-${name}`,
+                        }),
                 },
                 handleDOMEvents: {
                     mousedown: (_view, event) => {

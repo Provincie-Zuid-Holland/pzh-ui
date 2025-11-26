@@ -2999,7 +2999,7 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.23.3"
     "@floating-ui/react": "npm:^0.24.8"
     "@headlessui/react": "npm:^1.5.0"
-    "@pzh-ui/css": "npm:^0.0.115"
+    "@pzh-ui/css": "npm:^0.0.116"
     "@pzh-ui/icons": "npm:^0.0.92"
     "@radix-ui/react-accordion": "npm:^1.1.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
@@ -3067,7 +3067,7 @@ __metadata:
     react-datepicker: "npm:^8.7.0"
     react-dom: "npm:^18.3.1"
     react-dropzone-esm: "npm:^15.0.1"
-    react-responsive-pagination: "npm:^2.4.2"
+    react-responsive-pagination: "npm:^2.11.3"
     react-select: "npm:^5.8.0"
     react-stately: "npm:^3.30.1"
     react-toastify: "npm:^9.1.2"
@@ -3112,7 +3112,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/css@npm:^0.0.115, @pzh-ui/css@workspace:packages/css":
+"@pzh-ui/css@npm:^0.0.116, @pzh-ui/css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/css@workspace:packages/css"
   dependencies:
@@ -14739,15 +14739,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-responsive-pagination@npm:^2.4.2":
-  version: 2.10.5
-  resolution: "react-responsive-pagination@npm:2.10.5"
+"react-responsive-pagination@npm:^2.11.3":
+  version: 2.11.3
+  resolution: "react-responsive-pagination@npm:2.11.3"
   dependencies:
     prop-types: "npm:^15.8.1"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/ff339c7cb1f2edd7305f6c72e28c447ea5fce9d0dba331a10abda9e42185114acf81f1528c4c4ecae7ace4ac2512296ba9070021a1022dcf87b8adae431fb257
+  checksum: 10c0/1fc715bf0664880e1390ae91a7fbc366534b81359713f881e190b18f052f22b65c15185aa4123a381b75d6592bbc03d598ee6ae7892bbabff0393fd2cebf0e81
   languageName: node
   linkType: hard
 

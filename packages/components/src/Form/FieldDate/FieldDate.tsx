@@ -33,6 +33,7 @@ export interface FieldDateProps
     onChange: (date: Date | null) => void
     hasError?: boolean
     layout?: 'default' | 'grid'
+    variant?: 'default' | 'small'
     tooltip?: string | JSX.Element
 }
 
@@ -50,6 +51,7 @@ export const FieldDate = ({
     className,
     value,
     layout = 'default',
+    variant = 'default',
     tooltip,
     ...props
 }: FieldDateProps) => {
@@ -93,12 +95,13 @@ export const FieldDate = ({
                         'pzh-form-input',
                         {
                             'pzh-form-error': hasError,
+                            'pzh-form-input--small': variant === 'small',
                         },
                         className
                     )}
                     wrapperClassName="w-full"
                     popperClassName="pzh-datepicker"
-                    customInput={<DateInput name={name} />}
+                    customInput={<DateInput name={name} variant={variant} />}
                     dateFormat={dateFormat}
                     onCalendarClose={onClose}
                     selected={date}
@@ -120,13 +123,12 @@ const DateInput = forwardRef<HTMLInputElement, FieldInputProps>(
         <div className="relative flex">
             <input type="text" {...props} ref={ref} />
             <Calendar
-                size={20}
-                className={classNames(
-                    'pointer-events-none absolute top-[14px] right-[14px]',
-                    {
-                        'opacity-50': props.disabled,
-                    }
-                )}
+                size={props.variant === 'default' ? 20 : 16}
+                className={classNames('pointer-events-none absolute', {
+                    'opacity-50': props.disabled,
+                    'top-[14px] right-[14px]': props.variant === 'default',
+                    'top-3 right-3': props.variant === 'small',
+                })}
             />
         </div>
     )

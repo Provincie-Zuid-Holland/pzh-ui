@@ -15,6 +15,7 @@ export interface FieldInputProps extends InputHTMLAttributes<HTMLInputElement> {
     hasError?: boolean
     icon?: any
     layout?: 'default' | 'grid'
+    variant?: 'default' | 'small'
     tooltip?: string | JSX.Element
     inlineButton?: ReactNode
 }
@@ -30,6 +31,7 @@ export const FieldInput = ({
     hasError,
     icon: Icon,
     layout = 'default',
+    variant = 'default',
     tooltip,
     inlineButton,
     ...props
@@ -57,8 +59,14 @@ export const FieldInput = ({
             })}>
             {Icon && (
                 <Icon
-                    size={20}
-                    className="text-pzh-blue-500 absolute right-3 h-[48px]"
+                    size={variant === 'default' ? 20 : 16}
+                    className={classNames(
+                        'text-pzh-blue-500 absolute right-3',
+                        {
+                            'h-12': variant === 'default',
+                            'h-10': variant === 'small',
+                        }
+                    )}
                 />
             )}
             <input
@@ -71,6 +79,7 @@ export const FieldInput = ({
                     'pzh-form-input',
                     {
                         'pzh-form-error': hasError,
+                        'pzh-form-input--small': variant === 'small',
                         'pr-8': !!Icon,
                     },
                     className

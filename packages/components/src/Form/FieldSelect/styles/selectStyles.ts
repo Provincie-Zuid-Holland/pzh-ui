@@ -1,7 +1,7 @@
 import { GroupBase, StylesConfig } from 'react-select'
 import { Option } from '../FieldSelect'
 
-export const getSelectStyles = () =>
+export const getSelectStyles = (variant: 'default' | 'small') =>
     ({
         control: ({
             backgroundColor,
@@ -34,7 +34,7 @@ export const getSelectStyles = () =>
             ...css,
             paddingBlock: 8,
             paddingInline: 16,
-            minHeight: 48,
+            minHeight: variant === 'default' ? 48 : 40,
             whiteSpace: 'nowrap',
             overflowX: 'auto',
         }),

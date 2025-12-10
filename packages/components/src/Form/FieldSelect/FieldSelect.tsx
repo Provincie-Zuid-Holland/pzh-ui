@@ -30,6 +30,7 @@ export interface FieldSelectProps extends SelectProps {
     hasError?: boolean
     testId?: string
     layout?: 'default' | 'grid'
+    variant?: 'default' | 'small'
     tooltip?: string | JSX.Element
     isAsync?: boolean
     isCreatable?: boolean
@@ -45,6 +46,7 @@ export function FieldSelect({
     hasError,
     testId = name,
     layout = 'default',
+    variant = 'default',
     tooltip,
     isAsync,
     isCreatable,
@@ -83,10 +85,11 @@ export function FieldSelect({
                     'bg-pzh-gray-200': disabled,
                     'ring-pzh-focus border-pzh-blue-500 ring-2':
                         state.isFocused,
+                    'text-s': variant === 'small',
                 }),
             singleValue: () => 'text-pzh-blue-900',
             placeholder: () => 'text-pzh-gray-600 leading-none',
-            valueContainer: () => 'gap-2 flex-wrap py-2',
+            valueContainer: () => 'gap-2 flex-wrap',
             multiValue: () =>
                 'border-pzh-blue-500 text-pzh-blue-500 focus:ring-pzh-focus inline-flex gap-2 h-8 items-center rounded border px-2 ring-offset-2 focus:ring-2 hover:bg-pzh-blue-500 transition duration-150 hover:text-pzh-white',
             multiValueLabel: () => '-mb-px',
@@ -96,7 +99,7 @@ export function FieldSelect({
                     'inset-ring-pzh-focus inset-ring-2': state.isFocused,
                 }),
         },
-        styles: { ...getSelectStyles(), ...styles } as Props['styles'],
+        styles: { ...getSelectStyles(variant), ...styles } as Props['styles'],
         onChange: handleChange,
         'aria-invalid': hasError,
         ...(!!hasError &&

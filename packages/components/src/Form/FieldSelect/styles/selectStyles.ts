@@ -33,7 +33,7 @@ export const getSelectStyles = (variant: 'default' | 'small') =>
         valueContainer: css => ({
             ...css,
             paddingBlock: 8,
-            paddingInline: 16,
+            paddingInline: variant === 'default' ? 16 : 8,
             minHeight: variant === 'default' ? 48 : 40,
             whiteSpace: 'nowrap',
             overflowX: 'auto',

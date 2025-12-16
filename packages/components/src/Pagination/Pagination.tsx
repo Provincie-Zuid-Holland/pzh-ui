@@ -1,5 +1,5 @@
 import { AngleLeft, AngleRight } from '@pzh-ui/icons'
-import { useEffect, useMemo, useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import ResponsivePagination, {
     ResponsivePaginationProps,
     srOnlySpanLabel,
@@ -23,47 +23,6 @@ export const Pagination = ({
 
     const pageCount = useMemo(() => Math.ceil(total / limit), [limit, total])
 
-    useEffect(() => {
-        if (typeof window === 'undefined') return
-        const container = containerRef.current
-        if (!container) return
-
-        const updateAriaLabels = () => {
-            const root = containerRef.current
-            if (!root) return
-
-            const links = root.querySelectorAll<HTMLAnchorElement>('a')
-
-            links.forEach(link => {
-                if (link.hasAttribute('aria-label')) return
-
-                const text = link.textContent?.trim()
-                if (!text) return
-
-                const pageNumber = Number(text)
-                if (Number.isNaN(pageNumber)) return
-
-                link.setAttribute('aria-label', `Ga naar pagina ${pageNumber}`)
-            })
-        }
-
-        const runDeferred = () => {
-            window.requestAnimationFrame(updateAriaLabels)
-        }
-
-        runDeferred()
-
-        const handleResize = () => {
-            runDeferred()
-        }
-
-        window.addEventListener('resize', handleResize)
-
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [pageCount, current])
-
     return (
         <div ref={containerRef} data-testid="pagination">
             <ResponsivePagination
@@ -71,6 +30,7 @@ export const Pagination = ({
                 labelBehaviour={srOnlySpanLabel({
                     a11yActiveLabel: '(huidige pagina)',
                 })}
+                ariaPageLabel={page => `Ga naar pagina ${page}`}
                 nextLabel={<AngleRight size={18} />}
                 ariaNextLabel="Volgende pagina"
                 nextClassName="mr-0 min-w-10 min-h-10"

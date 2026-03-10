@@ -1,10 +1,12 @@
 import { ErrorMessage } from 'formik'
+import { ReactNode } from 'react'
 
 interface FormikErrorProps {
     name: string
+    renderAction?: (message: string) => ReactNode
 }
 
-export const FormikError = ({ name }: FormikErrorProps) => {
+export const FormikError = ({ name, renderAction }: FormikErrorProps) => {
     return (
         <ErrorMessage name={name}>
             {(message: string) => (
@@ -12,6 +14,7 @@ export const FormikError = ({ name }: FormikErrorProps) => {
                     className="text-pzh-red-500 text-s mt-1 block"
                     id={`error-${name}`}>
                     {message}
+                    {renderAction?.(message)}
                 </span>
             )}
         </ErrorMessage>

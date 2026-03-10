@@ -1,16 +1,19 @@
 import { FastField, Field, FieldProps } from 'formik'
+import { ReactNode } from 'react'
 
-import { FormikError } from './FormikError'
 import { FieldRte, FieldRteProps } from '../Form/FieldRte'
+import { FormikError } from './FormikError'
 
 type FormikRteProps = FieldRteProps & {
     name: string
     optimized?: boolean
+    renderErrorAction?: (message: string) => ReactNode
 }
 
 export const FormikRte = ({
     name,
     optimized = true,
+    renderErrorAction,
     ...props
 }: FormikRteProps) => {
     const Component = optimized ? FastField : Field
@@ -31,7 +34,7 @@ export const FormikRte = ({
                     />
                 )}
             </Component>
-            <FormikError name={name} />
+            <FormikError name={name} renderAction={renderErrorAction} />
         </>
     )
 }

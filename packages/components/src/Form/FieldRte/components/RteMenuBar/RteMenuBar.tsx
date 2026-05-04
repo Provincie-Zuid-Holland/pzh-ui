@@ -1,6 +1,5 @@
 import {
     Bold,
-    Heading,
     Images,
     Italic,
     Link,
@@ -225,21 +224,51 @@ const RteMenuBar = ({
                         )
                     case 'heading':
                         return (
-                            <MenuButton
+                            <select
                                 key={option}
-                                onClick={() =>
+                                aria-label="Kop"
+                                title="Kop"
+                                disabled={disabled}
+                                value={
+                                    editor.isActive('heading', { level: 3 })
+                                        ? '3'
+                                        : editor.isActive('heading', {
+                                                level: 4,
+                                            })
+                                          ? '4'
+                                          : editor.isActive('heading', {
+                                                  level: 5,
+                                              })
+                                            ? '5'
+                                            : ''
+                                }
+                                onChange={event => {
+                                    const level = Number(event.target.value) as
+                                        | 3
+                                        | 4
+                                        | 5
+
+                                    if (!level) {
+                                        editor
+                                            .chain()
+                                            .focus()
+                                            .setParagraph()
+                                            .run()
+                                        return
+                                    }
+
                                     editor
                                         .chain()
-                                        .toggleHeading({ level: 3 })
                                         .focus()
+                                        .toggleHeading({ level })
                                         .run()
-                                }
-                                disabled={disabled}
-                                isActive={editor.isActive('heading')}
-                                aria-label="Kop"
-                                title="Kop">
-                                <Heading />
-                            </MenuButton>
+                                }}
+                                className="text-s m-1 h-8">
+                                <option value="">Tekst</option>
+                                <option value="3">Kop 3</option>
+                                <option value="4">Kop 4</option>
+                                <option value="5">Kop 5</option>
+                            </select>
                         )
                     case 'subscript':
                         return (

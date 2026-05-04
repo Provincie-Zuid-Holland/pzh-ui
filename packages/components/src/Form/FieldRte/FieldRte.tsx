@@ -253,7 +253,7 @@ export const FieldRte = ({
         if (!!customMenuOptions?.find(el => el === 'heading'))
             extensions.push(
                 Heading.configure({
-                    levels: [3],
+                    levels: [3, 4, 5],
                 })
             )
 

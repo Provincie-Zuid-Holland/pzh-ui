@@ -30,7 +30,9 @@ export const FormikRte = ({
                             await form.setFieldValue(name, value)
                             form.setFieldTouched(name, true)
                         }}
-                        hasError={Boolean(meta.touched && meta.error)}
+                        hasError={Boolean(
+                            meta.error && (meta.touched || form.submitCount > 0)
+                        )}
                     />
                 )}
             </Component>

@@ -1,7 +1,7 @@
 import { FastField, Field, FieldProps } from 'formik'
 
-import { FormikError } from './FormikError'
 import { FieldTextArea, FieldTextAreaProps } from '../Form/FieldTextArea'
+import { FormikError } from './FormikError'
 
 type FormikTextAreaProps = FieldTextAreaProps & {
     name: string
@@ -18,12 +18,14 @@ export const FormikTextArea = ({
     return (
         <>
             <Component name={name}>
-                {({ field, meta }: FieldProps<any>) => (
+                {({ field, form, meta }: FieldProps<any>) => (
                     <FieldTextArea
                         {...props}
                         {...field}
                         value={field.value ?? ''}
-                        hasError={Boolean(meta.touched && meta.error)}
+                        hasError={Boolean(
+                            meta.error && (meta.touched || form.submitCount > 0)
+                        )}
                     />
                 )}
             </Component>

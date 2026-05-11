@@ -1,7 +1,7 @@
 import { FastField, Field, FieldProps } from 'formik'
 
-import { FormikError } from './FormikError'
 import { FieldRadioGroup, FieldRadioGroupProps } from '../Form/FieldRadioGroup'
+import { FormikError } from './FormikError'
 
 type FormikRadioGroupProps = Omit<
     FieldRadioGroupProps,
@@ -27,7 +27,9 @@ export const FormikRadioGroup = ({
                         onChange={(e: React.FormEvent<HTMLInputElement>) =>
                             form.setFieldValue(name, e.currentTarget.value)
                         }
-                        hasError={Boolean(meta.touched && meta.error)}
+                        hasError={Boolean(
+                            meta.error && (meta.touched || form.submitCount > 0)
+                        )}
                     />
                 )}
             </Component>

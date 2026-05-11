@@ -73,7 +73,9 @@ export function FormikSelect({
                                 option: undefined,
                             })
                         }}
-                        hasError={Boolean(meta.touched && meta.error)}
+                        hasError={Boolean(
+                            meta.error && (meta.touched || form.submitCount > 0)
+                        )}
                     />
                 )}
             </Component>

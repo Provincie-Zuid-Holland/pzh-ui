@@ -32,7 +32,9 @@ export const FormikDate = ({
                                     : null
                             )
                         }}
-                        hasError={Boolean(meta.touched && meta.error)}
+                        hasError={Boolean(
+                            meta.error && (meta.touched || form.submitCount > 0)
+                        )}
                     />
                 )}
             </Component>

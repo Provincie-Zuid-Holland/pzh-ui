@@ -34,7 +34,7 @@ export interface FieldDateProps
     hasError?: boolean
     layout?: 'default' | 'grid'
     variant?: 'default' | 'small'
-    tooltip?: string | JSX.Element
+    tooltip?: string | React.JSX.Element
 }
 
 export const FieldDate = ({

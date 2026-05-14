@@ -22,7 +22,7 @@ export interface FieldRadioGroupProps extends FieldRadioProps {
     hasError?: boolean
     layout?: 'default' | 'grid'
     optionLayout?: 'horizontal' | 'vertical'
-    tooltip?: string | JSX.Element
+    tooltip?: string | React.JSX.Element
 }
 
 export const FieldRadioGroup = ({

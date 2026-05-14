@@ -10,7 +10,7 @@ import { useCreatableHandlers } from './hooks/useCreatableHandlers'
 import { getSelectStyles } from './styles/selectStyles'
 
 export interface Option {
-    readonly label?: string | JSX.Element
+    readonly label?: string | React.JSX.Element
     readonly value?: unknown
     readonly isDisabled?: boolean
 }
@@ -31,7 +31,7 @@ export interface FieldSelectProps extends SelectProps {
     testId?: string
     layout?: 'default' | 'grid'
     variant?: 'default' | 'small'
-    tooltip?: string | JSX.Element
+    tooltip?: string | React.JSX.Element
     isAsync?: boolean
     isCreatable?: boolean
 }

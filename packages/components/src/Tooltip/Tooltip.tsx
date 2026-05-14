@@ -18,9 +18,9 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { cloneElement, useEffect, useMemo, useRef, useState } from 'react'
 
 export interface TooltipProps {
-    label: string | JSX.Element
+    label: string | React.JSX.Element
     placement?: Placement
-    children: JSX.Element
+    children: React.JSX.Element
     className?: string
 }
 

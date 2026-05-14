@@ -29,7 +29,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     required?: boolean
     className?: string
     layout?: 'default' | 'grid'
-    tooltip?: string | JSX.Element
+    tooltip?: string | React.JSX.Element
     preview?: boolean
     defaultValue?: string[]
     maxWidth?: number

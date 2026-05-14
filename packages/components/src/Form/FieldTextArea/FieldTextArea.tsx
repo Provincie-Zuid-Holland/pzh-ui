@@ -15,7 +15,7 @@ export interface FieldTextAreaProps
     description?: string | ReactNode
     hasError?: boolean
     layout?: 'default' | 'grid'
-    tooltip?: string | JSX.Element
+    tooltip?: string | React.JSX.Element
 }
 
 export const FieldTextArea = ({

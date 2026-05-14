@@ -13,8 +13,8 @@ import { cn } from '../utils'
 export interface NotificationProps {
     variant?: 'info' | 'warning' | 'positive' | 'negative'
     className?: string
-    children?: JSX.Element | string
-    title?: JSX.Element | string
+    children?: React.JSX.Element | string
+    title?: React.JSX.Element | string
     icon?: any
 }
 

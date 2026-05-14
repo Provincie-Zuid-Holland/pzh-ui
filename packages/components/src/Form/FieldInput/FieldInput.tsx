@@ -16,7 +16,7 @@ export interface FieldInputProps extends InputHTMLAttributes<HTMLInputElement> {
     icon?: any
     layout?: 'default' | 'grid'
     variant?: 'default' | 'small'
-    tooltip?: string | JSX.Element
+    tooltip?: string | React.JSX.Element
     inlineButton?: ReactNode
 }
 

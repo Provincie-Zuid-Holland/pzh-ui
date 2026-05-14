@@ -64,7 +64,7 @@ export interface FieldRteProps {
     /** List of menu options that should be enabled */
     layout?: 'default' | 'grid'
     /** Add tooltip element */
-    tooltip?: string | JSX.Element
+    tooltip?: string | React.JSX.Element
     /** List of menu options that should be enabled */
     menuOptions?: TextEditorMenuOptions[]
     /** List of custom menu options that should be enabled */

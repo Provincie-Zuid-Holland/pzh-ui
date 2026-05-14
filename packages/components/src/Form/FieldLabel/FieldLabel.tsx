@@ -13,7 +13,7 @@ export interface FieldLabelProps {
     label: string
     required?: boolean
     description?: string | ReactNode
-    tooltip?: string | JSX.Element
+    tooltip?: string | React.JSX.Element
     className?: string
     hasError?: boolean
 }

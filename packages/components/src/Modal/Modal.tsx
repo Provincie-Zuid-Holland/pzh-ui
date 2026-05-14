@@ -32,14 +32,14 @@ export const Modal = ({
 }: ModalProps) => {
     const state = useOverlayTriggerState(props)
 
-    const ref = useRef(null)
+    const ref = useRef<HTMLDivElement>(null)
     const { modalProps, underlayProps } = useModalOverlay(
         { ...props, isDismissable },
         state,
         ref
     )
 
-    let objectRef = useObjectRef(ref)
+    let objectRef = useObjectRef(ref) as React.RefObject<HTMLDivElement>
     let isExiting = useExitAnimation(objectRef, state.isOpen)
 
     if (!state.isOpen && !isExiting) return null
@@ -47,7 +47,7 @@ export const Modal = ({
     return (
         <Overlay isExiting={isExiting}>
             <div
-                className="fixed bottom-0 left-0 right-0 top-0 z-[100] flex items-center justify-center bg-pzh-black/30 duration-300 ease-in-out"
+                className="bg-pzh-black/30 fixed top-0 right-0 bottom-0 left-0 z-[100] flex items-center justify-center duration-300 ease-in-out"
                 {...underlayProps}>
                 <ModalInner
                     {...modalProps}
@@ -74,7 +74,7 @@ const ModalInner = forwardRef<HTMLDivElement, ModalInnerProps>(
         { isDismissable, isExiting, onClose, size, onKeyDown, title, ...rest },
         objectRef
     ) => {
-        let ref = useObjectRef(objectRef)
+        let ref = useObjectRef(objectRef) as React.RefObject<HTMLDivElement>
         let entering = useEnterAnimation(ref)
 
         let renderProps = useRenderProps({
@@ -100,12 +100,12 @@ const ModalInner = forwardRef<HTMLDivElement, ModalInnerProps>(
                 onKeyDown={onKeyDown}>
                 <Dialog
                     aria-label={title}
-                    className="bg-pzh-white relative h-full max-h-[85vh] w-full overflow-auto rounded shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] outline-none duration-300 ease-in-out">
+                    className="bg-pzh-white relative h-full max-h-[85vh] w-full overflow-auto rounded shadow-[0_1.1970183849334717px_3.9900612831115723px_0_rgba(0,0,0,0.0283),0_4.020535469055176px_13.401785850524902px_0_rgba(0,0,0,0.0417),0_18px_60px_0_rgba(0,0,0,0.07)] duration-300 ease-in-out outline-none">
                     {isDismissable && onClose && (
                         <Button
                             variant="default"
                             onPress={onClose}
-                            className="absolute right-8 top-6">
+                            className="absolute top-6 right-8">
                             <span className="sr-only">Sluiten</span>
                             <Xmark size={20} className="text-pzh-blue-900" />
                         </Button>

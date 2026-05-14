@@ -4,7 +4,6 @@ import {
     ToastContainerProps as ContainerProps,
     toast,
 } from 'react-toastify'
-import './style.css'
 
 import {
     CircleCheck,
@@ -35,12 +34,12 @@ export type ToastContainerProps = ContainerProps
 
 export const ToastContainer = ({ ...props }: ToastContainerProps) => (
     <Container
-        className="!w-max min-w-[320px] max-w-[400px]"
         toastClassName={() =>
-            'relative mt-3 p-3 flex items-center rounded shadow-card justify-between overflow-hidden cursor-pointer bg-pzh-white text-pzh-blue-900'
+            'relative w-full min-w-[320px] max-w-[400px] text-left mt-3 p-3 flex items-center rounded shadow-card overflow-hidden cursor-pointer bg-pzh-white text-pzh-blue-900'
         }
-        bodyClassName={() => 'pr-2 flex items-center leading-none'}
-        closeButton={() => <Xmark size={18} />}
+        closeButton={({ closeToast }) => (
+            <Xmark size={18} className="ml-auto" onClick={closeToast} />
+        )}
         progressClassName={context =>
             classNames(
                 contextClass[context?.type || 'default'],

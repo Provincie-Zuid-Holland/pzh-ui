@@ -31,7 +31,7 @@
         "chromatic": "npx chromatic --project-token=chpt_086ce80c51e31f9 --auto-accept-changes --build-script-name=build-storybook",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
-        "build": "tsc -p tsconfig.build.json && vite build"
+        "build": "vite build && tsc -p tsconfig.build.json"
     },
     "bugs": {
         "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"

@@ -1,0 +1,50 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks'
+import * as NotificationStories from './Notification.stories'
+
+<Meta of={NotificationStories} />
+
+# Notification
+
+Een component voor het tonen van contextuele meldingen, zoals informatie, waarschuwingen, bevestigingen en foutmeldingen.
+
+## Gebruik
+
+```tsx
+import { Notification } from '@pzh-ui/react'
+
+export const Example = () => (
+    <Notification variant="info" title="Titel van melding">
+        Dit is een toelichting.
+    </Notification>
+)
+```
+
+## Interactief voorbeeld
+
+<Canvas of={NotificationStories.Info} />
+
+<Controls of={NotificationStories.Info} />
+
+## Varianten
+
+### Info
+
+<Canvas of={NotificationStories.Info} />
+
+### Warning
+
+<Canvas of={NotificationStories.Warning} />
+
+### Positive
+
+<Canvas of={NotificationStories.Positive} />
+
+### Negative
+
+<Canvas of={NotificationStories.Negative} />
+
+## Accessibility
+
+- De melding gebruikt tekstuele content voor duidelijke communicatie.
+- Kleur wordt gecombineerd met een icoon, zodat betekenis niet alleen afhankelijk is van kleur.
+- Gebruik bij dynamische meldingen eventueel aanvullende ARIA-patterns, zoals `role="status"` of `role="alert"`, afhankelijk van de context.

@@ -10,8 +10,11 @@
     --screen-2xl: 1440px;
 
     /* Font sizes */
+    --text-xs: 0.875rem;
+    --text-xs--line-height: 150%;
+
     --text-s: 1rem;
-    --text-s--line-height: 1.5rem;
+    --text-s--line-height: 150%;
 
     --text-m: 1.25rem;
     --text-m--line-height: 1.875rem;

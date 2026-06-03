@@ -1,0 +1,151 @@
+import { ColorPalette, ColorItem, Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Bouwstenen/Kleuren" />
+
+# Kleuren
+
+De huisstijl kent een contrastrijk kleurenpalet, dat bestaat uit:
+
+- De 3 logokleuren;
+- Een aanvullend palet van 7 kleuren plus wit; de secundaire kleuren;
+- De lichte en een donkere tinten van deze 10 kleuren.
+
+Hiermee komt het totale kleurenpalet op 30 kleuren plus wit. Wit is aan het palet toegevoegd omdat de provincie zich met een heldere, niet te zware stijl wil profileren als open en toegankelijke organisatie. Dit brede kleurenpalet kenmerkt de veelzijdigheid van de provincie. Het biedt voldoende variatie en ruimte om te communiceren in lijn met de toegankelijkheidseisen.
+
+Het gebruik van kleuren is afhankelijk van het stijlvak waarin het middel wordt ontwikkeld. Bekijk de toepassing van kleur op richtlijnen per stijlvak.
+
+_Let op! Er mogen geen andere kleurtinten gebruikt worden dan de vastgestelde lichte en donkere tinten uit het palet. Toepassing van kleur in datavisualisatie vormt hierop een uitzondering._
+
+<br />
+
+<ColorPalette>
+    <ColorItem
+        title="Rood"
+        colors={{
+            'pzh-red-10': '#FFEDF0',
+            'pzh-red-100': '#EB7085',
+            'pzh-red-500': '#D11F3D',
+            'pzh-red-900': '#97162C',
+        }}
+    />
+    <ColorItem
+        title="Geel"
+        colors={{
+            'pzh-yellow-10': '#FFF9E3',
+            'pzh-yellow-100': '#F1DB7E',
+            'pzh-yellow-500': '#EFCC36',
+            'pzh-yellow-900': '#C6A410',
+        }}
+    />
+    <ColorItem
+        title="Blauw"
+        colors={{
+            'pzh-blue-10': '#F2F7FC',
+            'pzh-blue-100': '#7BADDE',
+            'pzh-blue-500': '#281F6B',
+            'pzh-blue-900': '#16113B',
+        }}
+    />
+    <ColorItem
+        title="Groen"
+        colors={{
+            'pzh-green-10': '#EDFAF0',
+            'pzh-green-100': '#61B375',
+            'pzh-green-500': '#00804D',
+            'pzh-green-900': '#004D2E',
+        }}
+    />
+    <ColorItem
+        title="Roze"
+        colors={{
+            'pzh-pink-100': '#D76AAC',
+            'pzh-pink-500': '#AA0067',
+            'pzh-pink-900': '#750047',
+        }}
+    />
+    <ColorItem
+        title="Oranje"
+        colors={{
+            'pzh-orange-100': '#FBA66A',
+            'pzh-orange-500': '#FF6B02',
+            'pzh-orange-900': '#B24A00',
+        }}
+    />
+    <ColorItem
+        title="Appelgroen"
+        colors={{
+            'pzh-apple-green-100': '#ADD57D',
+            'pzh-apple-green-500': '#76BC21',
+            'pzh-apple-green-900': '#629623',
+        }}
+    />
+    <ColorItem
+        title="Paars"
+        colors={{
+            'pzh-purple-100': '#9B99CC',
+            'pzh-purple-500': '#503D90',
+            'pzh-purple-900': '#32265A',
+        }}
+    />
+    <ColorItem
+        title="Grijs"
+        colors={{
+            'pzh-gray-100': '#F8F8F8',
+            'pzh-gray-200': '#E6E6E6',
+            'pzh-gray-300': '#D5D5D5',
+            'pzh-gray-400': '#BFBFBF',
+        }}
+    />
+    <ColorItem
+        colors={{
+            'pzh-gray-500': '#838383',
+            'pzh-gray-600': '#5C5C5C',
+            'pzh-gray-700': '#464646',
+            'pzh-gray-800': '#222222',
+        }}
+    />
+    <ColorItem
+        title="Warm grijs"
+        colors={{
+            'pzh-warm-gray-100': '#BEB1A7',
+            'pzh-warm-gray-500': '#847062',
+            'pzh-warm-gray-900': '#584B41',
+        }}
+    />
+    <ColorItem
+        title="Default"
+        colors={{
+            'pzh-white': '#FFFFFF',
+            'pzh-black': '#000000',
+        }}
+    />
+    <ColorItem
+        title="States"
+        colors={{
+            'pzh-positive': '#00804D',
+            'pzh-neutral': '#7BADDE',
+            'pzh-negative': '#D11F3D',
+            'pzh-visited-link': '#5F29A2',
+            'pzh-focus': '#2360C5',
+        }}
+    />
+    <ColorItem
+        title="Anders"
+        colors={{
+            'pzh-backdrop': 'rgba(92,92,92,.5)',
+        }}
+    />
+</ColorPalette>
+
+## Usage
+
+The colors defined in this document are configured within the Tailwind configuration.
+You can use them like any other Tailwind utility:
+
+<strong>Example</strong>
+
+```jsx
+<span className="text-pzh-red-500">This text is red.</span>
+```
+
+<span className="text-pzh-red-500">This text is red.</span>

@@ -27,3 +27,4 @@ tailwind.css
 !.yarn/sdks
 !.yarn/versions
 packages/*/.yarn
+*storybook.log

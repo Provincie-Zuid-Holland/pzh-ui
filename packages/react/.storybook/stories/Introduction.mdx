@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Introductie" />
+
+# Design System Provincie Zuid-Holland
+
+Dit Design System is ontwikkeld om digitale producten voor de Provincie Zuid-Holland op een consistente, toegankelijke en efficiënte manier te bouwen.
+
+De broncode is beschikbaar in onze [**GitHub-repository**](https://github.com/Provincie-Zuid-Holland/pzh-ui).
+
+<br />
+
+## Componenten
+
+[![npm version](https://img.shields.io/npm/v/@pzh-ui/react.svg?label=@pzh-ui%2Freact)](https://npmjs.com/package/@pzh-ui/react)
+
+Installeer het pakket met je favoriete package manager:
+
+```bash
+yarn add @pzh-ui/react
+```
+
+Na installatie kunnen componenten als volgt worden gebruikt:
+
+```tsx
+import { Button } from '@pzh-ui/react'
+
+export const Page = () => {
+    return <Button>Klik hier</Button>
+}
+```
+
+## Styling
+
+[![npm version](https://img.shields.io/npm/v/@pzh-ui/css.svg?label=@pzh-ui%2Fcss)](https://npmjs.com/package/@pzh-ui/css)
+
+De componenten maken gebruik van [**Tailwind framework**](https://tailwindcss.com/). Om ervoor te zorgen dat alle componenten correct worden weergegeven, moet Tailwind in je project zijn geconfigureerd.
+
+Voeg de componentbibliotheek toe via een CSS import zodat alle gebruikte classes worden meegenomen tijdens het buildproces.
+
+```css
+@import '@pzh-ui/css/src/tailwind.src.css';
+```
+
+## Ontwikkeling
+
+### Storybook starten
+
+```bash
+yarn storybook
+```
+
+### Tests uitvoeren
+
+```bash
+yarn test
+```
+
+### Bibliotheek bouwen
+
+```bash
+yarn build
+```
+
+## Richtlijnen
+
+Bij het ontwikkelen van nieuwe componenten streven we naar:
+
+- Toegankelijkheid volgens WCAG-richtlijnen
+- Consistent gebruik van design tokens
+- Herbruikbare en onderhoudbare componenten
+- TypeScript-first ontwikkeling
+- Volledige documentatie in Storybook
+- Testdekking voor componentgedrag
+
+## Meer informatie
+
+Voor documentatie, voorbeelden en componenteigenschappen kun je navigeren via het menu in Storybook.

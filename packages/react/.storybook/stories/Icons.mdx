@@ -1,0 +1,46 @@
+import {
+    IconGallery,
+    IconItem,
+    Meta,
+    Title,
+} from '@storybook/addon-docs/blocks'
+
+import * as Icons from '../../../icons/src'
+
+<Meta title="Bouwstenen/Iconen" />
+
+# Iconen
+
+Dit zijn alle iconen die gebruikt kunnen worden binnen de projecten van Provincie Zuid-Holland.
+
+<br />
+
+<IconGallery
+    style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3,minmax(0,1fr))',
+    }}>
+    {Object.values(Icons).map((IconComponent, index) => {
+        return (
+            <IconItem key={index} name={IconComponent.displayName}>
+                <IconComponent />
+            </IconItem>
+        )
+    })}
+</IconGallery>
+
+<br />
+
+## Usage
+
+[![npm version](https://img.shields.io/npm/v/@pzh-ui/icons.svg?label=@pzh-ui%2Ficons)](https://npmjs.com/package/@pzh-ui/icons)
+
+`yarn add @pzh-ui/icons`
+
+```jsx
+import { Check } from '@pzh-ui/icons'
+
+function Page() {
+    return <Check size={20} />
+}
+```

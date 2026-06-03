@@ -3,7 +3,6 @@
     "packages": ["packages/*"],
     "command": {
         "publish": {
-            "npmClient": "npm",
             "allowBranch": ["master", "canary"],
             "registry": "https://registry.npmjs.org/"
         }

@@ -1,6 +1,7 @@
 import classNames from 'clsx'
 import React, { ReactNode } from 'react'
 
+import { NotificationProps } from '@pzh-ui/react'
 import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
 
@@ -13,6 +14,7 @@ export interface FieldTextAreaProps
     name: string
     label?: string
     description?: string | ReactNode
+    notification?: NotificationProps
     hasError?: boolean
     layout?: 'default' | 'grid'
     tooltip?: string | React.JSX.Element
@@ -24,6 +26,7 @@ export const FieldTextArea = ({
     required,
     label,
     description,
+    notification,
     rows = 4,
     className,
     hasError,
@@ -40,6 +43,7 @@ export const FieldTextArea = ({
                 name={name}
                 label={label}
                 description={description}
+                notification={notification}
                 required={required}
                 tooltip={tooltip}
                 className={classNames({

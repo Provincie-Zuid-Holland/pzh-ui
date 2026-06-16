@@ -8,6 +8,7 @@ import ReactDatePicker, { type DatePickerProps } from 'react-datepicker'
 import { FieldInputProps } from '../FieldInput'
 import { FieldLabel } from '../FieldLabel'
 
+import { NotificationProps } from '@pzh-ui/react'
 import './style.css'
 
 // @ts-ignore
@@ -28,6 +29,7 @@ export interface FieldDateProps
     label?: string
     required?: boolean
     description?: string | ReactNode
+    notification?: NotificationProps
     placeholder?: string
     onClose?: () => void
     onChange: (date: Date | null) => void
@@ -42,6 +44,7 @@ export const FieldDate = ({
     label,
     required,
     description,
+    notification,
     dateFormat = 'dd-MM-yyyy',
     placeholder,
     placeholderText,
@@ -74,6 +77,7 @@ export const FieldDate = ({
                     name={name}
                     label={label}
                     description={description}
+                    notification={notification}
                     required={required}
                     tooltip={tooltip}
                     className={classNames({

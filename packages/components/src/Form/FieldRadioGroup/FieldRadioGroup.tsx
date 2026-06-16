@@ -1,6 +1,7 @@
 import classNames from 'clsx'
 import { ReactNode } from 'react'
 
+import { NotificationProps } from '@pzh-ui/react'
 import { FieldLabel } from '..'
 import { FieldRadio, FieldRadioProps } from '../FieldRadio'
 
@@ -18,6 +19,7 @@ export interface FieldRadioGroupProps extends FieldRadioProps {
     name: string
     label?: string
     description?: string | ReactNode
+    notification?: NotificationProps
     value?: string
     hasError?: boolean
     layout?: 'default' | 'grid'
@@ -31,6 +33,7 @@ export const FieldRadioGroup = ({
     name,
     label,
     description,
+    notification,
     layout,
     optionLayout = 'vertical',
     tooltip,
@@ -47,6 +50,7 @@ export const FieldRadioGroup = ({
                 name={name}
                 label={label}
                 description={description}
+                notification={notification}
                 required={required}
                 tooltip={tooltip}
                 className={classNames({

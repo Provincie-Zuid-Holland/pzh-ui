@@ -9,6 +9,7 @@ import {
     useDropzone,
 } from 'react-dropzone-esm'
 
+import { NotificationProps } from '@pzh-ui/react'
 import { Text } from '../../Text'
 import { cn } from '../../utils'
 import { base64ToFile } from '../../utils/file'
@@ -26,6 +27,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     onChange: (files: FileWithPath[]) => void
     label?: string
     description?: string | ReactNode
+    notification?: NotificationProps
     required?: boolean
     className?: string
     layout?: 'default' | 'grid'
@@ -46,6 +48,7 @@ export const FieldFileUpload = ({
     required,
     label,
     description,
+    notification,
     className,
     accept = {
         'image/*': ['.png', '.jpeg', '.webp'],
@@ -197,6 +200,7 @@ export const FieldFileUpload = ({
                     name={name}
                     label={label}
                     description={description}
+                    notification={notification}
                     required={required}
                     tooltip={tooltip}
                     className={classNames({

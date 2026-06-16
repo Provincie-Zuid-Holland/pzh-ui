@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { ReactNode } from 'react'
 
+import { NotificationProps } from '@pzh-ui/react'
 import { FieldCheckbox, FieldCheckboxProps } from '../FieldCheckbox'
 import { FieldLabel } from '../FieldLabel'
 
@@ -18,6 +19,7 @@ export interface FieldCheckboxGroupProps extends FieldCheckboxProps {
     name: string
     label?: string
     description?: string | ReactNode
+    notification?: NotificationProps
     value: string[]
     hasError?: boolean
     layout?: 'default' | 'grid'
@@ -29,6 +31,7 @@ export const FieldCheckboxGroup = ({
     name,
     label,
     description,
+    notification,
     required,
     options,
     value,
@@ -49,6 +52,7 @@ export const FieldCheckboxGroup = ({
                 name={name}
                 label={label}
                 description={description}
+                notification={notification}
                 required={required}
                 tooltip={tooltip}
                 className={clsx({

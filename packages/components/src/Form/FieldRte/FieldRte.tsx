@@ -31,6 +31,7 @@ import {
 import classNames from 'clsx'
 import { ReactNode, useEffect, useState } from 'react'
 
+import { NotificationProps } from '@pzh-ui/react'
 import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
 import RteMenuBar from './components/RteMenuBar'
@@ -47,6 +48,8 @@ export interface FieldRteProps {
     label?: string
     /** Description underneath the label */
     description?: string | ReactNode
+    /** Notification underneath the label/description */
+    notification?: NotificationProps
     /** Placeholder text */
     placeholder?: string
     /** Is field required */
@@ -121,6 +124,7 @@ export const FieldRte = ({
     name,
     label,
     description,
+    notification,
     placeholder,
     required,
     testId = name,
@@ -356,6 +360,7 @@ export const FieldRte = ({
                     name={name}
                     label={label}
                     description={description}
+                    notification={notification}
                     required={required}
                     tooltip={tooltip}
                     className={classNames({

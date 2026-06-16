@@ -1,11 +1,12 @@
 /**
  * Form label element
  */
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 
-import { CircleInfo } from '@pzh-ui/icons'
+import { CircleInfo, CircleInfoSolid } from '@pzh-ui/icons'
 
-import { NotificationProps } from '@pzh-ui/react'
+import { Notification, NotificationProps } from '@pzh-ui/react'
+import { Button } from '../../Button'
 import { Tooltip } from '../../Tooltip'
 import { cn } from '../../utils'
 
@@ -29,32 +30,49 @@ export const FieldLabel = ({
     tooltip,
     className,
     hasError,
-}: FieldLabelProps) => (
-    <div className={cn('mb-2', className)}>
-        <div className="flex items-center">
-            <label htmlFor={name} className="text-pzh-blue-500 font-bold">
-                {label}
-                {required && (
-                    <span
-                        className={cn('ml-1', {
-                            'text-pzh-red-500': hasError,
-                        })}>
-                        *
-                    </span>
+}: FieldLabelProps) => {
+    const [openNotification, setOpenNotification] = useState(false)
+
+    const NotificationIcon = openNotification ? CircleInfoSolid : CircleInfo
+
+    return (
+        <div className={cn('mb-2', className)}>
+            <div className="flex items-center">
+                <label htmlFor={name} className="text-pzh-blue-500 font-bold">
+                    {label}
+                    {required && (
+                        <span
+                            className={cn('ml-1', {
+                                'text-pzh-red-500': hasError,
+                            })}>
+                            *
+                        </span>
+                    )}
+                </label>
+                {notification && (
+                    <Button
+                        variant="default"
+                        onPress={() => setOpenNotification(!openNotification)}>
+                        <NotificationIcon
+                            size={18}
+                            className="text-pzh-blue-500 -mt-0.5 ml-1 cursor-pointer"
+                        />
+                    </Button>
                 )}
-            </label>
-            {notification && (
-                <CircleInfo
-                    size={18}
-                    className="text-pzh-blue-500 -mt-1 ml-1 cursor-pointer"
+                {tooltip && (
+                    <Tooltip label={tooltip}>
+                        <CircleInfo className="text-pzh-blue-500 -mt-1 ml-1 cursor-pointer" />
+                    </Tooltip>
+                )}
+            </div>
+            {description && <p className="text-s leading-5">{description}</p>}
+            {notification && openNotification && (
+                <Notification
+                    className="mt-2"
+                    onClose={() => setOpenNotification(false)}
+                    {...notification}
                 />
             )}
-            {tooltip && (
-                <Tooltip label={tooltip}>
-                    <CircleInfo className="text-pzh-blue-500 -mt-1 ml-1 cursor-pointer" />
-                </Tooltip>
-            )}
         </div>
-        {description && <p className="text-s leading-5">{description}</p>}
-    </div>
-)
+    )
+}

@@ -87,7 +87,7 @@ export const Notification = ({
     return (
         <div
             className={cn(
-                'inline-block rounded border',
+                'prose prose-neutral text-pzh-blue-900 marker:text-pzh-blue-900 prose-li:my-0 prose-ul:my-0 prose-p:my-0 prose-ul:pl-5 inline-block w-full max-w-full rounded border whitespace-pre-line marker:text-xs',
                 container,
                 padding,
                 className
@@ -110,11 +110,17 @@ export const Notification = ({
                             {title}
                         </Text>
 
-                        {children && (
-                            <Text size={bodySize} className={body}>
-                                {children}
-                            </Text>
-                        )}
+                        {children &&
+                            (typeof children === 'string' ? (
+                                <Text size={bodySize} className={body}>
+                                    {children}
+                                </Text>
+                            ) : (
+                                <div
+                                    className={cn('flex flex-col gap-4', body)}>
+                                    {children}
+                                </div>
+                            ))}
                     </div>
                 </div>
 

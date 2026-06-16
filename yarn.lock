@@ -5245,11 +5245,12 @@ __metadata:
     "@floating-ui/react": "npm:^0.24.8"
     "@headlessui/react": "npm:^1.5.0"
     "@pzh-ui/css": "npm:^0.0.119"
-    "@pzh-ui/icons": "npm:^0.0.95"
+    "@pzh-ui/icons": "workspace:^"
+    "@pzh-ui/react": "workspace:^"
     "@radix-ui/react-accordion": "npm:^1.1.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@react-aria/utils": "npm:^3.29.1"
-    "@react-hookz/web": "npm:^24.0.4"
+    "@react-hookz/web": "npm:^25.2.0"
     "@react-types/shared": "npm:^3.19.0"
     "@rollup/plugin-babel": "npm:^5.3.1"
     "@rollup/plugin-typescript": "npm:^11.1.5"
@@ -5369,7 +5370,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/icons@npm:^0.0.95, @pzh-ui/icons@workspace:^, @pzh-ui/icons@workspace:packages/icons":
+"@pzh-ui/icons@workspace:^, @pzh-ui/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/icons@workspace:packages/icons"
   dependencies:
@@ -5390,7 +5391,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/react@workspace:packages/react":
+"@pzh-ui/react@workspace:^, @pzh-ui/react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/react@workspace:packages/react"
   dependencies:
@@ -6526,26 +6527,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-hookz/deep-equal@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@react-hookz/deep-equal@npm:1.0.4"
-  checksum: 10c0/f48774ccc63506e8de29eb6f3beff1204a5f51e481329f6b38b578bb43b35391eeacd9908f35a7fcca008e4c7e5144be7092103236042a8bcbbe4e7594ed4eb9
-  languageName: node
-  linkType: hard
-
-"@react-hookz/web@npm:^24.0.4":
-  version: 24.0.4
-  resolution: "@react-hookz/web@npm:24.0.4"
+"@react-hookz/web@npm:^25.2.0":
+  version: 25.2.0
+  resolution: "@react-hookz/web@npm:25.2.0"
   dependencies:
-    "@react-hookz/deep-equal": "npm:^1.0.4"
+    "@ver0/deep-equal": "npm:^1.0.0"
   peerDependencies:
     js-cookie: ^3.0.5
-    react: ^16.8 || ^17 || ^18
-    react-dom: ^16.8 || ^17 || ^18
+    react: ^16.8 || ^17 || ^18 || ^19
+    react-dom: ^16.8 || ^17 || ^18 || ^19
   peerDependenciesMeta:
     js-cookie:
       optional: true
-  checksum: 10c0/894419b88601938b6b2027c8bc77a7e470de4cf196a2d461d53842b037cae57a2abe8e7279edd01ab56d7c671dd155de7795f6e717331c7fdb89734eafac8769
+  checksum: 10c0/8e42ae38a3f8662ca07c5ee10b2f4489969ff716159191726d0e43ff702d0a487f007e3e61856584ccb929e13508c9a62b88d09d1f9c84d06abab914555deec1
   languageName: node
   linkType: hard
 
@@ -10039,6 +10033,13 @@ __metadata:
   version: 1.11.1
   resolution: "@unrs/resolver-binding-win32-x64-msvc@npm:1.11.1"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@ver0/deep-equal@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "@ver0/deep-equal@npm:1.0.1"
+  checksum: 10c0/6f3691108aabfd0b2051fa6e27612dd5515ecba5a0e853a99d3482cb2c74bef463b94d26f7a0199eae9a9a71750b7e0007770ed280c52bcda724d856e36e3df7
   languageName: node
   linkType: hard
 

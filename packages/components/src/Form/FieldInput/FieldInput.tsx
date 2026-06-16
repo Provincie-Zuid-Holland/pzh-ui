@@ -1,6 +1,7 @@
 import classNames from 'clsx'
 import { InputHTMLAttributes, ReactNode } from 'react'
 
+import { NotificationProps } from '@pzh-ui/react'
 import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
 
@@ -12,6 +13,7 @@ export interface FieldInputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string
     label?: string
     description?: string | ReactNode
+    notification?: NotificationProps
     hasError?: boolean
     icon?: any
     layout?: 'default' | 'grid'
@@ -27,6 +29,7 @@ export const FieldInput = ({
     type = 'text',
     label,
     description,
+    notification,
     className,
     hasError,
     icon: Icon,
@@ -45,6 +48,7 @@ export const FieldInput = ({
                 name={name}
                 label={label}
                 description={description}
+                notification={notification}
                 required={required}
                 tooltip={tooltip}
                 className={classNames({

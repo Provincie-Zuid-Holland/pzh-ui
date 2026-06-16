@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 
 import { CircleInfo } from '@pzh-ui/icons'
 
+import { NotificationProps } from '@pzh-ui/react'
 import { Tooltip } from '../../Tooltip'
 import { cn } from '../../utils'
 
@@ -13,6 +14,7 @@ export interface FieldLabelProps {
     label: string
     required?: boolean
     description?: string | ReactNode
+    notification?: NotificationProps
     tooltip?: string | React.JSX.Element
     className?: string
     hasError?: boolean
@@ -23,6 +25,7 @@ export const FieldLabel = ({
     label,
     required,
     description,
+    notification,
     tooltip,
     className,
     hasError,
@@ -40,6 +43,12 @@ export const FieldLabel = ({
                     </span>
                 )}
             </label>
+            {notification && (
+                <CircleInfo
+                    size={18}
+                    className="text-pzh-blue-500 -mt-1 ml-1 cursor-pointer"
+                />
+            )}
             {tooltip && (
                 <Tooltip label={tooltip}>
                     <CircleInfo className="text-pzh-blue-500 -mt-1 ml-1 cursor-pointer" />

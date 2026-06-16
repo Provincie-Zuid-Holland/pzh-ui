@@ -44,6 +44,9 @@ export const WithLabel = {
         placeholder: 'Tekstvlak',
         label: 'Form label',
         description: 'Korte omschrijving voor onder het label',
+        notification: {
+            title: 'Test',
+        },
         required: true,
     },
 } satisfies Story

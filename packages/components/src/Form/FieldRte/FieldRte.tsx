@@ -228,7 +228,6 @@ export const FieldRte = ({
             UndoRedo,
             HardBreak,
             Gapcursor,
-            ...(customExtensions || []),
         ]
 
         if (placeholder)
@@ -306,7 +305,6 @@ export const FieldRte = ({
                     },
                 }),
                 TableHeader,
-                SanitisePastedHtml,
                 HandleDOMEvents.configure({ callback: setRightClick }),
             ]
 
@@ -316,6 +314,25 @@ export const FieldRte = ({
 
             extensions.push(...tableExtensions)
         }
+
+        const builtInExtensionNames = new Set(
+            extensions.map(extension => extension.name)
+        )
+
+        const uniqueCustomExtensions = (customExtensions || []).filter(
+            extension => {
+                if (builtInExtensionNames.has(extension.name)) {
+                    console.warn(
+                        `Duplicate Tiptap extension skipped: ${extension.name}`
+                    )
+                    return false
+                }
+
+                return true
+            }
+        )
+
+        extensions.push(...uniqueCustomExtensions)
 
         return extensions
     }

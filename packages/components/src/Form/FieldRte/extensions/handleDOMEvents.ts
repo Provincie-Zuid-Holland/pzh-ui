@@ -1,5 +1,5 @@
+import { Plugin, PluginKey } from '@tiptap/pm/state'
 import { Extension } from '@tiptap/react'
-import { Plugin, PluginKey } from 'prosemirror-state'
 
 /**
  * This extension removes all nested tables from pasted HTML.

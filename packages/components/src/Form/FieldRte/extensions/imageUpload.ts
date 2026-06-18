@@ -1,6 +1,5 @@
-import { Extension } from '@tiptap/core'
-import { Editor } from '@tiptap/react'
-import { Plugin, PluginKey } from 'prosemirror-state'
+import { Plugin, PluginKey } from '@tiptap/pm/state'
+import { Editor, Extension } from '@tiptap/react'
 
 import validateImage from '../utils/validateImage'
 

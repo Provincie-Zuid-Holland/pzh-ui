@@ -1,5 +1,5 @@
+import { Plugin, PluginKey } from '@tiptap/pm/state'
 import { Extension } from '@tiptap/react'
-import { Plugin, PluginKey } from 'prosemirror-state'
 
 type Error = string
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

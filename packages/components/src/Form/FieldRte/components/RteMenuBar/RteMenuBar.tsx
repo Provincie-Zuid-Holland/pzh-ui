@@ -10,7 +10,8 @@ import {
     Table,
     Underline,
 } from '@pzh-ui/icons'
-import { BubbleMenu, EditorContentProps } from '@tiptap/react'
+import { EditorContentProps, useEditorState } from '@tiptap/react'
+import { BubbleMenu } from '@tiptap/react/menus'
 import classNames from 'clsx'
 import { ButtonHTMLAttributes, Fragment } from 'react'
 
@@ -22,6 +23,7 @@ import {
 import validateImage from '../../utils/validateImage'
 import TableMenu from '../TableMenu'
 import { TableMenuOption } from '../TableMenu/TableMenu'
+import { menuBarStateSelector } from './menuBarState'
 
 interface RteMenuBarProps extends EditorContentProps {
     menuOptions: (TextEditorMenuOptions | TextEditorCustomMenuOptions)[]
@@ -46,10 +48,15 @@ const RteMenuBar = ({
 }: RteMenuBarProps) => {
     if (!editor) return null
 
+    const editorState = useEditorState({
+        editor,
+        selector: menuBarStateSelector,
+    })
+
     return (
         <div
             className={classNames(
-                'border-pzh-gray-600 bg-pzh-white flex rounded-t border-b px-2',
+                'toolbar border-pzh-gray-600 bg-pzh-white flex rounded-t border-b px-2',
                 menuClassName
             )}>
             {menuOptions.map(option => {
@@ -59,10 +66,10 @@ const RteMenuBar = ({
                             <MenuButton
                                 key={option}
                                 onClick={() =>
-                                    editor.chain().toggleBold().focus().run()
+                                    editor.chain().focus().toggleBold().run()
                                 }
                                 disabled={disabled}
-                                isActive={editor.isActive('bold')}
+                                isActive={editorState.isBold}
                                 aria-label="Vetgedrukt"
                                 title="Vetgedrukt">
                                 <Bold />
@@ -73,10 +80,10 @@ const RteMenuBar = ({
                             <MenuButton
                                 key={option}
                                 onClick={() =>
-                                    editor.chain().toggleItalic().focus().run()
+                                    editor.chain().focus().toggleItalic().run()
                                 }
                                 disabled={disabled}
-                                isActive={editor.isActive('italic')}
+                                isActive={editorState.isItalic}
                                 aria-label="Cursief"
                                 title="Cursief">
                                 <Italic />
@@ -89,12 +96,12 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .toggleUnderline()
                                         .focus()
+                                        .toggleUnderline()
                                         .run()
                                 }
                                 disabled={disabled}
-                                isActive={editor.isActive('underline')}
+                                isActive={editorState.isUnderline}
                                 aria-label="Onderstreept"
                                 title="Onderstreept">
                                 <Underline />
@@ -107,12 +114,12 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .toggleBulletList()
                                         .focus()
+                                        .toggleBulletList()
                                         .run()
                                 }
                                 disabled={disabled}
-                                isActive={editor.isActive('bulletList')}
+                                isActive={editorState.isBulletList}
                                 aria-label="Ongeordende lijst"
                                 title="Ongeordende lijst">
                                 <ListUl />
@@ -125,12 +132,12 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .toggleOrderedList()
                                         .focus()
+                                        .toggleOrderedList()
                                         .run()
                                 }
                                 disabled={disabled}
-                                isActive={editor.isActive('orderedList')}
+                                isActive={editorState.isOrderedList}
                                 aria-label="Genummerde lijst"
                                 title="Genummerde lijst">
                                 <ListOl />
@@ -196,9 +203,9 @@ const RteMenuBar = ({
                                     if (url === '') {
                                         editor
                                             .chain()
+                                            .focus()
                                             .extendMarkRange('link')
                                             .unsetLink()
-                                            .focus()
                                             .run()
 
                                         return
@@ -207,16 +214,16 @@ const RteMenuBar = ({
                                     // update link
                                     editor
                                         .chain()
+                                        .focus()
                                         .extendMarkRange('link')
                                         .setLink({
                                             href: url,
                                             target: '_blank',
                                         })
-                                        .focus()
                                         .run()
                                 }}
                                 disabled={disabled}
-                                isActive={editor.isActive('link')}
+                                isActive={editorState.isLink}
                                 aria-label="Link"
                                 title="Link">
                                 <Link />
@@ -277,12 +284,12 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .toggleSubscript()
                                         .focus()
+                                        .toggleSubscript()
                                         .run()
                                 }
                                 disabled={disabled}
-                                isActive={editor.isActive('subscript')}
+                                isActive={editorState.isSubscript}
                                 aria-label="Onderschrift"
                                 title="Onderschrift">
                                 <Subscript />
@@ -295,12 +302,12 @@ const RteMenuBar = ({
                                 onClick={() =>
                                     editor
                                         .chain()
-                                        .toggleSuperscript()
                                         .focus()
+                                        .toggleSuperscript()
                                         .run()
                                 }
                                 disabled={disabled}
-                                isActive={editor.isActive('superscript')}
+                                isActive={editorState.isSuperscript}
                                 aria-label="Bovenschrift"
                                 title="Bovenschrift">
                                 <Superscript />
@@ -312,8 +319,7 @@ const RteMenuBar = ({
                                 {editor && (
                                     <BubbleMenu
                                         editor={editor}
-                                        tippyOptions={{
-                                            duration: 100,
+                                        options={{
                                             placement: 'bottom',
                                         }}
                                         shouldShow={({ editor }) =>
@@ -334,18 +340,16 @@ const RteMenuBar = ({
                                     onClick={() =>
                                         editor
                                             .chain()
+                                            .focus()
                                             .insertTable({
                                                 rows: 3,
                                                 cols: 4,
                                                 withHeaderRow: true,
                                             })
-                                            .focus()
                                             .run()
                                     }
-                                    disabled={
-                                        disabled || editor.isActive('table')
-                                    }
-                                    isActive={editor.isActive('table')}
+                                    disabled={disabled || editorState.isTable}
+                                    isActive={editorState.isTable}
                                     aria-label="Tabel"
                                     title="Tabel">
                                     <Table />
@@ -369,7 +373,7 @@ export const MenuButton = ({
 }: ButtonHTMLAttributes<HTMLButtonElement> & { isActive: boolean }) => (
     <button
         className={classNames(
-            'm-1 flex h-8 w-8 items-center justify-center rounded',
+            'm-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded',
             className,
             {
                 'pointer-events-none': rest.disabled,

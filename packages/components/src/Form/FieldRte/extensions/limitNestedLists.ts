@@ -1,6 +1,22 @@
-import { Extension } from '@tiptap/core'
-import { sinkListItem } from 'prosemirror-schema-list'
-import { Plugin, PluginKey } from 'prosemirror-state'
+import { Plugin, PluginKey } from '@tiptap/pm/state'
+import { Extension } from '@tiptap/react'
+
+const getListDepth = ($pos: any) => {
+    let listDepth = 0
+
+    for (let d = $pos.depth; d > 0; d--) {
+        const node = $pos.node(d)
+
+        if (
+            node.type.name === 'bulletList' ||
+            node.type.name === 'orderedList'
+        ) {
+            listDepth++
+        }
+    }
+
+    return listDepth
+}
 
 export const NestedListLimit = Extension.create<{
     maxDepth: number
@@ -13,31 +29,25 @@ export const NestedListLimit = Extension.create<{
         }
     },
 
-    addCommands() {
+    addKeyboardShortcuts() {
         return {
-            sinkListItem:
-                () =>
-                ({ state, dispatch }) => {
-                    const { $from } = state.selection
-                    let listDepth = 0
+            Tab: () => {
+                if (!this.editor.isActive('listItem')) return false
 
-                    for (let d = $from.depth; d > 0; d--) {
-                        const node = $from.node(d)
-                        if (
-                            node.type.name === 'bulletList' ||
-                            node.type.name === 'orderedList'
-                        ) {
-                            listDepth++
-                        }
-                    }
+                const { $from } = this.editor.state.selection
+                const listDepth = getListDepth($from)
 
-                    if (listDepth >= this.options.maxDepth) {
-                        return false
-                    }
+                // Important: return true so browser doesn't move focus
+                if (listDepth >= this.options.maxDepth) return true
 
-                    const listItemType = state.schema.nodes.listItem
-                    return sinkListItem(listItemType)(state, dispatch)
-                },
+                return this.editor.commands.sinkListItem('listItem')
+            },
+
+            'Shift-Tab': () => {
+                if (!this.editor.isActive('listItem')) return false
+
+                return this.editor.commands.liftListItem('listItem')
+            },
         }
     },
 
@@ -47,17 +57,7 @@ export const NestedListLimit = Extension.create<{
                 key: new PluginKey('nestedListLimit'),
                 filterTransaction: tr => {
                     const { $anchor } = tr.selection
-                    let listDepth = 0
-
-                    for (let d = $anchor.depth; d > 0; d--) {
-                        const node = $anchor.node(d)
-                        if (
-                            node.type.name === 'bulletList' ||
-                            node.type.name === 'orderedList'
-                        ) {
-                            listDepth++
-                        }
-                    }
+                    const listDepth = getListDepth($anchor)
 
                     return listDepth <= this.options.maxDepth
                 },

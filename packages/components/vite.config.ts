@@ -27,6 +27,15 @@ export default defineConfig({
             filename: 'analyse.html',
         }) as PluginOption,
     ],
+    resolve: {
+        dedupe: [
+            'prosemirror-model',
+            'prosemirror-state',
+            'prosemirror-view',
+            'prosemirror-transform',
+            'prosemirror-schema-list',
+        ],
+    },
     build: {
         target: 'esnext',
         sourcemap: true,

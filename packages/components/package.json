@@ -31,8 +31,8 @@
     "dependencies": {
         "@floating-ui/react": "^0.24.8",
         "@headlessui/react": "^1.5.0",
-        "@pzh-ui/icons": "workspace:^",
-        "@pzh-ui/react": "workspace:^",
+        "@pzh-ui/icons": "^0.0.97",
+        "@pzh-ui/react": "^0.0.7",
         "@radix-ui/react-accordion": "^1.1.2",
         "@radix-ui/react-slot": "^1.0.2",
         "@react-aria/utils": "^3.29.1",
@@ -117,5 +117,5 @@
     "resolutions": {
         "jackspeak": "2.1.1"
     },
-    "gitHead": "851c05a80d248b4e740336ef79a0fe32f6cd6403"
+    "gitHead": "b0f8956503a2d5eabbdb50f38d2b42aef9d0292e"
 }

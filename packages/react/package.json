@@ -41,7 +41,7 @@
         "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"
     },
     "dependencies": {
-        "@pzh-ui/icons": "workspace:^",
+        "@pzh-ui/icons": "^0.0.97",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "react-aria-components": "^1.20.0",
@@ -52,8 +52,8 @@
         "@babel/preset-env": "^7.29.7",
         "@babel/preset-react": "^7.29.7",
         "@babel/preset-typescript": "^7.29.7",
-        "@pzh-ui/css": "workspace:^",
-        "@pzh-ui/theme": "workspace:^",
+        "@pzh-ui/css": "^0.0.119",
+        "@pzh-ui/theme": "^0.0.3",
         "@storybook/addon-docs": "^10.4.2",
         "@storybook/react-vite": "^10.4.2",
         "@tailwindcss/vite": "^4.3.3",
@@ -86,5 +86,6 @@
         "extends": [
             "plugin:storybook/recommended"
         ]
-    }
+    },
+    "gitHead": "b0f8956503a2d5eabbdb50f38d2b42aef9d0292e"
 }

@@ -5293,8 +5293,8 @@ __metadata:
     "@floating-ui/react": "npm:^0.24.8"
     "@headlessui/react": "npm:^1.5.0"
     "@pzh-ui/css": "npm:^0.0.119"
-    "@pzh-ui/icons": "workspace:^"
-    "@pzh-ui/react": "workspace:^"
+    "@pzh-ui/icons": "npm:^0.0.97"
+    "@pzh-ui/react": "npm:^0.0.8"
     "@radix-ui/react-accordion": "npm:^1.1.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@react-aria/utils": "npm:^3.29.1"
@@ -5399,7 +5399,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/css@npm:^0.0.119, @pzh-ui/css@workspace:^, @pzh-ui/css@workspace:packages/css":
+"@pzh-ui/css@npm:^0.0.119, @pzh-ui/css@workspace:packages/css":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/css@workspace:packages/css"
   dependencies:
@@ -5411,7 +5411,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/icons@workspace:^, @pzh-ui/icons@workspace:packages/icons":
+"@pzh-ui/icons@npm:^0.0.97, @pzh-ui/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/icons@workspace:packages/icons"
   dependencies:
@@ -5432,7 +5432,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/react@workspace:^, @pzh-ui/react@workspace:packages/react":
+"@pzh-ui/react@npm:^0.0.8, @pzh-ui/react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/react@workspace:packages/react"
   dependencies:
@@ -5440,9 +5440,9 @@ __metadata:
     "@babel/preset-env": "npm:^7.29.7"
     "@babel/preset-react": "npm:^7.29.7"
     "@babel/preset-typescript": "npm:^7.29.7"
-    "@pzh-ui/css": "workspace:^"
-    "@pzh-ui/icons": "workspace:^"
-    "@pzh-ui/theme": "workspace:^"
+    "@pzh-ui/css": "npm:^0.0.119"
+    "@pzh-ui/icons": "npm:^0.0.97"
+    "@pzh-ui/theme": "npm:^0.0.4"
     "@storybook/addon-docs": "npm:^10.4.2"
     "@storybook/react-vite": "npm:^10.4.2"
     "@tailwindcss/vite": "npm:^4.3.3"
@@ -5476,7 +5476,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/theme@workspace:^, @pzh-ui/theme@workspace:packages/theme":
+"@pzh-ui/theme@npm:^0.0.4, @pzh-ui/theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/theme@workspace:packages/theme"
   peerDependencies:

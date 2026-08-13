@@ -16,7 +16,7 @@ stats.html
 analyse.html
 
 # CSS
-tailwind.css
+packages/css/**/tailwind.css
 
 # Yarn 3 files
 .pnp.*

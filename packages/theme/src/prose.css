@@ -1,0 +1,68 @@
+@plugin '@tailwindcss/typography';
+
+:root {
+    --tw-prose-bold: inherit;
+}
+
+/*
+ * Nested lists
+ */
+
+ul li ul li {
+    list-style-type: circle;
+}
+
+ul li ul li ul li {
+    list-style-type: square;
+}
+
+ol li ol li {
+    list-style-type: lower-alpha;
+}
+
+ol li ol li ol li {
+    list-style-type: lower-roman;
+}
+
+/*
+ * Rich-text / editor prose
+ */
+
+@utility prose {
+    p.is-editor-empty:first-child::before {
+        color: color-mix(in srgb, var(--foreground) 55%, transparent);
+        content: attr(data-placeholder);
+        float: left;
+        pointer-events: none;
+        height: 0;
+    }
+
+    li {
+        p,
+        & > ol,
+        & > ul {
+            margin: 0;
+        }
+    }
+
+    table {
+        @apply text-m border-border-strong border;
+
+        p {
+            margin: 0;
+        }
+
+        td,
+        th {
+            @apply border-border-strong border p-2;
+        }
+
+        tr {
+            @apply border-border-strong border-b;
+
+            th {
+                @apply bg-surface-muted font-bold;
+            }
+        }
+    }
+}

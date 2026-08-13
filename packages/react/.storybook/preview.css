@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@import '@pzh-ui/theme';
+
+@source '../src';
+@source './stories';

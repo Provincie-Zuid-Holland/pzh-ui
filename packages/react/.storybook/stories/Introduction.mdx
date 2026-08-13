@@ -1,78 +1,323 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta, Source } from '@storybook/addon-docs/blocks'
+import logo from '../logo.svg'
 
 <Meta title="Introductie" />
 
-# Design System Provincie Zuid-Holland
+<div className="max-w-7xl">
 
-Dit Design System is ontwikkeld om digitale producten voor de Provincie Zuid-Holland op een consistente, toegankelijke en efficiënte manier te bouwen.
+<section className="sb-unstyled relative mb-10 overflow-hidden rounded-xl border border-border-subtle bg-gradient-to-br from-info-background via-background to-warning-background px-6 py-8 sm:px-10 sm:py-10">
+    <div
+        aria-hidden="true"
+        className="absolute -bottom-24 -right-16 size-60 rounded-full bg-primary/5"
+    />
 
-De broncode is beschikbaar in onze [**GitHub-repository**](https://github.com/Provincie-Zuid-Holland/pzh-ui).
+    <div className="relative z-10">
+        <img
+            src={logo}
+            alt="Provincie Zuid-Holland"
+            className="mb-6 h-auto max-w-52"
+        />
 
-<br />
+        <h1 className="m-0 max-w-3xl text-heading-xl font-bold leading-tight text-foreground">
+            Design System Provincie Zuid-Holland
+        </h1>
 
-## Componenten
+        <p className="mb-0 mt-4 max-w-3xl text-lg leading-8 text-text-muted">
+            Een gedeelde verzameling van componenten, stijlen en richtlijnen
+            voor het consistent, toegankelijk en efficiënt bouwen van digitale
+            producten.
+        </p>
 
-[![npm version](https://img.shields.io/npm/v/@pzh-ui/react.svg?label=@pzh-ui%2Freact)](https://npmjs.com/package/@pzh-ui/react)
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <a
+                className="inline-flex items-center justify-center text-sm font-bold text-link hover:text-link-hover"
+                href="https://github.com/Provincie-Zuid-Holland/pzh-ui"
+                target="_blank"
+                rel="noreferrer">
+                Bekijk op GitHub
+            </a>
 
-Installeer het pakket met je favoriete package manager:
+            <span
+                aria-hidden="true"
+                className="hidden text-text-disabled sm:inline">
+                |
+            </span>
 
-```bash
-yarn add @pzh-ui/react
-```
+            <a
+                className="inline-flex items-center justify-center text-sm font-bold text-link hover:text-link-hover"
+                href="https://npmjs.com/package/@pzh-ui/react"
+                target="_blank"
+                rel="noreferrer">
+                Bekijk React-pakket
+            </a>
+        </div>
+    </div>
 
-Na installatie kunnen componenten als volgt worden gebruikt:
+</section>
 
-```tsx
-import { Button } from '@pzh-ui/react'
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Waarom dit design system?
+    </h2>
 
-export const Page = () => {
-    return <Button>Klik hier</Button>
-}
-```
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Het design system brengt ontwerp en ontwikkeling samen. Hierdoor hoeven
+        teams niet voor ieder project opnieuw dezelfde oplossingen te ontwerpen
+        en bouwen.
+    </p>
 
-## Styling
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <article className="rounded-lg border border-border-subtle bg-surface p-5">
+            <span className="mb-3 block text-sm font-bold text-primary">
+                01
+            </span>
 
-[![npm version](https://img.shields.io/npm/v/@pzh-ui/css.svg?label=@pzh-ui%2Fcss)](https://npmjs.com/package/@pzh-ui/css)
+            <h3 className="mb-2 mt-0 text-lg font-bold text-foreground">
+                Consistent
+            </h3>
 
-De componenten maken gebruik van [**Tailwind framework**](https://tailwindcss.com/). Om ervoor te zorgen dat alle componenten correct worden weergegeven, moet Tailwind in je project zijn geconfigureerd.
+            <p className="m-0 text-sm leading-6 text-text-muted">
+                Digitale producten gebruiken dezelfde componenten, kleuren,
+                typografie en interactiepatronen.
+            </p>
+        </article>
 
-Voeg de componentbibliotheek toe via een CSS import zodat alle gebruikte classes worden meegenomen tijdens het buildproces.
+        <article className="rounded-lg border border-border-subtle bg-surface p-5">
+            <span className="mb-3 block text-sm font-bold text-primary">
+                02
+            </span>
 
-```css
-@import '@pzh-ui/css/src/tailwind.src.css';
-```
+            <h3 className="mb-2 mt-0 text-lg font-bold text-foreground">
+                Toegankelijk
+            </h3>
 
-## Ontwikkeling
+            <p className="m-0 text-sm leading-6 text-text-muted">
+                Componenten worden ontwikkeld met aandacht voor
+                toetsenbordgebruik, semantiek en WCAG-richtlijnen.
+            </p>
+        </article>
 
-### Storybook starten
+        <article className="rounded-lg border border-border-subtle bg-surface p-5">
+            <span className="mb-3 block text-sm font-bold text-primary">
+                03
+            </span>
 
-```bash
-yarn storybook
-```
+            <h3 className="mb-2 mt-0 text-lg font-bold text-foreground">
+                Efficiënt
+            </h3>
 
-### Tests uitvoeren
+            <p className="m-0 text-sm leading-6 text-text-muted">
+                Teams kunnen herbruikbare bouwstenen inzetten in plaats van
+                functionaliteit opnieuw te ontwikkelen.
+            </p>
+        </article>
 
-```bash
-yarn test
-```
+        <article className="rounded-lg border border-border-subtle bg-surface p-5">
+            <span className="mb-3 block text-sm font-bold text-primary">
+                04
+            </span>
 
-### Bibliotheek bouwen
+            <h3 className="mb-2 mt-0 text-lg font-bold text-foreground">
+                Onderhoudbaar
+            </h3>
 
-```bash
-yarn build
-```
+            <p className="m-0 text-sm leading-6 text-text-muted">
+                Verbeteringen aan gedeelde componenten kunnen centraal worden
+                doorgevoerd en gepubliceerd.
+            </p>
+        </article>
+    </div>
 
-## Richtlijnen
+</section>
 
-Bij het ontwikkelen van nieuwe componenten streven we naar:
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Installatie
+    </h2>
 
-- Toegankelijkheid volgens WCAG-richtlijnen
-- Consistent gebruik van design tokens
-- Herbruikbare en onderhoudbare componenten
-- TypeScript-first ontwikkeling
-- Volledige documentatie in Storybook
-- Testdekking voor componentgedrag
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Het design system bestaat uit afzonderlijke pakketten voor
+        React-componenten en het gedeelde thema.
+    </p>
 
-## Meer informatie
+    <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <article className="min-w-0 rounded-xl border border-border-subtle bg-surface p-6">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                <h3 className="m-0 text-xl font-bold text-foreground">
+                    React-componenten
+                </h3>
 
-Voor documentatie, voorbeelden en componenteigenschappen kun je navigeren via het menu in Storybook.
+                <a
+                    className="inline-flex leading-none"
+                    href="https://npmjs.com/package/@pzh-ui/react"
+                    target="_blank"
+                    rel="noreferrer">
+                    <img
+                        src="https://img.shields.io/npm/v/@pzh-ui/react.svg?label=@pzh-ui%2Freact"
+                        alt="Versie van het @pzh-ui/react-pakket op npm"
+                    />
+                </a>
+            </div>
+
+            <p className="mt-0 leading-7 text-text-muted">
+                Installeer het componentenpakket met je package manager:
+            </p>
+
+            <Source
+                language="bash"
+                code="yarn add @pzh-ui/react @pzh-ui/theme"
+            />
+
+            <p className="leading-7 text-text-muted">
+                Importeer vervolgens alleen de componenten die je nodig hebt:
+            </p>
+
+            <Source
+                language="tsx"
+                code={[
+                    "import { Button } from '@pzh-ui/react'",
+                    '',
+                    'export const Page = () => {',
+                    '    return <Button>Klik hier</Button>',
+                    '}',
+                ].join('\n')}
+            />
+        </article>
+
+        <article className="min-w-0 rounded-xl border border-border-subtle bg-surface p-6">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                <h3 className="m-0 text-xl font-bold text-foreground">
+                    Thema
+                </h3>
+
+                <a
+                    className="inline-flex leading-none"
+                    href="https://npmjs.com/package/@pzh-ui/theme"
+                    target="_blank"
+                    rel="noreferrer">
+                    <img
+                        src="https://img.shields.io/npm/v/@pzh-ui/theme.svg?label=@pzh-ui%2Ftheme"
+                        alt="Versie van het @pzh-ui/theme-pakket op npm"
+                    />
+                </a>
+            </div>
+
+            <p className="mt-0 leading-7 text-text-muted">
+                De componenten gebruiken Tailwind CSS en de semantische design
+                tokens uit het gedeelde themapakket.
+            </p>
+
+            <p className="leading-7 text-text-muted">
+                Importeer Tailwind CSS en daarna het PZH-thema in je globale
+                stylesheet:
+            </p>
+
+            <Source
+                language="css"
+                code={[
+                    "@import 'tailwindcss';",
+                    "@import '@pzh-ui/theme';",
+                ].join('\n')}
+            />
+
+            <p className="leading-7 text-text-muted">
+                Zorg daarnaast dat Tailwind de bronbestanden van het
+                React-pakket scant:
+            </p>
+
+            <Source
+                language="css"
+                code="@source '../node_modules/@pzh-ui/react';"
+            />
+        </article>
+    </div>
+
+    <div className="mt-5 rounded-r-md border-l-4 border-info-border bg-info-background px-5 py-4 leading-7 text-info-foreground">
+        <strong>Belangrijk:</strong> de componenten gebruiken semantische
+        Tailwind-klassen zoals <code>bg-primary</code>, <code>text-foreground</code>
+        en <code>border-border</code>. Zorg dat zowel Tailwind CSS als
+        <code>@pzh-ui/theme</code> correct zijn geladen.
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Lokale ontwikkeling
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Gebruik de onderstaande commando’s bij het ontwikkelen, testen en bouwen
+        van de componentbibliotheek.
+    </p>
+
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border border-border-subtle bg-surface-muted p-4">
+            <strong className="mb-2 block text-sm text-foreground">
+                Storybook starten
+            </strong>
+
+            <code className="text-sm text-primary">
+                yarn storybook
+            </code>
+        </div>
+
+        <div className="rounded-lg border border-border-subtle bg-surface-muted p-4">
+            <strong className="mb-2 block text-sm text-foreground">
+                Tests uitvoeren
+            </strong>
+
+            <code className="text-sm text-primary">
+                yarn test
+            </code>
+        </div>
+
+        <div className="rounded-lg border border-border-subtle bg-surface-muted p-4">
+            <strong className="mb-2 block text-sm text-foreground">
+                Bibliotheek bouwen
+            </strong>
+
+            <code className="text-sm text-primary">
+                yarn build
+            </code>
+        </div>
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Ontwikkelrichtlijnen
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Nieuwe componenten moeten aansluiten bij de technische en visuele
+        uitgangspunten van het design system.
+    </p>
+
+    <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0! sm:grid-cols-2">
+        {[
+            'Toegankelijk volgens de geldende WCAG-richtlijnen',
+            'Consistent gebruik van semantische design tokens',
+            'Herbruikbare en onderhoudbare componentarchitectuur',
+            'TypeScript-first ontwikkeling',
+            'Volledige documentatie en voorbeelden in Storybook',
+            'Testdekking voor belangrijk componentgedrag',
+        ].map(guideline => (
+            <li
+                key={guideline}
+                className="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface p-4 leading-6 text-text-muted">
+                <span
+                    aria-hidden="true"
+                    className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-success-background text-xs font-bold text-success">
+                    ✓
+                </span>
+
+                <span>{guideline}</span>
+            </li>
+        ))}
+    </ul>
+
+</section>
+
+</div>

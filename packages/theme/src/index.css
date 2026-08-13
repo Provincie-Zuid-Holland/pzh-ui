@@ -1,0 +1,6 @@
+@import './themes/default.css';
+@import './typography.css';
+@import './animations.css';
+@import './tailwind.css';
+@import './base.css';
+@import './prose.css';

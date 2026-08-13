@@ -1,0 +1,168 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as TextareaStories from './Textarea.stories'
+
+<Meta of={TextareaStories} />
+
+# Textarea
+
+Een component voor het invoeren van langere teksten over meerdere regels.
+
+De component is gebaseerd op de `TextArea` van React Aria Components en gebruikt dezelfde visuele stijl, states en toegankelijkheid als de `Input`.
+
+## Gebruik
+
+```tsx
+import { Textarea } from '@pzh-ui/react'
+
+export function Example() {
+    return <Textarea placeholder="Vul een toelichting in" />
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={TextareaStories.Default} />
+
+<Controls of={TextareaStories.Default} />
+
+## Formaten
+
+Met de `size`-property bepaal je de typografie en verticale ruimte van de textarea.
+
+Beschikbare formaten:
+
+- `l`
+- `m`
+
+<Canvas of={TextareaStories.Sizes} />
+
+```tsx
+<Textarea size="l" placeholder="Large textarea" />
+
+<Textarea size="m" placeholder="Medium textarea" />
+```
+
+## Met een waarde
+
+Gebruik `defaultValue` voor ongecontroleerde componenten of `value` in combinatie met `onChange` voor gecontroleerde componenten.
+
+<Canvas of={TextareaStories.WithValue} />
+
+```tsx
+<Textarea defaultValue="Provincie Zuid-Holland" />
+```
+
+## Disabled
+
+Gebruik `disabled` om een textarea uit te schakelen.
+
+<Canvas of={TextareaStories.Disabled} />
+
+```tsx
+<Textarea disabled defaultValue="Deze waarde kan niet worden aangepast" />
+```
+
+Een disabled textarea:
+
+- kan geen focus ontvangen;
+- kan niet worden aangepast;
+- krijgt automatisch de disabled styling.
+
+## Read only
+
+Gebruik `readOnly` wanneer de gebruiker de inhoud mag zien en selecteren, maar niet mag wijzigen.
+
+<Canvas of={TextareaStories.ReadOnly} />
+
+```tsx
+<Textarea readOnly defaultValue="Deze waarde kan niet worden aangepast" />
+```
+
+In tegenstelling tot een disabled textarea blijft een read-only textarea focusbaar.
+
+## Validatie
+
+Gebruik `aria-invalid` om een foutstatus weer te geven.
+
+<Canvas of={TextareaStories.Invalid} />
+
+```tsx
+<Field>
+    <FieldLabel htmlFor="description">Toelichting</FieldLabel>
+
+    <Textarea
+        id="description"
+        aria-invalid
+        aria-describedby="description-error"
+        defaultValue="Deze waarde is incorrect"
+    />
+
+    <FieldError id="description-error">Dit veld is onjuist.</FieldError>
+</Field>
+```
+
+Het component toont automatisch de foutopmaak wanneer `aria-invalid` is ingesteld.
+
+## Automatische hoogte
+
+De textarea gebruikt `field-sizing-content`, waardoor de hoogte automatisch meegroeit met de inhoud.
+
+```tsx
+<Textarea placeholder="Schrijf hier je toelichting..." />
+```
+
+## Opbouw
+
+Het component ondersteunt onder andere:
+
+- hover state
+- focus state
+- disabled state
+- read-only state
+- invalid state
+- automatische hoogte op basis van de inhoud
+- twee formaten (`l` en `m`)
+
+## Toegankelijkheid
+
+Het component is gebaseerd op React Aria Components en ondersteunt de standaard toegankelijkheidsfunctionaliteit van HTML-textareas.
+
+Gebruik altijd een zichtbaar label.
+
+```tsx
+<Field>
+    <FieldLabel htmlFor="description">Toelichting</FieldLabel>
+
+    <Textarea id="description" name="description" />
+</Field>
+```
+
+Voor foutmeldingen combineer je `aria-invalid` met `aria-describedby` en een duidelijke foutmelding.
+
+```tsx
+<Field>
+    <FieldLabel htmlFor="description">Toelichting</FieldLabel>
+
+    <Textarea
+        id="description"
+        name="description"
+        aria-invalid
+        aria-describedby="description-error"
+    />
+
+    <FieldError id="description-error">
+        Vul een geldige toelichting in.
+    </FieldError>
+</Field>
+```
+
+### Richtlijnen
+
+- Gebruik altijd een `FieldLabel` of een ander toegankelijk label.
+- Gebruik `Textarea` voor langere teksten die meerdere regels kunnen bevatten.
+- Gebruik `Input` voor korte waarden zoals namen, e-mailadressen en nummers.
+- Gebruik `readOnly` wanneer de inhoud zichtbaar maar niet wijzigbaar is.
+- Gebruik `disabled` alleen wanneer interactie volledig onmogelijk moet zijn.
+- Gebruik `aria-invalid` samen met een duidelijke foutmelding.
+- Kies `size="l"` als standaardformaat.
+- Gebruik `size="m"` voor compactere formulieren.

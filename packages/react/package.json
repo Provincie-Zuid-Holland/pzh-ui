@@ -19,7 +19,8 @@
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "import": "./dist/index.js"
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
         }
     },
     "repository": {
@@ -28,19 +29,22 @@
     },
     "scripts": {
         "test": "vitest",
+        "typecheck": "tsc --noEmit",
         "chromatic": "npx chromatic --project-token=chpt_086ce80c51e31f9 --auto-accept-changes --build-script-name=build-storybook",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
-        "build": "vite build && tsc -p tsconfig.build.json"
+        "build:js": "vite build",
+        "build:types": "tsc -p tsconfig.build.json",
+        "build": "yarn typecheck && yarn build:js && yarn build:types"
     },
     "bugs": {
         "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"
     },
     "dependencies": {
         "@pzh-ui/icons": "workspace:^",
+        "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
-        "react": "^19.2.7",
-        "react-dom": "^19.2.7",
+        "react-aria-components": "^1.20.0",
         "tailwind-merge": "^3.6.0"
     },
     "devDependencies": {
@@ -48,9 +52,11 @@
         "@babel/preset-env": "^7.29.7",
         "@babel/preset-react": "^7.29.7",
         "@babel/preset-typescript": "^7.29.7",
+        "@pzh-ui/css": "workspace:^",
+        "@pzh-ui/theme": "workspace:^",
         "@storybook/addon-docs": "^10.4.2",
         "@storybook/react-vite": "^10.4.2",
-        "@tailwindcss/vite": "^4.3.0",
+        "@tailwindcss/vite": "^4.3.3",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
         "@types/babel__core": "^7",
@@ -62,12 +68,19 @@
         "eslint-plugin-storybook": "^10.4.2",
         "glob": "^13.0.6",
         "jsdom": "^29.1.1",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7",
         "rollup-plugin-visualizer": "^7.0.1",
         "storybook": "^10.4.2",
+        "tailwindcss": "^4.3.3",
         "typescript": "^6.0.3",
         "typescript-eslint": "^8.60.1",
         "vite": "^8.0.16",
         "vitest": "^4.1.8"
+    },
+    "peerDependencies": {
+        "react": "^18.2.0 || ^19.0.0",
+        "react-dom": "^18.2.0 || ^19.0.0"
     },
     "eslintConfig": {
         "extends": [

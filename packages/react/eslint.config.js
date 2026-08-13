@@ -1,24 +1,26 @@
 import storybook from 'eslint-plugin-storybook'
+import { defineConfig, globalIgnores } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
-export default tseslint.config(
-    ...tseslint.configs.recommended,
+export default defineConfig(
+    globalIgnores([
+        'dist/**',
+        'storybook-static/**',
+        'coverage/**',
+        'analyse.html',
+    ]),
+
+    tseslint.configs.recommended,
+
     {
-        files: ['**/*.ts', '**/*.tsx'],
+        files: ['src/**/*.{ts,tsx}', 'setupTests.ts'],
         languageOptions: {
-            parser: tseslint.parser,
             parserOptions: {
-                project: './tsconfig.json',
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
             },
         },
     },
-    {
-        files: ['**/*.stories.@(ts|tsx)', '.storybook/**/*.@(ts|tsx)'],
-        plugins: {
-            storybook,
-        },
-        rules: {
-            ...storybook.configs.recommended.rules,
-        },
-    }
+
+    storybook.configs['flat/recommended']
 )

@@ -1,0 +1,218 @@
+/*
+ * ==========================================================================
+ * Default PZH theme
+ * ==========================================================================
+ *
+ * Primitive tokens describe the actual PZH palette.
+ * Semantic tokens describe how those colors are used in the UI.
+ *
+ * Reusable components should consume semantic tokens only.
+ */
+
+:root {
+    /* ==========================================================================
+       Primitive tokens
+       ========================================================================== */
+
+    /* Base */
+    --pzh-white: #ffffff;
+    --pzh-black: #000000;
+
+    /* Red */
+    --pzh-red-10: #ffedf0;
+    --pzh-red-100: #eb7085;
+    --pzh-red-500: #d11f3d;
+    --pzh-red-900: #97162c;
+
+    /* Yellow */
+    --pzh-yellow-10: #fff9e3;
+    --pzh-yellow-100: #f1db7e;
+    --pzh-yellow-500: #efcc36;
+    --pzh-yellow-900: #c6a410;
+
+    /* Blue */
+    --pzh-blue-10: #f2f7fc;
+    --pzh-blue-100: #7badde;
+    --pzh-blue-500: #281f6b;
+    --pzh-blue-900: #16113b;
+
+    /* Pink */
+    --pzh-pink-100: #d76aac;
+    --pzh-pink-500: #aa0067;
+    --pzh-pink-900: #750047;
+
+    /* Orange */
+    --pzh-orange-100: #fba66a;
+    --pzh-orange-500: #ff6b02;
+    --pzh-orange-900: #b24a00;
+
+    /* Apple green */
+    --pzh-apple-green-100: #add57d;
+    --pzh-apple-green-500: #76bc21;
+    --pzh-apple-green-900: #629623;
+
+    /* Purple */
+    --pzh-purple-100: #9b99cc;
+    --pzh-purple-500: #503d90;
+    --pzh-purple-900: #32265a;
+
+    /* Warm gray */
+    --pzh-warm-gray-100: #beb1a7;
+    --pzh-warm-gray-500: #847062;
+    --pzh-warm-gray-900: #584b41;
+
+    /* Green */
+    --pzh-green-10: #edfaf0;
+    --pzh-green-100: #61b375;
+    --pzh-green-500: #00804d;
+    --pzh-green-900: #004d2e;
+
+    /* Gray */
+    --pzh-gray-100: #f8f8f8;
+    --pzh-gray-200: #e6e6e6;
+    --pzh-gray-300: #d5d5d5;
+    --pzh-gray-400: #bfbfbf;
+    --pzh-gray-500: #838383;
+    --pzh-gray-600: #5c5c5c;
+    --pzh-gray-700: #464646;
+    --pzh-gray-800: #222222;
+
+    /* Misc */
+    --pzh-form: #f4f4f7;
+    --pzh-focus: #2360c5;
+    --pzh-visited-link: #5f29a2;
+    --pzh-backdrop: rgb(92 92 92 / 50%);
+
+    /* Badges */
+    --pzh-badge-green: #50a658;
+    --pzh-badge-red: #cb3b36;
+    --pzh-badge-orange: #f9b53c;
+
+    /* UI */
+    --pzh-ui-light-blue: #e5eff8;
+
+    /* ==========================================================================
+       Semantic tokens
+       ========================================================================== */
+
+    /* Base */
+    --background: var(--pzh-white);
+    --foreground: var(--pzh-blue-900);
+
+    /* Surfaces */
+    --surface: var(--pzh-white);
+    --surface-subtle: var(--pzh-blue-10);
+    --surface-muted: var(--pzh-gray-100);
+    --surface-raised: var(--pzh-white);
+    --surface-disabled: var(--pzh-gray-200);
+
+    /* Primary */
+    --primary: var(--pzh-blue-500);
+    --primary-hover: var(--pzh-blue-900);
+    --primary-active: var(--pzh-blue-900);
+    --primary-foreground: var(--pzh-white);
+
+    /* Secondary */
+    --secondary: var(--pzh-white);
+    --secondary-hover: var(--pzh-blue-10);
+    --secondary-active: var(--pzh-ui-light-blue);
+    --secondary-foreground: var(--pzh-blue-500);
+
+    /* Text */
+    --text: var(--pzh-blue-900);
+    --text-muted: var(--pzh-gray-600);
+    --text-subtle: var(--pzh-gray-500);
+    --text-disabled: var(--pzh-gray-400);
+    --text-inverse: var(--pzh-white);
+
+    /* Borders */
+    --border: var(--pzh-gray-300);
+    --border-subtle: var(--pzh-gray-200);
+    --border-strong: var(--pzh-gray-500);
+
+    /* Inputs */
+    --input: var(--pzh-white);
+    --input-hover: var(--pzh-gray-100);
+    --input-disabled: var(--pzh-gray-200);
+    --input-border: var(--pzh-gray-600);
+
+    /* Info */
+    --info: var(--pzh-blue-500);
+    --info-foreground: var(--pzh-blue-900);
+    --info-background: var(--pzh-blue-10);
+    --info-border: var(--pzh-blue-100);
+
+    /* Success */
+    --success: var(--pzh-green-500);
+    --success-foreground: var(--pzh-green-900);
+    --success-background: var(--pzh-green-10);
+    --success-border: var(--pzh-green-100);
+
+    /* Warning */
+    --warning: var(--pzh-yellow-500);
+    --warning-foreground: var(--pzh-gray-700);
+    --warning-background: var(--pzh-yellow-10);
+    --warning-border: var(--pzh-yellow-100);
+
+    /* Destructive */
+    --destructive: var(--pzh-red-500);
+    --destructive-foreground: var(--pzh-red-900);
+    --destructive-background: var(--pzh-red-10);
+    --destructive-border: var(--pzh-red-100);
+
+    /* Links */
+    --link: var(--pzh-blue-500);
+    --link-hover: var(--pzh-blue-900);
+    --link-visited: var(--pzh-visited-link);
+
+    /* Focus */
+    --focus: var(--pzh-focus);
+
+    /* Overlay */
+    --backdrop: var(--pzh-backdrop);
+
+    /* Badges */
+    --badge-success: var(--pzh-badge-green);
+    --badge-warning: var(--pzh-badge-orange);
+    --badge-destructive: var(--pzh-badge-red);
+
+    /* ==========================================================================
+       Brand / decorative colors
+       ========================================================================== */
+
+    --brand-blue: var(--pzh-blue-500);
+    --brand-blue-light: var(--pzh-blue-100);
+    --brand-blue-dark: var(--pzh-blue-900);
+
+    --brand-red: var(--pzh-red-500);
+    --brand-red-light: var(--pzh-red-100);
+    --brand-red-dark: var(--pzh-red-900);
+
+    --brand-yellow: var(--pzh-yellow-500);
+    --brand-yellow-light: var(--pzh-yellow-100);
+    --brand-yellow-dark: var(--pzh-yellow-900);
+
+    --brand-green: var(--pzh-green-500);
+    --brand-green-light: var(--pzh-green-100);
+    --brand-green-dark: var(--pzh-green-900);
+
+    --brand-pink: var(--pzh-pink-500);
+    --brand-pink-light: var(--pzh-pink-100);
+    --brand-pink-dark: var(--pzh-pink-900);
+
+    --brand-orange: var(--pzh-orange-500);
+    --brand-orange-light: var(--pzh-orange-100);
+    --brand-orange-dark: var(--pzh-orange-900);
+
+    --brand-apple-green: var(--pzh-apple-green-500);
+    --brand-apple-green-light: var(--pzh-apple-green-100);
+    --brand-apple-green-dark: var(--pzh-apple-green-900);
+
+    --brand-purple: var(--pzh-purple-500);
+    --brand-purple-light: var(--pzh-purple-100);
+    --brand-purple-dark: var(--pzh-purple-900);
+
+    --brand-warm-gray: var(--pzh-warm-gray-500);
+    --brand-warm-gray-light: var(--pzh-warm-gray-100);
+    --brand-warm-gray-dark: var(--pzh-warm-gray-900);
+}

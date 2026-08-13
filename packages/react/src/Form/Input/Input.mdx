@@ -1,0 +1,160 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as InputStories from './Input.stories'
+
+<Meta of={InputStories} />
+
+# Input
+
+Een component voor het invoeren van tekst, cijfers of andere waarden.
+
+Het component is gebaseerd op de `Input` van React Aria Components en biedt consistente styling, toegankelijkheid en ondersteuning voor verschillende invoertypen.
+
+## Gebruik
+
+```tsx
+import { Input } from '@pzh-ui/react'
+
+export function Example() {
+    return <Input placeholder="Voer een waarde in" />
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={InputStories.Default} />
+
+<Controls of={InputStories.Default} />
+
+## Formaten
+
+Met de `size`-property bepaal je de hoogte en typografie van het invoerveld.
+
+Beschikbare formaten:
+
+- `l`
+- `m`
+
+<Canvas of={InputStories.Sizes} />
+
+```tsx
+<Input size="l" placeholder="Large input" />
+
+<Input size="m" placeholder="Medium input" />
+```
+
+## Invoertypen
+
+Het component ondersteunt alle standaard HTML input types.
+
+<Canvas of={InputStories.Email} />
+
+```tsx
+<Input type="email" placeholder="naam@voorbeeld.nl" />
+```
+
+Enkele veelgebruikte typen:
+
+- `text`
+- `email`
+- `password`
+- `search`
+- `tel`
+- `url`
+- `number`
+
+## Met een waarde
+
+Gebruik `defaultValue` voor ongecontroleerde componenten of `value` in combinatie met `onChange` voor gecontroleerde componenten.
+
+<Canvas of={InputStories.WithValue} />
+
+```tsx
+<Input defaultValue="Provincie Zuid-Holland" />
+```
+
+## Disabled
+
+Gebruik `disabled` om een invoerveld uit te schakelen.
+
+<Canvas of={InputStories.Disabled} />
+
+```tsx
+<Input disabled defaultValue="Deze waarde kan niet worden aangepast" />
+```
+
+Een disabled input:
+
+- kan geen focus ontvangen;
+- kan niet worden aangepast;
+- krijgt automatisch de disabled styling.
+
+## Read only
+
+Gebruik `readOnly` wanneer de gebruiker de waarde mag zien en selecteren, maar niet mag wijzigen.
+
+<Canvas of={InputStories.ReadOnly} />
+
+```tsx
+<Input readOnly defaultValue="PZH-2026-001" />
+```
+
+In tegenstelling tot een disabled input blijft een read-only input focusbaar.
+
+## Validatie
+
+Gebruik `aria-invalid` om een foutstatus weer te geven.
+
+<Canvas of={InputStories.Invalid} />
+
+```tsx
+<Input aria-invalid defaultValue="ongeldig@email" />
+```
+
+Het component toont automatisch de foutopmaak wanneer `aria-invalid` is ingesteld.
+
+## Opbouw
+
+Het component ondersteunt onder andere:
+
+- hover state
+- focus state
+- disabled state
+- read-only state
+- invalid state
+- meerdere input types
+- twee formaten (`l` en `m`)
+
+## Toegankelijkheid
+
+Het component is gebaseerd op React Aria Components en ondersteunt de standaard toegankelijkheidsfunctionaliteit van HTML-inputs.
+
+Gebruik altijd een zichtbaar label.
+
+```tsx
+<Field>
+    <FieldLabel htmlFor="email">E-mailadres</FieldLabel>
+
+    <Input id="email" type="email" />
+</Field>
+```
+
+Voor foutmeldingen combineer je `aria-invalid` met een beschrijvende foutmelding.
+
+```tsx
+<Field>
+    <FieldLabel htmlFor="email">E-mailadres</FieldLabel>
+
+    <Input id="email" aria-invalid aria-describedby="email-error" />
+
+    <FieldError id="email-error">Vul een geldig e-mailadres in.</FieldError>
+</Field>
+```
+
+### Richtlijnen
+
+- Gebruik altijd een `FieldLabel` of een ander toegankelijk label.
+- Gebruik `readOnly` wanneer de waarde zichtbaar maar niet wijzigbaar is.
+- Gebruik `disabled` alleen wanneer interactie volledig onmogelijk moet zijn.
+- Gebruik `aria-invalid` samen met een duidelijke foutmelding.
+- Kies `size="l"` als standaardformaat.
+- Gebruik `size="m"` voor compactere formulieren.

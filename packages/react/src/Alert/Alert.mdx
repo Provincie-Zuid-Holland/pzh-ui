@@ -1,0 +1,209 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as AlertStories from './Alert.stories'
+
+<Meta of={AlertStories} />
+
+# Alert
+
+Een component voor het tonen van contextuele meldingen, zoals informatie, waarschuwingen, bevestigingen en foutmeldingen.
+
+Een alert kan bestaan uit een titel, beschrijving, icoon en een optionele actie.
+
+## Gebruik
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Alert>
+            <AlertTitle>Informatie</AlertTitle>
+
+            <AlertDescription>
+                Je wijzigingen zijn succesvol opgeslagen.
+            </AlertDescription>
+        </Alert>
+    )
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={AlertStories.Default} />
+
+<Controls of={AlertStories.Default} />
+
+## Varianten
+
+Met de `variant`-property bepaal je de visuele uitstraling van de melding.
+
+Beschikbare varianten:
+
+- `default`
+- `warning`
+- `positive`
+- `negative`
+
+### Default
+
+<Canvas of={AlertStories.Default} />
+
+### Warning
+
+<Canvas of={AlertStories.Warning} />
+
+## Formaten
+
+Met de `size`-property bepaal je de afmetingen, typografie en witruimte van de alert.
+
+Beschikbare formaten:
+
+- `m`
+- `s`
+- `xs`
+
+```tsx
+<Alert size="s">
+    <AlertTitle>Informatie</AlertTitle>
+
+    <AlertDescription>Deze alert gebruikt het kleine formaat.</AlertDescription>
+</Alert>
+```
+
+## Met icoon
+
+Plaats een icoon als eerste child van de `Alert`.
+
+<Canvas of={AlertStories.WithIcon} />
+
+```tsx
+import { CircleInfoSolid } from '@pzh-ui/icons'
+import { Alert, AlertDescription, AlertTitle } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Alert>
+            <CircleInfoSolid size={16} className="min-w-4" />
+
+            <AlertTitle>Gepland onderhoud</AlertTitle>
+
+            <AlertDescription>
+                De applicatie is vanavond tussen 22:00 en 23:00 uur tijdelijk
+                niet beschikbaar.
+            </AlertDescription>
+        </Alert>
+    )
+}
+```
+
+## Alleen een titel
+
+Een beschrijving is optioneel.
+
+<Canvas of={AlertStories.TitleOnly} />
+
+## Links
+
+Links in de titel en beschrijving worden automatisch onderstreept.
+
+<Canvas of={AlertStories.WithLinks} />
+
+## Meerdere paragrafen
+
+`AlertDescription` ondersteunt meerdere paragrafen en lijsten.
+
+<Canvas of={AlertStories.MultipleParagraphs} />
+
+```tsx
+<Alert>
+    <AlertTitle>Installatie vereist</AlertTitle>
+
+    <AlertDescription>
+        <p>Installeer het pakket met de package manager van jouw keuze.</p>
+
+        <p>Importeer daarna het component in je applicatie.</p>
+    </AlertDescription>
+</Alert>
+```
+
+## Met actie
+
+Gebruik `AlertAction` om een actie rechtsboven in de alert te plaatsen.
+
+<Canvas of={AlertStories.WithAction} />
+
+```tsx
+import { XmarkLarge } from '@pzh-ui/icons'
+import { Alert, AlertAction, AlertDescription, AlertTitle } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Alert>
+            <AlertTitle>Documentatie beschikbaar</AlertTitle>
+
+            <AlertDescription>
+                Lees de migratiehandleiding voordat je de applicatie bijwerkt.
+            </AlertDescription>
+
+            <AlertAction>
+                <button type="button" aria-label="Sluiten">
+                    <XmarkLarge size={14} />
+                </button>
+            </AlertAction>
+        </Alert>
+    )
+}
+```
+
+## Opbouw
+
+Het component bestaat uit vier onderdelen.
+
+### `Alert`
+
+De container van de melding. Ondersteunt onder andere de properties `variant`, `size` en `role`.
+
+### `AlertTitle`
+
+Toont de titel van de melding.
+
+### `AlertDescription`
+
+Toont aanvullende informatie. Ondersteunt tekst, paragrafen, links en lijsten.
+
+### `AlertAction`
+
+Een optionele actie die rechtsboven in de alert wordt weergegeven.
+
+## Toegankelijkheid
+
+Standaard gebruikt `Alert` `role="status"`.
+
+Een statusmelding wordt op een niet-onderbrekende manier aangekondigd door schermlezers. Hierdoor is deze rol geschikt voor de meeste informatieve meldingen, bevestigingen en statusupdates.
+
+```tsx
+<Alert>
+    <AlertTitle>Je wijzigingen zijn opgeslagen.</AlertTitle>
+</Alert>
+```
+
+Gebruik `role="alert"` alleen wanneer een melding direct de aandacht van de gebruiker vereist.
+
+```tsx
+<Alert role="alert" variant="negative">
+    <AlertTitle>Opslaan mislukt</AlertTitle>
+
+    <AlertDescription>
+        Controleer je internetverbinding en probeer het opnieuw.
+    </AlertDescription>
+</Alert>
+```
+
+### Richtlijnen
+
+- Gebruik een duidelijke en beschrijvende titel.
+- Vertrouw niet uitsluitend op kleur om betekenis over te brengen.
+- Gebruik `role="alert"` alleen voor urgente meldingen.
+- Voorzie icon-only actieknoppen van een `aria-label`.
+- Gebruik betekenisvolle linkteksten.
+- Gebruik `AlertAction` alleen voor acties die direct betrekking hebben op de melding.

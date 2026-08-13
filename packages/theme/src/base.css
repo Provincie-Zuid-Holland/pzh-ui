@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'Karbon Regular';
+    src: url('./fonts/Karbon-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+    ascent-override: 90%;
+}
+
+@font-face {
+    font-family: 'Karbon Medium';
+    src: url('./fonts/Karbon-Medium.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+    ascent-override: 90%;
+}
+
+html {
+    height: 100%;
+    overflow: auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Karbon Regular', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--foreground);
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-bold,
+strong,
+b {
+    font-family: 'Karbon Medium', sans-serif;
+}
+
+.font-normal {
+    font-family: 'Karbon Regular', sans-serif;
+}

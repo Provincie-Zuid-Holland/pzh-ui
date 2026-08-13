@@ -1,0 +1,118 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as LabelStories from './Label.stories'
+
+<Meta of={LabelStories} />
+
+# Label
+
+Een component voor het tonen van een label bij een formulierveld.
+
+Gebruik `Label` om duidelijk te beschrijven welke informatie van de gebruiker wordt verwacht.
+
+## Gebruik
+
+```tsx
+import { Label } from '@pzh-ui/react'
+
+export function Example() {
+    return <Label htmlFor="name">Naam</Label>
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={LabelStories.Default} />
+
+<Controls of={LabelStories.Default} />
+
+## Formaten
+
+Met de `size`-property bepaal je de tekstgrootte van het label.
+
+Beschikbare formaten:
+
+- `l`
+- `m`
+
+<Canvas of={LabelStories.Sizes} />
+
+```tsx
+<Label size="l">Large label</Label>
+
+<Label size="m">Medium label</Label>
+```
+
+`l` is het standaardformaat.
+
+## Met invoerveld
+
+Gebruik `htmlFor` om het label te koppelen aan een formulierveld met hetzelfde `id`.
+
+<Canvas of={LabelStories.WithInput} />
+
+```tsx
+import { Label } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <div>
+            <Label htmlFor="name">Naam</Label>
+
+            <input id="name" type="text" />
+        </div>
+    )
+}
+```
+
+Wanneer de gebruiker op het label klikt, krijgt het gekoppelde formulierveld focus.
+
+## Aangepaste styling
+
+Gebruik `className` om aanvullende styling toe te voegen.
+
+<Canvas of={LabelStories.CustomClassName} />
+
+```tsx
+<Label className="text-pzh-green-500">Aangepast label</Label>
+```
+
+## Opbouw
+
+Het component gebruikt standaard:
+
+- blauwe tekst
+- vetgedrukte typografie
+- flex-layout
+- ruimte tussen meerdere children
+- een niet-selecteerbare labeltekst
+
+De beschikbare grootte wordt bepaald met de `size`-property.
+
+## Toegankelijkheid
+
+Gebruik duidelijke en beschrijvende labelteksten.
+
+Goed:
+
+```tsx
+<Label htmlFor="email">E-mailadres</Label>
+```
+
+Minder duidelijk:
+
+```tsx
+<Label htmlFor="email">Vul dit in</Label>
+```
+
+Gebruik placeholdertekst niet als vervanging voor een zichtbaar label.
+
+### Richtlijnen
+
+- Koppel een label altijd aan het bijbehorende formulierveld.
+- Gebruik `htmlFor` in combinatie met een overeenkomend `id` buiten React Aria form controls.
+- Laat React Aria de relatie beheren wanneer `Label` binnen een React Aria field-component wordt gebruikt.
+- Gebruik duidelijke en beschrijvende labelteksten.
+- Gebruik `size="l"` als standaardformaat.
+- Gebruik `size="m"` wanneer een compacter label nodig is.
+- Geef verplichte velden ook semantisch aan op het formulierveld.
+- Gebruik placeholdertekst niet als vervanging voor een label.

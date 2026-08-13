@@ -1,0 +1,211 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as NumberInputStories from './NumberInput.stories'
+
+<Meta of={NumberInputStories} />
+
+# NumberInput
+
+Een component voor het invoeren van numerieke waarden met knoppen om de waarde te verhogen of te verlagen.
+
+Het component is gebaseerd op `NumberField` van React Aria Components en gebruikt `InputGroup` voor de visuele opbouw.
+
+## Gebruik
+
+```tsx
+import { NumberInput } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <NumberInput defaultValue={10} minValue={0} maxValue={100} step={1} />
+    )
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={NumberInputStories.Default} />
+
+<Controls of={NumberInputStories.Default} />
+
+## Formaten
+
+Met de `size`-property bepaal je de hoogte, padding en typografie van het invoerveld.
+
+Beschikbare formaten:
+
+- `l`
+- `m`
+
+<Canvas of={NumberInputStories.Sizes} />
+
+```tsx
+<NumberInput size="l" defaultValue={10} />
+
+<NumberInput size="m" defaultValue={10} />
+```
+
+## Stapgrootte
+
+Gebruik `step` om te bepalen met hoeveel de waarde wordt verhoogd of verlaagd.
+
+```tsx
+<NumberInput defaultValue={10} step={5} />
+```
+
+## Minimum en maximum
+
+Gebruik `minValue` en `maxValue` om de toegestane waarde te begrenzen.
+
+```tsx
+<NumberInput defaultValue={10} minValue={0} maxValue={100} />
+```
+
+De increment- en decrementknoppen respecteren automatisch deze grenzen.
+
+## Placeholder
+
+Wanneer het veld leeg is, wordt standaard `0` als placeholder weergegeven.
+
+```tsx
+<NumberInput />
+```
+
+De placeholder is uitsluitend een visuele hint. Er wordt pas een waarde ingesteld zodra de gebruiker een getal invoert of de stapknoppen gebruikt.
+
+## Decimalen
+
+Het component ondersteunt ook decimale waarden.
+
+<Canvas of={NumberInputStories.Decimal} />
+
+```tsx
+<NumberInput defaultValue={12.5} step={0.5} />
+```
+
+## Valuta
+
+Gebruik `formatOptions` om waarden als valuta weer te geven.
+
+<Canvas of={NumberInputStories.Currency} />
+
+```tsx
+<NumberInput
+    defaultValue={1250}
+    formatOptions={{
+        style: 'currency',
+        currency: 'EUR',
+    }}
+/>
+```
+
+## Percentage
+
+Ook percentages kunnen worden weergegeven.
+
+<Canvas of={NumberInputStories.Percentage} />
+
+```tsx
+<NumberInput
+    defaultValue={25}
+    step={5}
+    formatOptions={{
+        style: 'percent',
+    }}
+/>
+```
+
+## Disabled
+
+Gebruik `disabled` om het component uit te schakelen.
+
+<Canvas of={NumberInputStories.Disabled} />
+
+```tsx
+<NumberInput defaultValue={25} disabled />
+```
+
+## Read only
+
+Gebruik `readOnly` wanneer de gebruiker de waarde wel mag zien, maar niet mag wijzigen.
+
+<Canvas of={NumberInputStories.ReadOnly} />
+
+```tsx
+<NumberInput defaultValue={25} readOnly />
+```
+
+## Validatie
+
+Gebruik de validatiefunctionaliteit van React Aria om een foutstatus weer te geven.
+
+<Canvas of={NumberInputStories.Invalid} />
+
+```tsx
+<NumberInput defaultValue={150} maxValue={100} validationState="invalid" />
+```
+
+## Gebruik binnen een Field
+
+Combineer `NumberInput` met `Field` voor een volledig formulieronderdeel.
+
+```tsx
+import { Field, FieldDescription, FieldLabel, NumberInput } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Field className="flex-col">
+            <FieldLabel htmlFor="amount">Aantal</FieldLabel>
+
+            <FieldDescription>
+                Vul een waarde tussen 0 en 100 in.
+            </FieldDescription>
+
+            <NumberInput id="amount" minValue={0} maxValue={100} />
+        </Field>
+    )
+}
+```
+
+## Opbouw
+
+Het component bestaat uit meerdere onderdelen:
+
+- `NumberField` beheert de waarde, validatie en formatting.
+- `InputGroup` verzorgt de visuele container.
+- `InputGroupInput` bevat het invoerveld.
+- Twee knoppen verhogen of verlagen de waarde.
+
+De numerieke waarde wordt rechts uitgelijnd en gebruikt `tabular-nums`, zodat cijfers niet verspringen tijdens het wijzigen van de waarde.
+
+## Toegankelijkheid
+
+Het component is gebaseerd op React Aria `NumberField` en ondersteunt standaard:
+
+- toetsenbordbediening;
+- schermlezers;
+- validatie;
+- numerieke parsing;
+- internationale formattering.
+
+Gebruik altijd een zichtbaar label.
+
+```tsx
+<Field>
+    <FieldLabel htmlFor="amount">Aantal</FieldLabel>
+
+    <NumberInput id="amount" minValue={0} maxValue={100} />
+</Field>
+```
+
+### Richtlijnen
+
+- Gebruik `NumberInput` uitsluitend voor numerieke waarden.
+- Gebruik `Input` voor vrije tekst.
+- Gebruik `minValue` en `maxValue` wanneer een bereik bekend is.
+- Gebruik `step` voor vaste stapgroottes.
+- Gebruik `formatOptions` voor valuta, percentages of andere numerieke notaties.
+- Gebruik `readOnly` wanneer de waarde zichtbaar maar niet wijzigbaar moet zijn.
+- Gebruik `disabled` alleen wanneer interactie volledig onmogelijk moet zijn.
+- Gebruik altijd een duidelijk label.
+- Kies `size="l"` als standaardformaat.
+- Gebruik `size="m"` voor compactere formulieren.

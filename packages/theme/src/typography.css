@@ -1,0 +1,48 @@
+@theme {
+    /* Breakpoints */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1440px;
+
+    /* Body */
+    --text-xs: 0.875rem;
+    --text-xs--line-height: 150%;
+
+    --text-s: 1rem;
+    --text-s--line-height: 150%;
+
+    --text-m: 1.25rem;
+    --text-m--line-height: 1.875rem;
+
+    --text-l: 1.5rem;
+    --text-l--line-height: 1.875rem;
+
+    /* Headings */
+    --text-heading-xs: 1.125rem;
+    --text-heading-xs--line-height: 125%;
+
+    --text-heading-s: 1.25rem;
+    --text-heading-s--line-height: 125%;
+
+    --text-heading-m: 1.5rem;
+    --text-heading-m--line-height: 125%;
+
+    --text-heading-l: 2rem;
+    --text-heading-l--line-height: 125%;
+
+    --text-heading-xl: 2.5rem;
+    --text-heading-xl--line-height: 125%;
+
+    --text-heading-xxl: 3rem;
+    --text-heading-xxl--line-height: 125%;
+
+    --text-heading-xxxl: 4rem;
+    --text-heading-xxxl--line-height: 110%;
+
+    /* Shadows */
+    --shadow-card:
+        0 18px 60px rgb(0 0 0 / 7%), 0 4.02054px 13.4018px rgb(0 0 0 / 4.17%),
+        0 1.19702px 3.99006px rgb(0 0 0 / 2.83%);
+}

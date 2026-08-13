@@ -1,0 +1,270 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as ButtonStories from './Button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Een component voor acties en navigatie.
+
+Gebruik `Button` voor acties binnen de applicatie en `LinkButton` wanneer de gebruiker naar een andere pagina of locatie navigeert.
+
+## Gebruik
+
+```tsx
+import { Button } from '@pzh-ui/react'
+
+export function Example() {
+    return <Button>Opslaan</Button>
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={ButtonStories.Default} />
+
+<Controls of={ButtonStories.Default} />
+
+## Varianten
+
+Met de `variant`-property bepaal je de visuele uitstraling en het belang van de knop.
+
+Beschikbare varianten:
+
+- `primary`
+- `secondary`
+- `cta`
+- `diapositive`
+- `caution`
+- `default`
+
+### Primary
+
+Gebruik `primary` voor de belangrijkste actie binnen een pagina of formulier.
+
+<Canvas of={ButtonStories.Default} />
+
+```tsx
+<Button variant="primary">Opslaan</Button>
+```
+
+### Secondary
+
+Gebruik `secondary` voor een aanvullende of minder prominente actie.
+
+<Canvas of={ButtonStories.Secondary} />
+
+```tsx
+<Button variant="secondary">Annuleren</Button>
+```
+
+### Call to action
+
+Gebruik `cta` voor een actie die extra nadruk moet krijgen.
+
+<Canvas of={ButtonStories.CallToAction} />
+
+```tsx
+<Button variant="cta">Aan de slag</Button>
+```
+
+### Diapositive
+
+Gebruik `diapositive` op een donkere achtergrond.
+
+<Canvas of={ButtonStories.Diapositive} />
+
+```tsx
+<div className="bg-pzh-blue-900 p-4">
+    <Button variant="diapositive">Meer informatie</Button>
+</div>
+```
+
+### Caution
+
+Gebruik `caution` voor destructieve of risicovolle acties.
+
+<Canvas of={ButtonStories.Caution} />
+
+```tsx
+<Button variant="caution">Verwijderen</Button>
+```
+
+### Default
+
+De `default`-variant voegt geen styling toe.
+
+Gebruik deze alleen wanneer de styling volledig door de consumer wordt bepaald.
+
+```tsx
+<Button variant="default" className="...">
+    Eigen styling
+</Button>
+```
+
+## Formaten
+
+Met de `size`-property bepaal je de hoogte, padding en typografie van de knop.
+
+Beschikbare formaten:
+
+- `l`
+- `m`
+- `s`
+
+<Canvas of={ButtonStories.Sizes} />
+
+```tsx
+<Button size="l">Large</Button>
+
+<Button size="m">Medium</Button>
+
+<Button size="s">Small</Button>
+```
+
+Gebruik binnen een interface zoveel mogelijk één consistent formaat.
+
+## Varianten overzicht
+
+<Canvas of={ButtonStories.Variants} />
+
+## Disabled
+
+Gebruik `isDisabled` wanneer een actie tijdelijk niet beschikbaar is.
+
+<Canvas of={ButtonStories.Disabled} />
+
+```tsx
+<Button isDisabled>Opslaan</Button>
+```
+
+Een disabled button kan niet worden geactiveerd en wordt automatisch als disabled aangekondigd aan ondersteunende technologie.
+
+## Pending
+
+Gebruik `isPending` wanneer een actie wordt uitgevoerd en niet opnieuw gestart mag worden.
+
+<Canvas of={ButtonStories.Pending} />
+
+```tsx
+<Button isPending>Opslaan</Button>
+```
+
+Tijdens het laden wordt de inhoud vervangen door een spinner en is de knop tijdelijk niet beschikbaar.
+
+### Pending per variant
+
+<Canvas of={ButtonStories.WithPendingVariants} />
+
+## Met een icoon
+
+Plaats een icoon als eerste of laatste child van de button.
+
+<Canvas of={ButtonStories.WithIcon} />
+
+```tsx
+import { ArrowRight, CirclePlus } from '@pzh-ui/icons'
+import { Button } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <>
+            <Button>
+                <CirclePlus data-icon="inline-start" />
+                Toevoegen
+            </Button>
+
+            <Button>
+                Volgende
+                <ArrowRight data-icon="inline-end" />
+            </Button>
+        </>
+    )
+}
+```
+
+## LinkButton
+
+Gebruik `LinkButton` voor navigatie die visueel als een button moet worden weergegeven.
+
+<Canvas of={ButtonStories.AsLink} />
+
+```tsx
+import { LinkButton } from '@pzh-ui/react'
+
+export function Example() {
+    return <LinkButton href="/documenten">Bekijk documenten</LinkButton>
+}
+```
+
+Gebruik `Button` voor acties en `LinkButton` voor navigatie.
+
+## Interactie states
+
+De button ondersteunt de volgende interactiestates:
+
+- Default
+- Hover
+- Active
+- Focus
+- Disabled
+- Pending
+
+Hover-, active- en focus-states worden automatisch toegepast tijdens interactie.
+
+De active-state bevat een subtiele press-animatie waardoor de knop visueel wordt ingedrukt.
+
+## Events
+
+De component is gebaseerd op React Aria Components.
+
+Gebruik daarom `onPress` voor interacties.
+
+```tsx
+<Button onPress={() => console.log('Pressed')}>Opslaan</Button>
+```
+
+`onPress` werkt consistent voor muis, touch, toetsenbord en screenreaders.
+
+## Toegankelijkheid
+
+Gebruik duidelijke, beschrijvende labels.
+
+Goed:
+
+```tsx
+<Button>Document opslaan</Button>
+```
+
+Minder goed:
+
+```tsx
+<Button>Klik hier</Button>
+```
+
+Voor icon-only buttons is een toegankelijke naam verplicht.
+
+```tsx
+<Button aria-label="Sluiten">
+    <CloseIcon />
+</Button>
+```
+
+Gebruik `isDisabled` om een knop uit te schakelen.
+
+```tsx
+<Button isDisabled>Opslaan</Button>
+```
+
+### Richtlijnen
+
+- Gebruik `Button` voor acties en `LinkButton` voor navigatie.
+- Gebruik `primary` voor de belangrijkste actie.
+- Gebruik `secondary` voor ondersteunende acties.
+- Gebruik `cta` alleen wanneer extra nadruk gewenst is.
+- Gebruik `caution` voor destructieve acties.
+- Gebruik `diapositive` uitsluitend op donkere achtergronden.
+- Gebruik `isPending` om dubbele acties te voorkomen.
+- Geef icon-only buttons altijd een `aria-label`.
+- Verwijder de focusindicator niet.
+- Gebruik duidelijke, actiegerichte buttonteksten.

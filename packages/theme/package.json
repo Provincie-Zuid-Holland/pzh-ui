@@ -1,0 +1,33 @@
+{
+    "name": "@pzh-ui/theme",
+    "version": "0.0.1",
+    "description": "Contains default styling for projects within Provincie Zuid-Holland.",
+    "homepage": "https://github.com/Provincie-Zuid-Holland/pzh-ui#readme",
+    "bugs": {
+        "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Provincie-Zuid-Holland/pzh-ui.git"
+    },
+    "license": "ISC",
+    "sideEffects": [
+        "**/*.css"
+    ],
+    "files": [
+        "src"
+    ],
+    "exports": {
+        ".": "./src/index.css",
+        "./base": "./src/base.css",
+        "./tailwind": "./src/tailwind.css",
+        "./typography": "./src/typography.css",
+        "./animations": "./src/animations.css",
+        "./prose": "./src/prose.css",
+        "./themes/default": "./src/themes/default.css"
+    },
+    "peerDependencies": {
+        "@tailwindcss/typography": "^0.5.20",
+        "tailwindcss": "^4.3.3"
+    }
+}

@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 
-import '../../css/src/tailwind.src.css'
+import './preview.css'
 
 const preview: Preview = {
     parameters: {

@@ -1,0 +1,293 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import * as FieldStories from './Field.stories'
+
+<Meta of={FieldStories} />
+
+# Field
+
+Een component voor het groeperen van een label, beschrijving, invoerveld en foutmelding.
+
+Gebruik `Field` als basis voor formuliervelden zodat labels, beschrijvingen en validatiemeldingen op een consistente manier worden opgebouwd.
+
+## Gebruik
+
+```tsx
+import { Field, FieldDescription, FieldLabel, Input } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Field className="flex-col">
+            <FieldLabel htmlFor="name">Naam</FieldLabel>
+
+            <FieldDescription>Vul je volledige naam in.</FieldDescription>
+
+            <Input id="name" name="name" placeholder="Voor- en achternaam" />
+        </Field>
+    )
+}
+```
+
+## Voorbeeld
+
+<Canvas of={FieldStories.Default} />
+
+## Label
+
+Gebruik `FieldLabel` voor het label van het formulierveld.
+
+Koppel het label aan het invoerveld met `htmlFor` en een overeenkomend `id`.
+
+```tsx
+<Field>
+    <FieldLabel htmlFor="name">Naam</FieldLabel>
+
+    <Input id="name" name="name" />
+</Field>
+```
+
+## Beschrijving
+
+Gebruik `FieldDescription` voor aanvullende uitleg over het veld.
+
+<Canvas of={FieldStories.Default} />
+
+```tsx
+<Field className="flex-col">
+    <FieldLabel htmlFor="name">Naam</FieldLabel>
+
+    <FieldDescription>Vul je volledige naam in.</FieldDescription>
+
+    <Input id="name" name="name" />
+</Field>
+```
+
+Een beschrijving is optioneel.
+
+<Canvas of={FieldStories.WithoutDescription} />
+
+## Verplicht veld
+
+Gebruik de `required`-property op `FieldLabel` om een sterretje achter het label te tonen.
+
+<Canvas of={FieldStories.Required} />
+
+```tsx
+<Field className="flex-col">
+    <FieldLabel htmlFor="email" required>
+        E-mailadres
+    </FieldLabel>
+
+    <FieldDescription>
+        We gebruiken je e-mailadres om contact met je op te nemen.
+    </FieldDescription>
+
+    <Input id="email" name="email" type="email" required />
+</Field>
+```
+
+Gebruik `required` ook op het daadwerkelijke formulierveld zodat de verplichte status semantisch wordt doorgegeven.
+
+## Validatie
+
+Gebruik `FieldError` voor foutmeldingen bij een formulierveld.
+
+<Canvas of={FieldStories.Invalid} />
+
+```tsx
+<Field className="flex-col gap-0">
+    <div className="flex flex-col gap-2">
+        <FieldLabel htmlFor="email" required>
+            E-mailadres
+        </FieldLabel>
+
+        <FieldDescription>Vul een geldig e-mailadres in.</FieldDescription>
+
+        <Input
+            id="email"
+            name="email"
+            type="email"
+            aria-invalid
+            aria-describedby="email-error"
+        />
+    </div>
+
+    <FieldError id="email-error">Vul een geldig e-mailadres in.</FieldError>
+</Field>
+```
+
+Gebruik `aria-invalid` op het formulierveld en verbind de foutmelding met `aria-describedby`.
+
+## FieldError
+
+`FieldError` ondersteunt zowel children als een lijst met errors.
+
+### Met children
+
+```tsx
+<FieldError>Dit veld is verplicht.</FieldError>
+```
+
+### Met één error
+
+```tsx
+<FieldError
+    errors={[
+        {
+            message: 'Dit veld is verplicht.',
+        },
+    ]}
+/>
+```
+
+### Met meerdere errors
+
+Wanneer meerdere unieke foutmeldingen worden meegegeven, worden deze als lijst weergegeven.
+
+```tsx
+<FieldError
+    errors={[
+        {
+            message: 'Dit veld is verplicht.',
+        },
+        {
+            message: 'De waarde is ongeldig.',
+        },
+    ]}
+/>
+```
+
+Dubbele foutmeldingen worden automatisch samengevoegd.
+
+## Disabled
+
+Gebruik `disabled` op het formulierveld wanneer invoer niet mogelijk is.
+
+<Canvas of={FieldStories.Disabled} />
+
+```tsx
+<Field className="flex-col" data-disabled="true">
+    <FieldLabel htmlFor="username">Gebruikersnaam</FieldLabel>
+
+    <FieldDescription>
+        Dit veld kan momenteel niet worden aangepast.
+    </FieldDescription>
+
+    <Input id="username" name="username" disabled />
+</Field>
+```
+
+`data-disabled="true"` kan op `Field` worden gebruikt om child-componenten te laten reageren op de disabled state.
+
+## Read only
+
+Gebruik `readOnly` wanneer de waarde zichtbaar en selecteerbaar moet blijven, maar niet aangepast mag worden.
+
+<Canvas of={FieldStories.ReadOnly} />
+
+```tsx
+<Field className="flex-col">
+    <FieldLabel htmlFor="reference">Referentienummer</FieldLabel>
+
+    <FieldDescription>
+        Dit nummer wordt automatisch gegenereerd.
+    </FieldDescription>
+
+    <Input
+        id="reference"
+        name="reference"
+        defaultValue="PZH-2026-001"
+        readOnly
+    />
+</Field>
+```
+
+## Opbouw
+
+De component bestaat uit vier onderdelen.
+
+### `Field`
+
+De container van het volledige formulierveld.
+
+Standaard gebruikt `Field` `role="group"`.
+
+### `FieldLabel`
+
+Het label dat bij het invoerveld hoort.
+
+Ondersteunt daarnaast de `required`-property voor het tonen van een verplicht-indicator.
+
+### `FieldDescription`
+
+Optionele aanvullende informatie over het veld.
+
+Kan ook links bevatten.
+
+```tsx
+<FieldDescription>
+    Lees de <a href="#">instructies</a> voor meer informatie.
+</FieldDescription>
+```
+
+### `FieldError`
+
+Toont een foutmelding als negatieve `Alert`.
+
+De foutmelding gebruikt `role="alert"` zodat belangrijke validatiefouten door ondersteunende technologie kunnen worden aangekondigd.
+
+## Toegankelijkheid
+
+Koppel `FieldLabel` altijd aan het bijbehorende formulierveld.
+
+```tsx
+<FieldLabel htmlFor="email">
+    E-mailadres
+</FieldLabel>
+
+<Input
+    id="email"
+    name="email"
+/>
+```
+
+Koppel foutmeldingen met `aria-describedby`.
+
+```tsx
+<Input
+    id="email"
+    aria-invalid
+    aria-describedby="email-error"
+/>
+
+<FieldError id="email-error">
+    Vul een geldig e-mailadres in.
+</FieldError>
+```
+
+Gebruik `required` zowel visueel op `FieldLabel` als semantisch op het daadwerkelijke formulierveld.
+
+```tsx
+<FieldLabel
+    htmlFor="email"
+    required>
+    E-mailadres
+</FieldLabel>
+
+<Input
+    id="email"
+    required
+/>
+```
+
+### Richtlijnen
+
+- Gebruik `Field` als container voor één logisch formulierveld.
+- Gebruik altijd een duidelijk en beschrijvend `FieldLabel`.
+- Gebruik `FieldDescription` alleen wanneer aanvullende uitleg nuttig is.
+- Koppel labels via `htmlFor` en `id`.
+- Gebruik `required` ook op het daadwerkelijke formulierveld.
+- Gebruik `aria-invalid` voor ongeldige invoer.
+- Verbind foutmeldingen met `aria-describedby`.
+- Gebruik `FieldError` voor duidelijke validatiemeldingen.
+- Gebruik `disabled` wanneer interactie volledig niet mogelijk is.
+- Gebruik `readOnly` wanneer de waarde zichtbaar maar niet wijzigbaar moet zijn.

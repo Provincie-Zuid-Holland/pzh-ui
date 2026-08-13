@@ -1,46 +1,168 @@
-import {
-    IconGallery,
-    IconItem,
-    Meta,
-    Title,
-} from '@storybook/addon-docs/blocks'
+import { Meta, Source } from '@storybook/addon-docs/blocks'
 
 import * as Icons from '../../../icons/src'
 
 <Meta title="Bouwstenen/Iconen" />
 
-# Iconen
+<div className="max-w-7xl">
 
-Dit zijn alle iconen die gebruikt kunnen worden binnen de projecten van Provincie Zuid-Holland.
+<h1 className="text-foreground mt-0 mb-4 text-4xl font-bold">Iconen</h1>
 
-<br />
+<div className="max-w-3xl text-base leading-7 text-text-muted">
+    <p className="mt-0">
+        De iconenset van Provincie Zuid-Holland bevat herbruikbare
+        React-componenten voor navigatie, acties, statussen en ondersteunende
+        visuele communicatie.
+    </p>
 
-<IconGallery
-    style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3,minmax(0,1fr))',
-    }}>
-    {Object.values(Icons).map((IconComponent, index) => {
-        return (
-            <IconItem key={index} name={IconComponent.displayName}>
-                <IconComponent />
-            </IconItem>
-        )
-    })}
-</IconGallery>
+    <p className="mb-0">
+        Alle iconen zijn beschikbaar via het pakket{' '}
+        <code>@pzh-ui/icons</code> en kunnen direct in React-projecten worden
+        geïmporteerd.
+    </p>
 
-<br />
+</div>
 
-## Usage
+<div className="sb-unstyled my-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+    <div className="rounded-lg border border-border-subtle bg-surface-muted p-5">
+        <span className="mb-1 block text-3xl font-bold leading-none text-primary">
+            {Object.keys(Icons).length}
+        </span>
 
-[![npm version](https://img.shields.io/npm/v/@pzh-ui/icons.svg?label=@pzh-ui%2Ficons)](https://npmjs.com/package/@pzh-ui/icons)
+        <span className="text-sm text-text-muted">
+            Beschikbare iconen
+        </span>
+    </div>
 
-`yarn add @pzh-ui/icons`
+    <div className="rounded-lg border border-border-subtle bg-surface-muted p-5">
+        <span className="mb-1 block text-3xl font-bold leading-none text-primary">
+            React
+        </span>
 
-```jsx
-import { Check } from '@pzh-ui/icons'
+        <span className="text-sm text-text-muted">
+            Componenten
+        </span>
+    </div>
 
-function Page() {
-    return <Check size={20} />
-}
-```
+    <div className="rounded-lg border border-border-subtle bg-surface-muted p-5">
+        <span className="mb-1 block text-3xl font-bold leading-none text-primary">
+            SVG
+        </span>
+
+        <span className="text-sm text-text-muted">
+            Schaalbaar en scherp
+        </span>
+    </div>
+
+</div>
+
+<section className="mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Installatie en gebruik
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Installeer het iconenpakket en importeer alleen de iconen die binnen een
+        component of pagina nodig zijn.
+    </p>
+
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <article className="min-w-0 rounded-lg border border-border-subtle bg-surface p-5">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                <h3 className="m-0 text-lg font-bold text-foreground">
+                    Installeren
+                </h3>
+
+                <a
+                    className="inline-flex leading-none"
+                    href="https://npmjs.com/package/@pzh-ui/icons"
+                    target="_blank"
+                    rel="noreferrer">
+                    <img
+                        src="https://img.shields.io/npm/v/@pzh-ui/icons.svg?label=@pzh-ui%2Ficons"
+                        alt="Versie van het @pzh-ui/icons-pakket op npm"
+                    />
+                </a>
+            </div>
+
+            <p className="mt-0 leading-7 text-text-muted">
+                Voeg het pakket toe aan het project:
+            </p>
+
+            <Source
+                language="bash"
+                code="yarn add @pzh-ui/icons"
+            />
+        </article>
+
+        <article className="min-w-0 rounded-lg border border-border-subtle bg-surface p-5">
+            <h3 className="mb-4 mt-0 text-lg font-bold text-foreground">
+                Importeren
+            </h3>
+
+            <p className="mt-0 leading-7 text-text-muted">
+                Importeer een icoon als React-component:
+            </p>
+
+            <Source
+                language="tsx"
+                code={[
+                    "import { Check } from '@pzh-ui/icons'",
+                    '',
+                    'function Page() {',
+                    '    return <Check size={20} />',
+                    '}',
+                ].join('\n')}
+            />
+        </article>
+    </div>
+
+    <div className="mt-6! rounded-r-md border-l-4 border-info-border bg-info-background px-5 py-4 leading-7 text-info-foreground">
+        <strong>
+            Toegankelijkheid:
+        </strong>{' '}
+        decoratieve iconen hoeven niet door screenreaders te worden
+        voorgelezen. Een interactieve knop met alleen een icoon moet altijd een
+        toegankelijke naam hebben, bijvoorbeeld met een{' '}
+        <code>aria-label</code>.
+    </div>
+
+</section>
+
+<section className="mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Beschikbare iconen
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        De naam onder ieder icoon komt overeen met de naam die gebruikt wordt
+        bij het importeren.
+    </p>
+
+    <div className="sb-unstyled grid grid-cols-2 gap-2 min-[400px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9">
+        {Object.entries(Icons)
+            .sort(([firstName], [secondName]) =>
+                firstName.localeCompare(secondName)
+            )
+            .map(([iconName, IconComponent]) => (
+                <div
+                    className="group flex min-h-24 min-w-0 flex-col items-center justify-center gap-2 rounded-lg border border-border-subtle bg-surface px-2 py-3 text-center transition-colors hover:border-info-border hover:bg-info-background"
+                    key={iconName}
+                    title={iconName}>
+                    <span className="flex size-8 items-center justify-center text-primary">
+                        <IconComponent
+                            size={24}
+                            aria-hidden="true"
+                        />
+                    </span>
+
+                    <span className="block w-full truncate text-sm leading-4 text-text-muted">
+                        {iconName}
+                    </span>
+                </div>
+            ))}
+    </div>
+
+</section>
+
+</div>

@@ -1,0 +1,329 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import * as InputGroupStories from './InputGroup.stories'
+
+<Meta of={InputGroupStories} />
+
+# InputGroup
+
+Een component voor invoervelden met aanvullende content vóór, na, boven of onder de invoer.
+
+Gebruik `InputGroup` wanneer een input gecombineerd moet worden met bijvoorbeeld een eenheid, icoon, prefix, suffix of actieknop.
+
+## Gebruik
+
+```tsx
+import {
+    InputGroup,
+    InputGroupAddon,
+    InputGroupInput,
+    InputGroupText,
+} from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <InputGroup>
+            <InputGroupAddon align="inline-start">
+                <InputGroupText>€</InputGroupText>
+            </InputGroupAddon>
+
+            <InputGroupInput aria-label="Bedrag" placeholder="0,00" />
+        </InputGroup>
+    )
+}
+```
+
+## Voorbeeld
+
+<Canvas of={InputGroupStories.Default} />
+
+## Voorvoegsel
+
+Gebruik `align="inline-start"` om aanvullende content vóór het invoerveld te plaatsen.
+
+<Canvas of={InputGroupStories.Default} />
+
+```tsx
+<InputGroup>
+    <InputGroupAddon align="inline-start">
+        <InputGroupText>€</InputGroupText>
+    </InputGroupAddon>
+
+    <InputGroupInput aria-label="Bedrag" placeholder="0,00" />
+</InputGroup>
+```
+
+## Achtervoegsel
+
+Gebruik `align="inline-end"` om aanvullende content achter het invoerveld te plaatsen.
+
+<Canvas of={InputGroupStories.WithTrailingText} />
+
+```tsx
+<InputGroup>
+    <InputGroupInput aria-label="Gewicht" placeholder="0" />
+
+    <InputGroupAddon align="inline-end">
+        <InputGroupText>kg</InputGroupText>
+    </InputGroupAddon>
+</InputGroup>
+```
+
+## Voor- en achtervoegsel
+
+Een `InputGroup` kan meerdere addons bevatten.
+
+<Canvas of={InputGroupStories.WithLeadingAndTrailingText} />
+
+```tsx
+<InputGroup>
+    <InputGroupAddon align="inline-start">
+        <InputGroupText>https://</InputGroupText>
+    </InputGroupAddon>
+
+    <InputGroupInput aria-label="Website" placeholder="voorbeeld.nl" />
+
+    <InputGroupAddon align="inline-end">
+        <InputGroupText>.nl</InputGroupText>
+    </InputGroupAddon>
+</InputGroup>
+```
+
+## Met icoon
+
+Een addon kan ook een icoon bevatten.
+
+<Canvas of={InputGroupStories.WithIcon} />
+
+```tsx
+import { MagnifyingGlass } from '@pzh-ui/icons'
+;<InputGroup>
+    <InputGroupAddon align="inline-start">
+        <MagnifyingGlass />
+    </InputGroupAddon>
+
+    <InputGroupInput aria-label="Zoeken" placeholder="Zoeken..." />
+</InputGroup>
+```
+
+## Met knop
+
+Gebruik `InputGroupButton` voor een actie die direct bij de invoer hoort.
+
+<Canvas of={InputGroupStories.WithButton} />
+
+```tsx
+<InputGroup>
+    <InputGroupInput aria-label="Zoeken" placeholder="Zoeken..." />
+
+    <InputGroupAddon align="inline-end">
+        <InputGroupButton>Zoeken</InputGroupButton>
+    </InputGroupAddon>
+</InputGroup>
+```
+
+## Met icoonknop
+
+Gebruik bij een knop die alleen een icoon bevat altijd een toegankelijk label.
+
+<Canvas of={InputGroupStories.WithIconButton} />
+
+```tsx
+import { MagnifyingGlass } from '@pzh-ui/icons'
+;<InputGroup>
+    <InputGroupInput aria-label="Zoeken" placeholder="Zoeken..." />
+
+    <InputGroupAddon align="inline-end">
+        <InputGroupButton variant="secondary" aria-label="Zoeken">
+            <MagnifyingGlass />
+        </InputGroupButton>
+    </InputGroupAddon>
+</InputGroup>
+```
+
+## Boven de input
+
+Gebruik `align="block-start"` om aanvullende content boven het invoerveld te plaatsen.
+
+<Canvas of={InputGroupStories.BlockStart} />
+
+```tsx
+<InputGroup>
+    <InputGroupAddon align="block-start">
+        <InputGroupText>https://www.zuid-holland.nl/</InputGroupText>
+    </InputGroupAddon>
+
+    <InputGroupInput aria-label="URL" placeholder="pagina" />
+</InputGroup>
+```
+
+## Onder de input
+
+Gebruik `align="block-end"` om aanvullende content onder het invoerveld te plaatsen.
+
+<Canvas of={InputGroupStories.BlockEnd} />
+
+```tsx
+<InputGroup>
+    <InputGroupInput aria-label="Gebruikersnaam" placeholder="Gebruikersnaam" />
+
+    <InputGroupAddon align="block-end">
+        <InputGroupText>Maximaal 50 tekens</InputGroupText>
+    </InputGroupAddon>
+</InputGroup>
+```
+
+## Disabled
+
+De disabled state wordt bepaald door het invoerveld.
+
+<Canvas of={InputGroupStories.Disabled} />
+
+```tsx
+<InputGroup>
+    <InputGroupAddon align="inline-start">
+        <InputGroupText>€</InputGroupText>
+    </InputGroupAddon>
+
+    <InputGroupInput aria-label="Bedrag" defaultValue="123,45" disabled />
+</InputGroup>
+```
+
+Wanneer het invoerveld disabled is, krijgt de volledige groep automatisch de disabled styling.
+
+## Validatie
+
+Gebruik `aria-invalid` op `InputGroupInput` om de foutstatus op de volledige groep toe te passen.
+
+<Canvas of={InputGroupStories.Invalid} />
+
+```tsx
+<InputGroup>
+    <InputGroupAddon align="inline-start">
+        <InputGroupText>€</InputGroupText>
+    </InputGroupAddon>
+
+    <InputGroupInput
+        aria-label="Bedrag"
+        aria-invalid
+        aria-describedby="amount-error"
+    />
+</InputGroup>
+
+<FieldError id="amount-error">
+    Dit veld is onjuist.
+</FieldError>
+```
+
+## Meer voorbeelden
+
+<Canvas of={InputGroupStories.Examples} />
+
+## Formaten
+
+`InputGroup` ondersteunt dezelfde formaten als `Input`.
+
+Beschikbare formaten:
+
+- `l`
+- `m`
+
+```tsx
+<InputGroup size="l">
+    <InputGroupInput aria-label="Large input" />
+</InputGroup>
+
+<InputGroup size="m">
+    <InputGroupInput aria-label="Medium input" />
+</InputGroup>
+```
+
+## Opbouw
+
+Het component bestaat uit vijf onderdelen.
+
+### `InputGroup`
+
+De container van de complete invoer. Deze verzorgt de border, achtergrond, focus state en validatie.
+
+### `InputGroupInput`
+
+Het daadwerkelijke invoerveld.
+
+De focus van dit element wordt automatisch weergegeven op de volledige `InputGroup`.
+
+### `InputGroupAddon`
+
+Container voor aanvullende content.
+
+Ondersteunde posities:
+
+- `inline-start`
+- `inline-end`
+- `block-start`
+- `block-end`
+
+### `InputGroupText`
+
+Gebruik voor tekstuele aanvullingen zoals:
+
+- valuta
+- eenheden
+- prefixes
+- suffixes
+
+### `InputGroupButton`
+
+Een knop die onderdeel is van de inputgroep.
+
+## Toegankelijkheid
+
+Gebruik altijd een zichtbaar label.
+
+```tsx
+<Field>
+    <FieldLabel htmlFor="amount">Bedrag</FieldLabel>
+
+    <InputGroup>
+        <InputGroupAddon align="inline-start">
+            <InputGroupText>€</InputGroupText>
+        </InputGroupAddon>
+
+        <InputGroupInput id="amount" name="amount" />
+    </InputGroup>
+</Field>
+```
+
+Voor icon-only knoppen is een toegankelijk label verplicht.
+
+```tsx
+<InputGroupButton aria-label="Zoeken">
+    <MagnifyingGlass />
+</InputGroupButton>
+```
+
+Voor foutmeldingen combineer je `aria-invalid` met `aria-describedby`.
+
+```tsx
+<InputGroup>
+    <InputGroupInput
+        id="amount"
+        aria-invalid
+        aria-describedby="amount-error"
+    />
+</InputGroup>
+
+<FieldError id="amount-error">
+    Vul een geldig bedrag in.
+</FieldError>
+```
+
+### Richtlijnen
+
+- Gebruik `InputGroup` alleen wanneer aanvullende content direct bij de invoer hoort.
+- Gebruik `InputGroupText` voor korte prefixes, suffixes en eenheden.
+- Gebruik `InputGroupButton` voor acties die direct betrekking hebben op de invoer.
+- Geef icon-only knoppen altijd een `aria-label`.
+- Gebruik `inline-start` en `inline-end` voor content naast de input.
+- Gebruik `block-start` en `block-end` voor content boven of onder de input.
+- Gebruik `aria-invalid` samen met een duidelijke foutmelding.
+- Gebruik altijd een zichtbaar label.

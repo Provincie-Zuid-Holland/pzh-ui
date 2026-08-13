@@ -1,0 +1,122 @@
+@theme inline {
+    /*
+     * Remove Tailwind's default color palette.
+     */
+    --color-*: initial;
+
+    /* Base */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    /* Surfaces */
+    --color-surface: var(--surface);
+    --color-surface-subtle: var(--surface-subtle);
+    --color-surface-muted: var(--surface-muted);
+    --color-surface-raised: var(--surface-raised);
+    --color-surface-disabled: var(--surface-disabled);
+
+    /* Primary */
+    --color-primary: var(--primary);
+    --color-primary-hover: var(--primary-hover);
+    --color-primary-active: var(--primary-active);
+    --color-primary-foreground: var(--primary-foreground);
+
+    /* Secondary */
+    --color-secondary: var(--secondary);
+    --color-secondary-hover: var(--secondary-hover);
+    --color-secondary-active: var(--secondary-active);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    /* Text */
+    --color-text: var(--text);
+    --color-text-muted: var(--text-muted);
+    --color-text-subtle: var(--text-subtle);
+    --color-text-disabled: var(--text-disabled);
+    --color-text-inverse: var(--text-inverse);
+
+    /* Borders */
+    --color-border: var(--border);
+    --color-border-subtle: var(--border-subtle);
+    --color-border-strong: var(--border-strong);
+
+    /* Inputs */
+    --color-input: var(--input);
+    --color-input-hover: var(--input-hover);
+    --color-input-disabled: var(--input-disabled);
+    --color-input-border: var(--input-border);
+
+    /* Info */
+    --color-info: var(--info);
+    --color-info-foreground: var(--info-foreground);
+    --color-info-background: var(--info-background);
+    --color-info-border: var(--info-border);
+
+    /* Success */
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-success-background: var(--success-background);
+    --color-success-border: var(--success-border);
+
+    /* Warning */
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-warning-background: var(--warning-background);
+    --color-warning-border: var(--warning-border);
+
+    /* Destructive */
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-destructive-background: var(--destructive-background);
+    --color-destructive-border: var(--destructive-border);
+
+    /* Links */
+    --color-link: var(--link);
+    --color-link-hover: var(--link-hover);
+    --color-link-visited: var(--link-visited);
+
+    /* Interaction */
+    --color-focus: var(--focus);
+    --color-backdrop: var(--backdrop);
+
+    /* Badges */
+    --color-badge-success: var(--badge-success);
+    --color-badge-warning: var(--badge-warning);
+    --color-badge-destructive: var(--badge-destructive);
+
+    /* Brand */
+    --color-brand-blue: var(--brand-blue);
+    --color-brand-blue-light: var(--brand-blue-light);
+    --color-brand-blue-dark: var(--brand-blue-dark);
+
+    --color-brand-red: var(--brand-red);
+    --color-brand-red-light: var(--brand-red-light);
+    --color-brand-red-dark: var(--brand-red-dark);
+
+    --color-brand-yellow: var(--brand-yellow);
+    --color-brand-yellow-light: var(--brand-yellow-light);
+    --color-brand-yellow-dark: var(--brand-yellow-dark);
+
+    --color-brand-green: var(--brand-green);
+    --color-brand-green-light: var(--brand-green-light);
+    --color-brand-green-dark: var(--brand-green-dark);
+
+    --color-brand-pink: var(--brand-pink);
+    --color-brand-pink-light: var(--brand-pink-light);
+    --color-brand-pink-dark: var(--brand-pink-dark);
+
+    --color-brand-orange: var(--brand-orange);
+    --color-brand-orange-light: var(--brand-orange-light);
+    --color-brand-orange-dark: var(--brand-orange-dark);
+
+    --color-brand-apple-green: var(--brand-apple-green);
+    --color-brand-apple-green-light: var(--brand-apple-green-light);
+    --color-brand-apple-green-dark: var(--brand-apple-green-dark);
+
+    --color-brand-purple: var(--brand-purple);
+    --color-brand-purple-light: var(--brand-purple-light);
+    --color-brand-purple-dark: var(--brand-purple-dark);
+
+    --color-brand-warm-gray: var(--brand-warm-gray);
+    --color-brand-warm-gray-light: var(--brand-warm-gray-light);
+    --color-brand-warm-gray-dark: var(--brand-warm-gray-dark);
+}

@@ -49,5 +49,6 @@
         "react": "^19.2.6",
         "typescript": "^6.0.0",
         "vite": "^8.2.1"
-    }
+    },
+    "gitHead": "426b6cb0b8de392bbee760457fbbac5e0677c079"
 }

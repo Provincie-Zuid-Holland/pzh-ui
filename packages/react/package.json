@@ -1,6 +1,6 @@
 {
     "name": "@pzh-ui/react",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "React components for Provincie Zuid-Holland projects.",
     "homepage": "https://github.com/Provincie-Zuid-Holland/pzh-ui#readme",
     "license": "ISC",
@@ -47,7 +47,7 @@
         "format:check": "prettier . --check"
     },
     "dependencies": {
-        "@pzh-ui/icons": "0.0.98",
+        "@pzh-ui/icons": "^0.0.99",
         "@tiptap/core": "^3.30.1",
         "@tiptap/extension-image": "^3.30.1",
         "@tiptap/extension-link": "^3.30.1",
@@ -71,7 +71,7 @@
     },
     "devDependencies": {
         "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
-        "@pzh-ui/theme": "^0.0.5",
+        "@pzh-ui/theme": "^0.0.6",
         "@storybook/addon-docs": "^10.4.2",
         "@storybook/react-vite": "^10.4.2",
         "@tailwindcss/vite": "^4.3.3",

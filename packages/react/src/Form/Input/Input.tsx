@@ -1,11 +1,12 @@
 'use client'
 
-import { type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import {
     composeRenderProps,
     Input as InputPrimitive,
 } from 'react-aria-components'
+
+import { type VariantProps } from 'class-variance-authority'
 
 import { cn } from '../../utils'
 import { inputControlVariants, inputPaddingVariants } from './Input.variants'
@@ -22,14 +23,13 @@ function Input({ className, type, size = 'l', ...props }: InputProps) {
             type={type}
             data-slot="input"
             data-size={size}
-            data-testid="input"
             className={composeRenderProps(className, className =>
                 cn(
                     inputControlVariants({ size }),
                     inputPaddingVariants({ size }),
 
                     'appearance-none',
-                    'placeholder:text-text-muted',
+                    'placeholder:text-text-subtle',
 
                     'focus-visible:border-transparent',
                     'focus-visible:ring-2',

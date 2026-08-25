@@ -1,0 +1,47 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as BreadcrumbStories from './Breadcrumb.stories'
+
+<Meta of={BreadcrumbStories} />
+
+# Breadcrumb
+
+Een breadcrumb toont waar de huidige pagina zich in de navigatiestructuur bevindt.
+
+## Formaten
+
+Met de `size`-property bepaal je de typografie van de breadcrumb.
+
+Beschikbare formaten:
+
+- `s`
+- `m`
+
+<Canvas of={BreadcrumbStories.Small} />
+
+<Canvas of={BreadcrumbStories.Medium} />
+
+## Icoon
+
+Een link mag tekst of een icoon bevatten. Geef een link met alleen een icoon altijd een toegankelijk label.
+
+```tsx
+<BreadcrumbItem>
+    <BreadcrumbLink href="/" aria-label="Home">
+        <House />
+    </BreadcrumbLink>
+</BreadcrumbItem>
+```
+
+## Ingekort pad
+
+Gebruik `BreadcrumbEllipsis` wanneer tussenliggende niveaus niet allemaal zichtbaar hoeven te zijn.
+
+<Canvas of={BreadcrumbStories.WithEllipsis} />
+
+## Toegankelijkheid
+
+- De huidige pagina gebruikt `aria-current="page"`.
+- Gebruik beschrijvende linkteksten.
+- Geef links met alleen een icoon een `aria-label`.
+- Houd het volledige pad beschikbaar wanneer niveaus visueel worden ingekort.

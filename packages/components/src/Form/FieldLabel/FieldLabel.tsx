@@ -5,8 +5,8 @@ import { ReactNode, useState } from 'react'
 
 import { CircleInfo, CircleInfoSolid } from '@pzh-ui/icons'
 
-import { Notification, NotificationProps } from '@pzh-ui/react'
 import { Button } from '../../Button'
+import { Notification, NotificationProps } from '../../Notification'
 import { Tooltip } from '../../Tooltip'
 import { cn } from '../../utils'
 

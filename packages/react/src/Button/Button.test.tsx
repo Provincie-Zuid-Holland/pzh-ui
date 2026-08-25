@@ -1,7 +1,21 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import { Button, LinkButton } from './Button'
+import { Button, LinkButton, buttonVariants } from './Button'
+
+describe('buttonVariants', () => {
+    it('uses the secondary border color without a conflicting transparent border', () => {
+        const className = buttonVariants({
+            variant: 'secondary',
+            size: 'm',
+        })
+
+        const classes = className.split(' ')
+
+        expect(classes).toContain('border-primary')
+        expect(classes).not.toContain('border-transparent')
+    })
+})
 
 describe('Button', () => {
     it('renders the button', () => {
@@ -145,7 +159,7 @@ describe('LinkButton', () => {
     it('uses the default variant and size', () => {
         render(<LinkButton href="/documenten">Documenten</LinkButton>)
 
-        const link = screen.getByTestId('link-button')
+        const link = screen.getByRole('link', { name: 'Documenten' })
 
         expect(link).toHaveAttribute('data-variant', 'primary')
         expect(link).toHaveAttribute('data-size', 'l')
@@ -165,10 +179,9 @@ describe('LinkButton', () => {
             </LinkButton>
         )
 
-        expect(screen.getByTestId('link-button')).toHaveAttribute(
-            'data-variant',
-            variant
-        )
+        expect(
+            screen.getByRole('link', { name: 'Documenten' })
+        ).toHaveAttribute('data-variant', variant)
     })
 
     it.each(['l', 'm', 's'] as const)('supports the %s size', size => {
@@ -178,10 +191,9 @@ describe('LinkButton', () => {
             </LinkButton>
         )
 
-        expect(screen.getByTestId('link-button')).toHaveAttribute(
-            'data-size',
-            size
-        )
+        expect(
+            screen.getByRole('link', { name: 'Documenten' })
+        ).toHaveAttribute('data-size', size)
     })
 
     it('uses the provided href', () => {
@@ -199,6 +211,8 @@ describe('LinkButton', () => {
             </LinkButton>
         )
 
-        expect(screen.getByTestId('link-button')).toHaveClass('custom-class')
+        expect(screen.getByRole('link', { name: 'Documenten' })).toHaveClass(
+            'custom-class'
+        )
     })
 })

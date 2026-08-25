@@ -1,11 +1,12 @@
 'use client'
 
-import { AngleDown, AngleUp } from '@pzh-ui/icons'
 import {
     Button as ButtonPrimitive,
     NumberField as NumberFieldPrimitive,
     type NumberFieldProps as NumberFieldPrimitiveProps,
 } from 'react-aria-components'
+
+import { AngleDown, AngleUp } from '@pzh-ui/icons'
 
 import { cn } from '../../utils'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '../InputGroup'
@@ -25,7 +26,6 @@ function NumberInput({
     return (
         <NumberFieldPrimitive
             data-slot="number-input"
-            data-testid="number-input"
             {...props}
             className={cn('w-full', className)}>
             <InputGroup size={size}>

@@ -1,0 +1,147 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as CheckboxStories from './Checkbox.stories'
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+Een checkbox laat een gebruiker één of meerdere opties selecteren.
+
+Het component is gebaseerd op React Aria Components en ondersteunt een geselecteerde, niet-geselecteerde en onbepaalde status. De zichtbare tekst is onderdeel van het klikbare gebied.
+
+## Gebruik
+
+```tsx
+import { Checkbox } from '@pzh-ui/react'
+
+export function Example() {
+    return <Checkbox>Ik ga akkoord met de voorwaarden</Checkbox>
+}
+```
+
+## Eenvoudige checkbox
+
+Gebruik de eenvoudige variant wanneer de checkbox onderdeel is van een formulier of lijst en geen extra visuele nadruk nodig heeft.
+
+<Canvas of={CheckboxStories.Simple} />
+
+<Controls of={CheckboxStories.Simple} />
+
+```tsx
+<Checkbox>Checkbox</Checkbox>
+```
+
+## Met rand
+
+Gebruik `withBorder` wanneer het volledige klikbare gebied als afzonderlijke optie zichtbaar moet zijn.
+
+<Canvas of={CheckboxStories.Bordered} />
+
+```tsx
+<Checkbox withBorder>Checkbox</Checkbox>
+```
+
+## Formaten
+
+De checkbox is beschikbaar in twee formaten:
+
+- `m` voor compacte formulieren en lijsten;
+- `l` voor ruimere formulieren en prominente keuzes.
+
+<Canvas of={CheckboxStories.Sizes} />
+
+```tsx
+<Checkbox size="m">Checkbox M</Checkbox>
+<Checkbox size="l">Checkbox L</Checkbox>
+```
+
+## Statussen
+
+De eenvoudige en omrande varianten ondersteunen dezelfde visuele en interactieve statussen.
+
+<Canvas of={CheckboxStories.AllStates} />
+
+Ondersteunde statussen zijn onder andere:
+
+- unchecked;
+- checked;
+- indeterminate;
+- hover;
+- active;
+- focus;
+- disabled;
+- invalid.
+
+## Geselecteerde waarde
+
+Gebruik `defaultSelected` voor een ongecontroleerde checkbox.
+
+```tsx
+<Checkbox defaultSelected>Nieuwsbrief ontvangen</Checkbox>
+```
+
+Gebruik `isSelected` en `onChange` wanneer de geselecteerde waarde door de applicatie wordt beheerd.
+
+```tsx
+const [isSelected, setSelected] = useState(false)
+
+<Checkbox isSelected={isSelected} onChange={setSelected}>
+    Nieuwsbrief ontvangen
+</Checkbox>
+```
+
+## Indeterminate
+
+Gebruik `isIndeterminate` wanneer een groep onderliggende opties gedeeltelijk is geselecteerd. Deze status wordt bijvoorbeeld gebruikt bij een “Selecteer alles”-checkbox.
+
+```tsx
+<Checkbox isIndeterminate>Alle resultaten selecteren</Checkbox>
+```
+
+`isIndeterminate` is een gecontroleerde status. Verwijder of wijzig deze waarde in `onChange` wanneer een gebruiker de onbepaalde status moet kunnen verlaten.
+
+```tsx
+const [isSelected, setSelected] = useState(false)
+const [isIndeterminate, setIndeterminate] = useState(true)
+
+<Checkbox
+    isSelected={isSelected}
+    isIndeterminate={isIndeterminate}
+    onChange={selected => {
+        setIndeterminate(false)
+        setSelected(selected)
+    }}>
+    Alle resultaten selecteren
+</Checkbox>
+```
+
+## Disabled
+
+Gebruik `isDisabled` wanneer de optie niet beschikbaar is.
+
+```tsx
+<Checkbox isDisabled>Niet beschikbaar</Checkbox>
+```
+
+Een disabled checkbox kan niet worden bediend en ontvangt geen focus.
+
+## Validatie
+
+Gebruik `isInvalid` om een foutstatus weer te geven. Combineer dit met een duidelijke foutmelding in het omliggende formulierveld.
+
+```tsx
+<Checkbox isInvalid>Ik ga akkoord met de voorwaarden</Checkbox>
+```
+
+## Toegankelijkheid
+
+De tekst in `children` vormt het toegankelijke label van de checkbox. Gebruik daarom altijd een duidelijke omschrijving van de keuze.
+
+### Richtlijnen
+
+- Gebruik een checkbox voor onafhankelijke keuzes die aan of uit kunnen staan.
+- Gebruik radiobuttons wanneer precies één optie uit een groep gekozen moet worden.
+- Beschrijf de keuze in positieve en concrete taal.
+- Gebruik `isIndeterminate` alleen om een gedeeltelijke groepsselectie weer te geven.
+- Toon bij `isInvalid` ook een tekstuele foutmelding; vertrouw niet alleen op kleur.

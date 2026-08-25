@@ -1,0 +1,266 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as SelectStories from './Select.stories'
+
+<Meta of={SelectStories} />
+
+# Select
+
+Een component voor het selecteren van één of meerdere opties uit een lijst.
+
+Het component is opgebouwd met `react-aria-components` en ondersteunt onder andere verschillende formaten, gegroepeerde opties, meerdere selecties en een optioneel zoekveld.
+
+## Gebruik
+
+```tsx
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Select placeholder="Selecteer een provincie">
+            <SelectTrigger>
+                <SelectValue />
+            </SelectTrigger>
+
+            <SelectContent>
+                <SelectItem id="noord-holland">
+                    Noord-Holland
+                </SelectItem>
+
+                <SelectItem id="utrecht">
+                    Utrecht
+                </SelectItem>
+
+                <SelectItem id="zuid-holland">
+                    Zuid-Holland
+                </SelectItem>
+            </SelectContent>
+        </Select>
+    )
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={SelectStories.Default} />
+
+<Controls of={SelectStories.Default} />
+
+## Formaten
+
+De `Select` ondersteunt twee formaten:
+
+- `l` (standaard)
+- `m`
+
+Het formaat wordt ingesteld op de `Select` en automatisch toegepast op de trigger, lijst en opties.
+
+```tsx
+<Select size="m" placeholder="Selecteer een provincie">
+    <SelectTrigger>
+        <SelectValue />
+    </SelectTrigger>
+
+    <SelectContent>
+        <SelectItem id="noord-holland">
+            Noord-Holland
+        </SelectItem>
+
+        <SelectItem id="utrecht">
+            Utrecht
+        </SelectItem>
+
+        <SelectItem id="zuid-holland">
+            Zuid-Holland
+        </SelectItem>
+    </SelectContent>
+</Select>
+```
+
+<Canvas of={SelectStories.Medium} />
+
+## Standaard geselecteerde waarde
+
+Gebruik `defaultSelectedKey` om een standaardwaarde te selecteren.
+
+```tsx
+<Select
+    defaultSelectedKey="zuid-holland"
+    placeholder="Selecteer een provincie">
+    <SelectTrigger>
+        <SelectValue />
+    </SelectTrigger>
+
+    <SelectContent>
+        <SelectItem id="noord-holland">
+            Noord-Holland
+        </SelectItem>
+
+        <SelectItem id="utrecht">
+            Utrecht
+        </SelectItem>
+
+        <SelectItem id="zuid-holland">
+            Zuid-Holland
+        </SelectItem>
+    </SelectContent>
+</Select>
+```
+
+<Canvas of={SelectStories.WithDefaultValue} />
+
+## Disabled
+
+De volledige select kan worden uitgeschakeld.
+
+```tsx
+<Select isDisabled placeholder="Selecteer een provincie">
+    <SelectTrigger>
+        <SelectValue />
+    </SelectTrigger>
+
+    <SelectContent>
+        <SelectItem id="noord-holland">
+            Noord-Holland
+        </SelectItem>
+
+        <SelectItem id="utrecht">
+            Utrecht
+        </SelectItem>
+    </SelectContent>
+</Select>
+```
+
+<Canvas of={SelectStories.Disabled} />
+
+Ook individuele opties kunnen worden uitgeschakeld.
+
+```tsx
+<Select placeholder="Selecteer een provincie">
+    <SelectTrigger>
+        <SelectValue />
+    </SelectTrigger>
+
+    <SelectContent>
+        <SelectItem id="noord-holland">
+            Noord-Holland
+        </SelectItem>
+
+        <SelectItem id="utrecht" isDisabled>
+            Utrecht
+        </SelectItem>
+
+        <SelectItem id="zuid-holland">
+            Zuid-Holland
+        </SelectItem>
+    </SelectContent>
+</Select>
+```
+
+<Canvas of={SelectStories.WithDisabledItem} />
+
+## Groepen
+
+Gebruik `SelectGroup`, `SelectLabel` en `SelectSeparator` om opties logisch te groeperen.
+
+```tsx
+<Select placeholder="Selecteer een provincie">
+    <SelectTrigger>
+        <SelectValue />
+    </SelectTrigger>
+
+    <SelectPopover>
+        <SelectList>
+            <SelectGroup>
+                <SelectLabel>Randstad</SelectLabel>
+
+                <SelectItem id="noord-holland">
+                    Noord-Holland
+                </SelectItem>
+
+                <SelectItem id="utrecht">
+                    Utrecht
+                </SelectItem>
+
+                <SelectItem id="zuid-holland">
+                    Zuid-Holland
+                </SelectItem>
+            </SelectGroup>
+
+            <SelectSeparator />
+
+            <SelectGroup>
+                <SelectLabel>Overige provincies</SelectLabel>
+
+                <SelectItem id="drenthe">
+                    Drenthe
+                </SelectItem>
+
+                <SelectItem id="flevoland">
+                    Flevoland
+                </SelectItem>
+
+                <SelectItem id="friesland">
+                    Friesland
+                </SelectItem>
+            </SelectGroup>
+        </SelectList>
+    </SelectPopover>
+</Select>
+```
+
+<Canvas of={SelectStories.WithGroups} />
+
+## Meerdere selecties
+
+Gebruik `selectionMode="multiple"` om meerdere opties te selecteren.
+
+```tsx
+<Select
+    selectionMode="multiple"
+    placeholder="Selecteer provincies">
+    <SelectTrigger>
+        <SelectValue />
+    </SelectTrigger>
+
+    <SelectContent>
+        <SelectItem id="noord-holland">
+            Noord-Holland
+        </SelectItem>
+
+        <SelectItem id="utrecht">
+            Utrecht
+        </SelectItem>
+
+        <SelectItem id="zuid-holland">
+            Zuid-Holland
+        </SelectItem>
+    </SelectContent>
+</Select>
+```
+
+<Canvas of={SelectStories.Multiple} />
+
+Wanneer meerdere opties zijn geselecteerd toont `SelectValue` automatisch een samenvatting van de geselecteerde waarden.
+
+## Lange lijsten
+
+Wanneer de lijst meer opties bevat dan zichtbaar passen, wordt deze automatisch scrollbaar.
+
+<Canvas of={SelectStories.LongList} />
+
+## Toegankelijkheid
+
+De `Select` is gebouwd op `react-aria-components` en ondersteunt standaard:
+
+- toetsenbordnavigatie;
+- focusmanagement;
+- ARIA-attributen;
+- schermlezers;
+- single en multiple selection.

@@ -101,7 +101,8 @@ import * as Icons from '../../../icons/src'
             </h3>
 
             <p className="mt-0 leading-7 text-text-muted">
-                Importeer een icoon als React-component:
+                Importeer een icoon als React-component. De grootte kan via de
+                <code>size</code>-prop of via CSS worden bepaald.
             </p>
 
             <Source
@@ -110,7 +111,12 @@ import * as Icons from '../../../icons/src'
                     "import { Check } from '@pzh-ui/icons'",
                     '',
                     'function Page() {',
-                    '    return <Check size={20} />',
+                    '    return (',
+                    '        <>',
+                    '            <Check size={20} />',
+                    '            <Check className="size-5" />',
+                    '        </>',
+                    '    )',
                     '}',
                 ].join('\n')}
             />
@@ -118,13 +124,93 @@ import * as Icons from '../../../icons/src'
     </div>
 
     <div className="mt-6! rounded-r-md border-l-4 border-info-border bg-info-background px-5 py-4 leading-7 text-info-foreground">
-        <strong>
-            Toegankelijkheid:
-        </strong>{' '}
+        <strong>Toegankelijkheid:</strong>{' '}
         decoratieve iconen hoeven niet door screenreaders te worden
-        voorgelezen. Een interactieve knop met alleen een icoon moet altijd een
-        toegankelijke naam hebben, bijvoorbeeld met een{' '}
-        <code>aria-label</code>.
+        voorgelezen. Gebruik hiervoor <code>aria-hidden="true"</code>. Een
+        interactieve knop met alleen een icoon moet altijd een toegankelijke
+        naam hebben, bijvoorbeeld met een <code>aria-label</code>.
+    </div>
+
+</section>
+
+<section className="mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Grootte
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Iconen hebben geen vaste standaardafmeting. Hierdoor kan een omliggend
+        component de grootte bepalen met CSS. Voor los gebruik kan de
+        <code>size</code>-prop worden gebruikt.
+    </p>
+
+    <div className="flex items-end gap-6">
+        <div className="flex flex-col items-center gap-2">
+            <Icons.Check size={16} aria-hidden="true" />
+            <span className="text-xs text-text-muted">16px</span>
+        </div>
+
+        <div className="flex flex-col items-center gap-2">
+            <Icons.Check size={20} aria-hidden="true" />
+            <span className="text-xs text-text-muted">20px</span>
+        </div>
+
+        <div className="flex flex-col items-center gap-2">
+            <Icons.Check size={24} aria-hidden="true" />
+            <span className="text-xs text-text-muted">24px</span>
+        </div>
+
+        <div className="flex flex-col items-center gap-2">
+            <Icons.Check className="size-8" aria-hidden="true" />
+            <span className="text-xs text-text-muted">CSS</span>
+        </div>
+    </div>
+
+</section>
+
+<section className="mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Kleur
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Iconen gebruiken <code>currentColor</code> en nemen daardoor standaard
+        de tekstkleur van hun omgeving over.
+    </p>
+
+    <div className="flex items-center gap-6">
+        <Icons.Check
+            size={24}
+            className="text-primary"
+            aria-hidden="true"
+        />
+
+        <Icons.Check
+            size={24}
+            className="text-success"
+            aria-hidden="true"
+        />
+
+        <Icons.Check
+            size={24}
+            className="text-destructive"
+            aria-hidden="true"
+        />
+
+        <span className="text-warning-foreground">
+            <Icons.Check size={24} aria-hidden="true" />
+        </span>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Check className="text-primary" />',
+                '<Check className="text-success" />',
+                '<Check className="text-destructive" />',
+            ].join('\n')}
+        />
     </div>
 
 </section>
@@ -151,7 +237,7 @@ import * as Icons from '../../../icons/src'
                     title={iconName}>
                     <span className="flex size-8 items-center justify-center text-primary">
                         <IconComponent
-                            size={24}
+                            size={20}
                             aria-hidden="true"
                         />
                     </span>

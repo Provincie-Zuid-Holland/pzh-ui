@@ -176,7 +176,7 @@ describe('AlertDescription', () => {
 
     it('applies spacing to non-last paragraphs and lists', () => {
         render(
-            <AlertDescription data-testid="description">
+            <AlertDescription data-slot="description">
                 Description
             </AlertDescription>
         )

@@ -1,4 +1,7 @@
 @theme {
+    /* Font */
+    --font-sans: var(--font-family-sans);
+
     /* Breakpoints */
     --breakpoint-sm: 640px;
     --breakpoint-md: 768px;

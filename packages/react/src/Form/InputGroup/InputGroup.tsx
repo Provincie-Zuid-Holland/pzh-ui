@@ -1,6 +1,5 @@
 'use client'
 
-import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import {
     Group,
@@ -8,6 +7,8 @@ import {
     type GroupProps,
     type InputProps as InputPrimitiveProps,
 } from 'react-aria-components'
+
+import { cva, type VariantProps } from 'class-variance-authority'
 
 import { Button, buttonVariants } from '../../Button'
 import { cn } from '../../utils'
@@ -24,7 +25,6 @@ function InputGroup({
         <Group
             data-slot="input-group"
             data-size={size}
-            data-testid="input-group"
             className={cn(
                 inputControlVariants({ size }),
 
@@ -62,7 +62,7 @@ function InputGroup({
 }
 
 const inputGroupAddonVariants = cva(
-    'text-text-muted flex h-auto shrink-0 cursor-text items-center gap-2 select-none',
+    'gap-2 flex h-auto shrink-0 cursor-text items-center text-text-muted select-none',
     {
         variants: {
             align: {
@@ -88,9 +88,10 @@ function InputGroupAddon({
             role="group"
             data-slot="input-group-addon"
             data-align={align}
-            data-testid="input-group-addon"
             className={cn(
                 inputGroupAddonVariants({ align }),
+
+                'data-[align=inline-end]:has-[>button]:gap-0',
 
                 // Large
                 'group-data-[size=l]/input-group:data-[align=inline-start]:pl-4',
@@ -145,7 +146,13 @@ function InputGroupButton({
             variant={variant}
             className={cn(
                 buttonVariants({ size, variant }),
-                'rounded-l-none border-r-0',
+
+                'shrink-0 rounded-none',
+                'border-r-0',
+
+                'first:border-l',
+                'last:rounded-r',
+
                 className
             )}
             {...props}
@@ -157,7 +164,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<'span'>) {
     return (
         <span
             className={cn(
-                'flex items-center gap-2 [&_svg]:pointer-events-none',
+                'gap-2 flex items-center [&_svg]:pointer-events-none',
                 className
             )}
             {...props}
@@ -170,8 +177,8 @@ function InputGroupInput({ className, ...props }: InputPrimitiveProps) {
         <InputPrimitive
             data-slot="input-group-control"
             className={cn(
-                'h-full min-w-0 flex-1 bg-transparent outline-none',
-                'placeholder:text-text-muted',
+                'min-w-0 h-full flex-1 bg-transparent outline-none',
+                'placeholder:text-text-subtle',
 
                 // Large
                 'group-data-[size=l]/input-group:px-4',

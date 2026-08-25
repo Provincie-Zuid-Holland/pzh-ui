@@ -29,6 +29,13 @@ ol li ol li ol li {
  */
 
 @utility prose {
+    --tw-prose-body: var(--text-editor);
+    --tw-prose-headings: var(--text-editor);
+    --tw-prose-bold: var(--text-editor);
+    --tw-prose-links: var(--text-editor);
+    --tw-prose-bullets: var(--text-editor);
+    --tw-prose-counters: var(--text-editor);
+
     p.is-editor-empty:first-child::before {
         color: color-mix(in srgb, var(--foreground) 55%, transparent);
         content: attr(data-placeholder);
@@ -37,7 +44,37 @@ ol li ol li ol li {
         height: 0;
     }
 
+    a {
+        @apply text-success underline underline-offset-2;
+    }
+
+    img {
+        margin-block: 0;
+    }
+
+    /*
+     * Headings
+     */
+
+    h3 {
+        @apply text-heading-l;
+    }
+
+    h4 {
+        @apply text-heading-m;
+    }
+
+    h5 {
+        @apply text-heading-s;
+    }
+
+    /*
+     * Lists
+     */
+
     li {
+        margin-block: 0;
+
         p,
         & > ol,
         & > ul {
@@ -45,8 +82,12 @@ ol li ol li ol li {
         }
     }
 
+    /*
+     * Tables
+     */
+
     table {
-        @apply text-m border-border-strong border;
+        @apply border-border-strong text-s border;
 
         p {
             margin: 0;

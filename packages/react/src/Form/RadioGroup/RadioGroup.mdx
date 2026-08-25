@@ -1,0 +1,94 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as RadioGroupStories from './RadioGroup.stories'
+
+<Meta of={RadioGroupStories} />
+
+# RadioGroup
+
+Een radiogroep laat een gebruiker precies één optie uit een verzameling kiezen.
+
+## Gebruik
+
+```tsx
+import { RadioGroup, RadioGroupItem } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <RadioGroup aria-label="Voorkeurskanaal" defaultValue="email">
+            <RadioGroupItem value="email">E-mail</RadioGroupItem>
+            <RadioGroupItem value="phone">Telefoon</RadioGroupItem>
+        </RadioGroup>
+    )
+}
+```
+
+## Eenvoudige radiogroep
+
+<Canvas of={RadioGroupStories.Simple} />
+
+## Met rand
+
+Gebruik `withBorder` op een `RadioGroupItem` wanneer het volledige klikbare gebied als afzonderlijke optie zichtbaar moet zijn.
+
+<Canvas of={RadioGroupStories.Bordered} />
+
+```tsx
+<RadioGroup aria-label="Keuze" defaultValue="one">
+    <RadioGroupItem value="one" withBorder>
+        Eerste optie
+    </RadioGroupItem>
+    <RadioGroupItem value="two" withBorder>
+        Tweede optie
+    </RadioGroupItem>
+</RadioGroup>
+```
+
+## Formaten
+
+Radio-items ondersteunen de formaten `m` en `l`.
+
+<Canvas of={RadioGroupStories.Sizes} />
+
+## Statussen
+
+De eenvoudige en omrande varianten ondersteunen default, hover, active, focus, disabled en invalid styling.
+
+<Canvas of={RadioGroupStories.AllStates} />
+
+## Gecontroleerde waarde
+
+Gebruik `value` en `onChange` wanneer de geselecteerde optie door de applicatie wordt beheerd.
+
+```tsx
+const [value, setValue] = useState('email')
+
+<RadioGroup aria-label="Voorkeurskanaal" value={value} onChange={setValue}>
+    <RadioGroupItem value="email">E-mail</RadioGroupItem>
+    <RadioGroupItem value="phone">Telefoon</RadioGroupItem>
+</RadioGroup>
+```
+
+## Disabled en validatie
+
+Gebruik `isDisabled` op de groep of een individueel item. Gebruik `isInvalid` om een foutstatus weer te geven en combineer dit met een tekstuele foutmelding.
+
+```tsx
+<RadioGroup aria-label="Keuze" isDisabled>
+    <RadioGroupItem value="one">Eerste optie</RadioGroupItem>
+</RadioGroup>
+
+<RadioGroup aria-label="Keuze" isInvalid>
+    <RadioGroupItem value="one">
+        Eerste optie
+    </RadioGroupItem>
+</RadioGroup>
+```
+
+## Toegankelijkheid
+
+- Geef iedere `RadioGroup` een zichtbaar label of een `aria-label`.
+- Gebruik radiobuttons wanneer precies één keuze mogelijk is.
+- Gebruik checkboxes voor onafhankelijke keuzes.
+- Zorg dat iedere `RadioGroupItem` een unieke `value` heeft.
+- Toon bij een foutstatus altijd een tekstuele foutmelding.

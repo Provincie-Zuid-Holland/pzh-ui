@@ -1,45 +1,24 @@
-import typescriptPlugin from '@rollup/plugin-typescript'
-import react from '@vitejs/plugin-react'
-import path from 'path'
-import { visualizer } from 'rollup-plugin-visualizer'
-import { defineConfig, PluginOption } from 'vite'
-
-const isExternal = id => !id.startsWith('.') && !path.isAbsolute(id)
+import { defineConfig } from 'vite'
+import path from 'node:path'
 
 export default defineConfig({
-    plugins: [
-        react({
-            jsxRuntime: 'classic',
-            babel: {
-                configFile: true,
-            },
-        }),
-        visualizer({
-            template: 'treemap', // or sunburst
-            gzipSize: true,
-            brotliSize: true,
-            filename: 'analyse.html', // will be saved in project's root
-        }) as PluginOption,
-    ],
     build: {
-        target: 'esnext',
-        sourcemap: true,
+        target: 'es2022',
         emptyOutDir: true,
-        rollupOptions: {
-            external: isExternal,
-            plugins: [
-                typescriptPlugin({
-                    exclude: ['**/*.test.tsx', '**/*.stories.tsx'],
-                }) as PluginOption,
-            ],
-            output: {
-                entryFileNames: '[name].js',
-                preserveModules: true,
-            },
-        },
+        sourcemap: true,
+
         lib: {
-            entry: path.resolve(path.resolve(path.dirname('')), 'src/index.ts'),
+            entry: path.resolve(__dirname, 'src/index.ts'),
             formats: ['es'],
+        },
+
+        rollupOptions: {
+            external: ['react', 'react/jsx-runtime'],
+            output: {
+                preserveModules: true,
+                preserveModulesRoot: 'src',
+                entryFileNames: '[name].js',
+            },
         },
     },
 })

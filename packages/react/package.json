@@ -1,21 +1,17 @@
 {
     "name": "@pzh-ui/react",
     "version": "0.0.8",
-    "description": "Contains default components to use in Provincie Zuid-Holland projects.",
+    "description": "React components for Provincie Zuid-Holland projects.",
     "homepage": "https://github.com/Provincie-Zuid-Holland/pzh-ui#readme",
-    "publishConfig": {
-        "access": "public"
-    },
-    "sideEffects": [
-        "**/*.css"
-    ],
+    "license": "ISC",
+    "type": "module",
+    "sideEffects": false,
     "files": [
         "dist"
     ],
-    "type": "module",
-    "types": "./dist/index.d.ts",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
@@ -23,69 +19,78 @@
             "default": "./dist/index.js"
         }
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Provincie-Zuid-Holland/pzh-ui.git"
     },
-    "scripts": {
-        "test": "vitest",
-        "typecheck": "tsc --noEmit",
-        "chromatic": "npx chromatic --project-token=chpt_086ce80c51e31f9 --auto-accept-changes --build-script-name=build-storybook",
-        "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build",
-        "build:js": "vite build",
-        "build:types": "tsc -p tsconfig.build.json",
-        "build": "yarn typecheck && yarn build:js && yarn build:types"
-    },
     "bugs": {
         "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"
     },
+    "engines": {
+        "node": ">=22.12.0"
+    },
+    "scripts": {
+        "test": "vitest",
+        "test:run": "vitest run",
+        "typecheck": "tsc --noEmit",
+        "storybook": "storybook dev -p 6006",
+        "build-storybook": "storybook build",
+        "chromatic": "chromatic --project-token=chpt_086ce80c51e31f9 --auto-accept-changes --build-script-name=build-storybook",
+        "build:js": "vite build",
+        "build:types": "tsc -p tsconfig.build.json",
+        "build": "yarn typecheck && yarn build:js && yarn build:types",
+        "prepack": "yarn build",
+        "format": "prettier . --write",
+        "format:check": "prettier . --check"
+    },
     "dependencies": {
-        "@pzh-ui/icons": "^0.0.97",
+        "@pzh-ui/icons": "workspace:*",
+        "@tiptap/core": "^3.30.1",
+        "@tiptap/extension-image": "^3.30.1",
+        "@tiptap/extension-link": "^3.30.1",
+        "@tiptap/extension-subscript": "^3.30.1",
+        "@tiptap/extension-superscript": "^3.30.1",
+        "@tiptap/extension-table": "^3.30.1",
+        "@tiptap/extension-text-align": "^3.30.1",
+        "@tiptap/extensions": "^3.30.1",
+        "@tiptap/pm": "3.30.1",
+        "@tiptap/react": "^3.30.1",
+        "@tiptap/starter-kit": "^3.30.1",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "react-aria-components": "^1.20.0",
+        "sonner": "^2.0.8",
         "tailwind-merge": "^3.6.0"
     },
+    "peerDependencies": {
+        "react": "^18.2.0 || ^19.0.0",
+        "react-dom": "^18.2.0 || ^19.0.0"
+    },
     "devDependencies": {
-        "@babel/core": "^7.29.7",
-        "@babel/preset-env": "^7.29.7",
-        "@babel/preset-react": "^7.29.7",
-        "@babel/preset-typescript": "^7.29.7",
-        "@pzh-ui/css": "^0.0.119",
+        "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
         "@pzh-ui/theme": "^0.0.4",
         "@storybook/addon-docs": "^10.4.2",
         "@storybook/react-vite": "^10.4.2",
         "@tailwindcss/vite": "^4.3.3",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
-        "@types/babel__core": "^7",
-        "@types/babel__preset-env": "^7",
         "@vitejs/plugin-react": "^6.0.2",
-        "babel-loader": "^10.1.1",
-        "babel-plugin-import": "^1.13.8",
+        "chromatic": "^13.0.0",
         "eslint": "^10.4.1",
         "eslint-plugin-storybook": "^10.4.2",
-        "glob": "^13.0.6",
         "jsdom": "^29.1.1",
+        "prettier": "^3.9.6",
+        "prettier-plugin-tailwindcss": "^0.8.1",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "rollup-plugin-visualizer": "^7.0.1",
         "storybook": "^10.4.2",
         "tailwindcss": "^4.3.3",
         "typescript": "^6.0.3",
         "typescript-eslint": "^8.60.1",
         "vite": "^8.0.16",
         "vitest": "^4.1.8"
-    },
-    "peerDependencies": {
-        "react": "^18.2.0 || ^19.0.0",
-        "react-dom": "^18.2.0 || ^19.0.0"
-    },
-    "eslintConfig": {
-        "extends": [
-            "plugin:storybook/recommended"
-        ]
-    },
-    "gitHead": "b0f8956503a2d5eabbdb50f38d2b42aef9d0292e"
+    }
 }

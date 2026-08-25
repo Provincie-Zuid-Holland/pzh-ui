@@ -1,14 +1,27 @@
-/// <reference types="vitest" />
-
 import { resolve } from 'node:path'
 
-import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
-import type { PluginOption } from 'vite'
 import { defineConfig } from 'vitest/config'
 
-const externalPackages = ['react', 'react-dom', '@pzh-ui/icons']
+const externalPackages = [
+    'react',
+    'react-dom',
+    'react-aria-components',
+    '@pzh-ui/icons',
+
+    '@tiptap/core',
+    '@tiptap/react',
+    '@tiptap/pm',
+    '@tiptap/starter-kit',
+    '@tiptap/extension-image',
+    '@tiptap/extension-link',
+    '@tiptap/extension-subscript',
+    '@tiptap/extension-superscript',
+    '@tiptap/extension-table',
+    '@tiptap/extension-text-align',
+    '@tiptap/extensions',
+]
 
 const isExternal = (id: string) =>
     externalPackages.some(
@@ -18,13 +31,12 @@ const isExternal = (id: string) =>
 export default defineConfig({
     plugins: [
         react(),
-        tailwindcss(),
         visualizer({
             template: 'treemap',
             gzipSize: true,
             brotliSize: true,
             filename: 'analyse.html',
-        }) as PluginOption,
+        }),
     ],
 
     resolve: {

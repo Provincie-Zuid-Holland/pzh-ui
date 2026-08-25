@@ -1,6 +1,7 @@
+import { MagnifyingGlass } from '@pzh-ui/icons'
+
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { MagnifyingGlass } from '@pzh-ui/icons'
 import { FieldError } from '../Field'
 import {
     InputGroup,
@@ -171,7 +172,7 @@ export const Invalid: Story = {
 
 export const Examples: Story = {
     render: () => (
-        <div className="flex flex-col gap-4">
+        <div className="gap-4 flex flex-col">
             <InputGroup>
                 <InputGroupAddon align="inline-start">
                     <InputGroupText>€</InputGroupText>

@@ -1,0 +1,546 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as WysiwygStories from './Wysiwyg.stories'
+
+<Meta of={WysiwygStories} />
+
+# Wysiwyg
+
+Een rich-text editor voor het invoeren en bewerken van opgemaakte tekst.
+
+De editor is gebaseerd op Tiptap en ondersteunt onder andere koppen, lijsten, tabellen, links en afbeeldingen. De beschikbare functionaliteit kan per toepassing worden samengesteld zodat alleen de benodigde opties beschikbaar zijn.
+
+## Gebruik
+
+```tsx
+import { Wysiwyg } from '@pzh-ui/react'
+
+export function Example() {
+    return <Wysiwyg placeholder="Begin met typen..." />
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={WysiwygStories.Default} />
+
+<Controls of={WysiwygStories.Default} />
+
+## Met bestaande inhoud
+
+Gebruik `value` voor een controlled editor of `defaultValue` wanneer alleen een initiële waarde nodig is.
+
+<Canvas of={WysiwygStories.WithContent} />
+
+```tsx
+<Wysiwyg defaultValue="<p>Dit is bestaande inhoud.</p>" />
+```
+
+## Toolbar
+
+Met de `toolbar`-property bepaal je welke functionaliteiten beschikbaar zijn.
+
+Standaard zijn de volgende opties beschikbaar:
+
+- `heading`
+- `bold`
+- `italic`
+- `underline`
+- `bulletList`
+- `orderedList`
+
+```tsx
+<Wysiwyg
+    toolbar={[
+        'heading',
+        'bold',
+        'italic',
+        'underline',
+        'bulletList',
+        'orderedList',
+    ]}
+/>
+```
+
+## Alle toolbar-opties
+
+De Wysiwyg ondersteunt de volgende toolbar-opties:
+
+- `heading`
+- `bold`
+- `italic`
+- `underline`
+- `strike`
+- `alignLeft`
+- `alignCenter`
+- `alignRight`
+- `alignJustify`
+- `table`
+- `bulletList`
+- `orderedList`
+- `subscript`
+- `superscript`
+- `link`
+- `image`
+
+<Canvas of={WysiwygStories.AllMenuOptions} />
+
+```tsx
+<Wysiwyg
+    toolbar={[
+        'heading',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'alignLeft',
+        'alignCenter',
+        'alignRight',
+        'alignJustify',
+        'table',
+        'bulletList',
+        'orderedList',
+        'subscript',
+        'superscript',
+        'link',
+        'image',
+    ]}
+/>
+```
+
+Wanneer niet alle toolbar-acties binnen de beschikbare ruimte passen, worden de resterende acties automatisch ondergebracht in het overflow-menu.
+
+## Koppen
+
+Met de optie `heading` kunnen gebruikers kiezen tussen normale tekst en kopniveau 3, 4 en 5.
+
+```tsx
+<Wysiwyg toolbar={['heading']} />
+```
+
+## Tekstopmaak
+
+Voor standaard tekstopmaak zijn de volgende opties beschikbaar:
+
+- `bold`
+- `italic`
+- `underline`
+- `strike`
+
+```tsx
+<Wysiwyg
+    toolbar={[
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+    ]}
+/>
+```
+
+## Lijsten
+
+De editor ondersteunt zowel opsommingslijsten als genummerde lijsten.
+
+```tsx
+<Wysiwyg
+    toolbar={[
+        'bulletList',
+        'orderedList',
+    ]}
+/>
+```
+
+Lijsten kunnen maximaal drie niveaus diep worden genest.
+
+Gebruik `Tab` om een lijstitem verder in te springen en `Shift + Tab` om een niveau terug te gaan.
+
+## Tekst uitlijnen
+
+Gebruik de alignment-opties om tekst links, gecentreerd, rechts of uitgevuld weer te geven.
+
+Beschikbare opties:
+
+- `alignLeft`
+- `alignCenter`
+- `alignRight`
+- `alignJustify`
+
+```tsx
+<Wysiwyg
+    toolbar={[
+        'alignLeft',
+        'alignCenter',
+        'alignRight',
+        'alignJustify',
+    ]}
+/>
+```
+
+## Subscript en superscript
+
+Gebruik `subscript` en `superscript` voor tekst die lager of hoger ten opzichte van de normale tekstregel moet worden weergegeven.
+
+```tsx
+<Wysiwyg
+    toolbar={[
+        'subscript',
+        'superscript',
+    ]}
+/>
+```
+
+## Links
+
+Met de optie `link` kunnen gebruikers hyperlinks toevoegen en bestaande links bewerken.
+
+```tsx
+<Wysiwyg toolbar={['link']} />
+```
+
+Wanneer de cursor zich binnen een bestaande link bevindt, wordt de toolbar-knop automatisch als actief weergegeven.
+
+## Afbeeldingen
+
+Met de optie `image` kunnen gebruikers afbeeldingen toevoegen aan de editor.
+
+```tsx
+<Wysiwyg toolbar={['image']} />
+```
+
+Afbeeldingen kunnen worden geselecteerd via de toolbar of direct naar de editor worden gesleept.
+
+Met `imageOptions` kunnen beperkingen voor uploads worden ingesteld.
+
+```tsx
+<Wysiwyg
+    toolbar={['image']}
+    imageOptions={{
+        uploadOptions: {
+            maxSize: 1024 * 1024,
+            maxWidth: 1500,
+            maxHeight: 2500,
+        },
+    }}
+/>
+```
+
+Standaard gelden de volgende limieten:
+
+- maximale bestandsgrootte: **1 MB**
+- maximale breedte: **1500 px**
+- maximale hoogte: **2500 px**
+
+Afbeeldingen die niet aan deze voorwaarden voldoen worden geweigerd voordat ze aan de editor worden toegevoegd.
+
+## Tabellen
+
+Met de optie `table` kunnen gebruikers tabellen invoegen.
+
+```tsx
+<Wysiwyg toolbar={['table']} />
+```
+
+Na het invoegen van een tabel zijn via het contextmenu onder andere de volgende acties beschikbaar:
+
+- rij toevoegen
+- kolom toevoegen
+- rij verwijderen
+- kolom verwijderen
+- headerrij aan- of uitzetten
+- tabel verwijderen
+
+Het contextmenu kan worden aangepast met `tableMenuOptions`.
+
+```tsx
+<Wysiwyg
+    toolbar={['table']}
+    tableMenuOptions={[
+        'addRowAfter',
+        'addColumnBefore',
+        'addColumnAfter',
+        'deleteRow',
+        'deleteColumn',
+        'toggleHeaderRow',
+        'deleteTable',
+    ]}
+/>
+```
+
+De editor voorkomt daarnaast het plakken van:
+
+- geneste tabellen;
+- tabellen met niet-ondersteunde `rowspan` of `colspan` combinaties;
+- tabellen binnen een bestaande tabel.
+
+## Eigen extensies
+
+De editor kan worden uitgebreid met iedere Tiptap-extensie.
+
+Gebruik hiervoor de `extensions`-property.
+
+```tsx
+import { Area } from './extensions/Area'
+
+<Wysiwyg
+    extensions={[Area]}
+/>
+```
+
+Hiermee kan domeinspecifieke functionaliteit worden toegevoegd zonder de Wysiwyg zelf aan te passen.
+
+## Eigen toolbar-acties
+
+Naast eigen extensies kunnen ook eigen toolbar-acties worden toegevoegd.
+
+```tsx
+import { DrawPolygon } from '@pzh-ui/icons'
+
+<Wysiwyg
+    extensions={[Area]}
+    customToolbarActions={editor => [
+        {
+            key: 'area',
+            label: 'Gebiedsaanwijzing',
+            icon: <DrawPolygon aria-hidden="true" />,
+            active: editor.isFocused && editor.isActive('area'),
+            disabled: isLocked,
+            onAction: () => {
+                setActiveModal('objectAreaAnnotate', {
+                    editor,
+                })
+            },
+        },
+    ]}
+/>
+```
+
+Custom toolbar-acties gedragen zich hetzelfde als de ingebouwde acties.
+
+Hierdoor:
+
+- ondersteunen ze actieve en disabled statussen;
+- worden ze automatisch opgenomen in het overflow-menu;
+- kunnen ze gecombineerd worden met alle standaard toolbar-opties.
+
+Een toolbar-actie bestaat uit:
+
+```ts
+type ToolbarAction = {
+    key: string
+    label: string
+    icon: React.ReactNode
+    active?: boolean
+    disabled?: boolean
+    onAction: () => void
+}
+```
+
+## Placeholder
+
+Gebruik `placeholder` om gebruikers duidelijk te maken welke informatie verwacht wordt.
+
+```tsx
+<Wysiwyg placeholder="Beschrijf het beleid..." />
+```
+
+Een placeholder is geen vervanging voor een zichtbaar label.
+
+Gebruik de editor daarom altijd samen met een `FieldLabel`.
+
+## Controlled gebruik
+
+Gebruik `value` in combinatie met `onChange` wanneer de inhoud buiten de editor wordt beheerd.
+
+```tsx
+const [value, setValue] = useState('')
+
+return (
+    <Wysiwyg
+        value={value}
+        onChange={setValue}
+    />
+)
+```
+
+`onChange` ontvangt de HTML van de editor.
+
+## Uncontrolled gebruik
+
+Wanneer alleen een initiële waarde nodig is kan `defaultValue` worden gebruikt.
+
+```tsx
+<Wysiwyg
+    defaultValue="<p>Concepttekst</p>"
+/>
+```
+
+## On blur
+
+Gebruik `onBlur` om de inhoud te verwerken wanneer de gebruiker de editor verlaat.
+
+```tsx
+<Wysiwyg
+    onBlur={value => {
+        save(value)
+    }}
+/>
+```
+
+## On create
+
+Met `onCreate` is de Tiptap editor beschikbaar zodra deze is geïnitialiseerd.
+
+```tsx
+<Wysiwyg
+    onCreate={editor => {
+        console.log(editor)
+    }}
+/>
+```
+
+Gebruik deze callback alleen wanneer directe toegang tot de editor nodig is.
+
+## Validatie
+
+Gebruik `invalid` om de foutstatus van de editor weer te geven.
+
+<Canvas of={WysiwygStories.Invalid} />
+
+```tsx
+<Field className="flex-col">
+    <FieldLabel required>
+        Beschrijving
+    </FieldLabel>
+
+    <Wysiwyg invalid />
+
+    <FieldError>
+        Vul een geldige beschrijving in.
+    </FieldError>
+</Field>
+```
+
+Wanneer `FieldError` direct onder de editor wordt geplaatst, sluit de foutmelding visueel aan op de editor.
+
+## Uitgeschakeld
+
+Gebruik `disabled` om zowel de editor als de toolbar uit te schakelen.
+
+<Canvas of={WysiwygStories.Disabled} />
+
+```tsx
+<Wysiwyg
+    disabled
+    value="<p>Deze editor kan niet worden aangepast.</p>"
+/>
+```
+
+## Opbouw
+
+De Wysiwyg bestaat uit meerdere onderdelen die samenwerken om de editorfunctionaliteit te bieden.
+
+### `Wysiwyg`
+
+De hoofdcontainer van de editor.
+
+Beheert onder andere:
+
+- de inhoud;
+- de toolbar;
+- de beschikbare extensies;
+- validatie;
+- disabled state;
+- tabelmenu;
+- placeholder.
+
+### Toolbar
+
+De toolbar bevat alle beschikbare editoracties.
+
+De toolbar is volledig responsive. Wanneer onvoldoende ruimte beschikbaar is, worden volledige groepen met acties automatisch verplaatst naar het overflow-menu.
+
+### EditorContent
+
+`EditorContent` is de daadwerkelijke Tiptap editor waarin gebruikers tekst invoeren en bewerken.
+
+### TableMenu
+
+Wanneer de gebruiker zich in een tabel bevindt, kan via het contextmenu aanvullende tabelfunctionaliteit worden aangeboden.
+
+### Extensies
+
+Alle aanvullende functionaliteit wordt als Tiptap-extensie toegevoegd.
+
+Voorbeelden hiervan zijn:
+
+- tekst uitlijnen;
+- links;
+- afbeeldingen;
+- tabellen;
+- subscript;
+- superscript;
+- placeholder;
+- image upload;
+- custom extensies.
+
+Hierdoor blijft de editor modulair en worden alleen de benodigde extensies geladen.
+
+## Toegankelijkheid
+
+De Wysiwyg is volledig met het toetsenbord te bedienen.
+
+Toolbar-knoppen hebben een toegankelijke naam en de actieve status wordt correct weergegeven.
+
+```tsx
+<ToolbarButton
+    aria-label="Vet"
+>
+    <Bold aria-hidden="true" />
+</ToolbarButton>
+```
+
+Gebruik decoratieve iconen altijd met `aria-hidden="true"`.
+
+Gebruik de editor altijd in combinatie met een zichtbaar label.
+
+```tsx
+<Field className="flex-col">
+    <FieldLabel required>
+        Beschrijving
+    </FieldLabel>
+
+    <Wysiwyg />
+</Field>
+```
+
+Gebruik een placeholder uitsluitend als aanvullende uitleg.
+
+```tsx
+<Wysiwyg
+    placeholder="Beschrijf het beleid..."
+/>
+```
+
+Gebruik `role="textbox"` of andere ARIA-attributen niet handmatig. Deze worden door Tiptap beheerd.
+
+## Richtlijnen
+
+### Wel doen
+
+- Gebruik alleen de toolbar-opties die gebruikers daadwerkelijk nodig hebben.
+- Gebruik koppen om inhoud logisch te structureren.
+- Gebruik lijsten voor opsommingen.
+- Gebruik tabellen uitsluitend voor tabulaire gegevens.
+- Gebruik een zichtbaar `FieldLabel`.
+- Gebruik `FieldError` voor validatiefouten.
+- Voeg domeinspecifieke functionaliteit toe via `extensions` en `customToolbarActions`.
+
+### Niet doen
+
+- Schakel niet standaard alle toolbar-opties in.
+- Gebruik tabellen niet voor layout.
+- Gebruik geen geneste tabellen.
+- Vertrouw niet uitsluitend op een placeholder.
+- Voeg geen domeinlogica toe aan het Wysiwyg-component zelf.
+- Maak geen custom toolbar-knoppen die afwijken van het standaard gedrag.

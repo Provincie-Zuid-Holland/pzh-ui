@@ -1,25 +1,8 @@
-import { forwardRef, SVGProps } from 'react'
-interface CustomIconProps extends SVGProps<SVGSVGElement> {
-    size?: number
-}
-const SVGIcon = forwardRef<SVGSVGElement, CustomIconProps>(
-    ({ size = 14, ...props }, svgRef) => {
-        if (size) {
-            props.width = size
-            props.height = size
-        }
-        return (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 576 512"
-                ref={svgRef}
-                {...props}>
-                <path d="M55.1 56.04c0-13.26 11.64-24 24-24h32c14.2 0 24 10.74 24 24V176h16c14.2 0 24 10.8 24 24 0 13.3-9.8 24-24 24h-80c-12.36 0-24-10.7-24-24 0-13.2 11.64-24 24-24h16V80.04h-8c-12.36 0-24-10.75-24-24zm63.6 285.16c-6.6-7.4-18.3-6.9-24.05 1.2l-11.12 15.5c-7.7 10.8-22.69 13.3-33.48 5.6-10.79-7.7-13.28-22.7-5.58-33.4l11.12-15.6c23.74-33.3 72.31-35.7 99.21-4.9 21.3 23.5 20.8 60.9-1.1 84.7L118.8 432H152c13.3 0 24 10.7 24 24s-10.7 24-24 24H64c-9.53 0-18.16-5.6-21.98-14.4-3.83-8.7-2.12-18.9 4.34-25.9l72.04-78c5.3-5.8 5.4-14.6.3-20.5zM512 64c17.7 0 32 14.33 32 32 0 17.7-14.3 32-32 32H256c-17.7 0-32-14.3-32-32 0-17.67 14.3-32 32-32h256zm0 160c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32h256zm0 160c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32h256z" />
-            </svg>
-        )
-    }
-)
-const ListOlIcon = SVGIcon
-ListOlIcon.displayName = 'ListOl'
-export default ListOlIcon
+import { forwardRef } from 'react';
+import type { IconProps } from '../Icon.types';
+const SvgListOl = forwardRef<SVGSVGElement, IconProps>(({
+  size = 16,
+  ...props
+}, ref) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" width={size} height={size} ref={ref} {...props}><path d="M64 48.04c0-8.84 7.16-16 16-16h32c8.8 0 16 7.16 16 16V192h32c8.8 0 16 7.2 16 16 0 8.9-7.2 16-16 16H64c-8.84 0-16-7.1-16-16 0-8.8 7.16-16 16-16h32V64.04H80c-8.84 0-16-7.17-16-16M224 96c0-8.84 7.2-16 16-16h288c8.8 0 16 7.16 16 16 0 8.8-7.2 16-16 16H240c-8.8 0-16-7.2-16-16m0 160c0-8.8 7.2-16 16-16h288c8.8 0 16 7.2 16 16s-7.2 16-16 16H240c-8.8 0-16-7.2-16-16m0 160c0-8.8 7.2-16 16-16h288c8.8 0 16 7.2 16 16s-7.2 16-16 16H240c-8.8 0-16-7.2-16-16M75.31 339.3c-6.24 6.3-16.37 6.3-22.62 0-6.25-6.2-6.25-16.4 0-22.6l15.41-15.4c24.18-24.2 63.8-22.9 86.3 2.8 20 22 19.4 57.1-1.3 79.3L92.82 448H160c8.8 0 16 7.2 16 16s-7.2 16-16 16H56c-6.37 0-12.13-3.8-14.67-9.6-2.54-5.9-1.37-12.7 2.97-17.3l85.4-91.5c9.5-10.2 9.8-25.9.6-36.4-11.2-11.8-28.5-12.4-39.57-1.3z" /></svg>);
+SvgListOl.displayName = "SvgListOl";
+export default SvgListOl;

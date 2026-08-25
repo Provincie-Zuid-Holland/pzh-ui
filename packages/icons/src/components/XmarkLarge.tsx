@@ -1,25 +1,8 @@
-import { forwardRef, SVGProps } from 'react'
-interface CustomIconProps extends SVGProps<SVGSVGElement> {
-    size?: number
-}
-const SVGIcon = forwardRef<SVGSVGElement, CustomIconProps>(
-    ({ size = 14, ...props }, svgRef) => {
-        if (size) {
-            props.width = size
-            props.height = size
-        }
-        return (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 448 512"
-                ref={svgRef}
-                {...props}>
-                <path d="M420.7 36.69c6.2-6.25 16.4-6.25 22.6 0 6.3 6.24 6.3 16.37 0 22.62L246.6 256l196.7 196.7c6.3 6.2 6.3 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0L224 278.6 27.31 475.3c-6.24 6.3-16.37 6.3-22.624 0-6.248-6.2-6.248-16.4 0-22.6L201.4 256 4.686 59.31c-6.248-6.24-6.248-16.37 0-22.62 6.244-6.25 16.374-6.25 22.624 0L224 233.4 420.7 36.69z" />
-            </svg>
-        )
-    }
-)
-const XmarkLargeIcon = SVGIcon
-XmarkLargeIcon.displayName = 'XmarkLarge'
-export default XmarkLargeIcon
+import { forwardRef } from 'react';
+import type { IconProps } from '../Icon.types';
+const SvgXmarkLarge = forwardRef<SVGSVGElement, IconProps>(({
+  size = 16,
+  ...props
+}, ref) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width={size} height={size} ref={ref} {...props}><path d="M393.4 41.37c12.5-12.49 32.7-12.49 45.2 0 12.5 12.5 12.5 32.76 0 45.26L269.3 255.1l169.3 170.3c12.5 12.5 12.5 32.7 0 45.2s-32.7 12.5-45.2 0L223.1 301.3 54.63 470.6c-12.5 12.5-32.76 12.5-45.258 0-12.496-12.5-12.496-32.7 0-45.2L178.7 255.1 9.372 86.63c-12.496-12.5-12.496-32.76 0-45.26 12.498-12.49 32.758-12.49 45.258 0L223.1 210.7z" /></svg>);
+SvgXmarkLarge.displayName = "SvgXmarkLarge";
+export default SvgXmarkLarge;

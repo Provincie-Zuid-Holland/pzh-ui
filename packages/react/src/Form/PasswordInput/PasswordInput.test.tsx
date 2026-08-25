@@ -16,7 +16,7 @@ describe('PasswordInput', () => {
     it('uses the default size', () => {
         render(<PasswordInput aria-label="Wachtwoord" />)
 
-        expect(screen.getByTestId('password-input')).toHaveAttribute(
+        expect(screen.getByTestId('input-group')).toHaveAttribute(
             'data-size',
             'l'
         )
@@ -25,7 +25,7 @@ describe('PasswordInput', () => {
     it.each(['l', 'm'] as const)('supports the %s size', size => {
         render(<PasswordInput aria-label="Wachtwoord" size={size} />)
 
-        expect(screen.getByTestId('password-input')).toHaveAttribute(
+        expect(screen.getByTestId('input-group')).toHaveAttribute(
             'data-size',
             size
         )

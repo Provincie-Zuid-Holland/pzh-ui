@@ -1,0 +1,41 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as TooltipStories from './Tooltip.stories'
+
+<Meta of={TooltipStories} />
+
+# Tooltip
+
+Een tooltip toont korte aanvullende informatie wanneer een gebruiker met de muis over een element beweegt of het element met het toetsenbord focust.
+
+## Gebruik
+
+```tsx
+import { Button, Tooltip, TooltipTrigger } from '@pzh-ui/react'
+
+<TooltipTrigger>
+    <Button>Meer informatie</Button>
+    <Tooltip>Dit is aanvullende informatie.</Tooltip>
+</TooltipTrigger>
+```
+
+<Canvas of={TooltipStories.Default} />
+
+## Plaatsing
+
+Gebruik `placement` om de voorkeurspositie van de tooltip te bepalen. De tooltip kan automatisch van positie wisselen wanneer er onvoldoende ruimte beschikbaar is.
+
+<Canvas of={TooltipStories.Placements} />
+
+## Langere tekst
+
+Houd tooltips zo kort mogelijk. Gebruik een popover of dialoog wanneer de inhoud interactief of uitgebreid is.
+
+<Canvas of={TooltipStories.LongContent} />
+
+## Toegankelijkheid
+
+- Gebruik een tooltip alleen voor aanvullende informatie.
+- Plaats essentiële informatie ook zichtbaar in de interface.
+- `TooltipTrigger` ondersteunt zowel hover als toetsenbordfocus.
+- Plaats geen interactieve elementen in een tooltip.

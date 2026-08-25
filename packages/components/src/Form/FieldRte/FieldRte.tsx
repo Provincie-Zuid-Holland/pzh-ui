@@ -29,7 +29,7 @@ import {
 import classNames from 'clsx'
 import { ReactNode, useEffect, useState } from 'react'
 
-import { NotificationProps } from '@pzh-ui/react'
+import { AlertProps } from '@pzh-ui/react'
 import { cn } from '../../utils'
 import { FieldLabel } from '../FieldLabel'
 import RteMenuBar from './components/RteMenuBar'
@@ -47,7 +47,7 @@ export interface FieldRteProps {
     /** Description underneath the label */
     description?: string | ReactNode
     /** Notification underneath the label/description */
-    notification?: NotificationProps
+    notification?: AlertProps
     /** Placeholder text */
     placeholder?: string
     /** Is field required */

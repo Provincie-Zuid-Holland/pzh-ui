@@ -1,0 +1,410 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks'
+
+import { Check } from '@pzh-ui/icons'
+
+import { Badge } from './Badge'
+import * as BadgeStories from './Badge.stories'
+
+<Meta of={BadgeStories} />
+
+<div className="max-w-6xl">
+
+<h1 className="mt-0 mb-4 text-4xl font-bold text-foreground">Badge</h1>
+
+<div className="max-w-3xl text-base leading-7 text-text-muted">
+    <p className="mt-0">
+        Een badge toont compacte informatie zoals een status, categorie of
+        label. Badges zijn bedoeld voor korte teksten en ondersteunen
+        verschillende semantische varianten en visuele weergaven.
+    </p>
+
+    <p className="mb-0">
+        Gebruik een variant op basis van de betekenis van de informatie, niet
+        op basis van de gewenste kleur.
+    </p>
+
+</div>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Varianten
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        De variant bepaalt de semantische betekenis van de badge. Hierdoor kan
+        de daadwerkelijke kleur via het thema worden aangepast zonder het
+        componentgebruik te wijzigen.
+    </p>
+
+    <div className="flex flex-wrap gap-3">
+        <Badge variant="primary">
+            Primary
+        </Badge>
+
+        <Badge variant="success">
+            Success
+        </Badge>
+
+        <Badge variant="warning">
+            Warning
+        </Badge>
+
+        <Badge variant="destructive">
+            Destructive
+        </Badge>
+
+        <Badge variant="neutral">
+            Neutral
+        </Badge>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Badge variant="primary">Primary</Badge>',
+                '<Badge variant="success">Success</Badge>',
+                '<Badge variant="warning">Warning</Badge>',
+                '<Badge variant="destructive">Destructive</Badge>',
+                '<Badge variant="neutral">Neutral</Badge>',
+            ].join('\n')}
+        />
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Weergaven
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Een badge heeft drie weergaven: <code>solid</code>,{' '}
+        <code>outline</code> en <code>inverted</code>. Outline gebruikt een
+        lichte achtergrond in combinatie met de kleur van de variant.
+    </p>
+
+    <div className="grid gap-4 md:grid-cols-3">
+        <div className="rounded-lg border border-border-subtle bg-surface p-5">
+            <span className="mb-3 block text-s font-bold text-foreground">
+                Solid
+            </span>
+
+            <Badge
+                variant="success"
+                appearance="solid">
+                Badge
+            </Badge>
+        </div>
+
+        <div className="rounded-lg border border-border-subtle bg-surface p-5">
+            <span className="mb-3 block text-s font-bold text-foreground">
+                Outline
+            </span>
+
+            <Badge
+                variant="success"
+                appearance="outline">
+                Badge
+            </Badge>
+        </div>
+
+        <div className="rounded-lg border border-border-subtle bg-foreground p-5">
+            <span className="mb-3 block text-s font-bold text-background">
+                Inverted
+            </span>
+
+            <Badge
+                variant="success"
+                appearance="inverted">
+                Badge
+            </Badge>
+        </div>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Badge appearance="solid">Badge</Badge>',
+                '<Badge appearance="outline">Badge</Badge>',
+                '<Badge appearance="inverted">Badge</Badge>',
+            ].join('\n')}
+        />
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Alle combinaties
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Iedere semantische variant ondersteunt dezelfde drie weergaven.
+    </p>
+
+    <div className="overflow-x-auto">
+        <div className="grid min-w-140 grid-cols-[140px_repeat(3,1fr)] gap-x-6 gap-y-4">
+            <div />
+
+            <strong className="text-s text-foreground">
+                Solid
+            </strong>
+
+            <strong className="text-s text-foreground">
+                Outline
+            </strong>
+
+            <strong className="text-s text-foreground">
+                Inverted
+            </strong>
+
+            {[
+                'primary',
+                'success',
+                'warning',
+                'destructive',
+                'neutral',
+            ].map(variant => (
+                <>
+                    <span
+                        key={`${variant}-label`}
+                        className="flex items-center text-s font-bold capitalize text-foreground">
+                        {variant}
+                    </span>
+
+                    <div
+                        key={`${variant}-solid`}
+                        className="flex items-center">
+                        <Badge
+                            variant={variant}
+                            appearance="solid">
+                            Badge
+                        </Badge>
+                    </div>
+
+                    <div
+                        key={`${variant}-outline`}
+                        className="flex items-center">
+                        <Badge
+                            variant={variant}
+                            appearance="outline">
+                            Badge
+                        </Badge>
+                    </div>
+
+                    <div
+                        key={`${variant}-inverted`}
+                        className="flex items-center bg-foreground p-2">
+                        <Badge
+                            variant={variant}
+                            appearance="inverted">
+                            Badge
+                        </Badge>
+                    </div>
+                </>
+            ))}
+        </div>
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Met icoon
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Een badge kan een icoon bevatten. Gebruik het attribuut{' '}
+        <code>data-icon="inline-start"</code> of{' '}
+        <code>data-icon="inline-end"</code> zodat de juiste spacing automatisch
+        wordt toegepast.
+    </p>
+
+    <div className="flex flex-wrap gap-3">
+        <Badge variant="success">
+            <Check
+                data-icon="inline-start"
+                aria-hidden="true"
+            />
+            Goedgekeurd
+        </Badge>
+
+        <Badge
+            variant="primary"
+            appearance="outline">
+            Nieuw
+            <Check
+                data-icon="inline-end"
+                aria-hidden="true"
+            />
+        </Badge>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Badge variant="success">',
+                '    <Check data-icon="inline-start" aria-hidden="true" />',
+                '    Goedgekeurd',
+                '</Badge>',
+            ].join('\n')}
+        />
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Hoofdletters
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Tekst wordt standaard in hoofdletters weergegeven. Zet{' '}
+        <code>uppercase</code> op <code>false</code> wanneer normale
+        hoofdlettergebruik gewenst is.
+    </p>
+
+    <div className="flex flex-wrap gap-3">
+        <Badge>
+            Badge
+        </Badge>
+
+        <Badge uppercase={false}>
+            Badge met normale tekst
+        </Badge>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Badge>Badge</Badge>',
+                '<Badge uppercase={false}>Badge met normale tekst</Badge>',
+            ].join('\n')}
+        />
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Gebruik
+    </h2>
+
+    <div className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-success-border bg-success-background p-5">
+            <strong className="mb-2 block text-success-foreground">
+                Wel doen
+            </strong>
+
+            <p className="m-0 leading-7 text-success-foreground">
+                Gebruik de variant die overeenkomt met de betekenis van de
+                status of informatie.
+            </p>
+        </div>
+
+        <div className="rounded-lg border border-destructive-border bg-destructive-background p-5">
+            <strong className="mb-2 block text-destructive-foreground">
+                Niet doen
+            </strong>
+
+            <p className="m-0 leading-7 text-destructive-foreground">
+                Kies geen variant uitsluitend omdat de kleur visueel beter past.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Toegankelijkheid
+    </h2>
+
+    <div className="max-w-3xl leading-7 text-text-muted">
+        <p className="mt-0">
+            Een kleur mag nooit de enige manier zijn waarop betekenis wordt
+            gecommuniceerd. Zorg dat de tekst van de badge duidelijk genoeg is
+            om de status zelfstandig te begrijpen.
+        </p>
+
+        <p>
+            Decoratieve iconen binnen een badge moeten verborgen worden voor
+            screenreaders met <code>aria-hidden="true"</code>.
+        </p>
+
+        <p className="mb-0">
+            Een badge is standaard informatief en niet interactief. Gebruik voor
+            acties een geschikt interactief component, zoals een knop of link.
+        </p>
+    </div>
+
+</section>
+
+<section className="mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        API
+    </h2>
+
+    <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-left">
+            <thead>
+                <tr className="border-b border-border">
+                    <th className="px-3 py-3 text-s font-bold text-foreground">
+                        Prop
+                    </th>
+                    <th className="px-3 py-3 text-s font-bold text-foreground">
+                        Waarden
+                    </th>
+                    <th className="px-3 py-3 text-s font-bold text-foreground">
+                        Standaard
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody className="text-text-muted">
+                <tr className="border-b border-border-subtle">
+                    <td className="px-3 py-3">
+                        <code>variant</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        primary, success, warning, destructive, neutral
+                    </td>
+                    <td className="px-3 py-3">
+                        success
+                    </td>
+                </tr>
+
+                <tr className="border-b border-border-subtle">
+                    <td className="px-3 py-3">
+                        <code>appearance</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        solid, outline, inverted
+                    </td>
+                    <td className="px-3 py-3">
+                        solid
+                    </td>
+                </tr>
+
+                <tr>
+                    <td className="px-3 py-3">
+                        <code>uppercase</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        true, false
+                    </td>
+                    <td className="px-3 py-3">
+                        true
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+</div>

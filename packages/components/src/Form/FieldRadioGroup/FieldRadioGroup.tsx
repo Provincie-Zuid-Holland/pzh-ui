@@ -1,8 +1,8 @@
 import classNames from 'clsx'
 import { ReactNode } from 'react'
 
-import { NotificationProps } from '@pzh-ui/react'
 import { FieldLabel } from '..'
+import { NotificationProps } from '../../Notification'
 import { FieldRadio, FieldRadioProps } from '../FieldRadio'
 
 /**

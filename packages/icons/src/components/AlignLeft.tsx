@@ -1,25 +1,8 @@
-import { forwardRef, SVGProps } from 'react'
-interface CustomIconProps extends SVGProps<SVGSVGElement> {
-    size?: number
-}
-const SVGIcon = forwardRef<SVGSVGElement, CustomIconProps>(
-    ({ size = 14, ...props }, svgRef) => {
-        if (size) {
-            props.width = size
-            props.height = size
-        }
-        return (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 448 512"
-                ref={svgRef}
-                {...props}>
-                <path d="M256 96H32C14.33 96 0 81.67 0 64s14.33-32 32-32h224c17.7 0 32 14.33 32 32s-14.3 32-32 32zm0 256H32c-17.67 0-32-14.3-32-32s14.33-32 32-32h224c17.7 0 32 14.3 32 32s-14.3 32-32 32zM0 192c0-17.7 14.33-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.67 0-32-14.3-32-32zm416 288H32c-17.67 0-32-14.3-32-32s14.33-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
-            </svg>
-        )
-    }
-)
-const AlignLeftIcon = SVGIcon
-AlignLeftIcon.displayName = 'AlignLeft'
-export default AlignLeftIcon
+import { forwardRef } from 'react';
+import type { IconProps } from '../Icon.types';
+const SvgAlignLeft = forwardRef<SVGSVGElement, IconProps>(({
+  size = 16,
+  ...props
+}, ref) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width={size} height={size} ref={ref} {...props}><path d="M272 48c8.8 0 16 7.16 16 16s-7.2 16-16 16H16C7.164 80 0 72.84 0 64s7.164-16 16-16zm160 128c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.836 0-16-7.2-16-16s7.164-16 16-16zM0 320c0-8.8 7.164-16 16-16h256c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.836 0-16-7.2-16-16m432 112c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.836 0-16-7.2-16-16s7.164-16 16-16z" /></svg>);
+SvgAlignLeft.displayName = "SvgAlignLeft";
+export default SvgAlignLeft;

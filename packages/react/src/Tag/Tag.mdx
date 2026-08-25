@@ -1,0 +1,372 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks'
+
+import { Tag } from './Tag'
+import * as TagStories from './Tag.stories'
+
+<Meta of={TagStories} />
+
+<div className="max-w-6xl">
+
+<h1 className="mt-0 mb-4 text-4xl font-bold text-foreground">Tag</h1>
+
+<div className="max-w-3xl text-base leading-7 text-text-muted">
+    <p className="mt-0">
+        Een tag toont compacte informatie zoals een geselecteerd filter,
+        categorie of andere waarde. Een tag kan optioneel verwijderbaar zijn.
+    </p>
+
+    <p className="mb-0">
+        Gebruik de variant die past bij de gewenste nadruk en achtergrond.
+    </p>
+
+</div>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Varianten
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Tags zijn beschikbaar in drie visuele varianten: <code>primary</code>,{' '}
+        <code>secondary</code> en <code>diapositive</code>.
+    </p>
+
+    <div className="flex flex-wrap items-center gap-3">
+        <Tag variant="primary">
+            Primary
+        </Tag>
+
+        <Tag variant="secondary">
+            Secondary
+        </Tag>
+
+        <div className="bg-foreground p-2">
+            <Tag variant="diapositive">
+                Diapositive
+            </Tag>
+        </div>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Tag variant="primary">Primary</Tag>',
+                '<Tag variant="secondary">Secondary</Tag>',
+                '<Tag variant="diapositive">Diapositive</Tag>',
+            ].join('\n')}
+        />
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Formaten
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Tags zijn beschikbaar in drie formaten: large, medium en small.
+    </p>
+
+    <div className="flex flex-wrap items-center gap-4">
+        <Tag size="l">
+            Large
+        </Tag>
+
+        <Tag size="m">
+            Medium
+        </Tag>
+
+        <Tag size="s">
+            Small
+        </Tag>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Tag size="l">Large</Tag>',
+                '<Tag size="m">Medium</Tag>',
+                '<Tag size="s">Small</Tag>',
+            ].join('\n')}
+        />
+    </div>
+
+    <div className="mt-6 overflow-x-auto">
+        <table className="w-full border-collapse text-left">
+            <thead>
+                <tr className="border-b border-border">
+                    <th className="px-3 py-3 text-s font-bold text-foreground">
+                        Formaat
+                    </th>
+                    <th className="px-3 py-3 text-s font-bold text-foreground">
+                        Hoogte
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody className="text-text-muted">
+                <tr className="border-b border-border-subtle">
+                    <td className="px-3 py-3">
+                        <code>l</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        40px
+                    </td>
+                </tr>
+
+                <tr className="border-b border-border-subtle">
+                    <td className="px-3 py-3">
+                        <code>m</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        32px
+                    </td>
+                </tr>
+
+                <tr>
+                    <td className="px-3 py-3">
+                        <code>s</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        24px
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Verwijderbaar
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Wanneer <code>onRemove</code> wordt meegegeven, toont de tag automatisch
+        een verwijderknop.
+    </p>
+
+    <div className="flex flex-wrap gap-3 items-center">
+        <Tag onRemove={() => undefined}>
+            Omgevingsvisie
+        </Tag>
+
+        <Tag
+            variant="secondary"
+            onRemove={() => undefined}>
+            Mobiliteit
+        </Tag>
+
+        <div className="bg-foreground p-2">
+            <Tag
+                variant="diapositive"
+                onRemove={() => undefined}>
+                Water
+            </Tag>
+        </div>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Tag onRemove={handleRemove}>',
+                '    Omgevingsvisie',
+                '</Tag>',
+            ].join('\n')}
+        />
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Zonder verwijderknop
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        Wanneer geen <code>onRemove</code> wordt meegegeven, wordt alleen het
+        label weergegeven.
+    </p>
+
+    <div className="flex flex-wrap gap-3">
+        <Tag>
+            Omgevingsvisie
+        </Tag>
+
+        <Tag variant="secondary">
+            Mobiliteit
+        </Tag>
+    </div>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code="<Tag>Omgevingsvisie</Tag>"
+        />
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Toegankelijke naam
+    </h2>
+
+    <p className="mb-6 mt-0 max-w-3xl leading-7 text-text-muted">
+        De verwijderknop heeft standaard de toegankelijke naam{' '}
+        <code>Verwijderen</code>. Gebruik <code>removeLabel</code> wanneer meer
+        context nodig is.
+    </p>
+
+    <div className="mt-6">
+        <Source
+            language="tsx"
+            code={[
+                '<Tag',
+                '    onRemove={handleRemove}',
+                '    removeLabel="Filter Omgevingsvisie verwijderen">',
+                '    Omgevingsvisie',
+                '</Tag>',
+            ].join('\n')}
+        />
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Gebruik
+    </h2>
+
+    <div className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-success-border bg-success-background p-5">
+            <strong className="mb-2 block text-success-foreground">
+                Wel doen
+            </strong>
+
+            <p className="m-0 leading-7 text-success-foreground">
+                Gebruik tags voor compacte, geselecteerde waarden zoals filters
+                of categorieën.
+            </p>
+        </div>
+
+        <div className="rounded-lg border border-destructive-border bg-destructive-background p-5">
+            <strong className="mb-2 block text-destructive-foreground">
+                Niet doen
+            </strong>
+
+            <p className="m-0 leading-7 text-destructive-foreground">
+                Gebruik een tag niet als vervanging voor een knop wanneer de
+                volledige tag een actie moet uitvoeren.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<section className="sb-unstyled mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        Toegankelijkheid
+    </h2>
+
+    <div className="max-w-3xl leading-7 text-text-muted">
+        <p className="mt-0">
+            De verwijderknop is een echte knop en is daardoor bereikbaar met het
+            toetsenbord.
+        </p>
+
+        <p>
+            Gebruik een specifieke <code>removeLabel</code> wanneer meerdere
+            tags op dezelfde pagina staan, zodat duidelijk is welke waarde wordt
+            verwijderd.
+        </p>
+
+        <p className="mb-0">
+            Gebruik een tag niet als interactieve container. Alleen de
+            verwijderknop binnen de tag is interactief.
+        </p>
+    </div>
+
+</section>
+
+<section className=" mt-12">
+    <h2 className="mb-2 mt-0 text-2xl font-bold text-foreground">
+        API
+    </h2>
+
+    <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-left">
+            <thead>
+                <tr className="border-b border-border">
+                    <th className="px-3 py-3 text-s font-bold text-foreground">
+                        Prop
+                    </th>
+                    <th className="px-3 py-3 text-s font-bold text-foreground">
+                        Waarden
+                    </th>
+                    <th className="px-3 py-3 text-s font-bold text-foreground">
+                        Standaard
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody className="text-text-muted">
+                <tr className="border-b border-border-subtle">
+                    <td className="px-3 py-3">
+                        <code>variant</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        primary, secondary, diapositive
+                    </td>
+                    <td className="px-3 py-3">
+                        primary
+                    </td>
+                </tr>
+
+                <tr className="border-b border-border-subtle">
+                    <td className="px-3 py-3">
+                        <code>size</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        l, m, s
+                    </td>
+                    <td className="px-3 py-3">
+                        m
+                    </td>
+                </tr>
+
+                <tr className="border-b border-border-subtle">
+                    <td className="px-3 py-3">
+                        <code>onRemove</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        function
+                    </td>
+                    <td className="px-3 py-3">
+                        —
+                    </td>
+                </tr>
+
+                <tr>
+                    <td className="px-3 py-3">
+                        <code>removeLabel</code>
+                    </td>
+                    <td className="px-3 py-3">
+                        string
+                    </td>
+                    <td className="px-3 py-3">
+                        Verwijderen
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+</div>

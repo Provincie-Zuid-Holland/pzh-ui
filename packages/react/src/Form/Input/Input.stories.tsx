@@ -98,7 +98,7 @@ export const Invalid: Story = {
 
 export const Sizes: Story = {
     render: args => (
-        <div className="flex items-center gap-4">
+        <div className="gap-4 flex items-center">
             <Input size="l" {...args} />
 
             <Input size="m" {...args} />

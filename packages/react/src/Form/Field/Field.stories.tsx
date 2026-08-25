@@ -68,8 +68,8 @@ export const WithoutDescription: Story = {
 
 export const Invalid: Story = {
     render: () => (
-        <Field className="flex-col gap-0">
-            <div className="flex flex-col gap-2">
+        <Field className="gap-0 flex-col">
+            <div className="gap-2 flex flex-col">
                 <FieldLabel htmlFor="email-invalid" required>
                     E-mailadres
                 </FieldLabel>

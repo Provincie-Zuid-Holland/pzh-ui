@@ -10,16 +10,34 @@ export default defineConfig(
         'analyse.html',
     ]),
 
-    tseslint.configs.recommended,
-
     {
-        files: ['src/**/*.{ts,tsx}', 'setupTests.ts'],
+        files: ['src/**/*.{ts,tsx}'],
+
+        extends: [...tseslint.configs.recommendedTypeChecked],
+
         languageOptions: {
             parserOptions: {
                 projectService: true,
                 tsconfigRootDir: import.meta.dirname,
             },
         },
+
+        rules: {
+            '@typescript-eslint/no-unused-vars': [
+                'warn',
+                {
+                    enableAutofixRemoval: {
+                        imports: true,
+                    },
+                },
+            ],
+        },
+    },
+
+    {
+        files: ['vite.config.ts', '.storybook/**/*.{ts,tsx}', 'setupTests.ts'],
+
+        extends: [tseslint.configs.disableTypeChecked],
     },
 
     storybook.configs['flat/recommended']

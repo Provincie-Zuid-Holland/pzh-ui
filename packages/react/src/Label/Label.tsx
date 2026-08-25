@@ -14,7 +14,7 @@ export type LabelProps = LabelPrimitiveProps &
     VariantProps<typeof labelVariants>
 
 const labelVariants = cva(
-    'text-primary flex items-center gap-2 leading-none font-bold select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed',
+    'gap-2 font-bold flex items-center leading-none text-primary select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed',
     {
         variants: {
             size: {
@@ -32,7 +32,6 @@ function Label({ className, htmlFor, slot, size, ...props }: LabelProps) {
     const label = (
         <LabelPrimitive
             data-slot="label"
-            data-testid="label"
             className={cn(labelVariants({ size }), className)}
             {...props}
             htmlFor={htmlFor}

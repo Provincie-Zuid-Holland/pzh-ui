@@ -10,10 +10,12 @@
  */
 
 :root {
+    --font-family-sans: 'Karbon Regular', sans-serif;
+    --font-family-sans-bold: 'Karbon Medium', sans-serif;
+
     /* ==========================================================================
        Primitive tokens
        ========================================================================== */
-
     /* Base */
     --pzh-white: #ffffff;
     --pzh-black: #000000;
@@ -33,6 +35,7 @@
     /* Blue */
     --pzh-blue-10: #f2f7fc;
     --pzh-blue-100: #7badde;
+    --pzh-blue-300: #323ca5;
     --pzh-blue-500: #281f6b;
     --pzh-blue-900: #16113b;
 
@@ -97,7 +100,7 @@
 
     /* Base */
     --background: var(--pzh-white);
-    --foreground: var(--pzh-blue-900);
+    --foreground: var(--pzh-black);
 
     /* Surfaces */
     --surface: var(--pzh-white);
@@ -124,6 +127,7 @@
     --text-subtle: var(--pzh-gray-500);
     --text-disabled: var(--pzh-gray-400);
     --text-inverse: var(--pzh-white);
+    --text-editor: var(--pzh-black);
 
     /* Borders */
     --border: var(--pzh-gray-300);
@@ -138,7 +142,7 @@
 
     /* Info */
     --info: var(--pzh-blue-500);
-    --info-foreground: var(--pzh-blue-900);
+    --info-foreground: var(--pzh-blue-500);
     --info-background: var(--pzh-blue-10);
     --info-border: var(--pzh-blue-100);
 
@@ -160,6 +164,16 @@
     --destructive-background: var(--pzh-red-10);
     --destructive-border: var(--pzh-red-100);
 
+    /* Neutral */
+    --neutral: var(--pzh-gray-600);
+    --neutral-foreground: var(--pzh-white);
+
+    --neutral-background: var(--pzh-gray-100);
+    --neutral-border: var(--pzh-gray-600);
+
+    --neutral-subtle: var(--pzh-gray-200);
+    --neutral-subtle-foreground: var(--pzh-gray-700);
+
     /* Links */
     --link: var(--pzh-blue-500);
     --link-hover: var(--pzh-blue-900);
@@ -171,10 +185,68 @@
     /* Overlay */
     --backdrop: var(--pzh-backdrop);
 
-    /* Badges */
-    --badge-success: var(--pzh-badge-green);
-    --badge-warning: var(--pzh-badge-orange);
-    --badge-destructive: var(--pzh-badge-red);
+    /* ==========================================================================
+      Badge
+      ========================================================================== */
+
+    /* Primary */
+    --badge-primary: var(--pzh-blue-300);
+    --badge-primary-foreground: var(--primary-foreground);
+
+    --badge-primary-subtle: var(--pzh-blue-10);
+    --badge-primary-subtle-foreground: var(--pzh-blue-300);
+
+    --badge-primary-inverted: var(--background);
+    --badge-primary-inverted-foreground: var(--pzh-blue-300);
+
+    /* Success */
+    --badge-success: var(--success);
+    --badge-success-foreground: var(--text-inverse);
+
+    --badge-success-subtle: var(--success-background);
+    --badge-success-subtle-foreground: var(--success);
+
+    --badge-success-inverted: var(--background);
+    --badge-success-inverted-foreground: var(--success);
+
+    /* Warning */
+    --badge-warning: var(--warning);
+    --badge-warning-foreground: var(--primary);
+
+    --badge-warning-subtle: var(--warning-background);
+    --badge-warning-subtle-foreground: var(--warning-foreground);
+
+    --badge-warning-inverted: var(--warning);
+    --badge-warning-inverted-foreground: var(--warning-foreground);
+
+    /* Destructive */
+    --badge-destructive: var(--destructive);
+    --badge-destructive-foreground: var(--text-inverse);
+
+    --badge-destructive-subtle: var(--destructive-background);
+    --badge-destructive-subtle-foreground: var(--destructive);
+
+    --badge-destructive-inverted: var(--background);
+    --badge-destructive-inverted-foreground: var(--destructive);
+
+    /* Neutral */
+    --badge-neutral: var(--neutral);
+    --badge-neutral-foreground: var(--neutral-foreground);
+
+    --badge-neutral-subtle: var(--neutral-background);
+    --badge-neutral-subtle-foreground: var(--neutral);
+
+    --badge-neutral-inverted: var(--background);
+    --badge-neutral-inverted-foreground: var(--neutral);
+
+    /* ==========================================================================
+       Toast
+       ========================================================================== */
+
+    --toast-info-background: var(--pzh-blue-100);
+    --toast-warning-background: var(--pzh-yellow-500);
+    --toast-success-background: var(--pzh-green-100);
+    --toast-error-background: var(--pzh-red-100);
 
     /* ==========================================================================
        Brand / decorative colors
@@ -215,4 +287,11 @@
     --brand-warm-gray: var(--pzh-warm-gray-500);
     --brand-warm-gray-light: var(--pzh-warm-gray-100);
     --brand-warm-gray-dark: var(--pzh-warm-gray-900);
+
+    /* ==========================================================================
+       Shadows
+       ========================================================================== */
+    --shadow-card: 0 2px 8px rgb(0 0 0 / 10%);
+    --shadow-popover: 0 4px 14px rgb(0 0 0 / 20%);
+    --shadow-dialog: 0 12px 32px rgb(0 0 0 / 24%);
 }

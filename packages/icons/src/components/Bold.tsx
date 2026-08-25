@@ -1,25 +1,8 @@
-import { forwardRef, SVGProps } from 'react'
-interface CustomIconProps extends SVGProps<SVGSVGElement> {
-    size?: number
-}
-const SVGIcon = forwardRef<SVGSVGElement, CustomIconProps>(
-    ({ size = 14, ...props }, svgRef) => {
-        if (size) {
-            props.width = size
-            props.height = size
-        }
-        return (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 384 512"
-                ref={svgRef}
-                {...props}>
-                <path d="M321.1 242.4c19-22.3 30.9-50.8 30.9-82.4 0-70.59-57.42-128-128-128l-192 .01c-17.67 0-32 14.31-32 32s14.33 32 32 32h16v320H32c-17.67 0-32 14.31-32 32s14.33 32 32 32h224c70.58 0 128-57.41 128-128 0-46.71-25.4-87.21-62.9-109.61zM112 96.01h112c35.3 0 64 28.72 64 64s-28.7 64-64 64H112v-128zM256 416H112V288h144c35.3 0 64 28.71 64 63.1S291.3 416 256 416z" />
-            </svg>
-        )
-    }
-)
-const BoldIcon = SVGIcon
-BoldIcon.displayName = 'Bold'
-export default BoldIcon
+import { forwardRef } from 'react';
+import type { IconProps } from '../Icon.types';
+const SvgBold = forwardRef<SVGSVGElement, IconProps>(({
+  size = 16,
+  ...props
+}, ref) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" width={size} height={size} ref={ref} {...props}><path fill="currentColor" d="M16 32C7.2 32 0 39.2 0 48s7.2 16 16 16h48v384H16c-8.8 0-16 7.2-16 16s7.2 16 16 16h240c70.7 0 128-57.3 128-128 0-52.8-32-98.2-77.7-117.7C334 213.9 352 181.1 352 144c0-61.9-50.1-112-112-112zm80 416V256h160c53 0 96 43 96 96s-43 96-96 96zm0-384h144c44.2 0 80 35.8 80 80s-35.8 80-80 80H96z" /></svg>);
+SvgBold.displayName = "SvgBold";
+export default SvgBold;

@@ -1,0 +1,182 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as PopoverStories from './Popover.stories'
+
+<Meta of={PopoverStories} />
+
+# Popover
+
+Een component voor het tonen van aanvullende inhoud in een zwevend venster dat relatief aan een trigger wordt weergegeven.
+
+De `Popover` is opgebouwd met `react-aria-components` en ondersteunt verschillende plaatsingen, formaten en offsets.
+
+## Gebruik
+
+```tsx
+import {
+    Button,
+    Popover,
+    PopoverDescription,
+    PopoverHeader,
+    PopoverTitle,
+    PopoverTrigger,
+} from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <PopoverTrigger>
+            <Button variant="secondary">Open popover</Button>
+
+            <Popover>
+                <PopoverHeader>
+                    <PopoverTitle>Popover titel</PopoverTitle>
+
+                    <PopoverDescription>
+                        Aanvullende informatie die bij de trigger hoort.
+                    </PopoverDescription>
+                </PopoverHeader>
+            </Popover>
+        </PopoverTrigger>
+    )
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={PopoverStories.Default} />
+
+<Controls of={PopoverStories.Default} />
+
+## Formaten
+
+De `Popover` ondersteunt twee formaten:
+
+- `s` – compact
+- `m` – standaard (default)
+
+```tsx
+<Popover size="s">
+    ...
+</Popover>
+
+<Popover size="m">
+    ...
+</Popover>
+```
+
+## Plaatsing
+
+Met de `placement`-property bepaal je waar de popover ten opzichte van de trigger wordt weergegeven.
+
+```tsx
+<Popover placement="top">
+    ...
+</Popover>
+
+<Popover placement="bottom">
+    ...
+</Popover>
+
+<Popover placement="bottom end">
+    ...
+</Popover>
+```
+
+React Aria bepaalt automatisch de optimale positie wanneer er onvoldoende ruimte beschikbaar is.
+
+## Afstand tot de trigger
+
+Gebruik `offset` om de afstand tussen de trigger en de popover aan te passen.
+
+```tsx
+<Popover offset={8}>
+    ...
+</Popover>
+```
+
+Met `crossOffset` kan de popover horizontaal of verticaal worden verschoven, afhankelijk van de gekozen plaatsing.
+
+```tsx
+<Popover
+    offset={8}
+    crossOffset={4}
+>
+    ...
+</Popover>
+```
+
+Standaard gebruikt de component:
+
+```tsx
+offset={0}
+crossOffset={0}
+```
+
+## Header
+
+Voor popovers met een titel en beschrijving kunnen de helpercomponenten worden gebruikt.
+
+```tsx
+<Popover>
+    <PopoverHeader>
+        <PopoverTitle>Instellingen</PopoverTitle>
+
+        <PopoverDescription>
+            Pas de instellingen voor dit onderdeel aan.
+        </PopoverDescription>
+    </PopoverHeader>
+</Popover>
+```
+
+## Menu
+
+De `Popover` kan worden gecombineerd met een `Menu` uit `react-aria-components`.
+
+```tsx
+import { Menu, MenuItem } from 'react-aria-components'
+
+<PopoverTrigger>
+    <Button>Meer opties</Button>
+
+    <Popover
+        placement="bottom end"
+        className="min-w-56 border border-border">
+        <Menu
+            aria-label="Meer opties"
+            className="min-h-0 flex-1 overflow-y-auto p-1 outline-none">
+            <MenuItem id="edit">
+                Bewerken
+            </MenuItem>
+
+            <MenuItem id="delete">
+                Verwijderen
+            </MenuItem>
+        </Menu>
+    </Popover>
+</PopoverTrigger>
+```
+
+Wanneer de beschikbare hoogte beperkt is, wordt het menu automatisch scrollbaar.
+
+## Aangepaste styling
+
+Via `className` kunnen aanvullende Tailwind-utilities worden toegevoegd.
+
+```tsx
+<Popover className="min-w-56 border border-border">
+    ...
+</Popover>
+```
+
+Gebruik waar mogelijk de standaard styling en semantische tokens van het design system.
+
+## Toegankelijkheid
+
+De component maakt gebruik van `react-aria-components` voor:
+
+- toetsenbordnavigatie;
+- focusbeheer;
+- positionering;
+- toegankelijkheidsattributen.
+
+Zorg ervoor dat interactieve inhoud binnen de popover altijd een duidelijke naam of beschrijving heeft.

@@ -1,0 +1,74 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as PaginationStories from './Pagination.stories'
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+Pagination verdeelt een lange lijst met resultaten over meerdere pagina's.
+
+## Gebruik
+
+```tsx
+<Pagination>
+    <PaginationContent>
+        <PaginationItem>
+            <PaginationPrevious href="?page=1" />
+        </PaginationItem>
+        <PaginationItem>
+            <PaginationLink href="?page=1" isActive>
+                1
+            </PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+            <PaginationLink href="?page=2">2</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+            <PaginationNext href="?page=2" />
+        </PaginationItem>
+    </PaginationContent>
+</Pagination>
+```
+
+<Canvas of={PaginationStories.Default} />
+
+## Router-link
+
+Gebruik de `render`-property om paginalinks door de router van de applicatie te laten afhandelen. Dit werkt ook voor `PaginationPrevious` en `PaginationNext`.
+
+```tsx
+import { Link } from 'react-router'
+
+<PaginationLink
+    render={props => <Link {...props} to="/resultaten?page=2" />}>
+    2
+</PaginationLink>
+```
+
+## Veel pagina's
+
+Gebruik `PaginationEllipsis` om een overgeslagen reeks pagina's aan te geven.
+
+<Canvas of={PaginationStories.WithEllipsis} />
+
+## Eerste en laatste pagina
+
+Schakel de vorige of volgende knop uit met `isDisabled` wanneer de grens van de reeks is bereikt.
+
+<Canvas of={PaginationStories.FirstPage} />
+
+<Canvas of={PaginationStories.LastPage} />
+
+## States
+
+De paginaknoppen ondersteunen default, geselecteerd, uitgeschakeld, hover, focus en actief.
+
+<Canvas of={PaginationStories.States} />
+
+## Toegankelijkheid
+
+- Markeer de huidige pagina met `isActive`.
+- Geef iedere paginalink een duidelijk `aria-label`.
+- Gebruik `PaginationPrevious` en `PaginationNext` voor de gelabelde navigatieknoppen.
+- Gebruik `isDisabled` voor een niet-beschikbare vorige of volgende pagina.

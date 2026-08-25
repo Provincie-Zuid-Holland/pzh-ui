@@ -1,0 +1,143 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as DatePickerStories from './DatePicker.stories'
+
+<Meta of={DatePickerStories} />
+
+# DatePicker
+
+Een component voor het selecteren van een datum via een invoerveld of kalender.
+
+De `DatePicker` combineert een `InputGroup`, `Popover` en `Calendar`. De gebruiker kan een datum handmatig invoeren in het formaat `dd-MM-yyyy` of een datum selecteren via de kalender.
+
+## Gebruik
+
+```tsx
+import { DatePicker } from '@pzh-ui/react'
+
+export function Example() {
+    return <DatePicker />
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={DatePickerStories.Default} />
+
+<Controls of={DatePickerStories.Default} />
+
+## Met een standaardwaarde
+
+Gebruik `defaultValue` om een datum vooraf te selecteren.
+
+<Canvas of={DatePickerStories.WithDefaultValue} />
+
+```tsx
+import { parseDate } from '@internationalized/date'
+
+<DatePicker
+    defaultValue={parseDate('2030-01-11')}
+/>
+```
+
+## Controlled
+
+Gebruik `value` en `onChange` om de geselecteerde datum zelf te beheren.
+
+```tsx
+import * as React from 'react'
+import {
+    parseDate,
+    type CalendarDate,
+} from '@internationalized/date'
+
+export function Example() {
+    const [date, setDate] = React.useState<CalendarDate | null>(
+        parseDate('2030-01-11')
+    )
+
+    return (
+        <DatePicker
+            value={date}
+            onChange={setDate}
+        />
+    )
+}
+```
+
+## Formaat
+
+De waarde in het invoerveld wordt weergegeven als:
+
+```text
+11-01-2030
+```
+
+Wanneer een geldige datum handmatig wordt ingevoerd, wordt de kalender automatisch bijgewerkt.
+
+## Grootte
+
+De `DatePicker` ondersteunt de formaten `l` en `m`.
+
+<Canvas of={DatePickerStories.Medium} />
+
+```tsx
+<DatePicker size="l" />
+
+<DatePicker size="m" />
+```
+
+## Uitgeschakeld
+
+Gebruik `disabled` om het component uit te schakelen.
+
+<Canvas of={DatePickerStories.Disabled} />
+
+```tsx
+<DatePicker disabled />
+```
+
+## Kalender configureren
+
+Via `calendarProps` kunnen eigenschappen worden doorgegeven aan het onderliggende `Calendar` component.
+
+<Canvas of={DatePickerStories.CalendarWithDropdowns} />
+
+```tsx
+<DatePicker
+    calendarProps={{
+        captionLayout: 'dropdown',
+    }}
+/>
+```
+
+Gebruik `calendarProps` alleen voor kalender-specifieke configuratie. Eigenschappen zoals `value`, `focusedValue` en `onChange` worden intern door de `DatePicker` beheerd.
+
+## Gebruik in een formulier
+
+De `DatePicker` werkt samen met `Field` en `FieldLabel`.
+
+```tsx
+import { Field, FieldLabel, DatePicker } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Field className="flex-col">
+            <FieldLabel htmlFor="date">
+                Datum
+            </FieldLabel>
+
+            <DatePicker
+                id="date"
+                name="date"
+            />
+        </Field>
+    )
+}
+```
+
+## Toetsenbord
+
+- Typ een datum in het formaat `dd-MM-yyyy`.
+- Druk op <kbd>↓</kbd> om de kalender te openen.
+- Gebruik de toetsenbordnavigatie van het `Calendar` component om een datum te selecteren.

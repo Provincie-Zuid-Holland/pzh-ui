@@ -1,5 +1,7 @@
-import { Ban } from '@pzh-ui/icons'
 import { useMemo } from 'react'
+
+import { Ban } from '@pzh-ui/icons'
+
 import { Alert, AlertTitle } from '../../Alert'
 import { Label } from '../../Label'
 import { cn } from '../../utils'
@@ -9,8 +11,11 @@ function Field({ className, ...props }: React.ComponentProps<'div'>) {
         <div
             role="group"
             data-slot="field"
-            data-testid="field"
-            className={cn('group/field flex w-full gap-1', className)}
+            className={cn(
+                'group/field gap-1 flex w-full flex-col',
+                '[&>[data-invalid]+[data-slot=field-error]]:-mt-1',
+                className
+            )}
             {...props}
         />
     )
@@ -29,9 +34,8 @@ function FieldLabel({
     return (
         <Label
             data-slot="field-label"
-            data-testid="field-label"
             className={cn(
-                'group/field-label peer/field-label flex w-fit gap-2 leading-snug',
+                'group/field-label peer/field-label gap-2 leading-snug flex w-fit',
                 'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col',
                 className
             )}
@@ -46,9 +50,8 @@ function FieldDescription({ className, ...props }: React.ComponentProps<'p'>) {
     return (
         <p
             data-slot="field-description"
-            data-testid="field-description"
             className={cn(
-                'text-s text-left leading-normal font-normal',
+                'text-s leading-normal font-normal text-left',
                 'last:mt-0 nth-last-2:-mt-1',
                 '[&>a]:underline [&>a]:underline-offset-2',
                 className
@@ -61,6 +64,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<'p'>) {
 function FieldError({
     children,
     errors,
+    className,
     ...props
 }: React.ComponentProps<'div'> & {
     errors?: Array<{ message?: string } | undefined>
@@ -79,7 +83,7 @@ function FieldError({
             return uniqueErrors[0]?.message
         }
         return (
-            <ul className="ml-4 flex list-disc flex-col gap-1">
+            <ul className="ml-4 gap-1 flex list-disc flex-col">
                 {uniqueErrors.map(
                     (error, index) =>
                         error?.message && <li key={index}>{error.message}</li>
@@ -94,10 +98,9 @@ function FieldError({
         <Alert
             role="alert"
             data-slot="field-error"
-            data-testid="field-error"
             variant="negative"
             size="s"
-            className="rounded-t-none border-t-0"
+            className={cn('w-full rounded-t-none border-t-0', className)}
             {...props}>
             <Ban size={16} className="min-w-4" />
             <AlertTitle>{content}</AlertTitle>

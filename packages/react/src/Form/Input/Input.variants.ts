@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority'
 export const inputControlVariants = cva(
     [
         'block',
-        'w-full min-w-0',
+        'min-w-0 w-full',
 
         'rounded border',
 

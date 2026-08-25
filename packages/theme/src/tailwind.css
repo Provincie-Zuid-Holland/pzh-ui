@@ -78,10 +78,81 @@
     --color-focus: var(--focus);
     --color-backdrop: var(--backdrop);
 
-    /* Badges */
+    /* Badge */
+
+    /* Primary */
+    --color-badge-primary: var(--badge-primary);
+    --color-badge-primary-foreground: var(--badge-primary-foreground);
+    --color-badge-primary-subtle: var(--badge-primary-subtle);
+    --color-badge-primary-subtle-foreground: var(
+        --badge-primary-subtle-foreground
+    );
+    --color-badge-primary-inverted: var(--badge-primary-inverted);
+    --color-badge-primary-inverted-foreground: var(
+        --badge-primary-inverted-foreground
+    );
+
+    /* Success */
     --color-badge-success: var(--badge-success);
+    --color-badge-success-foreground: var(--badge-success-foreground);
+    --color-badge-success-subtle: var(--badge-success-subtle);
+    --color-badge-success-subtle-foreground: var(
+        --badge-success-subtle-foreground
+    );
+    --color-badge-success-inverted: var(--badge-success-inverted);
+    --color-badge-success-inverted-foreground: var(
+        --badge-success-inverted-foreground
+    );
+
+    /* Warning */
     --color-badge-warning: var(--badge-warning);
+    --color-badge-warning-foreground: var(--badge-warning-foreground);
+    --color-badge-warning-subtle: var(--badge-warning-subtle);
+    --color-badge-warning-subtle-foreground: var(
+        --badge-warning-subtle-foreground
+    );
+    --color-badge-warning-inverted: var(--badge-warning-inverted);
+    --color-badge-warning-inverted-foreground: var(
+        --badge-warning-inverted-foreground
+    );
+
+    /* Destructive */
     --color-badge-destructive: var(--badge-destructive);
+    --color-badge-destructive-foreground: var(--badge-destructive-foreground);
+    --color-badge-destructive-subtle: var(--badge-destructive-subtle);
+    --color-badge-destructive-subtle-foreground: var(
+        --badge-destructive-subtle-foreground
+    );
+    --color-badge-destructive-inverted: var(--badge-destructive-inverted);
+    --color-badge-destructive-inverted-foreground: var(
+        --badge-destructive-inverted-foreground
+    );
+
+    /* Neutral */
+    --color-badge-neutral: var(--badge-neutral);
+    --color-badge-neutral-foreground: var(--badge-neutral-foreground);
+    --color-badge-neutral-subtle: var(--badge-neutral-subtle);
+    --color-badge-neutral-subtle-foreground: var(
+        --badge-neutral-subtle-foreground
+    );
+    --color-badge-neutral-inverted: var(--badge-neutral-inverted);
+    --color-badge-neutral-inverted-foreground: var(
+        --badge-neutral-inverted-foreground
+    );
+
+    /* Toast */
+    --color-toast-info-background: var(--toast-info-background);
+    --color-toast-warning-background: var(--toast-warning-background);
+    --color-toast-success-background: var(--toast-success-background);
+    --color-toast-error-background: var(--toast-error-background);
+
+    /* Text */
+    --color-text: var(--text);
+    --color-text-muted: var(--text-muted);
+    --color-text-subtle: var(--text-subtle);
+    --color-text-disabled: var(--text-disabled);
+    --color-text-inverse: var(--text-inverse);
+    --color-text-editor: var(--text-editor);
 
     /* Brand */
     --color-brand-blue: var(--brand-blue);
@@ -119,4 +190,9 @@
     --color-brand-warm-gray: var(--brand-warm-gray);
     --color-brand-warm-gray-light: var(--brand-warm-gray-light);
     --color-brand-warm-gray-dark: var(--brand-warm-gray-dark);
+
+    /* Shadows */
+    --shadow-card: var(--shadow-card);
+    --shadow-popover: var(--shadow-popover);
+    --shadow-dialog: var(--shadow-dialog);
 }

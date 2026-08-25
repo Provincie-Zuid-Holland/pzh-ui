@@ -1,6 +1,7 @@
+import { CircleInfoSolid, XmarkLarge } from '@pzh-ui/icons'
+
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { CircleInfoSolid, XmarkLarge } from '@pzh-ui/icons'
 import { Alert, AlertAction, AlertDescription, AlertTitle } from './Alert'
 
 const meta = {

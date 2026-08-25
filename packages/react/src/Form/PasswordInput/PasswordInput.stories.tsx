@@ -12,6 +12,7 @@ const meta = {
     args: {
         placeholder: 'Voer een wachtwoord in',
         showToggle: true,
+        showStrength: false,
         disabled: false,
     },
     argTypes: {
@@ -22,8 +23,14 @@ const meta = {
         showToggle: {
             control: 'boolean',
         },
+        showStrength: {
+            control: 'boolean',
+        },
         disabled: {
             control: 'boolean',
+        },
+        getStrength: {
+            control: false,
         },
     },
     decorators: [
@@ -46,6 +53,21 @@ export const Default: Story = {
 export const WithValue: Story = {
     args: {
         defaultValue: 'SuperSecret123!',
+    },
+    render: args => <PasswordInput {...args} />,
+}
+
+export const WithStrength: Story = {
+    args: {
+        showStrength: true,
+    },
+    render: args => <PasswordInput {...args} />,
+}
+
+export const StrongStrength: Story = {
+    args: {
+        defaultValue: 'SuperSecret123!',
+        showStrength: true,
     },
     render: args => <PasswordInput {...args} />,
 }
@@ -93,7 +115,7 @@ export const Invalid: Story = {
 
 export const Sizes: Story = {
     render: args => (
-        <div className="flex flex-col gap-4">
+        <div className="gap-4 flex flex-col">
             <PasswordInput size="l" {...args} />
 
             <PasswordInput size="m" {...args} />
@@ -103,10 +125,12 @@ export const Sizes: Story = {
 
 export const Examples: Story = {
     render: () => (
-        <div className="flex flex-col gap-4">
+        <div className="gap-4 flex flex-col">
             <PasswordInput placeholder="Nieuw wachtwoord" />
 
-            <PasswordInput defaultValue="SuperSecret123!" />
+            <PasswordInput defaultValue="test" />
+
+            <PasswordInput defaultValue="SuperSecret123!" showStrength />
 
             <PasswordInput defaultValue="SuperSecret123!" disabled />
         </div>

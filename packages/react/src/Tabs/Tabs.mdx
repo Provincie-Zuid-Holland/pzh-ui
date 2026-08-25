@@ -1,0 +1,84 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as TabsStories from './Tabs.stories'
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+Tabs verdelen gerelateerde inhoud over meerdere panelen zonder de gebruiker naar een andere pagina te sturen.
+
+## Gebruik
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@pzh-ui/react'
+
+<Tabs defaultSelectedKey="overview">
+    <TabsList aria-label="Projectinformatie">
+        <TabsTrigger id="overview">Overzicht</TabsTrigger>
+        <TabsTrigger id="activity">Activiteit</TabsTrigger>
+    </TabsList>
+    <TabsContent id="overview">Inhoud van het overzicht</TabsContent>
+    <TabsContent id="activity">Recente activiteit</TabsContent>
+</Tabs>
+```
+
+## Horizontaal
+
+Horizontale tabs zijn geschikt voor korte labels en een beperkt aantal gelijkwaardige panelen.
+
+<Canvas of={TabsStories.HorizontalL} />
+
+<Canvas of={TabsStories.HorizontalM} />
+
+## Verticaal
+
+Gebruik `orientation="vertical"` voor navigatie met iconen of wanneer labels meer verticale ruimte nodig hebben.
+
+<Canvas of={TabsStories.VerticalL} />
+
+<Canvas of={TabsStories.VerticalM} />
+
+## Formaten
+
+Gebruik `size="l"` voor prominente navigatie en `size="m"` voor compactere interfaces.
+
+## Uitgeschakeld
+
+Gebruik `isDisabled` op een `TabsTrigger` om een afzonderlijke tab uit te schakelen.
+
+```tsx
+<TabsTrigger id="archive" isDisabled>
+    Archief
+</TabsTrigger>
+```
+
+## Notificatie
+
+Plaats zelf een indicator in een trigger om aan te geven dat een tab nieuwe of ongelezen informatie bevat.
+
+```tsx
+<TabsTrigger id="messages">
+    Berichten
+    <span
+        aria-hidden="true"
+        className="top-1 right-1 size-3 absolute rounded-full bg-destructive"
+    />
+</TabsTrigger>
+```
+
+De notificatie is decoratief. Zorg dat de status ook via tekst of aanvullende toegankelijke informatie beschikbaar is wanneer deze betekenisvol is.
+
+## Filled variant
+
+De standaardvariant van `TabsList` toont tabs op een subtiele achtergrond. Gebruik `variant="line"` voor de onderstreepte variant uit het ontwerp.
+
+<Canvas of={TabsStories.Filled} />
+
+## Toegankelijkheid
+
+- Geef `TabsList` altijd een beschrijvend `aria-label`.
+- Gebruik unieke, overeenkomende `id`-waarden voor `TabsTrigger` en `TabsContent`.
+- Gebruik tabs alleen voor gerelateerde inhoud op dezelfde pagina.
+- Houd labels kort en duidelijk.
+- React Aria verzorgt toetsenbordnavigatie, focusbeheer en de juiste tab-semantiek.

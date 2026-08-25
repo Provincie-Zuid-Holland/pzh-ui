@@ -1,11 +1,12 @@
 'use client'
 
-import { type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import {
     composeRenderProps,
     TextArea as TextareaPrimitive,
 } from 'react-aria-components'
+
+import { type VariantProps } from 'class-variance-authority'
 
 import { cn } from '../../utils'
 import {
@@ -24,14 +25,13 @@ function Textarea({ className, size = 'l', ...props }: TextareaProps) {
         <TextareaPrimitive
             data-slot="textarea"
             data-size={size}
-            data-testid="textarea"
             className={composeRenderProps(className, className =>
                 cn(
                     inputControlVariants({ size }),
                     inputPaddingVariants({ size }),
 
-                    'field-sizing-content min-h-30 resize-y',
-                    'placeholder:text-text-muted',
+                    'min-h-30 field-sizing-content resize-y',
+                    'placeholder:text-text-subtle',
 
                     'focus-visible:border-transparent',
                     'focus-visible:ring-2',

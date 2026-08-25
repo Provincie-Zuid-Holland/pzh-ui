@@ -1,0 +1,88 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as ToastStories from './Toast.stories'
+
+<Meta of={ToastStories} title="Componenten/Toast/Documentatie" />
+
+# Toast
+
+Een toast toont een korte, tijdelijke melding naar aanleiding van een actie. Plaats één `Toaster` in de applicatie en gebruik `toast` om meldingen te tonen.
+
+## Installatie
+
+```tsx
+import { Toaster } from '@pzh-ui/react'
+
+export function App() {
+    return (
+        <>
+            {/* Applicatie */}
+            <Toaster />
+        </>
+    )
+}
+```
+
+## Varianten
+
+De component ondersteunt informatie-, waarschuwing-, succes- en foutmeldingen.
+
+<Canvas of={ToastStories.AllVariants} />
+
+```tsx
+import { toast } from '@pzh-ui/react'
+
+toast.info('Info', {
+    description: 'Er is nieuwe informatie beschikbaar.',
+})
+
+toast.warning('Warning', {
+    description: 'Controleer de ingevoerde gegevens.',
+})
+
+toast.success('Success', {
+    description: 'De wijzigingen zijn opgeslagen.',
+})
+
+toast.error('Error', {
+    description: 'De wijzigingen konden niet worden opgeslagen.',
+})
+```
+
+## Interactief voorbeeld
+
+<Canvas of={ToastStories.Interactive} />
+
+## Posities
+
+Met de `position`-property plaats je de toast links, in het midden of rechts, aan de boven- of onderkant van het scherm. Gebruik de knoppen in het voorbeeld om iedere positie te bekijken.
+
+Beschikbare posities:
+
+- `top-left`
+- `top-center`
+- `top-right`
+- `bottom-left`
+- `bottom-center`
+- `bottom-right`
+
+<Canvas of={ToastStories.AllPositions} />
+
+```tsx
+<Toaster position="bottom-right" />
+```
+
+## Sluiten
+
+Toasts tonen standaard een sluitknop. Zet `closeButton={false}` op de `Toaster` wanneer meldingen uitsluitend automatisch gesloten mogen worden.
+
+```tsx
+<Toaster closeButton={false} />
+```
+
+## Toegankelijkheid
+
+- Gebruik een korte, duidelijke titel.
+- Voeg alleen een beschrijving toe wanneer extra context nodig is.
+- Gebruik `toast.error` voor fouten en `toast.warning` voor situaties die aandacht vereisen.
+- Zorg dat dezelfde belangrijke informatie ook op een blijvende plek in de interface beschikbaar is.

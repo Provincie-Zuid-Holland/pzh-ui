@@ -37,7 +37,7 @@ export const Medium: Story = {
 
 export const Sizes: Story = {
     render: args => (
-        <div className="flex flex-col items-start gap-4">
+        <div className="gap-4 flex flex-col items-start">
             <Label {...args} size="l">
                 Large label
             </Label>
@@ -51,7 +51,7 @@ export const Sizes: Story = {
 
 export const WithInput: Story = {
     render: args => (
-        <div className="flex flex-col gap-2">
+        <div className="gap-2 flex flex-col">
             <Label {...args} htmlFor="name">
                 Naam
             </Label>
@@ -59,7 +59,7 @@ export const WithInput: Story = {
             <input
                 id="name"
                 type="text"
-                className="border-pzh-gray-400 rounded border px-3 py-2"
+                className="border-pzh-gray-400 rounded px-3 py-2 border"
             />
         </div>
     ),

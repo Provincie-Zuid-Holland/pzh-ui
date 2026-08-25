@@ -1,6 +1,5 @@
 'use client'
 
-import { cva, type VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 import {
     Button as ButtonPrimitive,
@@ -10,6 +9,9 @@ import {
 } from 'react-aria-components'
 
 import { Spinner } from '@pzh-ui/icons'
+
+import { cva, type VariantProps } from 'class-variance-authority'
+
 import { cn } from '../utils'
 
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
@@ -30,8 +32,8 @@ export const buttonVariants = cva(
     [
         'group/button',
         'px-4 py-2',
-        'inline-flex gap-2 shrink-0 items-center justify-center',
-        'rounded border border-transparent',
+        'gap-2 inline-flex shrink-0 items-center justify-center',
+        'rounded border',
         'bg-clip-padding',
         'font-bold leading-none whitespace-nowrap',
         'outline-none select-none',
@@ -177,6 +179,7 @@ export const buttonVariants = cva(
                  * Link style
                  */
                 link: [
+                    'border-transparent',
                     'px-0',
                     'font-normal',
                     'underline underline-offset-2',
@@ -192,7 +195,7 @@ export const buttonVariants = cva(
                 /**
                  * No visual styling.
                  */
-                default: '',
+                default: 'border-transparent',
             },
 
             size: {
@@ -224,7 +227,6 @@ function Button({
             data-slot="button"
             data-variant={variant}
             data-size={size}
-            data-testid="button"
             className={cn(
                 buttonVariants({
                     variant,
@@ -252,7 +254,6 @@ function LinkButton({
             data-slot="button"
             data-variant={variant}
             data-size={size}
-            data-testid="link-button"
             className={cn(
                 buttonVariants({
                     variant,

@@ -1,7 +1,8 @@
+import { ChevronRight, Plus } from '@pzh-ui/icons'
+
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { ChevronRight, Plus } from '@pzh-ui/icons'
-import { Button, LinkButton } from './Button'
+import { Button, buttonVariants, LinkButton } from './Button'
 
 const meta = {
     title: 'Componenten/Button',
@@ -69,7 +70,7 @@ export const Diapositive: Story = {
         variant: 'diapositive',
     },
     render: args => (
-        <div className="bg-brand-blue-dark p-8">
+        <div className="p-8 bg-brand-blue-dark">
             <Button {...args} />
         </div>
     ),
@@ -105,7 +106,7 @@ export const Pending: Story = {
 
 export const WithIcon: Story = {
     render: args => (
-        <div className="flex flex-col items-start gap-4">
+        <div className="gap-4 flex flex-col items-start">
             <Button {...args}>
                 <Plus />
                 Toevoegen
@@ -121,7 +122,7 @@ export const WithIcon: Story = {
 
 export const Variants: Story = {
     render: args => (
-        <div className="flex flex-col items-start gap-4">
+        <div className="gap-4 flex flex-col items-start">
             <Button {...args} variant="primary">
                 Primary
             </Button>
@@ -138,7 +139,7 @@ export const Variants: Story = {
                 Caution
             </Button>
 
-            <div className="bg-brand-blue-dark p-4">
+            <div className="p-4 bg-brand-blue-dark">
                 <Button {...args} variant="diapositive">
                     Diapositive
                 </Button>
@@ -153,7 +154,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
     render: args => (
-        <div className="flex items-center gap-4">
+        <div className="gap-4 flex items-center">
             <Button {...args} size="l">
                 Large
             </Button>
@@ -171,7 +172,7 @@ export const Sizes: Story = {
 
 export const WithDisabledVariants: Story = {
     render: args => (
-        <div className="flex flex-col items-start gap-4">
+        <div className="gap-4 flex flex-col items-start">
             <Button {...args} variant="primary" isDisabled>
                 Primary
             </Button>
@@ -188,7 +189,7 @@ export const WithDisabledVariants: Story = {
                 Caution
             </Button>
 
-            <div className="bg-brand-blue-dark p-4">
+            <div className="p-4 bg-brand-blue-dark">
                 <Button {...args} variant="diapositive" isDisabled>
                     Diapositive
                 </Button>
@@ -199,7 +200,7 @@ export const WithDisabledVariants: Story = {
 
 export const WithPendingVariants: Story = {
     render: args => (
-        <div className="flex flex-col items-start gap-4">
+        <div className="gap-4 flex flex-col items-start">
             <Button {...args} variant="primary" isPending>
                 Primary
             </Button>
@@ -216,7 +217,7 @@ export const WithPendingVariants: Story = {
                 Caution
             </Button>
 
-            <div className="bg-brand-blue-dark p-4">
+            <div className="p-4 bg-brand-blue-dark">
                 <Button {...args} variant="diapositive" isPending>
                     Diapositive
                 </Button>
@@ -230,5 +231,15 @@ export const AsLink: Story = {
         <LinkButton href="#" variant={args.variant} size={args.size}>
             Label
         </LinkButton>
+    ),
+}
+
+export const AsPlainLink: Story = {
+    render: () => (
+        <a
+            href="#"
+            className={buttonVariants({ variant: 'secondary', size: 'm' })}>
+            Inloggen
+        </a>
     ),
 }

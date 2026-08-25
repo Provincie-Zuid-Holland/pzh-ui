@@ -1,25 +1,8 @@
-import { forwardRef, SVGProps } from 'react'
-interface CustomIconProps extends SVGProps<SVGSVGElement> {
-    size?: number
-}
-const SVGIcon = forwardRef<SVGSVGElement, CustomIconProps>(
-    ({ size = 14, ...props }, svgRef) => {
-        if (size) {
-            props.width = size
-            props.height = size
-        }
-        return (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 448 512"
-                ref={svgRef}
-                {...props}>
-                <path d="M160 400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16v208zm80 0c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16v208zm80 0c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16v208zm-2.5-375.06L354.2 80H424c13.3 0 24 10.75 24 24 0 13.3-10.7 24-24 24h-8v304c0 44.2-35.8 80-80 80H112c-44.18 0-80-35.8-80-80V128h-8c-13.25 0-24-10.7-24-24 0-13.25 10.75-24 24-24h69.82l36.68-55.06C140.9 9.357 158.4 0 177.1 0h93.8c18.7 0 36.2 9.358 46.6 24.94zM151.5 80h145l-19-28.44c-1.5-2.22-4-3.56-6.6-3.56h-93.8c-2.6 0-6 1.34-6.6 3.56L151.5 80zM80 432c0 17.7 14.33 32 32 32h224c17.7 0 32-14.3 32-32V128H80v304z" />
-            </svg>
-        )
-    }
-)
-const TrashCanIcon = SVGIcon
-TrashCanIcon.displayName = 'TrashCan'
-export default TrashCanIcon
+import { forwardRef } from 'react';
+import type { IconProps } from '../Icon.types';
+const SvgTrashCan = forwardRef<SVGSVGElement, IconProps>(({
+  size = 16,
+  ...props
+}, ref) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width={size} height={size} ref={ref} {...props}><path fill="currentColor" d="M160.5 27.4c2-6.8 8.3-11.4 15.3-11.4h96.4c7.1 0 13.3 4.6 15.3 11.4l11 36.6h-149zM116.1 64H16C7.2 64 0 71.2 0 80s7.2 16 16 16h416c8.8 0 16-7.2 16-16s-7.2-16-16-16H331.9l-13.7-45.8c-6.1-20.3-24.8-34.2-46-34.2h-96.4c-21.2 0-39.9 13.9-46 34.2zM32 144v304c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V144h-32v304c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V144zm112 64c0-8.8-7.2-16-16-16s-16 7.2-16 16v192c0 8.8 7.2 16 16 16s16-7.2 16-16zm96 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v192c0 8.8 7.2 16 16 16s16-7.2 16-16zm96 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v192c0 8.8 7.2 16 16 16s16-7.2 16-16z" /></svg>);
+SvgTrashCan.displayName = "SvgTrashCan";
+export default SvgTrashCan;

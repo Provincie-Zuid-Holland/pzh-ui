@@ -1,5 +1,6 @@
-import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
+
+import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '../utils'
 
@@ -7,18 +8,18 @@ export type AlertProps = React.ComponentProps<'div'> &
     VariantProps<typeof alertVariants>
 
 const alertVariants = cva(
-    'group/alert relative grid w-full gap-1 rounded border p-4 text-left has-data-[slot=alert-action]:pr-12 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 has-[>svg]:items-start *:[svg]:self-center *:[svg]:translate-y-0 *:data-[slot=alert-description]:text-s *:data-[slot=alert-title]:font-bold *:data-[slot=alert-action]:flex prose [&_:is(p,ul,li)]:my-0 prose-ul:pl-5 marker:text-xs marker:text-current',
+    'group/alert gap-1 rounded p-4 has-data-[slot=alert-action]:pr-12 has-[>svg]:gap-x-2 *:[svg]:translate-y-0 *:data-[slot=alert-description]:text-s *:data-[slot=alert-title]:font-bold prose [&_:is(p,ul,li)]:my-0 prose-ul:pl-5 marker:text-xs relative grid w-full max-w-none border text-left marker:text-current has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:items-start *:data-[slot=alert-action]:flex *:[svg]:self-center',
     {
         variants: {
             variant: {
                 default:
-                    'bg-info-background border-info-border text-info-foreground',
+                    'border-info-border bg-info-background text-info-foreground',
                 warning:
-                    'bg-warning-background border-warning-border text-warning-foreground',
+                    'border-warning-border bg-warning-background text-warning-foreground',
                 positive:
-                    'bg-success-background border-success-border text-success-foreground',
+                    'border-success-border bg-success-background text-success-foreground',
                 negative:
-                    'bg-destructive-background border-destructive-border text-destructive-foreground',
+                    'border-destructive-border bg-destructive-background text-destructive-foreground',
             },
             size: {
                 m: 'rounded-lg *:data-[slot=alert-title]:text-heading-s *:data-[slot=alert-action]:top-4 *:data-[slot=alert-action]:right-4',
@@ -45,7 +46,6 @@ function Alert({
             data-slot="alert"
             role={role}
             className={cn(alertVariants({ variant, size }), className)}
-            data-testid="alert"
             {...props}
         />
     )
@@ -72,7 +72,7 @@ function AlertDescription({
         <div
             data-slot="alert-description"
             className={cn(
-                'text-balance group-has-[>svg]/alert:col-start-2 md:text-pretty [&_:is(p,ul,ol):not(:last-child)]:mb-4 [&_a]:underline [&_a]:underline-offset-2',
+                'md:text-pretty [&_:is(p,ul,ol):not(:last-child)]:mb-4 text-balance group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-2',
                 className
             )}
             {...props}

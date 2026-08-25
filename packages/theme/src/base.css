@@ -22,7 +22,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Karbon Regular', sans-serif;
+    font-family: var(--font-family-sans);
     font-size: 1.25rem;
     font-weight: 400;
     line-height: 1.5;
@@ -41,9 +41,11 @@ h6,
 .font-bold,
 strong,
 b {
-    font-family: 'Karbon Medium', sans-serif;
+    font-family: var(--font-family-sans-bold);
+    font-weight: 700;
 }
 
 .font-normal {
-    font-family: 'Karbon Regular', sans-serif;
+    font-family: var(--font-family-sans);
+    font-weight: 400;
 }

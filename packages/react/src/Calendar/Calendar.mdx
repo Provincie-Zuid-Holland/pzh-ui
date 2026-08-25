@@ -1,0 +1,119 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as CalendarStories from './Calendar.stories'
+
+<Meta of={CalendarStories} />
+
+# Calendar
+
+De `Calendar` en `RangeCalendar` componenten bieden een toegankelijke datumkiezer op basis van React Aria. Ze ondersteunen het selecteren van een enkele datum of een periode en kunnen optioneel meerdere maanden of maand- en jaardropdowns tonen.
+
+## Gebruik
+
+### Enkele datum
+
+```tsx
+import { Calendar } from '@pzh-ui/react'
+
+export function Example() {
+    return <Calendar aria-label="Datum kiezen" />
+}
+```
+
+### Periode selecteren
+
+```tsx
+import { RangeCalendar } from '@pzh-ui/react'
+
+export function Example() {
+    return <RangeCalendar aria-label="Periode kiezen" />
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={CalendarStories.Default} />
+
+<Controls of={CalendarStories.Default} />
+
+## Variaties
+
+### Dropdown navigatie
+
+Gebruik `captionLayout="dropdown"` om de maand en het jaar via selectvelden te kiezen.
+
+<Canvas of={CalendarStories.WithDropdowns} />
+
+```tsx
+<Calendar
+    aria-label="Datum kiezen"
+    captionLayout="dropdown"
+/>
+```
+
+### Twee maanden
+
+Toon meerdere maanden naast elkaar met `numberOfMonths`.
+
+<Canvas of={CalendarStories.TwoMonths} />
+
+```tsx
+<Calendar
+    aria-label="Datum kiezen"
+    numberOfMonths={2}
+/>
+```
+
+### Geselecteerde datum
+
+Een standaard geselecteerde datum kan worden meegegeven via `defaultValue`.
+
+<Canvas of={CalendarStories.SelectedDate} />
+
+```tsx
+import { parseDate } from '@internationalized/date'
+
+<Calendar
+    aria-label="Datum kiezen"
+    defaultValue={parseDate('2026-08-19')}
+/>
+```
+
+### Periode
+
+Gebruik `RangeCalendar` om een begin- en einddatum te selecteren.
+
+<Canvas of={CalendarStories.Range} />
+
+```tsx
+import { parseDate } from '@internationalized/date'
+
+<RangeCalendar
+    aria-label="Periode kiezen"
+    defaultValue={{
+        start: parseDate('2026-08-12'),
+        end: parseDate('2026-08-18'),
+    }}
+/>
+```
+
+### Periode over meerdere maanden
+
+Een periode kan ook over meerdere maanden worden geselecteerd.
+
+<Canvas of={CalendarStories.RangeTwoMonths} />
+
+```tsx
+<RangeCalendar
+    aria-label="Periode kiezen"
+    numberOfMonths={2}
+    captionLayout="dropdown"
+/>
+```
+
+## Toegankelijkheid
+
+- Volledig toetsenbordbedienbaar.
+- Gebaseerd op React Aria voor correcte ARIA-attributen.
+- Ondersteunt focus-indicatie, uitgeschakelde datums en niet-beschikbare datums.
+- Werkt met locale-specifieke maand- en weekdagweergaven.

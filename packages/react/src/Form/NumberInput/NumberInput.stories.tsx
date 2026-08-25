@@ -120,7 +120,7 @@ export const Percentage: Story = {
 
 export const Sizes: Story = {
     render: () => (
-        <div className="flex flex-col gap-4">
+        <div className="gap-4 flex flex-col">
             <NumberInput defaultValue={10} size="l" />
 
             <NumberInput defaultValue={10} size="m" />
@@ -130,7 +130,7 @@ export const Sizes: Story = {
 
 export const Examples: Story = {
     render: () => (
-        <div className="flex flex-col gap-4">
+        <div className="gap-4 flex flex-col">
             <NumberInput defaultValue={10} minValue={0} maxValue={100} />
 
             <NumberInput defaultValue={12.5} step={0.5} />

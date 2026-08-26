@@ -1,0 +1,110 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as ButtonGroupStories from './ButtonGroup.stories'
+
+<Meta of={ButtonGroupStories} />
+
+# ButtonGroup
+
+Groepeert knoppen die inhoudelijk bij elkaar horen. Aangrenzende knoppen delen hun randen en afgeronde hoeken, zodat ze als één bediening worden weergegeven.
+
+## Gebruik
+
+```tsx
+import { Button, ButtonGroup } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <ButtonGroup aria-label="Acties">
+            <Button variant="secondary">Opslaan</Button>
+            <Button variant="secondary">Dupliceren</Button>
+            <Button variant="secondary">Verwijderen</Button>
+        </ButtonGroup>
+    )
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={ButtonGroupStories.Default} />
+
+<Controls of={ButtonGroupStories.Default} />
+
+## Oriëntatie
+
+De standaardoriëntatie is `horizontal`. Gebruik `vertical` om de knoppen onder elkaar te plaatsen.
+
+<Canvas of={ButtonGroupStories.Vertical} />
+
+```tsx
+<ButtonGroup orientation="vertical" aria-label="Acties">
+    <Button variant="secondary">Opslaan</Button>
+    <Button variant="secondary">Dupliceren</Button>
+</ButtonGroup>
+```
+
+## Tekst
+
+Met `ButtonGroupText` kan vaste tekst aan een groep worden toegevoegd. De tekst kan met de `render`-property ook als een ander HTML-element worden weergegeven.
+
+<Canvas of={ButtonGroupStories.WithText} />
+
+```tsx
+<ButtonGroup aria-label="Website openen">
+    <ButtonGroupText>https://</ButtonGroupText>
+    <Button variant="secondary">zuid-holland.nl</Button>
+</ButtonGroup>
+```
+
+## Met invoerveld
+
+Een invoerveld en bijbehorende actie kunnen als één bediening worden gegroepeerd.
+
+<Canvas of={ButtonGroupStories.WithInput} />
+
+```tsx
+import { MagnifyingGlass } from '@pzh-ui/icons'
+import { Button, ButtonGroup, Input } from '@pzh-ui/react'
+
+<ButtonGroup aria-label="Zoeken">
+    <Input aria-label="Zoekterm" placeholder="Zoeken..." />
+    <Button variant="secondary" aria-label="Zoeken">
+        <MagnifyingGlass />
+    </Button>
+</ButtonGroup>
+```
+
+## Separator
+
+Gebruik `ButtonGroupSeparator` wanneer twee delen van een groep extra visueel moeten worden gescheiden. De separator is standaard verticaal, passend bij een horizontale groep.
+
+<Canvas of={ButtonGroupStories.WithSeparator} />
+
+Voor een verticale groep moet de separator horizontaal worden ingesteld:
+
+```tsx
+<ButtonGroup orientation="vertical" aria-label="Acties">
+    <Button variant="secondary">Opslaan</Button>
+    <ButtonGroupSeparator orientation="horizontal" />
+    <Button variant="secondary">Verwijderen</Button>
+</ButtonGroup>
+```
+
+## Geneste groepen
+
+Geneste groepen krijgen automatisch ruimte tussen elkaar, terwijl de knoppen binnen iedere groep aaneengesloten blijven.
+
+<Canvas of={ButtonGroupStories.Nested} />
+
+## Toegankelijkheid
+
+`ButtonGroup` gebruikt `role="group"`. Geef iedere groep daarom een toegankelijke naam met `aria-label` of `aria-labelledby`.
+
+```tsx
+<ButtonGroup aria-label="Paginanavigatie">
+    <Button aria-label="Vorige pagina">Vorige</Button>
+    <Button aria-label="Volgende pagina">Volgende</Button>
+</ButtonGroup>
+```
+
+Gebruik voor knoppen die alleen een icoon bevatten altijd een duidelijke `aria-label`.

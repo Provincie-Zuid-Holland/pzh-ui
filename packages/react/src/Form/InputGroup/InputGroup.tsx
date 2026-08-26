@@ -91,12 +91,9 @@ function InputGroupAddon({
             className={cn(
                 inputGroupAddonVariants({ align }),
 
-                'data-[align=inline-end]:has-[>button]:gap-0',
-
                 // Large
                 'group-data-[size=l]/input-group:data-[align=inline-start]:pl-4',
                 'group-data-[size=l]/input-group:data-[align=inline-end]:pr-4',
-                'group-data-[size=l]/input-group:data-[align=inline-end]:has-[>button]:pr-0',
 
                 'group-data-[size=l]/input-group:data-[align=block-start]:px-4',
                 'group-data-[size=l]/input-group:data-[align=block-start]:pt-2',
@@ -106,7 +103,6 @@ function InputGroupAddon({
                 // Medium
                 'group-data-[size=m]/input-group:data-[align=inline-start]:pl-2',
                 'group-data-[size=m]/input-group:data-[align=inline-end]:pr-2',
-                'group-data-[size=m]/input-group:data-[align=inline-end]:has-[>button]:pr-0',
 
                 'group-data-[size=m]/input-group:data-[align=block-start]:px-2',
                 'group-data-[size=m]/input-group:data-[align=block-start]:pt-2',
@@ -132,8 +128,8 @@ function InputGroupAddon({
 function InputGroupButton({
     className,
     type = 'button',
-    variant = 'secondary',
-    size = 'l',
+    variant = 'primary',
+    size = 'm',
     ...props
 }: Omit<React.ComponentProps<typeof Button>, 'size' | 'type'> &
     VariantProps<typeof buttonVariants> & {
@@ -144,17 +140,7 @@ function InputGroupButton({
             type={type}
             data-size={size}
             variant={variant}
-            className={cn(
-                buttonVariants({ size, variant }),
-
-                'shrink-0 rounded-none',
-                'border-r-0',
-
-                'first:border-l',
-                'last:rounded-r',
-
-                className
-            )}
+            className={cn(buttonVariants({ size, variant }), className)}
             {...props}
         />
     )

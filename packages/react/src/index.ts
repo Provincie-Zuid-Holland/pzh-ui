@@ -26,11 +26,26 @@ export type {
 export { Button, LinkButton, buttonVariants } from './Button'
 export type { ButtonProps, LinkButtonProps } from './Button'
 
+export {
+    ButtonGroup,
+    ButtonGroupSeparator,
+    ButtonGroupText,
+    buttonGroupVariants,
+} from './ButtonGroup'
+export type {
+    ButtonGroupProps,
+    ButtonGroupSeparatorProps,
+    ButtonGroupTextProps,
+} from './ButtonGroup'
+
 export { Calendar, RangeCalendar } from './Calendar'
 export type { CalendarProps, RangeCalendarProps } from './Calendar'
 
 export { Label } from './Label'
 export type { LabelProps } from './Label'
+
+export { Separator } from './Separator'
+export type { SeparatorProps } from './Separator'
 
 export {
     Pagination,

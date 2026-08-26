@@ -1,0 +1,65 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as SeparatorStories from './Separator.stories'
+
+<Meta of={SeparatorStories} />
+
+# Separator
+
+Een scheidingslijn waarmee gerelateerde delen van een pagina of component visueel en semantisch van elkaar worden gescheiden.
+
+## Gebruik
+
+```tsx
+import { Separator } from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <div>
+            <section>Eerste onderdeel</section>
+            <Separator />
+            <section>Tweede onderdeel</section>
+        </div>
+    )
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={SeparatorStories.Default} />
+
+<Controls of={SeparatorStories.Default} />
+
+## Oriëntatie
+
+De standaardoriëntatie is `horizontal`. Gebruik `vertical` wanneer onderdelen naast elkaar staan.
+
+<Canvas of={SeparatorStories.Orientations} />
+
+```tsx
+<Separator orientation="horizontal" />
+
+<div className="flex h-6 items-center">
+    <span>Links</span>
+    <Separator orientation="vertical" />
+    <span>Rechts</span>
+</div>
+```
+
+Een verticale separator neemt de beschikbare hoogte van een flexcontainer over. Zorg daarom dat de omliggende container een hoogte heeft of door de inhoud wordt uitgerekt.
+
+## Aangepaste ruimte
+
+Gebruik `className` om bijvoorbeeld marge rond de lijn toe te voegen.
+
+```tsx
+<Separator className="my-6" />
+```
+
+## Toegankelijkheid
+
+De component gebruikt de `Separator` van React Aria:
+
+- Een horizontale separator wordt als een semantisch `<hr>`-element weergegeven.
+- Een verticale separator krijgt `role="separator"` en `aria-orientation="vertical"`.
+- Gebruik een separator om inhoudelijke groepen te onderscheiden, niet alleen als decoratieve rand.

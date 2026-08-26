@@ -3964,7 +3964,7 @@ __metadata:
     "@headlessui/react": "npm:^1.5.0"
     "@pzh-ui/css": "npm:^0.0.119"
     "@pzh-ui/icons": "npm:^0.0.99"
-    "@pzh-ui/react": "npm:^0.0.10"
+    "@pzh-ui/react": "npm:^0.0.11"
     "@radix-ui/react-accordion": "npm:^1.1.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@react-aria/utils": "npm:^3.29.1"
@@ -4095,7 +4095,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/react@npm:^0.0.10, @pzh-ui/react@workspace:packages/react":
+"@pzh-ui/react@npm:^0.0.11, @pzh-ui/react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/react@workspace:packages/react"
   dependencies:

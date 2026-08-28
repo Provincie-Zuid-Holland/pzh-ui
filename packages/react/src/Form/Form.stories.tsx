@@ -3,16 +3,11 @@ import { MagnifyingGlass } from '@pzh-ui/icons'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Button } from '../Button'
+import { ButtonGroup } from '../ButtonGroup'
 import { Checkbox } from './Checkbox'
 import { DatePicker } from './DatePicker'
 import { Field, FieldDescription, FieldError, FieldLabel } from './Field'
 import { Input } from './Input'
-import {
-    InputGroup,
-    InputGroupAddon,
-    InputGroupButton,
-    InputGroupInput,
-} from './InputGroup'
 import { NumberInput } from './NumberInput'
 import { PasswordInput } from './PasswordInput'
 import { RadioGroup, RadioGroupItem } from './RadioGroup'
@@ -222,20 +217,14 @@ export const Default: Story = {
                                 <FieldDescription>
                                     Zoek de hoofdlocatie op adres of postcode.
                                 </FieldDescription>
-                                <InputGroup>
-                                    <InputGroupInput
-                                        id="location-search"
-                                        name="locationSearch"
-                                        placeholder="Zoek op adres of postcode"
-                                    />
-                                    <InputGroupAddon align="inline-end">
-                                        <InputGroupButton
-                                            variant="secondary"
-                                            aria-label="Locatie zoeken">
-                                            <MagnifyingGlass />
-                                        </InputGroupButton>
-                                    </InputGroupAddon>
-                                </InputGroup>
+                                <ButtonGroup className="w-full">
+                                    <Input placeholder="Zoek op adres of postcode" />
+                                    <Button
+                                        variant="secondary"
+                                        aria-label="Locatie zoeken">
+                                        <MagnifyingGlass />
+                                    </Button>
+                                </ButtonGroup>
                             </Field>
 
                             <Field>

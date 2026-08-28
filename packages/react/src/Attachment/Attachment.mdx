@@ -1,0 +1,121 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as AttachmentStories from './Attachment.stories'
+
+<Meta of={AttachmentStories} />
+
+# Attachment
+
+Toont een bestand dat klaarstaat voor uploaden, wordt geüpload, succesvol is verwerkt of niet kon worden geüpload.
+
+## Gebruik
+
+```tsx
+import { XmarkLarge } from '@pzh-ui/icons'
+import {
+    Attachment,
+    AttachmentAction,
+    AttachmentActions,
+    AttachmentContent,
+    AttachmentDescription,
+    AttachmentMedia,
+    AttachmentProgress,
+    AttachmentTitle,
+} from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Attachment state="uploading">
+            <AttachmentMedia />
+
+            <AttachmentContent>
+                <AttachmentTitle>document.pdf</AttachmentTitle>
+                <AttachmentDescription>
+                    <span>157 KB / 204 KB</span>
+                    <span>Nog 5 seconden te gaan</span>
+                </AttachmentDescription>
+            </AttachmentContent>
+
+            <AttachmentActions>
+                <AttachmentAction aria-label="Bijlage verwijderen">
+                    <XmarkLarge />
+                </AttachmentAction>
+            </AttachmentActions>
+
+            <AttachmentProgress aria-label="Uploadvoortgang" value={75} />
+        </Attachment>
+    )
+}
+```
+
+## Interactief voorbeeld
+
+<Canvas of={AttachmentStories.Default} />
+
+<Controls of={AttachmentStories.Default} />
+
+## Statussen
+
+De `state`-property ondersteunt de volgende waarden:
+
+- `idle` – het bestand staat in de wachtrij
+- `uploading` – het bestand wordt geüpload
+- `processing` – de upload wordt verwerkt
+- `done` – de upload is geslaagd
+- `error` – de upload is mislukt
+
+<Canvas of={AttachmentStories.AllStates} />
+
+De status bepaalt de randkleur en de kleur van de beschrijving. `AttachmentMedia` toont zonder children automatisch het bijbehorende bestandsicoon.
+
+## Voortgang
+
+Gebruik `AttachmentProgress` voor de statussen `idle`, `uploading` en eventueel `processing`. `value` wordt begrensd tussen `0` en `100`.
+
+```tsx
+<AttachmentProgress aria-label="Uploadvoortgang" value={75} />
+```
+
+Geef een duidelijke `aria-label` waarmee wordt aangegeven welke voortgang wordt getoond.
+
+## Acties
+
+Plaats acties zoals verwijderen, annuleren of opnieuw proberen in `AttachmentActions`.
+
+```tsx
+<AttachmentActions>
+    <AttachmentAction aria-label="Bijlage verwijderen">
+        <XmarkLarge />
+    </AttachmentAction>
+</AttachmentActions>
+```
+
+Gebruik voor acties die alleen een icoon bevatten altijd een duidelijke `aria-label`.
+
+## Aangepaste media
+
+Zonder children toont `AttachmentMedia` het standaard bestandsicoon. Eigen media, zoals een afbeelding, kan met `variant="image"` worden toegevoegd.
+
+```tsx
+<AttachmentMedia variant="image">
+    <img src="/voorbeeld.jpg" alt="Voorbeeld van de bijlage" />
+</AttachmentMedia>
+```
+
+## Groep
+
+Gebruik `AttachmentGroup` om meerdere attachments met de juiste verticale tussenruimte onder elkaar te plaatsen.
+
+```tsx
+<AttachmentGroup>
+    <Attachment>{/* ... */}</Attachment>
+    <Attachment>{/* ... */}</Attachment>
+</AttachmentGroup>
+```
+
+## Toegankelijkheid
+
+- Gebruik een herkenbare bestandsnaam als titel.
+- Geef uploadvoortgang een toegankelijke naam.
+- Geef acties met alleen een icoon een `aria-label`.
+- Communiceer statuswijzigingen in de implementatie met een live region wanneer gebruikers daar direct van op de hoogte moeten worden gebracht.

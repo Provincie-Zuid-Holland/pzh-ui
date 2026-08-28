@@ -3,10 +3,11 @@
 import type { ReactNode } from 'react'
 import {
     composeRenderProps,
+    RadioField as RadioFieldPrimitive,
     RadioGroup as RadioGroupPrimitive,
-    Radio as RadioPrimitive,
+    RadioButton as RadioPrimitive,
     type RadioGroupProps as RadioGroupPrimitiveProps,
-    type RadioProps as RadioPrimitiveProps,
+    type RadioFieldProps as RadioPrimitiveProps,
 } from 'react-aria-components'
 
 import { cva, type VariantProps } from 'class-variance-authority'
@@ -168,33 +169,35 @@ function RadioGroupItem({
     ...props
 }: RadioGroupItemProps) {
     return (
-        <RadioPrimitive
-            data-slot="radio-group-item"
-            className={cn(
-                radioGroupItemVariants({ size, withBorder }),
-                className
-            )}
-            {...props}>
-            {composeRenderProps(children, (children, { isSelected }) => (
-                <>
-                    <span
-                        aria-hidden="true"
-                        data-slot="radio-group-indicator"
-                        className={radioGroupIndicatorVariants({
-                            size,
-                            withBorder,
-                        })}>
-                        {isSelected && (
-                            <span
-                                data-slot="radio-group-dot"
-                                className="size-2 shrink-0 rounded-full bg-current"
-                            />
-                        )}
-                    </span>
-                    {children}
-                </>
-            ))}
-        </RadioPrimitive>
+        <RadioFieldPrimitive className="contents" {...props}>
+            <RadioPrimitive
+                data-slot="radio-group-item"
+                className={cn(
+                    radioGroupItemVariants({ size, withBorder }),
+                    className
+                )}>
+                {composeRenderProps(children, (children, { isSelected }) => (
+                    <>
+                        <span
+                            aria-hidden="true"
+                            data-slot="radio-group-indicator"
+                            className={radioGroupIndicatorVariants({
+                                size,
+                                withBorder,
+                            })}>
+                            {isSelected && (
+                                <span
+                                    data-slot="radio-group-dot"
+                                    className="size-2 shrink-0 rounded-full bg-current"
+                                />
+                            )}
+                        </span>
+
+                        {children}
+                    </>
+                ))}
+            </RadioPrimitive>
+        </RadioFieldPrimitive>
     )
 }
 

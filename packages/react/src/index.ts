@@ -5,6 +5,33 @@
 export { Alert, AlertAction, AlertDescription, AlertTitle } from './Alert'
 export type { AlertProps } from './Alert'
 
+export {
+    Attachment,
+    AttachmentAction,
+    AttachmentActions,
+    AttachmentContent,
+    AttachmentDescription,
+    AttachmentGroup,
+    AttachmentMedia,
+    AttachmentProgress,
+    AttachmentTitle,
+    AttachmentTrigger,
+    attachmentVariants,
+} from './Attachment'
+export type {
+    AttachmentActionProps,
+    AttachmentActionsProps,
+    AttachmentContentProps,
+    AttachmentDescriptionProps,
+    AttachmentGroupProps,
+    AttachmentMediaProps,
+    AttachmentProgressProps,
+    AttachmentProps,
+    AttachmentState,
+    AttachmentTitleProps,
+    AttachmentTriggerProps,
+} from './Attachment'
+
 export { Badge } from './Badge'
 export type { BadgeProps } from './Badge'
 
@@ -70,6 +97,9 @@ export type { TagProps } from './Tag'
 
 export { Tooltip, TooltipTrigger } from './Tooltip'
 export type { TooltipProps, TooltipTriggerProps } from './Tooltip'
+
+export { Toggle, toggleThumbVariants, toggleVariants } from './Toggle'
+export type { ToggleProps } from './Toggle'
 
 export { Toaster, toast } from './Toast'
 export type { ToastProps } from './Toast'

@@ -1,0 +1,55 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as ToggleStories from './Toggle.stories'
+
+<Meta of={ToggleStories} />
+
+# Toggle
+
+Een toggle schakelt één instelling direct aan of uit.
+
+## Gebruik
+
+```tsx
+import { Toggle } from '@pzh-ui/react'
+
+export function Example() {
+    return <Toggle aria-label="Meldingen inschakelen" />
+}
+```
+
+<Canvas of={ToggleStories.Default} />
+
+<Controls of={ToggleStories.Default} />
+
+## Geselecteerd
+
+Gebruik `defaultSelected` voor een ongecontroleerde toggle die standaard aan staat.
+
+```tsx
+<Toggle aria-label="Meldingen inschakelen" defaultSelected />
+```
+
+Voor een gecontroleerde toggle gebruik je `isSelected` en `onChange`.
+
+```tsx
+const [isSelected, setSelected] = useState(false)
+
+<Toggle
+    aria-label="Meldingen inschakelen"
+    isSelected={isSelected}
+    onChange={setSelected}
+/>
+```
+
+## Statussen
+
+<Canvas of={ToggleStories.AllStates} />
+
+De hover-, actieve en focusstatussen worden door React Aria toegepast. Met `isDisabled` wordt de toggle uitgeschakeld.
+
+## Toegankelijkheid
+
+- Geef een toggle zonder zichtbaar label altijd een duidelijke `aria-label`.
+- Beschrijf de instelling, niet de huidige status. Gebruik bijvoorbeeld `aria-label="Meldingen inschakelen"` in plaats van `aria-label="Uit"`.
+- Gebruik een toggle voor een instelling die direct wordt toegepast. Gebruik een checkbox wanneer de keuze pas na het verzenden van een formulier wordt verwerkt.

@@ -2,9 +2,10 @@
 
 import type { ReactNode } from 'react'
 import {
-    Checkbox as CheckboxPrimitive,
+    CheckboxField as CheckboxFieldPrimitive,
+    CheckboxButton as CheckboxPrimitive,
     composeRenderProps,
-    type CheckboxProps as CheckboxPrimitiveProps,
+    type CheckboxFieldProps as CheckboxPrimitiveProps,
 } from 'react-aria-components'
 
 import { Check, Minus } from '@pzh-ui/icons'
@@ -187,42 +188,47 @@ function Checkbox({
     const iconSize = size === 'm' ? 10 : 12
 
     return (
-        <CheckboxPrimitive
-            data-slot="checkbox"
-            className={cn(checkboxVariants({ size, withBorder }), className)}
-            {...props}>
-            {composeRenderProps(
-                children,
-                (children, { isIndeterminate, isSelected }) => (
-                    <>
-                        <span
-                            aria-hidden="true"
-                            data-slot="checkbox-indicator"
-                            className={checkboxIndicatorVariants({
-                                size,
-                                withBorder,
-                            })}>
-                            {isIndeterminate ? (
-                                <Minus
-                                    size={iconSize}
-                                    data-slot="checkbox-indeterminate-icon"
-                                    className="pointer-events-none m-auto block shrink-0"
-                                />
-                            ) : (
-                                isSelected && (
-                                    <Check
+        <CheckboxFieldPrimitive className="contents" {...props}>
+            <CheckboxPrimitive
+                data-slot="checkbox"
+                className={cn(
+                    checkboxVariants({ size, withBorder }),
+                    className
+                )}>
+                {composeRenderProps(
+                    children,
+                    (children, { isIndeterminate, isSelected }) => (
+                        <>
+                            <span
+                                aria-hidden="true"
+                                data-slot="checkbox-indicator"
+                                className={checkboxIndicatorVariants({
+                                    size,
+                                    withBorder,
+                                })}>
+                                {isIndeterminate ? (
+                                    <Minus
                                         size={iconSize}
-                                        data-slot="checkbox-check-icon"
+                                        data-slot="checkbox-indeterminate-icon"
                                         className="pointer-events-none m-auto block shrink-0"
                                     />
-                                )
-                            )}
-                        </span>
-                        {children}
-                    </>
-                )
-            )}
-        </CheckboxPrimitive>
+                                ) : (
+                                    isSelected && (
+                                        <Check
+                                            size={iconSize}
+                                            data-slot="checkbox-check-icon"
+                                            className="pointer-events-none m-auto block shrink-0"
+                                        />
+                                    )
+                                )}
+                            </span>
+
+                            {children}
+                        </>
+                    )
+                )}
+            </CheckboxPrimitive>
+        </CheckboxFieldPrimitive>
     )
 }
 

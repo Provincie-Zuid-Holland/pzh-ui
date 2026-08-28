@@ -156,7 +156,7 @@ function DatePicker({
                             variant="default"
                             size={size}
                             aria-label="Kies een datum"
-                            className="rounded-none border-0 bg-transparent text-primary hover:bg-transparent">
+                            className="p-0 size-4 rounded-none border-0 bg-transparent text-primary hover:bg-transparent">
                             {isOpen ? <CalendarSolid /> : <CalendarIcon />}
                         </InputGroupButton>
 

@@ -1,6 +1,6 @@
 {
     "name": "@pzh-ui/react",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "React components for Provincie Zuid-Holland projects.",
     "homepage": "https://github.com/Provincie-Zuid-Holland/pzh-ui#readme",
     "license": "ISC",
@@ -47,7 +47,7 @@
         "format:check": "prettier . --check"
     },
     "dependencies": {
-        "@pzh-ui/icons": "^0.0.100",
+        "@pzh-ui/icons": "^0.0.101",
         "@tiptap/core": "^3.30.1",
         "@tiptap/extension-image": "^3.30.1",
         "@tiptap/extension-link": "^3.30.1",

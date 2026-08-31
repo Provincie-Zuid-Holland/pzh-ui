@@ -4,27 +4,15 @@ import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { defineConfig } from 'vitest/config'
 
-const externalPackages = [
-    'react',
-    'react-dom',
-    'react-aria-components',
-    '@pzh-ui/icons',
+import packageJson from './package.json' with { type: 'json' }
 
-    '@tiptap/core',
-    '@tiptap/react',
-    '@tiptap/pm',
-    '@tiptap/starter-kit',
-    '@tiptap/extension-image',
-    '@tiptap/extension-link',
-    '@tiptap/extension-subscript',
-    '@tiptap/extension-superscript',
-    '@tiptap/extension-table',
-    '@tiptap/extension-text-align',
-    '@tiptap/extensions',
-]
+const externalPackages = new Set([
+    ...Object.keys(packageJson.dependencies),
+    ...Object.keys(packageJson.peerDependencies),
+])
 
 const isExternal = (id: string) =>
-    externalPackages.some(
+    [...externalPackages].some(
         packageName => id === packageName || id.startsWith(`${packageName}/`)
     )
 
@@ -57,6 +45,7 @@ export default defineConfig({
         rollupOptions: {
             external: isExternal,
             output: {
+                banner: "'use client';",
                 entryFileNames: 'index.js',
                 chunkFileNames: 'chunks/[name]-[hash].js',
                 assetFileNames: 'assets/[name][extname]',

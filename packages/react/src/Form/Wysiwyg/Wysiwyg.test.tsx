@@ -10,6 +10,7 @@ class ResizeObserverMock implements ResizeObserver {
     unobserve = vi.fn()
     disconnect = vi.fn()
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     constructor(_callback: ResizeObserverCallback) {}
 }
 

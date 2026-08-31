@@ -12,7 +12,6 @@ export default defineConfig(
 
     {
         files: ['src/**/*.{ts,tsx}'],
-
         extends: [...tseslint.configs.recommendedTypeChecked],
 
         languageOptions: {
@@ -36,8 +35,10 @@ export default defineConfig(
 
     {
         files: ['vite.config.ts', '.storybook/**/*.{ts,tsx}', 'setupTests.ts'],
-
-        extends: [tseslint.configs.disableTypeChecked],
+        extends: [
+            ...tseslint.configs.recommended,
+            tseslint.configs.disableTypeChecked,
+        ],
     },
 
     storybook.configs['flat/recommended']

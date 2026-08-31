@@ -93,8 +93,15 @@ function TableMenu({
         return null
     }
 
+    const cellAttributes = editor.getAttributes('tableCell') as Record<
+        string,
+        unknown
+    >
+
     const currentCellColor =
-        editor.getAttributes('tableCell').backgroundColor ?? '#ffffff'
+        typeof cellAttributes.backgroundColor === 'string'
+            ? cellAttributes.backgroundColor
+            : '#ffffff'
 
     return (
         <div
@@ -104,7 +111,7 @@ function TableMenu({
             className={cn(
                 'min-w-56 absolute z-50',
                 'rounded border border-border bg-surface',
-                'shadow-card p-2',
+                'p-2 shadow-card',
                 className
             )}
             {...props}>

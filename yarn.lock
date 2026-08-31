@@ -4100,6 +4100,7 @@ __metadata:
   resolution: "@pzh-ui/react@workspace:packages/react"
   dependencies:
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.7.1"
+    "@internationalized/date": "npm:^3.12.3"
     "@pzh-ui/icons": "npm:^0.0.101"
     "@pzh-ui/theme": "npm:^0.0.7"
     "@storybook/addon-docs": "npm:^10.4.2"
@@ -4107,8 +4108,11 @@ __metadata:
     "@tailwindcss/vite": "npm:^4.3.3"
     "@testing-library/jest-dom": "npm:^6.9.1"
     "@testing-library/react": "npm:^16.3.2"
+    "@testing-library/user-event": "npm:^14.6.6"
     "@tiptap/core": "npm:^3.30.1"
+    "@tiptap/extension-bold": "npm:^3.30.1"
     "@tiptap/extension-image": "npm:^3.30.1"
+    "@tiptap/extension-italic": "npm:^3.30.1"
     "@tiptap/extension-link": "npm:^3.30.1"
     "@tiptap/extension-subscript": "npm:^3.30.1"
     "@tiptap/extension-superscript": "npm:^3.30.1"
@@ -5805,6 +5809,15 @@ __metadata:
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
   checksum: 10c0/75fea130a52bf320d35d46ed54f3eec77e71a56911b8b69a3fe29497b0b9947b2dc80d30f04054ad4ce7f577856ae3e5397ea7dff0ef14944d3909784c7a93fe
+  languageName: node
+  linkType: hard
+
+"@testing-library/user-event@npm:^14.6.6":
+  version: 14.6.6
+  resolution: "@testing-library/user-event@npm:14.6.6"
+  peerDependencies:
+    "@testing-library/dom": ">=7.21.4"
+  checksum: 10c0/2cb82d3a364a2a29da19bb5d2a614aedaa474ac6f599a42fc28c1926056f7b91f5cec37b33452bafcb3f6b37a950024da289dea88ead3c2056c6005c91c7f942
   languageName: node
   linkType: hard
 

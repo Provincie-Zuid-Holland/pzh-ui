@@ -26,11 +26,10 @@
         "./tailwind": "./src/tailwind.css",
         "./typography": "./src/typography.css",
         "./animations": "./src/animations.css",
-        "./prose": "./src/prose.css",
+        "./typeset": "./src/typeset.css",
         "./themes/default": "./src/themes/default.css"
     },
     "peerDependencies": {
-        "@tailwindcss/typography": "^0.5.20",
         "tailwindcss": "^4.3.3"
     },
     "gitHead": "426b6cb0b8de392bbee760457fbbac5e0677c079"

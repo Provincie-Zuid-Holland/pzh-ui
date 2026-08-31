@@ -1,0 +1,134 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as AccordionStories from './Accordion.stories'
+
+<Meta of={AccordionStories} title="Componenten/Accordion/Documentatie" />
+
+# Accordion
+
+Een accordion toont gerelateerde informatie in inklapbare secties. Gebruik een
+accordion wanneer gebruikers zelf kunnen kiezen welke aanvullende informatie ze
+willen bekijken.
+
+## Gebruik
+
+```tsx
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <Accordion>
+            <AccordionItem id="first">
+                <AccordionTrigger>Accordion title</AccordionTrigger>
+                <AccordionContent>
+                    Inhoud van de eerste sectie.
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem id="second">
+                <AccordionTrigger>Another accordion title</AccordionTrigger>
+                <AccordionContent>
+                    Inhoud van de tweede sectie.
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+    )
+}
+```
+
+<Canvas of={AccordionStories.Default} />
+
+<Controls of={AccordionStories.Default} />
+
+## Varianten
+
+### Underline
+
+De standaardvariant `underline` scheidt de onderdelen met een horizontale lijn.
+Gebruik deze variant in een doorlopende pagina of binnen een grotere container.
+
+<Canvas of={AccordionStories.Underline} />
+
+```tsx
+<Accordion variant="underline">...</Accordion>
+```
+
+### Outline
+
+De variant `outline` toont ieder onderdeel als een afzonderlijk omlijnd blok.
+Gebruik deze variant wanneer de onderdelen visueel sterker van elkaar gescheiden
+moeten worden.
+
+<Canvas of={AccordionStories.Outline} />
+
+```tsx
+<Accordion variant="outline">...</Accordion>
+```
+
+## Formaten
+
+De accordion ondersteunt de formaten large (`l`) en medium (`m`). Het formaat
+wordt ingesteld op de `Accordion` en geldt voor alle onderliggende onderdelen.
+
+<Canvas of={AccordionStories.Medium} />
+
+```tsx
+<Accordion size="l">...</Accordion>
+<Accordion size="m">...</Accordion>
+```
+
+## Standaard geopend
+
+Gebruik `defaultExpandedKeys` voor een ongecontroleerde accordion die bij het
+laden al één of meer geopende onderdelen heeft.
+
+```tsx
+<Accordion defaultExpandedKeys={['first']}>
+    <AccordionItem id="first">
+        <AccordionTrigger>Accordion title</AccordionTrigger>
+        <AccordionContent>Deze sectie is standaard geopend.</AccordionContent>
+    </AccordionItem>
+</Accordion>
+```
+
+## Meerdere onderdelen openen
+
+Standaard kan één onderdeel tegelijk geopend zijn. Met
+`allowsMultipleExpanded` kunnen meerdere onderdelen gelijktijdig open blijven.
+
+```tsx
+<Accordion allowsMultipleExpanded>
+    {/* AccordionItems */}
+</Accordion>
+```
+
+## Disabled
+
+Gebruik `isDisabled` op een `AccordionItem` om één onderdeel uit te schakelen,
+of op de `Accordion` om de volledige groep uit te schakelen.
+
+```tsx
+<Accordion>
+    <AccordionItem id="available">
+        <AccordionTrigger>Beschikbare informatie</AccordionTrigger>
+        <AccordionContent>Deze sectie kan worden geopend.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem id="unavailable" isDisabled>
+        <AccordionTrigger>Niet-beschikbare informatie</AccordionTrigger>
+        <AccordionContent>Deze sectie kan niet worden geopend.</AccordionContent>
+    </AccordionItem>
+</Accordion>
+```
+
+## Toegankelijkheid
+
+- Gebruik een korte, beschrijvende tekst in iedere `AccordionTrigger`.
+- Plaats de bijbehorende inhoud altijd in `AccordionContent`.
+- Geef ieder `AccordionItem` binnen een groep een unieke `id`.
+- Gebruik een accordion niet voor informatie die gebruikers altijd moeten zien.
+- De trigger ondersteunt automatisch bediening met toetsenbord en maakt de
+  open/dicht-status bekend aan hulptechnologie.

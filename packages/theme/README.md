@@ -11,7 +11,6 @@ The package contains:
 - fonts
 - animations
 - shadows
-- prose styling
 
 ## Usage
 

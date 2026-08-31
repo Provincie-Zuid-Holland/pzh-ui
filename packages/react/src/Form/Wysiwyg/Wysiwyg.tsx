@@ -294,7 +294,7 @@ function Wysiwyg({
         editorProps: {
             attributes: {
                 class: cn(
-                    'prose max-w-none',
+                    'typeset typeset-editor max-w-none',
                     'min-h-30 field-sizing-content',
                     'px-4 py-2',
                     'text-s text-text-editor',
@@ -306,9 +306,6 @@ function Wysiwyg({
                     '[&.is-editor-empty:first-child::before]:h-0',
                     '[&.is-editor-empty:first-child::before]:text-text-subtle',
                     '[&.is-editor-empty:first-child::before]:content-[attr(data-placeholder)]',
-
-                    // Prose
-                    'marker:text-text-editor',
 
                     {
                         'text-text-subtle': disabled,

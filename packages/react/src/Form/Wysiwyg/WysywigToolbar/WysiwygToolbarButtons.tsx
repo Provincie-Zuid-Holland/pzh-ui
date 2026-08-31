@@ -5,14 +5,10 @@ import type { Editor } from '@tiptap/core'
 import { AngleDown, ArrowTurnDownLeft, TrashCan } from '@pzh-ui/icons'
 
 import { Button } from '../../../Button'
+import { ButtonGroup } from '../../../ButtonGroup'
 import { Popover, PopoverTrigger } from '../../../Popover'
 import { cn } from '../../../utils'
-import {
-    InputGroup,
-    InputGroupAddon,
-    InputGroupButton,
-    InputGroupInput,
-} from '../../InputGroup'
+import { Input } from '../../Input'
 import type { ToolbarAction } from './WysiwygToolbar.types'
 
 type ButtonToolbarAction = Extract<ToolbarAction, { type?: 'button' }>
@@ -147,39 +143,37 @@ export function ToolbarLinkPopoverContent({
                 event.preventDefault()
                 applyLink()
             }}>
-            <InputGroup size="m">
-                <InputGroupInput
+            <ButtonGroup className="w-full">
+                <Input
                     type="url"
+                    size="m"
                     autoFocus
                     value={href}
                     aria-label="Link"
                     placeholder="https://..."
+
                     onChange={event => onHrefChange(event.target.value)}
                 />
-
-                <InputGroupAddon align="inline-end">
-                    <InputGroupButton
-                        type="submit"
+                <Button
+                    type="submit"
+                    variant="secondary"
+                    size="m"
+                    aria-label="Link opslaan"
+                    className="w-10">
+                    <ArrowTurnDownLeft aria-hidden="true" />
+                </Button>
+                {existingLink && (
+                    <Button
+                        type="button"
                         variant="secondary"
                         size="m"
-                        aria-label="Link opslaan"
-                        className="w-10">
-                        <ArrowTurnDownLeft aria-hidden="true" />
-                    </InputGroupButton>
-
-                    {existingLink && (
-                        <InputGroupButton
-                            type="button"
-                            variant="secondary"
-                            size="m"
-                            aria-label="Link verwijderen"
-                            className="w-10"
-                            onPress={removeLink}>
-                            <TrashCan aria-hidden="true" />
-                        </InputGroupButton>
-                    )}
-                </InputGroupAddon>
-            </InputGroup>
+                        aria-label="Link verwijderen"
+                        className="w-10"
+                        onPress={removeLink}>
+                        <TrashCan aria-hidden="true" />
+                    </Button>
+                )}
+            </ButtonGroup>
         </form>
     )
 }

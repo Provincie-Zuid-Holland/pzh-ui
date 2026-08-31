@@ -8,7 +8,7 @@ export type AlertProps = React.ComponentProps<'div'> &
     VariantProps<typeof alertVariants>
 
 const alertVariants = cva(
-    'group/alert gap-1 rounded p-4 has-data-[slot=alert-action]:pr-12 has-[>svg]:gap-x-2 *:[svg]:translate-y-0 *:data-[slot=alert-description]:text-s *:data-[slot=alert-title]:font-bold prose [&_:is(p,ul,li)]:my-0 prose-ul:pl-5 marker:text-xs relative grid w-full max-w-none border text-left marker:text-current has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:items-start *:data-[slot=alert-action]:flex *:[svg]:self-center',
+    'group/alert gap-1 rounded p-4 has-data-[slot=alert-action]:pr-12 has-[>svg]:gap-x-2 *:[svg]:translate-y-0 *:data-[slot=alert-description]:text-s *:data-[slot=alert-title]:font-bold [&_:is(p,ul,li)]:my-0 marker:text-xs relative grid w-full max-w-none border text-left marker:text-current has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:items-start *:data-[slot=alert-action]:flex *:[svg]:self-center',
     {
         variants: {
             variant: {
@@ -56,7 +56,7 @@ function AlertTitle({ className, ...props }: React.ComponentProps<'div'>) {
         <div
             data-slot="alert-title"
             className={cn(
-                'not-prose font-bold group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-2',
+                'font-bold group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-2',
                 className
             )}
             {...props}
@@ -72,7 +72,7 @@ function AlertDescription({
         <div
             data-slot="alert-description"
             className={cn(
-                'md:text-pretty [&_:is(p,ul,ol):not(:last-child)]:mb-4 text-balance group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-2',
+                'typeset md:text-pretty [&_:is(p,ul,ol):not(:last-child)]:mb-4 text-balance group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-2',
                 className
             )}
             {...props}

@@ -107,6 +107,11 @@ export const MultipleParagraphs: Story = {
                     After installation, import the component into your
                     application.
                 </p>
+                <ul>
+                    <li>List item</li>
+                    <li>List item</li>
+                    <li>List item</li>
+                </ul>
             </AlertDescription>
         </Alert>
     ),
@@ -128,7 +133,7 @@ export const WithAction: Story = {
                     aria-label="Sluiten"
                     onClick={() => {}}
                     className="cursor-pointer">
-                    <XmarkLarge size={14} className="min-w-[14px]" />
+                    <XmarkLarge size={14} className="min-w-3.5" />
                 </button>
             </AlertAction>
         </Alert>

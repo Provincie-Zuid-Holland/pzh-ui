@@ -4148,7 +4148,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pzh-ui/theme@workspace:packages/theme"
   peerDependencies:
-    "@tailwindcss/typography": ^0.5.20
     tailwindcss: ^4.3.3
   languageName: unknown
   linkType: soft

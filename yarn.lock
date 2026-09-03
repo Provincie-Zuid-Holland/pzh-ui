@@ -4101,7 +4101,7 @@ __metadata:
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.7.1"
     "@internationalized/date": "npm:^3.12.3"
     "@pzh-ui/icons": "npm:^0.0.101"
-    "@pzh-ui/theme": "npm:^0.0.7"
+    "@pzh-ui/theme": "npm:^0.0.8"
     "@storybook/addon-docs": "npm:^10.4.2"
     "@storybook/react-vite": "npm:^10.4.2"
     "@tailwindcss/vite": "npm:^4.3.3"
@@ -4147,7 +4147,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/theme@npm:^0.0.7, @pzh-ui/theme@workspace:packages/theme":
+"@pzh-ui/theme@npm:^0.0.8, @pzh-ui/theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/theme@workspace:packages/theme"
   peerDependencies:

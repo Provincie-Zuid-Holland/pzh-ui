@@ -17,7 +17,7 @@ export interface NotificationProps {
     size?: NotificationSize
     className?: string
     children?: ReactNode
-    title: ReactNode
+    title?: ReactNode
     onClose?: () => void
 }
 
@@ -103,12 +103,14 @@ export const Notification = ({
                         className={cn('flex flex-col', {
                             'gap-1': size !== 'xs',
                         })}>
-                        <Text
-                            as="span"
-                            bold
-                            className={cn('block', titleClass, body)}>
-                            {title}
-                        </Text>
+                        {title && (
+                            <Text
+                                as="span"
+                                bold
+                                className={cn('block', titleClass, body)}>
+                                {title}
+                            </Text>
+                        )}
 
                         {children &&
                             (typeof children === 'string' ? (

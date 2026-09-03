@@ -17,7 +17,7 @@ export interface NotificationProps {
     size?: NotificationSize
     className?: string
     children?: ReactNode
-    title?: ReactNode
+    title?: ReactNode | null
     onClose?: () => void
 }
 

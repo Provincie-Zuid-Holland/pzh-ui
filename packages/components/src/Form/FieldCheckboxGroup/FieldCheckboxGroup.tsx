@@ -1,9 +1,8 @@
 import clsx from 'clsx'
 import { ReactNode } from 'react'
 
-import { NotificationProps } from '@pzh-ui/react'
 import { FieldCheckbox, FieldCheckboxProps } from '../FieldCheckbox'
-import { FieldLabel } from '../FieldLabel'
+import { FieldLabel, FieldLabelProps } from '../FieldLabel'
 
 /**
  * Form radio group element
@@ -19,7 +18,7 @@ export interface FieldCheckboxGroupProps extends FieldCheckboxProps {
     name: string
     label?: string
     description?: string | ReactNode
-    notification?: NotificationProps
+    notification?: FieldLabelProps['notification']
     value: string[]
     hasError?: boolean
     layout?: 'default' | 'grid'

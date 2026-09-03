@@ -9,12 +9,11 @@ import {
     useDropzone,
 } from 'react-dropzone-esm'
 
-import { NotificationProps } from '@pzh-ui/react'
 import { Text } from '../../Text'
 import { cn } from '../../utils'
 import { base64ToFile } from '../../utils/file'
 import formatBytes from '../../utils/formatBytes'
-import { FieldLabel } from '../FieldLabel'
+import { FieldLabel, FieldLabelProps } from '../FieldLabel'
 
 /**
  * Form file upload element
@@ -27,7 +26,7 @@ export interface FieldFileUploadProps extends DropzoneOptions {
     onChange: (files: FileWithPath[]) => void
     label?: string
     description?: string | ReactNode
-    notification?: NotificationProps
+    notification?: FieldLabelProps['notification']
     required?: boolean
     className?: string
     layout?: 'default' | 'grid'

@@ -48,3 +48,28 @@ export const WithTooltip = {
         tooltip: 'Dit is een tooltip',
     },
 } satisfies Story
+
+export const WithNotification = {
+    render: Template,
+    args: {
+        name: 'titel',
+        label: 'Form label',
+        description: 'Korte omschrijving voor onder het label',
+        notification: {
+            title: 'Denk bij het schrijven van dit stuk aan het beantwoorden van de volgende vragen:',
+            children: (
+                <ul>
+                    <li>Wat is de maatschappelijke opgave?</li>
+                    <li>
+                        Wat is de verandering in de maatschappij die de
+                        provincie te weeg wil brengen?
+                    </li>
+                    <li>
+                        In welke mate verwacht de provincie hieraan bij de
+                        kunnen dragen?
+                    </li>
+                </ul>
+            ),
+        },
+    },
+} satisfies Story

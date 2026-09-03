@@ -25,7 +25,7 @@ type PossibleTypes =
     | 'label'
 
 export interface TextProps {
-    size?: 's' | 'm' | 'l'
+    size?: 'xs' | 's' | 'm' | 'l'
     color?: `text-${string}`
     bold?: boolean
 }
@@ -61,6 +61,8 @@ export const getTextStyles = (size: TextProps['size']): string => {
             return 'text-m'
         case 's':
             return 'text-s'
+        case 'xs':
+            return 'text-xs'
         default:
             return ''
     }

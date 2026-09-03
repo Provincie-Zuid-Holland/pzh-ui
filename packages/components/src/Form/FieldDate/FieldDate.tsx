@@ -6,9 +6,8 @@ import { ReactNode, forwardRef, useState } from 'react'
 import ReactDatePicker, { type DatePickerProps } from 'react-datepicker'
 
 import { FieldInputProps } from '../FieldInput'
-import { FieldLabel } from '../FieldLabel'
+import { FieldLabel, FieldLabelProps } from '../FieldLabel'
 
-import { NotificationProps } from '@pzh-ui/react'
 import './style.css'
 
 // @ts-ignore
@@ -29,7 +28,7 @@ export interface FieldDateProps
     label?: string
     required?: boolean
     description?: string | ReactNode
-    notification?: NotificationProps
+    notification?: FieldLabelProps['notification']
     placeholder?: string
     onClose?: () => void
     onChange: (date: Date | null) => void

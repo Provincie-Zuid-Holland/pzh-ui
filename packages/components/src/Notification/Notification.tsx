@@ -3,85 +3,136 @@ import {
     CircleCheckSolid,
     CircleInfoSolid,
     TriangleExclamationSolid,
+    XmarkLarge,
 } from '@pzh-ui/icons'
-import classNames from 'clsx'
-
-import { getHeadingStyles } from '../Heading'
+import { ReactNode } from 'react'
 import { Text } from '../Text'
 import { cn } from '../utils'
 
+type NotificationVariant = 'info' | 'warning' | 'positive' | 'negative'
+type NotificationSize = 'm' | 's' | 'xs'
+
 export interface NotificationProps {
-    variant?: 'info' | 'warning' | 'positive' | 'negative'
+    variant?: NotificationVariant
+    size?: NotificationSize
     className?: string
-    children?: React.JSX.Element | string
-    title?: React.JSX.Element | string
-    icon?: any
+    children?: ReactNode
+    title: ReactNode
+    onClose?: () => void
 }
+
+const variantConfig = {
+    info: {
+        icon: CircleInfoSolid,
+        container: 'bg-pzh-blue-10 border-pzh-blue-100',
+        body: 'text-pzh-blue-900',
+    },
+    warning: {
+        icon: TriangleExclamationSolid,
+        container: 'bg-pzh-yellow-10 border-pzh-yellow-100',
+        body: 'text-pzh-gray-700',
+    },
+    positive: {
+        icon: CircleCheckSolid,
+        container: 'bg-pzh-green-10 border-pzh-green-100',
+        body: 'text-pzh-green-900',
+    },
+    negative: {
+        icon: Ban,
+        container: 'bg-pzh-red-10 border-pzh-red-100',
+        body: 'text-pzh-red-900',
+    },
+} satisfies Record<NotificationVariant, unknown>
+
+const sizeConfig = {
+    m: {
+        padding: 'p-4',
+        iconSize: 18,
+        iconClass: 'min-w-[18px]',
+        iconMargin: 'mt-1',
+        titleClass: 'text-heading-s',
+        bodySize: 's',
+    },
+    s: {
+        padding: 'pl-4 pr-2 py-2',
+        iconSize: 16,
+        iconClass: 'min-w-4 mt-0.5',
+        iconMargin: 'mt-0.5',
+        titleClass: 'text-heading-xs',
+        bodySize: 's',
+    },
+    xs: {
+        padding: 'pl-2 pr-1 py-1',
+        iconSize: 14,
+        iconClass: 'min-w-3.5 mt-[3px]',
+        iconMargin: 'mt-[3px]',
+        titleClass: 'text-s -mt-0.5',
+        bodySize: 'xs',
+    },
+} as const
 
 export const Notification = ({
     variant = 'info',
-    className = '',
+    size = 'm',
+    className,
     children,
     title,
-    icon,
+    onClose,
 }: NotificationProps) => {
-    const Icon =
-        icon || variant === 'warning'
-            ? TriangleExclamationSolid
-            : variant === 'positive'
-              ? CircleCheckSolid
-              : variant === 'negative'
-                ? Ban
-                : CircleInfoSolid
+    const { icon: Icon, container, body } = variantConfig[variant]
 
-    const colors = {
-        container: classNames({
-            'bg-pzh-blue-10 border-pzh-blue-100': variant === 'info',
-            'bg-pzh-yellow-10 border-pzh-yellow-100': variant === 'warning',
-            'bg-pzh-green-10 border-pzh-green-100': variant === 'positive',
-            'bg-pzh-red-10 border-pzh-red-100': variant === 'negative',
-        }),
-        body: classNames({
-            'text-pzh-blue-900': variant === 'info',
-            'text-pzh-gray-700': variant === 'warning',
-            'text-pzh-green-900': variant === 'positive',
-            'text-pzh-red-900': variant === 'negative',
-        }),
-    }
+    const { padding, iconSize, iconClass, iconMargin, titleClass, bodySize } =
+        sizeConfig[size]
 
     return (
         <div
             className={cn(
-                'inline-block rounded border px-4 py-3',
-                colors.container,
+                'prose prose-neutral text-pzh-blue-900 marker:text-pzh-blue-900! prose-li:my-0 prose-ul:my-0 prose-p:my-0 prose-ul:pl-5 inline-block w-full max-w-full rounded border whitespace-pre-line marker:text-xs',
+                container,
+                padding,
                 className
             )}>
-            <div className="flex">
-                <div className="mt-0.5 min-w-[18px]">
-                    <Icon size={18} className={colors.body} />
-                </div>
-                <div className="ml-2">
-                    {title && (
+            <div className="flex items-start justify-between gap-2">
+                <div className="flex items-start gap-2">
+                    <Icon
+                        size={iconSize}
+                        className={cn(iconClass, iconMargin, body)}
+                    />
+
+                    <div
+                        className={cn('flex flex-col', {
+                            'gap-1': size !== 'xs',
+                        })}>
                         <Text
                             as="span"
                             bold
-                            className={classNames(
-                                'block',
-                                getHeadingStyles('s'),
-                                colors.body,
-                                {
-                                    'mb-2': !!children,
-                                }
-                            )}>
+                            className={cn('block', titleClass, body)}>
                             {title}
                         </Text>
-                    )}
-                    {children && (
-                        <Text size="s" className={colors.body}>
-                            {children}
-                        </Text>
-                    )}
+
+                        {children &&
+                            (typeof children === 'string' ? (
+                                <Text size={bodySize} className={body}>
+                                    {children}
+                                </Text>
+                            ) : (
+                                <div
+                                    className={cn('flex flex-col gap-4', body)}>
+                                    {children}
+                                </div>
+                            ))}
+                    </div>
                 </div>
+
+                {onClose && (
+                    <button
+                        type="button"
+                        aria-label="Sluiten"
+                        onClick={onClose}
+                        className={cn('cursor-pointer', iconMargin, body)}>
+                        <XmarkLarge size={14} className="min-w-6" />
+                    </button>
+                )}
             </div>
         </div>
     )

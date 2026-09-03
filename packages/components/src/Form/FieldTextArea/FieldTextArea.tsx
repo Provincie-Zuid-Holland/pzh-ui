@@ -1,9 +1,8 @@
 import classNames from 'clsx'
 import React, { ReactNode } from 'react'
 
-import { AlertProps } from '@pzh-ui/react'
 import { cn } from '../../utils'
-import { FieldLabel } from '../FieldLabel'
+import { FieldLabel, FieldLabelProps } from '../FieldLabel'
 
 /**
  * Form textarea element
@@ -14,7 +13,7 @@ export interface FieldTextAreaProps
     name: string
     label?: string
     description?: string | ReactNode
-    notification?: AlertProps
+    notification?: FieldLabelProps['notification']
     hasError?: boolean
     layout?: 'default' | 'grid'
     tooltip?: string | React.JSX.Element

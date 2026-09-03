@@ -1,8 +1,7 @@
 import classNames from 'clsx'
 import { ReactNode } from 'react'
 
-import { FieldLabel } from '..'
-import { NotificationProps } from '../../Notification'
+import { FieldLabel, FieldLabelProps } from '..'
 import { FieldRadio, FieldRadioProps } from '../FieldRadio'
 
 /**
@@ -19,7 +18,7 @@ export interface FieldRadioGroupProps extends FieldRadioProps {
     name: string
     label?: string
     description?: string | ReactNode
-    notification?: NotificationProps
+    notification?: FieldLabelProps['notification']
     value?: string
     hasError?: boolean
     layout?: 'default' | 'grid'

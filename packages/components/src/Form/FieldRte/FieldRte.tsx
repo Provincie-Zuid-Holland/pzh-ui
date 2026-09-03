@@ -1,10 +1,8 @@
 import { AnyExtension, Extensions, mergeAttributes } from '@tiptap/core'
-import Bold from '@tiptap/extension-bold'
 import Document from '@tiptap/extension-document'
 import HardBreak from '@tiptap/extension-hard-break'
 import Heading from '@tiptap/extension-heading'
 import Image, { ImageOptions } from '@tiptap/extension-image'
-import Italic from '@tiptap/extension-italic'
 import Link from '@tiptap/extension-link'
 import { BulletList, ListItem, OrderedList } from '@tiptap/extension-list'
 import Paragraph from '@tiptap/extension-paragraph'
@@ -29,15 +27,15 @@ import {
 import classNames from 'clsx'
 import { ReactNode, useEffect, useState } from 'react'
 
-import { AlertProps } from '@pzh-ui/react'
 import { cn } from '../../utils'
-import { FieldLabel } from '../FieldLabel'
+import { FieldLabel, FieldLabelProps } from '../FieldLabel'
 import RteMenuBar from './components/RteMenuBar'
 import { TableMenuOption } from './components/TableMenu/TableMenu'
 import { HandleDOMEvents } from './extensions/handleDOMEvents'
 import ImageUpload from './extensions/imageUpload'
 import { NestedListLimit } from './extensions/limitNestedLists'
 import { SanitisePastedHtml } from './extensions/sanitisePastedHtml'
+import { CustomBold, CustomItalic } from './extensions/Typography'
 
 export interface FieldRteProps {
     /** Name text */
@@ -47,7 +45,7 @@ export interface FieldRteProps {
     /** Description underneath the label */
     description?: string | ReactNode
     /** Notification underneath the label/description */
-    notification?: AlertProps
+    notification?: FieldLabelProps['notification']
     /** Placeholder text */
     placeholder?: string
     /** Is field required */
@@ -204,8 +202,8 @@ export const FieldRte = ({
             Document,
             Text,
             Paragraph,
-            Bold,
-            Italic,
+            CustomBold,
+            CustomItalic,
             Underline,
             BulletList,
             OrderedList.extend({

@@ -4,8 +4,7 @@ import ReactSelect, { GroupBase, Props } from 'react-select'
 import AsyncReactSelect, { AsyncProps } from 'react-select/async'
 import CreatableSelect from 'react-select/creatable'
 
-import { AlertProps } from '@pzh-ui/react'
-import { FieldLabel } from '../FieldLabel'
+import { FieldLabel, FieldLabelProps } from '../FieldLabel'
 import { CustomComponents } from './components/CustomComponents'
 import { useCreatableHandlers } from './hooks/useCreatableHandlers'
 import { getSelectStyles } from './styles/selectStyles'
@@ -26,7 +25,7 @@ export interface FieldSelectProps extends SelectProps {
     name: string
     label?: string
     description?: string | ReactNode
-    notification?: AlertProps
+    notification?: FieldLabelProps['notification']
     required?: boolean
     disabled?: boolean
     hasError?: boolean

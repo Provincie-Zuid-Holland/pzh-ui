@@ -32,7 +32,6 @@
         "@floating-ui/react": "^0.24.8",
         "@headlessui/react": "^1.5.0",
         "@pzh-ui/icons": "^0.0.101",
-        "@pzh-ui/react": "^0.0.14",
         "@radix-ui/react-accordion": "^1.1.2",
         "@radix-ui/react-slot": "^1.0.2",
         "@react-aria/utils": "^3.29.1",

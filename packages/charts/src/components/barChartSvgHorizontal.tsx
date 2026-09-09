@@ -44,11 +44,13 @@ const breakMarkPath = (x: number, top: number, barHeight: number): string => {
 }
 
 /**
- * Category labels never take more than this share of the card. Long names —
- * "Specialistische zakelijke dienstverlening" — would otherwise push the plot
- * into a sliver on the right. The full text stays in the readout and tooltip.
+ * Category labels never take more than this share of the card. One long name —
+ * "Specialistische zakelijke dienstverlening" — sets the column width for every
+ * row, pushing the plot into a sliver and leaving a gutter beside the short
+ * labels. Capping it keeps both in hand. The full text stays in the readout and
+ * the tooltip, so truncation loses nothing.
  */
-const LABEL_MAX_SHARE = 0.38
+const LABEL_MAX_SHARE = 0.3
 const LABEL_FONT_SIZE = 12
 
 const MIN_ROW_STRIDE = 32
@@ -255,14 +257,14 @@ export const BarChartSvgHorizontal: FC<BarChartSvgHorizontalProps> = ({
                                 height={layout.slotWidth}
                                 fill="transparent"
                             />
-                            {/* Flush left, not right-aligned against the plot: with
-                                mixed label lengths a right-aligned column reads as
-                                a ragged gutter. */}
+                            {/* Right-aligned, so every label sits against the bar it
+                                names. The empty space this leaves on the left is
+                                bounded by LABEL_MAX_SHARE. */}
                             <text
                                 className="pzh-category-label"
-                                x={0}
+                                x={margins.left - 12}
                                 y={y + layout.groupWidth / 2 + 4}
-                                textAnchor="start">
+                                textAnchor="end">
                                 {displayLabel(category)}
                             </text>
                             {stacked

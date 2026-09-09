@@ -3952,6 +3952,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pzh-ui/charts@workspace:packages/charts":
+  version: 0.0.0-use.local
+  resolution: "@pzh-ui/charts@workspace:packages/charts"
+  dependencies:
+    "@ianvs/prettier-plugin-sort-imports": "npm:^4.7.1"
+    "@storybook/addon-a11y": "npm:^10.4.2"
+    "@storybook/addon-docs": "npm:^10.4.2"
+    "@storybook/react-vite": "npm:^10.4.2"
+    "@testing-library/jest-dom": "npm:^6.9.1"
+    "@testing-library/react": "npm:^16.3.2"
+    "@testing-library/user-event": "npm:^14.6.6"
+    "@vitejs/plugin-react": "npm:^6.0.2"
+    jsdom: "npm:^29.1.1"
+    prettier: "npm:^3.9.6"
+    react: "npm:^19.2.7"
+    react-dom: "npm:^19.2.7"
+    rollup-plugin-visualizer: "npm:^6.0.4"
+    storybook: "npm:^10.4.2"
+    typescript: "npm:^6.0.3"
+    vite: "npm:^8.0.16"
+    vitest: "npm:^4.1.8"
+    vitest-axe: "npm:^0.1.0"
+  peerDependencies:
+    react: ^19.0.0
+    react-dom: ^19.0.0
+  languageName: unknown
+  linkType: soft
+
 "@pzh-ui/components@workspace:packages/components":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/components@workspace:packages/components"
@@ -4888,6 +4916,18 @@ __metadata:
   version: 1.1.0
   resolution: "@standard-schema/spec@npm:1.1.0"
   checksum: 10c0/d90f55acde4b2deb983529c87e8025fa693de1a5e8b49ecc6eb84d1fd96328add0e03d7d551442156c7432fd78165b2c26ff561b970a9a881f046abb78d6a526
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-a11y@npm:^10.4.2":
+  version: 10.6.0
+  resolution: "@storybook/addon-a11y@npm:10.6.0"
+  dependencies:
+    "@storybook/global": "npm:^5.0.0"
+    axe-core: "npm:^4.2.0"
+  peerDependencies:
+    storybook: ^10.6.0
+  checksum: 10c0/23ed0a30b8cdeb132f724bb2486d8f1ed194aa8ca9ab78c0fed9a356d0fb1f6e61234ca9718a6c0dd6ed210e65708072f520222c0fa5c1a45f88a961bc6b40b8
   languageName: node
   linkType: hard
 
@@ -7658,6 +7698,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axe-core@npm:^4.4.2":
+  version: 4.13.0
+  resolution: "axe-core@npm:4.13.0"
+  checksum: 10c0/0e3be8be10eea64beddefd3007e1425424ff60c26c5f4d5f748ec48c2825356839c02ad4167fc1f03a6d84ecd82108f49fb2846ab7fe949273787391745561ca
+  languageName: node
+  linkType: hard
+
 "axios@npm:1.16.0":
   version: 1.16.0
   resolution: "axios@npm:1.16.0"
@@ -8085,6 +8132,13 @@ __metadata:
     ansi-styles: "npm:^4.1.0"
     supports-color: "npm:^7.1.0"
   checksum: 10c0/ee650b0a065b3d7a6fda258e75d3a86fc8e4effa55871da730a9e42ccb035bf5fd203525e5a1ef45ec2582ecc4f65b47eb11357c526b84dd29a14fb162c414d2
+  languageName: node
+  linkType: hard
+
+"chalk@npm:^5.0.1":
+  version: 5.6.2
+  resolution: "chalk@npm:5.6.2"
+  checksum: 10c0/99a4b0f0e7991796b1e7e3f52dceb9137cae2a9dfc8fc0784a550dc4c558e15ab32ed70b14b21b52beb2679b4892b41a0aa44249bcb996f01e125d58477c6976
   languageName: node
   linkType: hard
 
@@ -8983,7 +9037,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dom-accessibility-api@npm:^0.5.6, dom-accessibility-api@npm:^0.5.9":
+"dom-accessibility-api@npm:^0.5.14, dom-accessibility-api@npm:^0.5.6, dom-accessibility-api@npm:^0.5.9":
   version: 0.5.16
   resolution: "dom-accessibility-api@npm:0.5.16"
   checksum: 10c0/b2c2eda4fae568977cdac27a9f0c001edf4f95a6a6191dfa611e3721db2478d1badc01db5bb4fa8a848aeee13e442a6c2a4386d65ec65a1436f24715a2f8d053
@@ -13885,7 +13939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"open@npm:8.4.2, open@npm:^8.0.4, open@npm:^8.4.0":
+"open@npm:8.4.2, open@npm:^8.0.0, open@npm:^8.0.4, open@npm:^8.4.0":
   version: 8.4.2
   resolution: "open@npm:8.4.2"
   dependencies:
@@ -15767,6 +15821,28 @@ __metadata:
   bin:
     rollup-plugin-visualizer: dist/bin/cli.js
   checksum: 10c0/ec6ca9ed125bce9994ba49a340bda730661d8e8dc5c5dc014dc757185182e1eda49c6708f990cb059095e71a3741a5248f1e6ba0ced7056020692888e06b1ddf
+  languageName: node
+  linkType: hard
+
+"rollup-plugin-visualizer@npm:^6.0.4":
+  version: 6.0.11
+  resolution: "rollup-plugin-visualizer@npm:6.0.11"
+  dependencies:
+    open: "npm:^8.0.0"
+    picomatch: "npm:^4.0.2"
+    source-map: "npm:^0.7.4"
+    yargs: "npm:^17.5.1"
+  peerDependencies:
+    rolldown: 1.x || ^1.0.0-beta
+    rollup: 2.x || 3.x || 4.x
+  peerDependenciesMeta:
+    rolldown:
+      optional: true
+    rollup:
+      optional: true
+  bin:
+    rollup-plugin-visualizer: dist/bin/cli.js
+  checksum: 10c0/a8461e3b1178791e5834617c0e59b89a2832c0a371632e45c8c6934d17baa39f597e74cece5eaecd244f5b3dd0fab14c695f5860de3f3b0ac25e50a221442817
   languageName: node
   linkType: hard
 
@@ -17794,6 +17870,22 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 10c0/a0aa418beab80673dc9a3e9d1fa49472955d6ef9d41a4c9c6bd402953f411346f612864dae267adfb2bb8ceeb894482369316ffae5816c84fd45990e352b727d
+  languageName: node
+  linkType: hard
+
+"vitest-axe@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "vitest-axe@npm:0.1.0"
+  dependencies:
+    aria-query: "npm:^5.0.0"
+    axe-core: "npm:^4.4.2"
+    chalk: "npm:^5.0.1"
+    dom-accessibility-api: "npm:^0.5.14"
+    lodash-es: "npm:^4.17.21"
+    redent: "npm:^3.0.0"
+  peerDependencies:
+    vitest: ">=0.16.0"
+  checksum: 10c0/ad523ad3115f66b1605c3c0ea6a9932867c4273f8ad73b717afc5fe496159b5e11d50a8babf05ce4990c612558ee24579cf14258304ce6b32a77d15be9e98aa6
   languageName: node
   linkType: hard
 

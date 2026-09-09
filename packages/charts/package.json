@@ -1,0 +1,74 @@
+{
+    "name": "@pzh-ui/charts",
+    "version": "0.0.0",
+    "description": "Accessible React/SVG charts for Provincie Zuid-Holland projects.",
+    "homepage": "https://github.com/Provincie-Zuid-Holland/pzh-ui#readme",
+    "license": "ISC",
+    "type": "module",
+    "sideEffects": false,
+    "files": [
+        "dist",
+        "ACCESSIBILITY.md",
+        "LICENSE"
+    ],
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        }
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Provincie-Zuid-Holland/pzh-ui.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Provincie-Zuid-Holland/pzh-ui/issues"
+    },
+    "engines": {
+        "node": ">=22.12.0"
+    },
+    "scripts": {
+        "test": "vitest",
+        "test:run": "vitest run",
+        "typecheck": "tsc --noEmit",
+        "storybook": "storybook dev -p 6006",
+        "build-storybook": "storybook build",
+        "build:js": "vite build",
+        "build:types": "tsc -p tsconfig.build.json",
+        "build": "yarn typecheck && yarn build:js && yarn build:types",
+        "prepack": "yarn build",
+        "format": "prettier . --write",
+        "format:check": "prettier . --check"
+    },
+    "peerDependencies": {
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
+    },
+    "devDependencies": {
+        "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+        "@storybook/addon-a11y": "^10.4.2",
+        "@storybook/addon-docs": "^10.4.2",
+        "@storybook/react-vite": "^10.4.2",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.2",
+        "@testing-library/user-event": "^14.6.6",
+        "@vitejs/plugin-react": "^6.0.2",
+        "jsdom": "^29.1.1",
+        "prettier": "^3.9.6",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7",
+        "rollup-plugin-visualizer": "^6.0.4",
+        "storybook": "^10.4.2",
+        "typescript": "^6.0.3",
+        "vite": "^8.0.16",
+        "vitest": "^4.1.8",
+        "vitest-axe": "^0.1.0"
+    }
+}

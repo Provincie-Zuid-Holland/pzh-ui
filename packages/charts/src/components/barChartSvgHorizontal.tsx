@@ -255,11 +255,14 @@ export const BarChartSvgHorizontal: FC<BarChartSvgHorizontalProps> = ({
                                 height={layout.slotWidth}
                                 fill="transparent"
                             />
+                            {/* Flush left, not right-aligned against the plot: with
+                                mixed label lengths a right-aligned column reads as
+                                a ragged gutter. */}
                             <text
                                 className="pzh-category-label"
-                                x={margins.left - 12}
+                                x={0}
                                 y={y + layout.groupWidth / 2 + 4}
-                                textAnchor="end">
+                                textAnchor="start">
                                 {displayLabel(category)}
                             </text>
                             {stacked

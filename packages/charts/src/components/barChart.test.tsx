@@ -263,3 +263,52 @@ describe('BarChart axis.breakAbove', () => {
         expect(container.querySelectorAll('.pzh-break-mark')).toHaveLength(0)
     })
 })
+
+describe('BarChart horizontal category labels', () => {
+    // Real category names from the Monitor theme "Informatieveiligheid en
+    // privacy". Unbounded, the longest one pushes the plot into a sliver.
+    const sectors = [
+        'Gezondheid & welzijn',
+        'Openbaar bestuur',
+        'Specialistische zakelijke dienstverlening',
+        'Politie en Justitie',
+    ]
+
+    it('truncates a label that would eat the plot area', () => {
+        const { container } = render(
+            <BarChart
+                title="Sectoren"
+                horizontal
+                categories={sectors}
+                series={[{ data: [424, 58, 86, 3] }]}
+            />
+        )
+        const rendered = [
+            ...container.querySelectorAll('text.pzh-category-label'),
+        ].map(node => node.textContent)
+        expect(rendered).toContain('Gezondheid & welzijn')
+        expect(rendered).not.toContain(
+            'Specialistische zakelijke dienstverlening'
+        )
+        expect(rendered.some(label => label?.includes('…'))).toBe(true)
+    })
+
+    it('keeps the full name in the readout, so nothing is lost', () => {
+        const { container } = render(
+            <BarChart
+                title="Sectoren"
+                horizontal
+                categories={sectors}
+                series={[{ data: [424, 58, 86, 3] }]}
+            />
+        )
+        const readouts = [...container.querySelectorAll('.pzh-bar-group')].map(
+            group => group.getAttribute('aria-label')
+        )
+        expect(
+            readouts.some(readout =>
+                readout?.startsWith('Specialistische zakelijke dienstverlening')
+            )
+        ).toBe(true)
+    })
+})

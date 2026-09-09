@@ -6,7 +6,7 @@
 import { CSSProperties, FC, useMemo, useState } from 'react'
 
 import { useContainerSize } from '../hooks/useContainerSize'
-import { estimateTextWidth } from '../lib/format'
+import { estimateTextWidth, truncateLabel } from '../lib/format'
 import { barLayout, horizontalBarPath, stackSegments } from '../lib/layout'
 import { NormalizedData } from '../lib/normalize'
 import { niceTicks } from '../lib/scale'
@@ -42,6 +42,14 @@ const breakMarkPath = (x: number, top: number, barHeight: number): string => {
     })
     return `M${points.join('L')}`
 }
+
+/**
+ * Category labels never take more than this share of the card. Long names —
+ * "Specialistische zakelijke dienstverlening" — would otherwise push the plot
+ * into a sliver on the right. The full text stays in the readout and tooltip.
+ */
+const LABEL_MAX_SHARE = 0.38
+const LABEL_FONT_SIZE = 12
 
 const MIN_ROW_STRIDE = 32
 /** Rows never spread further apart than this when the card is stretched. */
@@ -118,8 +126,17 @@ export const BarChartSvgHorizontal: FC<BarChartSvgHorizontalProps> = ({
     )
     const height = Math.max(contentMinHeight, measuredHeight)
 
+    const labelMaxChars = Math.max(
+        8,
+        Math.floor((width * LABEL_MAX_SHARE) / (LABEL_FONT_SIZE * 0.6))
+    )
+    const displayLabel = (label: string) => truncateLabel(label, labelMaxChars)
     const labelWidth = data.categories.reduce(
-        (max, label) => Math.max(max, estimateTextWidth(label, 12)),
+        (max, label) =>
+            Math.max(
+                max,
+                estimateTextWidth(displayLabel(label), LABEL_FONT_SIZE)
+            ),
         0
     )
     const margins = {
@@ -243,7 +260,7 @@ export const BarChartSvgHorizontal: FC<BarChartSvgHorizontalProps> = ({
                                 x={margins.left - 12}
                                 y={y + layout.groupWidth / 2 + 4}
                                 textAnchor="end">
-                                {category}
+                                {displayLabel(category)}
                             </text>
                             {stacked
                                 ? stackSegments(

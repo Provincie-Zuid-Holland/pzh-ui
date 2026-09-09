@@ -26,6 +26,23 @@ type BarChartSvgHorizontalProps = {
     tickFormatter: (value: number) => string
 }
 
+/** Width reserved past a broken bar for the break mark and the real value. */
+const BREAK_MARK_WIDTH = 12
+const BREAK_LABEL_GAP = 6
+
+/**
+ * A vertical zigzag across the bar, the conventional "this bar is cut" mark.
+ */
+const breakMarkPath = (x: number, top: number, barHeight: number): string => {
+    const steps = Math.max(2, Math.round(barHeight / 6))
+    const stepHeight = barHeight / steps
+    const points = Array.from({ length: steps + 1 }, (_, index) => {
+        const y = top + index * stepHeight
+        return `${index % 2 === 0 ? x - 3 : x + 3},${y}`
+    })
+    return `M${points.join('L')}`
+}
+
 const MIN_ROW_STRIDE = 32
 /** Rows never spread further apart than this when the card is stretched. */
 const MAX_SINGLE_ROW_STRIDE = 48
@@ -50,10 +67,45 @@ export const BarChartSvgHorizontal: FC<BarChartSvgHorizontalProps> = ({
 
     const domainMin = stacked ? 0 : data.dataMin
     const domainMax = stacked ? data.stackedMax : data.dataMax
-    const scale = useMemo(
-        () => niceTicks(domainMin, domainMax, axis),
-        [domainMin, domainMax, axis]
+    // breakAbove caps the axis; bars past it are drawn short and marked.
+    const breakAbove =
+        axis?.breakAbove !== undefined && axis.breakAbove > 0
+            ? axis.breakAbove
+            : undefined
+    const scaleOptions = useMemo(
+        () => (breakAbove === undefined ? axis : { ...axis, max: breakAbove }),
+        [axis, breakAbove]
     )
+    const scale = useMemo(
+        () => niceTicks(domainMin, domainMax, scaleOptions),
+        [domainMin, domainMax, scaleOptions]
+    )
+    // Every value that runs past the cap, so the gap fits the widest label.
+    const brokenValues = useMemo(() => {
+        if (breakAbove === undefined) return []
+        return data.series.flatMap(series =>
+            series.data
+                .map(datum => datum.value)
+                .filter(
+                    (value): value is number =>
+                        value !== null && value > scale.max
+                )
+        )
+    }, [breakAbove, data.series, scale.max])
+    const breakGap = brokenValues.length
+        ? BREAK_MARK_WIDTH +
+          BREAK_LABEL_GAP +
+          Math.ceil(
+              brokenValues.reduce(
+                  (max, value) =>
+                      Math.max(
+                          max,
+                          estimateTextWidth(valueFormatter(value), 12)
+                      ),
+                  0
+              )
+          )
+        : 0
     const tickLabels = scale.ticks.map(tickFormatter)
 
     const rowCount = data.categories.length
@@ -229,30 +281,71 @@ export const BarChartSvgHorizontal: FC<BarChartSvgHorizontalProps> = ({
                                 : data.series.map((series, seriesIndex) => {
                                       const datum = series.data[categoryIndex]
                                       if (datum.value === null) return null
+                                      const isBroken =
+                                          breakGap > 0 &&
+                                          datum.value > scale.max
+                                      const barTop =
+                                          y + layout.offsets[seriesIndex]
+                                      const endX = isBroken
+                                          ? toX(datum.value) - breakGap
+                                          : toX(datum.value)
                                       const path = horizontalBarPath(
-                                          y + layout.offsets[seriesIndex],
+                                          barTop,
                                           baselineX,
-                                          toX(datum.value),
+                                          endX,
                                           layout.barWidth
                                       )
                                       if (!path) return null
                                       return (
-                                          <path
-                                              key={seriesIndex}
-                                              className="pzh-bar pzh-bar-h"
-                                              d={path}
-                                              style={
-                                                  {
-                                                      '--pzh-bar-fill':
-                                                          markFill(
-                                                              datum.highlight
-                                                                  ? 'var(--pzh-highlight)'
-                                                                  : series.fill
-                                                          ),
-                                                      animationDelay: `${categoryIndex * 25}ms`,
-                                                  } as CSSProperties
-                                              }
-                                          />
+                                          <g key={seriesIndex}>
+                                              {isBroken ? (
+                                                  <>
+                                                      <path
+                                                          className="pzh-break-mark"
+                                                          d={breakMarkPath(
+                                                              endX +
+                                                                  BREAK_MARK_WIDTH /
+                                                                      2,
+                                                              barTop,
+                                                              layout.barWidth
+                                                          )}
+                                                      />
+                                                      <text
+                                                          className="pzh-category-label"
+                                                          x={
+                                                              endX +
+                                                              BREAK_MARK_WIDTH +
+                                                              BREAK_LABEL_GAP
+                                                          }
+                                                          y={
+                                                              barTop +
+                                                              layout.barWidth /
+                                                                  2 +
+                                                              4
+                                                          }
+                                                          textAnchor="start">
+                                                          {valueFormatter(
+                                                              datum.value
+                                                          )}
+                                                      </text>
+                                                  </>
+                                              ) : null}
+                                              <path
+                                                  className="pzh-bar pzh-bar-h"
+                                                  d={path}
+                                                  style={
+                                                      {
+                                                          '--pzh-bar-fill':
+                                                              markFill(
+                                                                  datum.highlight
+                                                                      ? 'var(--pzh-highlight)'
+                                                                      : series.fill
+                                                              ),
+                                                          animationDelay: `${categoryIndex * 25}ms`,
+                                                      } as CSSProperties
+                                                  }
+                                              />
+                                          </g>
                                       )
                                   })}
                         </g>

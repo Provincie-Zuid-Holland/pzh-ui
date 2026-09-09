@@ -210,6 +210,14 @@ export const chartStyles = `
     color: var(--pzh-text);
     font-variant-numeric: tabular-nums;
 }
+/* The "this bar is cut" zigzag drawn where a bar runs past axis.breakAbove.
+   The real value is printed beside it, and is in the readout and tabel view too. */
+.pzh-break-mark {
+    fill: none;
+    stroke: var(--pzh-text-muted);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
 .pzh-slice {
     stroke: none;
 }

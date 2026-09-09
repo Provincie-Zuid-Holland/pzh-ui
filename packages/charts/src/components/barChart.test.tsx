@@ -214,3 +214,52 @@ describe('BarChart', () => {
         ).toBeInTheDocument()
     })
 })
+
+describe('BarChart axis.breakAbove', () => {
+    // The real shape from the Monitor theme "Landelijke cyberaanvallen": one
+    // sector at 5462 against a next-largest of 424, which flattens every other
+    // bar unless the axis is broken.
+    const cyberaanvallen = {
+        title: 'Landelijke cyberaanvallen',
+        horizontal: true,
+        categories: [
+            'Gezondheid & welzijn',
+            'Openbaar bestuur',
+            'Financiële dienstverlening',
+        ],
+        series: [
+            { label: '2022', data: [424, 58, 144] },
+            { label: '2024', data: [5462, 117, 194] },
+        ],
+    }
+
+    it('marks the bar that runs past the cap and prints its real value', () => {
+        const { container } = render(
+            <BarChart {...cyberaanvallen} axis={{ breakAbove: 600 }} />
+        )
+        expect(container.querySelectorAll('.pzh-break-mark')).toHaveLength(1)
+        expect(screen.getByText('5.462')).toBeInTheDocument()
+    })
+
+    it('leaves the readout carrying the full value, so nothing is hidden', () => {
+        const { container } = render(
+            <BarChart {...cyberaanvallen} axis={{ breakAbove: 600 }} />
+        )
+        const readout = container
+            .querySelectorAll('.pzh-bar-group')[0]
+            .getAttribute('aria-label')
+        expect(readout).toContain('5.462')
+    })
+
+    it('draws no break mark when every value fits under the cap', () => {
+        const { container } = render(
+            <BarChart {...cyberaanvallen} axis={{ breakAbove: 6000 }} />
+        )
+        expect(container.querySelectorAll('.pzh-break-mark')).toHaveLength(0)
+    })
+
+    it('is inert without the option, so existing charts are untouched', () => {
+        const { container } = render(<BarChart {...cyberaanvallen} />)
+        expect(container.querySelectorAll('.pzh-break-mark')).toHaveLength(0)
+    })
+})

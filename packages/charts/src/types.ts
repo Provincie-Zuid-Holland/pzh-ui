@@ -58,6 +58,14 @@ export type AxisOptions = {
     yLabel?: string
     /** Y tick formatting, nl-NL. Default 'compact' (1,2 mln). */
     tickFormat?: 'plain' | 'compact'
+    /**
+     * Caps a bar chart's value axis here and marks any bar that runs past it
+     * with a break, printing its real value beside the mark. For one outlier
+     * that would otherwise flatten every other bar. The full value stays in the
+     * readout, the tooltip and the tabel view, so nothing is hidden — only the
+     * bar is shortened.
+     */
+    breakAbove?: number
 }
 
 /** Props every chart card shares, independent of chart type. */

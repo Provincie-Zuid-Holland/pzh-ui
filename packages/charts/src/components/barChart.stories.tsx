@@ -95,5 +95,32 @@ export const Highlighted: Story = {
     },
 }
 
+/**
+ * `axis.breakAbove` caps the axis and marks any bar that runs past it, printing
+ * the real value beside the mark. Without it the 5462 flattens every other bar.
+ * The full value stays in the readout, the tooltip and the tabel view.
+ */
+export const BrokenAxis: Story = {
+    args: {
+        title: 'Landelijke cyberaanvallen',
+        subtitle: 'Eén uitschieter, gebroken as',
+        horizontal: true,
+        axis: { breakAbove: 600, xLabel: 'Aantal meldingen' },
+        categories: [
+            'Gezondheid & welzijn',
+            'Openbaar bestuur',
+            'Financiële dienstverlening',
+            'Onderwijs',
+            'Politie en Justitie',
+        ],
+        series: [
+            { label: '2022', data: [424, 58, 144, 124, 3] },
+            { label: '2023', data: [157, 183, 71, 67, 4] },
+            { label: '2024', data: [5462, 117, 194, 174, 3] },
+        ],
+        height: 340,
+    },
+}
+
 /** The skeleton mirrors the real bar, series and legend counts, not a generic block. */
 export const Loading: Story = { args: { loading: true } }

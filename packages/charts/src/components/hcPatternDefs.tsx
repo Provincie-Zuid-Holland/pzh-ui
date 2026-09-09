@@ -23,13 +23,18 @@ import {
  * through the `--pzh-fill-*` vars set by `getCssVars`.
  */
 
-/** Line direction per series slot, cycling the four provided patterns. */
+/**
+ * One line style per series slot. There is a distinct style for every slot in
+ * the categorical palette: repeating one would leave two series identical to a
+ * reader who cannot use the colour, which is what this mode is for.
+ */
 const SERIES_LINES = [
     'diagRight',
     'diagLeft',
     'horizontal',
     'vertical',
-    'diagRight',
+    'cross',
+    'grid',
 ] as const
 
 type LineStyle = (typeof SERIES_LINES)[number]
@@ -40,6 +45,12 @@ const LINE_PATHS: Record<LineStyle, { size: number; d: string }> = {
     diagLeft: { size: 8, d: 'M0,0 L8,8 M6,-2 L10,2 M-2,6 L2,10' },
     horizontal: { size: 7, d: 'M0,3.5 H7' },
     vertical: { size: 7, d: 'M3.5,0 V7' },
+    // Both diagonals and both axes: distinct from either half on its own.
+    cross: {
+        size: 8,
+        d: 'M0,8 L8,0 M-2,2 L2,-2 M6,10 L10,6 M0,0 L8,8 M6,-2 L10,2 M-2,6 L2,10',
+    },
+    grid: { size: 7, d: 'M0,3.5 H7 M3.5,0 V7' },
 }
 
 const Pattern: FC<{

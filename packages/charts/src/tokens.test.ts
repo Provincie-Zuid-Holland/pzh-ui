@@ -10,6 +10,7 @@ import {
     getCssVars,
     highContrastTokens,
     markFill,
+    MAX_SERIES,
     patternStrokeFor,
     stackedShades,
 } from './tokens'
@@ -207,5 +208,20 @@ describe('getCssVars', () => {
         expect(hcVars['--pzh-fill-highlight']).toBe('url(#pat-hl)')
         expect(hcVars['--pzh-fill-seq-1']).toBe('url(#pat-q1)')
         expect(hcVars['--pzh-fill-status-3']).toBe('url(#pat-t3)')
+    })
+})
+
+describe('categorical palette capacity', () => {
+    it('has a distinct colour for every series slot', () => {
+        expect(new Set(defaultTokens.series).size).toBe(
+            defaultTokens.series.length
+        )
+    })
+
+    it('covers the six series real content asks for', () => {
+        // A Monitor theme charts company-size bands as six series; with five
+        // the sixth took the first one's colour, and the two bands sat next to
+        // each other in the legend.
+        expect(MAX_SERIES).toBeGreaterThanOrEqual(6)
     })
 })

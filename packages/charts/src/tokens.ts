@@ -93,6 +93,7 @@ export const defaultTokens: ChartTokens = {
         colorGroups.green[500],
         colorGroups.orange[500],
         colorGroups.pink[500],
+        colorGroups.warmGray[500],
     ],
     sequential: [
         colorGroups.blue[10],

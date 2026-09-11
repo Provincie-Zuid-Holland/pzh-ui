@@ -11,9 +11,6 @@
 export const STYLE_HREF = 'pzh-charts'
 
 /** Chevron for the view-mode select; url() cannot read CSS vars, so one per state. */
-const chevron = (color: string): string =>
-    `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='${encodeURIComponent(color)}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`
-
 export const chartStyles = `
 .pzh-card {
     display: flex;
@@ -69,45 +66,60 @@ export const chartStyles = `
     align-items: center;
     gap: 8px 20px;
 }
-.pzh-select-group {
+.pzh-view-group {
     display: inline-flex;
     align-items: center;
     gap: 8px;
 }
 /* Same type as the contrast toggle's label, so the two controls read as a pair. */
-.pzh-select-label {
+.pzh-view-label {
     font-size: 0.9375rem;
     font-weight: 500;
     color: var(--pzh-text);
 }
-/* Mirrors the monitor's secondary Button: white bg, brand-blue border and
-   text, 40px tall, 6px radius, medium weight, inverting on hover. */
-.pzh-select {
+/* Segmented control: a grey track holding one 40px option per view, the
+   checked one lifted onto a white tile. Icon-only, so the option's name is
+   the visually hidden text inside it. */
+.pzh-segmented {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 12px;
+    background: var(--pzh-skeleton);
+}
+.pzh-segment {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 48px;
     height: 40px;
-    padding: 0 12px;
-    border: 1px solid var(--pzh-control);
-    /* Tailwind's rounded-md, same as the monitor's Button */
-    border-radius: 0.375rem;
-    background-color: var(--pzh-bg);
-    color: var(--pzh-control);
-    font: inherit;
-    font-size: 0.875rem;
-    font-weight: 500;
+    padding: 0;
+    /* Transparent until checked, so the tile's border adds no layout shift. */
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--pzh-text-muted);
     cursor: pointer;
 }
-@media (prefers-reduced-motion: no-preference) {
-    .pzh-select {
-        transition: all 0.15s ease;
-    }
+.pzh-segment:hover {
+    color: var(--pzh-text);
 }
-.pzh-select:hover {
-    /* background-color, not the shorthand — the select carries a chevron
-       background-image whose repeat/position must survive hover. */
-    background-color: var(--pzh-control);
-    color: var(--pzh-bg);
+/* The checked state is the tile's border, not only its white fill: white on
+   the grey track is ~1.2:1, so the border carries the 3:1 that 1.4.11 asks
+   of a state indicator. */
+.pzh-segment[aria-checked='true'] {
+    background: var(--pzh-bg);
+    border-color: var(--pzh-control);
+    color: var(--pzh-control);
+}
+.pzh-hc .pzh-segment {
+    color: var(--pzh-text);
+}
+@media (prefers-reduced-motion: no-preference) {
+    .pzh-segment {
+        transition:
+            background 0.15s ease,
+            color 0.15s ease;
+    }
 }
 /* Labeled switch: text + pill track with a sliding knob. */
 .pzh-contrast-toggle {
@@ -157,25 +169,9 @@ export const chartStyles = `
 .pzh-contrast-toggle[aria-pressed='true'] .pzh-toggle-knob {
     transform: translateX(18px);
 }
-.pzh-select {
-    appearance: none;
-    padding-right: 36px;
-    background-image: ${chevron('#281F6B')};
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-}
-.pzh-select:hover {
-    background-image: ${chevron('#FFFFFF')};
-}
-.pzh-hc .pzh-select {
-    background-image: ${chevron('#000000')};
-}
-.pzh-hc .pzh-select:hover {
-    background-image: ${chevron('#FFFFFF')};
-}
 .pzh-contrast-toggle:focus-visible,
 .pzh-table-wrap:focus-visible,
-.pzh-select:focus-visible {
+.pzh-segment:focus-visible {
     outline: 2px solid var(--pzh-focus);
     outline-offset: 2px;
 }

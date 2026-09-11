@@ -147,14 +147,14 @@ describe.each(CHARTS)('%s', (_name, make) => {
     it('passes axe in the tabel view', async () => {
         const user = userEvent.setup()
         const { container } = render(make())
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(await axe(container)).toHaveNoViolations()
     })
 
     it('passes axe in the samengevat view', async () => {
         const user = userEvent.setup()
         const { container } = render(make())
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'summary')
+        await user.click(screen.getByRole('radio', { name: 'Samengevat' }))
         expect(await axe(container)).toHaveNoViolations()
     })
 

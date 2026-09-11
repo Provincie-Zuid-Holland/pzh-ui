@@ -75,7 +75,7 @@ export const ChartCard: FC<ChartCardProps> = ({
         tokenOverrides,
         patternPrefix
     ) as CSSProperties
-    // pzh-hc lets CSS that cannot read vars (the select's url() chevron) follow contrast mode.
+    // pzh-hc is the hook for any CSS that cannot read a custom property (a url() image, say).
     const cardClass = ['pzh-card', highContrast ? 'pzh-hc' : null, className]
         .filter(Boolean)
         .join(' ')

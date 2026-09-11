@@ -67,7 +67,7 @@ describe('BubbleChart', () => {
         const user = userEvent.setup()
         render(<BubbleChart {...sectoren} />)
         expect(screen.getByText('Zakelijke diensten')).toBeInTheDocument()
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(screen.getByRole('table')).toBeInTheDocument()
         expect(
             screen.getByRole('rowheader', { name: 'IT & software' })

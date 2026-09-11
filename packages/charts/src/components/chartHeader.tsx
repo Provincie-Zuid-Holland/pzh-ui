@@ -7,7 +7,7 @@ import { createElement, FC } from 'react'
 
 import { ChartLabels, ChartViewMode, HeadingLevel } from '../types'
 import { ContrastToggle } from './contrastToggle'
-import { ViewModeSelect } from './viewModeSelect'
+import { ViewModeSwitch } from './viewModeSwitch'
 
 type ChartHeaderProps = {
     titleId: string
@@ -50,7 +50,7 @@ export const ChartHeader: FC<ChartHeaderProps> = ({
                 label={labels.highContrast}
                 onToggle={onToggleContrast}
             />
-            <ViewModeSelect
+            <ViewModeSwitch
                 value={viewMode}
                 labels={labels}
                 onChange={onViewModeChange}

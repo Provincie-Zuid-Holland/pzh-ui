@@ -63,7 +63,7 @@ describe('GanttChart', () => {
     it('shows the range table in the lijst view', async () => {
         const user = userEvent.setup()
         render(<GanttChart {...props} />)
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(
             screen.getByRole('rowheader', { name: 'Jan' })
         ).toBeInTheDocument()
@@ -75,7 +75,7 @@ describe('GanttChart', () => {
     it('generates a Dutch range summary', async () => {
         const user = userEvent.setup()
         render(<GanttChart {...props} />)
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'summary')
+        await user.click(screen.getByRole('radio', { name: 'Samengevat' }))
         expect(
             screen.getByText(/De hoogste waarde is 10 \(Mrt\)/)
         ).toBeInTheDocument()

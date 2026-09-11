@@ -93,7 +93,7 @@ describe('ProgressChart', () => {
                 ]}
             />
         )
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(
             screen.getByRole('rowheader', { name: 'Wind' })
         ).toBeInTheDocument()
@@ -112,7 +112,7 @@ describe('ProgressChart', () => {
                 ]}
             />
         )
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         const dots = [...container.querySelectorAll('td .pzh-swatch rect')]
         expect(dots.map(dot => dot.getAttribute('fill'))).toEqual([
             'var(--pzh-fill-1)',

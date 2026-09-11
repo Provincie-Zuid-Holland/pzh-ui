@@ -99,10 +99,10 @@ export const ChartSkeleton: FC<ChartSkeletonProps> = ({
                         <div
                             className="pzh-skeleton pzh-pulse"
                             style={{
-                                width: 110,
+                                width: 152,
                                 maxWidth: '100%',
-                                height: 40,
-                                borderRadius: 6,
+                                height: 48,
+                                borderRadius: 12,
                             }}
                         />
                     </div>

@@ -89,7 +89,7 @@ describe('LineChart', () => {
     it('shares the table and summary views', async () => {
         const user = userEvent.setup()
         render(<LineChart {...props} />)
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(screen.getByRole('table')).toBeInTheDocument()
         expect(
             screen.getByRole('rowheader', { name: 'Feb' })

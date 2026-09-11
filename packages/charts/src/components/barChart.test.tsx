@@ -76,7 +76,7 @@ describe('BarChart', () => {
     it('switches to the tabel view: header row carries the legend dots', async () => {
         const user = userEvent.setup()
         const { container } = render(<BarChart {...groupedSeries} />)
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(screen.getByRole('table')).toBeInTheDocument()
         expect(
             screen.getByRole('rowheader', { name: '2024' })
@@ -105,7 +105,7 @@ describe('BarChart', () => {
                 series={[{ data: [100, 400] }]}
             />
         )
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'summary')
+        await user.click(screen.getByRole('radio', { name: 'Samengevat' }))
         expect(
             screen.getByText(/gestegen van 100 naar 400/)
         ).toBeInTheDocument()
@@ -120,7 +120,7 @@ describe('BarChart', () => {
                 summary="Handgeschreven samenvatting."
             />
         )
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'summary')
+        await user.click(screen.getByRole('radio', { name: 'Samengevat' }))
         expect(
             screen.getByText('Handgeschreven samenvatting.')
         ).toBeInTheDocument()

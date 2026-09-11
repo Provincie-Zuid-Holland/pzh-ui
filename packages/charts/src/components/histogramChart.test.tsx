@@ -62,7 +62,7 @@ describe('HistogramChart', () => {
     it('shows bins and counts in the lijst view', async () => {
         const user = userEvent.setup()
         render(<HistogramChart values={values} bins={5} />)
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(screen.getAllByRole('rowheader')).toHaveLength(5)
         expect(screen.getAllByRole('cell')[0].textContent).toContain('8')
     })
@@ -70,7 +70,7 @@ describe('HistogramChart', () => {
     it('summarizes total and modal class in Dutch', async () => {
         const user = userEvent.setup()
         render(<HistogramChart values={values} bins={5} />)
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'summary')
+        await user.click(screen.getByRole('radio', { name: 'Samengevat' }))
         expect(
             screen.getByText(/In totaal zijn er 40 waarnemingen/)
         ).toBeInTheDocument()
@@ -132,7 +132,7 @@ describe('HistogramChart', () => {
                 ]}
             />
         )
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'summary')
+        await user.click(screen.getByRole('radio', { name: 'Samengevat' }))
         expect(
             screen.getByText(/De hoogste waarde is 37 \(12:00\)/)
         ).toBeInTheDocument()

@@ -58,7 +58,7 @@ describe('RangeChart', () => {
                 .querySelectorAll('.pzh-bar-group')[0]
                 ?.getAttribute('aria-label')
         ).toBe('8:00 — 43 tot 53')
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(
             screen.getByRole('rowheader', { name: '8:10' })
         ).toBeInTheDocument()

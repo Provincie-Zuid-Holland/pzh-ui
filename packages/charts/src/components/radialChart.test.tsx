@@ -131,7 +131,7 @@ describe('RadialChart', () => {
         const user = userEvent.setup()
         render(<RadialChart max={100} items={bronnen} />)
         expect(screen.getByText('Wind')).toBeInTheDocument()
-        await user.selectOptions(screen.getByLabelText('Weergave'), 'textual')
+        await user.click(screen.getByRole('radio', { name: 'Tabel' }))
         expect(
             screen.getByRole('rowheader', { name: 'Wind' })
         ).toBeInTheDocument()

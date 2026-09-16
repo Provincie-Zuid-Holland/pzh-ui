@@ -26,6 +26,7 @@
         "prebuild:storybook": "npm run test:generate-output",
         "build:storybook": "storybook build",
         "build": "vite build && tsc -p tsconfig.build.json",
+        "prepack": "yarn build",
         "chromatic": "npx chromatic --project-token=9c6f933cf59e --auto-accept-changes --build-script-name=build:storybook"
     },
     "dependencies": {

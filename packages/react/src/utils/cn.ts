@@ -1,7 +1,6 @@
-import { clsx, type ClassValue } from 'clsx'
-import { extendTailwindMerge } from 'tailwind-merge'
+import { createCn } from 'cn/config'
 
-const twMerge = extendTailwindMerge({
+export const cn = createCn({
     // use the `extend` key in case you want to extend instead of override
     override: {
         classGroups: {
@@ -21,7 +20,3 @@ const twMerge = extendTailwindMerge({
         },
     },
 })
-
-export function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs))
-}

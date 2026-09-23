@@ -1,7 +1,7 @@
+import type { CnFunction } from 'cn'
 import { createCn } from 'cn/config'
 
-export const cn = createCn({
-    // use the `extend` key in case you want to extend instead of override
+export const cn: CnFunction = createCn({
     override: {
         classGroups: {
             'font-size': [

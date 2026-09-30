@@ -63,7 +63,7 @@ function FormSection({
 
 export const Default: Story = {
     render: () => (
-        <div className="px-6 py-8 sm:px-10 lg:px-16 min-h-screen bg-surface-subtle">
+        <div className="px-6 py-8 sm:px-10 lg:px-16 bg-input-subtle min-h-screen">
             <form
                 className="max-w-5xl mx-auto flex w-full flex-col"
                 onSubmit={event => event.preventDefault()}>

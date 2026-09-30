@@ -44,7 +44,7 @@ const tabsListVariants = cva(
         variants: {
             variant: {
                 default: [
-                    'gap-1 rounded p-1 bg-surface-subtle',
+                    'gap-1 rounded p-1 bg-input-subtle',
                     'group-data-[orientation=vertical]/tabs:h-fit',
                 ],
                 line: [

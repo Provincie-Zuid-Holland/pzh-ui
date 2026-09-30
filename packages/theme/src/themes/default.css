@@ -104,7 +104,7 @@
 
     /* Surfaces */
     --surface: var(--pzh-white);
-    --surface-subtle: var(--pzh-blue-10);
+    --surface-subtle: var(--pzh-gray-200);
     --surface-muted: var(--pzh-gray-100);
     --surface-raised: var(--pzh-white);
     --surface-disabled: var(--pzh-gray-200);
@@ -139,6 +139,7 @@
     --input-hover: var(--pzh-gray-100);
     --input-disabled: var(--pzh-gray-200);
     --input-border: var(--pzh-gray-600);
+    --input-subtle: var(--pzh-blue-10);
 
     /* Info */
     --info: var(--pzh-blue-500);

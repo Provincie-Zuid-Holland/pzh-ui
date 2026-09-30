@@ -306,13 +306,13 @@ function SelectItem({
                     'outline-none',
 
                     // Hover
-                    'data-hovered:bg-surface-subtle',
+                    'data-hovered:bg-input-subtle',
 
                     // Active
                     'data-pressed:bg-info-border',
 
                     // Focus
-                    'data-focused:bg-surface-subtle',
+                    'data-focused:bg-input-subtle',
                     'data-focused:ring-2',
                     'data-focused:ring-inset',
                     'data-focused:ring-focus',

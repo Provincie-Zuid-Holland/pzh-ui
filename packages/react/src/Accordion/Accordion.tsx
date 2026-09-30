@@ -55,7 +55,7 @@ const accordionTriggerVariants = cva(
         'group/accordion-trigger gap-4 relative flex w-full items-center justify-between',
         'font-sans font-normal cursor-pointer text-left text-foreground outline-none select-none',
         'transition-[background-color,color,box-shadow] duration-150',
-        'hover:bg-surface-subtle',
+        'hover:bg-input-subtle',
         'data-pressed:bg-input-hover data-pressed:text-foreground',
         'disabled:pointer-events-none disabled:cursor-not-allowed',
         'disabled:bg-surface-disabled disabled:text-text-subtle',

@@ -44,6 +44,7 @@
     --color-input-hover: var(--input-hover);
     --color-input-disabled: var(--input-disabled);
     --color-input-border: var(--input-border);
+    --color-input-subtle: var(--input-subtle);
 
     /* Info */
     --color-info: var(--info);

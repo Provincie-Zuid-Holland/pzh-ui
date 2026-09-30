@@ -81,7 +81,7 @@ export const AllStates: Story = {
                 {interactions.map(interaction => (
                     <section
                         key={interaction.label}
-                        className="rounded-lg p-5 border border-border bg-surface-subtle">
+                        className="rounded-lg p-5 bg-input-subtle border border-border">
                         <h3 className="mb-5 font-bold">{interaction.label}</h3>
 
                         <div className="gap-5 grid grid-cols-3">

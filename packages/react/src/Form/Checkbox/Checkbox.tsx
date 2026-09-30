@@ -32,13 +32,13 @@ const checkboxVariants = cva(
                     'data-selected:border-success',
                     'data-indeterminate:border-success',
 
-                    'data-hovered:border-success data-hovered:bg-surface-subtle',
+                    'data-hovered:bg-input-subtle data-hovered:border-success',
 
                     'data-pressed:border-input-border data-pressed:bg-input-hover',
                     'data-selected:data-pressed:border-input-border',
                     'data-indeterminate:data-pressed:border-input-border',
 
-                    'data-focus-visible:border-focus data-focus-visible:bg-surface-subtle',
+                    'data-focus-visible:bg-input-subtle data-focus-visible:border-focus',
                     'data-focus-visible:ring-2 data-focus-visible:ring-focus',
                     'data-selected:data-focus-visible:border-focus',
                     'data-indeterminate:data-focus-visible:border-focus',
@@ -50,8 +50,8 @@ const checkboxVariants = cva(
                     'data-invalid:border-destructive data-invalid:bg-background',
                     'data-invalid:data-selected:border-destructive',
                     'data-invalid:data-indeterminate:border-destructive',
-                    'data-invalid:data-hovered:border-success data-invalid:data-hovered:bg-surface-subtle',
-                    'data-invalid:data-focus-visible:border-focus data-invalid:data-focus-visible:bg-surface-subtle',
+                    'data-invalid:data-hovered:bg-input-subtle data-invalid:data-hovered:border-success',
+                    'data-invalid:data-focus-visible:bg-input-subtle data-invalid:data-focus-visible:border-focus',
                 ],
                 false: '',
             },

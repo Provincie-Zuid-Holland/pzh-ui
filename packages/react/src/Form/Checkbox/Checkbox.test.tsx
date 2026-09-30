@@ -83,8 +83,8 @@ describe('Checkbox', () => {
         const checkbox = container.querySelector('[data-slot="checkbox"]')
 
         expect(checkbox).toHaveClass(
-            'data-hovered:bg-surface-subtle',
-            'data-focus-visible:bg-surface-subtle'
+            'data-hovered:bg-input-subtle',
+            'data-focus-visible:bg-input-subtle'
         )
     })
 
@@ -101,9 +101,9 @@ describe('Checkbox', () => {
 
         expect(checkbox).toHaveClass(
             'data-invalid:data-hovered:border-success',
-            'data-invalid:data-hovered:bg-surface-subtle',
+            'data-invalid:data-hovered:bg-input-subtle',
             'data-invalid:data-focus-visible:border-focus',
-            'data-invalid:data-focus-visible:bg-surface-subtle'
+            'data-invalid:data-focus-visible:bg-input-subtle'
         )
         expect(indicator).toHaveClass(
             'group-data-[selected]/checkbox:group-data-[invalid]/checkbox:group-data-[hovered]/checkbox:bg-input-hover',

@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { AngleLeft, AngleRight, Ellipsis } from '@pzh-ui/icons'
 
-import { LinkButton } from '../Button'
+import { Button, LinkButton } from '../Button'
 import { cn } from '../utils'
 
 export type PaginationProps = React.ComponentProps<'nav'>
@@ -39,34 +39,56 @@ function PaginationItem({ ...props }: PaginationItemProps) {
 
 export type PaginationLinkProps = {
     isActive?: boolean
-} & Omit<React.ComponentProps<typeof LinkButton>, 'variant'>
+} & (
+    | ({ asButton: true } & Omit<
+          React.ComponentProps<typeof Button>,
+          'variant'
+      >)
+    | ({ asButton?: false } & Omit<
+          React.ComponentProps<typeof LinkButton>,
+          'variant'
+      >)
+)
 
-function PaginationLink({
-    className,
-    isActive,
-    render,
-    size = 'm',
-    ...props
-}: PaginationLinkProps) {
+function PaginationLink(props: PaginationLinkProps) {
+    const { className, isActive, size = 'm' } = props
+    const classNames = cn(
+        'size-10 p-0 text-m border-transparent bg-transparent text-primary',
+        'hover:border-success hover:bg-background hover:text-success',
+        'focus-visible:border-transparent focus-visible:bg-background focus-visible:text-primary focus-visible:ring-2',
+        'active:border-primary-active active:bg-primary-active active:text-primary-foreground',
+        'data-disabled:pointer-events-none data-disabled:border-transparent data-disabled:bg-transparent data-disabled:text-text-disabled',
+        isActive &&
+            'border-primary bg-background text-primary hover:bg-background',
+        className
+    )
+    if (props.asButton) {
+        const { asButton, isActive: active, ...buttonProps } = props
+        void asButton
+        return (
+            <Button
+                {...buttonProps}
+                type={buttonProps.type ?? 'button'}
+                variant="default"
+                size={size}
+                className={classNames}
+                aria-current={active ? 'page' : undefined}
+                data-slot="pagination-link"
+                data-active={active}
+            />
+        )
+    }
+    const { asButton, isActive: active, ...linkProps } = props
+    void asButton
     return (
         <LinkButton
+            {...linkProps}
             variant="default"
             size={size}
-            className={cn(
-                'size-10 p-0 text-m border-transparent bg-transparent text-primary',
-                'hover:border-success hover:bg-background hover:text-success',
-                'focus-visible:border-transparent focus-visible:bg-background focus-visible:text-primary focus-visible:ring-2',
-                'active:border-primary-active active:bg-primary-active active:text-primary-foreground',
-                'data-disabled:pointer-events-none data-disabled:border-transparent data-disabled:bg-transparent data-disabled:text-text-disabled',
-                isActive &&
-                    'border-primary bg-background text-primary hover:bg-background',
-                className
-            )}
-            aria-current={isActive ? 'page' : undefined}
+            className={classNames}
+            aria-current={active ? 'page' : undefined}
             data-slot="pagination-link"
-            data-active={isActive}
-            render={render}
-            {...props}
+            data-active={active}
         />
     )
 }

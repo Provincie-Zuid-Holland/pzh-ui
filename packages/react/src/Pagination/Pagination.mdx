@@ -40,8 +40,7 @@ Gebruik de `render`-property om paginalinks door de router van de applicatie te 
 ```tsx
 import { Link } from 'react-router'
 
-<PaginationLink
-    render={props => <Link {...props} to="/resultaten?page=2" />}>
+;<PaginationLink render={props => <Link {...props} to="/resultaten?page=2" />}>
     2
 </PaginationLink>
 ```
@@ -72,3 +71,12 @@ De paginaknoppen ondersteunen default, geselecteerd, uitgeschakeld, hover, focus
 - Geef iedere paginalink een duidelijk `aria-label`.
 - Gebruik `PaginationPrevious` en `PaginationNext` voor de gelabelde navigatieknoppen.
 - Gebruik `isDisabled` voor een niet-beschikbare vorige of volgende pagina.
+
+## Paginering met knoppen
+
+Gebruik `asButton` wanneer de paginering lokale status bijwerkt, bijvoorbeeld in DataTable. De standaardweergave blijft een link.
+
+```tsx
+<PaginationPrevious asButton isDisabled={!canPreviousPage} onPress={previousPage} />
+<PaginationNext asButton isDisabled={!canNextPage} onPress={nextPage} />
+```

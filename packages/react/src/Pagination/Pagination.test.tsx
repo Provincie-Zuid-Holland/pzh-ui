@@ -69,8 +69,8 @@ describe('Pagination', () => {
             'text-primary',
             'hover:border-success',
             'hover:text-success',
-            'focus-visible:border-focus',
-            'focus-visible:ring-3',
+            'focus-visible:border-transparent',
+            'focus-visible:ring-2',
             'active:bg-primary-active',
             'active:text-primary-foreground',
             'data-disabled:text-text-disabled'

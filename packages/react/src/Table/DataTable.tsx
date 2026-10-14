@@ -1,6 +1,6 @@
 'use client'
 
-import { AngleLeft, AngleRight, Sort, SortAsc, SortDesc } from '@pzh-ui/icons'
+import { Sort, SortAsc, SortDesc } from '@pzh-ui/icons'
 
 import {
     flexRender,
@@ -18,6 +18,8 @@ import {
     PaginationContent,
     PaginationEllipsis,
     PaginationItem,
+    PaginationNext,
+    PaginationPrevious,
 } from '../Pagination'
 import { cn } from '../utils'
 import {
@@ -190,16 +192,13 @@ function DataTable<TData>({
                 <Pagination aria-label="Tabelpagina’s">
                     <PaginationContent>
                         <PaginationItem>
-                            <Button
-                                variant="default"
-                                className="size-10 p-0 border-transparent bg-transparent text-primary hover:text-success"
-                                aria-label="Ga naar de vorige pagina"
+                            <PaginationPrevious
+                                asButton
                                 isDisabled={
                                     isLoading || !table.getCanPreviousPage()
                                 }
-                                onPress={() => table.previousPage()}>
-                                <AngleLeft aria-hidden="true" />
-                            </Button>
+                                onPress={() => table.previousPage()}
+                            />
                         </PaginationItem>
                         {pages.map(page =>
                             typeof page === 'string' ? (
@@ -232,16 +231,13 @@ function DataTable<TData>({
                             )
                         )}
                         <PaginationItem>
-                            <Button
-                                variant="default"
-                                className="size-10 p-0 border-transparent bg-transparent text-primary hover:text-success"
-                                aria-label="Ga naar de volgende pagina"
+                            <PaginationNext
+                                asButton
                                 isDisabled={
                                     isLoading || !table.getCanNextPage()
                                 }
-                                onPress={() => table.nextPage()}>
-                                <AngleRight aria-hidden="true" />
-                            </Button>
+                                onPress={() => table.nextPage()}
+                            />
                         </PaginationItem>
                     </PaginationContent>
                 </Pagination>

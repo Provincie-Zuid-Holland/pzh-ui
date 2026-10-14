@@ -91,10 +91,7 @@ function TableCell({ className, ...props }: TableCellProps) {
     return (
         <td
             data-slot="table-cell"
-            className={cn(
-                'px-2 py-2 first:pl-0 last:pr-0 text-left align-middle',
-                className
-            )}
+            className={cn('px-2 py-2 text-left align-middle', className)}
             {...props}
         />
     )

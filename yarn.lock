@@ -3963,7 +3963,7 @@ __metadata:
     "@floating-ui/react": "npm:^0.24.8"
     "@headlessui/react": "npm:^1.5.0"
     "@pzh-ui/css": "npm:^0.0.119"
-    "@pzh-ui/icons": "npm:^0.0.102"
+    "@pzh-ui/icons": "npm:^0.0.103"
     "@radix-ui/react-accordion": "npm:^1.1.2"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@react-aria/utils": "npm:^3.29.1"
@@ -4080,7 +4080,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/icons@npm:^0.0.102, @pzh-ui/icons@workspace:*, @pzh-ui/icons@workspace:packages/icons":
+"@pzh-ui/icons@npm:^0.0.103, @pzh-ui/icons@workspace:^, @pzh-ui/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/icons@workspace:packages/icons"
   dependencies:
@@ -4100,7 +4100,7 @@ __metadata:
   dependencies:
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.7.1"
     "@internationalized/date": "npm:^3.12.3"
-    "@pzh-ui/icons": "workspace:*"
+    "@pzh-ui/icons": "workspace:^"
     "@pzh-ui/theme": "npm:^0.0.10"
     "@storybook/addon-docs": "npm:^10.4.2"
     "@storybook/react-vite": "npm:^10.4.2"

@@ -92,6 +92,15 @@ export type {
     PaginationProps,
 } from './Pagination'
 
+export {
+    Popover,
+    PopoverDescription,
+    PopoverHeader,
+    PopoverTitle,
+    PopoverTrigger,
+} from './Popover'
+export type { PopoverProps } from './Popover'
+
 export { Tag } from './Tag'
 export type { TagProps } from './Tag'
 

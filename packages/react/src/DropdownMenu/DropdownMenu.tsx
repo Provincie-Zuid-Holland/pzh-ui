@@ -86,7 +86,7 @@ function DropdownMenuItem({
             textValue={typeof children === 'string' ? children : undefined}
             className={composeRenderProps(className, className =>
                 cn(
-                    'gap-2 rounded px-3 flex cursor-pointer items-center text-primary outline-none select-none',
+                    'gap-2 rounded px-4 font-bold flex cursor-pointer items-center text-primary outline-none select-none',
                     'data-focused:bg-surface-muted data-focused:ring-2 data-focused:ring-focus data-focused:ring-inset data-hovered:bg-surface-muted',
                     '[&_svg]:size-4 data-disabled:pointer-events-none data-disabled:text-text-disabled [&_svg]:shrink-0',
                     size === 's'

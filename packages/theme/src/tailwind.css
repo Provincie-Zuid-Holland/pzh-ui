@@ -193,7 +193,7 @@
     --color-brand-warm-gray-dark: var(--brand-warm-gray-dark);
 
     /* Shadows */
-    --shadow-card: var(--shadow-card);
-    --shadow-popover: var(--shadow-popover);
-    --shadow-dialog: var(--shadow-dialog);
+    --shadow-card: var(--card-shadow);
+    --shadow-popover: var(--popover-shadow);
+    --shadow-dialog: var(--dialog-shadow);
 }

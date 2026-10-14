@@ -1,7 +1,18 @@
-@theme {
-    /* Font */
+@theme inline {
     --font-sans: var(--font-family-sans);
+}
 
+@utility font-bold {
+    font-family: var(--font-family-sans-bold);
+    font-weight: 700;
+}
+
+@utility font-normal {
+    font-family: var(--font-family-sans);
+    font-weight: 400;
+}
+
+@theme {
     /* Breakpoints */
     --breakpoint-sm: 640px;
     --breakpoint-md: 768px;
@@ -43,9 +54,4 @@
 
     --text-heading-xxxl: 4rem;
     --text-heading-xxxl--line-height: 110%;
-
-    /* Shadows */
-    --shadow-card:
-        0 18px 60px rgb(0 0 0 / 7%), 0 4.02054px 13.4018px rgb(0 0 0 / 4.17%),
-        0 1.19702px 3.99006px rgb(0 0 0 / 2.83%);
 }

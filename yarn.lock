@@ -4080,7 +4080,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/icons@npm:^0.0.102, @pzh-ui/icons@workspace:packages/icons":
+"@pzh-ui/icons@npm:^0.0.102, @pzh-ui/icons@workspace:*, @pzh-ui/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/icons@workspace:packages/icons"
   dependencies:
@@ -4100,11 +4100,12 @@ __metadata:
   dependencies:
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.7.1"
     "@internationalized/date": "npm:^3.12.3"
-    "@pzh-ui/icons": "npm:^0.0.102"
-    "@pzh-ui/theme": "npm:^0.0.8"
+    "@pzh-ui/icons": "workspace:*"
+    "@pzh-ui/theme": "npm:^0.0.10"
     "@storybook/addon-docs": "npm:^10.4.2"
     "@storybook/react-vite": "npm:^10.4.2"
     "@tailwindcss/vite": "npm:^4.3.3"
+    "@tanstack/react-table": "npm:^8.21.3"
     "@testing-library/jest-dom": "npm:^6.9.1"
     "@testing-library/react": "npm:^16.3.2"
     "@testing-library/user-event": "npm:^14.6.6"
@@ -4146,7 +4147,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pzh-ui/theme@npm:^0.0.8, @pzh-ui/theme@workspace:packages/theme":
+"@pzh-ui/theme@npm:^0.0.10, @pzh-ui/theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@pzh-ui/theme@workspace:packages/theme"
   peerDependencies:
@@ -5696,7 +5697,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-table@npm:^8.20.1":
+"@tanstack/react-table@npm:^8.20.1, @tanstack/react-table@npm:^8.21.3":
   version: 8.21.3
   resolution: "@tanstack/react-table@npm:8.21.3"
   dependencies:

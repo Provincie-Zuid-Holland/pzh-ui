@@ -1,0 +1,76 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as TableStories from './Table.stories'
+
+<Meta of={TableStories} />
+
+# Table
+
+Een tabel met semantische HTML-elementen en horizontaal scrollen op kleine schermen.
+
+<Canvas of={TableStories.Default} />
+
+## Gebruik
+
+```tsx
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from '@pzh-ui/react'
+
+;<Table>
+    <TableCaption>Gebruikers</TableCaption>
+    <TableHeader>
+        <TableRow>
+            <TableHead scope="col">Naam</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableCell>Gebruiker</TableCell>
+        </TableRow>
+    </TableBody>
+</Table>
+```
+
+Ook `TableFooter` is beschikbaar. Alle onderdelen accepteren native HTML-props, `ref` en `className`. Met `containerClassName` pas je de scrollcontainer aan.
+
+## Data Table
+
+`DataTable` bouwt voort op de composabele Table-elementen en TanStack Table v8. Kolomdefinities ondersteunen eigen celweergave, sorteren en filteren. Paginering is standaard ingeschakeld; gebruik `pagination={false}` om alle rijen te tonen. Geef altijd een beschrijvende `caption` mee.
+
+```tsx
+import { DataTable } from '@pzh-ui/react'
+import type { ColumnDef } from '@tanstack/react-table'
+
+type User = { id: string; name: string }
+const columns: ColumnDef<User>[] = [{ accessorKey: 'name', header: 'Naam' }]
+
+<DataTable
+    caption="Gebruikers"
+    columns={columns}
+    data={[{ id: '1', name: 'Gebruiker' }]}
+    getRowId={user => user.id}
+    initialState={{ pagination: { pageIndex: 0, pageSize: 4 } }}
+/>
+```
+
+<Canvas of={TableStories.Users} />
+
+Zoekvelden en acties worden buiten de tabel samengesteld. Gebruik TanStack-opties zoals `state`, `onSortingChange`, `onColumnFiltersChange` en `onPaginationChange` voor gecontroleerde status. Voor serverpaginering gebruik je `manualPagination`, `rowCount` en gecontroleerde paginastatus; voor serversortering en filtering gebruik je `manualSorting` en `manualFiltering`.
+
+## Laden en lege resultaten
+
+`isLoading` toont een laadmelding in een geldige tabelrij en zet `aria-busy`. Met `loadingMessage` en `emptyMessage` pas je de meldingen aan.
+
+<Canvas of={TableStories.Empty} />
+<Canvas of={TableStories.Loading} />
+
+## Toegankelijkheid
+
+De tabel heeft een caption, native tabelstructuur en kolomkoppen. Sorteerknoppen werken met Enter en spatie; `aria-sort` beschrijft de sorteerrichting. De paginering markeert de actieve pagina met `aria-current`. Voeg interactieve acties als knoppen of links in cellen toe.

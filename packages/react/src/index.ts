@@ -195,6 +195,29 @@ export type {
     AccordionTriggerProps,
 } from './Accordion'
 
+export {
+    DataTable,
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableFooter,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from './Table'
+export type {
+    DataTableProps,
+    TableBodyProps,
+    TableCaptionProps,
+    TableCellProps,
+    TableFooterProps,
+    TableHeadProps,
+    TableHeaderProps,
+    TableProps,
+    TableRowProps,
+} from './Table'
+
 // ───────────────────────────────────────────────
 // Utils
 // ───────────────────────────────────────────────

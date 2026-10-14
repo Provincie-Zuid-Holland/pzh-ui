@@ -223,3 +223,30 @@ export type {
 // ───────────────────────────────────────────────
 
 export { cn } from './utils'
+
+export {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuGroup,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuSub,
+    DropdownMenuSubTrigger,
+    DropdownMenuSubContent,
+    DropdownMenuShortcut,
+} from './DropdownMenu'
+export type {
+    DropdownMenuProps,
+    DropdownMenuTriggerProps,
+    DropdownMenuContentProps,
+    DropdownMenuItemProps,
+    DropdownMenuGroupProps,
+    DropdownMenuLabelProps,
+    DropdownMenuSeparatorProps,
+    DropdownMenuSubProps,
+    DropdownMenuSubTriggerProps,
+    DropdownMenuSubContentProps,
+    DropdownMenuShortcutProps,
+} from './DropdownMenu'

@@ -1,0 +1,58 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as DropdownMenuStories from './DropdownMenu.stories'
+
+<Meta of={DropdownMenuStories} />
+
+# Dropdown Menu
+
+Een actiemenu op basis van React Aria met een composabele API geïnspireerd op Shadcn. Gebruik bijvoorbeeld een ellipsknop in een tabelcel voor Bewerken en Archiveren.
+
+<Canvas of={DropdownMenuStories.Default} />
+
+## Gebruik
+
+```tsx
+import { Ellipsis } from '@pzh-ui/icons'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@pzh-ui/react'
+
+<DropdownMenu>
+    <DropdownMenuTrigger variant="default" aria-label="Acties voor dit type">
+        <Ellipsis />
+    </DropdownMenuTrigger>
+    <DropdownMenuContent
+        aria-label="Typeacties"
+        onAction={key => handleAction(key)}>
+        <DropdownMenuItem id="edit">Bewerken</DropdownMenuItem>
+        <DropdownMenuItem id="archive">Archiveren</DropdownMenuItem>
+    </DropdownMenuContent>
+</DropdownMenu>
+```
+
+De trigger is een Button en accepteert dezelfde props. Gebruik `onAction` op het menu of op afzonderlijke items. Met `isDisabled` schakel je een actie uit. Voor links geef je een item een `href`. Geef bij inhoud met iconen of renderfuncties ook een `textValue` mee.
+
+## Formaten
+
+`size="s"` gebruikt compacte items met kleine tekst. De standaard `size="m"` gebruikt hogere items. Beide formaten hebben een afgerond oppervlak met schaduw en primaire tekst.
+
+<Canvas of={DropdownMenuStories.Small} />
+<Canvas of={DropdownMenuStories.Medium} />
+
+## Groepen en submenu’s
+
+Gebruik `DropdownMenuGroup` en `DropdownMenuLabel` voor benoemde groepen. Een groep zonder label heeft een `aria-label` nodig. Met `DropdownMenuSeparator` scheid je acties. `DropdownMenuSub`, `DropdownMenuSubTrigger` en `DropdownMenuSubContent` vormen een submenu met een automatische pijl.
+
+<Canvas of={DropdownMenuStories.Submenu} />
+
+Gebruik `variant="destructive"` voor destructieve acties en `DropdownMenuShortcut` voor een visuele toetsencombinatie. Deze hint registreert geen sneltoets. Checkbox- en radio-items zijn niet als aparte wrappers beschikbaar; selectie kan via de native React Aria selectieprops op groepen worden ingesteld.
+
+## Positionering en toegankelijkheid
+
+Gebruik `popoverProps` op de content voor bijvoorbeeld `placement`, `offset` en `className`. De standaardpositie is `bottom end`; submenu’s openen naast het bovenliggende menu.
+
+React Aria verzorgt pijltjestoetsen, typen om een item te vinden, Enter/spatie, Escape en focusherstel. Geef icon-only triggers een beschrijvend `aria-label`. Plaats geen knoppen of andere interactieve elementen binnen menu-items.

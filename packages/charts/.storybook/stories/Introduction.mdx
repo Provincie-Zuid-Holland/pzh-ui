@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Introduction" />
+
+# @studiotwin/pzh-charts
+
+Thirteen accessible chart types in React and SVG, without a charting runtime. No Chart.js,
+no d3, no canvas, and no runtime dependencies at all.
+
+```bash
+npm i @studiotwin/pzh-charts
+```
+
+```tsx
+import { BarChart } from '@studiotwin/pzh-charts'
+
+;<BarChart
+    title="Aantal AI-bedrijven per gemeente"
+    categories={['Rotterdam', 'Den Haag', 'Delft']}
+    series={[{ data: ['412', '288', '244'] }]}
+/>
+```
+
+That is the whole adoption path. Three things people expect and will not find:
+
+- **There is no CSS to import.** The stylesheet is injected by the components and deduped
+  through React 19 `<style href precedence>` hoisting.
+- **React ≥19 is a hard requirement**, because of that hoisting — not merely a version floor.
+  React and React DOM are peer dependencies; the package brings nothing else.
+- **The Karbon font is not bundled.** It is picked up when the host app defines `--font-karbon`;
+  otherwise the charts fall back to `system-ui`, which is what you see here.
+
+## What every card gives you
+
+- **Three views.** A `Visueel` / `Tabel` / `Samengevat` switch on each card: the chart, a real
+  table of the same data, and an auto-generated Dutch prose summary. The table is not decoration —
+  it is the conformant equivalent for the chart types whose colours fall short of 3:1.
+- **A high-contrast mode.** Brand colours stay; marks gain SVG line patterns, so series remain
+  distinguishable without relying on hue.
+- **Keyboard and screen-reader access.** Every data point is a focusable `role='img'` group with a
+  full readout; tooltips open on hover _and_ focus and dismiss with Escape.
+- **Dutch defaults.** All copy comes from `ChartLabels` and can be overridden per card. If you
+  localise, override `valueFormatter` too — it defaults to `nl-NL` number formatting independently
+  of `labels`, so changing only the copy leaves you with English text and Dutch decimal separators.
+
+## Accessibility
+
+The library targets WCAG 2.2 AA and ships its per-criterion record, its two known deviations and
+their mitigations in `ACCESSIBILITY.md`. An axe-core suite runs over every chart type in every view
+on each commit. The a11y addon in this Storybook complements it rather than repeating it: it runs in
+a real browser, so it evaluates the colour-contrast rule that axe disables under jsdom.
+
+## Licence
+
+ISC.

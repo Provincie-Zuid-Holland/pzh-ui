@@ -182,7 +182,7 @@ export const buttonVariants = cva(
                     'border-transparent',
                     'px-0',
                     'font-normal',
-                    'underline underline-offset-2',
+                    'underline decoration-1 underline-offset-2',
                     'text-link',
 
                     'hover:text-success',

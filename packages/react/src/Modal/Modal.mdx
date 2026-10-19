@@ -1,0 +1,120 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as ModalStories from './Modal.stories'
+
+<Meta of={ModalStories} />
+
+# Modal
+
+Een modal toont inhoud of acties in een venster boven de huidige pagina. Gebruik een modal wanneer de gebruiker eerst een taak moet afronden of een keuze moet maken voordat die verdergaat.
+
+<Canvas of={ModalStories.Default} />
+
+## Gebruik
+
+```tsx
+import {
+    Button,
+    Modal,
+    ModalBody,
+    ModalClose,
+    ModalDescription,
+    ModalFooter,
+    ModalHeader,
+    ModalTitle,
+    ModalTrigger,
+} from '@pzh-ui/react'
+
+export function Example() {
+    return (
+        <ModalTrigger>
+            <Button variant="secondary">Open modal</Button>
+            <Modal>
+                <ModalHeader>
+                    <ModalTitle>Wijzigingen opslaan</ModalTitle>
+                    <ModalDescription>
+                        Controleer de gegevens voordat je verdergaat.
+                    </ModalDescription>
+                </ModalHeader>
+                <ModalBody>Inhoud van het venster.</ModalBody>
+                <ModalFooter>
+                    <ModalClose variant="secondary">Sluiten</ModalClose>
+                </ModalFooter>
+            </Modal>
+        </ModalTrigger>
+    )
+}
+```
+
+Gebruik `ModalTrigger` als wrapper rond een `Button` en de `Modal`. De `ModalClose` accepteert dezelfde props als `Button`. Plaats de titel en optionele subtitel in `ModalHeader`, de inhoud in `ModalBody` en de acties in `ModalFooter`.
+
+## Formaten
+
+Gebruik `size="m"` voor een venster van 640px breed (standaard) en `size="l"` voor een venster van 904px breed. Stel het formaat in op `Modal`.
+
+<Canvas of={ModalStories.Large} />
+
+```tsx
+<Modal size="m">...</Modal>
+<Modal size="l">...</Modal>
+```
+
+De breedte past zich aan de beschikbare schermruimte aan. Lange inhoud scrolt binnen het venster.
+
+## Header en acties
+
+Gebruik een korte, beschrijvende `ModalTitle`. Met `ModalDescription` voeg je een subtitel toe voor aanvullende uitleg. Koppel deze waar nodig expliciet met een `id` en `aria-describedby` op `Modal`.
+
+`ModalFooter` plaatst de acties op kleine schermen onder elkaar en op grotere schermen naast elkaar. Groepeer de rechteracties in een eigen element om links ruimte te houden voor een tekstknop.
+
+```tsx
+<ModalFooter>
+    <Button variant="link">Meer informatie</Button>
+    <div className="gap-2 flex flex-wrap">
+        <ModalClose variant="secondary">Annuleren</ModalClose>
+        <Button variant="cta" onPress={handleSave}>
+            Opslaan
+        </Button>
+    </div>
+</ModalFooter>
+```
+
+Importeer `Button` uit `@pzh-ui/react`. Gebruik `ModalClose` voor acties die het venster direct mogen sluiten. Gebruik voor opslaan een `Button` en sluit de modal nadat de actie is geslaagd.
+
+## Openen en sluiten
+
+Gebruik `defaultOpen` op `ModalTrigger` om het venster standaard te openen. Met `isOpen` en `onOpenChange` op `ModalTrigger` beheer je de geopende status zelf.
+
+```tsx
+<ModalTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+    <Button>Open modal</Button>
+    <Modal>
+        <ModalHeader>
+            <ModalTitle>Titel</ModalTitle>
+        </ModalHeader>
+        <ModalBody>Inhoud van het venster.</ModalBody>
+    </Modal>
+</ModalTrigger>
+```
+
+Standaard sluiten Escape, de sluitknop en klikken buiten het venster de modal. Gebruik `overlayProps={{ isDismissable: false }}` op `Modal` om sluiten via de achtergrond uit te schakelen.
+
+Met `showCloseButton={false}` verberg je de standaard sluitknop. Zorg dan zelf voor een duidelijke sluitactie, bijvoorbeeld een `ModalClose` in de footer. Met `closeLabel` pas je de toegankelijke naam van de standaard sluitknop aan (standaard `Sluiten`).
+
+## Achtergrond en styling
+
+De modal heeft een afgerond oppervlak met schaduw. De overlay maakt de achterliggende pagina donkerder en vervaagt deze met `backdrop-blur-sm`.
+
+Gebruik `className` op de onderdelen voor aanvullende styling. Met `overlayProps.className` pas je de achtergrond aan.
+
+```tsx
+<Modal overlayProps={{ className: 'backdrop-blur-none' }}>...</Modal>
+```
+
+## Toegankelijkheid
+
+- Geef iedere modal een `ModalTitle` of een beschrijvend `aria-label` op `Modal`.
+- Gebruik `ModalDescription` voor een optionele, korte beschrijving. Verwijs met `aria-describedby` op `Modal` naar de `id` van deze beschrijving wanneer die moet worden aangekondigd.
+- Geef de trigger en sluitacties duidelijke labels.
+- React Aria houdt de focus binnen het venster en blokkeert interactie met de achterliggende pagina.
+- Na het sluiten keert de focus terug naar de trigger.

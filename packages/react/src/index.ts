@@ -250,3 +250,25 @@ export type {
     DropdownMenuSubContentProps,
     DropdownMenuShortcutProps,
 } from './DropdownMenu'
+
+export {
+    Modal,
+    ModalTrigger,
+    ModalClose,
+    ModalHeader,
+    ModalTitle,
+    ModalDescription,
+    ModalBody,
+    ModalFooter,
+    modalVariants,
+} from './Modal'
+export type {
+    ModalProps,
+    ModalTriggerProps,
+    ModalCloseProps,
+    ModalHeaderProps,
+    ModalTitleProps,
+    ModalDescriptionProps,
+    ModalBodyProps,
+    ModalFooterProps,
+} from './Modal'

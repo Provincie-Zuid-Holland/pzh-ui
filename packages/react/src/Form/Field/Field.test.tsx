@@ -61,6 +61,24 @@ describe('FieldLabel', () => {
 })
 
 describe('FieldDescription', () => {
+    it.each([
+        [undefined, 'text-s'],
+        ['l', 'text-s'],
+        ['m', 'text-xs'],
+    ] as const)(
+        'supports size %s without forwarding it to HTML',
+        (size, expectedClass) => {
+            render(<FieldDescription size={size}>Tekst</FieldDescription>)
+
+            expect(screen.getByTestId('field-description')).toHaveClass(
+                expectedClass
+            )
+            expect(screen.getByTestId('field-description')).not.toHaveAttribute(
+                'size'
+            )
+        }
+    )
+
     it('renders the description', () => {
         render(<FieldDescription>Vul je volledige naam in.</FieldDescription>)
 
@@ -94,6 +112,22 @@ describe('FieldDescription', () => {
 })
 
 describe('FieldError', () => {
+    it.each([
+        [undefined, '*:data-[slot=alert-title]:text-s'],
+        ['l', '*:data-[slot=alert-title]:text-s'],
+        ['m', '*:data-[slot=alert-title]:text-xs'],
+    ] as const)(
+        'supports size %s without forwarding it to HTML',
+        (size, expectedClass) => {
+            render(<FieldError size={size}>Tekst</FieldError>)
+
+            expect(screen.getByTestId('field-error')).toHaveClass(expectedClass)
+            expect(screen.getByTestId('field-error')).not.toHaveAttribute(
+                'size'
+            )
+        }
+    )
+
     it('does not render when no content or errors are provided', () => {
         render(<FieldError />)
 
@@ -224,5 +258,60 @@ describe('FieldError', () => {
         )
 
         expect(screen.getByTestId('field-error')).toHaveClass('custom-class')
+    })
+})
+
+describe('Field size inheritance', () => {
+    it('passes size through wrappers to all field text components', () => {
+        render(
+            <Field size="m">
+                <div>
+                    <FieldLabel>Naam</FieldLabel>
+                    <FieldDescription>Beschrijving</FieldDescription>
+                    <FieldError>Foutmelding</FieldError>
+                </div>
+            </Field>
+        )
+
+        expect(screen.getByTestId('field-label')).toHaveClass('text-s')
+        expect(screen.getByTestId('field-description')).toHaveClass('text-xs')
+        expect(screen.getByTestId('field-error')).toHaveClass(
+            '*:data-[slot=alert-title]:text-xs'
+        )
+        expect(screen.getByTestId('field')).not.toHaveAttribute('size')
+    })
+
+    it('lets children override the inherited size', () => {
+        render(
+            <Field size="m">
+                <FieldLabel size="l">Naam</FieldLabel>
+                <FieldDescription size="l">Beschrijving</FieldDescription>
+                <FieldError size="l">Foutmelding</FieldError>
+            </Field>
+        )
+
+        expect(screen.getByTestId('field-label')).toHaveClass('text-m')
+        expect(screen.getByTestId('field-description')).toHaveClass('text-s')
+        expect(screen.getByTestId('field-error')).toHaveClass(
+            '*:data-[slot=alert-title]:text-s'
+        )
+    })
+
+    it('inherits through nested fields and scopes explicit overrides', () => {
+        render(
+            <Field size="m">
+                <Field>
+                    <FieldDescription>Inherited</FieldDescription>
+                </Field>
+                <Field size="l">
+                    <FieldDescription>Override</FieldDescription>
+                </Field>
+                <FieldDescription>Sibling</FieldDescription>
+            </Field>
+        )
+
+        expect(screen.getByText('Inherited')).toHaveClass('text-xs')
+        expect(screen.getByText('Override')).toHaveClass('text-s')
+        expect(screen.getByText('Sibling')).toHaveClass('text-xs')
     })
 })

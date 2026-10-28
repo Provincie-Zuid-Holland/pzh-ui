@@ -73,19 +73,23 @@ export const buttonVariants = cva(
                  * Focus: outlined primary
                  */
                 primary: [
+                    'data-[pending]:border-transparent',
+                    'data-[pending]:bg-primary-active',
+                    'data-[pending]:text-primary-foreground',
+
                     'border-primary',
                     'bg-primary',
                     'text-primary-foreground',
 
-                    'hover:bg-background',
-                    'hover:text-primary',
+                    'not-data-[pending]:hover:bg-background',
+                    'not-data-[pending]:hover:text-primary',
 
-                    'active:border-primary-active',
-                    'active:bg-primary-active',
-                    'active:text-primary-foreground',
+                    'not-data-[pending]:active:border-primary-active',
+                    'not-data-[pending]:active:bg-primary-active',
+                    'not-data-[pending]:active:text-primary-foreground',
 
-                    'focus-visible:bg-background',
-                    'focus-visible:text-primary',
+                    'not-data-[pending]:focus-visible:bg-background',
+                    'not-data-[pending]:focus-visible:text-primary',
                 ],
 
                 /**
@@ -97,19 +101,22 @@ export const buttonVariants = cva(
                  * Focus: success text
                  */
                 secondary: [
+                    'data-[pending]:border-transparent',
+                    'data-[pending]:bg-success',
+                    'data-[pending]:text-text-inverse',
+
                     'border-primary',
                     'bg-secondary',
                     'text-secondary-foreground',
 
-                    'hover:bg-secondary',
-                    'hover:text-success',
+                    'not-data-[pending]:hover:bg-secondary',
+                    'not-data-[pending]:hover:text-success',
 
-                    'active:border-success',
-                    'active:bg-success',
-                    'active:text-text-inverse',
+                    'not-data-[pending]:active:border-success',
+                    'not-data-[pending]:active:bg-success',
+                    'not-data-[pending]:active:text-text-inverse',
 
-                    'focus-visible:bg-secondary',
-                    'focus-visible:text-success',
+                    'not-data-[pending]:focus-visible:text-success',
                 ],
 
                 /**
@@ -121,19 +128,23 @@ export const buttonVariants = cva(
                  * Focus: dark success
                  */
                 cta: [
+                    'data-[pending]:border-transparent',
+                    'data-[pending]:bg-primary-active',
+                    'data-[pending]:text-text-inverse',
+
                     'border-success',
                     'bg-success',
                     'text-text-inverse',
 
-                    'hover:bg-success-foreground',
-                    'hover:text-text-inverse',
+                    'not-data-[pending]:hover:bg-success-foreground',
+                    'not-data-[pending]:hover:text-text-inverse',
 
-                    'active:bg-foreground',
-                    'active:text-text-inverse',
+                    'not-data-[pending]:active:bg-foreground',
+                    'not-data-[pending]:active:text-text-inverse',
 
-                    'focus-visible:border-success-foreground',
-                    'focus-visible:bg-success-foreground',
-                    'focus-visible:text-text-inverse',
+                    'not-data-[pending]:focus-visible:border-success-foreground',
+                    'not-data-[pending]:focus-visible:bg-success-foreground',
+                    'not-data-[pending]:focus-visible:text-text-inverse',
                 ],
 
                 /**
@@ -142,37 +153,67 @@ export const buttonVariants = cva(
                  * Intended for a dark background.
                  */
                 diapositive: [
+                    'data-[pending]:border-transparent',
+                    'data-[pending]:bg-surface-subtle',
+                    'data-[pending]:text-foreground',
+
                     'border-background',
                     'bg-background',
                     'text-primary',
 
-                    'hover:bg-background',
-                    'hover:text-success',
+                    'not-data-[pending]:hover:bg-background',
+                    'not-data-[pending]:hover:text-success',
 
-                    'active:bg-background',
-                    'active:text-foreground',
+                    'not-data-[pending]:active:bg-background',
+                    'not-data-[pending]:active:text-foreground',
 
-                    'focus-visible:bg-background',
-                    'focus-visible:text-success',
+                    'not-data-[pending]:focus-visible:bg-background',
+                    'not-data-[pending]:focus-visible:text-success',
                 ],
 
                 /**
                  * Caution / destructive
                  */
                 caution: [
+                    'data-[pending]:border-transparent',
+                    'data-[pending]:bg-destructive-foreground',
+                    'data-[pending]:text-text-inverse',
+
                     'border-destructive',
-                    'bg-destructive',
-                    'text-text-inverse',
+                    'bg-secondary',
+                    'text-destructive',
 
-                    'hover:bg-background',
-                    'hover:text-destructive',
+                    'not-data-[pending]:hover:border-destructive-foreground',
+                    'not-data-[pending]:hover:text-destructive-foreground',
 
-                    'active:border-destructive-foreground',
-                    'active:bg-destructive-foreground',
-                    'active:text-text-inverse',
+                    'not-data-[pending]:active:border-destructive-foreground',
+                    'not-data-[pending]:active:bg-destructive-foreground',
+                    'not-data-[pending]:active:text-text-inverse',
 
-                    'focus-visible:bg-background',
-                    'focus-visible:text-destructive',
+                    'not-data-[pending]:focus-visible:text-destructive-foreground',
+                ],
+
+                /**
+                 * Transparent
+                 */
+                transparent: [
+                    'border-transparent',
+                    'bg-transparent',
+                    'text-primary',
+
+                    'not-data-[pending]:hover:bg-surface-muted',
+                    'not-data-[pending]:hover:text-success',
+
+                    'not-data-[pending]:active:bg-surface-subtle',
+                    'not-data-[pending]:active:text-foreground',
+
+                    'not-data-[pending]:focus-visible:bg-surface-muted',
+                    'not-data-[pending]:focus-visible:text-success',
+
+                    'disabled:bg-transparent',
+
+                    'data-[pending]:bg-surface-subtle',
+                    'data-[pending]:text-foreground',
                 ],
 
                 /**
@@ -185,9 +226,9 @@ export const buttonVariants = cva(
                     'underline decoration-1 underline-offset-2',
                     'text-link',
 
-                    'hover:text-success',
+                    'not-data-[pending]:hover:text-success',
 
-                    'focus-visible:text-success',
+                    'not-data-[pending]:focus-visible:text-success',
 
                     'disabled:bg-transparent',
                 ],

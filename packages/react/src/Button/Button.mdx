@@ -37,6 +37,7 @@ Beschikbare varianten:
 - `cta`
 - `diapositive`
 - `caution`
+- `transparent`
 - `default`
 
 ### Primary
@@ -89,6 +90,16 @@ Gebruik `caution` voor destructieve of risicovolle acties.
 
 ```tsx
 <Button variant="caution">Verwijderen</Button>
+```
+
+### Transparent
+
+Gebruik `transparent` voor een minder prominente actie zonder zichtbare achtergrond of rand. Bij hover en focus verschijnt een lichte achtergrond met groene tekst.
+
+<Canvas of={ButtonStories.Transparent} />
+
+```tsx
+<Button variant="transparent">Meer informatie</Button>
 ```
 
 ### Default
@@ -151,7 +162,7 @@ Gebruik `isPending` wanneer een actie wordt uitgevoerd en niet opnieuw gestart m
 <Button isPending>Opslaan</Button>
 ```
 
-Tijdens het laden wordt de inhoud vervangen door een spinner en is de knop tijdelijk niet beschikbaar.
+Tijdens het laden verschijnt een spinner naast de inhoud en is de knop tijdelijk niet beschikbaar. De tekst en iconen blijven zichtbaar.
 
 ### Pending per variant
 

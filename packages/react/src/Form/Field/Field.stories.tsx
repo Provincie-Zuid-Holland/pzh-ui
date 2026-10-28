@@ -127,3 +127,28 @@ export const ReadOnly: Story = {
         </Field>
     ),
 }
+
+export const Sizes: Story = {
+    render: () => (
+        <div className="gap-6 flex flex-col">
+            {(['l', 'm'] as const).map(size => (
+                <Field key={size} size={size}>
+                    <FieldLabel htmlFor={`size-${size}`}>
+                        Formaat {size}
+                    </FieldLabel>
+                    <FieldDescription>
+                        Vul je volledige naam in.
+                    </FieldDescription>
+                    <Input
+                        id={`size-${size}`}
+                        aria-invalid
+                        aria-describedby={`size-${size}-error`}
+                    />
+                    <FieldError id={`size-${size}-error`}>
+                        Dit veld is verplicht.
+                    </FieldError>
+                </Field>
+            ))}
+        </div>
+    ),
+}

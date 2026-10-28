@@ -66,6 +66,23 @@ Een beschrijving is optioneel.
 
 <Canvas of={FieldStories.WithoutDescription} />
 
+## Formaten
+
+`Field` ondersteunt `size="l"` (standaard) en `size="m"` (compact). `FieldLabel`, `FieldDescription` en `FieldError` nemen dit formaat over, ook binnen extra wrappers of geneste velden. Met een eigen `size` op een child kun je dit overschrijven.
+
+Bij `l` gebruikt het label `text-m` en gebruiken de beschrijving en foutmelding `text-s`. Bij `m` wordt dit respectievelijk `text-s` en `text-xs`. De compacte foutmelding heeft ook minder padding en een kleiner icoon.
+
+<Canvas of={FieldStories.Sizes} />
+
+```tsx
+<Field size="m">
+    <FieldLabel htmlFor="compact">Naam</FieldLabel>
+    <FieldDescription>Aanvullende uitleg.</FieldDescription>
+    <Input id="compact" aria-invalid aria-describedby="compact-error" />
+    <FieldError id="compact-error">Dit veld is verplicht.</FieldError>
+</Field>
+```
+
 ## Verplicht veld
 
 Gebruik de `required`-property op `FieldLabel` om een sterretje achter het label te tonen.
@@ -95,8 +112,8 @@ Gebruik `FieldError` voor foutmeldingen bij een formulierveld.
 <Canvas of={FieldStories.Invalid} />
 
 ```tsx
-<Field className="flex-col gap-0">
-    <div className="flex flex-col gap-2">
+<Field className="gap-0 flex-col">
+    <div className="gap-2 flex flex-col">
         <FieldLabel htmlFor="email" required>
             E-mailadres
         </FieldLabel>

@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import { Button, LinkButton, buttonVariants } from './Button'
+import { Button, buttonVariants, LinkButton } from './Button'
 
 describe('buttonVariants', () => {
     it('uses the secondary border color without a conflicting transparent border', () => {
@@ -48,6 +48,7 @@ describe('Button', () => {
         'cta',
         'diapositive',
         'caution',
+        'transparent',
         'default',
     ] as const)('supports the %s variant', variant => {
         render(<Button variant={variant}>Button</Button>)
@@ -115,7 +116,10 @@ describe('Button', () => {
     it('keeps the button label visible while pending', () => {
         render(<Button isPending>Opslaan</Button>)
 
-        expect(screen.getByText('Opslaan')).toBeInTheDocument()
+        expect(screen.getByText('Opslaan')).toBeVisible()
+        expect(
+            screen.getByRole('button', { name: 'Opslaan' })
+        ).toBeInTheDocument()
     })
 
     it('does not trigger onPress while pending', () => {
@@ -171,6 +175,7 @@ describe('LinkButton', () => {
         'cta',
         'diapositive',
         'caution',
+        'transparent',
         'default',
     ] as const)('supports the %s variant', variant => {
         render(

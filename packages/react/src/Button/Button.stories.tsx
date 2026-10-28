@@ -19,6 +19,7 @@ const meta = {
                 'cta',
                 'diapositive',
                 'caution',
+                'transparent',
                 'link',
                 'default',
             ],
@@ -83,6 +84,13 @@ export const Caution: Story = {
     render: args => <Button {...args} />,
 }
 
+export const Transparent: Story = {
+    args: {
+        variant: 'transparent',
+    },
+    render: args => <Button {...args} />,
+}
+
 export const Small: Story = {
     args: {
         size: 's',
@@ -139,6 +147,10 @@ export const Variants: Story = {
                 Caution
             </Button>
 
+            <Button {...args} variant="transparent">
+                Transparent
+            </Button>
+
             <div className="p-4 bg-brand-blue-dark">
                 <Button {...args} variant="diapositive">
                     Diapositive
@@ -189,6 +201,10 @@ export const WithDisabledVariants: Story = {
                 Caution
             </Button>
 
+            <Button {...args} variant="transparent" isDisabled>
+                Transparent
+            </Button>
+
             <div className="p-4 bg-brand-blue-dark">
                 <Button {...args} variant="diapositive" isDisabled>
                     Diapositive
@@ -215,6 +231,10 @@ export const WithPendingVariants: Story = {
 
             <Button {...args} variant="caution" isPending>
                 Caution
+            </Button>
+
+            <Button {...args} variant="transparent" isPending>
+                Transparent
             </Button>
 
             <div className="p-4 bg-brand-blue-dark">
